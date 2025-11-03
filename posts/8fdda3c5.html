@@ -19,18 +19,21 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="倍增法求LCA 题目描述 给定一棵树，以及树上两点 uuu, vvv， 要求 lca(u,v)lca(u, v)lca(u,v)。 注：lca &#x3D;  Lowest Common Ancestor 最近公共祖先。 正文 1. 求法 1.1 朴素求法 过程 可以每次查找深度较大的那个点，让它向上跳，那么在若干次跳之后，这两个点一定会相遇。而它们相遇的位置就是它们的 lcalcalca 性质 这种朴素的">
+    <meta name="description" content="倍增法求LCA 一. 什么是 LCA ？ LCA(LowestCommonAncestor)，即 最近公共祖先。在一个有根树中，两个节点 u 和 v 都会有各自的祖先。他们可能会共享一些祖先，LCA 指的就是 u 和 v 的所有 共同祖先 中 深度最深 的那一个。 二. 如何求解 LCA？ 1 朴素求法（暴力上跳） 最简单的想法是： 1. 先让 u 和 v 中深度较神的节点，让">
 <meta property="og:type" content="article">
 <meta property="og:title" content="倍增法求LCA">
 <meta property="og:url" content="http://example.com/posts/8fdda3c5.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="倍增法求LCA 题目描述 给定一棵树，以及树上两点 uuu, vvv， 要求 lca(u,v)lca(u, v)lca(u,v)。 注：lca &#x3D;  Lowest Common Ancestor 最近公共祖先。 正文 1. 求法 1.1 朴素求法 过程 可以每次查找深度较大的那个点，让它向上跳，那么在若干次跳之后，这两个点一定会相遇。而它们相遇的位置就是它们的 lcalcalca 性质 这种朴素的">
+<meta property="og:description" content="倍增法求LCA 一. 什么是 LCA ？ LCA(LowestCommonAncestor)，即 最近公共祖先。在一个有根树中，两个节点 u 和 v 都会有各自的祖先。他们可能会共享一些祖先，LCA 指的就是 u 和 v 的所有 共同祖先 中 深度最深 的那一个。 二. 如何求解 LCA？ 1 朴素求法（暴力上跳） 最简单的想法是： 1. 先让 u 和 v 中深度较神的节点，让">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-03T02:16:19.000Z">
-<meta property="article:modified_time" content="2025-11-03T03:00:48.691Z">
+<meta property="article:modified_time" content="2025-11-03T08:33:06.431Z">
 <meta property="article:author" content="RainCnya">
+<meta property="article:tag" content="LCA">
+<meta property="article:tag" content="Note">
 <meta property="article:tag" content="算法">
-<meta property="article:tag" content="lca">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="树">
 <meta property="article:tag" content="倍增">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -240,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          405 字
+          1.3k 字
         
       </span>
     
@@ -251,7 +254,7 @@
         
         
         
-          4 分钟
+          11 分钟
         
       </span>
     
@@ -302,35 +305,140 @@
             
               <div class="markdown-body">
                 
-                <h1>倍增法求LCA</h1>
-<h2 id="题目描述">题目描述</h2>
-<p>给定一棵树，以及树上两点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>， 要求 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lca(u, v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span>。</p>
-<p>注：<code>lca</code> =  <code>Lowest Common Ancestor</code> 最近公共祖先。</p>
-<h1>正文</h1>
-<h2 id="1-求法">1. 求法</h2>
-<h3 id="1-1-朴素求法">1.1 朴素求法</h3>
-<h4 id="过程">过程</h4>
-<p>可以每次查找深度较大的那个点，让它向上跳，那么在若干次跳之后，这两个点一定会相遇。而它们相遇的位置就是它们的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span></span></span></span></p>
-<h4 id="性质">性质</h4>
-<p>这种朴素的算法预处理需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">s</span></span></span></span> 整棵树，时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>，单次查询时间为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Θ(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">Θ</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。如果树比较特殊，最终复杂度很容易回超。</p>
-<h3 id="1-2-倍增算法">1.2 倍增算法</h3>
-<h4 id="过程-2">过程</h4>
-<p>倍增算法是朴素算法的改进算法。通过预处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[x][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 数组，指针可以快速跳动，大大减少跳转次数。</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[x][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 表示节点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span> 个祖先。同样，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[x][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 也可以用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>f</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dfs</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">df</span><span class="mord mathnormal">s</span></span></span></span> 预处理。但最后的查询复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(logn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>。</p>
-<p>接下来详细讲解具体的细节：</p>
-<p><strong>第一阶段：</strong></p>
-<p>跳转 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 到同一个深度。</p>
-<p><strong>第二阶段：</strong></p>
-<p>拆分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">diff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span></span></span></span> 的二进制</p>
-<ul class="lvl-0">
-<li class="lvl-4">
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">diff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span></span></span></span> 为两点之间的深度之差。</p>
-</li>
+                <h1 id="倍增法求lca">倍增法求LCA</h1>
+<h2 id="一.-什么是-lca">一. 什么是 LCA ？</h2>
+<p><span
+class="math inline"><em>L</em><em>C</em><em>A</em>(<em>L</em><em>o</em><em>w</em><em>e</em><em>s</em><em>t</em><em>C</em><em>o</em><em>m</em><em>m</em><em>o</em><em>n</em><em>A</em><em>n</em><em>c</em><em>e</em><em>s</em><em>t</em><em>o</em><em>r</em>)</span>，即
+<strong>最近公共祖先</strong>。在一个有根树中，两个节点 <span
+class="math inline"><em>u</em></span> 和 <span
+class="math inline"><em>v</em></span>
+都会有各自的祖先。他们可能会共享一些祖先，<span
+class="math inline"><em>L</em><em>C</em><em>A</em></span> 指的就是 <span
+class="math inline"><em>u</em></span> 和 <span
+class="math inline"><em>v</em></span> 的所有 <strong>共同祖先</strong>
+中 <strong>深度最深</strong> 的那一个。</p>
+<h2 id="二.-如何求解-lca">二. 如何求解 LCA？</h2>
+<h3 id="朴素求法暴力上跳">1 朴素求法（暴力上跳）</h3>
+<p>最简单的想法是： 1. 先让 <span class="math inline"><em>u</em></span>
+和 <span class="math inline"><em>v</em></span>
+中深度较神的节点，让它一步一步往上跳，直到两个点深度相同。 2.
+然后，让两个节点 <strong>同时</strong> 一步一步往上跳。 3. 他们
+<strong>第一次相遇</strong> 的节点，就是他们的 <span
+class="math inline"><em>L</em><em>C</em><em>A</em></span>。</p>
+<p><strong>复杂度分析</strong>：</p>
+<ul>
+<li>一次查询最坏情况下（假设树退化成链了），则需要 <span
+class="math inline"><em>O</em>(<em>N</em>)</span> 的时间。</li>
+<li>如果有 <span class="math inline"><em>Q</em></span>
+次查询，总时间复杂度为 <span
+class="math inline"><em>O</em>(<em>Q</em> ⋅ <em>N</em>)</span></li>
+<li>对于 <span
+class="math inline"><em>Q</em>, <em>N</em> ≤ 1<em>e</em>5</span>
+这个数量级的数据，这个复杂度显然无法接受。</li>
 </ul>
-<p>接着我们从最大的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 循环开始尝试，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo mathvariant="normal">≠</mo><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[u][i] \neq fa[v][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> &lt;- <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[u][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> &lt;- <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[v][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>。</p>
-<p>如果最后都匹配不了，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>c</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">lca</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">c</span><span class="mord mathnormal">a</span></span></span></span> 就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>a</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">fa[u][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>。</p>
-<h4 id="性质-2">性质</h4>
-<h1>结语</h1>
+<h3 id="倍增算法binary-lifting">1.2 倍增算法（Binary Lifting）</h3>
+<p>朴素暴力算法的 <strong>瓶颈</strong>
+在于“一步一步”上跳，太慢了。因此我们自然会想到，能不能一次性跳很多步？</p>
+<p>“倍增” 的核心是先预处理一个 <code>fa[u][k]</code> 数组，表示
+<strong>节点 <span class="math inline"><em>u</em></span></strong> 的
+<strong>第 <span class="math inline">2<sup><em>k</em></sup></span>
+个</strong> 祖先。</p>
+<ul>
+<li><code>fa[u][0]</code> 表示 <span
+class="math inline"><em>u</em></span> 的 <strong>第 <span
+class="math inline">2<sup>0</sup> = 1</span> 个</strong> 祖先，即它的
+<strong>父节点</strong>。</li>
+<li><code>fa[u][1]</code> 表示 <span
+class="math inline"><em>u</em></span> 的 <strong>第 <span
+class="math inline">2<sup>1</sup> = 2</span> 个</strong> 祖先，即它的
+<strong>爷爷节点</strong>。</li>
+<li><code>fa[u][1]</code> 表示 <span
+class="math inline"><em>u</em></span> 的 <strong>第 <span
+class="math inline">2<sup>2</sup> = 4</span> 个</strong> 祖先。</li>
+</ul>
+<p>有了这个数组，我们就可以在 <span
+class="math inline"><em>O</em>(<em>l</em><em>o</em><em>g</em><em>N</em>)</span>
+的时间内跳到任意指定的祖先。</p>
+<p>例如，假设我们要跳 <span class="math inline">13</span> 步：<span
+class="math inline">13 = 8 + 4 + 1 = 2<sup>3</sup> + 2<sup>2</sup> + 2<sup>0</sup></span>。</p>
+<p>所以，我们只需要从节点 <span class="math inline"><em>u</em></span>
+开始，先跳 <span class="math inline">2<sup>3</sup></span> 步
+<code>u = fa[u][3]</code>，再跳 <span
+class="math inline">2<sup>2</sup></span> 步
+<code>u = fa[u][2]</code>，最后跳 <span
+class="math inline">2<sup>0</sup></span> 步 <code>u = fa[u][0]</code>
+即可。</p>
+<h2 id="三.-预处理---onlogn">三. 预处理 - <span
+class="math inline"><em>O</em>(<em>N</em><em>l</em><em>o</em><em>g</em><em>N</em>)</span></h2>
+<p>我们如何才能高效地求出 <code>fa</code> 数组呢？</p>
+<ol type="1">
+<li>用一次 <code>DFS</code> 遍历整棵树，计算出：
+<ul>
+<li>每个节点的 <strong>深度</strong> <code>depth[u]</code>。</li>
+<li>每个节点的 <strong>直接父节点</strong> <code>fa[u][0]</code>。</li>
+</ul></li>
+<li>用 <code>DP</code> 思想，计算出 <code>fa</code> 数组的其余值。</li>
+</ol>
+<p>那么问题来了？ <code>fa[u][k]</code> 的状态转移方程是什么？ -
+<code>fa[u][k]</code>（ <span class="math inline"><em>u</em></span> 的第
+<span class="math inline">2<sup><em>k</em></sup></span> 辈祖先） -
+可以看做是 <code>fa[u][k-1]</code> 的第 <span
+class="math inline">2<sup><em>k</em> − 1</sup></span> 辈祖先。</p>
+<p>因为 <span
+class="math inline">2<sup><em>k</em></sup> = 2<sup>(</sup><em>k</em> − 1) + 2<sup>(</sup><em>k</em> − 1)</span>，所以递推式为：</p>
+<p><span
+class="math display"><em>f</em><em>a</em>[<em>u</em>][<em>k</em>] = <em>f</em><em>a</em>[<em>f</em><em>a</em>[<em>u</em>][<em>k</em> − 1]][<em>k</em> − 1]</span></p>
+<p>这个递推需要按照 <span class="math inline"><em>k</em></span>
+步长从小到大计算。</p>
+<p>参考代码如下： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxlg = <span class="hljs-number">20</span>;<br><br><span class="hljs-type">int</span> fa[maxn][maxlg<span class="hljs-number">+1</span>];<br><span class="hljs-type">int</span> depth[maxn];<br>vector&lt;<span class="hljs-type">int</span>&gt; adj[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> pa )</span></span><br><span class="hljs-function"></span>&#123;<br>    fa[u][<span class="hljs-number">0</span>] = pa;<br>    depth[u] = depth[pa] + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v != pa )<br>            <span class="hljs-built_in">dfs</span>( v, u );<br>    &#125;<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">stInit</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= maxlg; ++ j )<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>            fa[i][j] = fa[ fa[i][j<span class="hljs-number">-1</span>] ][j<span class="hljs-number">-1</span>];<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h2 id="四.-查询---ologn">四. 查询 - <span
+class="math inline"><em>O</em>(<em>l</em><em>o</em><em>g</em><em>N</em>)</span></h2>
+<p>现在假设我们需要查询 <code>lca(u, v)</code>：</p>
+<ol type="1">
+<li>保持深度一致。
+<ul>
+<li>我们不能让 <span class="math inline"><em>u</em></span> 和 <span
+class="math inline"><em>v</em></span>
+一起跳，因为他们的深度可能不同。</li>
+<li>假设 <code>depth[u] &gt; depth[v]</code>，我们先把 <span
+class="math inline"><em>u</em></span> 提升到和 <span
+class="math inline"><em>v</em></span> 一样的高度。</li>
+<li>需要提升的步数 <code>diff = depth[u] - depth[v]</code></li>
+<li>我们用倍增法来跳这 <code>diff</code> 步：从小到大（<span
+class="math inline"><em>k</em></span> 从 <code>maxlg</code>到
+<code>O</code>），尝试跳 <span
+class="math inline">2<sup><em>k</em></sup></span> 步。</li>
+</ul></li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getlca</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v)</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 确保 u 是更深的那个节点</span><br>    <span class="hljs-keyword">if</span>( dep[u] &lt; dep[v] )   <span class="hljs-built_in">swap</span>( u, v );<br>    <br>    <span class="hljs-type">int</span> diff = dep[u] - dep[v];<br>    <span class="hljs-comment">// 从大到小尝试跳跃</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; (<span class="hljs-number">1</span> &lt;&lt; i) &lt;= diff; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( (<span class="hljs-number">1</span> &lt;&lt; i) &amp; diff )<br>        <span class="hljs-comment">// 小技巧，快速判断 diff 的二进制表达式中</span><br>        <span class="hljs-comment">// 第 i 位是否为 1</span><br>            u = fa[u][i];<br>    &#125;<br><br>    <span class="hljs-keyword">if</span>( u == v )    <span class="hljs-keyword">return</span> u;<br>    <br>    <span class="hljs-comment">// 这里同步上跳，用倍增法开跳。</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = maxlg - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( fa[u][i] != fa[v][i] )<br>        <span class="hljs-comment">// 如果 2^k 祖先不同，说明 LCA 还在上面</span><br>        <span class="hljs-comment">// 放心跳</span><br>        &#123;<br>            u = fa[u][i];<br>            v = fa[v][i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> fa[u][<span class="hljs-number">0</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="五.-复杂度分析">五. 复杂度分析</h2>
+<ul>
+<li>预处理时间复杂度：<span
+class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span>
+<ul>
+<li>DFS 遍历：<span
+class="math inline"><em>O</em>(<em>N</em>)</span></li>
+<li>DP 计算 fa 数组：两层循环， <span
+class="math inline"><em>O</em>(<em>N</em> ⋅ log <em>N</em>)</span></li>
+</ul></li>
+<li>预处理空间复杂度：<span
+class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span>用于存储
+fa 数组。
+<ul>
+<li>单次查询时间复杂度： <span
+class="math inline"><em>O</em>(log <em>N</em>)</span>包含两次 for k
+循环，每次都是 <span
+class="math inline"><em>O</em>(log <em>N</em>)</span>。</li>
+</ul></li>
+<li>总复杂度 (Q 次查询)： <span
+class="math inline"><em>O</em>(<em>N</em>log <em>N</em> + <em>Q</em>log <em>N</em>)</span></li>
+</ul>
+<p>这使得倍增法成为一种非常高效的在线（Online）算法——它可以处理完一次查询后再接收下一次查询。</p>
+<h2 id="六.-代码模板">六. 代码模板</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxlg = <span class="hljs-number">20</span>;<br><br><span class="hljs-type">int</span> fa[maxn][maxlg<span class="hljs-number">+1</span>];<br><span class="hljs-type">int</span> dep[maxn];<br><span class="hljs-type">int</span> n, m, s;<br>vector&lt;<span class="hljs-type">int</span>&gt; adj[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> pa )</span></span><br><span class="hljs-function"></span>&#123;<br>    fa[u][<span class="hljs-number">0</span>] = pa;<br>    dep[u] = dep[pa] + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v != pa )<br>            <span class="hljs-built_in">dfs</span>( v, u );<br>    &#125;<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">stInit</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= maxlg; ++ j )<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>            fa[i][j] = fa[ fa[i][j<span class="hljs-number">-1</span>] ][j<span class="hljs-number">-1</span>];<br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getlca</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v)</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( dep[u] &lt; dep[v] )   <span class="hljs-built_in">swap</span>( u, v );<br>    <br>    <span class="hljs-type">int</span> diff = dep[u] - dep[v];<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; (<span class="hljs-number">1</span> &lt;&lt; i) &lt;= diff; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( (<span class="hljs-number">1</span> &lt;&lt; i) &amp; diff )<br>            u = fa[u][i];<br>    &#125;<br><br>    <span class="hljs-keyword">if</span>( u == v )    <span class="hljs-keyword">return</span> u;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = maxlg - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( fa[u][i] != fa[v][i] )<br>        &#123;<br>            u = fa[u][i];<br>            v = fa[v][i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> fa[u][<span class="hljs-number">0</span>];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>); cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; s;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n<span class="hljs-number">-1</span>; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v;<br>        cin &gt;&gt; u &gt;&gt; v;<br>        adj[u].<span class="hljs-built_in">push_back</span>( v );<br>        adj[v].<span class="hljs-built_in">push_back</span>( u );<br>    &#125;<br>    <span class="hljs-built_in">dfs</span>( s, <span class="hljs-number">0</span> );<br>    <span class="hljs-built_in">stInit</span>( );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v;<br>        cin &gt;&gt; u &gt;&gt; v;<br>        cout &lt;&lt; <span class="hljs-built_in">getlca</span>( u, v ) &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="结语">结语</h2>
+<p>LCA 是树类问题中的一个基本要求，必须熟练掌握倍增求 LCA
+以优化时间复杂度。</p>
 
                 
               </div>
@@ -343,9 +451,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/LCA/" class="print-no-link">#LCA</a>
+      
+        <a href="/tags/Note/" class="print-no-link">#Note</a>
+      
         <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
       
-        <a href="/tags/lca/" class="print-no-link">#lca</a>
+        <a href="/tags/%E5%9B%BE%E8%AE%BA/" class="print-no-link">#图论</a>
+      
+        <a href="/tags/%E6%A0%91/" class="print-no-link">#树</a>
       
         <a href="/tags/%E5%80%8D%E5%A2%9E/" class="print-no-link">#倍增</a>
       
@@ -404,12 +518,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/posts/ff77d078.html" title="P1600 [NOIP 2016 提高组] 天天爱跑步">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">P1600 [NOIP 2016 提高组] 天天爱跑步</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/ff77d078.html" title="P1600 [NOIP 2016 提高组] 天天爱跑步">
-                        <span class="hidden-mobile">P1600 [NOIP 2016 提高组] 天天爱跑步</span>
+                      <a href="/posts/291a3efb.html" title="AT_arc100_c">
+                        <span class="hidden-mobile">AT_arc100_c</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
