@@ -19,15 +19,15 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="3751：快速排序 一、 题目描述   给定 nnn 个整数，请对他们进行排序。   输入：多组数据， n≤100000n \le 100000n≤100000，每组数据有 nnn 个。   输出：每行输出排序后的 nnn 个整数。   二、 思路分析 1. 核心思路 这题思路很简单：只需要对数据进行排序即可。 2. 最容易想到的暴力算法：冒泡排序 当我们遇到 排序 的时候，最容易想到的一种解法就">
+    <meta name="description" content="3751：快速排序 一、 题目描述  给定 n 个整数，请对他们进行排序。 输入：多组数据， n ≤ 100000，每组数据有 n 个。 输出：每行输出排序后的 n 个整数。  特别说明： 对于快速排序来说，只需要大概掌握思维方式即可，无需记忆具体代码实现。 一般来说我们会使用 std::sort() 函数来实现快速排序。                      ▶sor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TZOJ-3751">
 <meta property="og:url" content="http://example.com/posts/18d54a23.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="3751：快速排序 一、 题目描述   给定 nnn 个整数，请对他们进行排序。   输入：多组数据， n≤100000n \le 100000n≤100000，每组数据有 nnn 个。   输出：每行输出排序后的 nnn 个整数。   二、 思路分析 1. 核心思路 这题思路很简单：只需要对数据进行排序即可。 2. 最容易想到的暴力算法：冒泡排序 当我们遇到 排序 的时候，最容易想到的一种解法就">
+<meta property="og:description" content="3751：快速排序 一、 题目描述  给定 n 个整数，请对他们进行排序。 输入：多组数据， n ≤ 100000，每组数据有 n 个。 输出：每行输出排序后的 n 个整数。  特别说明： 对于快速排序来说，只需要大概掌握思维方式即可，无需记忆具体代码实现。 一般来说我们会使用 std::sort() 函数来实现快速排序。                      ▶sor">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-05T08:17:02.000Z">
-<meta property="article:modified_time" content="2025-11-05T10:26:50.003Z">
+<meta property="article:modified_time" content="2025-11-05T10:32:31.814Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="Solution">
 <meta property="article:tag" content="排序">
@@ -309,51 +309,80 @@
             
               <div class="markdown-body">
                 
-                <h1><a target="_blank" rel="noopener" href="https://www.tzcoder.cn/acmhome/problemdetail.do?method=showdetail&amp;id=3751">3751</a>：快速排序</h1>
-<h2 id="一、-题目描述">一、 题目描述</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>给定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个整数，请对他们进行排序。</p>
-</li>
-<li class="lvl-2">
-<p>输入：多组数据， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mn>100000</mn></mrow><annotation encoding="application/x-tex">n \le 100000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100000</span></span></span></span>，每组数据有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个。</p>
-</li>
-<li class="lvl-2">
-<p>输出：每行输出排序后的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个整数。</p>
-</li>
+                <h1 id="快速排序"><a
+target="_blank" rel="noopener" href="https://www.tzcoder.cn/acmhome/problemdetail.do?method=showdetail&amp;id=3751">3751</a>：快速排序</h1>
+<h2 id="一-题目描述">一、 题目描述</h2>
+<ul>
+<li>给定 <span class="math inline"><em>n</em></span>
+个整数，请对他们进行排序。</li>
+<li>输入：多组数据， <span
+class="math inline"><em>n</em> ≤ 100000</span>，每组数据有 <span
+class="math inline"><em>n</em></span> 个。</li>
+<li>输出：每行输出排序后的 <span class="math inline"><em>n</em></span>
+个整数。</li>
 </ul>
-<h2 id="二、-思路分析">二、 思路分析</h2>
-<h3 id="1-核心思路">1. 核心思路</h3>
+<h3 id="特别说明">特别说明：</h3>
+<p>对于快速排序来说，只需要大概掌握思维方式即可，无需记忆具体代码实现。</p>
+<p>一般来说我们会使用 <code>std::sort()</code> 函数来实现快速排序。</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-8f7bdefe" role="button" aria-expanded="false" aria-controls="collapse-8f7bdefe">
+        <div class="fold-arrow">▶</div>sort函数版
+      </div>
+      <div class="fold-collapse collapse" id="collapse-8f7bdefe">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-type">int</span> a[maxn];<br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>( cin &gt;&gt; n ) <br>    &#123;   <span class="hljs-comment">// 处理多组输入</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>            cin &gt;&gt; a[i];<br><br>        <span class="hljs-comment">// a + 1 表示数组的第一个位置</span><br>        <span class="hljs-comment">// a + n + 1 表示数组的最后一个位置</span><br>        <span class="hljs-comment">// 这里因为我们是从 1 开始存储数据</span><br>        std::<span class="hljs-built_in">sort</span>( a + <span class="hljs-number">1</span>, a + n + <span class="hljs-number">1</span> );<br><br>        <span class="hljs-comment">// 如果从 0 开始存储呢？</span><br>        <span class="hljs-comment">// std::sort( a, a + n );</span><br>        <span class="hljs-comment">// 明白了吗？</span><br><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>        &#123;<br>            cout &lt;&lt; a[i];<br>            <span class="hljs-keyword">if</span>( i != n ) cout &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;    <br>        <br>        cout &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="二-思路分析">二、 思路分析</h2>
+<h3 id="核心思路">1. 核心思路</h3>
 <p>这题思路很简单：只需要对数据进行排序即可。</p>
-<h3 id="2-最容易想到的暴力算法：冒泡排序">2. 最容易想到的暴力算法：冒泡排序</h3>
-<p>当我们遇到 <strong>排序</strong> 的时候，最容易想到的一种解法就是 <strong>冒泡</strong>：</p>
-<p><a target="_blank" rel="noopener" href="https://raincnya.space/posts/56abdfa0.html">冒泡排序</a>：具体实现可以看我的另一个笔记博客。</p>
-<h3 id="3-为什么冒泡不行">3. 为什么冒泡不行</h3>
-<p>冒泡排序虽然简单，但它能通过这道题吗？我们来看题目的数据范围：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mn>100</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">N \le 100,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">100</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span></span></span></span>。</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>复杂度分析： 冒泡排序有两层嵌套循环。</p>
-<ul class="lvl-2">
-<li class="lvl-4">外层循环 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 次。内层循环平均约 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">N/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord">/2</span></span></span></span> 次。</li>
-<li class="lvl-4">总的时间复杂度是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>计算量估算：</p>
-<ul class="lvl-2">
-<li class="lvl-4">当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>1</mn><mi>e</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">N = 1e5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">5</span></span></span></span> 时， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mn>2</mn></msup><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mi>e</mi><mn>5</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>1</mn><mi>e</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">N^2 = (1e5)^2 = 1e10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">5</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">10</span></span></span></span>。</li>
-<li class="lvl-4">评测机 1 秒钟大概能执行 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>e</mi><mn>8</mn></mrow><annotation encoding="application/x-tex">1e8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">8</span></span></span></span> 次计算。</li>
-<li class="lvl-4"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>e</mi><mn>10</mn></mrow><annotation encoding="application/x-tex">1e10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">10</span></span></span></span> 次计算大约需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span> 秒！</li>
-<li class="lvl-4">而题目的时间限制是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span> 秒。</li>
-</ul>
-</li>
+<h3 id="最容易想到的暴力算法冒泡排序">2.
+最容易想到的暴力算法：冒泡排序</h3>
+<p>当我们遇到 <strong>排序</strong> 的时候，最容易想到的一种解法就是
+<strong>冒泡</strong>：</p>
+<p><a
+target="_blank" rel="noopener" href="https://raincnya.space/posts/56abdfa0.html">冒泡排序</a>：具体实现可以看我的另一个笔记博客。</p>
+<h3 id="为什么冒泡不行">3. 为什么冒泡不行</h3>
+<p>冒泡排序虽然简单，但它能通过这道题吗？我们来看题目的数据范围：<span
+class="math inline"><em>N</em> ≤ 100, 000</span>。</p>
+<ul>
+<li>复杂度分析： 冒泡排序有两层嵌套循环。
+<ul>
+<li>外层循环 <span class="math inline"><em>N</em> − 1</span>
+次。内层循环平均约 <span class="math inline"><em>N</em>/2</span>
+次。</li>
+<li>总的时间复杂度是 <span
+class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span>。</li>
+</ul></li>
+<li>计算量估算：
+<ul>
+<li>当 <span class="math inline"><em>N</em> = 1<em>e</em>5</span> 时，
+<span
+class="math inline"><em>N</em><sup>2</sup> = (1<em>e</em>5)<sup>2</sup> = 1<em>e</em>10</span>。</li>
+<li>评测机 1 秒钟大概能执行 <span
+class="math inline">1<em>e</em>8</span> 次计算。</li>
+<li><span class="math inline">1<em>e</em>10</span> 次计算大约需要 <span
+class="math inline">100</span> 秒！</li>
+<li>而题目的时间限制是 <span class="math inline">3</span> 秒。</li>
+</ul></li>
 </ul>
 <p>现在能理解为什么冒泡排序会 TLE 了吧。</p>
-<p>结论： <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的算法面对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">N=10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> 的数据规模，会严重超时 (TLE)。</p>
+<p>结论： <span
+class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span> 的算法面对
+<span class="math inline"><em>N</em> = 10<sup>5</sup></span>
+的数据规模，会严重超时 (TLE)。</p>
 <p><strong>我们必须寻找更高效的算法。</strong></p>
-<h3 id="4-优化进行中…-O-N-log-N">4. 优化进行中… <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></h3>
-<p>从复杂度的角度思考，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的算法不行，那就往下试试看 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 的算法。</p>
-<p>而这类算法的核心一般是 <strong>分治</strong> （Divide and Conquer）。</p>
+<h3 id="优化进行中-on-log-n">4. 优化进行中… <span
+class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span></h3>
+<p>从复杂度的角度思考，<span
+class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span>
+的算法不行，那就往下试试看 <span
+class="math inline"><em>O</em>(<em>n</em>log <em>n</em>)</span>
+的算法。</p>
+<p>而这类算法的核心一般是 <strong>分治</strong> （Divide and
+Conquer）。</p>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-e91c4ab9" role="button" aria-expanded="false" aria-controls="collapse-e91c4ab9">
@@ -361,81 +390,77 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-e91c4ab9">
         <div class="fold-content">
-          <p>一般来说，分治就是把一个大问题，拆解成若干个规模更小，性质相同的子问题。</p><p>通过递归查询子问题的解，最后合并成整体的答案。</p><p>举个例子，你要考察 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>40</mn></mrow><annotation encoding="application/x-tex">40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">40</span></span></span></span> 个人的打卡情况。可以分配 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 个小组长，让他们每个人负责 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> 个人，然后你只需要负责接受这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> 个小组长的回复即可。</p>
+          <p>一般来说，分治就是把一个大问题，拆解成若干个规模更小，性质相同的子问题。</p><p>通过递归查询子问题的解，最后合并成整体的答案。</p><p>举个例子，你要考察 <span class="math inline">40</span>个人的打卡情况。可以分配 <span class="math inline">4</span>个小组长，让他们每个人负责 <span class="math inline">10</span>个人，然后你只需要负责接受这 <span class="math inline">4</span>个小组长的回复即可。</p>
         </div>
       </div>
     </div>
-<h3 id="5-其实也不难的优化方案：快速排序">5. 其实也不难的优化方案：快速排序</h3>
+<h3 id="其实也不难的优化方案快速排序">5.
+其实也不难的优化方案：快速排序</h3>
 <p>快速排序的策略也是如此。</p>
 <p><strong>核心思想</strong>：</p>
-<ol>
-<li class="lvl-3">
-<p>分：从数组中挑选出一个 <strong>基准</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> （Pivot），然后对于所有小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 的元素都放到它左边，所有大于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> 的元素都放到它右边。</p>
-</li>
-<li class="lvl-3">
-<p>治：递归地对基准左边和右边的两个子区间进行快速排序。</p>
-</li>
-<li class="lvl-3">
-<p>合：无需操作。因为“分区”步骤已经保证了左区间的数都小于右区间的数，当左右两半各自有序后，整个数组就自动有序了。</p>
-</li>
+<ol type="1">
+<li><p>分：从数组中挑选出一个 <strong>基准</strong> <span
+class="math inline"><em>p</em></span> （Pivot），然后对于所有小于 <span
+class="math inline"><em>P</em></span> 的元素都放到它左边，所有大于 <span
+class="math inline"><em>P</em></span> 的元素都放到它右边。</p></li>
+<li><p>治：递归地对基准左边和右边的两个子区间进行快速排序。</p></li>
+<li><p>合：无需操作。因为“分区”步骤已经保证了左区间的数都小于右区间的数，当左右两半各自有序后，整个数组就自动有序了。</p></li>
 </ol>
-<h4 id="5-1-分区的具体实现：">5.1. 分区的具体实现：</h4>
+<h4 id="分区的具体实现">5.1. 分区的具体实现：</h4>
 <p>（此处采用双指针法）：</p>
-<ol>
-<li class="lvl-3">
-<p>选一个基准，例如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mo stretchy="false">(</mo><mi>l</mi><mo>+</mo><mi>r</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">p = a[(l + r) / 2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">)</span><span class="mord">/2</span><span class="mclose">]</span></span></span></span>。</p>
-</li>
-<li class="lvl-3">
-<p>设置指针 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mi>l</mi><mo separator="true">,</mo><mi>j</mi><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">i = l, j = r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>。</p>
-</li>
-<li class="lvl-3">
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 向右移动，直到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>&gt;</mo><mo>=</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">a[i] &gt;= p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>。</p>
-</li>
-<li class="lvl-3">
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 向左移动，直到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>&lt;</mo><mo>=</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">a[j] &lt;= p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>。</p>
-</li>
-<li class="lvl-3">
-<p>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&lt;</mo><mo>=</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i &lt;= j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6986em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span>，交换 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，然后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>+</mo><mo>+</mo></mrow><annotation encoding="application/x-tex">i++</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">+</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>−</mo><mo>−</mo></mrow><annotation encoding="application/x-tex">j--</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span></span></span></span>。</p>
-</li>
-<li class="lvl-3">
-<p>重复 3-5 步，直到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>&gt;</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i &gt; j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6986em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span>。</p>
-</li>
+<ol type="1">
+<li>选一个基准，例如 <span
+class="math inline"><em>p</em> = <em>a</em>[(<em>l</em> + <em>r</em>)/2]</span>。</li>
+<li>设置指针 <span
+class="math inline"><em>i</em> = <em>l</em>, <em>j</em> = <em>r</em></span>。</li>
+<li><span class="math inline"><em>i</em></span> 向右移动，直到 <span
+class="math inline"><em>a</em>[<em>i</em>] &gt;  = <em>p</em></span>。</li>
+<li><span class="math inline"><em>j</em></span> 向左移动，直到 <span
+class="math inline"><em>a</em>[<em>j</em>] &lt;  = <em>p</em></span>。</li>
+<li>若 <span
+class="math inline"><em>i</em> &lt;  = <em>j</em></span>，交换 <span
+class="math inline"><em>a</em>[<em>i</em>]</span> 和 <span
+class="math inline"><em>a</em>[<em>j</em>]</span>，然后 <span
+class="math inline"><em>i</em> + +</span>, <span
+class="math inline"><em>j</em> − −</span>。</li>
+<li>重复 3-5 步，直到 <span
+class="math inline"><em>i</em> &gt; <em>j</em></span>。</li>
 </ol>
-<p>在一次 <strong>分区</strong> 后，数组被分为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l...j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">...</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i...r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mord">...</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 两部分。</p>
-<h4 id="5-2-分治子区间">5.2. 分治子区间</h4>
+<p>在一次 <strong>分区</strong> 后，数组被分为 <span
+class="math inline">[<em>l</em>...<em>j</em>]</span> 和 <span
+class="math inline">[<em>i</em>...<em>r</em>]</span> 两部分。</p>
+<h4 id="分治子区间">5.2. 分治子区间</h4>
 <p>递归地对左子区间 [l, j] 进行快速排序。</p>
 <p>递归地对右子区间 [i, r] 进行快速排序。</p>
-<h4 id="5-3-合并子区间">5.3. 合并子区间</h4>
+<h4 id="合并子区间">5.3. 合并子区间</h4>
 <p><strong>无需操作。</strong></p>
-<h2 id="三、-关键点与易错点">三、 关键点与易错点</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><strong>递归边界</strong>：<code>if (l &gt;= r) return;</code>。</p>
-<ul class="lvl-2">
-<li class="lvl-4">(当区间为空或只有1个元素时，必须停止)。</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p><strong>复杂度</strong>：快速排序的 <strong>平均</strong> 时间复杂度是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
-</li>
-<li class="lvl-2">
-<p><strong>最坏情况</strong>：如果每次 <strong>基准</strong> 都是最大或最小值（例如在一个已排序的数组上总是选第一个元素），那么 <strong>分区</strong> 会极不均匀（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>），导致递归树退化成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 层，总复杂度退化为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
-</li>
-<li class="lvl-2">
-<p><strong>稳定性</strong>：如上文所述，如果存在最坏情况，那么算法的复杂度会退化，这种情况就说明这个算法不稳定。</p>
-</li>
-<li class="lvl-2">
-<p><strong>规避最坏情况</strong>：</p>
-<ul class="lvl-2">
-<li class="lvl-4">可以采用下面几种方案：</li>
-<li class="lvl-4">“随机”，“三点取中”，“直接取中点”。</li>
-</ul>
-</li>
+<h2 id="三-关键点与易错点">三、 关键点与易错点</h2>
+<ul>
+<li><p><strong>递归边界</strong>：<code>if (l &gt;= r) return;</code>。</p>
+<ul>
+<li>(当区间为空或只有1个元素时，必须停止)。</li>
+</ul></li>
+<li><p><strong>复杂度</strong>：快速排序的 <strong>平均</strong>
+时间复杂度是 <span
+class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span>。</p></li>
+<li><p><strong>最坏情况</strong>：如果每次 <strong>基准</strong>
+都是最大或最小值（例如在一个已排序的数组上总是选第一个元素），那么
+<strong>分区</strong> 会极不均匀（<span class="math inline">0</span> 和
+<span class="math inline"><em>N</em> − 1</span>），导致递归树退化成
+<span class="math inline"><em>O</em>(<em>N</em>)</span>
+层，总复杂度退化为 <span
+class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span>。</p></li>
+<li><p><strong>稳定性</strong>：如上文所述，如果存在最坏情况，那么算法的复杂度会退化，这种情况就说明这个算法不稳定。</p></li>
+<li><p><strong>规避最坏情况</strong>：</p>
+<ul>
+<li>可以采用下面几种方案：</li>
+<li>“随机”，“三点取中”，“直接取中点”。</li>
+</ul></li>
 </ul>
 <blockquote>
-<p>但总会存在不做人的出题人出阴间数据卡时间…</p>
+<p>但总会存在不做人的出题人出阴间数据卡时间……</p>
 </blockquote>
-<h2 id="四、-复杂度分析">四、 复杂度分析</h2>
+<h2 id="四-复杂度分析">四、 复杂度分析</h2>
 <table>
 <thead>
 <tr>
@@ -448,34 +473,42 @@
 <tbody>
 <tr>
 <td>冒泡排序</td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></td>
+<td><span
+class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span></td>
+<td><span
+class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span></td>
+<td><span class="math inline"><em>O</em>(1)</span></td>
 </tr>
 <tr>
 <td>快速排序</td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></td>
+<td><span
+class="math inline"><em>O</em>(<em>n</em>log <em>n</em>)</span></td>
+<td><span
+class="math inline"><em>O</em>(<em>n</em><sup>2</sup>)</span></td>
+<td><span class="math inline"><em>O</em>(log <em>n</em>)</span></td>
 </tr>
 </tbody>
 </table>
 <p><strong>梳理如下</strong>：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>快速排序 的平均时间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 远优于冒泡排序的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，能够轻松通过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">N=10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> 的数据。</p>
-</li>
-<li class="lvl-2">
-<p>它的空间复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 来自于递归调用栈的深度，也远优于归并排序的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 辅助数组。</p>
-</li>
+<ul>
+<li><p>快速排序 的平均时间 <span
+class="math inline"><em>O</em>(<em>N</em>log <em>N</em>)</span>
+远优于冒泡排序的 <span
+class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span>，能够轻松通过
+<span class="math inline"><em>N</em> = 10<sup>5</sup></span>
+的数据。</p></li>
+<li><p>它的空间复杂度 <span
+class="math inline"><em>O</em>(log <em>N</em>)</span>
+来自于递归调用栈的深度，也远优于归并排序的 <span
+class="math inline"><em>O</em>(<em>N</em>)</span> 辅助数组。</p></li>
 </ul>
-<h2 id="五、-AC-代码">五、 AC 代码</h2>
+<h2 id="五-ac-代码">五、 AC 代码</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-519a2360" role="button" aria-expanded="false" aria-controls="collapse-519a2360">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-b870a72b" role="button" aria-expanded="false" aria-controls="collapse-b870a72b">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-519a2360">
+      <div class="fold-collapse collapse" id="collapse-b870a72b">
         <div class="fold-content">
           <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-type">int</span> a[maxn];<br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 递归边界：当区间为空或只有1个元素时，停止</span><br>    <span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span>;<br><br>    <span class="hljs-comment">// 1.&quot;分&quot;：选取中间元素为基准 (Pivot)，避免最坏情况</span><br>    <span class="hljs-type">int</span> p = a[(l + r) / <span class="hljs-number">2</span>]; <br>    <span class="hljs-type">int</span> i = l, j = r;<br>    <span class="hljs-keyword">while</span>( i &lt;= j )  <br>    &#123;<br>        <span class="hljs-comment">// 从左找第一个 &gt;= p 的</span><br>        <span class="hljs-keyword">while</span>( a[i] &lt; p ) i ++;<br>        <span class="hljs-comment">// 从右找第一个 &lt;= p 的</span><br>        <span class="hljs-keyword">while</span>( a[j] &gt; p ) j --;<br>        <span class="hljs-comment">// 交换，并移动指针 i 和 j</span><br>        <span class="hljs-keyword">if</span>( i &lt;= j ) <br>        &#123;<br>            <span class="hljs-built_in">swap</span>( a[i], a[j] );<br>            i++, j--;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 2.&quot;治&quot;：此时 j &lt; i, 区间被分为 [l...j] 和 [i...r]</span><br>    <span class="hljs-keyword">if</span>( l &lt; j )  <span class="hljs-built_in">quick_sort</span>( l, j ); <span class="hljs-comment">// 递归左半部分</span><br>    <span class="hljs-keyword">if</span>( i &lt; r )  <span class="hljs-built_in">quick_sort</span>( i, r ); <span class="hljs-comment">// 递归右半部分</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>( cin &gt;&gt; n ) <br>    &#123;   <span class="hljs-comment">// 处理多组输入</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>            cin &gt;&gt; a[i];<br><br>        <span class="hljs-built_in">quick_sort</span>( <span class="hljs-number">1</span>, n );<br><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>        &#123;<br>            cout &lt;&lt; a[i];<br>            <span class="hljs-keyword">if</span>( i != n ) cout &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>        &#125;    <br>        <br>        cout &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
@@ -488,6 +521,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
     <div class="post-meta">
