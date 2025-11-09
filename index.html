@@ -63,7 +63,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/BackGround.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -250,7 +250,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/92601886.html" target="_self">
         <div>
-          笔记部分：  排序： 冒泡排序 快速排序  常见优化策略： 前缀和 差分  其他（暂未归类） 倍增LCA  题解部分：  Week 3: TZOJ-8937 序列平衡 TZOJ-7670 大门 TZOJ-3751 快速排序  集训队训练 11.2 TZOJ-5563 Reverse Game  其他题解：  高维前缀和 AT_arc100_c  树上差分 Luogu-P1600  单调栈 Luo
+          笔记部分： 排序： 冒泡排序 快速排序 常见优化策略： 前缀和 差分 双指针 单调栈 其他（暂未归类） 倍增LCA 题解部分： Week 3: TZOJ-8937 序列平衡 TZOJ-7670 大门 TZOJ-3751 快速排序 集训队训练 11.2 TZOJ-5563 Reverse Game 其他题解： 高维前缀和 AT_arc100_c 树上
         </div>
       </a>
 
@@ -283,7 +283,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/ea3c94ad.html" target="_self">
         <div>
-          算法学习笔记：单调栈 (Monotonic Stack)  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 单调栈 英文名： Monotonic Stack   2. 什么地位 (Status)  所属领域： 数据结构 / 优化技巧 核心地位： 能够在 O(N)O(N)O(N) 时间内解决 “寻找序列中每个元素左/右侧第一个比它大/小的元素” 这类问题
+          算法学习笔记：单调栈 (Monotonic Stack) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 单调栈 英文名： Monotonic Stack  2. 什么地位 (Status)  所属领域： 数据结构 / 优化技巧 核心地位： 能够在 O(N) 时间内解决 “寻找序列中每个元素左/右侧第一个比它大/小的元素” 这类问
         </div>
       </a>
 
@@ -296,6 +296,27 @@
             </time>
           </div>
         
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
         
         
           <div class="post-meta">
@@ -325,7 +346,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/bf04ecdb.html" target="_self">
         <div>
-          算法学习笔记：双指针 (Two Pointers)  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 双指针 英文名： Two Pointers 别名/相关名词： 尺取法   2. 什么地位 (Status)  所属领域： 基础算法 / 优化技巧 核心地位： 专用于处理有序（或部分有序）序列上的区间或配对问题。是能够将 O(N2)O(N^2)O(N2)
+          算法学习笔记：双指针 (Two Pointers) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 双指针 英文名： Two Pointers 别名/相关名词： 尺取法  2. 什么地位 (Status)  所属领域： 基础算法 / 优化技巧 核心地位： 专用于处理有序（或部分有序）序列上的区间或配对问题。是能够将 O(N2)
         </div>
       </a>
 
@@ -386,7 +407,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/f4c05692.html" target="_self">
         <div>
-          算法学习笔记：快速排序 (Quick Sort)  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 快速排序 英文名： Quick Sort   2. 什么地位 (Status)  所属领域： 排序 / 分治 (Divide and Conquer) 核心地位： O(Nlog⁡N)O(N \log N)O(NlogN) 排序算法的代表，被广泛认为是综合
+          算法学习笔记：快速排序 (Quick Sort) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 快速排序 英文名： Quick Sort  2. 什么地位 (Status)  所属领域： 排序 / 分治 (Divide and Conquer) 核心地位： O(Nlog N) 排序算法的代表，被广泛认为是综合效率最高的排序算法之一
         </div>
       </a>
 
@@ -449,7 +470,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/4ced8e73.html" target="_self">
         <div>
-          算法学习笔记：差分数组 (Difference Array)  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 差分数组 英文名： Difference Array   2. 什么地位 (Status)  所属领域： 基础算法 / 数据预处理 核心地位： 与前缀和互为逆运算，是解决区间修改问题的最基础、最高效的工具。   3. 有什么用处 (Utili
+          算法学习笔记：差分数组 (Difference Array) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 差分数组 英文名： Difference Array  2. 什么地位 (Status)  所属领域： 基础算法 / 数据预处理 核心地位： 与前缀和互为逆运算，是解决区间修改问题的最基础、最高效的工具。  3. 有什么
         </div>
       </a>
 
@@ -488,9 +509,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">#预处理</a>
-            
               <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
+            
+              <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/">#预处理</a>
             
           </div>
         
@@ -512,7 +533,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/975bb980.html" target="_self">
         <div>
-          算法学习笔记：前缀和 (Prefix Sum)  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 前缀和 英文名： Prefix Sum   2. 什么地位 (Status)  所属领域： 基础算法 / 数据预处理 核心地位： 竞赛中最高频、最基础的预处理技巧之一，是许多高级数据结构（如线段树、树状数组）思想的基石。   3. 有什么用处 (Utili
+          算法学习笔记：前缀和 (Prefix Sum) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 前缀和 英文名： Prefix Sum  2. 什么地位 (Status)  所属领域： 基础算法 / 数据预处理 核心地位： 竞赛中最高频、最基础的预处理技巧之一，是许多高级数据结构（如线段树、树状数组）思想的基石。  3. 有什么
         </div>
       </a>
 
@@ -567,6 +588,71 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/232d3766.html" target="_self">
+          Luogu-P1950 / TZOJ-9469 长方形 - 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/232d3766.html" target="_self">
+        <div>
+          Luogu-P1950 / TZOJ-9469 长方形 一、 题目大意 在一个 N × M 的 01 矩阵中（. 为 0，* 为 1），找出所有完全由 . 组成的子矩形的数量。N, M ≤ 1000。  二、 思路分析与关键点 1. 核心思路：降维 直接在二维平面上枚举所有满足条件的子矩形（即枚举所有左上角的点，和右下角的点），显然复杂度为 O(n2 ⋅ m2)，对于该题数据均
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 15:45" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">#单调栈</a>
+            
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+            
+              <a href="/tags/%E8%B4%A1%E7%8C%AE%E6%B3%95/">#贡献法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/c6dd187a.html" target="_self">
           算法学习笔记：冒泡排序 (Bubble Sort)
         </a>
@@ -575,7 +661,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/c6dd187a.html" target="_self">
         <div>
-          算法学习笔记：冒泡排序 (Bubble Sort)  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 冒泡排序 英文名： Bubble Sort   2. 什么地位 (Status)  所属领域： 排序 / 基础算法 核心地位： 最简单、最直观的排序算法之一。   3. 有什么用处 (Utility)   解决的核心问题： 将一个杂乱无章的序列（数组）
+          算法学习笔记：冒泡排序 (Bubble Sort) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 冒泡排序 英文名： Bubble Sort  2. 什么地位 (Status)  所属领域： 排序 / 基础算法 核心地位： 最简单、最直观的排序算法之一。  3. 有什么用处 (Utility)  解决的核心问题： 将一个杂
         </div>
       </a>
 
@@ -614,11 +700,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+            
               <a href="/tags/Note/">#Note</a>
             
               <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
-            
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
           </div>
         
@@ -640,7 +726,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/18d54a23.html" target="_self">
         <div>
-          TZOJ-3751：快速排序  一、 题目描述  给定 nnn 个整数，请对他们进行排序。 输入：多组数据， n≤100000n \le 100000n≤100000，每组数据有 nnn 个。 输出：每行输出排序后的 nnn 个整数。   特别说明： 对于快速排序来说，只需要大概掌握思维方式即可，无需记忆具体代码实现。 一般来说我们会使用 std::sort() 函数来实现快速排序。 Sort函
+          TZOJ-3751：快速排序 一、 题目描述  给定 n 个整数，请对他们进行排序。 输入：多组数据， n ≤ 100000，每组数据有 n 个。 输出：每行输出排序后的 n 个整数。  特别说明： 对于快速排序来说，只需要大概掌握思维方式即可，无需记忆具体代码实现。 一般来说我们会使用 std::sort() 函数来实现快速排序。 Sort函数使用指南 待补充ing…
         </div>
       </a>
 
@@ -679,9 +765,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
-            
               <a href="/tags/Solution/">#Solution</a>
+            
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
               <a href="/tags/Week3/">#Week3</a>
             
@@ -705,7 +791,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/68d040f7.html" target="_self">
         <div>
-          Luogu-P3143 / TZOJ-9471：Diamond Collector S  一、 题目大意 给定一组数据 n≤5e4n \leq 5e4n≤5e4，找出某两组长度和最大的 不重合 的区间，并且两个区间中的 最大值 与 最小值 的差不小于 kkk。  二、 思路分析  1. 核心思路：排序 + DP  排序： 对原数组 AAA 进行排序。约束条件简化为：对于区间 [l,r][l, r
+          Luogu-P3143 / TZOJ-9471：Diamond Collector S 一、 题目大意 给定一组数据 n ≤ 5e4，找出某两组长度和最大的 不重合 的区间，并且两个区间中的 最大值 与 最小值 的差不小于 k。 二、 思路分析 1. 核心思路：排序 + DP  排序： 对原数组 A 进行排序。约束条件简化为：对于区间 [l, r]，A[r] − A[l] ≤
         </div>
       </a>
 
@@ -744,76 +830,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
             
               <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/cedefa62.html" target="_self">
-          Luogu-P1600 / TZOJ-6340
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/cedefa62.html" target="_self">
-        <div>
-          Luogu-P1600 / TZOJ-6340 [NOIP 2016 提高组] 天天爱跑步 目前题解未采用最新格式V2，待之后修改…  一. 题目描述 在一棵树上，给出 n−1n-1n−1 条边，给出 mmm 组起点和终点，每走一步时间 t+1t+1t+1，然后给出 nnn 个观察员的时间，如果 Tarrive=wjT_{arrive} = w_jTarrive​=wj​ 那么就能观测到。  二
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-03 16:16" pubdate>
-              2025-11-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/LCA/">#LCA</a>
-            
-              <a href="/tags/Solution/">#Solution</a>
-            
-              <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
           </div>
         
