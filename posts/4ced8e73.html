@@ -19,18 +19,18 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：差分数组 (Difference Array) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 差分数组 英文名： Difference Array  2. 什么地位 (Status)  所属领域： 基础算法 &#x2F; 数据预处理 核心地位： 与前缀和互为逆运算，是解决区间修改问题的最基础、最高效的工具。  3. 有什么">
+    <meta name="description" content="算法学习笔记：差分数组 (Difference Array) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)   中文名： 差分数组   英文名： Difference Array   2. 什么地位 (Status)   所属领域： 基础算法 &#x2F; 数据预处理   核心地位： 与前缀和互为逆运算，是解决区间修改问题的最基础、最高效的工具。   3. 有什么用处 (Ut">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法学习笔记：差分数组 (Difference Array)">
 <meta property="og:url" content="http://example.com/posts/4ced8e73.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：差分数组 (Difference Array) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 差分数组 英文名： Difference Array  2. 什么地位 (Status)  所属领域： 基础算法 &#x2F; 数据预处理 核心地位： 与前缀和互为逆运算，是解决区间修改问题的最基础、最高效的工具。  3. 有什么">
+<meta property="og:description" content="算法学习笔记：差分数组 (Difference Array) 一、 初步认知 (Macro View) 1. 叫什么 (Identity)   中文名： 差分数组   英文名： Difference Array   2. 什么地位 (Status)   所属领域： 基础算法 &#x2F; 数据预处理   核心地位： 与前缀和互为逆运算，是解决区间修改问题的最基础、最高效的工具。   3. 有什么用处 (Ut">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-08T16:00:00.000Z">
 <meta property="article:modified_time" content="2025-11-09T09:56:26.792Z">
 <meta property="article:author" content="RainCnya">
-<meta property="article:tag" content="差分">
 <meta property="article:tag" content="预处理">
+<meta property="article:tag" content="差分">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -245,7 +245,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          752 字
+          860 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
           <!-- compatible with older versions-->
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -308,165 +308,174 @@
             
               <div class="markdown-body">
                 
-                <h1 id="算法学习笔记差分数组-difference-array">算法学习笔记：差分数组
-(Difference Array)</h1>
-<h2 id="一-初步认知-macro-view">一、 初步认知 (Macro View)</h2>
-<h3 id="叫什么-identity">1. 叫什么 (Identity)</h3>
-<ul>
-<li><strong>中文名：</strong> 差分数组</li>
-<li><strong>英文名：</strong> Difference Array</li>
+                <h1>算法学习笔记：差分数组 (Difference Array)</h1>
+<h2 id="一、-初步认知-Macro-View">一、 初步认知 (Macro View)</h2>
+<h3 id="1-叫什么-Identity">1. 叫什么 (Identity)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>中文名：</strong> 差分数组</p>
+</li>
+<li class="lvl-2">
+<p><strong>英文名：</strong> Difference Array</p>
+</li>
 </ul>
-<h3 id="什么地位-status">2. 什么地位 (Status)</h3>
-<ul>
-<li><strong>所属领域：</strong> 基础算法 / 数据预处理</li>
-<li><strong>核心地位：</strong>
-与前缀和互为逆运算，是解决<strong>区间修改</strong>问题的最基础、最高效的工具。</li>
+<h3 id="2-什么地位-Status">2. 什么地位 (Status)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>所属领域：</strong> 基础算法 / 数据预处理</p>
+</li>
+<li class="lvl-2">
+<p><strong>核心地位：</strong> 与前缀和互为逆运算，是解决<strong>区间修改</strong>问题的最基础、最高效的工具。</p>
+</li>
 </ul>
-<h3 id="有什么用处-utility">3. 有什么用处 (Utility)</h3>
-<ul>
-<li><strong>解决的核心问题：</strong>
-高效地对序列进行<strong>多次区间修改</strong>（例如：区间加值）。</li>
-<li><strong>典型应用场景：</strong>
-<ul>
-<li>频繁的区间增减操作，但最终只需要一次查询结果。</li>
-<li>二维差分（用于子矩阵的修改）。</li>
-</ul></li>
+<h3 id="3-有什么用处-Utility">3. 有什么用处 (Utility)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>解决的核心问题：</strong> 高效地对序列进行<strong>多次区间修改</strong>（例如：区间加值）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>典型应用场景：</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6">频繁的区间增减操作，但最终只需要一次查询结果。</li>
+<li class="lvl-6">二维差分（用于子矩阵的修改）。</li>
 </ul>
-<h2 id="二-主题渗透-theme-osmosis">二、 主题渗透 (Theme Osmosis)</h2>
-<h3 id="核心原理-the-eureka-moment">1. 核心原理 (The Eureka Moment)</h3>
-<ul>
-<li><p><strong>底层思想：</strong> <strong>逆运算</strong> +
-<strong>标记思想</strong>。</p>
-<ul>
-<li>利用前缀和的逆运算，将“一段区间的共同变化”转化为“起点和终点的单点变化”。</li>
-</ul></li>
-<li><p><strong>关键推导：</strong></p>
-<ul>
-<li><strong>定义：</strong> <span class="math inline"><em>d</em><em>i</em><em>f</em>[<em>i</em>] = <em>a</em>[<em>i</em>] − <em>a</em>[<em>i</em> − 1]</span>
-（规定 <span class="math inline"><em>a</em>[0] = 0</span>）。</li>
-<li><strong>性质：</strong> 原数组 <span class="math inline"><em>a</em></span> 是差分数组 <span class="math inline"><em>d</em><em>i</em><em>f</em></span> 的前缀和，即
-<span class="math inline">$a[i] = \sum_{k=1}^{i} dif[k]$</span>。</li>
-<li><strong>操作核心：</strong> 区间 <span class="math inline">[<em>L</em>, <em>R</em>]</span> 全部 <span class="math inline">+<em>v</em></span> <span class="math inline">⇔</span> <span class="math inline"><em>d</em><em>i</em><em>f</em>[<em>L</em>]+ = <em>v</em></span>
-且 <span class="math inline"><em>d</em><em>i</em><em>f</em>[<em>R</em> + 1]− = <em>v</em></span>。</li>
-</ul></li>
+</li>
 </ul>
-<h3 id="详细实现过程-step-by-step">2. 详细实现过程 (Step-by-Step)</h3>
-<ol type="1">
-<li><strong>初始化 (Initialization)：</strong>
-<ul>
-<li>遍历原数组 <span class="math inline"><em>a</em></span>，根据公式
-<span class="math inline"><em>d</em><em>i</em><em>f</em>[<em>i</em>] = <em>a</em>[<em>i</em>] − <em>a</em>[<em>i</em> − 1]</span>
-构造初始差分数组。</li>
-</ul></li>
-<li><strong>区间修改 (Modification)：</strong>
-<ul>
-<li>对于每次操作 <span class="math inline">[<em>L</em>, <em>R</em>, <em>V</em>]</span>，仅需
-<span class="math inline"><em>O</em>(1)</span> 地修改两个端点：<span class="math inline"><em>d</em><em>i</em><em>f</em>[<em>L</em>]+ = <em>V</em></span>
-和 <span class="math inline"><em>d</em><em>i</em><em>f</em>[<em>R</em> + 1]− = <em>V</em></span>。</li>
-</ul></li>
-<li><strong>还原结果 (Restoration)：</strong>
-<ul>
-<li>修改完成后，对 <span class="math inline"><em>d</em><em>i</em><em>f</em></span>
-数组求一次前缀和，即可还原出最终的 <span class="math inline"><em>a</em></span> 数组。</li>
-</ul></li>
+<h2 id="二、-主题渗透-Theme-Osmosis">二、 主题渗透 (Theme Osmosis)</h2>
+<h3 id="1-核心原理-The-Eureka-Moment">1. 核心原理 (The Eureka Moment)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>底层思想：</strong> <strong>逆运算</strong> + <strong>标记思想</strong>。</p>
+<ul class="lvl-2">
+<li class="lvl-6">利用前缀和的逆运算，将“一段区间的共同变化”转化为“起点和终点的单点变化”。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><strong>关键推导：</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6"><strong>定义：</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>−</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dif[i] = a[i] - a[i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> （规定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a[0]=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>）。</li>
+<li class="lvl-6"><strong>性质：</strong> 原数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 是差分数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">dif</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> 的前缀和，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>i</mi></msubsup><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i] = \sum_{k=1}^{i} dif[k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2643em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9646em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span>。</li>
+<li class="lvl-6"><strong>操作核心：</strong> 区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>L</mi><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[L, R]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mclose">]</span></span></span></span> 全部 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">+v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>L</mi><mo stretchy="false">]</mo><mo>+</mo><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">dif[L] += v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">L</span><span class="mclose">]</span><span class="mord">+</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 且 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>R</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo>−</mo><mo>=</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">dif[R+1] -= v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-详细实现过程-Step-by-Step">2. 详细实现过程 (Step-by-Step)</h3>
+<ol>
+<li class="lvl-4">
+<p><strong>初始化 (Initialization)：</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6">遍历原数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>，根据公式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>−</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dif[i] = a[i] - a[i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 构造初始差分数组。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>区间修改 (Modification)：</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6">对于每次操作 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>L</mi><mo separator="true">,</mo><mi>R</mi><mo separator="true">,</mo><mi>V</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[L, R, V]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">]</span></span></span></span>，仅需 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 地修改两个端点：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>L</mi><mo stretchy="false">]</mo><mo>+</mo><mo>=</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">dif[L] += V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">L</span><span class="mclose">]</span><span class="mord">+</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mo stretchy="false">[</mo><mi>R</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo>−</mo><mo>=</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">dif[R+1] -= V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>。</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p><strong>还原结果 (Restoration)：</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6">修改完成后，对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">dif</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> 数组求一次前缀和，即可还原出最终的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 数组。</li>
+</ul>
+</li>
 </ol>
-<h3 id="模拟演示-visualization">3. 模拟演示 (Visualization)</h3>
-<p>对区间 <span class="math inline">[3, 5]</span> 进行 <span class="math inline">+5</span> 操作：</p>
+<h3 id="3-模拟演示-Visualization">3. 模拟演示 (Visualization)</h3>
+<p>对区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[3, 5]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mclose">]</span></span></span></span> 进行 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">+5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">5</span></span></span></span> 操作：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">步骤</th>
-<th style="text-align: center;">1</th>
-<th style="text-align: center;">2</th>
-<th style="text-align: center;"><strong>3 (L)</strong></th>
-<th style="text-align: center;">4</th>
-<th style="text-align: center;"><strong>5 (R)</strong></th>
-<th style="text-align: center;"><strong>6 (R+1)</strong></th>
+<th style="text-align:left">步骤</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center"><strong>3 (L)</strong></th>
+<th style="text-align:center">4</th>
+<th style="text-align:center"><strong>5 ®</strong></th>
+<th style="text-align:center"><strong>6 (R+1)</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>初始 <span class="math inline"><em>a</em></span></strong></td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">10</td>
+<td style="text-align:left"><strong>初始 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></strong></td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>初始 <span class="math inline"><em>d</em><em>i</em><em>f</em></span></strong></td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
+<td style="text-align:left"><strong>初始 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">dif</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></strong></td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>修改后 <span class="math inline"><em>d</em><em>i</em><em>f</em></span></strong></td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>+5</strong></td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>-5</strong></td>
+<td style="text-align:left"><strong>修改后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">dif</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span></strong></td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>+5</strong></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center"><strong>-5</strong></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>还原后 <span class="math inline"><em>a</em></span></strong></td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;"><strong>15</strong></td>
-<td style="text-align: center;"><strong>15</strong></td>
-<td style="text-align: center;"><strong>15</strong></td>
-<td style="text-align: center;">10</td>
+<td style="text-align:left"><strong>还原后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></strong></td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><strong>15</strong></td>
+<td style="text-align:center"><strong>15</strong></td>
+<td style="text-align:center"><strong>15</strong></td>
+<td style="text-align:center">10</td>
 </tr>
 </tbody>
 </table>
-<h2 id="三-总结分析-analysis-comparison">三、 总结分析 (Analysis &amp;
-Comparison)</h2>
-<h3 id="复杂度分析-complexity">1. 复杂度分析 (Complexity)</h3>
+<h2 id="三、-总结分析-Analysis-Comparison">三、 总结分析 (Analysis &amp; Comparison)</h2>
+<h3 id="1-复杂度分析-Complexity">1. 复杂度分析 (Complexity)</h3>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">维度</th>
-<th style="text-align: left;">复杂度</th>
-<th style="text-align: left;">说明</th>
+<th style="text-align:left">维度</th>
+<th style="text-align:left">复杂度</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>预处理时间</strong></td>
-<td style="text-align: left;"><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
-<td style="text-align: left;">构造初始差分数组</td>
+<td style="text-align:left"><strong>预处理时间</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left">构造初始差分数组</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>单次修改时间</strong></td>
-<td style="text-align: left;"><span class="math inline"><em>O</em>(1)</span></td>
-<td style="text-align: left;">核心优势</td>
+<td style="text-align:left"><strong>单次修改时间</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left">核心优势</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>最终还原时间</strong></td>
-<td style="text-align: left;"><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
-<td style="text-align: left;">求前缀和还原</td>
+<td style="text-align:left"><strong>最终还原时间</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left">求前缀和还原</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>总时间</strong></td>
-<td style="text-align: left;"><span class="math inline"><em>O</em>(<em>N</em> + <em>Q</em>)</span></td>
-<td style="text-align: left;">远优于暴力的 <span class="math inline"><em>O</em>(<em>N</em> × <em>Q</em>)</span></td>
+<td style="text-align:left"><strong>总时间</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>Q</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N + Q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left">远优于暴力的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>×</mo><mi>Q</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \times Q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mclose">)</span></span></span></span></td>
 </tr>
 </tbody>
 </table>
-<h3 id="核心注意点-key-pitfalls">2. 核心注意点 (Key Pitfalls)</h3>
-<ul>
-<li><strong>边界问题：</strong> 右端点的修改位置是
-<code>R + 1</code>，而不是
-<code>R</code>。因此差分数组的大小通常需要开到 <code>N + 2</code>
-以防止越界。</li>
-<li><strong>适用条件：</strong>
-适用于<strong>离线</strong>场景（先修改完，再查询）。如果需要一边修改一边查询，则需要使用更高级的数据结构（如线段树、树状数组）。</li>
+<h3 id="2-核心注意点-Key-Pitfalls">2. 核心注意点 (Key Pitfalls)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>边界问题：</strong> 右端点的修改位置是 <code>R + 1</code>，而不是 <code>R</code>。因此差分数组的大小通常需要开到 <code>N + 2</code> 以防止越界。</p>
+</li>
+<li class="lvl-2">
+<p><strong>适用条件：</strong> 适用于<strong>离线</strong>场景（先修改完，再查询）。如果需要一边修改一边查询，则需要使用更高级的数据结构（如线段树、树状数组）。</p>
+</li>
 </ul>
-<h2 id="四-代码模板-code-template">四、 代码模板 (Code Template)</h2>
+<h2 id="四、-代码模板-Code-Template">四、 代码模板 (Code Template)</h2>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-0ddb4491" role="button" aria-expanded="false" aria-controls="collapse-0ddb4491">
@@ -474,11 +483,10 @@ Comparison)</h2>
       </div>
       <div class="fold-collapse collapse" id="collapse-0ddb4491">
         <div class="fold-content">
-          <p>```cpp #include&lt;bits/stdc++.h&gt; using namespace std;</p><p>const int maxn = 1e5 + 50; // 手动开大一点 int a[maxn]; // 原数组 intdif[maxn]; // 差分数组 int b[maxn]; // 还原数组</p><p>int main() { int n, q; cin &gt;&gt; n &gt;&gt; q;</p><pre><code class="hljs">// 1. 输入与初始构造for(int i = 1; i &lt;= n; ++i){    cin &gt;&gt; a[i];    // 构造差分数组    dif[i] = a[i] - a[i-1];}// 2. 执行区间修改while(q--){    int l, r, v;    cin &gt;&gt; l &gt;&gt; r &gt;&gt; v;    // 核心操作：起点 +v, 终点后一位 -v    dif[l] += v;    dif[r + 1] -= v;}// 3. 还原最终结果 (求前缀和)for(int i = 1; i &lt;= n; ++i){    // 求前缀和，b[i] 为还原后的 a[i]    b[i] = b[i-1] + dif[i];}return 0;</code></pre><p>}</p>
+          <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1e5 + 50;      // 手动开大一点int a[maxn];                    // 原数组int dif[maxn];                  // 差分数组int b[maxn];                    // 还原数组int main(){    int n, q;    cin &gt;&gt; n &gt;&gt; q;    // 1. 输入与初始构造    for(int i = 1; i &lt;= n; ++i)    {        cin &gt;&gt; a[i];        // 构造差分数组        dif[i] = a[i] - a[i-1];    }    // 2. 执行区间修改    while(q--)    {        int l, r, v;        cin &gt;&gt; l &gt;&gt; r &gt;&gt; v;        // 核心操作：起点 +v, 终点后一位 -v        dif[l] += v;        dif[r + 1] -= v;    }    // 3. 还原最终结果 (求前缀和)    for(int i = 1; i &lt;= n; ++i)    {        // 求前缀和，b[i] 为还原后的 a[i]        b[i] = b[i-1] + dif[i];    }    return 0;}</code></pre>
         </div>
       </div>
     </div>
-
                 
               </div>
             
@@ -511,9 +519,9 @@ Comparison)</h2>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%B7%AE%E5%88%86/" class="print-no-link">#差分</a>
-      
         <a href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/" class="print-no-link">#预处理</a>
+      
+        <a href="/tags/%E5%B7%AE%E5%88%86/" class="print-no-link">#差分</a>
       
     </div>
   
