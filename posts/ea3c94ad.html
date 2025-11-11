@@ -19,12 +19,12 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：单调栈 (Monotonic Stack) -V3.0  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 单调栈 英文名： Monotonic Stack   2. 什么地位 (Status)  所属领域： 数据结构 &#x2F; 优化技巧 核心地位： 能够在 O(N)O(N)O(N) 时间内解决 “寻找序列中每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素">
+    <meta name="description" content="算法学习笔记：单调栈 (Monotonic Stack) -V3.0 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 单调栈 英文名： Monotonic Stack  2. 什么地位 (Status)  所属领域： 数据结构 &#x2F; 优化技巧 核心地位： 能够在 O(N) 时间内解决 “寻找序列中每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法学习笔记：单调栈 (Monotonic Stack)">
 <meta property="og:url" content="http://example.com/posts/ea3c94ad.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：单调栈 (Monotonic Stack) -V3.0  一、 初步认知 (Macro View)  1. 叫什么 (Identity)  中文名： 单调栈 英文名： Monotonic Stack   2. 什么地位 (Status)  所属领域： 数据结构 &#x2F; 优化技巧 核心地位： 能够在 O(N)O(N)O(N) 时间内解决 “寻找序列中每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素">
+<meta property="og:description" content="算法学习笔记：单调栈 (Monotonic Stack) -V3.0 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 单调栈 英文名： Monotonic Stack  2. 什么地位 (Status)  所属领域： 数据结构 &#x2F; 优化技巧 核心地位： 能够在 O(N) 时间内解决 “寻找序列中每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-09T01:20:00.000Z">
 <meta property="article:modified_time" content="2025-11-10T15:01:29.608Z">
@@ -245,7 +245,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          1.1k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
           <!-- compatible with older versions-->
-          15 分钟
+          14 分钟
         
       </span>
     
@@ -308,51 +308,62 @@
             
               <div class="markdown-body">
                 
-                <h1 id="算法学习笔记单调栈-monotonic-stack-v30"><a class="markdownIt-Anchor" href="#算法学习笔记单调栈-monotonic-stack-v30"></a> 算法学习笔记：单调栈 (Monotonic Stack) -V3.0</h1>
-<h2 id="一-初步认知-macro-view"><a class="markdownIt-Anchor" href="#一-初步认知-macro-view"></a> 一、 初步认知 (Macro View)</h2>
-<h3 id="1-叫什么-identity"><a class="markdownIt-Anchor" href="#1-叫什么-identity"></a> 1. 叫什么 (Identity)</h3>
+                <h1 id="算法学习笔记单调栈-monotonic-stack--v3.0">算法学习笔记：单调栈
+(Monotonic Stack) -V3.0</h1>
+<h2 id="一-初步认知-macro-view">一、 初步认知 (Macro View)</h2>
+<h3 id="叫什么-identity">1. 叫什么 (Identity)</h3>
 <ul>
 <li><strong>中文名：</strong> 单调栈</li>
 <li><strong>英文名：</strong> Monotonic Stack</li>
 </ul>
-<h3 id="2-什么地位-status"><a class="markdownIt-Anchor" href="#2-什么地位-status"></a> 2. 什么地位 (Status)</h3>
+<h3 id="什么地位-status">2. 什么地位 (Status)</h3>
 <ul>
 <li><strong>所属领域：</strong> 数据结构 / 优化技巧</li>
-<li><strong>核心地位：</strong> 能够在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 时间内解决 <strong>“寻找序列中每个元素左/右侧第一个比它大/小的元素”</strong> 这类问题。
+<li><strong>核心地位：</strong> 能够在 <span class="math inline"><em>O</em>(<em>N</em>)</span> 时间内解决
+<strong>“寻找序列中每个元素左/右侧第一个比它大/小的元素”</strong>
+这类问题。
 <ul>
-<li>是处理 <strong>柱状图最大矩形</strong> 和 <strong>下一更大元素</strong> 等问题的核心工具。</li>
+<li>是处理 <strong>柱状图最大矩形</strong> 和
+<strong>下一更大元素</strong> 等问题的核心工具。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="3-有什么用处-utility"><a class="markdownIt-Anchor" href="#3-有什么用处-utility"></a> 3. 有什么用处 (Utility)</h3>
+<h3 id="有什么用处-utility">3. 有什么用处 (Utility)</h3>
 <ul>
-<li><strong>解决的核心问题：</strong> 将涉及到“寻找左右边界”的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 嵌套循环优化到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
+<li><strong>解决的核心问题：</strong> 将涉及到“寻找左右边界”的 <span class="math inline"><em>O</em>(<em>N</em><sup>2</sup>)</span>
+嵌套循环优化到 <span class="math inline"><em>O</em>(<em>N</em>)</span>。</li>
 <li><strong>典型应用场景：</strong>
 <ul>
 <li>柱状图中的最大矩形问题。</li>
 <li><strong>数组中下一个更大/更小元素</strong>问题。</li>
 <li>动态规划或其它算法中的优化，用于快速查找最优边界。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="二-主题渗透-theme-osmosis"><a class="markdownIt-Anchor" href="#二-主题渗透-theme-osmosis"></a> 二、 主题渗透 (Theme Osmosis)</h2>
-<h3 id="1-核心原理-the-eureka-moment"><a class="markdownIt-Anchor" href="#1-核心原理-the-eureka-moment"></a> 1. 核心原理 (The Eureka Moment)</h3>
+<h2 id="二-主题渗透-theme-osmosis">二、 主题渗透 (Theme Osmosis)</h2>
+<h3 id="核心原理-the-eureka-moment">1. 核心原理 (The Eureka Moment)</h3>
 <ul>
-<li><strong>底层思想：</strong> <strong>空间换时间</strong> + <strong>过滤冗余信息</strong>。</li>
-<li><strong>关键推导：</strong> 栈只存储<strong>有潜力</strong>成为未来元素边界的<strong>索引</strong>。
+<li><strong>底层思想：</strong> <strong>空间换时间</strong> +
+<strong>过滤冗余信息</strong>。</li>
+<li><strong>关键推导：</strong>
+栈只存储<strong>有潜力</strong>成为未来元素边界的<strong>索引</strong>。
 <ul>
 <li><strong>（以维护单调递增栈为例，求左侧第一个更小值）：</strong></li>
-<li><strong>1. 淘汰（栈顶）：</strong> 当一个新元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 准备入栈时，如果它比栈顶元素 <code>a[stk.top()]</code> 更小（或等于），说明栈顶元素 <strong>既不如此时新，也不如此时优</strong>。
+<li><strong>1. 淘汰（栈顶）：</strong> 当一个新元素 <span class="math inline"><em>a</em>[<em>i</em>]</span>
+准备入栈时，如果它比栈顶元素 <code>a[stk.top()]</code>
+更小（或等于），说明栈顶元素
+<strong>既不如此时新，也不如此时优</strong>。
 <ul>
-<li>栈顶元素 <code>a[stk.top()]</code> 永远不可能成为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 之后任何元素的“左侧第一个更小值”（因为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 更近且更小）。</li>
-<li>因此，栈顶元素 <code>a[stk.top()]</code> 必须<strong>出栈</strong>。</li>
+<li>栈顶元素 <code>a[stk.top()]</code> 永远不可能成为 <span class="math inline"><em>i</em></span>
+之后任何元素的“左侧第一个更小值”（因为 <span class="math inline"><em>a</em>[<em>i</em>]</span> 更近且更小）。</li>
+<li>因此，栈顶元素 <code>a[stk.top()]</code>
+必须<strong>出栈</strong>。</li>
+</ul></li>
+<li><strong>2. 寻找（新栈顶）：</strong> 持续弹出栈顶，直到栈顶元素
+<code>a[stk.top()]</code> 严格小于 <span class="math inline"><em>a</em>[<em>i</em>]</span>（或栈空）。此时，这个新的栈顶
+<code>stk.top()</code> 就是 <span class="math inline"><em>a</em>[<em>i</em>]</span>
+的“左侧第一个更小值”的索引。</li>
+</ul></li>
 </ul>
-</li>
-<li><strong>2. 寻找（新栈顶）：</strong> 持续弹出栈顶，直到栈顶元素 <code>a[stk.top()]</code> 严格小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>（或栈空）。此时，这个新的栈顶 <code>stk.top()</code> 就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 的“左侧第一个更小值”的索引。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-模拟演示-visualization"><a class="markdownIt-Anchor" href="#2-模拟演示-visualization"></a> 2. 模拟演示 (Visualization)</h3>
+<h3 id="模拟演示-visualization">2. 模拟演示 (Visualization)</h3>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-91b984d8" role="button" aria-expanded="false" aria-controls="collapse-91b984d8">
@@ -360,71 +371,87 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-91b984d8">
         <div class="fold-content">
-          <ul><li><strong>任务：</strong> 寻找每个元素<strong>左侧</strong>第一个<strong>更小</strong>的元素 (L[i])。</li><li><strong>模型：</strong> 使用<strong>单调递增栈</strong>（栈底到顶递增）。</li><li><strong>输入 (1-based)：</strong> <code>a = [?, 5, 3, 8, 6, 2, 7, 1, 4]</code></li></ul><table><thead><tr><th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span></th><th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span></th><th style="text-align:left">维护单调性 (Pop)</th><th style="text-align:left">栈 (Pop 后)</th><th style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> (答案)</th><th style="text-align:left">栈 (Push <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 后)</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">5</td><td style="text-align:left">(栈空)</td><td style="text-align:left"><code>[]</code></td><td style="text-align:center"><strong>0</strong></td><td style="text-align:left"><code>[1]</code></td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">3</td><td style="text-align:left"><code>pop(1)</code> (因 <code>3&lt;=5</code>)</td><td style="text-align:left"><code>[]</code></td><td style="text-align:center"><strong>0</strong></td><td style="text-align:left"><code>[2]</code></td></tr><tr><td style="text-align:center">3</td><td style="text-align:center">8</td><td style="text-align:left">(无)</td><td style="text-align:left"><code>[2]</code></td><td style="text-align:center"><strong>2</strong></td><td style="text-align:left"><code>[2, 3]</code></td></tr><tr><td style="text-align:center">4</td><td style="text-align:center">6</td><td style="text-align:left"><code>pop(3)</code> (因 <code>6&lt;=8</code>)</td><td style="text-align:left"><code>[2]</code></td><td style="text-align:center"><strong>2</strong></td><td style="text-align:left"><code>[2, 4]</code></td></tr><tr><td style="text-align:center">5</td><td style="text-align:center">2</td><td style="text-align:left"><code>pop(4)</code>, <code>pop(2)</code></td><td style="text-align:left"><code>[]</code></td><td style="text-align:center"><strong>0</strong></td><td style="text-align:left"><code>[5]</code></td></tr><tr><td style="text-align:center">6</td><td style="text-align:center">7</td><td style="text-align:left">(无)</td><td style="text-align:left"><code>[5]</code></td><td style="text-align:center"><strong>5</strong></td><td style="text-align:left"><code>[5, 6]</code></td></tr><tr><td style="text-align:center">7</td><td style="text-align:center">1</td><td style="text-align:left"><code>pop(6)</code>, <code>pop(5)</code></td><td style="text-align:left"><code>[]</code></td><td style="text-align:center"><strong>0</strong></td><td style="text-align:left"><code>[7]</code></td></tr><tr><td style="text-align:center">8</td><td style="text-align:center">4</td><td style="text-align:left">(无)</td><td style="text-align:left"><code>[7]</code></td><td style="text-align:center"><strong>7</strong></td><td style="text-align:left"><code>[7, 8]</code></td></tr></tbody></table><ul><li><strong>最终 L 数组：</strong> <code>[0, 0, 2, 2, 0, 5, 0, 7]</code></li></ul>
+          <ul><li><strong>任务：</strong>寻找每个元素<strong>左侧</strong>第一个<strong>更小</strong>的元素(L[i])。</li><li><strong>模型：</strong>使用<strong>单调递增栈</strong>（栈底到顶递增）。</li><li><strong>输入 (1-based)：</strong><code>a = [?, 5, 3, 8, 6, 2, 7, 1, 4]</code></li></ul><table style="width:100%;"><thead><tr><th style="text-align: center;"><span class="math inline"><em>i</em></span></th><th style="text-align: center;"><span class="math inline"><em>a</em>[<em>i</em>]</span></th><th style="text-align: left;">维护单调性 (Pop)</th><th style="text-align: left;">栈 (Pop 后)</th><th style="text-align: center;"><span class="math inline"><em>L</em>[<em>i</em>]</span> (答案)</th><th style="text-align: left;">栈 (Push <span class="math inline"><em>i</em></span> 后)</th></tr></thead><tbody><tr><td style="text-align: center;">1</td><td style="text-align: center;">5</td><td style="text-align: left;">(栈空)</td><td style="text-align: left;"><code>[]</code></td><td style="text-align: center;"><strong>0</strong></td><td style="text-align: left;"><code>[1]</code></td></tr><tr><td style="text-align: center;">2</td><td style="text-align: center;">3</td><td style="text-align: left;"><code>pop(1)</code> (因<code>3&lt;=5</code>)</td><td style="text-align: left;"><code>[]</code></td><td style="text-align: center;"><strong>0</strong></td><td style="text-align: left;"><code>[2]</code></td></tr><tr><td style="text-align: center;">3</td><td style="text-align: center;">8</td><td style="text-align: left;">(无)</td><td style="text-align: left;"><code>[2]</code></td><td style="text-align: center;"><strong>2</strong></td><td style="text-align: left;"><code>[2, 3]</code></td></tr><tr><td style="text-align: center;">4</td><td style="text-align: center;">6</td><td style="text-align: left;"><code>pop(3)</code> (因<code>6&lt;=8</code>)</td><td style="text-align: left;"><code>[2]</code></td><td style="text-align: center;"><strong>2</strong></td><td style="text-align: left;"><code>[2, 4]</code></td></tr><tr><td style="text-align: center;">5</td><td style="text-align: center;">2</td><td style="text-align: left;"><code>pop(4)</code>,<code>pop(2)</code></td><td style="text-align: left;"><code>[]</code></td><td style="text-align: center;"><strong>0</strong></td><td style="text-align: left;"><code>[5]</code></td></tr><tr><td style="text-align: center;">6</td><td style="text-align: center;">7</td><td style="text-align: left;">(无)</td><td style="text-align: left;"><code>[5]</code></td><td style="text-align: center;"><strong>5</strong></td><td style="text-align: left;"><code>[5, 6]</code></td></tr><tr><td style="text-align: center;">7</td><td style="text-align: center;">1</td><td style="text-align: left;"><code>pop(6)</code>,<code>pop(5)</code></td><td style="text-align: left;"><code>[]</code></td><td style="text-align: center;"><strong>0</strong></td><td style="text-align: left;"><code>[7]</code></td></tr><tr><td style="text-align: center;">8</td><td style="text-align: center;">4</td><td style="text-align: left;">(无)</td><td style="text-align: left;"><code>[7]</code></td><td style="text-align: center;"><strong>7</strong></td><td style="text-align: left;"><code>[7, 8]</code></td></tr></tbody></table><ul><li><strong>最终 L 数组：</strong><code>[0, 0, 2, 2, 0, 5, 0, 7]</code></li></ul>
         </div>
       </div>
     </div>
-<h3 id="3-详细实现过程-step-by-step"><a class="markdownIt-Anchor" href="#3-详细实现过程-step-by-step"></a> 3. 详细实现过程 (Step-by-Step)</h3>
-<p>以 <strong>求解左侧第一个小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 的元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span></strong> （单调递增栈）为例：</p>
-<ol>
-<li><strong>初始化 (Initialization)：</strong> 创建一个空栈 <code>stk</code>。</li>
+<h3 id="详细实现过程-step-by-step">3. 详细实现过程 (Step-by-Step)</h3>
+<p>以 <strong>求解左侧第一个小于 <span class="math inline"><em>a</em>[<em>i</em>]</span> 的元素 <span class="math inline"><em>L</em>[<em>i</em>]</span></strong>
+（单调递增栈）为例：</p>
+<ol type="1">
+<li><strong>初始化 (Initialization)：</strong> 创建一个空栈
+<code>stk</code>。</li>
 <li><strong>选择模型 (Model)：</strong>
 <ul>
-<li><strong>求第一个更小 (L/R)：</strong> 使用<strong>单调递增栈</strong>（弹出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span></span></span></span> 的元素）。</li>
-<li><strong>求第一个更大 (L/R)：</strong> 使用<strong>单调递减栈</strong>（弹出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span> 的元素）。</li>
-</ul>
-</li>
+<li><strong>求第一个更小 (L/R)：</strong>
+使用<strong>单调递增栈</strong>（弹出 <span class="math inline">≥</span>
+的元素）。</li>
+<li><strong>求第一个更大 (L/R)：</strong>
+使用<strong>单调递减栈</strong>（弹出 <span class="math inline">≤</span>
+的元素）。</li>
+</ul></li>
 <li><strong>遍历 (Iteration)：</strong>
 <ul>
-<li><strong>求 L (左边界)：</strong> <strong>正序</strong>遍历数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span>，从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">i=1 \to n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>。</li>
-<li><strong>求 R (右边界)：</strong> <strong>倒序</strong>遍历数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span>，从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>=</mo><mi>n</mi><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i=n \to 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</li>
-</ul>
-</li>
-<li><strong>维护单调性 (Pop)：</strong> <code>while (!stk.empty() &amp;&amp; a[stk.top()] ... a[i]) &#123; stk.pop(); &#125;</code></li>
+<li><strong>求 L (左边界)：</strong> <strong>正序</strong>遍历数组 <span class="math inline"><em>a</em></span>，从 <span class="math inline"><em>i</em> = 1 → <em>n</em></span>。</li>
+<li><strong>求 R (右边界)：</strong> <strong>倒序</strong>遍历数组 <span class="math inline"><em>a</em></span>，从 <span class="math inline"><em>i</em> = <em>n</em> → 1</span>。</li>
+</ul></li>
+<li><strong>维护单调性 (Pop)：</strong>
+<code>while (!stk.empty() &amp;&amp; a[stk.top()] ... a[i]) &#123; stk.pop(); &#125;</code></li>
 <li><strong>确定边界 (Get Answer)：</strong>
 <ul>
-<li>栈空 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span></span></span> 边界为哨兵（L 侧为 0，R 侧为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>）。</li>
-<li>栈不空 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span></span></span> 边界为 <code>stk.top()</code>。</li>
-</ul>
-</li>
-<li><strong>入栈 (Push)：</strong> 将当前下标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span> 压入栈中。</li>
+<li>栈空 <span class="math inline">⟹</span> 边界为哨兵（L 侧为 0，R 侧为
+<span class="math inline"><em>n</em> + 1</span>）。</li>
+<li>栈不空 <span class="math inline">⟹</span> 边界为
+<code>stk.top()</code>。</li>
+</ul></li>
+<li><strong>入栈 (Push)：</strong> 将当前下标 <span class="math inline"><em>i</em></span> 压入栈中。</li>
 </ol>
-<h2 id="三-总结分析-analysis-comparison"><a class="markdownIt-Anchor" href="#三-总结分析-analysis-comparison"></a> 三、 总结分析 (Analysis &amp; Comparison)</h2>
-<h3 id="1-复杂度分析-complexity"><a class="markdownIt-Anchor" href="#1-复杂度分析-complexity"></a> 1. 复杂度分析 (Complexity)</h3>
+<h2 id="三-总结分析-analysis-comparison">三、 总结分析 (Analysis &amp;
+Comparison)</h2>
+<h3 id="复杂度分析-complexity">1. 复杂度分析 (Complexity)</h3>
 <table>
+
 <thead>
 <tr>
-<th style="text-align:left">维度</th>
-<th style="text-align:left">复杂度</th>
-<th style="text-align:left">说明</th>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">复杂度</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>时间复杂度</strong></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 为元素总数。每个元素的索引最多<strong>入栈一次</strong>，<strong>出栈一次</strong>。均摊复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</td>
+<td style="text-align: left;"><strong>时间复杂度</strong></td>
+<td style="text-align: left;"><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
+<td style="text-align: left;"><span class="math inline"><em>N</em></span>
+为元素总数。每个元素的索引最多<strong>入栈一次</strong>，<strong>出栈一次</strong>。均摊复杂度为
+<span class="math inline"><em>O</em>(1)</span>。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>空间复杂度</strong></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left">在最坏情况下（例如数组完全单调递增），栈 <code>stk</code> 需要存储所有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个元素的索引。</td>
+<td style="text-align: left;"><strong>空间复杂度</strong></td>
+<td style="text-align: left;"><span class="math inline"><em>O</em>(<em>N</em>)</span></td>
+<td style="text-align: left;">在最坏情况下（例如数组完全单调递增），栈
+<code>stk</code> 需要存储所有 <span class="math inline"><em>N</em></span> 个元素的索引。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="2-核心注意点-key-pitfalls"><a class="markdownIt-Anchor" href="#2-核心注意点-key-pitfalls"></a> 2. 核心注意点 (Key Pitfalls)</h3>
+<h3 id="核心注意点-key-pitfalls">2. 核心注意点 (Key Pitfalls)</h3>
 <ul>
-<li><strong>边界处理：</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 的边界是 0；<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">R[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 的边界是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">M+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</li>
+<li><strong>边界处理：</strong> <span class="math inline"><em>L</em>[<em>j</em>]</span> 的边界是 0；<span class="math inline"><em>R</em>[<em>j</em>]</span> 的边界是 <span class="math inline"><em>M</em> + 1</span>。</li>
 <li><strong>栈的单调性：</strong>
 <ul>
-<li><strong>求第一个小于：</strong> 使用<strong>单调递增栈</strong>（弹出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span></span></span></span> 的）。</li>
-<li><strong>求第一个大于：</strong> 使用<strong>单调递减栈</strong>（弹出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\le</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span></span></span></span> 的）。</li>
+<li><strong>求第一个小于：</strong>
+使用<strong>单调递增栈</strong>（弹出 <span class="math inline">≥</span>
+的）。</li>
+<li><strong>求第一个大于：</strong>
+使用<strong>单调递减栈</strong>（弹出 <span class="math inline">≤</span>
+的）。</li>
+</ul></li>
+<li><strong>存储内容：</strong>
+栈中必须存储<strong>索引</strong>，而不是元素的值，否则无法确定边界的<strong>位置</strong>。</li>
+<li><strong>重复值处理：</strong> 弹出条件用 <span class="math inline">≥</span> 还是 <span class="math inline">&gt;</span>
+取决于题目定义，看题目要求是否严格单调。</li>
 </ul>
-</li>
-<li><strong>存储内容：</strong> 栈中必须存储<strong>索引</strong>，而不是元素的值，否则无法确定边界的<strong>位置</strong>。</li>
-<li><strong>重复值处理：</strong> 弹出条件用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo></mrow><annotation encoding="application/x-tex">\ge</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≥</span></span></span></span> 还是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo></mrow><annotation encoding="application/x-tex">&gt;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span></span></span></span> 取决于题目定义，看题目要求是否严格单调。</li>
-</ul>
-<h2 id="四-代码模板-code-template"><a class="markdownIt-Anchor" href="#四-代码模板-code-template"></a> 四、 代码模板 (Code Template)</h2>
+<h2 id="四-代码模板-code-template">四、 代码模板 (Code Template)</h2>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
