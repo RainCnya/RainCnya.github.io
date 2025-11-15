@@ -53,8 +53,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>动态规划</tag>
       
       <tag>贪心</tag>
@@ -111,8 +109,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>动态规划</tag>
       
       <tag>LCS</tag>
@@ -144,8 +140,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>动态规划</tag>
       
       <tag>二分</tag>
@@ -172,8 +166,6 @@
     
     
     <tags>
-      
-      <tag>Solution</tag>
       
       <tag>动态规划</tag>
       
@@ -364,8 +356,6 @@
       
       <tag>贪心</tag>
       
-      <tag>Solutions</tag>
-      
     </tags>
     
   </entry>
@@ -416,8 +406,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>单调队列</tag>
       
       <tag>动态规划</tag>
@@ -445,8 +433,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>单调队列</tag>
       
       <tag>二分</tag>
@@ -473,8 +459,6 @@
     
     
     <tags>
-      
-      <tag>Solution</tag>
       
       <tag>单调队列</tag>
       
@@ -676,8 +660,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>动态规划</tag>
       
       <tag>单调栈</tag>
@@ -759,8 +741,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>排序</tag>
       
     </tags>
@@ -785,8 +765,6 @@
     
     
     <tags>
-      
-      <tag>Solution</tag>
       
       <tag>动态规划</tag>
       
@@ -817,8 +795,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>差分</tag>
       
       <tag>LCA</tag>
@@ -846,8 +822,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>高维前缀和</tag>
       
     </tags>
@@ -872,8 +846,6 @@
     
     
     <tags>
-      
-      <tag>Solution</tag>
       
       <tag>线段树</tag>
       
@@ -902,8 +874,6 @@
     
     <tags>
       
-      <tag>Solution</tag>
-      
       <tag>差分</tag>
       
     </tags>
@@ -928,8 +898,6 @@
     
     
     <tags>
-      
-      <tag>Solution</tag>
       
       <tag>前缀和</tag>
       
