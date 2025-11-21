@@ -27,7 +27,7 @@
 <meta property="og:description" content="算法学习笔记：多重背包 一、 算法图谱   命名： 多重背包 (Bounded Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 种物品和一个容量为 VVV 的背包。第 iii 种物品最多有 m[i]m[i]m[i] 件可用。   典型设问： “给定背包容量 VVV，物品 iii 的重量 w[i]w[i]w[i]，价值 v[i]v[i]v[">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-21T11:34:02.000Z">
-<meta property="article:modified_time" content="2025-11-21T11:59:16.195Z">
+<meta property="article:modified_time" content="2025-11-21T12:00:39.473Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="背包DP">
@@ -507,7 +507,7 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-28ab9646">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// dp[j]: 当前容量 j 下的最大价值</span><br><span class="hljs-comment">// g[j]:  上一轮 dp 数组的备份</span><br><span class="hljs-comment">// q[]:   单调队列，存储的是拆分后的份数下标 p</span><br><span class="hljs-type">int</span> dp[MAXV], g[MAXV], q[MAXV];<br><span class="hljs-type">int</span> n, m; <span class="hljs-comment">// n: 物品数量, m: 背包容量</span><br><br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>&#123;<br>	<span class="hljs-type">int</span> w, v, s;<br>	cin &gt;&gt; w &gt;&gt; v &gt;&gt; s; <span class="hljs-comment">// 读入重量、价值、数量限制</span><br><br>	<span class="hljs-comment">// 1. 备份 DP 数组</span><br>	<span class="hljs-comment">// 必须用 g 数组保存上一层状态</span><br>	<span class="hljs-built_in">memcpy</span>(g, dp, <span class="hljs-built_in">sizeof</span>(dp));<br><br>	<span class="hljs-comment">// 2. 枚举余数 u (将 dp 数组分为 w 组)</span><br>	<span class="hljs-comment">// 每一组的索引为: u, u+w, u+2w, ...</span><br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> u = <span class="hljs-number">0</span>; u &lt; w; ++u)<br>	&#123;<br>		<span class="hljs-type">int</span> head = <span class="hljs-number">0</span>, tail = <span class="hljs-number">-1</span>;<br><br>		<span class="hljs-comment">// 对应公式：g[u + k*w] - k*v</span><br>		<span class="hljs-keyword">auto</span> val = [&amp;]( <span class="hljs-type">int</span> k ) &#123;<br>			<span class="hljs-keyword">return</span> g[u + k * w] - k * v;<br>		&#125;;<br><br>		<span class="hljs-comment">// 3. 枚举份数 p (滑动窗口推进)</span><br>		<span class="hljs-comment">// 实际容量 j = u + p * w</span><br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> p = <span class="hljs-number">0</span>; u + p * w &lt;= m; ++p)<br>		&#123;<br>			<span class="hljs-comment">// A. 维护单调递减队列</span><br>			<span class="hljs-keyword">while</span>(head &lt;= tail &amp;&amp; <span class="hljs-built_in">val</span>(q[tail]) &lt;= <span class="hljs-built_in">val</span>(p))<br>				tail--;<br>			q[++tail] = p;<br><br>			<span class="hljs-keyword">if</span>(q[head] &lt; p - s)<br>				head++;<br><br>			<span class="hljs-comment">// B. 更新 DP 值</span><br>			<span class="hljs-comment">// 当前最大价值 = 最优净值 + 当前份数补偿 (p * v)</span><br>			<span class="hljs-comment">// 对应公式：dp[j] = (g[best_j] - best_k * v) + p * v</span><br>			dp[u + p * w] = <span class="hljs-built_in">val</span>( q[head] ) + p * v;<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// dp[j]: 当前容量 j 下的最大价值</span><br><span class="hljs-comment">// g[j]:  上一轮 dp 数组的备份</span><br><span class="hljs-comment">// q[]:   单调队列，存储的是拆分后的份数下标 p</span><br><span class="hljs-type">int</span> dp[MAXV], g[MAXV], q[MAXV];<br><span class="hljs-type">int</span> n, m; <span class="hljs-comment">// n: 物品数量, m: 背包容量</span><br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>	<span class="hljs-type">int</span> w, v, s;<br>	cin &gt;&gt; w &gt;&gt; v &gt;&gt; s; <span class="hljs-comment">// 读入重量、价值、数量限制</span><br><br>	<span class="hljs-comment">// 1. 备份 DP 数组</span><br>	<span class="hljs-comment">// 必须用 g 数组保存上一层状态</span><br>	<span class="hljs-built_in">memcpy</span>(g, dp, <span class="hljs-built_in">sizeof</span>(dp));<br><br>	<span class="hljs-comment">// 2. 枚举余数 u (将 dp 数组分为 w 组)</span><br>	<span class="hljs-comment">// 每一组的索引为: u, u+w, u+2w, ...</span><br>	<span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> u = <span class="hljs-number">0</span>; u &lt; w; ++ u )<br>	&#123;<br>		<span class="hljs-type">int</span> head = <span class="hljs-number">0</span>, tail = <span class="hljs-number">-1</span>;<br><br>		<span class="hljs-comment">// 对应公式：g[u + k*w] - k*v</span><br>		<span class="hljs-keyword">auto</span> val = [&amp;]( <span class="hljs-type">int</span> k ) &#123;<br>			<span class="hljs-keyword">return</span> g[u + k * w] - k * v;<br>		&#125;;<br><br>		<span class="hljs-comment">// 3. 枚举份数 p (滑动窗口推进)</span><br>		<span class="hljs-comment">// 实际容量 j = u + p * w</span><br>		<span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> p = <span class="hljs-number">0</span>; u + p * w &lt;= m; ++ p )<br>		&#123;<br>			<span class="hljs-comment">// A. 维护单调递减队列</span><br>			<span class="hljs-keyword">while</span>( head &lt;= tail &amp;&amp; <span class="hljs-built_in">val</span>(q[tail]) &lt;= <span class="hljs-built_in">val</span>(p) )<br>				tail--;<br>			q[++tail] = p;<br><br>			<span class="hljs-keyword">if</span>( q[head] &lt; p - s )<br>				head++;<br><br>			<span class="hljs-comment">// B. 更新 DP 值</span><br>			<span class="hljs-comment">// 当前最大价值 = 最优净值 + 当前份数补偿 (p * v)</span><br>			<span class="hljs-comment">// 对应公式：dp[j] = (g[best_j] - best_k * v) + p * v</span><br>			dp[u + p * w] = <span class="hljs-built_in">val</span>( q[head] ) + p * v;<br>		&#125;<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
@@ -565,6 +565,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
     <div class="post-meta">
@@ -632,6 +653,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/posts/eb88306a.html" title="算法学习笔记：分组背包">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法学习笔记：分组背包</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
