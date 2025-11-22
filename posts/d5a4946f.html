@@ -19,15 +19,15 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：多重背包 一、 算法图谱   命名： 多重背包 (Bounded Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 种物品和一个容量为 VVV 的背包。第 iii 种物品最多有 m[i]m[i]m[i] 件可用。   典型设问： “给定背包容量 VVV，物品 iii 的重量 w[i]w[i]w[i]，价值 v[i]v[i]v[">
+    <meta name="description" content="算法学习笔记：多重背包 一、 初步认知   命名： 多重背包 (Bounded Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 种物品和一个容量为 VVV 的背包。第 iii 种物品最多有 m[i]m[i]m[i] 件可用。   典型设问： “给定背包容量 VVV，物品 iii 的重量 w[i]w[i]w[i]，价值 v[i]v[i]v[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法学习笔记：多重背包">
 <meta property="og:url" content="http://example.com/posts/d5a4946f.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：多重背包 一、 算法图谱   命名： 多重背包 (Bounded Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 种物品和一个容量为 VVV 的背包。第 iii 种物品最多有 m[i]m[i]m[i] 件可用。   典型设问： “给定背包容量 VVV，物品 iii 的重量 w[i]w[i]w[i]，价值 v[i]v[i]v[">
+<meta property="og:description" content="算法学习笔记：多重背包 一、 初步认知   命名： 多重背包 (Bounded Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 种物品和一个容量为 VVV 的背包。第 iii 种物品最多有 m[i]m[i]m[i] 件可用。   典型设问： “给定背包容量 VVV，物品 iii 的重量 w[i]w[i]w[i]，价值 v[i]v[i]v[">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-21T11:34:02.000Z">
-<meta property="article:modified_time" content="2025-11-21T12:00:39.473Z">
+<meta property="article:modified_time" content="2025-11-22T08:56:55.830Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="背包DP">
@@ -311,7 +311,7 @@
               <div class="markdown-body">
                 
                 <h1>算法学习笔记：多重背包</h1>
-<h2 id="一、-算法图谱">一、 算法图谱</h2>
+<h2 id="一、-初步认知">一、 初步认知</h2>
 <ul>
 <li>
 <p><strong>命名：</strong> 多重背包 (Bounded Knapsack Problem)</p>
@@ -326,7 +326,7 @@
 <p><strong>典型设问：</strong> “给定背包容量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>，物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的重量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">w[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，价值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">v[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，数量限制 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">m[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，求最大价值。”</p>
 </li>
 </ul>
-<h2 id="二、-核心推演">二、 核心推演</h2>
+<h2 id="二、-主题渗透">二、 主题渗透</h2>
 <h3 id="1-基本思路">1. 基本思路</h3>
 <ul>
 <li>
@@ -413,7 +413,7 @@
 </ul>
 <hr>
 <h1>算法学习笔记：多重背包 -V4.2</h1>
-<h2 id="一、-算法图谱-2">一、 算法图谱</h2>
+<h2 id="一、-算法图谱">一、 算法图谱</h2>
 <ul>
 <li>
 <p><strong>命名：</strong> 多重背包 (Bounded Knapsack Problem)</p>
@@ -428,7 +428,7 @@
 <p><strong>典型设问：</strong> “给定背包容量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>，物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的重量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">w[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，价值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">v[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，数量限制 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">m[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，求最大价值。”</p>
 </li>
 </ul>
-<h2 id="二、-核心推演-2">二、 核心推演</h2>
+<h2 id="二、-核心推演">二、 核心推演</h2>
 <h3 id="1-基本思路-2">1. 基本思路</h3>
 <ul>
 <li>

@@ -19,15 +19,15 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：最长公共子序列 (LCS) -V3.2 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 最长公共子序列 英文名： Longest Common Subsequence (简称 LCS)  2. 什么地位 (Status)  所属领域： 线性动态规划 (Linear DP) 核心地位： 线性 DP 中最经典、最核心的模型之一。  3. 有什么用">
+    <meta name="description" content="算法学习笔记：最长公共子序列 (LCS) 一、 算法图谱  命名： 最长公共子序列 (Longest Common Subsequence) 领域： 线性动态规划 (Linear DP) &#x2F; 双串模型 定义： 给定两个序列，找出它们之间不要求连续的、最长的共同子序列。 典型设问： “求两个字符串的最长公共子序列长度。”  二、 核心推演 1. 基本思路  状态定义： dp[i][j] 表示字符串">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法学习笔记：最长公共子序列 (LCS)">
 <meta property="og:url" content="http://example.com/posts/545a145b.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：最长公共子序列 (LCS) -V3.2 一、 初步认知 (Macro View) 1. 叫什么 (Identity)  中文名： 最长公共子序列 英文名： Longest Common Subsequence (简称 LCS)  2. 什么地位 (Status)  所属领域： 线性动态规划 (Linear DP) 核心地位： 线性 DP 中最经典、最核心的模型之一。  3. 有什么用">
+<meta property="og:description" content="算法学习笔记：最长公共子序列 (LCS) 一、 算法图谱  命名： 最长公共子序列 (Longest Common Subsequence) 领域： 线性动态规划 (Linear DP) &#x2F; 双串模型 定义： 给定两个序列，找出它们之间不要求连续的、最长的共同子序列。 典型设问： “求两个字符串的最长公共子序列长度。”  二、 核心推演 1. 基本思路  状态定义： dp[i][j] 表示字符串">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-13T09:30:00.000Z">
-<meta property="article:modified_time" content="2025-11-13T10:37:54.450Z">
+<meta property="article:modified_time" content="2025-11-22T08:37:00.000Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="线性DP">
@@ -246,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          698 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          15 分钟
+          9 分钟
         
       </span>
     
@@ -309,200 +309,119 @@
             
               <div class="markdown-body">
                 
-                <h1>算法学习笔记：最长公共子序列 (LCS) -V3.2</h1>
-<h2 id="一、-初步认知-Macro-View">一、 初步认知 (Macro View)</h2>
-<h3 id="1-叫什么-Identity">1. 叫什么 (Identity)</h3>
+                <h1>算法学习笔记：最长公共子序列 (LCS)</h1>
+<h2 id="一、-算法图谱">一、 算法图谱</h2>
 <ul>
-<li><strong>中文名：</strong> 最长公共子序列</li>
-<li><strong>英文名：</strong> Longest Common Subsequence (简称 LCS)</li>
+<li><strong>命名：</strong> 最长公共子序列 (Longest Common Subsequence)</li>
+<li><strong>领域：</strong> 线性动态规划 (Linear DP) / 双串模型</li>
+<li><strong>定义：</strong> 给定两个序列，找出它们之间<strong>不要求连续</strong>的、最长的<strong>共同子序列</strong>。</li>
+<li><strong>典型设问：</strong> “求两个字符串的最长公共子序列长度。”</li>
 </ul>
-<h3 id="2-什么地位-Status">2. 什么地位 (Status)</h3>
+<h2 id="二、-核心推演">二、 核心推演</h2>
+<h3 id="1-基本思路">1. 基本思路</h3>
 <ul>
-<li><strong>所属领域：</strong> 线性动态规划 (Linear DP)</li>
-<li><strong>核心地位：</strong> 线性 DP 中<strong>最经典、最核心</strong>的模型之一。</li>
-</ul>
-<h3 id="3-有什么用处-Utility">3. 有什么用处 (Utility)</h3>
+<li><strong>状态定义：</strong> <code>dp[i][j]</code> 表示字符串 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 的前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个字符和字符串 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 的前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个字符的 LCS 长度。</li>
+<li><strong>状态转移：</strong>
 <ul>
-<li><strong>解决的核心问题：</strong> 找出两个序列中，<strong>不要求连续</strong>的、最长的<strong>共同子序列</strong>。</li>
-<li><strong>典型应用场景：</strong>
+<li><strong>Case 1 (相等)：</strong> 若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mo>=</mo><mi>B</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">A[i] == B[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">==</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，则该字符一定在 LCS 中。
 <ul>
-<li>文本差异比对（<code>diff</code> 命令的算法原型）。</li>
-<li>生物信息学（DNA 序列对齐）。</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dp[i][j] = dp[i-1][j-1] + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></li>
 </ul>
 </li>
-</ul>
-<h2 id="二、-主题渗透-Theme-Osmosis">二、 主题渗透 (Theme Osmosis)</h2>
-<h3 id="1-核心原理-The-Eureka-Moment">1. 核心原理 (The Eureka Moment)</h3>
-<h4 id="解法一：O-NM-空间-动态规划">解法一：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span> 空间 动态规划</h4>
+<li><strong>Case 2 (不等)：</strong> 若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo mathvariant="normal">≠</mo><mi>B</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">A[i] \neq B[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，则两个字符至少有一个不在 LCS 结尾。
 <ul>
-<li><strong>底层思想：</strong> <strong>动态规划 (DP)</strong>。</li>
-<li><strong>关键推导：</strong>
-<ul>
-<li><strong>状态定义：</strong> <code>dp[i][j]</code> 表示字符串 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> 的前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个字符 和 字符串 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> 的前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个字符的最长公共子序列的<strong>长度</strong>。</li>
-<li><strong>状态转移：</strong> 核心是看 <code>a[i]</code> 和 <code>b[j]</code> 是否相等。
-<ul>
-<li><strong>Case 1：</strong> <code>if (a[i] == b[j])</code>
-<ul>
-<li><code>dp[i][j] = dp[i-1][j-1] + 1</code></li>
-</ul>
-</li>
-<li><strong>Case 2：</strong> <code>if (a[i] != b[j])</code>
-<ul>
-<li><code>dp[i][j] = max(dp[i-1][j], dp[i][j-1])</code></li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \max(dp[i-1][j], dp[i][j-1])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">])</span></span></span></span></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h4 id="解法二：O-M-空间-动态规划-滚动数组">解法二：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> 空间 动态规划 (滚动数组)</h4>
+<h3 id="2-优化思路">2. 优化思路</h3>
 <ul>
-<li><strong>底层思想：</strong> <strong>状态压缩</strong> / <strong>滚动数组</strong>。</li>
-<li><strong>关键推导：</strong>
+<li><strong>滚动数组 (Space Optimization)：</strong>
 <ul>
-<li><code>dp[i][j]</code> 的计算只依赖于 <code>i</code> 和 <code>i-1</code> 这两行。</li>
-<li><strong>状态定义 (压缩)：</strong> 使用 <code>dp[0][...]</code> 和 <code>dp[1][...]</code> 分别代表“上一行”和“当前行”。</li>
-<li><strong>使用 <code>i &amp; 1</code>：</strong> 用 <code>i &amp; 1</code> (奇偶性) 来区分两行。
-<ul>
-<li><code>curr = i &amp; 1</code></li>
-<li><code>prev = (i - 1) &amp; 1</code></li>
-</ul>
-</li>
-<li><strong>转移方程：</strong>
-<ul>
-<li><strong>Case 1：</strong> <code>if (a[i] == b[j])</code>
-<ul>
-<li><code>dp[curr][j] = dp[prev][j-1] + 1</code></li>
-</ul>
-</li>
-<li><strong>Case 2：</strong> <code>if (a[i] != b[j])</code>
-<ul>
-<li><code>dp[curr][j] = max(dp[prev][j], dp[curr][j-1])</code></li>
+<li>观察转移方程，<code>dp[i][...]</code> 只依赖于 <code>dp[i-1][...]</code>（上一行）。</li>
+<li><strong>方案：</strong> 使用 <code>dp[2][m]</code>，通过 <code>i &amp; 1</code> (当前行) 和 <code>(i-1) &amp; 1</code> (上一行) 交替使用，将空间从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span> 降至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>。</li>
 </ul>
 </li>
 </ul>
-</li>
+<h3 id="3-核心思想">3. 核心思想</h3>
+<ul>
+<li><strong>将大问题分解为“最后一个字符是否匹配”的子问题，利用二维 DP 表递推求解。</strong></li>
 </ul>
-</li>
-</ul>
-<h3 id="2-模拟演示-Visualization">2. 模拟演示 (Visualization)</h3>
+<h3 id="4-演示">4. 演示</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-b677c974" role="button" aria-expanded="false" aria-controls="collapse-b677c974">
-        <div class="fold-arrow">▶</div>模拟一：O(NM) 空间 DP 解法
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-5c12d184" role="button" aria-expanded="false" aria-controls="collapse-5c12d184">
+        <div class="fold-arrow">▶</div>模拟 (LCS 填表)
       </div>
-      <div class="fold-collapse collapse" id="collapse-b677c974">
+      <div class="fold-collapse collapse" id="collapse-5c12d184">
         <div class="fold-content">
-          <ul><li><strong>任务：</strong> 求解 LCS。</li><li><strong>模型：</strong> <code>dp[i][j]</code> 表示 <code>a[1..i]</code> 和 <code>b[1..j]</code> 的 LCS 长度。</li><li><strong>输入 (1-based)：</strong> <code>a = &quot;acb&quot;</code> (n=3), <code>b = &quot;abc&quot;</code> (m=3)</li></ul><table><thead><tr><th style="text-align:center"><code>dp[i][j]</code></th><th style="text-align:center">j=0 (b=&quot;&quot;)</th><th style="text-align:center">j=1 (b=&quot;a&quot;)</th><th style="text-align:center">j=2 (b=&quot;ab&quot;)</th><th style="text-align:center">j=3 (b=&quot;abc&quot;)</th></tr></thead><tbody><tr><td style="text-align:center">i=0 (a=&quot;&quot;)</td><td style="text-align:center"><strong>0</strong></td><td style="text-align:center"><strong>0</strong></td><td style="text-align:center"><strong>0</strong></td><td style="text-align:center"><strong>0</strong></td></tr><tr><td style="text-align:center">i=1 (a=&quot;a&quot;)</td><td style="text-align:center"><strong>0</strong></td><td style="text-align:center"><code>dp[0][0]+1</code> = <strong>1</strong></td><td style="text-align:center"><code>max(1, 0)</code> = <strong>1</strong></td><td style="text-align:center"><code>max(1, 1)</code> = <strong>1</strong></td></tr><tr><td style="text-align:center">i=2 (a=&quot;ac&quot;)</td><td style="text-align:center"><strong>0</strong></td><td style="text-align:center"><code>max(0, 1)</code> = <strong>1</strong></td><td style="text-align:center"><code>max(1, 1)</code> = <strong>1</strong></td><td style="text-align:center"><code>dp[1][2]+1</code> = <strong>2</strong></td></tr><tr><td style="text-align:center">i=3 (a=&quot;acb&quot;)</td><td style="text-align:center"><strong>0</strong></td><td style="text-align:center"><code>max(0, 1)</code> = <strong>1</strong></td><td style="text-align:center"><code>dp[2][1]+1</code> = <strong>2</strong></td><td style="text-align:center"><code>max(2, 2)</code> = <strong>2</strong></td></tr></tbody></table><ul><li><strong>最终答案：</strong> <code>dp[n][m] = dp[3][3] = 2</code></li></ul>
+          <ul><li><strong>输入：</strong> A=&quot;acb&quot;, B=&quot;abc&quot;</li><li><strong>状态表 <code>dp[i][j]</code>：</strong></li></ul><table><thead><tr><th style="text-align:center"></th><th style="text-align:center">&quot;&quot;</th><th style="text-align:center">a</th><th style="text-align:center">b</th><th style="text-align:center">c</th></tr></thead><tbody><tr><td style="text-align:center"><strong>&quot;&quot;</strong></td><td style="text-align:center">0</td><td style="text-align:center">0</td><td style="text-align:center">0</td><td style="text-align:center">0</td></tr><tr><td style="text-align:center"><strong>a</strong></td><td style="text-align:center">0</td><td style="text-align:center"><strong>1</strong></td><td style="text-align:center">1</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center"><strong>a</strong></td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center">1</td><td style="text-align:center"><strong>2</strong></td></tr><tr><td style="text-align:center"><strong>c</strong></td><td style="text-align:center">0</td><td style="text-align:center">1</td><td style="text-align:center"><strong>2</strong></td><td style="text-align:center">2</td></tr></tbody></table><ul><li><strong>结果：</strong> <code>dp[3][3] = 2</code> (&quot;ab&quot; 或 &quot;ac&quot;)</li></ul>
         </div>
       </div>
     </div>
-<h3 id="3-详细实现过程-Step-by-Step">3. 详细实现过程 (Step-by-Step)</h3>
-<h4 id="O-NM-空间-解法"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span> 空间 解法</h4>
-<ol>
-<li><strong>初始化：</strong>
+<h2 id="三、-实战部署">三、 实战部署</h2>
+<h3 id="1-代码模板-朴素解法">1. 代码模板 (朴素解法)</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>LCS (O(NM) 空间)
+      </div>
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 假设 a[n], b[m] (1-based)</span><br><span class="hljs-comment">// dp[n][m] 初始化为 0</span><br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] == b[j] )<br>        &#123;<br>            dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            dp[i][j] = <span class="hljs-built_in">max</span>( dp[i<span class="hljs-number">-1</span>][j], dp[i][j<span class="hljs-number">-1</span>] );<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 答案: dp[n][m]</span><br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="2-代码模板-滚动数组优化">2. 代码模板 (滚动数组优化)</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
+        <div class="fold-arrow">▶</div>LCS (O(M) 空间 - 推荐)
+      </div>
+      <div class="fold-collapse collapse" id="collapse-28ab9646">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// dp[2][m] 初始化为 0</span><br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-type">int</span> curr = i &amp; <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> prev = (i - <span class="hljs-number">1</span>) &amp; <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] == b[j] )<br>        &#123;<br>            dp[curr][j] = dp[prev][j<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            dp[curr][j] = <span class="hljs-built_in">max</span>( dp[prev][j], dp[curr][j<span class="hljs-number">-1</span>] );<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 答案: dp[n &amp; 1][m]</span><br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="3-部署细节">3. 部署细节</h3>
 <ul>
-<li>声明 <code>dp[maxn][maxn]</code>数组，表的第 0 行和第 0 列自动为 0。</li>
+<li><strong>1-based 索引：</strong> 必须使用。<code>dp[0][...]</code> 表示空串，长度为 0，是天然的边界条件。</li>
+<li><strong>子序列 vs 子串：</strong> * LCS (子序列)：<code>else</code> 分支取 <code>max</code>（继承）。
+<ul>
+<li>子串 (连续)：<code>else</code> 分支必须置为 <code>0</code>（断开）。</li>
 </ul>
 </li>
-<li><strong>循环迭代：</strong>
-<ul>
-<li>外层循环 <code>i</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \to n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>（遍历 <code>a</code>）。</li>
-<li>内层循环 <code>j</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1 \to m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>（遍历 <code>b</code>）。</li>
 </ul>
-</li>
-<li><strong>状态转移：</strong>
-<ul>
-<li><strong>Case 1：</strong> <code>if (a[i] == b[j]) &#123; dp[i][j] = dp[i-1][j-1] + 1; &#125;</code></li>
-<li><strong>Case 2：</strong> <code>else &#123; dp[i][j] = max(dp[i-1][j], dp[i][j-1]); &#125;</code></li>
-</ul>
-</li>
-<li><strong>获取答案：</strong>
-<ul>
-<li>最终答案为 <code>dp[n][m]</code>。</li>
-</ul>
-</li>
-</ol>
-<h4 id="O-M-空间-滚动数组-解法"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> 空间 (滚动数组) 解法</h4>
-<ol>
-<li><strong>初始化：</strong>
-<ul>
-<li>声明 <code>dp[2][maxn]</code> 数组，并初始化为 0。</li>
-</ul>
-</li>
-<li><strong>循环迭代：</strong>
-<ul>
-<li>外层循环 <code>i</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 \to n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>。</li>
-<li><code>int curr = i &amp; 1;</code> (例如：1)</li>
-<li><code>int prev = (i - 1) &amp; 1;</code> (例如：0)</li>
-<li>内层循环 <code>j</code> 从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">1 \to m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>。</li>
-</ul>
-</li>
-<li><strong>状态转移：</strong>
-<ul>
-<li><strong>Case 1：</strong> <code>if (a[i] == b[j]) &#123; dp[curr][j] = dp[prev][j-1] + 1; &#125;</code></li>
-<li><strong>Case 2：</strong> <code>else &#123; dp[curr][j] = max(dp[prev][j], dp[curr][j-1]); &#125;</code></li>
-</ul>
-</li>
-<li><strong>获取答案：</strong>
-<ul>
-<li>循环结束后，最终答案为 <code>dp[n &amp; 1][m]</code> (即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 所在行的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 位置)。</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、-总结分析-Analysis-Comparison">三、 总结分析 (Analysis &amp; Comparison)</h2>
-<h3 id="1-复杂度分析-Complexity">1. 复杂度分析 (Complexity)</h3>
+<h2 id="四、-维度概览">四、 维度概览</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">维度</th>
-<th style="text-align:left">复杂度</th>
-<th style="text-align:left">说明</th>
+<th><strong>维度</strong></th>
+<th><strong>复杂度</strong></th>
+<th><strong>说明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span> 空间解法</strong></td>
-<td style="text-align:left">时间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span><br>空间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left">基础 DP，二维数组。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 为 <code>a</code> 长度，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 为 <code>b</code> 长度。</td>
+<td><strong>时间</strong></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span></td>
+<td>必须遍历整个二维表。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> 空间解法</strong></td>
-<td style="text-align:left">时间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span><br>空间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>2</mn><mi>M</mi><mo stretchy="false">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2M) = O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left">滚动数组优化，空间复杂度与较短的字符串长度相关。</td>
+<td><strong>空间</strong></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span></td>
+<td>滚动数组优化后。</td>
+</tr>
+<tr>
+<td><strong>特性</strong></td>
+<td>双串匹配</td>
+<td>经典的二维线性 DP。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="2-核心注意点-Key-Pitfalls">2. 核心注意点 (Key Pitfalls)</h3>
-<ol>
-<li><strong>1-based 索引：</strong> 个人习惯使用 1-based 索引 (<code>a[i]</code> 对应 <code>dp[i]</code>)，<code>dp[0][0]</code> 等边界自然为 0，从而极大简化边界判断。</li>
-<li><strong>子序列 vs 子串：</strong> 如果是子序列 (subsequence)，不要求连续。如果是子串 (Substring)，<code>else</code> 分支的转移应为 <code>dp[i][j] = 0</code>。</li>
-<li><strong>答案查询：</strong> <code>dp[n][m]</code>。</li>
-</ol>
-<h2 id="四、-代码模板-Code-Template">四、 代码模板 (Code Template)</h2>
-
-    <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
-        <div class="fold-arrow">▶</div>O(NM) 空间 DP
-      </div>
-      <div class="fold-collapse collapse" id="collapse-65ad56e5">
-        <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] == b[j] )<br>        &#123;<br>            dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            dp[i][j] = <span class="hljs-built_in">max</span>( dp[i<span class="hljs-number">-1</span>][j], dp[i][j<span class="hljs-number">-1</span>] );<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 最终答案为 dp[n][m]</span><br></code></pre></td></tr></table></figure>
-        </div>
-      </div>
-    </div>
-
-    <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>O(M) 空间 DP_滚动数组
-      </div>
-      <div class="fold-collapse collapse" id="collapse-28ab9646">
-        <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-type">int</span> curr = i &amp; <span class="hljs-number">1</span>;     <span class="hljs-comment">// 0 或 1</span><br>    <span class="hljs-type">int</span> prev = (i - <span class="hljs-number">1</span>) &amp; <span class="hljs-number">1</span>; <span class="hljs-comment">// 1 或 0</span><br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] == b[j] )<br>        &#123;<br>            <span class="hljs-comment">// 依赖 [上一行][j-1]</span><br>            dp[curr][j] = dp[prev][j<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-comment">// 依赖 [上一行][j] 和 [当前行][j-1]</span><br>            dp[curr][j] = <span class="hljs-built_in">max</span>(dp[prev][j], dp[curr][j<span class="hljs-number">-1</span>]);<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 最终答案为 dp[n &amp; 1][m]</span><br></code></pre></td></tr></table></figure>
-        </div>
-      </div>
-    </div>
 
                 
               </div>
