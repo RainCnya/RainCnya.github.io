@@ -27,7 +27,7 @@
 <meta property="og:description" content="[专题] 突破 O(N2)O(N^2)O(N2)：LIS 与 LCS 的模型转化与维度优化 1. 前言：当 NNN 变大时 我们在学习动态规划初期，最先接触的线性 DP 模型往往是 最长上升子序列 (LIS) 和 最长公共子序列 (LCS)。 它们最朴素的状态转移方程大家都很熟悉，复杂度都是 O(N2)O(N^2)O(N2)。 然而，在提高组及以上的题目中，数据范围往往会扩大到 N≥105N \g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-26T12:01:26.000Z">
-<meta property="article:modified_time" content="2025-11-26T12:38:03.382Z">
+<meta property="article:modified_time" content="2025-11-27T04:24:44.460Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="LIS">
@@ -404,12 +404,23 @@
 <h2 id="4-核心代码参考">4. 核心代码参考</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>P1439: 贪心+二分 (核心逻辑)
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 维护一个单调数组 low，low[i] 表示长度为 i 的 LIS 的最小末尾</span><br><span class="hljs-keyword">if</span>( !len || a[i] &gt; low[len] ) low[++len] = a[i];<br><span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 二分查找第一个大于等于 a[i] 的位置并替换</span><br>    <span class="hljs-type">int</span> pos = <span class="hljs-built_in">lower_bound</span>(low + <span class="hljs-number">1</span>, low + len + <span class="hljs-number">1</span>, a[i]) - low;<br>    low[pos] = a[i];<br>&#125;<br>````<br><br>&#123;% endfold %&#125;<br><br>&#123;% fold info @P4310: 按位转移 (核心逻辑) %&#125;<br><br>```cpp<br><span class="hljs-type">int</span> now = <span class="hljs-number">1</span>;<br><span class="hljs-comment">// 核心：只枚举 30 个二进制位，而不是枚举前 i 个数</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j ) &#123;<br>    <span class="hljs-keyword">if</span>( (a[i] &gt;&gt; j) &amp; <span class="hljs-number">1</span> ) now = <span class="hljs-built_in">max</span>( now, dp[j] + <span class="hljs-number">1</span> );<br>&#125;<br><span class="hljs-comment">// 更新所有相关的位</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j ) &#123;<br>    <span class="hljs-keyword">if</span>( (a[i] &gt;&gt; j) &amp; <span class="hljs-number">1</span> ) dp[j] = <span class="hljs-built_in">max</span>( dp[j], now );<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 维护一个单调数组 low，low[i] 表示长度为 i 的 LIS 的最小末尾</span><br><span class="hljs-keyword">if</span>( !len || a[i] &gt; low[len] ) low[++len] = a[i];<br><span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 二分查找第一个大于等于 a[i] 的位置并替换</span><br>    <span class="hljs-type">int</span> pos = <span class="hljs-built_in">lower_bound</span>(low + <span class="hljs-number">1</span>, low + len + <span class="hljs-number">1</span>, a[i]) - low;<br>    low[pos] = a[i];<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
+        <div class="fold-arrow">▶</div>P4310: 按位转移 (核心逻辑)
+      </div>
+      <div class="fold-collapse collapse" id="collapse-28ab9646">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> now = <span class="hljs-number">1</span>;<br><span class="hljs-comment">// 核心：只枚举 30 个二进制位，而不是枚举前 i 个数</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j ) &#123;<br>    <span class="hljs-keyword">if</span>( (a[i] &gt;&gt; j) &amp; <span class="hljs-number">1</span> ) now = <span class="hljs-built_in">max</span>( now, dp[j] + <span class="hljs-number">1</span> );<br>&#125;<br><span class="hljs-comment">// 更新所有相关的位</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j ) &#123;<br>    <span class="hljs-keyword">if</span>( (a[i] &gt;&gt; j) &amp; <span class="hljs-number">1</span> ) dp[j] = <span class="hljs-built_in">max</span>( dp[j], now );<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
