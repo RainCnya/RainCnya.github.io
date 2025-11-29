@@ -19,15 +19,15 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：有依赖的背包 (浅层依赖) -V4.2 一、 初步认知  命名： 有依赖的背包 (Dependent Knapsack Problem) 领域： 动态规划 (DP) &#x2F; 分组背包变种 定义： 物品之间存在“主件-附件”的依赖关系（选附件必选主件）。 典型设问： P1064 金明的预算方案：主件最多 2 个附件，求预算内的最大价值。 关系辨析：  广义上： 是 树形背包（依赖关系构成树">
+    <meta name="description" content="算法学习笔记：DP&#x2F;背包问题 - 有依赖的背包 (分组模型) 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 背包问题   命名： 有依赖的背包 (Dependent Knapsack Problem) 领域： 动态规划 (DP) &#x2F; 分组背包变种 定义： 物品之间存在“主件-附件”的依赖关系（选附件必选主件）。 典型设问： P1064 金明的预算方案。 关系辨析： 这种浅">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法学习笔记：有依赖的背包 (浅层依赖)">
+<meta property="og:title" content="算法学习笔记：DP&#x2F;背包问题 - 有依赖的背包 (分组模型)">
 <meta property="og:url" content="http://example.com/posts/c5d634f4.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：有依赖的背包 (浅层依赖) -V4.2 一、 初步认知  命名： 有依赖的背包 (Dependent Knapsack Problem) 领域： 动态规划 (DP) &#x2F; 分组背包变种 定义： 物品之间存在“主件-附件”的依赖关系（选附件必选主件）。 典型设问： P1064 金明的预算方案：主件最多 2 个附件，求预算内的最大价值。 关系辨析：  广义上： 是 树形背包（依赖关系构成树">
+<meta property="og:description" content="算法学习笔记：DP&#x2F;背包问题 - 有依赖的背包 (分组模型) 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 背包问题   命名： 有依赖的背包 (Dependent Knapsack Problem) 领域： 动态规划 (DP) &#x2F; 分组背包变种 定义： 物品之间存在“主件-附件”的依赖关系（选附件必选主件）。 典型设问： P1064 金明的预算方案。 关系辨析： 这种浅">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-22T10:43:00.000Z">
-<meta property="article:modified_time" content="2025-11-26T12:32:24.340Z">
+<meta property="article:modified_time" content="2025-11-29T10:59:05.000Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="背包DP">
@@ -37,7 +37,7 @@
   
   
   
-  <title>算法学习笔记：有依赖的背包 (浅层依赖) - RainCnya</title>
+  <title>算法学习笔记：DP/背包问题 - 有依赖的背包 (分组模型) - RainCnya</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法学习笔记：有依赖的背包 (浅层依赖)"></span>
+            <span id="subtitle" data-typed-text="算法学习笔记：DP/背包问题 - 有依赖的背包 (分组模型)"></span>
           
         </div>
 
@@ -247,7 +247,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          635 字
+          519 字
         
       </span>
     
@@ -259,7 +259,7 @@
         
         
           <!-- compatible with older versions-->
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -305,96 +305,89 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">算法学习笔记：有依赖的背包 (浅层依赖)</h1>
+            <h1 id="seo-header">算法学习笔记：DP/背包问题 - 有依赖的背包 (分组模型)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>算法学习笔记：有依赖的背包 (浅层依赖) -V4.2</h1>
+                <h1>算法学习笔记：DP/背包问题 - 有依赖的背包 (分组模型)</h1>
 <h2 id="一、-初步认知">一、 初步认知</h2>
 <ul>
+<li><strong>领域层级：</strong>
+<ul>
+<li><strong>父领域：</strong> 动态规划 (DP)</li>
+<li><strong>子领域：</strong> 背包问题</li>
+</ul>
+</li>
 <li><strong>命名：</strong> 有依赖的背包 (Dependent Knapsack Problem)</li>
 <li><strong>领域：</strong> 动态规划 (DP) / 分组背包变种</li>
 <li><strong>定义：</strong> 物品之间存在“主件-附件”的依赖关系（选附件必选主件）。</li>
-<li><strong>典型设问：</strong> P1064 金明的预算方案：主件最多 2 个附件，求预算内的最大价值。</li>
-<li><strong>关系辨析：</strong>
-<ul>
-<li><strong>广义上：</strong> 是 <strong>树形背包</strong>（依赖关系构成树）。</li>
-<li><strong>狭义上（本题）：</strong> 是 <strong>分组背包</strong>。因为层级浅（只有两层），我们可以枚举主件及其附件的所有组合，将其视为互斥的“组”。</li>
-</ul>
-</li>
+<li><strong>典型设问：</strong> P1064 金明的预算方案。</li>
+<li><strong>关系辨析：</strong> 这种浅层依赖问题，本质上是 <strong>分组背包</strong>。</li>
 </ul>
 <h2 id="二、-主题渗透">二、 主题渗透</h2>
 <h3 id="1-基本思路-转化">1. 基本思路 (转化)</h3>
 <ul>
-<li>如果用 0/1 背包的视角，附件的决策依赖于主件，状态难以直接转移。</li>
 <li><strong>转化策略：</strong> 我们把 <strong>“一个主件 + 它的所有附件”</strong> 看作一个 <strong>“物品组”</strong>。</li>
-<li>在这个组内，我们必须做出<strong>互斥</strong>的选择。假设主件为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>，附件为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo separator="true">,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A, B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。合法的选择只有以下几种：
-<ol>
-<li>只选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>。</li>
-<li>选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>+</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">M + A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>。</li>
-<li>选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">M + B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。</li>
-<li>选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>+</mo><mi>A</mi><mo>+</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">M + A + B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。</li>
-</ol>
-<ul>
-<li><em>(注：不选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 则整个组都不选)</em></li>
+<li>在这个组内，决策是<strong>互斥</strong>的：只能选择“不选主件”、“仅选主件”、“主件+附件A”、“主件+附件B”或“主件+所有附件”等合法组合。</li>
 </ul>
-</li>
-</ul>
-<h3 id="2-核心思想">2. 核心思想</h3>
-<ul>
-<li><strong>枚举“主件及其附件”的所有合法组合，将其打包成一个“组”，然后对这些“组”进行标准的分组背包 DP。</strong></li>
-</ul>
-<h3 id="3-演示">3. 演示</h3>
+<h3 id="2-演示">2. 演示</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-b9efb288" role="button" aria-expanded="false" aria-controls="collapse-b9efb288">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-a50e4f20" role="button" aria-expanded="false" aria-controls="collapse-a50e4f20">
         <div class="fold-arrow">▶</div>模拟 (组合枚举)
       </div>
-      <div class="fold-collapse collapse" id="collapse-b9efb288">
+      <div class="fold-collapse collapse" id="collapse-a50e4f20">
         <div class="fold-content">
-          <ul><li><strong>主件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>：</strong> 费用 10, 价值 20。</li><li><strong>附件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>：</strong> 费用 5, 价值 10。</li><li><strong>附件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>：</strong> 费用 3, 价值 30。</li><li><strong>转化为分组背包：</strong> 该组内有 4 个互斥的“虚拟物品”：<ol><li><strong>策略 1 (仅M)：</strong> 费用 10, 价值 20。</li><li><strong>策略 2 (M+A)：</strong> 费用 15, 价值 30。</li><li><strong>策略 3 (M+B)：</strong> 费用 13, 价值 50。</li><li><strong>策略 4 (M+A+B)：</strong> 费用 18, 价值 60。</li></ol></li><li>接下来只需对这个“组”做一次倒序的 DP 更新即可。</li></ul>
+          <ul><li><strong>主件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>：</strong> 费用 10, 价值 20。</li><li><strong>附件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>：</strong> 费用 5, 价值 10。</li><li><strong>附件 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>：</strong> 费用 3, 价值 30。</li><li><strong>转化为分组背包：</strong> 该组内有 4 个互斥的“虚拟物品”：<ol><li><strong>策略 1 (仅M)：</strong> 费用 10, 价值 20。</li><li><strong>策略 2 (M+A)：</strong> 费用 15, 价值 30。</li><li><strong>策略 3 (M+B)：</strong> 费用 13, 价值 50。</li><li><strong>策略 4 (M+A+B)：</strong> 费用 18, 价值 60。</li></ol></li></ul>
         </div>
       </div>
     </div>
-<h2 id="三、-实战部署">三、 实战部署</h2>
-<p>注：此思想无特定模板，按照上文思路只需要转化为分组背包求解即可。</p>
+<h2 id="三、-核心思想">三、 核心思想</h2>
+<ul>
+<li><strong>枚举组合 + 分组互斥</strong>：将“主件及其附件”的所有合法组合，打包成一个互斥的“组”，然后进行标准的分组背包 DP。</li>
+</ul>
+<h2 id="四、-实战部署">四、 实战部署</h2>
+<p>注：此思想无特定模板，只需转化为分组背包求解。</p>
 <p>经典习题</p>
 <ul>
 <li><strong>Luogu-P1064 金明的预算方案</strong>
 <ul>
-<li>这是“主件+附件”模型的标准例题，使用将依赖转化为互斥组的思路求解。</li>
 <li><a target="_blank" rel="noopener" href="https://raincnya.space/posts/470e7bed.html">题解：Luogu-P1064 金明的预算方案</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="四、-维度概览">四、 维度概览</h2>
+<h2 id="五、-维度概览">五、 维度概览</h2>
 <table>
 <thead>
 <tr>
-<th><strong>维度</strong></th>
-<th><strong>复杂度</strong></th>
-<th><strong>说明</strong></th>
+<th style="text-align:left"><strong>维度</strong></th>
+<th style="text-align:left"><strong>复杂度</strong></th>
+<th style="text-align:left"><strong>说明</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>时间</strong></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>⋅</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \cdot m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 为总预算，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 为主件数量。内层常数极小（最多4次比较）。</td>
+<td style="text-align:left"><strong>时间</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>⋅</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \cdot m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 为总预算，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 为主件数量。内层常数极小。</td>
 </tr>
 <tr>
-<td><strong>空间</strong></td>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td>一维滚动数组。</td>
+<td style="text-align:left"><strong>空间</strong></td>
+<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
+<td style="text-align:left">一维滚动数组。</td>
 </tr>
 <tr>
-<td><strong>特性</strong></td>
-<td>分组枚举</td>
-<td>这种“枚举子集”转化为分组背包的技巧非常通用。</td>
+<td style="text-align:left"><strong>特性</strong></td>
+<td style="text-align:left">分组枚举</td>
+<td style="text-align:left">将依赖关系转化为互斥组的通用技巧。</td>
 </tr>
 </tbody>
 </table>
+<h2 id="六、-领域拓展">六、 领域拓展</h2>
+<ul>
+<li><strong>广义模型：</strong> 当依赖关系构成树状结构，且层级较深时，需要使用 <strong>树形 DP</strong>（树形背包）进行求解。</li>
+</ul>
 
                 
               </div>
@@ -402,27 +395,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
@@ -446,7 +418,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法学习笔记：有依赖的背包 (浅层依赖)</div>
+      <div>算法学习笔记：DP/背包问题 - 有依赖的背包 (分组模型)</div>
       <div>http://example.com/posts/c5d634f4.html</div>
     </div>
     <div class="license-meta">

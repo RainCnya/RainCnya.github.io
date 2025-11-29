@@ -19,15 +19,15 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：计数动态规划 一、 初步了解   命名： 计数动态规划 (Counting Dynamic Programming)   领域： 动态规划 (DP) &#x2F; 组合数学   定义： 统计满足特定条件的方案总数。与最值 DP不同，其状态转移主要基于加法原理（将互斥的子问题方案数累加）。   典型设问：   “有多少种方法可以爬到第 NNN 阶楼梯？”   “有多少种方法可以用硬币凑出金额 M">
+    <meta name="description" content="算法学习笔记：DP&#x2F;计数DP - 方案统计 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 计数 DP   命名： 计数动态规划 (Counting DP) 定义： 统计满足特定条件的方案总数。 典型设问： “凑出金额 M 的方案数”、“爬楼梯的方法数”。  二、 主题渗透 1. 基本思路  加法原理： dp[i]&#x3D;∑dp[j]dp[i] &#x3D; \sum dp[j]dp[i]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法学习笔记：计数动态规划">
+<meta property="og:title" content="算法学习笔记：DP&#x2F;计数DP - 方案统计">
 <meta property="og:url" content="http://example.com/posts/fd88b4a9.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：计数动态规划 一、 初步了解   命名： 计数动态规划 (Counting Dynamic Programming)   领域： 动态规划 (DP) &#x2F; 组合数学   定义： 统计满足特定条件的方案总数。与最值 DP不同，其状态转移主要基于加法原理（将互斥的子问题方案数累加）。   典型设问：   “有多少种方法可以爬到第 NNN 阶楼梯？”   “有多少种方法可以用硬币凑出金额 M">
+<meta property="og:description" content="算法学习笔记：DP&#x2F;计数DP - 方案统计 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 计数 DP   命名： 计数动态规划 (Counting DP) 定义： 统计满足特定条件的方案总数。 典型设问： “凑出金额 M 的方案数”、“爬楼梯的方法数”。  二、 主题渗透 1. 基本思路  加法原理： dp[i]&#x3D;∑dp[j]dp[i] &#x3D; \sum dp[j]dp[i]">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-23T13:16:33.000Z">
-<meta property="article:modified_time" content="2025-11-27T09:11:34.915Z">
+<meta property="article:modified_time" content="2025-11-29T11:13:55.000Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="计数DP">
@@ -36,7 +36,7 @@
   
   
   
-  <title>算法学习笔记：计数动态规划 - RainCnya</title>
+  <title>算法学习笔记：DP/计数DP - 方案统计 - RainCnya</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法学习笔记：计数动态规划"></span>
+            <span id="subtitle" data-typed-text="算法学习笔记：DP/计数DP - 方案统计"></span>
           
         </div>
 
@@ -246,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.4k 字
+          892 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          18 分钟
+          12 分钟
         
       </span>
     
@@ -304,52 +304,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">算法学习笔记：计数动态规划</h1>
+            <h1 id="seo-header">算法学习笔记：DP/计数DP - 方案统计</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>算法学习笔记：计数动态规划</h1>
-<h2 id="一、-初步了解">一、 初步了解</h2>
+                <h1>算法学习笔记：DP/计数DP - 方案统计</h1>
+<h2 id="一、-初步认知">一、 初步认知</h2>
 <ul>
-<li>
-<p><strong>命名：</strong> 计数动态规划 (Counting Dynamic Programming)</p>
-</li>
-<li>
-<p><strong>领域：</strong> 动态规划 (DP) / 组合数学</p>
-</li>
-<li>
-<p><strong>定义：</strong> 统计满足特定条件的<strong>方案总数</strong>。与<strong>最值 DP</strong>不同，其状态转移主要基于<strong>加法原理</strong>（将互斥的子问题方案数累加）。</p>
-</li>
-<li>
-<p><strong>典型设问：</strong></p>
+<li><strong>领域层级：</strong>
 <ul>
-<li>
-<p>“有多少种方法可以爬到第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 阶楼梯？”</p>
-</li>
-<li>
-<p>“有多少种方法可以用硬币凑出金额 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>？”</p>
-</li>
-<li>
-<p>“求网格图从起点到终点的路径条数（有障碍）。”</p>
-</li>
+<li><strong>父领域：</strong> 动态规划 (DP)</li>
+<li><strong>子领域：</strong> 计数 DP</li>
 </ul>
 </li>
+<li><strong>命名：</strong> 计数动态规划 (Counting DP)</li>
+<li><strong>定义：</strong> 统计满足特定条件的<strong>方案总数</strong>。</li>
+<li><strong>典型设问：</strong> “凑出金额 M 的方案数”、“爬楼梯的方法数”。</li>
 </ul>
 <h2 id="二、-主题渗透">二、 主题渗透</h2>
 <h3 id="1-基本思路">1. 基本思路</h3>
 <ul>
-<li>
-<p><strong>状态定义：</strong> <code>dp[i]</code> 通常表示达到状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的<strong>方案总数</strong>。</p>
-</li>
-<li>
-<p>状态转移： 如果状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 可以由状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>j</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">j_1, j_2, \dots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0572em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0572em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span></span></span></span> 转移而来（且这些来源互斥），则：</p>
-<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mo>∑</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><msub><mi>j</mi><mi>k</mi></msub><mo stretchy="false">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><msub><mi>j</mi><mn>1</mn></msub><mo stretchy="false">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><msub><mi>j</mi><mn>2</mn></msub><mo stretchy="false">]</mo><mo>+</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">dp[i] = \sum dp[j_k] = dp[j_1] + dp[j_2] + \dots
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0572em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0572em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0572em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.123em;"></span><span class="minner">…</span></span></span></span></span></p>
-</li>
-<li>
-<p><strong>初始化：</strong> 计数问题的基准状态（起点）通常初始化为 <strong>1</strong>（代表“什么都不做”也是一种合法方案，或者起点的路径数为 1）。</p>
-</li>
+<li><strong>加法原理：</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mo>∑</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i] = \sum dp[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>。</li>
+<li><strong>初始化：</strong> <code>dp[0] = 1</code>。</li>
 </ul>
 <h3 id="2-核心难点-排列-vs-组合">2. 核心难点 (排列 vs 组合)</h3>
 <ul>
@@ -379,23 +356,28 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-核心思想">3. 核心思想</h3>
-<ul>
-<li>通过<strong>加法原理</strong>计算子问题方案，区别<strong>组合数</strong>和<strong>排列数</strong>。</li>
-</ul>
-<h3 id="4-演示">4. 演示</h3>
+<h3 id="3-演示">3. 演示</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-7b15ae9c" role="button" aria-expanded="false" aria-controls="collapse-7b15ae9c">
-        <div class="fold-arrow">▶</div>模拟 (组合 vs 排列)
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-e12502b3" role="button" aria-expanded="false" aria-controls="collapse-e12502b3">
+        <div class="fold-arrow">▶</div>模拟 (循环顺序差异)
       </div>
-      <div class="fold-collapse collapse" id="collapse-7b15ae9c">
+      <div class="fold-collapse collapse" id="collapse-e12502b3">
         <div class="fold-content">
-          <ul><li><strong>任务：</strong> 用硬币 <code>{1, 2, 5}</code> 凑出金额 <code>4</code>。</li><li><strong>区别：</strong><ul><li><strong>组合：</strong> <code>1+1+2</code> 和 <code>1+2+1</code> 视为同一种。</li><li><strong>排列：</strong> <code>1+1+2</code> 和 <code>1+2+1</code> 视为不同种。</li></ul></li></ul><p><strong>1. 组合数 (先枚举物品，再枚举容量)</strong></p><blockquote><p><strong>核心：</strong> 物品 <code>2</code> 只能在物品 <code>1</code> 之后加入，强制了顺序（如 <code>{1, 2}</code>），不可能出现 <code>{2, 1}</code>。</p></blockquote><table><thead><tr><th><strong>阶段 (物品 i)</strong></th><th><strong>dp[0]</strong></th><th><strong>dp[1]</strong></th><th><strong>dp[2]</strong></th><th><strong>dp[3]</strong></th><th><strong>dp[4]</strong></th><th><strong>状态含义 (方案集合)</strong></th></tr></thead><tbody><tr><td><strong>初始</strong></td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td></tr><tr><td><strong>硬币 1</strong></td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>只包含 1：<code>{1111}</code></td></tr><tr><td><strong>硬币 2</strong></td><td>1</td><td>1</td><td><strong>2</strong></td><td><strong>2</strong></td><td><strong>3</strong></td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>4</mn><mo stretchy="false">]</mo><mo>=</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>4</mn><mo stretchy="false">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>4</mn><mo>−</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[4] = dp[4] + dp[4-2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">4</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">4</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">]</span></span></span></span></td></tr><tr><td><strong>最终结果</strong></td><td>-</td><td>-</td><td>-</td><td>-</td><td><strong>3</strong></td><td><code>{1111}, {112}, {22}</code></td></tr></tbody></table><p><strong>2. 排列数 (先枚举容量，再枚举物品)</strong></p><blockquote><p><strong>核心：</strong> 对于每个容量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span>，最后一步都可以放入 <code>1</code> 或 <code>2</code>，因此 <code>{1, 2}</code> ( 2 接在 1 后) 和 <code>{2, 1}</code> ( 1 接在 2 后) 都会被统计。</p></blockquote><table><thead><tr><th><strong>阶段 (容量 j)</strong></th><th><strong>计算来源 ∑dp[j−c]</strong></th><th><strong>dp[j] 结果</strong></th><th><strong>方案集合 (累加过程)</strong></th></tr></thead><tbody><tr><td><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">j=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></strong></td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span> (来自1)</td><td><strong>1</strong></td><td><code>{1}</code></td></tr><tr><td><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">j=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span></strong></td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span> (来自1) + <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span> (来自2)</td><td><strong>2</strong></td><td><code>{1,1}</code> + <code>{2}</code></td></tr><tr><td><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">j=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span></strong></td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span></span></span></span> (来自1) + <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span> (来自2)</td><td><strong>3</strong></td><td><code>{111}, {21}</code> + <code>{12}</code></td></tr><tr><td><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">j=4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></strong></td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[3]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">3</span><span class="mclose">]</span></span></span></span> (来自1) + <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span></span></span></span> (来自2)</td><td><strong>5</strong></td><td><code>{1111}, {211}, {121}</code> + <code>{112}, {22}</code></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>
+          <ul><li><strong>组合 (1, 2 凑 4)：</strong> <code>{112}, {22}, {1111}</code> (共3种)</li><li><strong>排列 (1, 2 凑 4)：</strong> <code>{121}, {112}, ...</code> (共5种)</li></ul>
         </div>
       </div>
     </div>
-<h2 id="三、-实战部署">三、 实战部署</h2>
+<h2 id="三、-核心思想">三、 核心思想</h2>
+<ul>
+<li>
+<p>通过<strong>加法原理</strong>计算子问题方案，区别<strong>组合数</strong>和<strong>排列数</strong>。</p>
+</li>
+<li>
+<p><strong>循环顺序控制</strong>：通过调整内外层循环的顺序，来决定是否区分元素的选择顺序（即排列或组合）。</p>
+</li>
+</ul>
+<h2 id="四、-实战部署">四、 实战部署</h2>
 <h3 id="1-代码模板-组合计数-推荐">1. 代码模板 (组合计数 - 推荐)</h3>
 
     <div class="fold">
@@ -423,19 +405,13 @@
 <h3 id="3-部署细节">3. 部署细节</h3>
 <ul>
 <li>
-<p><strong>取模操作：</strong> 计数 DP 的答案通常极大，每步加法后都要 <code>% MOD</code>。注意负数取模问题（虽然计数通常为非负，但涉及减法时需注意）</p>
+<p><strong>取模：</strong> 步步取模。</p>
 </li>
 <li>
-<p><code>a - b + MOD) % MOD</code>。</p>
-</li>
-<li>
-<p><strong>初始化：</strong> <code>dp[0] = 1</code> 绝大部分计数 DP。</p>
-</li>
-<li>
-<p><strong>完全 vs 0/1：</strong> 如果物品只能用一次（0/1 背包计数），内层循环改为<strong>倒序</strong>即可。</p>
+<p><strong>完全 vs 0/1：</strong> 组合计数中，若物品只能用一次，内层循环改为倒序（0、1背包问题）。</p>
 </li>
 </ul>
-<h2 id="四、-复杂度分析">四、 复杂度分析</h2>
+<h2 id="五、-维度概览">五、 维度概览</h2>
 <table>
 <thead>
 <tr>
@@ -448,26 +424,24 @@
 <tr>
 <td><strong>时间</strong></td>
 <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>⋅</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \cdot V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span></td>
-<td>类似于背包问题。</td>
+<td>类似背包。</td>
 </tr>
 <tr>
 <td><strong>空间</strong></td>
 <td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span></td>
-<td>一维数组优化。</td>
-</tr>
-<tr>
-<td><strong>特性</strong></td>
-<td>加法转移</td>
-<td>区别于最值 DP 的 <code>max/min</code>。</td>
-</tr>
-<tr>
-<td><strong>关键</strong></td>
-<td>循环顺序</td>
-<td>决定是求组合数还是排列数。</td>
+<td>一维数组。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="五、-进阶实战与技巧">五、 进阶实战与技巧</h2>
+<h2 id="六、-领域拓展">六、 领域拓展</h2>
+<ul>
+<li>
+<p><strong>容斥原理：</strong> 总方案 - 非法方案。</p>
+</li>
+<li>
+<p><strong>数位 DP：</strong> 也是一种特殊的计数 DP。</p>
+</li>
+</ul>
 <p>基础的计数 DP 往往基于加法原理，但在复杂约束下，我们需要引入数学技巧：</p>
 <ul>
 <li><strong>正难则反 (容斥原理)：</strong> 当直接统计合法方案困难，但统计总数和非法方案容易时。
@@ -499,27 +473,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
@@ -540,7 +493,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法学习笔记：计数动态规划</div>
+      <div>算法学习笔记：DP/计数DP - 方案统计</div>
       <div>http://example.com/posts/fd88b4a9.html</div>
     </div>
     <div class="license-meta">
@@ -595,8 +548,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8e8ad293.html" title="算法学习笔记：棋盘动态规划">
-                        <span class="hidden-mobile">算法学习笔记：棋盘动态规划</span>
+                      <a href="/posts/8e8ad293.html" title="算法学习笔记：DP/结构化DP - 棋盘DP (路径与价值)">
+                        <span class="hidden-mobile">算法学习笔记：DP/结构化DP - 棋盘DP (路径与价值)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

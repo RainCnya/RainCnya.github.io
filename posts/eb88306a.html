@@ -19,15 +19,15 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法学习笔记：分组背包 一、 初步认知   命名： 分组背包 (Grouped Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 组物品和一个容量为 VVV 的背包。每组包含若干物品，同一组内的物品互斥（最多只能选 1 个）。   典型设问： “有 KKK 组物品，每组有若干个，求在不超过容量前提下，从每组至多选一个物品能获得的最大价值。”">
+    <meta name="description" content="算法学习笔记：DP&#x2F;背包问题 - 分组背包 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 背包问题   命名： 分组背包 (Grouped Knapsack Problem) 领域： 动态规划 (DP) &#x2F; 背包模型 定义： 给定 NNN 组物品，每组包含若干物品，同一组内的物品互斥（最多只能选 1 个）。 典型设问： “有 KKK 组物品，每组有若干个，求在不超过容量前">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法学习笔记：分组背包">
+<meta property="og:title" content="算法学习笔记：DP&#x2F;背包问题 - 分组背包">
 <meta property="og:url" content="http://example.com/posts/eb88306a.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="算法学习笔记：分组背包 一、 初步认知   命名： 分组背包 (Grouped Knapsack Problem)   领域： 动态规划 (DP) &#x2F; 背包模型   定义： 给定 NNN 组物品和一个容量为 VVV 的背包。每组包含若干物品，同一组内的物品互斥（最多只能选 1 个）。   典型设问： “有 KKK 组物品，每组有若干个，求在不超过容量前提下，从每组至多选一个物品能获得的最大价值。”">
+<meta property="og:description" content="算法学习笔记：DP&#x2F;背包问题 - 分组背包 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 背包问题   命名： 分组背包 (Grouped Knapsack Problem) 领域： 动态规划 (DP) &#x2F; 背包模型 定义： 给定 NNN 组物品，每组包含若干物品，同一组内的物品互斥（最多只能选 1 个）。 典型设问： “有 KKK 组物品，每组有若干个，求在不超过容量前">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-21T12:05:57.000Z">
-<meta property="article:modified_time" content="2025-11-26T12:33:06.247Z">
+<meta property="article:modified_time" content="2025-11-29T10:55:44.000Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="背包DP">
@@ -36,7 +36,7 @@
   
   
   
-  <title>算法学习笔记：分组背包 - RainCnya</title>
+  <title>算法学习笔记：DP/背包问题 - 分组背包 - RainCnya</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法学习笔记：分组背包"></span>
+            <span id="subtitle" data-typed-text="算法学习笔记：DP/背包问题 - 分组背包"></span>
           
         </div>
 
@@ -246,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1k 字
+          743 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          14 分钟
+          10 分钟
         
       </span>
     
@@ -304,91 +304,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">算法学习笔记：分组背包</h1>
+            <h1 id="seo-header">算法学习笔记：DP/背包问题 - 分组背包</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>算法学习笔记：分组背包</h1>
+                <h1>算法学习笔记：DP/背包问题 - 分组背包</h1>
 <h2 id="一、-初步认知">一、 初步认知</h2>
 <ul>
-<li>
-<p><strong>命名：</strong> 分组背包 (Grouped Knapsack Problem)</p>
+<li><strong>领域层级：</strong>
+<ul>
+<li><strong>父领域：</strong> 动态规划 (DP)</li>
+<li><strong>子领域：</strong> 背包问题</li>
+</ul>
 </li>
-<li>
-<p><strong>领域：</strong> 动态规划 (DP) / 背包模型</p>
-</li>
-<li>
-<p><strong>定义：</strong> 给定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 组物品和一个容量为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span> 的背包。每组包含若干物品，<strong>同一组内的物品互斥</strong>（最多只能选 1 个）。</p>
-</li>
-<li>
-<p><strong>典型设问：</strong> “有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 组物品，每组有若干个，求在不超过容量前提下，从<strong>每组至多选一个物品</strong>能获得的最大价值。”</p>
-</li>
+<li><strong>命名：</strong> 分组背包 (Grouped Knapsack Problem)</li>
+<li><strong>领域：</strong> 动态规划 (DP) / 背包模型</li>
+<li><strong>定义：</strong> 给定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 组物品，每组包含若干物品，<strong>同一组内的物品互斥</strong>（最多只能选 1 个）。</li>
+<li><strong>典型设问：</strong> “有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 组物品，每组有若干个，求在不超过容量前提下，从<strong>每组至多选一个物品</strong>能获得的最大价值。”</li>
 </ul>
 <h2 id="二、-主题渗透">二、 主题渗透</h2>
 <h3 id="1-基本思路">1. 基本思路</h3>
 <ul>
-<li>
-<p>这是一个 0/1 背包的变种。</p>
-</li>
-<li>
-<p>我们可以把“每一组”看作一个“广义的物品”。</p>
-</li>
-<li>
-<p>对于第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 组，决策从简单的“选/不选”变成了 <strong>“不选，或者选组内的某一个”</strong>。</p>
-</li>
-<li>
-<p>状态转移：</p>
-<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mtext> </mtext><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false">[</mo><msub><mi>i</mi><mn>1</mn></msub><mo stretchy="false">]</mo><mo stretchy="false">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false">[</mo><msub><mi>i</mi><mn>1</mn></msub><mo stretchy="false">]</mo><mo separator="true">,</mo><mtext> </mtext><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false">[</mo><msub><mi>i</mi><mn>2</mn></msub><mo stretchy="false">]</mo><mo stretchy="false">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false">[</mo><msub><mi>i</mi><mn>2</mn></msub><mo stretchy="false">]</mo><mo separator="true">,</mo><mo>…</mo><mtext> </mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp[j] = \max(dp[j], \ dp[j - w[i_1]] + v[i_1], \ dp[j - w[i_2]] + v[i_2], \dots)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mclose">)</span></span></span></span></span></p>
-<p>(其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>i</mi><mn>2</mn></msub><mo>…</mo></mrow><annotation encoding="application/x-tex">i_1, i_2 \dots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span></span></span></span> 是第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 组内的物品)</p>
-</li>
+<li>将“每一组”视为一个广义物品，对容量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 时的状态 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 进行更新。</li>
+<li>显然发现，这其实是一个 0/1 背包的变种问题。</li>
+<li>状态转移：考虑第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 组的物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>，其转移基于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mtext> </mtext><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mi>w</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">]</mo><mo>+</mo><mi>v</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\max(dp[j], \ dp[j - w[i]] + v[i])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">])</span></span></span></span>。</li>
 </ul>
-<h3 id="2-优化思路">2. 优化思路</h3>
-<ul>
-<li>
-<p><strong>空间压缩与循环顺序：</strong></p>
-<ul>
-<li>
-<p>依然可以使用一维数组 <code>dp[j]</code>。</p>
-</li>
-<li>
-<p><strong>关键难点：</strong> 如何保证在考虑组内物品 B 时，用到的状态不是刚刚选了组内物品 A 的状态？（否则就变成了每组选多个）。</p>
-</li>
-<li>
-<p><strong>解决方案：</strong> 调整循环层级。</p>
-<ol>
-<li>
-<p><strong>最外层：</strong> 枚举 <strong>组 ( <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> )</strong> （阶段）。</p>
-</li>
-<li>
-<p><strong>中间层：</strong> 枚举 <strong>容量 ( <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> )</strong>，必须 <strong>倒序</strong> （保证引用的是上一组的状态）。</p>
-</li>
-<li>
-<p><strong>最内层：</strong> 枚举 <strong>组内物品 ( <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> )</strong> （决策）。</p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-核心思想">3. 核心思想</h3>
-<ul>
-<li>将<strong>容量循环</strong>设置在<strong>物品循环</strong>外，结合倒序更新，可以保证同一组物品只能竞争上一个状态，从而达成互斥。</li>
-</ul>
-<h3 id="4-演示">4. 演示</h3>
+<h3 id="2-演示">2. 演示</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-91a54197" role="button" aria-expanded="false" aria-controls="collapse-91a54197">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-f59c17f1" role="button" aria-expanded="false" aria-controls="collapse-f59c17f1">
         <div class="fold-arrow">▶</div>模拟 (互斥性原理)
       </div>
-      <div class="fold-collapse collapse" id="collapse-91a54197">
+      <div class="fold-collapse collapse" id="collapse-f59c17f1">
         <div class="fold-content">
-          <ul><li><p><strong>场景：</strong> 当前处理第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 组，包含物品 A (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>2</mn><mo separator="true">,</mo><mi>v</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">w=2, v=10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>) 和 B (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>3</mn><mo separator="true">,</mo><mi>v</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">w=3, v=20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span></span></span></span>)。</p></li><li><p><strong>状态：</strong> 当前枚举到容量 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">j=5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span></strong>。<code>dp</code> 数组里存的是第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 组的结果（假设全为 0）。</p></li></ul><table><thead><tr><th><strong>步骤 (组内物品)</strong></th><th><strong>目标 j</strong></th><th><strong>需要引用</strong></th><th><strong>状态来源 (关键)</strong></th><th><strong>决策计算 dp[5]</strong></th></tr></thead><tbody><tr><td><strong>1. 尝试 A</strong></td><td>5</td><td><code>dp[5-2]</code></td><td><strong>上一组</strong><br>(因 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 倒序，<code>dp[3]</code> 还没轮到本组更新)</td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>3</mn><mo stretchy="false">]</mo><mo>+</mo><mn>10</mn><mo stretchy="false">)</mo><mo>=</mo><mn mathvariant="bold">10</mn></mrow><annotation encoding="application/x-tex">\max(0, dp[3]+10) = \mathbf{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">3</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord"><span class="mord mathbf">10</span></span></span></span></span></td></tr><tr><td><strong>2. 尝试 B</strong></td><td>5</td><td><code>dp[5-3]</code></td><td><strong>上一组</strong><br>(因 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 倒序，<code>dp[2]</code> 还没轮到本组更新)</td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>10</mn><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>2</mn><mo stretchy="false">]</mo><mo>+</mo><mn>20</mn><mo stretchy="false">)</mo><mo>=</mo><mn mathvariant="bold">20</mn></mrow><annotation encoding="application/x-tex">\max(10, dp[2]+20) = \mathbf{20}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord">10</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">20</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord"><span class="mord mathbf">20</span></span></span></span></span></td></tr></tbody></table><ul><li><p><strong>结果：</strong> <code>dp[5]</code> 最终为 20。</p></li><li><p>分析： A 和 B 都是基于“上一组”的 dp 值进行竞争。如果顺序错了（先枚举物品再枚举容量），B 在计算时可能会用到 A 更新后的 dp[3]，导致 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo>+</mo><mn>20</mn><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">10+20=30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span></span></span></span> (错误)。</p></li></ul>
+          <ul><li><strong>场景：</strong> 当前处理第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 组，物品 A (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">w=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span>) 和 B (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">w=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span>)。</li><li><strong>状态：</strong> 倒序到容量 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">j=5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span></strong>。</li><li><strong>1. 尝试 A：</strong> 基于 <strong>上一组</strong> 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>3</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[3]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">3</span><span class="mclose">]</span></span></span></span> 更新 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[5]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">5</span><span class="mclose">]</span></span></span></span>。</li><li><strong>2. 尝试 B：</strong> 基于 <strong>上一组</strong> 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[2]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">2</span><span class="mclose">]</span></span></span></span> 更新 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[5]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">5</span><span class="mclose">]</span></span></span></span>。</li><li><strong>结果：</strong> A 和 B 都是基于旧状态竞争 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[5]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord">5</span><span class="mclose">]</span></span></span></span>，保证了互斥性。</li></ul>
         </div>
       </div>
     </div>
-<h2 id="三、-实战部署">三、 实战部署</h2>
+<h2 id="三、-核心思想">三、 核心思想</h2>
+<ul>
+<li><strong>容量循环在外，结合倒序保证互斥。</strong></li>
+<li><strong>原理：</strong> 倒序遍历容量，确保组内物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 只能引用<strong>上一组</strong>的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dp</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span></span></span></span> 状态，从而保证同一组内只能选取一个。</li>
+</ul>
+<h2 id="四、-实战部署">四、 实战部署</h2>
 <h3 id="1-代码模板">1. 代码模板</h3>
 
     <div class="fold">
@@ -397,37 +356,20 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 假设 group[k] 存储了第 k 组所有物品的索引</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= total_groups; ++ k )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = m; j &gt;= <span class="hljs-number">0</span>; -- j )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i : group[k] )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( j &gt;= w[i] )<br>            &#123;<br>                <span class="hljs-comment">// 尝试该组内的所有选项，取最优</span><br>                dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - w[i]] + v[i]);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 最终答案 dp[m]</span><br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 假设 group[k] 存储了第 k 组所有物品的索引</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= total_groups; ++ k )<br>&#123;<br>    <span class="hljs-comment">// 关键点 1: 容量 j 必须倒序 (保证互斥)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = m; j &gt;= <span class="hljs-number">0</span>; -- j )<br>    &#123;<br>        <span class="hljs-comment">// 关键点 2: 组内物品 i 必须在最内层 (保证组内所有物品竞争一个状态)</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i : group[k] )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( j &gt;= w[i] )<br>            &#123;<br>                <span class="hljs-comment">// 尝试该组内的所有选项，取最优</span><br>                dp[j] = <span class="hljs-built_in">max</span>(dp[j], dp[j - w[i]] + v[i]);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 最终答案 dp[m]</span><br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h3 id="2-部署细节">2. 部署细节</h3>
 <ul>
 <li>
-<p><strong>三层循环顺序 (绝对关键)：</strong></p>
-<ul>
-<li>
-<p><strong>正确：</strong> 组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 容量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 组内物品。</p>
+<p><strong>三层循环顺序 (很重要)：</strong> 组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 容量 (倒序) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 组内物品。</p>
 </li>
 <li>
-<p><strong>错误：</strong> 组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 组内物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 容量。（这会让组内物品变成 0/1 背包叠加，即每组可选多个）。</p>
+<p><strong>错误写法：</strong> 组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 组内物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 容量。（这会导致组内物品变成 0/1 背包叠加）。</p>
 </li>
 </ul>
-</li>
-<li>
-<p><strong>初始化：</strong> 与 0/1 背包一致。</p>
-</li>
-<li>
-<p><strong>数据存储：</strong> 通常用 <code>vector&lt;int&gt; group[maxn]</code> 或邻接表来存储分组信息。</p>
-</li>
-</ul>
-<h3 id="3-建模技巧：离散化决策">3. 建模技巧：离散化决策</h3>
-<p>有些题目看起来物品选择是连续的（例如：投入任意数量的资源），但实际上<strong>收益产生变化的临界点</strong>是有限的。</p>
-<ul>
-<li><strong>技巧：</strong> 将这些有限的“临界点”视为组内的不同物品，从而将连续问题转化为分组背包。</li>
-<li><a target="_blank" rel="noopener" href="https://raincnya.space/posts/bd679277.html">题解：Luogu-P5322 排兵布阵</a></li>
-</ul>
-<h2 id="四、-维度概览">四、 维度概览</h2>
+<h2 id="五、-维度概览">五、 维度概览</h2>
 <table>
 <thead>
 <tr>
@@ -454,6 +396,18 @@
 </tr>
 </tbody>
 </table>
+<h2 id="六、-领域拓展">六、 领域拓展</h2>
+<ul>
+<li>
+<p><strong>有依赖的背包：</strong> 浅层依赖问题可通过转化为分组背包求解。</p>
+</li>
+<li>
+<p><strong>离散化决策：</strong> 某些连续决策问题可通过识别临界点，转化为有限物品的分组背包。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://raincnya.space/posts/bd679277.html">题解：Luogu-P5322 排兵布阵</a></li>
+</ul>
+</li>
+</ul>
 
                 
               </div>
@@ -461,27 +415,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
@@ -503,7 +436,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法学习笔记：分组背包</div>
+      <div>算法学习笔记：DP/背包问题 - 分组背包</div>
       <div>http://example.com/posts/eb88306a.html</div>
     </div>
     <div class="license-meta">
@@ -548,9 +481,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3d1fa1fa.html" title="算法学习笔记：区间动态规划">
+                      <a href="/posts/3d1fa1fa.html" title="算法学习笔记：DP/结构化DP - 区间DP体系">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法学习笔记：区间动态规划</span>
+                        <span class="hidden-mobile">算法学习笔记：DP/结构化DP - 区间DP体系</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -558,8 +491,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/d5a4946f.html" title="算法学习笔记：多重背包">
-                        <span class="hidden-mobile">算法学习笔记：多重背包</span>
+                      <a href="/posts/d5a4946f.html" title="算法学习笔记：DP/背包问题 - 多重背包">
+                        <span class="hidden-mobile">算法学习笔记：DP/背包问题 - 多重背包</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
