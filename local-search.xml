@@ -22,11 +22,11 @@
     
     <tags>
       
+      <tag>倍增</tag>
+      
       <tag>数据结构</tag>
       
       <tag>RMQ</tag>
-      
-      <tag>倍增</tag>
       
     </tags>
     
@@ -53,9 +53,9 @@
     
     <tags>
       
-      <tag>数据结构</tag>
-      
       <tag>并查集</tag>
+      
+      <tag>数据结构</tag>
       
       <tag>图论</tag>
       
@@ -211,7 +211,7 @@
   
   
   <entry>
-    <title>突破 O(N²)：LIS 与 LCS 的模型转化与维度优化</title>
+    <title>线性 DP 进阶：LIS 与 LCS 的模型转化与维度优化</title>
     <link href="/posts/da8ec77f.html"/>
     <url>/posts/da8ec77f.html</url>
     
@@ -973,9 +973,9 @@
       
       <tag>动态规划</tag>
       
-      <tag>知识体系</tag>
-      
       <tag>背包问题</tag>
+      
+      <tag>知识体系</tag>
       
     </tags>
     
@@ -1261,7 +1261,7 @@
   
   
   <entry>
-    <title>Growth</title>
+    <title>我从洛谷再出发</title>
     <link href="/posts/ab65d9e6.html"/>
     <url>/posts/ab65d9e6.html</url>
     
@@ -1286,7 +1286,7 @@
   
   
   <entry>
-    <title>Time is not dimensions</title>
+    <title>时间不是维度</title>
     <link href="/posts/cfa6377b.html"/>
     <url>/posts/cfa6377b.html</url>
     
@@ -1418,9 +1418,9 @@
       
       <tag>动态规划</tag>
       
-      <tag>知识体系</tag>
-      
       <tag>线性DP</tag>
+      
+      <tag>知识体系</tag>
       
     </tags>
     
@@ -1476,9 +1476,9 @@
     
     <tags>
       
-      <tag>二分</tag>
-      
       <tag>单调队列</tag>
+      
+      <tag>二分</tag>
       
     </tags>
     
@@ -1547,7 +1547,7 @@
     <link href="/posts/92601886.html"/>
     <url>/posts/92601886.html</url>
     
-    <content type="html"><![CDATA[<h3 id="进度与思考">进度与思考</h3><h4 id="随笔一隅">随笔一隅</h4><blockquote><p>感觉有点疲惫？不妨来看看我最新的随笔，放松一下大脑。它关于童年和一块六块钱的汽水：</p><p><strong><a href="https://raincnya.space/posts/soda2025.html">橙子汽水 (The Entropy of Orange Soda) 👉 点击阅读</a></strong></p></blockquote><hr><h4 id="学习领域">学习领域</h4><h4 id="🗺️-ACM-竞赛编程学习清单">🗺️ ACM/竞赛编程学习清单</h4><p>目前主要精力放在 <strong>图论</strong> 的攻克上。</p><ul><li><strong>已掌握领域：</strong> 排序与基础算法、降维技巧、动态规划体系（已完成基本盘）。</li><li><strong>当前学习点：</strong> <strong>图论</strong>。</li><li><strong>前面的区域：</strong> 数据结构进阶、数学。</li></ul>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-c86d5184" role="button" aria-expanded="false" aria-controls="collapse-c86d5184">        <div class="fold-arrow">▶</div>主要清单      </div>      <div class="fold-collapse collapse" id="collapse-c86d5184">        <div class="fold-content">          <h5 id="基础与数学-Foundations-Math">基础与数学 (Foundations &amp; Math)</h5><ul><li>[x] 基础算法（排序、查找）</li><li>[x] 降维技巧（前缀和、差分、双指针）</li><li>[ ] 初等数论（最大公约数、素数、快速幂）</li><li>[ ] 组合数学（排列组合、容斥原理）</li><li>[ ] 线性代数（矩阵快速幂）</li></ul><h5 id="数据结构-Data-Structures">数据结构 (Data Structures)</h5><ul><li>[x] 单调栈/单调队列</li><li>[ ] 基础树结构（二叉树、堆）</li><li>[ ] 树状数组 (BIT)</li><li>[ ] 线段树 (Segment Tree)</li><li>[ ] 进阶数据结构（可持久化、平衡树、LCT）</li></ul><h5 id="动态规划-Dynamic-Programming">动态规划 (Dynamic Programming)</h5><ul><li>[x] 线性 DP（LIS/LCS）</li><li>[x] 背包 DP（0/1、完全、多重、分组）</li><li>[x] 区间 DP / 计数 DP / 棋盘 DP</li><li>[ ] DP 优化（斜率优化、四边形不等式）</li></ul><h5 id="图论-Graph-Theory">图论 (Graph Theory)</h5><ul><li>[ ] 图的表示与遍历（DFS/BFS）</li><li>[ ] 最短路算法（Dijkstra, SPFA, Floyd）</li><li>[ ] 最小生成树（Prim, Kruskal）</li><li>[ ] 连通性（SCC, BCC）</li><li>[ ] 二分图匹配/网络流</li><li>[ ] 拓扑排序</li></ul><h5 id="字符串与搜索-String-Search">字符串与搜索 (String &amp; Search)</h5><ul><li>[x] 基础搜索（BFS/DFS）</li><li>[ ] 字符串匹配（KMP, Z-Algorithm）</li><li>[ ] 字符串数据结构（Trie, AC自动机）</li><li>[ ] 后缀数组/后缀自动机</li></ul><h5 id="计算几何-Computational-Geometry">计算几何 (Computational Geometry)</h5><ul><li>[ ] 基础几何与向量运算</li><li>[ ] 凸包、旋转卡壳</li></ul>        </div>      </div>    </div><hr><h1>笔记部分 (Notes)</h1><h2 id="排序与基础算法">排序与基础算法</h2><p><a href="https://raincnya.space/posts/c6dd187a.html">冒泡排序</a><br><a href="https://raincnya.space/posts/f4c05692.html">快速排序</a></p><h2 id="降维技巧"><a href="https://raincnya.space/posts/6bbbce9d.html">降维技巧</a></h2><p><a href="https://raincnya.space/posts/975bb980.html">前缀和</a> | <a href="https://raincnya.space/posts/4ced8e73.html">差分</a><br><a href="https://raincnya.space/posts/a9a1a34.html">倍增</a> | <a href="https://raincnya.space/posts/bf04ecdb.html">双指针</a><br><a href="https://raincnya.space/posts/ad921851.html">单调栈</a> | <a href="https://raincnya.space/posts/3ff51816.html">单调队列</a></p><h2 id="动态规划体系"><a href="http://raincnya.space/posts/43c5a227.html">动态规划体系</a></h2><p><strong>线性 DP</strong></p><ul><li><a href="http://raincnya.space/posts/7e446389.html">线性动态规划体系</a></li><li><a href="https://raincnya.space/posts/75bdf10e.html">LIS 最长递增子序列</a></li><li><a href="https://raincnya.space/posts/545a145b.html">LCS 最长公共子序列</a></li></ul><p><strong>背包 DP</strong></p><ul><li><a href="https://raincnya.space/posts/baa086c3.html">背包动态规划体系</a></li><li><a href="https://raincnya.space/posts/ebb5626e.html">0/1 背包</a> | <a href="https://raincnya.space/posts/242fdf16.html">完全背包</a></li><li><a href="https://raincnya.space/posts/d5a4946f.html">多重背包</a> | <a href="https://raincnya.space/posts/eb88306a.html">分组背包</a></li><li><a href="https://raincnya.space/posts/c5d634f4.html">有依赖的背包 (浅层依赖)</a></li></ul><p><strong>进阶 DP</strong></p><ul><li><a href="https://raincnya.space/posts/3d1fa1fa.html">区间动态规划</a></li><li><a href="https://raincnya.space/posts/fd88b4a9.html">计数动态规划</a></li><li><a href="https://raincnya.space/posts/8e8ad293.html">棋盘动态规划</a></li></ul><h2 id="图论"><a href="https://raincnya.space/posts/9bbd103.html">图论</a></h2><h2 id="其他（暂未归类）">其他（暂未归类）</h2><h1>题解部分 (Solutions)</h1><h2 id="🌟-精选专题-Advanced-Topics">🌟 精选专题 (Advanced Topics)</h2><blockquote><p><strong>突破单一题解的限制，构建知识网络。</strong></p></blockquote><ul><li><p><strong>[专题] 突破 O(N²)：LIS 与 LCS 的模型转化与维度优化</strong><br><a href="https://raincnya.space/posts/lis_lcs_advanced.html">👉 点击阅读</a> | <em>涉及题目：P1439, P4310, P2516</em></p></li><li><p><strong>[专题] 背包问题的变奏曲：从可行性判定到策略分组</strong><br><a href="https://raincnya.space/posts/knapsack_variants.html">👉 点击阅读</a> | <em>涉及题目：P5020, P1064, P5322</em></p></li><li><p><strong>[专题] 区间 DP 的多重面孔：从费用提前到逆向分治</strong><br><a href="https://raincnya.space/posts/interval_dp_advanced.html">👉 点击阅读</a> | <em>涉及题目：P1220, CF149D, P5851</em></p></li><li><p><strong>[专题] 计数 DP 的高阶技巧：从容斥原理到状态压缩</strong><br><a href="https://raincnya.space/posts/counting_dp_advanced.html">👉 点击阅读</a> | <em>涉及题目：P5664, P2051, P1758</em></p></li></ul><hr><h2 id="降维技巧-2">降维技巧</h2><p><a href="https://raincnya.space/posts/5640d7b4.html">TZOJ-8937 序列平衡</a> | <a href="https://raincnya.space/posts/ff77d078.html">TZOJ-7670 大门</a><br><a href="https://raincnya.space/posts/291a3efb.html">AT_arc100_c Or Plus Max</a> | <a href="https://raincnya.space/posts/cedefa62.html">Luogu-P1600 天天爱跑步</a><br><a href="https://raincnya.space/posts/232d3766.html">Luogu-P1950 长方形</a> | <a href="https://raincnya.space/posts/68d040f7.html">Luogu-P3143 Diamond Collector S</a></p><p><strong>单调队列专练</strong></p><p><a href="https://raincnya.space/posts/e29fee39.html">Luogu-P2261 理想的正方形</a><br><a href="https://raincnya.space/posts/3518ce94.html">Luogu-P1419 寻找段落</a><br><a href="https://raincnya.space/posts/5bf0d1ab.html">Luogu-P3800 Power 收集</a></p><h2 id="动态规划-Single-Solutions">动态规划 (Single Solutions)</h2><h3 id="线性-背包">线性 &amp; 背包</h3><p><a href="https://raincnya.space/posts/abf73c9e.html">TZOJ-2993 Brackets</a><br><a href="https://raincnya.space/posts/e8c58ae2.html">Luogu-P1070 道路游戏</a><br><a href="https://raincnya.space/posts/3f77f736.html">Luogu-P1233 木棍加工</a><br><a href="https://raincnya.space/posts/9cd835bc.html">Luogu-P6902 Surveillance</a><br><a href="https://raincnya.space/posts/344a2721.html">Luogu-P1776 宝物筛选</a><br><a href="https://raincnya.space/posts/e1abbad7.html">Luogu-P1941 飞扬的小鸟</a><br><a href="https://raincnya.space/posts/3cb8deb1.html">Luogu-P5017 摆渡车</a><br><a href="https://raincnya.space/posts/e655281f.html">Luogu-P4310 绝世好题</a></p><h3 id="区间-计数">区间 &amp; 计数</h3><p><a href="https://raincnya.space/posts/2249579.html">Luogu-P1006 传纸条</a><br><a href="https://raincnya.space/posts/12ae9abf.html">Luogu-P2519 problem a</a></p><h2 id="其他题解">其他题解</h2><p><a href="https://raincnya.space/posts/18d54a23.html">TZOJ-3751 快速排序</a><br><a href="https://raincnya.space/posts/65db6b7f.html">TZOJ-5563 Reverse Game</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="进度与思考">进度与思考</h3><h4 id="随笔一隅">随笔一隅</h4><blockquote><p>感觉有点疲惫？不妨来看看我最新的随笔，放松一下大脑。它关于童年和一块六块钱的汽水：</p><p><strong><a href="https://raincnya.space/posts/soda2025.html">橙子汽水 (The Entropy of Orange Soda) 👉 点击阅读</a></strong></p></blockquote><hr><h4 id="学习领域">学习领域</h4><h4 id="🗺️-ACM-竞赛编程学习清单">🗺️ ACM/竞赛编程学习清单</h4><p>目前主要精力放在 <strong>图论</strong> 的攻克上。</p><ul><li><strong>已掌握领域：</strong> 排序与基础算法、降维技巧、动态规划体系（已完成基本盘）。</li><li><strong>当前学习点：</strong> <strong>图论</strong>。</li><li><strong>前面的区域：</strong> 数据结构进阶、数学。</li></ul>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-9b630b88" role="button" aria-expanded="false" aria-controls="collapse-9b630b88">        <div class="fold-arrow">▶</div>主要清单      </div>      <div class="fold-collapse collapse" id="collapse-9b630b88">        <div class="fold-content">          <h5 id="基础与数学-Foundations-Math">基础与数学 (Foundations &amp; Math)</h5><ul><li>[x] 基础算法（排序、查找）</li><li>[x] 降维技巧（前缀和、差分、双指针）</li><li>[ ] 初等数论（最大公约数、素数、快速幂）</li><li>[ ] 组合数学（排列组合、容斥原理）</li><li>[ ] 线性代数（矩阵快速幂）</li></ul><h5 id="数据结构-Data-Structures">数据结构 (Data Structures)</h5><ul><li>[x] 单调栈/单调队列</li><li>[ ] 基础树结构（二叉树、堆）</li><li>[ ] 树状数组 (BIT)</li><li>[ ] 线段树 (Segment Tree)</li><li>[ ] 进阶数据结构（可持久化、平衡树、LCT）</li></ul><h5 id="动态规划-Dynamic-Programming">动态规划 (Dynamic Programming)</h5><ul><li>[x] 线性 DP（LIS/LCS）</li><li>[x] 背包 DP（0/1、完全、多重、分组）</li><li>[x] 区间 DP / 计数 DP / 棋盘 DP</li><li>[ ] DP 优化（斜率优化、四边形不等式）</li></ul><h5 id="图论-Graph-Theory">图论 (Graph Theory)</h5><ul><li>[x] 图的表示与遍历（DFS/BFS）</li><li>[ ] 最短路算法（Dijkstra, SPFA, Floyd）</li><li>[ ] 最小生成树（Prim, Kruskal）</li><li>[ ] 连通性（SCC, BCC）</li><li>[ ] 二分图匹配/网络流</li><li>[ ] 拓扑排序</li></ul><h5 id="字符串与搜索-String-Search">字符串与搜索 (String &amp; Search)</h5><ul><li>[x] 基础搜索（BFS/DFS）</li><li>[ ] 字符串匹配（KMP, Z-Algorithm）</li><li>[ ] 字符串数据结构（Trie, AC自动机）</li><li>[ ] 后缀数组/后缀自动机</li></ul><h5 id="计算几何-Computational-Geometry">计算几何 (Computational Geometry)</h5><ul><li>[ ] 基础几何与向量运算</li><li>[ ] 凸包、旋转卡壳</li></ul>        </div>      </div>    </div><hr><h1>笔记部分 (Notes)</h1><h2 id="排序与基础算法">排序与基础算法</h2><p><a href="https://raincnya.space/posts/c6dd187a.html">冒泡排序</a><br><a href="https://raincnya.space/posts/f4c05692.html">快速排序</a></p><h2 id="降维技巧"><a href="https://raincnya.space/posts/6bbbce9d.html">降维技巧</a></h2><p><a href="https://raincnya.space/posts/975bb980.html">前缀和</a> | <a href="https://raincnya.space/posts/4ced8e73.html">差分</a><br><a href="https://raincnya.space/posts/a9a1a34.html">倍增</a> | <a href="https://raincnya.space/posts/bf04ecdb.html">双指针</a><br><a href="https://raincnya.space/posts/ad921851.html">单调栈</a> | <a href="https://raincnya.space/posts/3ff51816.html">单调队列</a></p><h2 id="动态规划体系"><a href="http://raincnya.space/posts/43c5a227.html">动态规划体系</a></h2><p><strong>线性 DP</strong></p><ul><li><a href="http://raincnya.space/posts/7e446389.html">线性动态规划体系</a></li><li><a href="https://raincnya.space/posts/75bdf10e.html">LIS 最长递增子序列</a></li><li><a href="https://raincnya.space/posts/545a145b.html">LCS 最长公共子序列</a></li></ul><p><strong>背包 DP</strong></p><ul><li><a href="https://raincnya.space/posts/baa086c3.html">背包动态规划体系</a></li><li><a href="https://raincnya.space/posts/ebb5626e.html">0/1 背包</a> | <a href="https://raincnya.space/posts/242fdf16.html">完全背包</a></li><li><a href="https://raincnya.space/posts/d5a4946f.html">多重背包</a> | <a href="https://raincnya.space/posts/eb88306a.html">分组背包</a></li><li><a href="https://raincnya.space/posts/c5d634f4.html">有依赖的背包 (浅层依赖)</a></li></ul><p><strong>进阶 DP</strong></p><ul><li><a href="https://raincnya.space/posts/3d1fa1fa.html">区间动态规划</a></li><li><a href="https://raincnya.space/posts/fd88b4a9.html">计数动态规划</a></li><li><a href="https://raincnya.space/posts/8e8ad293.html">棋盘动态规划</a></li></ul><h2 id="图论"><a href="https://raincnya.space/posts/9bbd103.html">图论</a></h2><h2 id="其他（暂未归类）">其他（暂未归类）</h2><h1>题解部分 (Solutions)</h1><h2 id="🌟-精选专题-Advanced-Topics">🌟 精选专题 (Advanced Topics)</h2><blockquote><p><strong>突破单一题解的限制，构建知识网络。</strong></p></blockquote><ul><li><p><strong>[专题] 突破 O(N²)：LIS 与 LCS 的模型转化与维度优化</strong><br><a href="https://raincnya.space/posts/lis_lcs_advanced.html">👉 点击阅读</a> | <em>涉及题目：P1439, P4310, P2516</em></p></li><li><p><strong>[专题] 背包问题的变奏曲：从可行性判定到策略分组</strong><br><a href="https://raincnya.space/posts/knapsack_variants.html">👉 点击阅读</a> | <em>涉及题目：P5020, P1064, P5322</em></p></li><li><p><strong>[专题] 区间 DP 的多重面孔：从费用提前到逆向分治</strong><br><a href="https://raincnya.space/posts/interval_dp_advanced.html">👉 点击阅读</a> | <em>涉及题目：P1220, CF149D, P5851</em></p></li><li><p><strong>[专题] 计数 DP 的高阶技巧：从容斥原理到状态压缩</strong><br><a href="https://raincnya.space/posts/counting_dp_advanced.html">👉 点击阅读</a> | <em>涉及题目：P5664, P2051, P1758</em></p></li></ul><hr><h2 id="降维技巧-2">降维技巧</h2><p><a href="https://raincnya.space/posts/5640d7b4.html">TZOJ-8937 序列平衡</a> | <a href="https://raincnya.space/posts/ff77d078.html">TZOJ-7670 大门</a><br><a href="https://raincnya.space/posts/291a3efb.html">AT_arc100_c Or Plus Max</a> | <a href="https://raincnya.space/posts/cedefa62.html">Luogu-P1600 天天爱跑步</a><br><a href="https://raincnya.space/posts/232d3766.html">Luogu-P1950 长方形</a> | <a href="https://raincnya.space/posts/68d040f7.html">Luogu-P3143 Diamond Collector S</a></p><p><strong>单调队列专练</strong></p><p><a href="https://raincnya.space/posts/e29fee39.html">Luogu-P2261 理想的正方形</a><br><a href="https://raincnya.space/posts/3518ce94.html">Luogu-P1419 寻找段落</a><br><a href="https://raincnya.space/posts/5bf0d1ab.html">Luogu-P3800 Power 收集</a></p><h2 id="动态规划-Single-Solutions">动态规划 (Single Solutions)</h2><h3 id="线性-背包">线性 &amp; 背包</h3><p><a href="https://raincnya.space/posts/abf73c9e.html">TZOJ-2993 Brackets</a><br><a href="https://raincnya.space/posts/e8c58ae2.html">Luogu-P1070 道路游戏</a><br><a href="https://raincnya.space/posts/3f77f736.html">Luogu-P1233 木棍加工</a><br><a href="https://raincnya.space/posts/9cd835bc.html">Luogu-P6902 Surveillance</a><br><a href="https://raincnya.space/posts/344a2721.html">Luogu-P1776 宝物筛选</a><br><a href="https://raincnya.space/posts/e1abbad7.html">Luogu-P1941 飞扬的小鸟</a><br><a href="https://raincnya.space/posts/3cb8deb1.html">Luogu-P5017 摆渡车</a><br><a href="https://raincnya.space/posts/e655281f.html">Luogu-P4310 绝世好题</a></p><h3 id="区间-计数">区间 &amp; 计数</h3><p><a href="https://raincnya.space/posts/2249579.html">Luogu-P1006 传纸条</a><br><a href="https://raincnya.space/posts/12ae9abf.html">Luogu-P2519 problem a</a></p><h2 id="其他题解">其他题解</h2><p><a href="https://raincnya.space/posts/18d54a23.html">TZOJ-3751 快速排序</a><br><a href="https://raincnya.space/posts/65db6b7f.html">TZOJ-5563 Reverse Game</a></p>]]></content>
     
     
     
@@ -1730,7 +1730,7 @@
   
   
   <entry>
-    <title>浪潮之巅读后感</title>
+    <title>浪潮之巅</title>
     <link href="/posts/19c9c7ed.html"/>
     <url>/posts/19c9c7ed.html</url>
     
@@ -1916,9 +1916,9 @@
     
     <tags>
       
-      <tag>并查集</tag>
-      
       <tag>线段树</tag>
+      
+      <tag>并查集</tag>
       
     </tags>
     
