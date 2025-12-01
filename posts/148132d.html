@@ -21,13 +21,13 @@
   
     <meta name="description" content="Luogu-P2829 大逃离 题目简述  难度：提高+ | 题解格式：V6.3  在一个 NNN 个点 MMM 条边的无向图中，求从起点 111 到终点 NNN 的严格次短路长度。 路径允许重复经过点和边。 限制：除起点和终点外，不能经过“直接连接的邻居数量（去重后）”小于 KKK 的节点。  数据范围：N≤5000,M≤105,K≤NN \le 5000, M \le 10^5, K \le">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P2829 大逃离">
+<meta property="og:title" content="Luogu-P2829 大逃离">
 <meta property="og:url" content="http://example.com/posts/148132d.html">
 <meta property="og:site_name" content="RainCnya">
 <meta property="og:description" content="Luogu-P2829 大逃离 题目简述  难度：提高+ | 题解格式：V6.3  在一个 NNN 个点 MMM 条边的无向图中，求从起点 111 到终点 NNN 的严格次短路长度。 路径允许重复经过点和边。 限制：除起点和终点外，不能经过“直接连接的邻居数量（去重后）”小于 KKK 的节点。  数据范围：N≤5000,M≤105,K≤NN \le 5000, M \le 10^5, K \le">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-01T07:45:12.000Z">
-<meta property="article:modified_time" content="2025-12-01T07:45:51.282Z">
+<meta property="article:modified_time" content="2025-12-01T07:48:49.873Z">
 <meta property="article:author" content="RainCnya">
 <meta property="article:tag" content="图论">
 <meta property="article:tag" content="次短路">
@@ -36,7 +36,7 @@
   
   
   
-  <title>P2829 大逃离 - RainCnya</title>
+  <title>Luogu-P2829 大逃离 - RainCnya</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P2829 大逃离"></span>
+            <span id="subtitle" data-typed-text="Luogu-P2829 大逃离"></span>
           
         </div>
 
@@ -304,7 +304,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P2829 大逃离</h1>
+            <h1 id="seo-header">Luogu-P2829 大逃离</h1>
             
             
               <div class="markdown-body">
@@ -322,7 +322,7 @@
 </ul>
 <p>算法笔记可以参考：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://raincnya.space">算法学习笔记：图论/最短路 - Dijkstra - RainCnya</a></li>
+<li><a target="_blank" rel="noopener" href="https://raincnya.space/posts/7a6f2b1c.html">算法学习笔记：[图论/最短路] - Dijkstra - RainCnya</a></li>
 </ul>
 <h2 id="解题思路">解题思路</h2>
 <h3 id="1-初步认知">1. 初步认知</h3>
@@ -372,7 +372,10 @@
     </div>
 <hr>
 <h2 id="四、-结语">四、 结语</h2>
-<p>本题有两个易错点：一是<strong>重边图的度数统计</strong>（题目定义“连接的地方”而非边数），二是次短路更新时<strong>状态降级</strong>的逻辑（最短变次短）。掌握 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dist[u][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 这种状态定义是解决 K 短路问题的基础。</p>
+<p>本题有两个易错点：</p>
+<p>一是<strong>重边图的度数统计</strong>（题目定义“连接的地方”而非边数），</p>
+<p>二是次短路更新时<strong>状态降级</strong>的逻辑（最短变次短）。</p>
+<p>掌握 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dist[u][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 这种状态定义是解决 K 短路问题的基础。</p>
 
                 
               </div>
@@ -429,7 +432,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P2829 大逃离</div>
+      <div>Luogu-P2829 大逃离</div>
       <div>http://example.com/posts/148132d.html</div>
     </div>
     <div class="license-meta">
@@ -474,12 +477,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/posts/a35ec636.html" title="算法学习笔记：[图论/最短路] - Floyd">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法学习笔记：[图论/最短路] - Floyd</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/98c3b5e3.html" title="P2149 Elaxia的路线">
-                        <span class="hidden-mobile">P2149 Elaxia的路线</span>
+                      <a href="/posts/98c3b5e3.html" title="Luogu-P2149 Elaxia的路线">
+                        <span class="hidden-mobile">Luogu-P2149 Elaxia的路线</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
