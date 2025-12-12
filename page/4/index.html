@@ -242,15 +242,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/418fad40.html" target="_self">
-          算法学习笔记：DP/通用技巧 - 记忆化搜索
+        <a href="/posts/4775279.html" target="_self">
+          双指针 (Two Pointers)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/418fad40.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4775279.html" target="_self">
         <div>
-          算法学习笔记：DP/通用技巧 - 记忆化搜索 一、 初步认知  领域层级：  父领域： 动态规划 (DP) 子领域： 通用技巧   命名： 记忆化搜索 (Memoization Search) 定义： 结合 DFS 与 DP，通过缓存已计算结果避免重复计算。 典型设问： 状态依赖复杂（如树形、图上）的最值或计数问题。  二、 主题渗透 1. 基本思路  查表 (Lookup)： 递归前先查 mem
+          1. 生态位  定义: 利用序列的单调性，通过两个指针的同向或相向移动，将 O(N2)O(N^2)O(N2) 降维至 O(N)O(N)O(N)。 前置依赖: [排序], [前缀和] 解决痛点:  区间搜索: 寻找满足条件的最短/最长连续子区间。 组合优化: 两个有序序列的匹配或合并。   竞品对比:  vs 二分: 双指针是动态的 O(N)O(N)O(N)，二分是静态的 O(Nlog⁡N)O(N
         </div>
       </a>
 
@@ -258,8 +258,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-27 17:08" pubdate>
-              2025-11-27
+            <time datetime="2025-12-12 00:19" pubdate>
+              2025-12-12
             </time>
           </div>
         
@@ -274,12 +274,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Notes/" class="category-chain-item">Notes</a>
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
   
   
     <span>></span>
     
-  <a href="/categories/Notes/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
+  <a href="/categories/00-Atlas/00-Basis/" class="category-chain-item">00_Basis</a>
   
   
 
@@ -296,11 +296,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
             
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/%E6%90%9C%E7%B4%A2/">#搜索</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
           </div>
         
@@ -314,15 +312,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/9b3faab3.html" target="_self">
-          区间 DP 进阶：从费用提前到逆向分治
+        <a href="/posts/ef28f194.html" target="_self">
+          离散化 (Discretization)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/9b3faab3.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ef28f194.html" target="_self">
         <div>
-          [专题] 区间 DP 的多重面孔：从费用提前到逆向分治 1. 前言：不止是“石子合并” 提起区间 DP，很多人的第一反应公式就是： dp[i][j]=max⁡k(dp[i][k]+dp[k+1][j])+costdp[i][j] = \max_k (dp[i][k] + dp[k+1][j]) + cost dp[i][j]=kmax​(dp[i][k]+dp[k+1][j])+cost 这是最经
+          1. 生态位  定义: 在不改变数据相对大小 (Relative Order) 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。 解决痛点:  题目给出的数值范围很大 (如 10910^9109)，但数据量 NNN 较小 (如 10510^5105)。 算法（如树状数组、线段树、差分）的空间复杂度依赖于值域而非数据量。   本质: Value →\to→ Rank 的映射。  2. 逻辑支
         </div>
       </a>
 
@@ -330,8 +328,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-27 17:04" pubdate>
-              2025-11-27
+            <time datetime="2025-12-12 00:00" pubdate>
+              2025-12-12
             </time>
           </div>
         
@@ -346,12 +344,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Advanced/" class="category-chain-item">Advanced</a>
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
   
   
     <span>></span>
     
-  <a href="/categories/Advanced/DP%E4%B8%93%E9%A2%98/" class="category-chain-item">DP专题</a>
+  <a href="/categories/00-Atlas/00-Basis/" class="category-chain-item">00_Basis</a>
   
   
 
@@ -367,301 +365,11 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-              <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/">#记忆化搜索</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/5b7abe27.html" target="_self">
-          背包 DP 进阶：从可行性判定到策略分组
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5b7abe27.html" target="_self">
-        <div>
-          [专题] 背包问题的变体：从可行性判定到策略分组 1. 前言：当背包不再只是“装满” 我们在学习动态规划时，0/1 背包和完全背包通常是入门的第一课。 朴素的“选”或“不选”，构成了背包问题的基础。 但在实际题目中，背包模型往往不会直接出现，而是披着各种伪装：  有的题目需要你做减法，判断哪些物品是多余的； 有的题目物品之间存在依赖，无法直接选取； 有的题目看似选择无限，实则有效策略有限。  本专
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 20:39" pubdate>
-              2025-11-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Advanced/" class="category-chain-item">Advanced</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Advanced/DP%E4%B8%93%E9%A2%98/" class="category-chain-item">DP专题</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
-            
-              <a href="/tags/%E8%83%8C%E5%8C%85DP/">#背包DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/da8ec77f.html" target="_self">
-          线性 DP 进阶：LIS 与 LCS 的模型转化与维度优化
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/da8ec77f.html" target="_self">
-        <div>
-          [专题] 突破 O(N2)O(N^2)O(N2)：LIS 与 LCS 的模型转化与维度优化 1. 前言：当 NNN 变大时 我们在学习动态规划初期，最先接触的线性 DP 模型往往是 最长上升子序列 (LIS) 和 最长公共子序列 (LCS)。 它们最朴素的状态转移方程大家都很熟悉，复杂度都是 O(N2)O(N^2)O(N2)。 然而，在提高组及以上的题目中，数据范围往往会扩大到 N≥105N \g
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 20:01" pubdate>
-              2025-11-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Advanced/" class="category-chain-item">Advanced</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Advanced/DP%E4%B8%93%E9%A2%98/" class="category-chain-item">DP专题</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E8%AE%A1%E6%95%B0DP/">#计数DP</a>
-            
-              <a href="/tags/LIS/">#LIS</a>
-            
-              <a href="/tags/LCS/">#LCS</a>
-            
-              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/793cad87.html" target="_self">
-          Luogu-P1220 关路灯
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/793cad87.html" target="_self">
-        <div>
-          💡 专题联动：本题已收录于专题 区间 DP 进阶：从费用提前到逆向分治，建议配合阅读以掌握区间 DP 的进阶技巧。  Luogu-P1220 / TZOJ-6347 关路灯 题目简述  难度：提高+(18529) | 题解格式：V6.2  一条路上有 nnn 盏路灯，每盏灯有位置 pip_ipi​ 和功率 wiw_iwi​。老张从位置 ccc 出发，需要关掉所有灯。每移动 1m1m1m 消耗
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 19:24" pubdate>
-              2025-11-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Solutions/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/3cb8deb1.html" target="_self">
-          Luogu-P5017 摆渡车
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3cb8deb1.html" target="_self">
-        <div>
-          Luogu-P5017 / TZOJ-6274 摆渡车 题目简述  难度：提高(32680) | 题解格式：V6.2  有 nnn 名同学在不同时间 tit_iti​ 到达车站，只有一辆摆渡车往返（往返需 mmm 分钟）。我们需要安排发车时刻，将所有同学送走，求所有同学等待时间之和的最小值。  数据范围：n≤500n \le 500n≤500，m≤100m \le 100m≤100，0≤ti≤4×
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 19:22" pubdate>
-              2025-11-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Solutions/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
             
               <a href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/">#离散化</a>
             
+              <a href="/tags/%E6%98%A0%E5%B0%84/">#映射</a>
+            
           </div>
         
       </div>
@@ -674,15 +382,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/8961f4f4.html" target="_self">
-          Luogu-P5664 Emiya 家今天的饭
+        <a href="/posts/fe091ad2.html" target="_self">
+          降维优化体系 (Optimization by Dimension Reduction)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/8961f4f4.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/fe091ad2.html" target="_self">
         <div>
-          💡 专题联动：本题所使用的核心技巧（容斥/状态抽象/数学转化）已收录于专题 计数 DP 进阶：从容斥原理到状态压缩，建议阅读以掌握处理复杂计数问题的通法。  Luogu-P5664 / TZOJ-6281Emiya 家今天的饭 题目简述  难度：提高+(38832) | 题解格式：V6.2  Emiya 需要用 nnn 种烹饪方法和 mmm 种主要食材做菜。要求：  至少做一道菜。 每道菜的烹
+          1. 生态位  定义: 一系列将高复杂度（如 O(N2)O(N^2)O(N2)）算法优化至线性或近线性（O(N)O(N)O(N) / O(Nlog⁡N)O(N \log N)O(NlogN)）的思维范式。 核心地位: 算法竞赛中从“暴力解”通向“正解”的核心桥梁。 本质: Filter &amp; Compress —— 剔除无效计算，压缩冗余状态。  2. 体系全景 我们到底在降什么维？？！
         </div>
       </a>
 
@@ -690,8 +398,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-26 19:05" pubdate>
-              2025-11-26
+            <time datetime="2025-12-12 00:00" pubdate>
+              2025-12-12
             </time>
           </div>
         
@@ -706,12 +414,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
   
   
     <span>></span>
     
-  <a href="/categories/Solutions/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
+  <a href="/categories/00-Atlas/00-Basis/" class="category-chain-item">00_Basis</a>
   
   
 
@@ -728,11 +436,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+              <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">#方法论</a>
             
-              <a href="/tags/%E8%AE%A1%E6%95%B0DP/">#计数DP</a>
-            
-              <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">#容斥原理</a>
+              <a href="/tags/%E7%B4%A2%E5%BC%95/">#索引</a>
             
           </div>
         
@@ -746,15 +452,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/59d0066d.html" target="_self">
-          Luogu-P5851 Greedy Pie Eaters P
+        <a href="/posts/50dbb92c.html" target="_self">
+          基础排序体系 (Basic Sorting System)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/59d0066d.html" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/50dbb92c.html" target="_self">
         <div>
-          💡 专题联动：本题已收录于专题 区间 DP 进阶：从费用提前到逆向分治，建议配合阅读以掌握区间 DP 的进阶技巧。  Luogu-P5851 / TZOJ-1704 Greedy Pie Eaters P 题目简述  难度：提高+(9403) | 题解格式：V6.2  有 NNN 个派和 MMM 头奶牛。每头奶牛有一个体重 wiw_iwi​ 和想吃的区间 [li,ri][l_i, r_i][l
+          1. 生态位  定义: 将无序序列映射为单调序列的过程。本质是消除序列中的 逆序对 (Inversion Pair)。 前置依赖: [递归], [分治思想] 解决痛点:  冒泡排序: 教学模型，用于建立“交换一次相邻元素 = 消除一个逆序对”的理论直觉。 快速排序 (Quick Sort): 解决大规模数据 (N≥105N \ge 10^5N≥105) 的通用排序，追求平均性能极致。 归并排序 (
         </div>
       </a>
 
@@ -762,8 +468,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-25 18:41" pubdate>
-              2025-11-25
+            <time datetime="2025-12-11 23:59" pubdate>
+              2025-12-11
             </time>
           </div>
         
@@ -778,12 +484,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
   
   
     <span>></span>
     
-  <a href="/categories/Solutions/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
+  <a href="/categories/00-Atlas/00-Basis/" class="category-chain-item">00_Basis</a>
   
   
 
@@ -800,151 +506,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
             
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
+              <a href="/tags/%E5%88%86%E6%B2%BB/">#分治</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/fe77c34e.html" target="_self">
-          CF-149D Coloring Brackets
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/fe77c34e.html" target="_self">
-        <div>
-          💡 专题联动：本题已收录于专题 区间 DP 进阶：从费用提前到逆向分治，建议配合阅读以掌握区间 DP 的进阶技巧。  CF149D Coloring Brackets 题目简述  难度：CF1900 / 提高 | 题解格式：V6.2  给定一个合法的括号序列，给每个括号染色（红、蓝、无）。要求：   每对匹配的括号，必须且只能染其中一个。   相邻的括号，如果都有颜色，颜色不能相同。   求合
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-25 18:37" pubdate>
-              2025-11-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Solutions/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-              <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/">#记忆化搜索</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/1580a939.html" target="_self">
-          Luogu-P1758 管道取珠
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/1580a939.html" target="_self">
-        <div>
-          💡 专题联动：本题所使用的核心技巧（容斥/状态抽象/数学转化）已收录于专题 计数 DP 进阶：从容斥原理到状态压缩，建议阅读以掌握处理复杂计数问题的通法。  Luogu-P1758 管道取珠 题目简述  难度：提高+ | 题解格式：V6.2  有两个管道（上、下），分别装有 nnn 个和 mmm 个球（颜色为 A 或 B）。每次操作可以从任意一个管道取出一个球放入输出序列。求所有可能的输出序列
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-25 18:06" pubdate>
-              2025-11-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Solutions/" class="category-chain-item">Solutions</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/Solutions/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
-            
-              <a href="/tags/%E8%AE%A1%E6%95%B0DP/">#计数DP</a>
+              <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
             
           </div>
         
@@ -956,7 +522,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span>
     </span>
   </nav>
 
