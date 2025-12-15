@@ -19,23 +19,24 @@
   <meta name="author" content="RainCnya">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 生态位  定义: 在不改变数据相对大小 (Relative Order) 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。 解决痛点:  题目给出的数值范围很大 (如 10910^9109)，但数据量 NNN 较小 (如 10510^5105)。 算法（如树状数组、线段树、差分）的空间复杂度依赖于值域而非数据量。   本质: Value →\to→ Rank 的映射。  2. 逻辑支">
+    <meta name="description" content="1. 生态位 (Ecological Niche)  定义: 在图中经过每条边恰好一次的路径。  回路 (Circuit): 起点等于终点。 路径 (Path): 起点不等于终点。   解决痛点:  &quot;一笔画&quot;问题: 如何不重复地走完所有路。 DNA 序列重组: 也就是 De Bruijn Graph (德布鲁因图) 模型。 词语接龙: 将单词看作边，首尾字母看作点。   竞品">
 <meta property="og:type" content="article">
-<meta property="og:title" content="离散化 (Discretization)">
-<meta property="og:url" content="http://example.com/posts/ef28f194/index.html">
+<meta property="og:title" content="欧拉回路与路径 (Eulerian Circuit &amp; Path)">
+<meta property="og:url" content="http://example.com/posts/410eac10/index.html">
 <meta property="og:site_name" content="RainCnya">
-<meta property="og:description" content="1. 生态位  定义: 在不改变数据相对大小 (Relative Order) 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。 解决痛点:  题目给出的数值范围很大 (如 10910^9109)，但数据量 NNN 较小 (如 10510^5105)。 算法（如树状数组、线段树、差分）的空间复杂度依赖于值域而非数据量。   本质: Value →\to→ Rank 的映射。  2. 逻辑支">
+<meta property="og:description" content="1. 生态位 (Ecological Niche)  定义: 在图中经过每条边恰好一次的路径。  回路 (Circuit): 起点等于终点。 路径 (Path): 起点不等于终点。   解决痛点:  &quot;一笔画&quot;问题: 如何不重复地走完所有路。 DNA 序列重组: 也就是 De Bruijn Graph (德布鲁因图) 模型。 词语接龙: 将单词看作边，首尾字母看作点。   竞品">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-12T02:06:28.617Z">
+<meta property="article:published_time" content="2025-12-15T00:50:52.000Z">
+<meta property="article:modified_time" content="2025-12-15T00:58:04.147Z">
 <meta property="article:author" content="RainCnya">
-<meta property="article:tag" content="离散化">
-<meta property="article:tag" content="映射">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="Hierholzer">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>离散化 (Discretization) - RainCnya</title>
+  <title>欧拉回路与路径 (Eulerian Circuit &amp; Path) - RainCnya</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="离散化 (Discretization)"></span>
+            <span id="subtitle" data-typed-text="欧拉回路与路径 (Eulerian Circuit &amp; Path)"></span>
           
         </div>
 
@@ -232,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-12 00:00" pubdate>
-          2025年12月12日 凌晨
+        <time datetime="2025-12-15 08:50" pubdate>
+          2025年12月15日 早上
         </time>
       </span>
     
@@ -245,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          566 字
+          910 字
         
       </span>
     
@@ -257,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          8 分钟
+          12 分钟
         
       </span>
     
@@ -303,93 +304,118 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">离散化 (Discretization)</h1>
+            <h1 id="seo-header">欧拉回路与路径 (Eulerian Circuit &amp; Path)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h2 id="1-生态位-Ecological-Niche">1. 生态位 (Ecological Niche)</h2>
 <ul>
-<li><strong>定义</strong>: 在不改变数据<strong>相对大小 (Relative Order)</strong> 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。</li>
+<li><strong>定义</strong>: 在图中经过<strong>每条边恰好一次</strong>的路径。
+<ul>
+<li><strong>回路 (Circuit)</strong>: 起点等于终点。</li>
+<li><strong>路径 (Path)</strong>: 起点不等于终点。</li>
+</ul>
+</li>
 <li><strong>解决痛点</strong>:
 <ul>
-<li>题目给出的数值范围很大 (如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span>)，但数据量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 较小 (如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>)。</li>
-<li>算法（如树状数组、线段树、差分）的空间复杂度依赖于<strong>值域</strong>而非数据量。</li>
+<li><strong>&quot;一笔画&quot;问题</strong>: 如何不重复地走完所有路。</li>
+<li><strong>DNA 序列重组</strong>: 也就是 De Bruijn Graph (德布鲁因图) 模型。</li>
+<li><strong>词语接龙</strong>: 将单词看作边，首尾字母看作点。</li>
 </ul>
 </li>
-<li><strong>本质</strong>: <strong>Value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> Rank</strong> 的映射。</li>
-</ul>
-<h2 id="2-逻辑支点">2. 逻辑支点</h2>
+<li><strong>竞品对比</strong>:
 <ul>
-<li><strong>核心不变量</strong>: <strong>Rank (排名)</strong>。
-<ul>
-<li>离散化后的数组 <code>b[i]</code> 表示原数组 <code>a[i]</code> 在所有出现过的数中排第几小。</li>
+<li><strong>vs 哈密顿回路 (Hamiltonian)</strong>: 欧拉关注<strong>边</strong> (Edge-based) 且有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span> 高效解；哈密顿关注<strong>点</strong> (Node-based) 且是 NP-Hard。</li>
 </ul>
 </li>
-<li><strong>映射过程</strong>:
-<ol>
-<li><strong>Sort</strong>: 将所有出现的数排序。</li>
-<li><strong>Unique</strong>: 去除重复的数，得到“有序去重值域”。</li>
-<li><strong>Binary Search</strong>: 对于原数组的每个数，二分查找它在去重值域中的位置（下标）。</li>
-</ol>
+</ul>
+<h2 id="2-逻辑支点-The-Logical-Pivot">2. 逻辑支点 (The Logical Pivot)</h2>
+<h3 id="2-1-Degree-Invariant-度数不变量">2.1 Degree Invariant (度数不变量)</h3>
+<p>欧拉路径的存在性完全由<strong>度数 (Degree)</strong> 的奇偶性或平衡性决定。这是图论中“局部约束决定全局性质”的典范。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">欧拉回路 (Circuit)</th>
+<th style="text-align:left">欧拉路径 (Path)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>无向图</strong></td>
+<td style="text-align:left">所有点度数为<strong>偶数</strong></td>
+<td style="text-align:left">恰有 <strong>2</strong> 个奇度点 (起点/终点)，其余全偶</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>有向图</strong></td>
+<td style="text-align:left">所有点 <code>in == out</code></td>
+<td style="text-align:left">恰有 1 点 <code>out = in + 1</code> (起)，1 点 <code>in = out + 1</code> (终)，其余平衡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2-Hierholzer’s-Algorithm-圈套圈逻辑">2.2 Hierholzer’s Algorithm (圈套圈逻辑)</h3>
+<ul>
+<li><strong>核心困境</strong>: 朴素 DFS 遇到环就会停止，可能漏掉依附在环上的子环。</li>
+<li><strong>解决方案</strong>: <strong>Record on Backtracking (回溯时记录)</strong>。
+<ul>
+<li>不要在“进栈”时记录路径，而是在“<strong>出栈</strong>”时（当一个点无路可走时）记录。</li>
+<li>这样可以保证：当我们记录一个点时，它所连接的所有子环（Sub-cycles）都已经遍历完毕并已压入栈中。</li>
+<li>最后将栈<strong>逆序</strong>输出。</li>
+</ul>
 </li>
 </ul>
-<h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-STL-离散化模板">3.1 STL 离散化模板</h3>
+<h2 id="3-实战部署-Implementation">3. 实战部署 (Implementation)</h2>
 <ul>
-<li>利用 <code>std::unique</code> 和 <code>std::lower_bound</code> 组合拳。</li>
+<li><strong>Airy Code Style v3.0</strong></li>
+<li><strong>关键技法</strong>: <strong>当前弧优化 (Current Arc)</strong>。必须记录每个点遍历到了哪条边，防止重复扫描已删除的边，否则复杂度退化。</li>
 </ul>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Discretization Template
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-f4a5ebe7" role="button" aria-expanded="false" aria-controls="collapse-f4a5ebe7">
+        <div class="fold-arrow">▶</div>Code: Directed Eulerian Path (Vector)
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-f4a5ebe7">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">int</span> a[maxn], b[maxn]; <span class="hljs-comment">// a: 原数组, b: 临时数组用于排序去重</span><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">discretize</span><span class="hljs-params">()</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 1. Copy: 复制一份数据到 b</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) b[i] = a[i];<br>    <br>    <span class="hljs-comment">// 2. Sort: 排序</span><br>    <span class="hljs-built_in">sort</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 3. Unique: 去重</span><br>    <span class="hljs-comment">// unique 返回去重后末尾元素的下一个迭代器</span><br>    <span class="hljs-type">int</span> len = <span class="hljs-built_in">unique</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> ) - ( b + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 4. Map: 构造映射 (Value -&gt; Rank)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-comment">// lower_bound 查找 a[i] 在 b 中的位置 (1-based)</span><br>        <span class="hljs-comment">// 此时 a[i] 的值变为 range [1, len]</span><br>        a[i] = <span class="hljs-built_in">lower_bound</span>( b + <span class="hljs-number">1</span>, b + len + <span class="hljs-number">1</span>, a[i] ) - ( b + <span class="hljs-number">1</span> ) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <pre><code class="language-cpp">// 针对有向图欧拉路径 (Luogu P7771)// 使用 Vector 邻接表以支持字典序排序#include &lt;bits/stdc++.h&gt;using namespace std;using ll = long long;const int maxn = 1e5 + 50;// 容器模板内侧保留空格vector&lt; int &gt; adj[maxn];stack&lt; int &gt; ans;// 数组定义int cur[maxn];int ind[maxn];int outd[maxn];int n, m;void dfs( int u ){    // 必须使用 cur[u] 进行当前弧优化    while( cur[u] &lt; adj[u].size( ) )    {        int v = adj[u][ cur[u] ];        cur[u] ++; // 显式自增        dfs( v );    }    ans.push( u );}int main( ){    ios::sync_with_stdio(0);    cin.tie(0); cout.tie(0);    cin &gt;&gt; n &gt;&gt; m;    for( int i = 1; i &lt;= m; ++ i )    {        int u, v;        cin &gt;&gt; u &gt;&gt; v;        adj[u].push_back( v );        outd[u] ++;        ind[v] ++;    }    // 字典序要求，对邻接表排序    for( int i = 1; i &lt;= n; ++ i )    {        sort( adj[i].begin( ), adj[i].end( ) );    }    // 判定逻辑    int start = 1;    int cnt_start = 0;    int cnt_end = 0;    bool bad = false;    for( int i = 1; i &lt;= n; ++ i )    {        if( ind[i] == outd[i] )        {            continue;        }        if( outd[i] == ind[i] + 1 )        {            start = i;            cnt_start ++;        }        else if( ind[i] == outd[i] + 1 )        {            cnt_end ++;        }        else        {            bad = true;        }    }    // 逻辑判定: 既不是回路(0,0) 也不是路径(1,1)    bool is_circuit = ( cnt_start == 0 &amp;&amp; cnt_end == 0 );    bool is_path = ( cnt_start == 1 &amp;&amp; cnt_end == 1 );    if( bad || ! ( is_circuit || is_path ) )    {        cout &lt;&lt; &quot;No&quot; &lt;&lt; '\n';        return 0;    }    // 运行算法    dfs( start );    // 连通性检查 (点数 = 边数 + 1)    // 注意: ans.size() 返回 size_t，与 int 比较虽然没问题，但逻辑上要注意    if( ans.size( ) &lt; m + 1 )    {        cout &lt;&lt; &quot;No&quot; &lt;&lt; '\n';        return 0;    }    while( ! ans.empty( ) )    {        cout &lt;&lt; ans.top( ) &lt;&lt; ( ans.size( ) == 1 ? &quot;&quot; : &quot; &quot; );        ans.pop( );    }    cout &lt;&lt; '\n';    return 0;}</code></pre>
         </div>
       </div>
     </div>
-<h3 id="⚠️-边界与-Hack">⚠️ 边界与 Hack</h3>
+<h2 id="4-知识粘附-Adhesion">4. 知识粘附 (Adhesion)</h2>
 <ul>
 <li>
-<p><strong>[坑点 1] 下标体系</strong>: <code>lower_bound</code> 返回的是指针/迭代器。</p>
+<p><strong>前置知识</strong>:</p>
 <ul>
 <li>
-<p>若是 <code>vector</code>，<code>it - v.begin()</code> 是 0-based index。</p>
+<p><strong>[DFS]</strong>: 算法骨架。</p>
 </li>
 <li>
-<p>若是数组 <code>b + 1</code> 开始，<code>ptr - (b + 1) + 1</code> 才是 1-based rank。建议统一使用 1-based 以适配 BIT/线段树。</p>
+<p><strong>[Connectivity]</strong>: 必须在同一个连通分量中。</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>[坑点 2] 原值查询</strong>: 离散化后 <code>a[i]</code> 变成了 Rank。如果后续需要输出原始数值，需保留 <code>b</code> 数组，<code>b[ a[i] ]</code> 即为原值。</p>
-</li>
-</ul>
-<h2 id="4-知识粘附">4. 知识粘附</h2>
+<p><strong>变体</strong>:</p>
 <ul>
-<li>
-<p><strong>典型应用</strong>:</p>
-<ul>
-<li>
-<p><strong>逆序对 (Inversion Pair)</strong>: 树状数组求逆序对时，若数值过大，必须先离散化。</p>
-</li>
-<li>
-<p><strong>二维平面扫描线</strong>: 坐标值很大时，需对 X 或 Y 坐标离散化。</p>
-</li>
-<li>
-<p><strong>主席树 (可持久化线段树)</strong>: 处理值域线段树时，必须离散化。</p>
-</li>
+<li><strong>混合图欧拉回路</strong>: 图中既有有向边又有无向边 -&gt; 网络流模型。</li>
 </ul>
 </li>
 <li>
 <p><strong>母题索引</strong>:</p>
 <ul>
-<li><strong>[Luogu P1908] 逆序对</strong>: 离散化 + 权值树状数组的标准入门题。</li>
+<li>
+<p><strong>[Luogu P7771]</strong>: 【模板】欧拉路径 (有向图)。</p>
+</li>
+<li>
+<p><strong>[Luogu P1341]</strong>: 无序字母对 (无向图 + 字符串建模)。</p>
+</li>
 </ul>
 </li>
 </ul>
+<hr>
+<h2 id="Architect’s-Note"><strong>Architect’s Note</strong>:</h2>
+<p>这篇笔记的重点在于 <strong>Invariant (度数判定)</strong> 和 <strong>Backtracking Logic (逆序输出)</strong>。</p>
+<p>在复习时，请重点关注为什么必须在“回溯”时记录路径——这是理解欧拉回路算法正确性的唯一钥匙。</p>
 
                 
               </div>
@@ -398,41 +424,15 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/00-Basis/" class="category-chain-item">00_Basis</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/" class="print-no-link">#离散化</a>
+        <a href="/tags/%E5%9B%BE%E8%AE%BA/" class="print-no-link">#图论</a>
       
-        <a href="/tags/%E6%98%A0%E5%B0%84/" class="print-no-link">#映射</a>
+        <a href="/tags/DFS/" class="print-no-link">#DFS</a>
+      
+        <a href="/tags/Hierholzer/" class="print-no-link">#Hierholzer</a>
       
     </div>
   
@@ -444,8 +444,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>离散化 (Discretization)</div>
-      <div>http://example.com/posts/ef28f194/</div>
+      <div>欧拉回路与路径 (Eulerian Circuit &amp; Path)</div>
+      <div>http://example.com/posts/410eac10/</div>
     </div>
     <div class="license-meta">
       
@@ -457,7 +457,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月12日</div>
+          <div>2025年12月15日</div>
         </div>
       
       
@@ -489,9 +489,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/fe091ad2/" title="降维优化体系 (Optimization by Dimension Reduction)">
+                      <a href="/posts/8ad1c267/" title="Tarjan SCC 与缩点 (Strongly Connected Components)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">降维优化体系 (Optimization by Dimension Reduction)</span>
+                        <span class="hidden-mobile">Tarjan SCC 与缩点 (Strongly Connected Components)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -499,8 +499,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/50dbb92c/" title="基础排序体系 (Basic Sorting System)">
-                        <span class="hidden-mobile">基础排序体系 (Basic Sorting System)</span>
+                      <a href="/posts/f977dd98/" title="结构优化与逆向思维 (Structure &amp; Reverse Logic)">
+                        <span class="hidden-mobile">结构优化与逆向思维 (Structure &amp; Reverse Logic)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
