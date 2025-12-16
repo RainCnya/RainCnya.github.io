@@ -21,13 +21,13 @@
   
     <meta name="description" content="1. 生态位  定义: 在加权图中，寻找从源点到目标点总权值最小的路径。 核心机制: 松弛 (Relaxation)。 算法选型:     算法 核心逻辑 适用场景 复杂度     Dijkstra 贪心 + 优先队列 非负权单源最短路 O(Mlog⁡N)O(M \log N)O(MlogN)   SPFA 队列 + 反复入队 负权边&#x2F;判负环 Avg O(kM)O(kM)O(kM), Max O(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最短路体系">
+<meta property="og:title" content="最短路体系 (SSSP System)">
 <meta property="og:url" content="http://example.com/posts/a535be86/index.html">
 <meta property="og:site_name" content="MiQiu">
 <meta property="og:description" content="1. 生态位  定义: 在加权图中，寻找从源点到目标点总权值最小的路径。 核心机制: 松弛 (Relaxation)。 算法选型:     算法 核心逻辑 适用场景 复杂度     Dijkstra 贪心 + 优先队列 非负权单源最短路 O(Mlog⁡N)O(M \log N)O(MlogN)   SPFA 队列 + 反复入队 负权边&#x2F;判负环 Avg O(kM)O(kM)O(kM), Max O(">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T17:33:58.000Z">
-<meta property="article:modified_time" content="2025-12-16T11:18:37.604Z">
+<meta property="article:modified_time" content="2025-12-16T11:55:50.393Z">
 <meta property="article:author" content="MiQiu">
 <meta property="article:tag" content="Dijkstra">
 <meta property="article:tag" content="SPFA">
@@ -37,7 +37,7 @@
   
   
   
-  <title>最短路体系 - MiQiu</title>
+  <title>最短路体系 (SSSP System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="最短路体系"></span>
+            <span id="subtitle" data-typed-text="最短路体系 (SSSP System)"></span>
           
         </div>
 
@@ -305,7 +305,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">最短路体系</h1>
+            <h1 id="seo-header">最短路体系 (SSSP System)</h1>
             
             
               <div class="markdown-body">
@@ -407,7 +407,7 @@
 <p><strong>最短路图</strong>: 原图中满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>S</mi><mo separator="true">,</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi>w</mi><mo>+</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>v</mi><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">)</mo><mo>=</mo><mo>=</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>S</mi><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dist(S, u) + w + dist(v, T) == dist(S, T)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">u</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">==</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span> 的边构成的 DAG。用于路径计数。</p>
 </li>
 <li>
-<p><strong>分层图</strong>: 处理“有限次免费/折扣”状态（详见 <strong><a href="/posts/2a513a9f/">分层图最短路</a></strong>）。</p>
+<p><strong>分层图</strong>: 处理“有限次免费/折扣”状态（详见 <strong><a href="/posts/undefined/">分层图最短路</a></strong>）。</p>
 </li>
 <li>
 <p><strong>差分约束</strong>: 处理不等式组（详见 <strong><a href="/posts/6cae5d5b/">差分约束系统</a>)</strong>）。</p>
@@ -488,7 +488,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>最短路体系</div>
+      <div>最短路体系 (SSSP System)</div>
       <div>http://example.com/posts/a535be86/</div>
     </div>
     <div class="license-meta">
@@ -543,8 +543,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/54aea480/" title="图论建模综述">
-                        <span class="hidden-mobile">图论建模综述</span>
+                      <a href="/posts/54aea480/" title="图论建模综述 (Graph_Modeling_Synthesis)">
+                        <span class="hidden-mobile">图论建模综述 (Graph_Modeling_Synthesis)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
