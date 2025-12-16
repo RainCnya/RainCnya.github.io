@@ -19,20 +19,19 @@
   <meta name="author" content="MiQiu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 生态位  定义: 通过记忆化 (Memoization) 或 递推 (Tabulation)，将指数级复杂度的搜索树剪枝为多项式级复杂度的有向无环图 (DAG) 的算法范式。 核心地位: 连接 搜索 (Search) 与 数学 (Math) 的桥梁。  相比搜索：通过记录消除了重叠子问题。 相比贪心：保留了所有可能的最优分支，而非单步短视。   三大公理:  重叠子问题 (Overlappi">
+    <meta name="description" content="1. 生态位  定义: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。 核心要素:  重叠子问题: 必须有重复计算，否则不如直接爆搜。 最优子结构: 大问题的最优解可以由小问题的最优解推导而来。 无后效性: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。    2. 逻辑支点  记忆化搜索 vs 递推:  记忆化 (Top-Down): 适合状态稀疏、状态转">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划体系综述 (DP Core Synthesis)">
 <meta property="og:url" content="http://example.com/posts/1c960464/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 通过记忆化 (Memoization) 或 递推 (Tabulation)，将指数级复杂度的搜索树剪枝为多项式级复杂度的有向无环图 (DAG) 的算法范式。 核心地位: 连接 搜索 (Search) 与 数学 (Math) 的桥梁。  相比搜索：通过记录消除了重叠子问题。 相比贪心：保留了所有可能的最优分支，而非单步短视。   三大公理:  重叠子问题 (Overlappi">
+<meta property="og:description" content="1. 生态位  定义: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。 核心要素:  重叠子问题: 必须有重复计算，否则不如直接爆搜。 最优子结构: 大问题的最优解可以由小问题的最优解推导而来。 无后效性: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。    2. 逻辑支点  记忆化搜索 vs 递推:  记忆化 (Top-Down): 适合状态稀疏、状态转">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-12T01:17:26.000Z">
-<meta property="article:modified_time" content="2025-12-16T09:34:20.416Z">
+<meta property="article:published_time" content="2025-12-16T14:05:00.000Z">
+<meta property="article:modified_time" content="2025-12-16T13:57:43.879Z">
 <meta property="article:author" content="MiQiu">
 <meta property="article:tag" content="记忆化搜索">
-<meta property="article:tag" content="状态定义">
+<meta property="article:tag" content="状态设计">
 <meta property="article:tag" content="无后效性">
-<meta property="article:tag" content="递推">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -234,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-12 09:17" pubdate>
-          2025年12月12日 上午
+        <time datetime="2025-12-16 22:05" pubdate>
+          2025年12月16日 晚上
         </time>
       </span>
     
@@ -247,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          463 字
+          267 字
         
       </span>
     
@@ -259,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          4 分钟
         
       </span>
     
@@ -312,94 +311,40 @@
                 
                 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 通过<strong>记忆化 (Memoization)</strong> 或 <strong>递推 (Tabulation)</strong>，将指数级复杂度的搜索树剪枝为多项式级复杂度的<strong>有向无环图 (DAG)</strong> 的算法范式。</li>
-<li><strong>核心地位</strong>: 连接 <strong>搜索 (Search)</strong> 与 <strong>数学 (Math)</strong> 的桥梁。
+<li><strong>定义</strong>: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。</li>
+<li><strong>核心要素</strong>:
 <ul>
-<li>相比搜索：通过记录消除了重叠子问题。</li>
-<li>相比贪心：保留了所有可能的最优分支，而非单步短视。</li>
+<li><strong>重叠子问题</strong>: 必须有重复计算，否则不如直接爆搜。</li>
+<li><strong>最优子结构</strong>: 大问题的最优解可以由小问题的最优解推导而来。</li>
+<li><strong>无后效性</strong>: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。</li>
 </ul>
-</li>
-<li><strong>三大公理</strong>:
-<ol>
-<li><strong>重叠子问题 (Overlapping Subproblems)</strong>: 暴力递归会反复计算相同状态。</li>
-<li><strong>最优子结构 (Optimal Substructure)</strong>: 全局最优解由局部最优解组合而成。</li>
-<li><strong>无后效性 (No-aftereffect)</strong>: &quot;未来&quot;只取决于&quot;现在&quot;，与&quot;过去&quot;无关。</li>
-</ol>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li>
-<p><strong>思考流 (The 4-Step Flow)</strong>:</p>
-<ol>
-<li><strong>State (状态)</strong>: 描述局面的最小参数集合 (e.g., <code>dp[i][j]</code>)。</li>
-<li><strong>Transition (转移)</strong>: 状态之间的因果关系 (e.g., <code>dp[i] = dp[i-1] + cost</code>).</li>
-<li><strong>Base Case (边界)</strong>: 递归的终止点或递推的起点 (e.g., <code>dp[0] = 0</code>).</li>
-<li><strong>Order (顺序)</strong>: 拓扑序，确保计算当前状态时，依赖项已知。</li>
-</ol>
-</li>
-<li>
-<p><strong>实现范式对比</strong>:</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">范式</th>
-<th style="text-align:left">别名</th>
-<th style="text-align:left">核心逻辑</th>
-<th style="text-align:left">适用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>递推</strong></td>
-<td style="text-align:left">Bottom-Up</td>
-<td style="text-align:left"><code>for</code> 循环遍历，空间换时间</td>
-<td style="text-align:left">线性、区间、背包等拓扑序明确的模型</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>记忆化</strong></td>
-<td style="text-align:left">Top-Down</td>
-<td style="text-align:left"><code>DFS</code> + <code>memo</code> 数组</td>
-<td style="text-align:left">树形、图上、博弈等状态依赖复杂或稀疏的模型</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-递推模板-Push-Pull">3.1 递推模板 (Push/Pull)</h3>
+<li><strong>记忆化搜索 vs 递推</strong>:
 <ul>
-<li><strong>策略</strong>: 必须明确遍历顺序 (Order)。</li>
-<li><strong>Airy Style</strong>: 推荐使用 <code>1-based</code> 索引以简化边界判断。</li>
+<li><strong>记忆化 (Top-Down)</strong>: 适合状态稀疏、状态转移复杂的情况。</li>
+<li><strong>递推 (Bottom-Up)</strong>: 适合状态稠密、甚至可以滚动数组优化空间的情况。</li>
 </ul>
+</li>
+<li><strong>消除后效性</strong>:
+<ul>
+<li><strong>增加维度</strong>: 既然当前信息不够，就加一维状态记录它 (如分层图最短路)。</li>
+<li><strong>转化问题</strong>: 如将“环形”转化为“链式”。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-实战部署">3. 实战部署</h2>
+<h3 id="3-1-记忆化搜索模板">3.1 记忆化搜索模板</h3>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Tabulation
+        <div class="fold-arrow">▶</div>Code: Memoization
       </div>
       <div class="fold-collapse collapse" id="collapse-076edf11">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 1. Init</span><br><span class="hljs-built_in">memset</span>(dp, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(dp)); <span class="hljs-comment">// or INF for min-problems</span><br><br><span class="hljs-comment">// 2. Stage &amp; State</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// 3. Decision</span><br>    <span class="hljs-comment">// dp[i] = max/min( ... )</span><br>&#125;<br></code></pre></td></tr></table></figure>
-        </div>
-      </div>
-    </div>
-<h3 id="3-2-记忆化模板-Memoization">3.2 记忆化模板 (Memoization)</h3>
-<ul>
-<li>
-<p><strong>策略</strong>: <strong>查表 (Lookup) -&gt; 计算 -&gt; 记录 (Record)</strong>。</p>
-</li>
-<li>
-<p><strong>优势</strong>: 只计算需要的状态，天然剪枝。</p>
-</li>
-</ul>
-
-    <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: Memoization
-      </div>
-      <div class="fold-collapse collapse" id="collapse-28ab9646">
-        <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span> memo[MAXN]; <span class="hljs-comment">// Init to -1</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 1. Base Case</span><br>    <span class="hljs-keyword">if</span>( u == <span class="hljs-number">0</span> ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-comment">// 2. Lookup</span><br>    <span class="hljs-keyword">if</span>( memo[u] != <span class="hljs-number">-1</span> ) <span class="hljs-keyword">return</span> memo[u];<br>    <br>    <span class="hljs-comment">// 3. Compute &amp; Record</span><br>    <span class="hljs-type">int</span> res = ...; <span class="hljs-comment">// Transition logic</span><br>    <span class="hljs-keyword">return</span> memo[u] = res;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> memo[maxn];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( memo[x] != <span class="hljs-number">-1</span> ) <span class="hljs-keyword">return</span> memo[x];<br>    <br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// Transition Logic</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> next : adj[x] )<br>    &#123;<br>        res = <span class="hljs-built_in">max</span>( res, <span class="hljs-built_in">dfs</span>( next ) + <span class="hljs-number">1</span> );<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> memo[x] = res;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
@@ -410,45 +355,15 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" class="print-no-link">#记忆化搜索</a>
       
-        <a href="/tags/%E7%8A%B6%E6%80%81%E5%AE%9A%E4%B9%89/" class="print-no-link">#状态定义</a>
+        <a href="/tags/%E7%8A%B6%E6%80%81%E8%AE%BE%E8%AE%A1/" class="print-no-link">#状态设计</a>
       
         <a href="/tags/%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7/" class="print-no-link">#无后效性</a>
-      
-        <a href="/tags/%E9%80%92%E6%8E%A8/" class="print-no-link">#递推</a>
       
     </div>
   
@@ -473,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月12日</div>
+          <div>2025年12月16日</div>
         </div>
       
       
@@ -505,9 +420,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/f505e82a/" title="线段树信息的维持与合并 (The Art of Push Up)">
+                      <a href="/posts/a164e19/" title="线性序列体系 (Sequence System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">线段树信息的维持与合并 (The Art of Push Up)</span>
+                        <span class="hidden-mobile">线性序列体系 (Sequence System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -515,8 +430,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8179d216/" title="复合模型综述 (Composite Models)">
-                        <span class="hidden-mobile">复合模型综述 (Composite Models)</span>
+                      <a href="/posts/3fd2748a/" title="并查集体系 (DSU System)">
+                        <span class="hidden-mobile">并查集体系 (DSU System)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,15 +19,15 @@
   <meta name="author" content="MiQiu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 生态位  定义: 通过二进制位或数学抽象来压缩高维状态的 DP 技术。 解决痛点:  集合状态: 某个集合中的元素“选或不选” (2N2^N2N)。 数值特性: 转移条件依赖于数值的二进制位 (P4310)。 对称冗余: 状态看似不同但功能等价 (P2051)。    2. 逻辑支点 2.1 Bitwise Domain (从位置到值域)  场景: P4310 绝世好题。求子序列满足 ai&amp;">
+    <meta name="description" content="1. 生态位  定义: 通过二进制位或数学抽象来压缩高维状态。 解决痛点:  数值特性: 转移条件依赖于数值的二进制位 (P4310)。 对称冗余: 状态看似不同但功能等价 (P2051)。    2. 逻辑支点 2.1 Bitwise Domain (从位置到值域)  场景: P4310 绝世好题。求子序列满足 ai&amp;ai−1≠0a_i \&amp; a_{i-1} \ne 0ai​&amp;a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="状压与状态抽象 (State Compression &amp; Abstraction)">
 <meta property="og:url" content="http://example.com/posts/ec3ba026/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 通过二进制位或数学抽象来压缩高维状态的 DP 技术。 解决痛点:  集合状态: 某个集合中的元素“选或不选” (2N2^N2N)。 数值特性: 转移条件依赖于数值的二进制位 (P4310)。 对称冗余: 状态看似不同但功能等价 (P2051)。    2. 逻辑支点 2.1 Bitwise Domain (从位置到值域)  场景: P4310 绝世好题。求子序列满足 ai&amp;">
+<meta property="og:description" content="1. 生态位  定义: 通过二进制位或数学抽象来压缩高维状态。 解决痛点:  数值特性: 转移条件依赖于数值的二进制位 (P4310)。 对称冗余: 状态看似不同但功能等价 (P2051)。    2. 逻辑支点 2.1 Bitwise Domain (从位置到值域)  场景: P4310 绝世好题。求子序列满足 ai&amp;ai−1≠0a_i \&amp; a_{i-1} \ne 0ai​&amp;a">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-12T01:07:44.000Z">
-<meta property="article:modified_time" content="2025-12-16T09:34:20.420Z">
+<meta property="article:published_time" content="2025-12-16T15:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-16T14:25:16.185Z">
 <meta property="article:author" content="MiQiu">
 <meta property="article:tag" content="位运算">
 <meta property="article:tag" content="状压DP">
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-12 09:07" pubdate>
-          2025年12月12日 上午
+        <time datetime="2025-12-16 23:00" pubdate>
+          2025年12月16日 晚上
         </time>
       </span>
     
@@ -246,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          581 字
+          369 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          8 分钟
+          5 分钟
         
       </span>
     
@@ -311,10 +311,9 @@
                 
                 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 通过<strong>二进制位</strong>或<strong>数学抽象</strong>来压缩高维状态的 DP 技术。</li>
+<li><strong>定义</strong>: 通过<strong>二进制位</strong>或<strong>数学抽象</strong>来压缩高维状态。</li>
 <li><strong>解决痛点</strong>:
 <ul>
-<li><strong>集合状态</strong>: 某个集合中的元素“选或不选” (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">2^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span></span></span></span></span></span></span>)。</li>
 <li><strong>数值特性</strong>: 转移条件依赖于数值的二进制位 (P4310)。</li>
 <li><strong>对称冗余</strong>: 状态看似不同但功能等价 (P2051)。</li>
 </ul>
@@ -324,20 +323,22 @@
 <h3 id="2-1-Bitwise-Domain-从位置到值域">2.1 Bitwise Domain (从位置到值域)</h3>
 <ul>
 <li><strong>场景</strong>: P4310 绝世好题。求子序列满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub><mi mathvariant="normal">&amp;</mi><msub><mi>a</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo mathvariant="normal">≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_i \&amp; a_{i-1} \ne 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9028em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">&amp;</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>。</li>
-<li><strong>转化</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的 <code>dp[i]</code> (以位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 结尾) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>A</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log A)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mclose">)</span></span></span></span> 的 <code>dp[bit]</code> (以第 <code>bit</code> 位为 1 的数值结尾)。</li>
-<li><strong>直觉</strong>: 两个数按位与不为 0 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 它们至少共享一个为 1 的二进制位。我们只需记录“拥有第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 位”的最长链长度。</li>
-</ul>
-<h3 id="2-2-Symmetry-Abstraction-从具体到抽象">2.2 Symmetry Abstraction (从具体到抽象)</h3>
+<li><strong>转化</strong>: 暴力 DP <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> (以位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 结尾) 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</li>
+<li><strong>优化</strong>:
 <ul>
-<li><strong>场景</strong>: P2051 中国象棋。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N \times M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 棋盘，每行每列最多 2 个炮。</li>
-<li><strong>转化</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mi>M</mi></msup></mrow><annotation encoding="application/x-tex">3^M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord">3</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span></span></span></span></span></span></span></span> 的具体状压 (Mask) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>M</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的计数状压 (Count)。</li>
-<li><strong>直觉</strong>: 列是<strong>无标号</strong>的。对于下一行而言，它不关心“第 1 列放了 1 个”，只关心“<strong>有多少列</strong>放了 1 个”。利用对称性，将状态压缩为 <code>(count_1, count_2)</code>。</li>
+<li>两个数按位与不为 0 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 它们至少共享一个为 1 的二进制位。</li>
+<li><strong>状态</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 表示以“第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 位为 1 的数”结尾的最长子序列长度。</li>
+<li>复杂度降为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>max</mi><mo>⁡</mo><mi>A</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log (\max A))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mop">max</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mclose">))</span></span></span></span>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-Symmetry-Abstraction-对称性抽象">2.2 Symmetry Abstraction (对称性抽象)</h3>
+<ul>
+<li><strong>场景</strong>: P2051 汉诺塔 III / 放置炮兵。</li>
+<li><strong>直觉</strong>: 列是<strong>无标号</strong>的。对于下一行而言，它不关心“第 1 列放了 1 个”，只关心“<strong>有多少列</strong>放了 1 个”。</li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
 <h3 id="3-1-P4310-位运算优化模板">3.1 P4310 位运算优化模板</h3>
-<ul>
-<li><strong>策略</strong>: 外层遍历序列，内层遍历 30 个二进制位。</li>
-</ul>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
@@ -345,27 +346,7 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-076edf11">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// dp[j]: max length ending with a number whose j-th bit is 1</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-type">int</span> now = <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 1. Check history: inherit from any bit j that a[i] has</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j ) <br>        <span class="hljs-keyword">if</span>( (a[i] &gt;&gt; j) &amp; <span class="hljs-number">1</span> ) <br>            now = <span class="hljs-built_in">max</span>( now, dp[j] + <span class="hljs-number">1</span> );<br>            <br>    <span class="hljs-comment">// 2. Update future: update all bits j that a[i] has</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j )<br>        <span class="hljs-keyword">if</span>( (a[i] &gt;&gt; j) &amp; <span class="hljs-number">1</span> )<br>            dp[j] = <span class="hljs-built_in">max</span>( dp[j], now );<br>            <br>    ans = <span class="hljs-built_in">max</span>( ans, now );<br>&#125;<br></code></pre></td></tr></table></figure>
-        </div>
-      </div>
-    </div>
-<h3 id="3-2-P2051-对称性计数模板">3.2 P2051 对称性计数模板</h3>
-<ul>
-<li>
-<p><strong>状态</strong>: <code>dp[i][j][k]</code> 表示前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 行，有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 列含 1 个炮， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 列含 2 个炮。</p>
-</li>
-<li>
-<p><strong>转移</strong>: 分类讨论当前行放 0, 1, 2 个炮，利用组合数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo stretchy="false">(</mo><mi>r</mi><mi>e</mi><mi>m</mi><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>C</mi><mo stretchy="false">(</mo><mi>r</mi><mi>e</mi><mi>m</mi><mo separator="true">,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C(rem, 1), C(rem, 2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal">re</span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathnormal">re</span><span class="mord mathnormal">m</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span> 等进行转移。</p>
-</li>
-</ul>
-
-    <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: Symmetry DP
-      </div>
-      <div class="fold-collapse collapse" id="collapse-28ab9646">
-        <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// z: count of columns with 0 cannons = m - j - k</span><br><span class="hljs-comment">// j: count of columns with 1 cannon</span><br><span class="hljs-comment">// k: count of columns with 2 cannons</span><br><br><span class="hljs-comment">// Example transition: Place 2 cannons</span><br><span class="hljs-comment">// Case 3.3: One in 0-col, One in 1-col</span><br><span class="hljs-comment">// 0-col becomes 1-col (j+1), 1-col becomes 2-col (j-1, k+1) -&gt; net j unchanged</span><br><span class="hljs-keyword">if</span>( j &gt;= <span class="hljs-number">1</span> &amp;&amp; z &gt;= <span class="hljs-number">1</span> ) <br>    <span class="hljs-built_in">update</span>( i<span class="hljs-number">+1</span>, j, k<span class="hljs-number">+1</span>, cur * z * j );<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// dp[j]: max length ending with a number whose j-th bit is 1</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-type">int</span> now = <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 1. Check history: inherit from any bit j that a[i] has</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( ( a[i] &gt;&gt; j ) &amp; <span class="hljs-number">1</span> ) <br>            now = <span class="hljs-built_in">max</span>( now, dp[j] + <span class="hljs-number">1</span> );<br>    &#125;<br>            <br>    <span class="hljs-comment">// 2. Update future: update all bits j that a[i] has</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">30</span>; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( ( a[i] &gt;&gt; j ) &amp; <span class="hljs-number">1</span> )<br>            dp[j] = <span class="hljs-built_in">max</span>( dp[j], now );<br>    &#125;<br>            <br>    ans = <span class="hljs-built_in">max</span>( ans, now );<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
@@ -375,13 +356,10 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong>[Luogu P4310]</strong>: 绝世好题 (位域转换)。</p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4310">Luogu-P4310</a></strong>: 绝世好题 (按位转移)。</p>
 </li>
 <li>
-<p><strong>[Luogu P2051]</strong>: 中国象棋 (对称性压缩)。</p>
-</li>
-<li>
-<p><strong>[P5664 Emiya]</strong>: (见 03_Interval_Ring) 也是对称性/容斥的一种体现。</p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2051">Luogu-P2051</a></strong>: AHOI2009 中国象棋 (按列数压缩)。</p>
 </li>
 </ul>
 </li>
@@ -393,34 +371,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
@@ -455,7 +405,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月12日</div>
+          <div>2025年12月16日</div>
         </div>
       
       
@@ -487,9 +437,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/517010cb/" title="隐性单调性与多路队列 (Implicit Monotonicity)">
+                      <a href="/posts/1bc8a91b/" title="显性单调队列优化 (Explicit Queue Optimization)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">隐性单调性与多路队列 (Implicit Monotonicity)</span>
+                        <span class="hidden-mobile">显性单调队列优化 (Explicit Queue Optimization)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -497,8 +447,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/a75f3b7c/" title="区间与环形体系 (Interval &amp; Ring System)">
-                        <span class="hidden-mobile">区间与环形体系 (Interval &amp; Ring System)</span>
+                      <a href="/posts/95fc4668/" title="计数DP方法论 (Counting Methodology)">
+                        <span class="hidden-mobile">计数DP方法论 (Counting Methodology)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

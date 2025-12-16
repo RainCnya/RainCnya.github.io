@@ -19,15 +19,15 @@
   <meta name="author" content="MiQiu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 生态位  定义: 通过分析题目特定的物理约束或逻辑顺序，对 DP 的状态空间或转移路径进行剪枝和重构。 解决痛点:  无效时间: 时间轴过长但事件稀疏 (P5017)。 耦合困境: 正向操作导致状态相互缠绕，无法拆分 (P5851)。    2. 逻辑支点 2.1 Path Compression (路径压缩)  场景: P5017 摆渡车。T≤4×106T \le 4 \times 10^">
+    <meta name="description" content="1. 生态位  定义: 通过分析题目特定的物理约束或逻辑顺序，对 DP 的状态空间或转移路径进行剪枝和重构。 解决痛点:  无效时间: 时间轴过长但事件稀疏 (P5017 摆渡车)。 耦合困境: 正向操作导致状态相互缠绕，无法拆分 (P5851 压路机)。    2. 逻辑支点  Path Compression (路径压缩):  场景: P5017 摆渡车。 策略: 若两批人的到达间隔 &gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="结构优化与逆向思维 (Structure &amp; Reverse Logic)">
 <meta property="og:url" content="http://example.com/posts/f977dd98/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 通过分析题目特定的物理约束或逻辑顺序，对 DP 的状态空间或转移路径进行剪枝和重构。 解决痛点:  无效时间: 时间轴过长但事件稀疏 (P5017)。 耦合困境: 正向操作导致状态相互缠绕，无法拆分 (P5851)。    2. 逻辑支点 2.1 Path Compression (路径压缩)  场景: P5017 摆渡车。T≤4×106T \le 4 \times 10^">
+<meta property="og:description" content="1. 生态位  定义: 通过分析题目特定的物理约束或逻辑顺序，对 DP 的状态空间或转移路径进行剪枝和重构。 解决痛点:  无效时间: 时间轴过长但事件稀疏 (P5017 摆渡车)。 耦合困境: 正向操作导致状态相互缠绕，无法拆分 (P5851 压路机)。    2. 逻辑支点  Path Compression (路径压缩):  场景: P5017 摆渡车。 策略: 若两批人的到达间隔 &gt;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-12T03:30:00.000Z">
-<meta property="article:modified_time" content="2025-12-16T09:34:20.420Z">
+<meta property="article:published_time" content="2025-12-16T15:40:00.000Z">
+<meta property="article:modified_time" content="2025-12-16T14:31:09.874Z">
 <meta property="article:author" content="MiQiu">
 <meta property="article:tag" content="路径压缩">
 <meta property="article:tag" content="逆向DP">
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-12 11:30" pubdate>
-          2025年12月12日 中午
+        <time datetime="2025-12-16 23:40" pubdate>
+          2025年12月16日 晚上
         </time>
       </span>
     
@@ -246,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          644 字
+          326 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          9 分钟
+          5 分钟
         
       </span>
     
@@ -314,57 +314,36 @@
 <li><strong>定义</strong>: 通过分析题目特定的<strong>物理约束</strong>或<strong>逻辑顺序</strong>，对 DP 的状态空间或转移路径进行剪枝和重构。</li>
 <li><strong>解决痛点</strong>:
 <ul>
-<li><strong>无效时间</strong>: 时间轴过长但事件稀疏 (P5017)。</li>
-<li><strong>耦合困境</strong>: 正向操作导致状态相互缠绕，无法拆分 (P5851)。</li>
+<li><strong>无效时间</strong>: 时间轴过长但事件稀疏 (P5017 摆渡车)。</li>
+<li><strong>耦合困境</strong>: 正向操作导致状态相互缠绕，无法拆分 (P5851 压路机)。</li>
 </ul>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
-<h3 id="2-1-Path-Compression-路径压缩">2.1 Path Compression (路径压缩)</h3>
 <ul>
-<li><strong>场景</strong>: P5017 摆渡车。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo>≤</mo><mn>4</mn><mo>×</mo><msup><mn>10</mn><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">T \le 4 \times 10^6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span>，直接 DP <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(T)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span> 偏慢且空间大。</li>
-<li><strong>观察</strong>: 当两批人的到达间隔 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">&gt; 2m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span></span></span></span> 时，车往返一次 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>) 甚至两次 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">2m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span></span></span></span>) 后，状态本质上“复位”了。中间的等待是无效的。</li>
-<li><strong>策略</strong>: 若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub><mo>−</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>&gt;</mo><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">t_i - t_{i-1} &gt; 2m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8234em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span></span></span></span>，则强制将时间轴压缩，等效于平移 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">t_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> 压缩至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>⋅</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \cdot m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mclose">)</span></span></span></span>。</li>
-</ul>
-<h3 id="2-2-Reverse-Logic-逆向分治">2.2 Reverse Logic (逆向分治)</h3>
+<li><strong>Path Compression (路径压缩)</strong>:
 <ul>
-<li><strong>场景</strong>: P5851 Greedy Pie Eaters。牛吃掉区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 的派。正向枚举“谁先吃”会导致区间碎片化，难以描述。</li>
-<li><strong>转化</strong>: <strong>逆向枚举“最后被吃掉的派”</strong>。
-<ul>
-<li>考虑区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，枚举 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 是<strong>最后</strong>被吃掉的。</li>
-<li>这意味吃掉 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 的那头牛（覆盖 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>），将原问题完美切分为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, k-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[k+1, j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 两个独立子问题。</li>
+<li><strong>场景</strong>: P5017 摆渡车。</li>
+<li><strong>策略</strong>: 若两批人的到达间隔 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">&gt; 2m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">m</span></span></span></span>，中间的等待是无效的。强制将时间轴压缩。</li>
 </ul>
 </li>
-<li><strong>辅助 DP</strong>: 需要快速求“在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 内覆盖 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 的最大权值牛”，引入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">g[i][j][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span> 进行预处理。</li>
+<li><strong>Reverse Logic (逆向区间)</strong>:
+<ul>
+<li><strong>场景</strong>: P5851. 寻找一段路，使得覆盖它的线段权重最大。</li>
+<li><strong>转化</strong>: 正向思考很难决定“当前线段是否保留”。<strong>逆向</strong>思考：枚举断点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，将区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 分裂，利用辅助数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">g[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 记录覆盖全区间的最大权重。</li>
+</ul>
+</li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-P5017-摆渡车优化模板">3.1 P5017 摆渡车优化模板</h3>
-<ul>
-<li><strong>策略</strong>: 离散化(路径压缩) + 线性 DP。</li>
-</ul>
+<h3 id="3-1-摆渡车-时间压缩">3.1 摆渡车 (时间压缩)</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
-        <div class="fold-arrow">▶</div>Code: Path Compression
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+        <div class="fold-arrow">▶</div>Code: Time Compression
       </div>
-      <div class="fold-collapse collapse" id="collapse-65ad56e5">
+      <div class="fold-collapse collapse" id="collapse-076edf11">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 1. Compress Time</span><br><span class="hljs-keyword">if</span>( a[i] - a[i<span class="hljs-number">-1</span>] &gt; <span class="hljs-number">2</span> * m ) <br>    offset += (a[i] - a[i<span class="hljs-number">-1</span>] - <span class="hljs-number">2</span> * m);<br>real_time[i] = a[i] - offset;<br><br><span class="hljs-comment">// 2. DP Transfer</span><br><span class="hljs-comment">// dp[i] = min cost to depart at time i</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= max_time; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// Pruning: if no one waits in (i-m, i], just inherit i-m</span><br>    <span class="hljs-keyword">if</span>( i &gt;= m &amp;&amp; cnt[i] == cnt[i-m] ) <br>    &#123;<br>        dp[i] = dp[i-m]; <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-comment">// Enumerating previous departure j in [i-2m, i-m]</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, i - <span class="hljs-number">2</span> * m); j &lt;= i - m; ++ j )<br>        dp[i] = <span class="hljs-built_in">min</span>( dp[i], dp[j] + <span class="hljs-built_in">cost</span>(j, i) );<br>&#125;<br></code></pre></td></tr></table></figure>
-        </div>
-      </div>
-    </div>
-<h3 id="3-2-P5851-逆向区间模板">3.2 P5851 逆向区间模板</h3>
-<ul>
-<li><strong>策略</strong>: 辅助数组 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span> (Rolling Array) + 区间 DP (Split Point)。</li>
-</ul>
-
-    <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: Reverse Interval
-      </div>
-      <div class="fold-collapse collapse" id="collapse-28ab9646">
-        <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// g[i][j][k]: max weight cow covering k inside [i, j]</span><br><span class="hljs-comment">// dp[i][j]: max weight for interval [i, j]</span><br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> len = <span class="hljs-number">1</span>; len &lt;= n; ++ len ) <br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + len - <span class="hljs-number">1</span> &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-type">int</span> j = i + len - <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 1. Maintain Aux g (Extension)</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = i; k &lt;= j; ++ k )<br>             g[i][j][k] = <span class="hljs-built_in">max</span>(&#123;f[i][j], g[i<span class="hljs-number">+1</span>][j][k], g[i][j<span class="hljs-number">-1</span>][k]&#125;);<br>             <br>        <span class="hljs-comment">// 2. Main DP (Split by k)</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = i; k &lt;= j; ++ k )<br>             dp[i][j] = <span class="hljs-built_in">max</span>(dp[i][j], <br>                            dp[i][k<span class="hljs-number">-1</span>] + dp[k<span class="hljs-number">+1</span>][j] + g[i][j][k]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 1. Compress Time</span><br><span class="hljs-keyword">if</span>( a[i] - a[i<span class="hljs-number">-1</span>] &gt; <span class="hljs-number">2</span> * m ) <br>    offset += (a[i] - a[i<span class="hljs-number">-1</span>] - <span class="hljs-number">2</span> * m);<br>real_time[i] = a[i] - offset;<br><br><span class="hljs-comment">// 2. DP Transfer</span><br><span class="hljs-comment">// dp[i] = min cost to depart at time i</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= max_time; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// Pruning: if no one waits in (i-m, i], just inherit i-m</span><br>    <span class="hljs-keyword">if</span>( i &gt;= m &amp;&amp; cnt[i] == cnt[i-m] ) <br>    &#123;<br>        dp[i] = dp[i-m]; <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-comment">// ... transfer ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
@@ -374,10 +353,10 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong>[Luogu P5017]</strong>: 摆渡车 (路径压缩 + 线性优化)。</p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5017">Luogu-P5017</a></strong>: [NOIP2018] 摆渡车。</p>
 </li>
 <li>
-<p><strong>[Luogu P5851]</strong>: Greedy Pie Eaters (逆向分治 + 辅助 DP)。</p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5851">Luogu-P5851</a></strong>: [USACO19DEC] Greedy Pie Eaters P.</p>
 </li>
 </ul>
 </li>
@@ -389,34 +368,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
@@ -451,7 +402,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月12日</div>
+          <div>2025年12月16日</div>
         </div>
       
       
@@ -483,18 +434,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/3fe2b20c/" title="欧拉回路与路径 (Eulerian_Path)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">欧拉回路与路径 (Eulerian_Path)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/21d85f4f/" title="计数与组合体系 (Counting Methodology)">
-                        <span class="hidden-mobile">计数与组合体系 (Counting Methodology)</span>
+                      <a href="/posts/c936ec9e/" title="倍增优化策略 (Doubling Strategy)">
+                        <span class="hidden-mobile">倍增优化策略 (Doubling Strategy)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
