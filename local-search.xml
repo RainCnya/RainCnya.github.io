@@ -558,9 +558,9 @@
     
     <tags>
       
-      <tag>逆序对</tag>
-      
       <tag>差分</tag>
+      
+      <tag>逆序对</tag>
       
       <tag>树状数组</tag>
       
@@ -742,9 +742,9 @@
     
     <tags>
       
-      <tag>树上差分</tag>
-      
       <tag>LCA</tag>
+      
+      <tag>树上差分</tag>
       
     </tags>
     
@@ -773,9 +773,9 @@
       
       <tag>线段树</tag>
       
-      <tag>LCA</tag>
-      
       <tag>树链剖分</tag>
+      
+      <tag>LCA</tag>
       
     </tags>
     
@@ -1080,35 +1080,6 @@
   
   
   <entry>
-    <title>数据结构：信息的容器与维护 (DS Guide)</title>
-    <link href="/posts/4bddc3c/"/>
-    <url>/posts/4bddc3c/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p></blockquote><h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3><p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p><ul><li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li><li><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li><li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li><li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li></ul><h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3><p>处理元素之间的特定关系（如大小顺序、等价关系）。</p><ul><li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li><li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li></ul><h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3><p>利用预处理换取极速查询。</p><ul><li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>00_Atlas</category>
-      
-      <category>01_数据结构</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>指南</tag>
-      
-      <tag>数据结构</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>基石算法：降维打击的起点 (Basis Guide)</title>
     <link href="/posts/c28314d6/"/>
     <url>/posts/c28314d6/</url>
@@ -1130,6 +1101,35 @@
       <tag>指南</tag>
       
       <tag>基础算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>数据结构：信息的容器与维护 (DS Guide)</title>
+    <link href="/posts/4bddc3c/"/>
+    <url>/posts/4bddc3c/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p></blockquote><h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3><p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p><ul><li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li><li><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li><li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li><li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li></ul><h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3><p>处理元素之间的特定关系（如大小顺序、等价关系）。</p><ul><li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li><li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li></ul><h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3><p>利用预处理换取极速查询。</p><ul><li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>00_Atlas</category>
+      
+      <category>01_数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>指南</tag>
+      
+      <tag>数据结构</tag>
       
     </tags>
     
@@ -1196,33 +1196,6 @@
   
   
   <entry>
-    <title>离散化 (Discretization)</title>
-    <link href="/posts/ef28f194/"/>
-    <url>/posts/ef28f194/</url>
-    
-    <content type="html"><![CDATA[<h2 id="1-生态位">1. 生态位</h2><ul><li><strong>定义</strong>: 在不改变数据<strong>相对大小 (Relative Order)</strong> 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。</li><li><strong>解决痛点</strong>:<ul><li>题目给出的数值范围很大 (如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span>)，但数据量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 较小 (如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>)。</li><li>算法（如树状数组、线段树、差分）的空间复杂度依赖于<strong>值域</strong>而非数据量。</li></ul></li><li><strong>本质</strong>: <strong>Value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> Rank</strong> 的映射。</li></ul><h2 id="2-逻辑支点">2. 逻辑支点</h2><ul><li><strong>核心不变量</strong>: <strong>Rank (排名)</strong>。<ul><li>离散化后的数组 <code>b[i]</code> 表示原数组 <code>a[i]</code> 在所有出现过的数中排第几小。</li></ul></li><li><strong>映射过程</strong>:<ol><li><strong>Sort</strong>: 将所有出现的数排序。</li><li><strong>Unique</strong>: 去除重复的数，得到“有序去重值域”。</li><li><strong>Binary Search</strong>: 对于原数组的每个数，二分查找它在去重值域中的位置（下标）。</li></ol></li></ul><h2 id="3-实战部署">3. 实战部署</h2><h3 id="3-1-STL-离散化模板">3.1 STL 离散化模板</h3><ul><li>利用 <code>std::unique</code> 和 <code>std::lower_bound</code> 组合拳。</li></ul>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">        <div class="fold-arrow">▶</div>Code: Discretization Template      </div>      <div class="fold-collapse collapse" id="collapse-076edf11">        <div class="fold-content">          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">int</span> a[maxn], b[maxn]; <span class="hljs-comment">// a: 原数组, b: 临时数组用于排序去重</span><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">discretize</span><span class="hljs-params">()</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 1. Copy: 复制一份数据到 b</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) b[i] = a[i];<br>    <br>    <span class="hljs-comment">// 2. Sort: 排序</span><br>    <span class="hljs-built_in">sort</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 3. Unique: 去重</span><br>    <span class="hljs-comment">// unique 返回去重后末尾元素的下一个迭代器</span><br>    <span class="hljs-type">int</span> len = <span class="hljs-built_in">unique</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> ) - ( b + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 4. Map: 构造映射 (Value -&gt; Rank)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-comment">// lower_bound 查找 a[i] 在 b 中的位置 (1-based)</span><br>        <span class="hljs-comment">// 此时 a[i] 的值变为 range [1, len]</span><br>        a[i] = <span class="hljs-built_in">lower_bound</span>( b + <span class="hljs-number">1</span>, b + len + <span class="hljs-number">1</span>, a[i] ) - ( b + <span class="hljs-number">1</span> ) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>        </div>      </div>    </div><h3 id="⚠️-边界与-Hack">⚠️ 边界与 Hack</h3><ul><li><p><strong>[坑点 1] 下标体系</strong>: <code>lower_bound</code> 返回的是指针/迭代器。</p><ul><li><p>若是 <code>vector</code>，<code>it - v.begin()</code> 是 0-based index。</p></li><li><p>若是数组 <code>b + 1</code> 开始，<code>ptr - (b + 1) + 1</code> 才是 1-based rank。建议统一使用 1-based 以适配 BIT/线段树。</p></li></ul></li><li><p><strong>[坑点 2] 原值查询</strong>: 离散化后 <code>a[i]</code> 变成了 Rank。如果后续需要输出原始数值，需保留 <code>b</code> 数组，<code>b[ a[i] ]</code> 即为原值。</p></li></ul><h2 id="4-知识粘附">4. 知识粘附</h2><ul><li><p><strong>典型应用</strong>:</p><ul><li><p><strong>逆序对 (Inversion Pair)</strong>: 树状数组求逆序对时，若数值过大，必须先离散化。</p></li><li><p><strong>二维平面扫描线</strong>: 坐标值很大时，需对 X 或 Y 坐标离散化。</p></li><li><p><strong>主席树 (可持久化线段树)</strong>: 处理值域线段树时，必须离散化。</p></li></ul></li><li><p><strong>母题索引</strong>:</p><ul><li><strong>[Luogu P1908] 逆序对</strong>: 离散化 + 权值树状数组的标准入门题。</li></ul></li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>00_Atlas</category>
-      
-      <category>00_基础算法</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>离散化</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>降维优化体系 (Optimization by Dimension Reduction)</title>
     <link href="/posts/fe091ad2/"/>
     <url>/posts/fe091ad2/</url>
@@ -1244,6 +1217,33 @@
       <tag>方法论</tag>
       
       <tag>索引</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>离散化 (Discretization)</title>
+    <link href="/posts/ef28f194/"/>
+    <url>/posts/ef28f194/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-生态位">1. 生态位</h2><ul><li><strong>定义</strong>: 在不改变数据<strong>相对大小 (Relative Order)</strong> 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。</li><li><strong>解决痛点</strong>:<ul><li>题目给出的数值范围很大 (如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span>)，但数据量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 较小 (如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>)。</li><li>算法（如树状数组、线段树、差分）的空间复杂度依赖于<strong>值域</strong>而非数据量。</li></ul></li><li><strong>本质</strong>: <strong>Value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> Rank</strong> 的映射。</li></ul><h2 id="2-逻辑支点">2. 逻辑支点</h2><ul><li><strong>核心不变量</strong>: <strong>Rank (排名)</strong>。<ul><li>离散化后的数组 <code>b[i]</code> 表示原数组 <code>a[i]</code> 在所有出现过的数中排第几小。</li></ul></li><li><strong>映射过程</strong>:<ol><li><strong>Sort</strong>: 将所有出现的数排序。</li><li><strong>Unique</strong>: 去除重复的数，得到“有序去重值域”。</li><li><strong>Binary Search</strong>: 对于原数组的每个数，二分查找它在去重值域中的位置（下标）。</li></ol></li></ul><h2 id="3-实战部署">3. 实战部署</h2><h3 id="3-1-STL-离散化模板">3.1 STL 离散化模板</h3><ul><li>利用 <code>std::unique</code> 和 <code>std::lower_bound</code> 组合拳。</li></ul>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">        <div class="fold-arrow">▶</div>Code: Discretization Template      </div>      <div class="fold-collapse collapse" id="collapse-076edf11">        <div class="fold-content">          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">int</span> a[maxn], b[maxn]; <span class="hljs-comment">// a: 原数组, b: 临时数组用于排序去重</span><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">discretize</span><span class="hljs-params">()</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 1. Copy: 复制一份数据到 b</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) b[i] = a[i];<br>    <br>    <span class="hljs-comment">// 2. Sort: 排序</span><br>    <span class="hljs-built_in">sort</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 3. Unique: 去重</span><br>    <span class="hljs-comment">// unique 返回去重后末尾元素的下一个迭代器</span><br>    <span class="hljs-type">int</span> len = <span class="hljs-built_in">unique</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> ) - ( b + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 4. Map: 构造映射 (Value -&gt; Rank)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-comment">// lower_bound 查找 a[i] 在 b 中的位置 (1-based)</span><br>        <span class="hljs-comment">// 此时 a[i] 的值变为 range [1, len]</span><br>        a[i] = <span class="hljs-built_in">lower_bound</span>( b + <span class="hljs-number">1</span>, b + len + <span class="hljs-number">1</span>, a[i] ) - ( b + <span class="hljs-number">1</span> ) + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>        </div>      </div>    </div><h3 id="⚠️-边界与-Hack">⚠️ 边界与 Hack</h3><ul><li><p><strong>[坑点 1] 下标体系</strong>: <code>lower_bound</code> 返回的是指针/迭代器。</p><ul><li><p>若是 <code>vector</code>，<code>it - v.begin()</code> 是 0-based index。</p></li><li><p>若是数组 <code>b + 1</code> 开始，<code>ptr - (b + 1) + 1</code> 才是 1-based rank。建议统一使用 1-based 以适配 BIT/线段树。</p></li></ul></li><li><p><strong>[坑点 2] 原值查询</strong>: 离散化后 <code>a[i]</code> 变成了 Rank。如果后续需要输出原始数值，需保留 <code>b</code> 数组，<code>b[ a[i] ]</code> 即为原值。</p></li></ul><h2 id="4-知识粘附">4. 知识粘附</h2><ul><li><p><strong>典型应用</strong>:</p><ul><li><p><strong>逆序对 (Inversion Pair)</strong>: 树状数组求逆序对时，若数值过大，必须先离散化。</p></li><li><p><strong>二维平面扫描线</strong>: 坐标值很大时，需对 X 或 Y 坐标离散化。</p></li><li><p><strong>主席树 (可持久化线段树)</strong>: 处理值域线段树时，必须离散化。</p></li></ul></li><li><p><strong>母题索引</strong>:</p><ul><li><strong>[Luogu P1908] 逆序对</strong>: 离散化 + 权值树状数组的标准入门题。</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>00_Atlas</category>
+      
+      <category>00_基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>离散化</tag>
       
     </tags>
     
