@@ -1,0 +1,60 @@
+---
+title: Mi Qiu's Digital Garden
+categories: []
+abbrlink: "92601886"
+date: 2025-11-09 11:00:09
+tags:
+sticky: 200
+updated: 2025-12-17 00:15:00
+---
+
+### 进度与思考 (Progress & Thinking)
+
+#### ☕ 状态栏 (Status Bar)
+
+> **Current Status:** 🏛️ TZCACM Team | 🎯 P0 Goal |
+> **Current Phase:** 🌉 **Phase 3.0 (The Bridge Protocol)**
+> **Philosophy:** "Airy & Structured" —— 追求逻辑极致与结构优雅。
+
+#### 🦋 Essay
+> *"Everything is a graph, even memory."*
+>
+> [月光下的蝴蝶](20_Essays/Essay_04_Butterfly.md)
+
+---
+
+### 🗺️ The Atlas (知识体系)
+
+> *这里不堆砌代码，只记录思维模型。*
+> *All links are bridged for Obsidian & Hexo.*
+
+#### 🏗️ [Dynamic Programming (动态规划)](00_Atlas/03_动态规划/00_动态规划指南.md)
+
+* **Core**: [DP_核心综述](00_Atlas/03_动态规划/00_核心体系/DP_核心综述.md) | [线性序列体系](00_Atlas/03_动态规划/01_线性模型/线性序列体系.md)
+* **Knapsack**: [背包模型体系](00_Atlas/03_动态规划/02_背包模型/背包模型体系.md) | [高维与网格DP](00_Atlas/03_动态规划/01_线性模型/高维与网格DP.md)
+* **Structure**: [树形DP体系](00_Atlas/03_动态规划/04_树形DP/树形DP体系.md) | [状压与状态抽象](00_Atlas/03_动态规划/05_状态压缩/状压与状态抽象.md)
+* **Optimization**: [显性单调队列优化](00_Atlas/03_动态规划/07_模型优化/显性单调队列优化.md) | [倍增优化策略](00_Atlas/03_动态规划/07_模型优化/倍增优化策略.md)
+
+#### 🕸️ [Graph Theory (图论)](00_Atlas/02_图论/00_图论指南.md)
+
+* **Modeling**: [图论建模综述](00_Atlas/02_图论/00_总览/图论建模综述.md) | [优化建图技巧](00_Atlas/02_图论/00_总览/优化建图技巧.md)
+* **Shortest Path**: [分层图最短路](00_Atlas/02_图论/01_最短路/分层图最短路.md) | [差分约束系统](00_Atlas/02_图论/01_最短路/差分约束系统.md)
+* **Connectivity**: [Tarjan SCC 与缩点](00_Atlas/02_图论/02_连通性/Tarjan%20SCC%20与缩点.md) | [传递闭包与Bitset优化](00_Atlas/02_图论/02_连通性/传递闭包与Bitset优化.md)
+* **Tree Algo**: [MST体系与瓶颈路](00_Atlas/02_图论/03_树上问题/MST体系与瓶颈路.md) | [重链剖分](00_Atlas/02_图论/03_树上问题/重链剖分.md)
+
+#### 🧱 [Data Structure (数据结构)](00_Atlas/01_数据结构/00_数据结构指南.md)
+
+* **Linear**: [单调栈与单调队列](00_Atlas/01_数据结构/01_线性结构/单调栈与单调队列.md)
+* **Tree-Based**: [线段树体系](00_Atlas/01_数据结构/02_树形结构/线段树体系.md) | [树状数组体系](00_Atlas/01_数据结构/02_树形结构/树状数组体系.md) | [堆与优先队列](00_Atlas/01_数据结构/02_树形结构/堆与优先队列.md)
+* **Set & Graph**: [并查集体系](00_Atlas/01_数据结构/03_集合与并查集/并查集体系.md)
+* **Advanced**: [ST表与倍增](00_Atlas/01_数据结构/04_高阶应用/ST表与倍增.md)
+
+---
+
+### 📜 Recent Notes
+
+* `2025-12-16` [状压与状态抽象](00_Atlas/03_动态规划/05_状态压缩/状压与状态抽象.md): 利用位运算特性 (AND/OR) 进行数值域的降维打击。
+* `2025-12-16` [树形DP体系](00_Atlas/03_动态规划/04_树形DP/树形DP体系.md): 补全了最大独立集与直径模型。
+* `2025-12-16` [图论建模综述](00_Atlas/02_图论/00_总览/图论建模综述.md): 建立了代数图论的宏观视野。
+
+> *"Wait for the wind, but keep rowing."*
