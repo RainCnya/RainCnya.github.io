@@ -26,8 +26,8 @@
 <meta property="og:site_name" content="MiQiu">
 <meta property="og:description" content="1. 体系融合 在掌握了 [线性], [背包], [区间], [优化] 四大板块后，高阶题目往往不再是单一模型的直接应用，而是多种模型的复合或非典型转化。 2. 经典案例解析 2.1 飞扬的小鸟 (P1941) —— 背包与状态机的共舞  混合核心: 完全背包 (上升) + 0&#x2F;1 背包 (下降)。 逻辑陷阱:  通常背包是一个物品选一次。这里是“上升”这个动作在同一列可以执行多次 →\to→ 完">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-12T01:11:52.000Z">
-<meta property="article:modified_time" content="2025-12-12T02:06:28.616Z">
+<meta property="article:published_time" content="2025-12-16T16:40:00.000Z">
+<meta property="article:modified_time" content="2025-12-18T05:11:55.824Z">
 <meta property="article:author" content="MiQiu">
 <meta property="article:tag" content="知识融合">
 <meta property="article:tag" content="模型转化">
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-12 09:11" pubdate>
-          2025年12月12日 上午
+        <time datetime="2025-12-17 00:40" pubdate>
+          2025年12月17日 凌晨
         </time>
       </span>
     
@@ -246,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          554 字
+          405 字
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -317,42 +317,34 @@
 <li><strong>混合核心</strong>: <strong>完全背包 (上升)</strong> + <strong>0/1 背包 (下降)</strong>。</li>
 <li><strong>逻辑陷阱</strong>:
 <ul>
-<li>通常背包是一个物品选一次。这里是“上升”这个动作在同一列可以执行多次 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 完全背包。</li>
-<li>“下降”动作是被动的，且互斥 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 特殊转移。</li>
-<li><strong>天花板效应</strong>: 高度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">&gt; m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 强行变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>。这破坏了背包的纯粹性，需要特殊处理边界。</li>
+<li>通常背包是一个物品选一次。这里是“上升”这个动作在同一列可以执行多次 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>完全背包</strong>。</li>
+<li>“下降”动作是被动的，且每单位时间只能发生一次（如果不点屏幕） <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>0/1 背包</strong> (特殊转移)。</li>
+<li><strong>天花板效应</strong>: 高度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">&gt; m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 强行变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>。这破坏了背包的纯粹性，需要特殊处理边界（在 <code>dp</code> 数组更新后强制取 min）。</li>
 </ul>
 </li>
-<li><strong>Atlas 映射</strong>: 归入 <code>02_Knapsack_Model</code> (Variant) 或作为线性递推的复杂状态机。</li>
+<li><strong>Atlas 映射</strong>: 归入 <strong><a href="../02_%E8%83%8C%E5%8C%85%E5%AE%87%E5%AE%99/%E8%83%8C%E5%8C%85%E6%A8%A1%E5%9E%8B%E5%85%A8%E8%A7%A3.md">背包宇宙</a></strong> 的变体。</li>
 </ul>
 <h3 id="2-2-成绩排序-P2519-——-从二维偏序到区间调度">2.2 成绩排序 (P2519) —— 从二维偏序到区间调度</h3>
 <ul>
 <li><strong>混合核心</strong>: <strong>二维 LIS</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>区间 DP/调度</strong>。</li>
 <li><strong>逻辑链条</strong>:
 <ol>
-<li>原始问题是二维偏序 (找出最多的人说真话)。</li>
-<li>转化: 一个人说真话 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 他的排名固定在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>i</mi></msub><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>N</mi><mo>−</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[a_i+1, N-b_i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>。</li>
-<li>进一步: 相同区间的人是等价的，取 <code>min(cnt, len)</code>。</li>
-<li>最终模型: 给定若干带权区间，选出不重叠的区间子集使权值最大 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 线性 DP (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>) 或 贪心。</li>
+<li>原始问题是二维偏序（Rank A vs Rank B）。</li>
+<li><strong>转化</strong>: 一个人说 &quot;A students higher, B students lower&quot; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 他的排名区间是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>N</mi><mo>−</mo><mi>B</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[A+1, N-B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span>。</li>
+<li><strong>去重</strong>: 相同说法的人归为一类，权重为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mtext>count</mtext><mo separator="true">,</mo><mtext>len</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">min(\text{count}, \text{len})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">min</span><span class="mopen">(</span><span class="mord text"><span class="mord">count</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">len</span></span><span class="mclose">)</span></span></span></span>。</li>
+<li><strong>模型坍缩</strong>: 问题转化为“在数轴上选择若干不相交的加权区间，使权重和最大”。</li>
+<li><strong>求解</strong>: 简单的线性 DP 或贪心 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)。</li>
 </ol>
 </li>
-<li><strong>Atlas 映射</strong>: 展示了如何通过 <strong>转化 (Transformation)</strong> 将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 模型降维至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
 </ul>
-<h3 id="2-3-管道取珠-P1758-——-平方的物理意义">2.3 管道取珠 (P1758) —— 平方的物理意义</h3>
+<h2 id="3-知识粘附">3. 知识粘附</h2>
 <ul>
-<li><strong>混合核心</strong>: <strong>计数 DP</strong> + <strong>双线程 (Dual Thread)</strong>。</li>
-<li><strong>思维跃迁</strong>:
+<li><strong>母题索引</strong>:
 <ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><msubsup><mi>a</mi><mi>i</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\sum a_i^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0728em;vertical-align:-0.2587em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span></span></span></span> 极其难算。</li>
-<li>物理意义: 两个人独立操作，输出序列完全一致的方案数。</li>
-<li>转化: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[k][i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> (两人共取 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 个，A 取上管 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个，B 取上管 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个)。</li>
+<li><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1941">Luogu P1941</a> 飞扬的小鸟</strong>: (背包复合)</li>
+<li><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2519">Luogu P2519</a> AHOI2005 抢夺资源</strong>:  (模型转化)</li>
 </ul>
 </li>
-<li><strong>Atlas 映射</strong>: 归入 <code>04_Optimization</code> (计数技巧)。</li>
-</ul>
-<h2 id="3-总结">3. 总结</h2>
-<ul>
-<li><strong>模型不是孤岛</strong>。背包可以嵌入图论 (分层图)，倍增可以优化环形 DP。</li>
-<li><strong>P0 级能力</strong>: 不在于背诵板子，而在于识别出题目伪装下的<strong>核心拓扑结构</strong> (是链、是环、还是树?) 和 <strong>依赖关系</strong> (是无后效性、还是互斥?)。</li>
 </ul>
 
                 
@@ -361,27 +353,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Retrospective/" class="category-chain-item">10_Retrospective</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
@@ -416,7 +387,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月12日</div>
+          <div>2025年12月17日</div>
         </div>
       
       
@@ -448,18 +419,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/f505e82a/" title="线段树信息的维持与合并 (The Art of Push Up)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">线段树信息的维持与合并 (The Art of Push Up)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/a535be86/" title="最短路体系 (SSSP System)">
-                        <span class="hidden-mobile">最短路体系 (SSSP System)</span>
+                      <a href="/posts/ec824ae8/" title="线段树进阶：信息合并 (The Art of Push Up)">
+                        <span class="hidden-mobile">线段树进阶：信息合并 (The Art of Push Up)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
