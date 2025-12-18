@@ -8,17 +8,23 @@
     <link href="/posts/8179d216/"/>
     <url>/posts/8179d216/</url>
     
-    <content type="html"><![CDATA[<h2 id="1-体系融合">1. 体系融合</h2><p>在掌握了 [线性], [背包], [区间], [优化] 四大板块后，高阶题目往往不再是单一模型的直接应用，而是<strong>多种模型的复合</strong>或<strong>非典型转化</strong>。</p><h2 id="2-经典案例解析">2. 经典案例解析</h2><h3 id="2-1-飞扬的小鸟-P1941-——-背包与状态机的共舞">2.1 飞扬的小鸟 (P1941) —— 背包与状态机的共舞</h3><ul><li><strong>混合核心</strong>: <strong>完全背包 (上升)</strong> + <strong>0/1 背包 (下降)</strong>。</li><li><strong>逻辑陷阱</strong>:<ul><li>通常背包是一个物品选一次。这里是“上升”这个动作在同一列可以执行多次 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>完全背包</strong>。</li><li>“下降”动作是被动的，且每单位时间只能发生一次（如果不点屏幕） <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>0/1 背包</strong> (特殊转移)。</li><li><strong>天花板效应</strong>: 高度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">&gt; m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 强行变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>。这破坏了背包的纯粹性，需要特殊处理边界（在 <code>dp</code> 数组更新后强制取 min）。</li></ul></li><li><strong>Atlas 映射</strong>: 归入 <strong><a href="../02_%E8%83%8C%E5%8C%85%E5%AE%87%E5%AE%99/%E8%83%8C%E5%8C%85%E6%A8%A1%E5%9E%8B%E5%85%A8%E8%A7%A3.md">背包宇宙</a></strong> 的变体。</li></ul><h3 id="2-2-成绩排序-P2519-——-从二维偏序到区间调度">2.2 成绩排序 (P2519) —— 从二维偏序到区间调度</h3><ul><li><strong>混合核心</strong>: <strong>二维 LIS</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>区间 DP/调度</strong>。</li><li><strong>逻辑链条</strong>:<ol><li>原始问题是二维偏序（Rank A vs Rank B）。</li><li><strong>转化</strong>: 一个人说 &quot;A students higher, B students lower&quot; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 他的排名区间是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>N</mi><mo>−</mo><mi>B</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[A+1, N-B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span>。</li><li><strong>去重</strong>: 相同说法的人归为一类，权重为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mtext>count</mtext><mo separator="true">,</mo><mtext>len</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">min(\text{count}, \text{len})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">min</span><span class="mopen">(</span><span class="mord text"><span class="mord">count</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">len</span></span><span class="mclose">)</span></span></span></span>。</li><li><strong>模型坍缩</strong>: 问题转化为“在数轴上选择若干不相交的加权区间，使权重和最大”。</li><li><strong>求解</strong>: 简单的线性 DP 或贪心 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)。</li></ol></li></ul><h2 id="3-知识粘附">3. 知识粘附</h2><ul><li><strong>母题索引</strong>:<ul><li><strong><a href="https://www.luogu.com.cn/problem/P1941">Luogu P1941</a> 飞扬的小鸟</strong>: (背包复合)</li><li><strong><a href="https://www.luogu.com.cn/problem/P2519">Luogu P2519</a> AHOI2005 抢夺资源</strong>:  (模型转化)</li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-体系融合">1. 体系融合</h2><p>在掌握了 [线性], [背包], [区间], [优化] 四大板块后，高阶题目往往不再是单一模型的直接应用，而是<strong>多种模型的复合</strong>或<strong>非典型转化</strong>。</p><h2 id="2-经典案例解析">2. 经典案例解析</h2><h3 id="2-1-飞扬的小鸟-P1941-——-背包与状态机的共舞">2.1 飞扬的小鸟 (P1941) —— 背包与状态机的共舞</h3><ul><li><strong>混合核心</strong>: <strong>完全背包 (上升)</strong> + <strong>0/1 背包 (下降)</strong>。</li><li><strong>逻辑陷阱</strong>:<ul><li>通常背包是一个物品选一次。这里是“上升”这个动作在同一列可以执行多次 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>完全背包</strong>。</li><li>“下降”动作是被动的，且每单位时间只能发生一次（如果不点屏幕） <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>0/1 背包</strong> (特殊转移)。</li><li><strong>天花板效应</strong>: 高度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">&gt; m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 强行变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span>。这破坏了背包的纯粹性，需要特殊处理边界（在 <code>dp</code> 数组更新后强制取 min）。</li></ul></li><li><strong>Atlas 映射</strong>: 归入 <strong><a href="/posts/8be0e5f9/">背包模型体系</a></strong> 的变体。</li></ul><h3 id="2-2-成绩排序-P2519-——-从二维偏序到区间调度">2.2 成绩排序 (P2519) —— 从二维偏序到区间调度</h3><ul><li><strong>混合核心</strong>: <strong>二维 LIS</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>区间 DP/调度</strong>。</li><li><strong>逻辑链条</strong>:<ol><li>原始问题是二维偏序（Rank A vs Rank B）。</li><li><strong>转化</strong>: 一个人说 &quot;A students higher, B students lower&quot; <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 他的排名区间是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>+</mo><mn>1</mn><mo separator="true">,</mo><mi>N</mi><mo>−</mo><mi>B</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[A+1, N-B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span>。</li><li><strong>去重</strong>: 相同说法的人归为一类，权重为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mtext>count</mtext><mo separator="true">,</mo><mtext>len</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">min(\text{count}, \text{len})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">min</span><span class="mopen">(</span><span class="mord text"><span class="mord">count</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">len</span></span><span class="mclose">)</span></span></span></span>。</li><li><strong>模型坍缩</strong>: 问题转化为“在数轴上选择若干不相交的加权区间，使权重和最大”。</li><li><strong>求解</strong>: 简单的线性 DP 或贪心 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)。</li></ol></li></ul><h2 id="3-知识粘附">3. 知识粘附</h2><ul><li><strong>母题索引</strong>:<ul><li><strong><a href="https://www.luogu.com.cn/problem/P1941">Luogu P1941</a> 飞扬的小鸟</strong>: (背包复合)</li><li><strong><a href="https://www.luogu.com.cn/problem/P2519">Luogu P2519</a> AHOI2005 抢夺资源</strong>:  (模型转化)</li></ul></li></ul>]]></content>
     
+    
+    <categories>
+      
+      <category>00_Atlas</category>
+      
+      <category>03_动态规划</category>
+      
+    </categories>
     
     
     <tags>
       
-      <tag>知识融合</tag>
-      
       <tag>模型转化</tag>
       
-      <tag>复杂状态</tag>
+      <tag>构造</tag>
       
     </tags>
     
@@ -34,16 +40,20 @@
     <content type="html"><![CDATA[<h2 id="1-生态位">1. 生态位</h2><ul><li><strong>定义</strong>: 探讨线段树在处理 <strong>&quot;非简单可加性信息&quot;</strong> 时的合并策略。从标量 (Scalar) 的最大子段和，进化到集合 (Set) 的动态连通性。</li><li><strong>核心矛盾</strong>:<ul><li>简单线段树: <code>sum = L.sum + R.sum</code> (独立性)。</li><li>复杂线段树: 左右子区间不仅有独立贡献，还存在 <strong>&quot;跨界 (Cross-Boundary)&quot;</strong> 的交互。</li></ul></li><li><strong>演进路线</strong>:<ul><li><strong>Level 1 (GSS)</strong>: 维护 <code>lmax</code>, <code>rmax</code> 解决数值跨界问题。</li><li><strong>Level 2 (Connectivity)</strong>: 维护 <code>L-Port</code>, <code>R-Port</code> 与 DSU 解决拓扑连接问题。</li></ul></li></ul><h2 id="2-Level-1-数值跨界-GSS-模型">2. Level 1: 数值跨界 (GSS 模型)</h2><h3 id="2-1-逻辑支点">2.1 逻辑支点</h3><p>在 <strong>最大子段和 (Maximum Subarray Sum)</strong> 问题中，区间最优解只有三种可能：</p><ol><li>完全在左儿子 (<code>L.dat</code>)。</li><li>完全在右儿子 (<code>R.dat</code>)。</li><li><strong>跨越中点</strong>: 左儿子的最大后缀 + 右儿子的最大前缀 (<code>L.rmax + R.lmax</code>)。</li></ol><p>这迫使我们在节点中额外维护 <code>lmax</code> 和 <code>rmax</code>。</p><h3 id="2-2-实战部署-GSS3">2.2 实战部署 (GSS3)</h3>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">        <div class="fold-arrow">▶</div>Code: GSS Push Up      </div>      <div class="fold-collapse collapse" id="collapse-076edf11">        <div class="fold-content">          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> &#123; <span class="hljs-type">int</span> sum, lmax, rmax, dat; &#125;;<br><br><span class="hljs-function">Node <span class="hljs-title">merge</span><span class="hljs-params">( Node L, Node R )</span> </span><br><span class="hljs-function"></span>&#123;<br>    Node res;<br>    res.sum = L.sum + R.sum;<br>    <span class="hljs-comment">// 前缀可能贯穿左边，延伸到右边</span><br>    res.lmax = <span class="hljs-built_in">max</span>( L.lmax, L.sum + R.lmax ); <br>    res.rmax = <span class="hljs-built_in">max</span>( R.rmax, R.sum + L.rmax );<br>    <span class="hljs-comment">// 最大子段和的三种情况</span><br>    res.dat = <span class="hljs-built_in">max</span>( <span class="hljs-built_in">max</span>( L.dat, R.dat ), L.rmax + R.lmax );<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>        </div>      </div>    </div><h2 id="3-Level-2-拓扑跨界-动态连通性">3. Level 2: 拓扑跨界 (动态连通性)</h2><h3 id="3-1-场景描述-ZJOI2006-TZOJ-3277">3.1 场景描述 (ZJOI2006 / TZOJ 3277)</h3><ul><li><p><strong>问题</strong>: 网格图，支持修改边/点权，查询两点连通性或连通块个数。</p></li><li><p><strong>难点</strong>: 左右区间合并时，中间的分界线 (<code>mid</code> 与 <code>mid+1</code>) 上可能有多个连通的接口。</p></li></ul><h3 id="3-2-逻辑支点">3.2 逻辑支点</h3><ul><li><p><strong>端口映射</strong>: 维护区间左右边界的连通性编号。</p></li><li><p><strong>并查集缝合</strong>: 在 <code>push_up</code> 时，将左区间的右边界与右区间的左边界进行 <code>unite</code> 操作。</p></li></ul>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">        <div class="fold-arrow">▶</div>Code: Connectivity Merge      </div>      <div class="fold-collapse collapse" id="collapse-28ab9646">        <div class="fold-content">          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// 伪代码逻辑：缝合中轴线</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push_up</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> ls = u &lt;&lt; <span class="hljs-number">1</span>, rs = u &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> mid = ( tr[ls].l + tr[u].r ) &gt;&gt; <span class="hljs-number">1</span>;<br><br>    <span class="hljs-comment">// 1. 继承基础计数</span><br>    tr[u].cnt = tr[ls].cnt + tr[rs].cnt; <br><br>    <span class="hljs-comment">// 2. 缝合交界面 (Stitching Interface)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-comment">// 检查中轴线 (mid, mid+1) 的颜色/连通性是否一致</span><br>        <span class="hljs-keyword">if</span>( G[i][mid] == G[i][mid<span class="hljs-number">+1</span>] ) <br>        &#123;<br>            <span class="hljs-comment">// 获取交界面两侧的连通分量 ID</span><br>            <span class="hljs-type">int</span> root_L = <span class="hljs-built_in">find</span>( tr[ls].right_port[i] ); <br>            <span class="hljs-type">int</span> root_R = <span class="hljs-built_in">find</span>( tr[rs].left_port[i] );<br><br>            <span class="hljs-keyword">if</span>( root_L != root_R ) <br>            &#123;<br>                fa[root_L] = root_R; <span class="hljs-comment">// 合并</span><br>                tr[u].cnt --; <span class="hljs-comment">// 连通块减少</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 3. 更新父节点端口信息 (Mapping)...</span><br>&#125;<br></code></pre></td></tr></table></figure>        </div>      </div>    </div><h2 id="4-知识粘附">4. 知识粘附</h2><ul><li><p><strong>母题索引</strong>:</p><ul><li><p><strong><a href="https://www.luogu.com.cn/problem/P4513">Luogu P4513</a> 小白逛公园</strong> (GSS)</p></li><li><p><strong><a href="https://www.luogu.com.cn/problem/P2513">Luogu P2513</a> 动态连通性</strong>: (线段树分治/LCT)</p></li></ul></li></ul>]]></content>
     
     
+    <categories>
+      
+      <category>00_Atlas</category>
+      
+      <category>01_数据结构</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>线段树</tag>
       
-      <tag>GSS</tag>
-      
       <tag>动态连通性</tag>
-      
-      <tag>结构体合并</tag>
       
     </tags>
     
@@ -70,11 +80,7 @@
     
     <tags>
       
-      <tag>路径压缩</tag>
-      
-      <tag>逆向DP</tag>
-      
-      <tag>辅助数组</tag>
+      <tag>逆向思维</tag>
       
     </tags>
     
@@ -105,8 +111,6 @@
       
       <tag>区间覆盖</tag>
       
-      <tag>破环成链</tag>
-      
     </tags>
     
   </entry>
@@ -132,9 +136,9 @@
     
     <tags>
       
-      <tag>单调队列</tag>
-      
       <tag>贪心</tag>
+      
+      <tag>单调队列</tag>
       
       <tag>蚯蚓模型</tag>
       
@@ -196,9 +200,7 @@
       
       <tag>状压DP</tag>
       
-      <tag>位运算</tag>
-      
-      <tag>对称性</tag>
+      <tag>状态机</tag>
       
     </tags>
     
@@ -229,7 +231,7 @@
       
       <tag>容斥原理</tag>
       
-      <tag>排列组合</tag>
+      <tag>组合数学</tag>
       
     </tags>
     
@@ -258,11 +260,7 @@
       
       <tag>状压DP</tag>
       
-      <tag>位运算</tag>
-      
       <tag>TSP</tag>
-      
-      <tag>棋盘模型</tag>
       
     </tags>
     
@@ -290,8 +288,6 @@
     <tags>
       
       <tag>树形DP</tag>
-      
-      <tag>树的直径</tag>
       
       <tag>树上背包</tag>
       
@@ -322,8 +318,6 @@
       
       <tag>区间DP</tag>
       
-      <tag>环形DP</tag>
-      
       <tag>断环成链</tag>
       
     </tags>
@@ -351,13 +345,9 @@
     
     <tags>
       
-      <tag>01背包</tag>
+      <tag>背包DP</tag>
       
-      <tag>完全背包</tag>
-      
-      <tag>分组背包</tag>
-      
-      <tag>资源分配</tag>
+      <tag>模型转换</tag>
       
     </tags>
     
@@ -386,7 +376,7 @@
       
       <tag>网格图</tag>
       
-      <tag>多线程DP</tag>
+      <tag>多路DP</tag>
       
     </tags>
     
@@ -419,8 +409,6 @@
       
       <tag>线性DP</tag>
       
-      <tag>贪心优化</tag>
-      
     </tags>
     
   </entry>
@@ -446,11 +434,9 @@
     
     <tags>
       
-      <tag>记忆化搜索</tag>
+      <tag>DP</tag>
       
-      <tag>状态设计</tag>
-      
-      <tag>无后效性</tag>
+      <tag>方法论</tag>
       
     </tags>
     
@@ -477,7 +463,7 @@
     
     <tags>
       
-      <tag>DSU</tag>
+      <tag>并查集</tag>
       
       <tag>连通性</tag>
       
@@ -516,8 +502,6 @@
       
       <tag>对顶堆</tag>
       
-      <tag>Huffman</tag>
-      
     </tags>
     
   </entry>
@@ -545,11 +529,9 @@
       
       <tag>线段树</tag>
       
-      <tag>懒标记</tag>
-      
-      <tag>GSS</tag>
-      
       <tag>扫描线</tag>
+      
+      <tag>历史最值</tag>
       
     </tags>
     
@@ -580,8 +562,6 @@
       
       <tag>差分</tag>
       
-      <tag>BIT</tag>
-      
       <tag>树状数组</tag>
       
     </tags>
@@ -609,11 +589,7 @@
     
     <tags>
       
-      <tag>LCA</tag>
-      
       <tag>MST</tag>
-      
-      <tag>Prim</tag>
       
       <tag>瓶颈路</tag>
       
@@ -646,7 +622,7 @@
       
       <tag>连通性</tag>
       
-      <tag>Floyd</tag>
+      <tag>传递闭包</tag>
       
       <tag>Bitset</tag>
       
@@ -675,9 +651,11 @@
     
     <tags>
       
-      <tag>SPFA</tag>
+      <tag>最短路</tag>
       
-      <tag>不等式组</tag>
+      <tag>差分约束</tag>
+      
+      <tag>数学</tag>
       
     </tags>
     
@@ -704,9 +682,9 @@
     
     <tags>
       
-      <tag>Dijkstra</tag>
-      
       <tag>DP</tag>
+      
+      <tag>最短路</tag>
       
       <tag>分层图</tag>
       
@@ -735,11 +713,9 @@
     
     <tags>
       
-      <tag>位运算</tag>
+      <tag>线段树</tag>
       
-      <tag>虚拟点</tag>
-      
-      <tag>线段树优化建图</tag>
+      <tag>图论建模</tag>
       
     </tags>
     
@@ -766,11 +742,9 @@
     
     <tags>
       
-      <tag>前缀和</tag>
+      <tag>树上差分</tag>
       
       <tag>LCA</tag>
-      
-      <tag>树</tag>
       
     </tags>
     
@@ -797,11 +771,11 @@
     
     <tags>
       
-      <tag>LCA</tag>
-      
       <tag>线段树</tag>
       
-      <tag>树</tag>
+      <tag>LCA</tag>
+      
+      <tag>树链剖分</tag>
       
     </tags>
     
@@ -828,11 +802,9 @@
     
     <tags>
       
-      <tag>分治</tag>
+      <tag>树的直径</tag>
       
-      <tag>DFS</tag>
-      
-      <tag>树</tag>
+      <tag>树的重心</tag>
       
     </tags>
     
@@ -859,11 +831,9 @@
     
     <tags>
       
-      <tag>连通性</tag>
-      
       <tag>Tarjan</tag>
       
-      <tag>DAG</tag>
+      <tag>强连通分量</tag>
       
       <tag>缩点</tag>
       
@@ -892,11 +862,7 @@
     
     <tags>
       
-      <tag>欧拉路</tag>
-      
-      <tag>DFS</tag>
-      
-      <tag>Hierholzer</tag>
+      <tag>欧拉回路</tag>
       
     </tags>
     
@@ -923,11 +889,7 @@
     
     <tags>
       
-      <tag>SPFA</tag>
-      
-      <tag>Dijkstra</tag>
-      
-      <tag>Floyd</tag>
+      <tag>最短路</tag>
       
       <tag>最短路图</tag>
       
@@ -956,11 +918,9 @@
     
     <tags>
       
-      <tag>建模</tag>
+      <tag>图论建模</tag>
       
       <tag>同余最短路</tag>
-      
-      <tag>状态映射</tag>
       
     </tags>
     
@@ -987,9 +947,7 @@
     
     <tags>
       
-      <tag>二分查找</tag>
-      
-      <tag>二分答案</tag>
+      <tag>二分</tag>
       
       <tag>单调性</tag>
       
@@ -1018,13 +976,11 @@
     
     <tags>
       
-      <tag>RMQ</tag>
-      
-      <tag>LCA</tag>
-      
       <tag>ST表</tag>
       
       <tag>倍增</tag>
+      
+      <tag>RMQ</tag>
       
     </tags>
     
@@ -1088,8 +1044,6 @@
       
       <tag>逆运算</tag>
       
-      <tag>SOS_DP</tag>
-      
     </tags>
     
   </entry>
@@ -1142,6 +1096,14 @@
     </categories>
     
     
+    <tags>
+      
+      <tag>指南</tag>
+      
+      <tag>基础算法</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -1151,7 +1113,7 @@
     <link href="/posts/4bddc3c/"/>
     <url>/posts/4bddc3c/</url>
     
-    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p></blockquote><h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3><p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p><ul><li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li><li><strong><a href="/posts/undefined/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li><li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li><li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li></ul><h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3><p>处理元素之间的特定关系（如大小顺序、等价关系）。</p><ul><li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li><li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li></ul><h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3><p>利用预处理换取极速查询。</p><ul><li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p></blockquote><h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3><p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p><ul><li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li><li><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li><li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li><li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li></ul><h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3><p>处理元素之间的特定关系（如大小顺序、等价关系）。</p><ul><li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li><li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li></ul><h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3><p>利用预处理换取极速查询。</p><ul><li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li></ul>]]></content>
     
     
     <categories>
@@ -1163,6 +1125,14 @@
     </categories>
     
     
+    <tags>
+      
+      <tag>指南</tag>
+      
+      <tag>数据结构</tag>
+      
+    </tags>
+    
   </entry>
   
   
@@ -1172,7 +1142,7 @@
     <link href="/posts/9e0761d7/"/>
     <url>/posts/9e0761d7/</url>
     
-    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 动态规划不是背模板，而是寻找 <strong>DAG (有向无环图)</strong> 上的最短路。</p></blockquote><h3 id="🏗️-基础与模型-The-Foundation">🏗️ 基础与模型 (The Foundation)</h3><ul><li><strong><a href="/posts/1c960464/">DP 核心综述 (DP Core Synthesis)</a></strong>: 记忆化与递推的同构。</li><li><strong><a href="/posts/a164e19/">线性序列体系 (Sequence System)</a></strong>: LIS/LCS 与 Dilworth 定理。</li><li><strong><a href="/posts/8be0e5f9/">背包模型体系 (Knapsack System)</a></strong>: 万物皆可背包。</li><li><strong><a href="/posts/a75f3b7c/">区间与环形体系 (Interval &amp; Ring)</a></strong>: 断环成链与区间合并。</li><li><strong><a href="/posts/b6a340a7/">树形 DP 体系 (Tree DP System)</a></strong>: 树上背包与最大独立集。</li></ul><h3 id="⚡-维度与优化-Optimization-Advanced">⚡ 维度与优化 (Optimization &amp; Advanced)</h3><p><em>这是 P0 级选手的核心竞争力。</em></p><ul><li><strong>状态压缩</strong>:<ul><li><strong><a href="/posts/8b130bbd/">状压 DP 体系 (State Compression)</a></strong>: 集合型与棋盘型基础。</li><li><strong><a href="/posts/ec3ba026/">状压与状态抽象 (Abstraction)</a></strong>: 利用位运算特性 (AND/OR) 进行数值域的降维打击。</li></ul></li><li><strong>模型优化</strong>:<ul><li><strong><a href="/posts/1bc8a91b/">单调队列优化 (Monotonic Queue)</a></strong>: 处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mo>+</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp[i] = \max(dp[j]) + val(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">])</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span> 的滑动窗口模型。</li><li><strong><a href="/posts/517010cb/">隐性单调性 (Implicit Monotonicity)</a></strong>: 利用产出单调性，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 队列替代 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 堆 (蚯蚓模型)。</li><li><strong><a href="/posts/c936ec9e/">倍增优化策略 (Doubling Strategy)</a></strong>: 处理超长值域或环形覆盖问题。</li><li><strong><a href="/posts/f977dd98/">结构与逆向思维 (Reverse Logic)</a></strong>: 路径压缩与时光倒流。</li></ul></li></ul><h3 id="🧩-综合与实战-Composite-Cases">🧩 综合与实战 (Composite Cases)</h3><ul><li><strong><a href="/posts/undefined/">复合模型综述 (Composite Models)</a></strong>: 飞扬的小鸟 (背包复合)、成绩排序 (模型转化) 等经典“缝合”案例解析。</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 动态规划不是背模板，而是寻找 <strong>DAG (有向无环图)</strong> 上的最短路。</p></blockquote><h3 id="🏗️-基础与模型-The-Foundation">🏗️ 基础与模型 (The Foundation)</h3><ul><li><strong><a href="/posts/1c960464/">DP 核心综述 (DP Core Synthesis)</a></strong>: 记忆化与递推的同构。</li><li><strong><a href="/posts/a164e19/">线性序列体系 (Sequence System)</a></strong>: LIS/LCS 与 Dilworth 定理。</li><li><strong><a href="/posts/8be0e5f9/">背包模型体系 (Knapsack System)</a></strong>: 万物皆可背包。</li><li><strong><a href="/posts/a75f3b7c/">区间与环形体系 (Interval &amp; Ring)</a></strong>: 断环成链与区间合并。</li><li><strong><a href="/posts/b6a340a7/">树形 DP 体系 (Tree DP System)</a></strong>: 树上背包与最大独立集。</li></ul><h3 id="⚡-维度与优化-Optimization-Advanced">⚡ 维度与优化 (Optimization &amp; Advanced)</h3><p><em>这是 P0 级选手的核心竞争力。</em></p><ul><li><strong>状态压缩</strong>:<ul><li><strong><a href="/posts/8b130bbd/">状压 DP 体系 (State Compression)</a></strong>: 集合型与棋盘型基础。</li><li><strong><a href="/posts/ec3ba026/">状压与状态抽象 (Abstraction)</a></strong>: 利用位运算特性 (AND/OR) 进行数值域的降维打击。</li></ul></li><li><strong>模型优化</strong>:<ul><li><strong><a href="/posts/1bc8a91b/">单调队列优化 (Monotonic Queue)</a></strong>: 处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mo>+</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp[i] = \max(dp[j]) + val(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">])</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span> 的滑动窗口模型。</li><li><strong><a href="/posts/517010cb/">隐性单调性 (Implicit Monotonicity)</a></strong>: 利用产出单调性，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 队列替代 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 堆 (蚯蚓模型)。</li><li><strong><a href="/posts/c936ec9e/">倍增优化策略 (Doubling Strategy)</a></strong>: 处理超长值域或环形覆盖问题。</li><li><strong><a href="/posts/f977dd98/">结构与逆向思维 (Reverse Logic)</a></strong>: 路径压缩与时光倒流。</li></ul></li></ul><h3 id="🧩-综合与实战-Composite-Cases">🧩 综合与实战 (Composite Cases)</h3><ul><li><strong><a href="/posts/8179d216/">复合模型综述 (Composite Models)</a></strong>: 飞扬的小鸟 (背包复合)、成绩排序 (模型转化) 等经典“缝合”案例解析。</li></ul>]]></content>
     
     
     <categories>
@@ -1183,6 +1153,43 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>指南</tag>
+      
+      <tag>DP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>图论：结构映射与状态流转 (Graph Guide)</title>
+    <link href="/posts/4b02a8e5/"/>
+    <url>/posts/4b02a8e5/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 一切皆图。不等式是图，同余系是图，矩阵变换也是图。<br>图论的本质是将<strong>离散的状态</strong> (Nodes) 与 <strong>逻辑的关系</strong> (Edges) 可视化，从而利用拓扑性质解决代数问题。</p></blockquote><h3 id="🌍-宏观视野-Overview-Modeling">🌍 宏观视野 (Overview &amp; Modeling)</h3><p>建模是图论的灵魂，优化是图论的骨架。</p><ul><li><strong><a href="/posts/54aea480/">图论建模综述 (Graph Core Synthesis)</a></strong>: <strong>必读</strong>。解析图论建模的三大范式：差分约束（不等式映射）、同余最短路（数值折叠）、动态 Floyd（时间轴展开）。</li><li><strong><a href="/posts/5c86f54/">优化建图技巧 (Graph Optimization)</a></strong>: 当边数爆炸 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≈</mo><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">M \approx N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>) 时的降维打击。涵盖虚拟节点 (Hub)、线段树优化建图、位运算隐式图。</li></ul><h3 id="🛣️-最短路与状态-Shortest-Path-States">🛣️ 最短路与状态 (Shortest Path &amp; States)</h3><p>最短路不仅是求距离，更是<strong>状态转移的最小代价</strong>。</p><ul><li><strong><a href="/posts/a535be86/">最短路体系 (SSSP System)</a></strong>: Dijkstra、SPFA 与 Floyd 的逻辑支点，以及最短路图 (DAG) 的计数应用。</li><li><strong><a href="/posts/2a513a9f/">分层图最短路 (Layered Graph)</a></strong>: 处理“有限次免费/折扣”或“状态切换”的二维最短路模型。</li><li><strong><a href="/posts/6cae5d5b/">差分约束系统 (Difference Constraints)</a></strong>: 将形如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>u</mi></msub><mo>−</mo><msub><mi>X</mi><mi>v</mi></msub><mo>≤</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">X_u - X_v \le W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span> 的代数不等式组转化为最短路模型。</li></ul><h3 id="🔗-连通性与遍历-Connectivity-Traversal">🔗 连通性与遍历 (Connectivity &amp; Traversal)</h3><p>研究图的<strong>结构特征</strong>，将环拆解，将图分层。</p><ul><li><strong><a href="/posts/dbe3a645/">Tarjan SCC 与缩点 (Tarjan SCC)</a></strong>: <strong>必读</strong>。化环为链，将有向图转化为 DAG 进行 DP 或递推。</li><li><strong><a href="/posts/d4dd66e8/">传递闭包与Bitset优化 (Transitive Closure)</a></strong>: 利用 Bitset 并行加速，在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mi mathvariant="normal">/</mi><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3/w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> 复杂度下解决稠密图的连通性查询。</li><li><strong><a href="/posts/3fe2b20c/">欧拉回路与路径 (Eulerian Path)</a></strong>: 边遍历问题（一笔画）。Hierholzer 算法的圈套圈逻辑。</li></ul><h3 id="🌳-树上问题-Tree-Algorithms">🌳 树上问题 (Tree Algorithms)</h3><p>树是特殊的图（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 边，无环连通）。</p><ul><li><strong><a href="/posts/cd7fb2f0/">MST体系与瓶颈路 (MST, LCA &amp; Bottleneck)</a></strong>: <strong>必读</strong>。最小生成树与 LCA 的结合，解决“路径最大边最小”的瓶颈路问题。包含 Kruskal 重构树。</li><li><strong><a href="/posts/447bed30/">树的直径与重心 (Tree Properties)</a></strong>: 树的“最长跨度”与“平衡中心”，点分治与树形 DP 的基础。</li><li><strong><a href="/posts/5e08b96b/">重链剖分 (HLD System)</a></strong>: 将树“线性化”为序列，结合线段树维护路径信息。</li><li><strong><a href="/posts/4f9d9d38/">树上差分 (Tree Difference)</a></strong>: 离线处理批量的树上路径修改任务。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>00_Atlas</category>
+      
+      <category>02_图论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>指南</tag>
+      
+      <tag>图论</tag>
+      
+    </tags>
     
   </entry>
   
@@ -1208,8 +1215,6 @@
     <tags>
       
       <tag>离散化</tag>
-      
-      <tag>映射</tag>
       
     </tags>
     
@@ -1241,27 +1246,6 @@
       <tag>索引</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>图论：结构映射与状态流转 (Graph Guide)</title>
-    <link href="/posts/4b02a8e5/"/>
-    <url>/posts/4b02a8e5/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 一切皆图。不等式是图，同余系是图，矩阵变换也是图。<br>图论的本质是将<strong>离散的状态</strong> (Nodes) 与 <strong>逻辑的关系</strong> (Edges) 可视化，从而利用拓扑性质解决代数问题。</p></blockquote><h3 id="🌍-宏观视野-Overview-Modeling">🌍 宏观视野 (Overview &amp; Modeling)</h3><p>建模是图论的灵魂，优化是图论的骨架。</p><ul><li><strong><a href="/posts/54aea480/">图论建模综述 (Graph Core Synthesis)</a></strong>: <strong>必读</strong>。解析图论建模的三大范式：差分约束（不等式映射）、同余最短路（数值折叠）、动态 Floyd（时间轴展开）。</li><li><strong><a href="/posts/5c86f54/">优化建图技巧 (Graph Optimization)</a></strong>: 当边数爆炸 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≈</mo><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">M \approx N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>) 时的降维打击。涵盖虚拟节点 (Hub)、线段树优化建图、位运算隐式图。</li></ul><h3 id="🛣️-最短路与状态-Shortest-Path-States">🛣️ 最短路与状态 (Shortest Path &amp; States)</h3><p>最短路不仅是求距离，更是<strong>状态转移的最小代价</strong>。</p><ul><li><strong><a href="/posts/a535be86/">最短路体系 (SSSP System)</a></strong>: Dijkstra、SPFA 与 Floyd 的逻辑支点，以及最短路图 (DAG) 的计数应用。</li><li><strong><a href="/posts/2a513a9f/">分层图最短路 (Layered Graph)</a></strong>: 处理“有限次免费/折扣”或“状态切换”的二维最短路模型。</li><li><strong><a href="/posts/6cae5d5b/">差分约束系统 (Difference Constraints)</a></strong>: 将形如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>u</mi></msub><mo>−</mo><msub><mi>X</mi><mi>v</mi></msub><mo>≤</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">X_u - X_v \le W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span> 的代数不等式组转化为最短路模型。</li></ul><h3 id="🔗-连通性与遍历-Connectivity-Traversal">🔗 连通性与遍历 (Connectivity &amp; Traversal)</h3><p>研究图的<strong>结构特征</strong>，将环拆解，将图分层。</p><ul><li><strong><a href="/posts/dbe3a645/">Tarjan SCC 与缩点 (Tarjan SCC)</a></strong>: <strong>必读</strong>。化环为链，将有向图转化为 DAG 进行 DP 或递推。</li><li><strong><a href="/posts/d4dd66e8/">传递闭包与Bitset优化 (Transitive Closure)</a></strong>: 利用 Bitset 并行加速，在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mi mathvariant="normal">/</mi><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3/w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> 复杂度下解决稠密图的连通性查询。</li><li><strong><a href="/posts/3fe2b20c/">欧拉回路与路径 (Eulerian Path)</a></strong>: 边遍历问题（一笔画）。Hierholzer 算法的圈套圈逻辑。</li></ul><h3 id="🌳-树上问题-Tree-Algorithms">🌳 树上问题 (Tree Algorithms)</h3><p>树是特殊的图（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 边，无环连通）。</p><ul><li><strong><a href="/posts/cd7fb2f0/">MST体系与瓶颈路 (MST, LCA &amp; Bottleneck)</a></strong>: <strong>必读</strong>。最小生成树与 LCA 的结合，解决“路径最大边最小”的瓶颈路问题。包含 Kruskal 重构树。</li><li><strong><a href="/posts/447bed30/">树的直径与重心 (Tree Properties)</a></strong>: 树的“最长跨度”与“平衡中心”，点分治与树形 DP 的基础。</li><li><strong><a href="/posts/5e08b96b/">重链剖分 (HLD System)</a></strong>: 将树“线性化”为序列，结合线段树维护路径信息。</li><li><strong><a href="/posts/4f9d9d38/">树上差分 (Tree Difference)</a></strong>: 离线处理批量的树上路径修改任务。</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>00_Atlas</category>
-      
-      <category>02_图论</category>
-      
-    </categories>
-    
     
   </entry>
   

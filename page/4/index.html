@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#2f4154">
+  <meta name="theme-color" content="#4A4E69">
   <meta name="author" content="MiQiu">
   <meta name="keywords" content="">
   
@@ -59,11 +59,15 @@
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -175,6 +179,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
@@ -198,13 +214,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/BackGround.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/banner_index.webp') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C&#39;est la vie J&#39;aime la vie"></span>
+            <span id="subtitle" data-typed-text="愿你的旅途永远璀璨，愿你的夏日永不凋零。"></span>
           
         </div>
 
@@ -296,11 +312,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LCA/">#LCA</a>
-            
               <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">#线段树</a>
             
-              <a href="/tags/%E6%A0%91/">#树</a>
+              <a href="/tags/LCA/">#LCA</a>
+            
+              <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/">#树链剖分</a>
             
           </div>
         
@@ -368,11 +384,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%88%86%E6%B2%BB/">#分治</a>
+              <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">#树的直径</a>
             
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/%E6%A0%91/">#树</a>
+              <a href="/tags/%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83/">#树的重心</a>
             
           </div>
         
@@ -440,11 +454,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
-            
               <a href="/tags/Tarjan/">#Tarjan</a>
             
-              <a href="/tags/DAG/">#DAG</a>
+              <a href="/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/">#强连通分量</a>
             
               <a href="/tags/%E7%BC%A9%E7%82%B9/">#缩点</a>
             
@@ -514,11 +526,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%AC%A7%E6%8B%89%E8%B7%AF/">#欧拉路</a>
-            
-              <a href="/tags/DFS/">#DFS</a>
-            
-              <a href="/tags/Hierholzer/">#Hierholzer</a>
+              <a href="/tags/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/">#欧拉回路</a>
             
           </div>
         
@@ -586,11 +594,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/SPFA/">#SPFA</a>
-            
-              <a href="/tags/Dijkstra/">#Dijkstra</a>
-            
-              <a href="/tags/Floyd/">#Floyd</a>
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">#最短路</a>
             
               <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%9B%BE/">#最短路图</a>
             
@@ -660,11 +664,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%BB%BA%E6%A8%A1/">#建模</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/">#图论建模</a>
             
               <a href="/tags/%E5%90%8C%E4%BD%99%E6%9C%80%E7%9F%AD%E8%B7%AF/">#同余最短路</a>
-            
-              <a href="/tags/%E7%8A%B6%E6%80%81%E6%98%A0%E5%B0%84/">#状态映射</a>
             
           </div>
         
@@ -732,9 +734,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">#二分查找</a>
-            
-              <a href="/tags/%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">#二分答案</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/">#二分</a>
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
             
@@ -804,13 +804,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/RMQ/">#RMQ</a>
-            
-              <a href="/tags/LCA/">#LCA</a>
-            
               <a href="/tags/ST%E8%A1%A8/">#ST表</a>
             
               <a href="/tags/%E5%80%8D%E5%A2%9E/">#倍增</a>
+            
+              <a href="/tags/RMQ/">#RMQ</a>
             
           </div>
         
@@ -956,8 +954,6 @@
             
               <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
             
-              <a href="/tags/SOS-DP/">#SOS_DP</a>
-            
           </div>
         
       </div>
@@ -1018,7 +1014,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   
