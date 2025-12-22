@@ -558,11 +558,11 @@
     
     <tags>
       
-      <tag>树状数组</tag>
-      
       <tag>逆序对</tag>
       
       <tag>差分</tag>
+      
+      <tag>树状数组</tag>
       
     </tags>
     
@@ -713,9 +713,9 @@
     
     <tags>
       
-      <tag>线段树</tag>
-      
       <tag>图论建模</tag>
+      
+      <tag>线段树</tag>
       
     </tags>
     
@@ -1038,9 +1038,9 @@
     
     <tags>
       
-      <tag>差分</tag>
-      
       <tag>前缀和</tag>
+      
+      <tag>差分</tag>
       
       <tag>逆运算</tag>
       
@@ -1080,18 +1080,18 @@
   
   
   <entry>
-    <title>数据结构：信息的容器与维护 (DS Guide)</title>
-    <link href="/posts/4bddc3c/"/>
-    <url>/posts/4bddc3c/</url>
+    <title>基石算法：降维打击的起点 (Basis Guide)</title>
+    <link href="/posts/c28314d6/"/>
+    <url>/posts/c28314d6/</url>
     
-    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p></blockquote><h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3><p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p><ul><li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li><li><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li><li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li><li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li></ul><h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3><p>处理元素之间的特定关系（如大小顺序、等价关系）。</p><ul><li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li><li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li></ul><h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3><p>利用预处理换取极速查询。</p><ul><li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 所有高级算法都是基础思想的组合。</p></blockquote><h3 id="📉-降维优化-Dimension-Reduction">📉 降维优化 (Dimension Reduction)</h3><ul><li><strong><a href="/posts/fe091ad2/">降维优化体系 (Optimization Map)</a></strong>: 体系总览。</li><li><strong><a href="/posts/b22c5db7/">静态数组优化 (Prefix Sum &amp; Difference)</a></strong>: 前缀和与差分的对偶性。</li><li><strong><a href="/posts/4775279/">双指针 (Two Pointers)</a></strong>: 尺取法与滑动窗口。</li><li><strong><a href="/posts/ef28f194/">离散化 (Discretization)</a></strong>: 值域映射与相对排名。</li></ul><h3 id="🔍-排序与搜索-Sort-Search">🔍 排序与搜索 (Sort &amp; Search)</h3><ul><li><strong><a href="/posts/66874f84/">二分体系 (Binary Search System)</a></strong>: 二分答案与单调性判定。</li><li><strong><a href="/posts/50dbb92c/">基础排序体系 (Basic Sorting System)</a></strong>: 归并排序与逆序对统计。</li></ul>]]></content>
     
     
     <categories>
       
       <category>00_Atlas</category>
       
-      <category>01_数据结构</category>
+      <category>00_基础算法</category>
       
     </categories>
     
@@ -1100,7 +1100,7 @@
       
       <tag>指南</tag>
       
-      <tag>数据结构</tag>
+      <tag>基础算法</tag>
       
     </tags>
     
@@ -1138,18 +1138,18 @@
   
   
   <entry>
-    <title>基石算法：降维打击的起点 (Basis Guide)</title>
-    <link href="/posts/c28314d6/"/>
-    <url>/posts/c28314d6/</url>
+    <title>数据结构：信息的容器与维护 (DS Guide)</title>
+    <link href="/posts/4bddc3c/"/>
+    <url>/posts/4bddc3c/</url>
     
-    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 所有高级算法都是基础思想的组合。</p></blockquote><h3 id="📉-降维优化-Dimension-Reduction">📉 降维优化 (Dimension Reduction)</h3><ul><li><strong><a href="/posts/fe091ad2/">降维优化体系 (Optimization Map)</a></strong>: 体系总览。</li><li><strong><a href="/posts/b22c5db7/">静态数组优化 (Prefix Sum &amp; Difference)</a></strong>: 前缀和与差分的对偶性。</li><li><strong><a href="/posts/4775279/">双指针 (Two Pointers)</a></strong>: 尺取法与滑动窗口。</li><li><strong><a href="/posts/ef28f194/">离散化 (Discretization)</a></strong>: 值域映射与相对排名。</li></ul><h3 id="🔍-排序与搜索-Sort-Search">🔍 排序与搜索 (Sort &amp; Search)</h3><ul><li><strong><a href="/posts/66874f84/">二分体系 (Binary Search System)</a></strong>: 二分答案与单调性判定。</li><li><strong><a href="/posts/50dbb92c/">基础排序体系 (Basic Sorting System)</a></strong>: 归并排序与逆序对统计。</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p></blockquote><h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3><p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p><ul><li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li><li><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li><li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li><li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li></ul><h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3><p>处理元素之间的特定关系（如大小顺序、等价关系）。</p><ul><li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li><li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li></ul><h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3><p>利用预处理换取极速查询。</p><ul><li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li></ul>]]></content>
     
     
     <categories>
       
       <category>00_Atlas</category>
       
-      <category>00_基础算法</category>
+      <category>01_数据结构</category>
       
     </categories>
     
@@ -1158,7 +1158,7 @@
       
       <tag>指南</tag>
       
-      <tag>基础算法</tag>
+      <tag>数据结构</tag>
       
     </tags>
     
@@ -1270,11 +1270,11 @@
     
     <tags>
       
-      <tag>逆序对</tag>
-      
       <tag>排序</tag>
       
       <tag>分治</tag>
+      
+      <tag>逆序对</tag>
       
     </tags>
     
