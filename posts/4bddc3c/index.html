@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Philosophy: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。  🌲 树形结构 (Tree-Based) 树形结构的核心在于利用 O(log⁡N)O(\log N)O(logN) 的层级来加速信息的聚合。  线段树体系 (Segment Tree System): 算子结合律与扫描线几何投影。 线段树进阶_信">
+    <meta name="description" content="数据结构：信息的容器与维护 (Data Structure Guide)  数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。 在星图中，我们按信息的逻辑形态将其划分为线性、树形、集合与高阶应用四大版块。  1. 线性结构：单调性与滑动窗口 处理具有线性先后顺序的数据。核心在于利用“单调性”剔除无用信息。   单调栈与单调队">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构：信息的容器与维护 (DS Guide)">
 <meta property="og:url" content="https://example.com/posts/4bddc3c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Philosophy: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。  🌲 树形结构 (Tree-Based) 树形结构的核心在于利用 O(log⁡N)O(\log N)O(logN) 的层级来加速信息的聚合。  线段树体系 (Segment Tree System): 算子结合律与扫描线几何投影。 线段树进阶_信">
+<meta property="og:description" content="数据结构：信息的容器与维护 (Data Structure Guide)  数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。 在星图中，我们按信息的逻辑形态将其划分为线性、树形、集合与高阶应用四大版块。  1. 线性结构：单调性与滑动窗口 处理具有线性先后顺序的数据。核心在于利用“单调性”剔除无用信息。   单调栈与单调队">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:08:02.988Z">
+<meta property="article:modified_time" content="2025-12-23T15:15:35.403Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南">
 <meta property="article:tag" content="数据结构">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          258 字
+          771 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          10 分钟
         
       </span>
     
@@ -324,27 +324,173 @@
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p><strong>Philosophy</strong>: 数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p>
+                <h1>数据结构：信息的容器与维护 (Data Structure Guide)</h1>
+<blockquote>
+<p>数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。</p>
+<p>在星图中，我们按信息的逻辑形态将其划分为线性、树形、集合与高阶应用四大版块。</p>
 </blockquote>
-<h3 id="🌲-树形结构-Tree-Based">🌲 树形结构 (Tree-Based)</h3>
-<p>树形结构的核心在于利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的层级来加速信息的聚合。</p>
+<h3 id="1-线性结构：单调性与滑动窗口">1. 线性结构：单调性与滑动窗口</h3>
+<p>处理具有线性先后顺序的数据。核心在于利用“单调性”剔除无用信息。</p>
 <ul>
-<li><strong><a href="/posts/33f15c14/">线段树体系 (Segment Tree System)</a></strong>: 算子结合律与扫描线几何投影。</li>
-<li><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并 (The Art of Push Up)</a></strong>: 从 GSS 到动态连通性的结构体缝合艺术。</li>
-<li><strong><a href="/posts/eef750c1/">树状数组体系 (BIT System)</a></strong>: 前缀和的二进制拆分与逆序对模型。</li>
-<li><strong><a href="/posts/5ce7d1f5/">堆与优先队列 (Heap &amp; PriorityQueue)</a></strong>: 贪心算法的底层引擎。</li>
+<li>
+<p><strong><a href="/posts/621f0544/">单调栈与单调队列</a></strong>:</p>
+<ul>
+<li>
+<p><strong>关键逻辑</strong>：淘汰“既不如此时新，也不如此时强”的元素。</p>
+</li>
+<li>
+<p><strong>应用场景</strong>：单调栈解决 NGE (Next Greater Element)；单调队列解决滑动窗口 RMQ。</p>
+</li>
 </ul>
-<h3 id="🔗-线性与集合-Linear-Set">🔗 线性与集合 (Linear &amp; Set)</h3>
-<p>处理元素之间的特定关系（如大小顺序、等价关系）。</p>
-<ul>
-<li><strong><a href="/posts/3fd2748a/">并查集体系 (DSU System)</a></strong>: 等价类维护、扩展域与时光倒流。</li>
-<li><strong><a href="/posts/621f0544/">单调栈与单调队列 (Monotonic Stack &amp; Queue)</a></strong>: 维护序列中的最近更优元素 (NGE)。</li>
+</li>
+<li>
+<p><strong>线性结构对比</strong>：</p>
+</li>
 </ul>
-<h3 id="⚡-倍增与高阶-Advanced">⚡ 倍增与高阶 (Advanced)</h3>
-<p>利用预处理换取极速查询。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>工具</strong></td>
+<td><strong>核心优势</strong></td>
+<td><strong>局限性</strong></td>
+<td><strong>适用场景</strong></td>
+</tr>
+<tr>
+<td><strong>单调队列</strong></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 极速</td>
+<td>仅限滑动窗口/固定区间</td>
+<td>滑动窗口最值、DP 优化</td>
+</tr>
+<tr>
+<td><strong>双指针</strong></td>
+<td>空间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></td>
+<td>要求序列具有单调性</td>
+<td>区间覆盖、和为定值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-树形结构：层级聚合的艺术">2. 树形结构：层级聚合的艺术</h3>
+<p>利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的拓扑深度加速信息的聚合与下传。</p>
 <ul>
-<li><strong><a href="/posts/e6c1b327/">ST表与倍增 (Sparse Table &amp; Lifting)</a></strong>: 静态 RMQ 的倍增思想与树上 LCA。</li>
+<li>
+<p><strong><a href="/posts/eef750c1/">树状数组体系</a></strong>:</p>
+<ul>
+<li>
+<p><strong>关键逻辑</strong>：二进制拆分（Lowbit）。将前缀和拆分为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">\log N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个子区间。</p>
+</li>
+<li>
+<p><strong>局限</strong>：维护信息必须满足“可差分性”（如和、异或）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/33f15c14/">线段树体系</a></strong>:</p>
+<ul>
+<li>
+<p><strong>关键逻辑</strong>：懒标记（Lazy Tag）与二分覆盖。支持复杂的区间修改。</p>
+</li>
+<li>
+<p><strong><a href="/posts/ec824ae8/">线段树进阶_信息合并</a></strong>：处理 GSS（最大子段和）或动态连通性等“非简单可加”信息。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>树形工具决策</strong>：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>需求</strong></td>
+<td><strong>首选工具</strong></td>
+<td><strong>理由</strong></td>
+</tr>
+<tr>
+<td><strong>单点修改 + 前缀和</strong></td>
+<td><strong>BIT (树状数组)</strong></td>
+<td>常数极小，代码极短</td>
+</tr>
+<tr>
+<td><strong>区间修改 + 区间查询</strong></td>
+<td><strong>线段树</strong></td>
+<td>懒标记支持所有结合律运算</td>
+</tr>
+<tr>
+<td><strong>二维面积/扫描线</strong></td>
+<td><strong>线段树</strong></td>
+<td>支持区间覆盖与长度维护</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-集合与倍增：关系维护与跳跃">3. 集合与倍增：关系维护与跳跃</h3>
+<p>处理元素间的拓扑关系或通过空间换时间实现极速查询。</p>
+<ul>
+<li>
+<p><strong><a href="/posts/3fd2748a/">并查集体系</a></strong>:</p>
+<ul>
+<li>
+<p><strong>关键逻辑</strong>：路径压缩与按秩合并。</p>
+</li>
+<li>
+<p><strong>高阶应用</strong>：扩展域（处理对立关系）、时光倒流（删点转增点）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/e6c1b327/">ST表与倍增</a></strong>:</p>
+<ul>
+<li>
+<p><strong>关键逻辑</strong>：幂次拼合。</p>
+</li>
+<li>
+<p><strong>对比</strong>：静态 RMQ 选 ST 表（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>）；动态追加选动态 ST 表；一般动态修改选线段树。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-问题类型：RMQ-区间最值-选型">4. 问题类型：RMQ (区间最值) 选型</h3>
+<p>这是数据结构中最常见的任务，根据需求选择最轻量的工具：</p>
+<ol>
+<li>
+<p><strong>静态区间</strong>：<a href="/posts/e6c1b327/">ST表与倍增</a> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 查询)。</p>
+</li>
+<li>
+<p><strong>仅末尾追加</strong>：<a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E/P1198%20%E6%9C%80%E5%A4%A7%E6%95%B0%20(SparseTable_Static_RMQ).md">P1198 最大数 (SparseTable_Static_RMQ)</a> (动态 ST 表)。</p>
+</li>
+<li>
+<p><strong>滑动窗口/固定长区间</strong>：<a href="/posts/621f0544/">单调栈与单调队列</a>] (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)。</p>
+</li>
+<li>
+<p><strong>频繁区间修改</strong>：<a href="/posts/33f15c14/">线段树体系</a> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)。</p>
+</li>
+</ol>
+<h2 id="归档索引">归档索引</h2>
+<p>在实战中，通过以下指纹库进行模式识别：</p>
+<ul>
+<li>
+<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E6%8C%87%E7%BA%B9%E5%BA%93%20(Linear%20Structure%20Context).md">线性结构指纹库 (Linear Structure Context)</a>: 线性、单调性、贡献法。</p>
+</li>
+<li>
+<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%8C%87%E7%BA%B9%E5%BA%93%20(Tree_Structure_Context).md">树形结构指纹库 (Tree_Structure_Context)</a>: 聚合、扫描线、跨界合并。</p>
+</li>
+<li>
+<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E/%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E%E6%8C%87%E7%BA%B9%E5%BA%93%20(Set_Binary_Context).md">集合与倍增指纹库 (Set_Binary_Context)</a>: 连通性、冲突判定、倍增跳跃。</p>
+</li>
 </ul>
 
                 
@@ -445,9 +591,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                      <a href="/posts/c28314d6/" title="基石算法：降维打击的起点 (Basis Guide)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
+                        <span class="hidden-mobile">基石算法：降维打击的起点 (Basis Guide)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -455,8 +601,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/9e0761d7/" title="动态规划：从线性推演到维度打击 (DP Guide)">
-                        <span class="hidden-mobile">动态规划：从线性推演到维度打击 (DP Guide)</span>
+                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

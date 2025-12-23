@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是**&quot;存储有潜力的未来&quot;**。 前置依赖: [队列&#x2F;栈基础], [滑动窗口] 解决痛点:  单调栈: O(N)O(N)O(N) 寻找每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素 (NGE 问题)。 单调队列: O(N)O(N)O(N) 解决滑动窗口内的最值查询 (RMQ)。   竞品对比:     算法">
+    <meta name="description" content="1. 生态位  定义: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是 &quot;存储有潜力的未来&quot;。 解决痛点:  单调栈: O(N)O(N)O(N) 寻找每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素 (NGE 问题)。 单调队列: O(N)O(N)O(N) 解决滑动窗口内的最值查询 (RMQ)。   竞品对比:     算法 核心优势 劣势&#x2F;局限 适用场景     单调队列 O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单调栈与单调队列 (Monotonic Stack &amp; Queue)">
 <meta property="og:url" content="https://example.com/posts/621f0544/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是**&quot;存储有潜力的未来&quot;**。 前置依赖: [队列&#x2F;栈基础], [滑动窗口] 解决痛点:  单调栈: O(N)O(N)O(N) 寻找每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素 (NGE 问题)。 单调队列: O(N)O(N)O(N) 解决滑动窗口内的最值查询 (RMQ)。   竞品对比:     算法">
+<meta property="og:description" content="1. 生态位  定义: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是 &quot;存储有潜力的未来&quot;。 解决痛点:  单调栈: O(N)O(N)O(N) 寻找每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素 (NGE 问题)。 单调队列: O(N)O(N)O(N) 解决滑动窗口内的最值查询 (RMQ)。   竞品对比:     算法 核心优势 劣势&#x2F;局限 适用场景     单调队列 O">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:20:06.000Z">
-<meta property="article:modified_time" content="2025-12-16T13:33:30.861Z">
+<meta property="article:modified_time" content="2025-12-23T15:17:30.642Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="线性优化">
 <meta property="article:tag" content="单调栈">
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          726 字
+          744 字
         
       </span>
     
@@ -327,8 +327,7 @@
                 
                 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是**&quot;存储有潜力的未来&quot;**。</li>
-<li><strong>前置依赖</strong>: [队列/栈基础], [滑动窗口]</li>
+<li><strong>定义</strong>: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是 <strong>&quot;存储有潜力的未来&quot;</strong>。</li>
 <li><strong>解决痛点</strong>:
 <ul>
 <li><strong>单调栈</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 寻找每个元素左/右侧<strong>第一个</strong>比它大/小的元素 (NGE 问题)。</li>
@@ -369,34 +368,44 @@
 </table>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>淘汰哲学</strong>: <strong>&quot;既不如此时新，也不如此时强，那便毫无意义。&quot;</strong>
+<li><strong>淘汰哲学</strong>: <strong>&quot;如果一个OIer比你小，还比你强，那你就可以出队了。&quot;</strong>
 <ul>
 <li>若新元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 比老元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 更优且更晚过期，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 永久删除。</li>
 </ul>
 </li>
-<li><strong>存储内容</strong>: 务必存储 <strong>下标 (Index)</strong>。
+<li><strong>视角转换</strong>:
 <ul>
-<li>下标包含“位置/过期时间”信息。</li>
+<li>当直接计算“我能看到谁”较难时，转向计算“谁能看到我”，利用单调栈实时维护活跃观察者集合。</li>
+</ul>
+</li>
+<li><strong>隐含单调性</strong>:
+<ul>
+<li>某些切分模型（如蚯蚓）存在随时间演变的隐含单调性，可利用多路单调队列避开堆的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 开销。</li>
+</ul>
+</li>
+<li><strong>存储内容</strong>:
+<ul>
+<li>必须存储 <strong>下标 (Index)</strong>，因其同时包含“权值位置”与“过期时间”双重信息。</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-单调栈模板-Next-Greater-Element">3.1 单调栈模板 (Next Greater Element)</h3>
+<h3 id="3-1-单调栈模板">3.1 单调栈模板</h3>
 <ul>
 <li><strong>策略</strong>: 找右边第一个比我大的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 维护<strong>单调递减</strong>栈。</li>
 </ul>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>Code: Monotonic Stack
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// ans[i] 存储 i 右边第一个比 a[i] 大的元素下标</span><br>stack&lt;<span class="hljs-type">int</span>&gt; stk; <br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// 破坏单调性 -&gt; 结算时刻</span><br>    <span class="hljs-keyword">while</span>( !stk.<span class="hljs-built_in">empty</span>() &amp;&amp; a[i] &gt; a[stk.<span class="hljs-built_in">top</span>()] ) <br>    &#123;<br>        ans[stk.<span class="hljs-built_in">top</span>()] = i; <br>        stk.<span class="hljs-built_in">pop</span>(); <br>    &#125;<br>    stk.<span class="hljs-built_in">push</span>( i ); <br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// ans[i] 存储 i 右边第一个比 a[i] 大的元素下标</span><br>stack&lt;<span class="hljs-type">int</span>&gt; stk; <br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// 破坏单调性 -&gt; 结算时刻</span><br>    <span class="hljs-keyword">while</span>( !stk.<span class="hljs-built_in">empty</span>( ) &amp;&amp; a[i] &gt; a[ stk.<span class="hljs-built_in">top</span>( ) ] ) <br>    &#123;<br>        ans[ stk.<span class="hljs-built_in">top</span>( ) ] = i; <br>        stk.<span class="hljs-built_in">pop</span>( ); <br>    &#125;<br>    stk.<span class="hljs-built_in">push</span>( i ); <br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="3-2-单调队列模板-Sliding-Window-Max">3.2 单调队列模板 (Sliding Window Max)</h3>
+<h3 id="3-2-单调队列模板">3.2 单调队列模板</h3>
 <ul>
 <li><strong>策略</strong>: 求最大值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 维护<strong>单调递减</strong>队列。</li>
 </ul>
@@ -407,32 +416,26 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-28ab9646">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp">deque&lt;<span class="hljs-type">int</span>&gt; q; <span class="hljs-comment">// 存下标</span><br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// 1. 检查队头过期</span><br>    <span class="hljs-keyword">if</span>( !q.<span class="hljs-built_in">empty</span>() &amp;&amp; q.<span class="hljs-built_in">front</span>() &lt;= i - K ) <br>        q.<span class="hljs-built_in">pop_front</span>();<br>        <br>    <span class="hljs-comment">// 2. 淘汰弱者</span><br>    <span class="hljs-keyword">while</span>( !q.<span class="hljs-built_in">empty</span>() &amp;&amp; a[i] &gt;= a[q.<span class="hljs-built_in">back</span>()] ) <br>        q.<span class="hljs-built_in">pop_back</span>();<br>        <br>    <span class="hljs-comment">// 3. 入队 &amp; 取值</span><br>    q.<span class="hljs-built_in">push_back</span>( i );<br>    <span class="hljs-keyword">if</span>( i &gt;= K ) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[q.<span class="hljs-built_in">front</span>()]);<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp">deque&lt;<span class="hljs-type">int</span>&gt; q; <span class="hljs-comment">// 存下标</span><br><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>&#123;<br>    <span class="hljs-comment">// 1. 检查队头过期</span><br>    <span class="hljs-keyword">if</span>( !q.<span class="hljs-built_in">empty</span>( ) &amp;&amp; q.<span class="hljs-built_in">front</span>( ) &lt;= i - K ) <br>        q.<span class="hljs-built_in">pop_front</span>( );<br>        <br>    <span class="hljs-comment">// 2. 淘汰弱者</span><br>    <span class="hljs-keyword">while</span>( !q.<span class="hljs-built_in">empty</span>( ) &amp;&amp; a[i] &gt;= a[ q.<span class="hljs-built_in">back</span>( ) ] ) <br>        q.<span class="hljs-built_in">pop_back</span>( );<br>        <br>    <span class="hljs-comment">// 3. 入队 &amp; 取值</span><br>    q.<span class="hljs-built_in">push_back</span>( i );<br>    <span class="hljs-keyword">if</span>( i &gt;= K ) <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[ q.<span class="hljs-built_in">front</span>( ) ] );<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="⚠️-边界与-Hack">⚠️ 边界与 Hack</h3>
-<ul>
-<li>
-<p><strong>[坑点 1]</strong>: 单调栈处理<strong>直方图最大矩形</strong>时，需在数组末尾加 <code>0</code> 强制弹栈结算。</p>
-</li>
-<li>
-<p><strong>[坑点 2]</strong>: 单调队列优化 DP 时，初始状态（如 <code>dp[0]</code>）需提前入队。</p>
-</li>
-</ul>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
 <p><strong>变体模型</strong>:</p>
 <ul>
 <li>
-<p><strong>二维滑动窗口</strong>: (P2216) 先对每一行做单调队列，得到 <code>row_max[i][j]</code>；再对该结果的每一列做单调队列。</p>
+<p><strong>二维滑动窗口</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2216%20%E7%90%86%E6%83%B3%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2%20(MonoQueue_2D).md">P2216 理想的正方形 (MonoQueue_2D)</a> 通过“先行后列”两次一维窗口降维实现。</p>
 </li>
 <li>
-<p><strong>DP 优化</strong>: (P3800) 形如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><msub><mrow><mi>max</mi><mo>⁡</mo></mrow><mrow><mi>k</mi><mo>∈</mo><mo stretchy="false">[</mo><mi>j</mi><mo>−</mo><mi>T</mi><mo separator="true">,</mo><mi>j</mi><mo>+</mo><mi>T</mi><mo stretchy="false">]</mo></mrow></msub><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mo>+</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \max_{k \in [j-T, j+T]} (dp[i-1][k]) + val[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3552em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.5198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">∈</span><span class="mopen mtight">[</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="mclose mtight">]</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3552em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">])</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，内层 max 可用单调队列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 转移。</p>
+<p><strong>悬线法优化</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P1950%20%E9%95%BF%E6%96%B9%E5%BD%A2%20(MonoStack_Suspension_Line).md">P1950 长方形 (MonoStack_Suspension_Line)</a>` 统计子矩形，利用单调栈维护底边的左右边界 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i], R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>计数单调栈</strong>: (P1950) 统计全 <code>.</code> 子矩形数量。维护每个点作为“悬线”底部的左右边界 <code>L[i], R[i]</code>，贡献为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>×</mo><mo stretchy="false">(</mo><mi>i</mi><mo>−</mo><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>−</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h[i] \times (i-L[i]) \times (R[i]-i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">h</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">])</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>全局偏移 (Offset)</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2827%20%E8%9A%AF%E8%9A%93%20(MonoQueue_Offset).md">P2827 蚯蚓 (MonoQueue_Offset)</a> 利用全局增量标记避开 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的全员修改。</p>
+</li>
+<li>
+<p><strong>轮廓覆盖贪心</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P3467%20PLA-Posters%20(MonoStack_Profile).md">P3467 PLA-Posters (MonoStack_Profile)</a> 利用单调递增栈判断相同高度是否可合并海报。</p>
 </li>
 </ul>
 </li>
@@ -440,14 +443,18 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong>[Luogu P1886]</strong>: 滑动窗口 - 单调队列模板</p>
+<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P1886%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%20(MonoQueue_Sliding_Window).md">P1886 滑动窗口 (MonoQueue_Sliding_Window)</a>: 滑动窗口标准模板。</p>
 </li>
 <li>
-<p><strong>[Luogu P5788]</strong>: 单调栈模板</p>
+<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2866%20Bad%20Hair%20Day%20S%20(MonoStack_Visibility).md">P2866 Bad Hair Day S (MonoStack_Visibility)</a>: 视角转换典型案例。</p>
 </li>
 </ul>
 </li>
 </ul>
+<hr>
+<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2032%20%E6%89%AB%E6%8F%8F%20(MonoQueue_Scanning).md">P2032 扫描 (MonoQueue_Scanning)</a></p>
+<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P1440%20%E6%B1%82m%E5%8C%BA%E9%97%B4%E5%86%85%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%20(MonoQueue_Window_Min).md">P1440 求m区间内的最小值 (MonoQueue_Window_Min)</a></p>
+<hr>
 
                 
               </div>

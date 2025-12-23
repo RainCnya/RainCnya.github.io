@@ -267,7 +267,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/3fd2748a/" target="_self">
         <div>
-          1. 生态位  定义: 管理元素所属集合的数据结构，支持合并 (Union) 与 查询 (Find)。 解决痛点:  动态连通性: 判断图中两点是否连通 (Kruskal)。 关系传递: 朋友的朋友是朋友，敌人的敌人是朋友 (扩展域)。 离线动态图: 处理删边/删点问题。    2. 逻辑支点  路径压缩 (Path Compression): 查询时直接将节点挂到祖先下，均摊复杂度 α(N)\a
+          1. 生态位   定义: 维护元素所属集合的拓扑结构，支持 合并 (Union) 与 查询 (Find)。   解决痛点:   动态连通性判定（Kruskal 算法核心）。   逻辑关系的传递与冲突校验（敌人的敌人是朋友）。   离线场景下的动态删点/删边问题。     2. 逻辑支点   路径压缩 (Path Compression): 查询时通过递归或迭代将节点直接挂载到根节点下，使均摊复杂度
         </div>
       </a>
 
@@ -413,7 +413,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/33f15c14/" target="_self">
         <div>
-          1. 生态位  定义: 基于二分思想，将序列划分为 O(log⁡N)O(\log N)O(logN) 层树形结构，支持复杂的区间修改与查询。 解决痛点:  复杂区间操作: 乘法、加法、开方、最值等。 信息合并: 最大子段和、最长连续 0/1 等需要左右子区间拼接的信息。    2. 逻辑支点  懒标记 (Lazy Tag):  延迟更新: 标记只打在 O(log⁡N)O(\log N)O(logN
+          1. 生态位   定义: 基于二分思想的平衡树形结构，将序列划分为 O(N)O(N)O(N) 个节点，支持 O(log⁡N)O(\log N)O(logN) 的区间修改与查询。   解决痛点: 复杂的区间合并逻辑（非简单可加性）与多种标记叠加。   核心依赖: 算子必须满足结合律。   2. 逻辑支点   懒标记 (Lazy Tag): 延迟更新的核心。只有在访问子节点时才进行下传（PushDow
         </div>
       </a>
 
@@ -463,8 +463,6 @@
             
               <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">#扫描线</a>
             
-              <a href="/tags/%E5%8E%86%E5%8F%B2%E6%9C%80%E5%80%BC/">#历史最值</a>
-            
           </div>
         
       </div>
@@ -485,7 +483,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/eef750c1/" target="_self">
         <div>
-          1. 生态位  定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀和拆分为 O(log⁡N)O(\log N)O(logN) 个子区间的数据结构。 解决痛点:  动态前缀和: 单点修改 + 前缀查询，常数远小于线段树。 逆序对: 配合离散化，O(Nlog⁡N)O(N \log N)O(NlogN) 解决逆序对计数 。   局限: 维护的信息必须满足
+          1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(NlogN) 权值统计。     核心依赖: 信息必须满足 结合
         </div>
       </a>
 
@@ -531,9 +529,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
-            
               <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
+            
+              <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
             
               <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#树状数组</a>
             
@@ -891,9 +889,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/">#图论建模</a>
-            
               <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">#线段树</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/">#图论建模</a>
             
           </div>
         
