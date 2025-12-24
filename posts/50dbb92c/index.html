@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 将无序序列映射为单调序列的过程。本质是消除序列中的 逆序对 (Inversion Pair)。 前置依赖: [递归], [分治思想] 解决痛点:  冒泡排序: 教学模型，用于建立“交换一次相邻元素 &#x3D; 消除一个逆序对”的理论直觉。 快速排序 (Quick Sort): 解决大规模数据 (N≥105N \ge 10^5N≥105) 的通用排序，追求平均性能极致。 归并排序 (">
+    <meta name="description" content="1. 生态位   定义: 将无序序列映射为单调序列。本质是消除序列中的 逆序对 (Inversion Pair)。   解决痛点:   Quick Sort: O(Nlog⁡N)O(N \log N)O(NlogN) 的平均性能极致，原址排序。   Merge Sort: 解决稳定性需求及**过程量（逆序对）**统计。     2. 逻辑支点 2.1 分治的对偶性   快速排序 (Quick So">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基础排序体系 (Basic Sorting System)">
+<meta property="og:title" content="排序体系 (Sorting System)">
 <meta property="og:url" content="https://example.com/posts/50dbb92c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 将无序序列映射为单调序列的过程。本质是消除序列中的 逆序对 (Inversion Pair)。 前置依赖: [递归], [分治思想] 解决痛点:  冒泡排序: 教学模型，用于建立“交换一次相邻元素 &#x3D; 消除一个逆序对”的理论直觉。 快速排序 (Quick Sort): 解决大规模数据 (N≥105N \ge 10^5N≥105) 的通用排序，追求平均性能极致。 归并排序 (">
+<meta property="og:description" content="1. 生态位   定义: 将无序序列映射为单调序列。本质是消除序列中的 逆序对 (Inversion Pair)。   解决痛点:   Quick Sort: O(Nlog⁡N)O(N \log N)O(NlogN) 的平均性能极致，原址排序。   Merge Sort: 解决稳定性需求及**过程量（逆序对）**统计。     2. 逻辑支点 2.1 分治的对偶性   快速排序 (Quick So">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T15:59:55.000Z">
-<meta property="article:modified_time" content="2025-12-16T09:34:20.371Z">
+<meta property="article:modified_time" content="2025-12-23T16:13:36.000Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="排序">
 <meta property="article:tag" content="分治">
@@ -36,7 +36,7 @@
   
   
   
-  <title>基础排序体系 (Basic Sorting System) - MiQiu</title>
+  <title>排序体系 (Sorting System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="基础排序体系 (Basic Sorting System)"></span>
+            <span id="subtitle" data-typed-text="排序体系 (Sorting System)"></span>
           
         </div>
 
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          427 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          16 分钟
+          6 分钟
         
       </span>
     
@@ -320,158 +320,72 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">基础排序体系 (Basic Sorting System)</h1>
+            <h1 id="seo-header">排序体系 (Sorting System)</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 将无序序列映射为单调序列的过程。本质是消除序列中的 <strong>逆序对 (Inversion Pair)</strong>。</li>
-<li><strong>前置依赖</strong>: [递归], [分治思想]</li>
-<li><strong>解决痛点</strong>:
+<li>
+<p><strong>定义</strong>: 将无序序列映射为单调序列。本质是消除序列中的 <strong>逆序对 (Inversion Pair)</strong>。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>:</p>
 <ul>
-<li><strong>冒泡排序</strong>: 教学模型，用于建立“交换一次相邻元素 = 消除一个逆序对”的理论直觉。</li>
-<li><strong>快速排序 (Quick Sort)</strong>: 解决大规模数据 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">N \ge 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>) 的通用排序，追求平均性能极致。</li>
-<li><strong>归并排序 (Merge Sort)</strong>: 解决 <strong>稳定性 (Stability)</strong> 需求及 <strong>逆序对统计</strong> 问题，这是 <code>std::sort</code> 无法替代的。</li>
+<li>
+<p><strong>Quick Sort</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的平均性能极致，原址排序。</p>
+</li>
+<li>
+<p><strong>Merge Sort</strong>: 解决稳定性需求及**过程量（逆序对）**统计。</p>
+</li>
 </ul>
 </li>
-<li><strong>竞品对比</strong>:</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">算法</th>
-<th style="text-align:left">平均复杂度</th>
-<th style="text-align:left">空间复杂度</th>
-<th style="text-align:left">稳定性</th>
-<th style="text-align:left">核心特征 (Key Feature)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Bubble</strong></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left">✅</td>
-<td style="text-align:left">交换次数严格等于逆序对数量。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Quick</strong></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left">❌</td>
-<td style="text-align:left"><strong>原址排序 (In-place)</strong>，常数极小，最坏 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Merge</strong></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-<td style="text-align:left">✅</td>
-<td style="text-align:left"><strong>分治 (Divide &amp; Conquer)</strong>，适合统计过程量，需要辅助数组。</td>
-</tr>
-</tbody>
-</table>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
-<h3 id="2-1-冒泡排序：逆序对的度量">2.1 冒泡排序：逆序对的度量</h3>
-<ul>
-<li><strong>核心直觉</strong>: 每一轮“冒泡”必然将当前未排序部分的最值归位。</li>
-<li><strong>关键性质</strong>:
-<ul>
-<li><strong>交换守恒</strong>: 交换相邻的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a[i], a[i+1])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">])</span></span></span></span>，若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>&gt;</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i] &gt; a[i+1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>，则全排列的逆序对总数严格 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。</li>
-<li><strong>推论</strong>: 冒泡排序的总交换次数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span></span></span></span> 初始序列的逆序对总数。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-2-快排-vs-归并：分治的对偶性">2.2 快排 vs 归并：分治的对偶性</h3>
-<p>这两种算法是分治思想的两个极端：</p>
+<h3 id="2-1-分治的对偶性">2.1 分治的对偶性</h3>
 <ul>
 <li>
-<p><strong>快速排序 (Quick Sort)</strong> —— <strong>重“分”轻“合”</strong></p>
-<ul>
-<li><strong>逻辑</strong>: 选取基准 (Pivot) <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>，将数组划分为 <code>&lt; P</code> 和 <code>&gt; P</code> 两部分。</li>
-<li><strong>难点</strong>: Partition (划分) 过程复杂，需要双指针技巧。</li>
-<li><strong>Easy</strong>: 递归结束后，整个数组天然有序，无需合并操作。</li>
-<li><strong>数学表达</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mrow><mi>t</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi></mrow></msub><mo>=</mo><msub><mi>S</mi><mrow><mi>l</mi><mi>e</mi><mi>f</mi><mi>t</mi></mrow></msub><mo>∪</mo><mo stretchy="false">{</mo><mi>P</mi><mi>i</mi><mi>v</mi><mi>o</mi><mi>t</mi><mo stretchy="false">}</mo><mo>∪</mo><msub><mi>S</mi><mrow><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">S_{total} = S_{left} \cup \{Pivot\} \cup S_{right}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">e</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></li>
-</ul>
+<p><strong>快速排序 (Quick Sort)</strong>: <strong>重“分”轻“合”</strong>。通过 Partition 确定基准位置，递归后天然有序。</p>
 </li>
 <li>
-<p><strong>归并排序 (Merge Sort)</strong> —— <strong>重“合”轻“分”</strong></p>
-<ul>
-<li><strong>逻辑</strong>: 无脑从中间切开，递归到底。</li>
-<li><strong>Easy</strong>: 划分过程是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 的（直接取中点）。</li>
-<li><strong>难点</strong>: Merge (合并) 过程，需要将两个有序子序列“拉链式”咬合，同时在此过程中可以统计逆序对。</li>
-<li><strong>数学表达</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(n) = 2T(n/2) + O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mord">/2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></li>
-</ul>
+<p><strong>归并排序 (Merge Sort)</strong>: <strong>轻“分”重“合”</strong>。无脑对半切开，在 <code>Merge</code> 阶段利用两个有序子序列的“拉链式”合并实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 </ul>
-<h2 id="3-实战部署-Battle-Deployment">3. 实战部署 (Battle Deployment)</h2>
-<h3 id="3-1-快速排序-通用模板">3.1 快速排序 (通用模板)</h3>
+<h3 id="2-2-归并与逆序对">2.2 归并与逆序对</h3>
 <ul>
-<li><strong>策略</strong>: 选取 <code>mid</code> 值作为 Pivot (防止有序数组退化为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>)，采用双指针交换法。</li>
+<li>
+<p><strong>核心直觉</strong>: 交换相邻元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span></span></span></span> 消除一个逆序对。</p>
+</li>
+<li>
+<p><strong>统计逻辑</strong>: 在合并时，若左子序列当前元素 <code>a[i]</code> 大于右子序列当前元素 <code>a[j]</code>，则左序列剩余的所有元素 <code>a[i...mid]</code> 均与 <code>a[j]</code> 构成逆序对。</p>
+</li>
+<li>
+<p><strong>贡献量</strong>: <code>ans += (ll)(mid - i + 1)</code>。</p>
+</li>
 </ul>
+<h2 id="3-实战部署">3. 实战部署</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Quick Sort
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Merge Sort with Inversion Count
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Quick Sort Template</span><br><span class="hljs-comment">// 1-based indexing, O(N log N)</span><br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">int</span> a[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 递归边界</span><br>    <span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span>;<br><br>    <span class="hljs-comment">// 1. Partition: 取中点为基准，防止退化</span><br>    <span class="hljs-type">int</span> mid = a[(l + r) &gt;&gt; <span class="hljs-number">1</span>]; <br>    <span class="hljs-type">int</span> i = l, j = r;<br><br>    <span class="hljs-keyword">while</span>( i &lt;= j )<br>    &#123;<br>        <span class="hljs-comment">// 寻找不符合条件的元素</span><br>        <span class="hljs-keyword">while</span>( a[i] &lt; mid ) i++;<br>        <span class="hljs-keyword">while</span>( a[j] &gt; mid ) j--;<br>        <br>        <span class="hljs-keyword">if</span>( i &lt;= j )<br>        &#123;<br>            <span class="hljs-built_in">swap</span>( a[i], a[j] );<br>            i++; <br>            j--;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 2. Recursion: 递归处理子区间</span><br>    <span class="hljs-comment">// 此时 j &lt; i, 分界线在 j 和 i 之间</span><br>    <span class="hljs-keyword">if</span>( l &lt; j ) <span class="hljs-built_in">quick_sort</span>( l, j );<br>    <span class="hljs-keyword">if</span>( i &lt; r ) <span class="hljs-built_in">quick_sort</span>( i, r );<br>&#125;<br>````<br><br>&#123;% endfold %&#125;<br><br>### <span class="hljs-number">3.2</span> 归并排序 (逆序对统计版)<br><br>- **策略**: 使用全局 `tmp` 数组避免频繁 `<span class="hljs-keyword">new</span>`。在右边元素比左边元素小的时候，说明左边剩余的所有元素都能与该右边元素构成逆序对。<br>    <br><br>&#123;% fold info @Code: Merge Sort &amp; Inversion Count %&#125;<br><br>```cpp<br><span class="hljs-comment">// Merge Sort Template (with Inversion Counting)</span><br><span class="hljs-comment">// 1-based indexing</span><br><br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">5e5</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-type">int</span> a[maxn], tmp[maxn]; <span class="hljs-comment">// 辅助数组必须全局定义</span><br>ll total_inversions = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge_sort</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span>;<br><br>    <span class="hljs-type">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>;<br>    <br>    <span class="hljs-comment">// 1. Divide</span><br>    <span class="hljs-built_in">merge_sort</span>( l, mid );<br>    <span class="hljs-built_in">merge_sort</span>( mid + <span class="hljs-number">1</span>, r );<br><br>    <span class="hljs-comment">// 2. Conquer (Merge)</span><br>    <span class="hljs-type">int</span> i = l, j = mid + <span class="hljs-number">1</span>, k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>( i &lt;= mid &amp;&amp; j &lt;= r )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] &lt;= a[j] )<br>        &#123;<br>            tmp[k++] = a[i++];<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            tmp[k++] = a[j++];<br>            <span class="hljs-comment">// 核心: 统计逆序对</span><br>            <span class="hljs-comment">// 左边 a[i...mid] 都比 a[j] 大</span><br>            total_inversions += (ll)(mid - i + <span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">while</span>( i &lt;= mid ) tmp[k++] = a[i++];<br>    <span class="hljs-keyword">while</span>( j &lt;= r )   tmp[k++] = a[j++];<br><br>    <span class="hljs-comment">// 3. Copy Back</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = l, k = <span class="hljs-number">0</span>; i &lt;= r; ++i, ++k )<br>    &#123;<br>        a[i] = tmp[k];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// tmp 数组必须全局定义，防止内存抖动</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge_sort</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span>;<br>	<span class="hljs-type">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span>;<br><br>	<span class="hljs-built_in">merge_sort</span>( l, mid );<br>	<span class="hljs-built_in">merge_sort</span>( mid + <span class="hljs-number">1</span>, r );<br><br>	<span class="hljs-type">int</span> i = l, j = mid + <span class="hljs-number">1</span>, k = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span>( i &lt;= mid &amp;&amp; j &lt;= r )<br>	&#123;<br>		<span class="hljs-keyword">if</span>( a[ i ] &lt;= a[ j ] )<br>		&#123;<br>			tmp[ k ++ ] = a[ i ++ ];<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			tmp[ k ++ ] = a[ j ++ ];<br>			<span class="hljs-comment">// Invariant: i 到 mid 所有的数都比 a[j] 大</span><br>			total_inversions += ( ll )( mid - i + <span class="hljs-number">1</span> );<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">while</span>( i &lt;= mid ) tmp[ k ++ ] = a[ i ++ ];<br>	<span class="hljs-keyword">while</span>( j &lt;= r ) tmp[ k ++ ] = a[ j ++ ];<br><br>	<span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> p = <span class="hljs-number">0</span>; p &lt; k; ++ p ) a[ l + p ] = tmp[ p ];<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="⚠️-边界与-Hack">⚠️ 边界与 Hack</h3>
+<h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
-<p><strong>[Quick Sort 坑点]</strong>:</p>
-<ul>
-<li>
-<p><strong>基准选择</strong>: 严禁直接选 <code>a[l]</code> 作为基准，遇到有序数据会退化成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 导致 TLE。</p>
+<p><strong>变体</strong>: <strong>Quick Select</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 第 K 大数)。</p>
 </li>
 <li>
-<p><strong>死循环</strong>: <code>while(a[i] &lt; mid)</code> 不能写成 <code>&lt;=</code>, 否则遇到全相等数组会指针越界或死循环。</p>
-</li>
-</ul>
+<p><strong>进阶</strong>: <strong>CDQ 分治</strong>（基于归并排序思想处理多维偏序）。</p>
 </li>
 <li>
-<p><strong>[Merge Sort 坑点]</strong>:</p>
-<ul>
-<li>
-<p><strong>内存爆炸</strong>: <code>tmp</code> 数组如果写在函数内部 <code>vector&lt;int&gt; tmp</code>，会因为频繁分配内存导致 MLE 或 TLE。必须全局静态分配。</p>
-</li>
-<li>
-<p><strong>long long</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>5</mn><mo>×</mo><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">N=5 \times 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span> 时，逆序对数量级为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>1.25</mn><mo>×</mo><msup><mn>10</mn><mn>11</mn></msup></mrow><annotation encoding="application/x-tex">\approx 1.25 \times 10^{11}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1.25</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">11</span></span></span></span></span></span></span></span></span></span></span></span>，使用 <code>int</code> 必溢出。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-知识粘附-Knowledge-Adhesion">4. 知识粘附 (Knowledge Adhesion)</h2>
-<blockquote>
-<p><em>体系关联</em></p>
-</blockquote>
-<ul>
-<li>
-<p><strong>变体模型</strong>:</p>
-<ul>
-<li>
-<p><strong>第 K 大数 (Quick Select)</strong>: 快排思想的变体，只递归一半，复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
-</li>
-<li>
-<p><strong>CDQ 分治</strong>: 归并排序思想的二维扩展，用于解决多维偏序问题。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>母题索引</strong>:</p>
-<ul>
-<li>
-<p><strong>[Luogu P1177]</strong>: 快速排序模板（需抗 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 卡常）。</p>
-</li>
-<li>
-<p><strong>[Luogu P1908]</strong>: 逆序对计数（归并排序经典应用）。</p>
-</li>
-</ul>
+<p><a href="/posts/ef28f194/">离散化体系</a>: 离散化是权值树状数组统计逆序对的前置。</p>
 </li>
 </ul>
 
@@ -530,7 +444,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>基础排序体系 (Basic Sorting System)</div>
+      <div>排序体系 (Sorting System)</div>
       <div>https://example.com/posts/50dbb92c/</div>
     </div>
     <div class="license-meta">
@@ -575,9 +489,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/fe091ad2/" title="降维优化体系 (Optimization by Dimension Reduction)">
+                      <a href="/posts/ef28f194/" title="离散化 (Discretization System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">降维优化体系 (Optimization by Dimension Reduction)</span>
+                        <span class="hidden-mobile">离散化 (Discretization System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -585,8 +499,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/2ea33511/" title="月光沐浴的蝴蝶">
-                        <span class="hidden-mobile">月光沐浴的蝴蝶</span>
+                      <a href="/posts/f848758c/" title="P1195 口袋的天空">
+                        <span class="hidden-mobile">P1195 口袋的天空</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

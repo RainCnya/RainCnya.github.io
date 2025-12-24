@@ -19,23 +19,24 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Philosophy: 所有高级算法都是基础思想的组合。  📉 降维优化 (Dimension Reduction)  降维优化体系 (Optimization Map): 体系总览。 静态数组优化 (Prefix Sum &amp; Difference): 前缀和与差分的对偶性。 双指针 (Two Pointers): 尺取法与滑动窗口。 离散化 (Discretization): 值域映">
+    <meta name="description" content="基础算法：逻辑降维与分治艺术 (Basis Guide)  所有高级算法都是基础算子的复合叠加。所谓“大招”，本质上是针对特定冗余执行的降维打击。 核心公式: 过滤 &amp; 压缩   过滤: 利用题目性质（单调性、及时性）剔除必然不优的无效计算。   压缩: 利用数学工具（可逆性、结合律）将区间级操作压缩为端点级或对数级操作。    1. 排序与二分 逻辑分治与边界锁定的艺术，将搜索空间从线性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基石算法：降维打击的起点 (Basis Guide)">
+<meta property="og:title" content="基础算法：降维打击的起点 (Basis Guide)">
 <meta property="og:url" content="https://example.com/posts/c28314d6/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Philosophy: 所有高级算法都是基础思想的组合。  📉 降维优化 (Dimension Reduction)  降维优化体系 (Optimization Map): 体系总览。 静态数组优化 (Prefix Sum &amp; Difference): 前缀和与差分的对偶性。 双指针 (Two Pointers): 尺取法与滑动窗口。 离散化 (Discretization): 值域映">
+<meta property="og:description" content="基础算法：逻辑降维与分治艺术 (Basis Guide)  所有高级算法都是基础算子的复合叠加。所谓“大招”，本质上是针对特定冗余执行的降维打击。 核心公式: 过滤 &amp; 压缩   过滤: 利用题目性质（单调性、及时性）剔除必然不优的无效计算。   压缩: 利用数学工具（可逆性、结合律）将区间级操作压缩为端点级或对数级操作。    1. 排序与二分 逻辑分治与边界锁定的艺术，将搜索空间从线性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:08:07.689Z">
+<meta property="article:modified_time" content="2025-12-24T08:02:26.598Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南">
 <meta property="article:tag" content="基础算法">
+<meta property="article:tag" content="降维优化">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>基石算法：降维打击的起点 (Basis Guide) - MiQiu</title>
+  <title>基础算法：降维打击的起点 (Basis Guide) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="基石算法：降维打击的起点 (Basis Guide)"></span>
+            <span id="subtitle" data-typed-text="基础算法：降维打击的起点 (Basis Guide)"></span>
           
         </div>
 
@@ -261,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          116 字
+          897 字
         
       </span>
     
@@ -273,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          12 分钟
         
       </span>
     
@@ -319,26 +320,182 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">基石算法：降维打击的起点 (Basis Guide)</h1>
+            <h1 id="seo-header">基础算法：降维打击的起点 (Basis Guide)</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p><strong>Philosophy</strong>: 所有高级算法都是基础思想的组合。</p>
+                <h1>基础算法：逻辑降维与分治艺术 (Basis Guide)</h1>
+<blockquote>
+<p>所有高级算法都是基础算子的复合叠加。所谓“大招”，本质上是针对特定冗余执行的<strong>降维打击</strong>。</p>
+<p><strong>核心公式</strong>: <strong>过滤 &amp; 压缩</strong></p>
+<ul>
+<li>
+<p><strong>过滤</strong>: 利用题目性质（单调性、及时性）剔除必然不优的无效计算。</p>
+</li>
+<li>
+<p><strong>压缩</strong>: 利用数学工具（可逆性、结合律）将区间级操作压缩为端点级或对数级操作。</p>
+</li>
+</ul>
 </blockquote>
-<h3 id="📉-降维优化-Dimension-Reduction">📉 降维优化 (Dimension Reduction)</h3>
+<h3 id="1-排序与二分">1. 排序与二分</h3>
+<p>逻辑分治与边界锁定的艺术，将搜索空间从线性压缩至对数级。</p>
 <ul>
-<li><strong><a href="/posts/fe091ad2/">降维优化体系 (Optimization Map)</a></strong>: 体系总览。</li>
-<li><strong><a href="/posts/b22c5db7/">静态数组优化 (Prefix Sum &amp; Difference)</a></strong>: 前缀和与差分的对偶性。</li>
-<li><strong><a href="/posts/4775279/">双指针 (Two Pointers)</a></strong>: 尺取法与滑动窗口。</li>
-<li><strong><a href="/posts/ef28f194/">离散化 (Discretization)</a></strong>: 值域映射与相对排名。</li>
-</ul>
-<h3 id="🔍-排序与搜索-Sort-Search">🔍 排序与搜索 (Sort &amp; Search)</h3>
+<li>
+<p><strong><a href="/posts/66874f84/">二分体系</a></strong>:</p>
 <ul>
-<li><strong><a href="/posts/66874f84/">二分体系 (Binary Search System)</a></strong>: 二分答案与单调性判定。</li>
-<li><strong><a href="/posts/50dbb92c/">基础排序体系 (Basic Sorting System)</a></strong>: 归并排序与逆序对统计。</li>
+<li>
+<p><strong>逻辑</strong>: 锁定<strong>分界线</strong>。将“求解最值”坍缩为“合法性判定”。</p>
+</li>
+<li>
+<p><strong>关键词</strong>: 整数/实数精度、单调边界、Check 函数构造。</p>
+</li>
 </ul>
+</li>
+<li>
+<p><strong><a href="/posts/undefined/">二分进阶_复合判定模型</a></strong>:</p>
+<ul>
+<li><strong>逻辑</strong>: 复合建模。结合 01 分数规划、二维贪心等高阶算子进行判定。</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/50dbb92c/">排序体系</a></strong>:</p>
+<ul>
+<li><strong>逻辑</strong>: <strong>分治对偶</strong>。归并（重合）与快排（重分）的对称美学，捕捉逆序对贡献。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-降维优化体系">2. 降维优化体系</h3>
+<p>这是处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 冗余的核心工具箱，旨在通过挖掘性质将复杂度压制在线性。</p>
+<ul>
+<li>
+<p><strong><a href="/posts/b22c5db7/">静态数组优化</a></strong>:</p>
+<ul>
+<li>
+<p><strong>逻辑</strong>: 利用<strong>可逆性</strong>。将“区间操作”坍缩为“端点打标”。</p>
+</li>
+<li>
+<p><strong>关键词</strong>: 静态、区间求和、SOS DP、对偶性。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/4775279/">双指针体系</a></strong>:</p>
+<ul>
+<li>
+<p><strong>逻辑</strong>: 利用<strong>不回退性</strong>。当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 增加时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 仅需单向随动。</p>
+</li>
+<li>
+<p><strong>关键词</strong>: 尺取法、滑动窗口、位运算单调性。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/ef28f194/">离散化体系</a></strong>:</p>
+<ul>
+<li>
+<p><strong>逻辑</strong>: 利用<strong>排名映射</strong>。将稀疏大值域坍缩为紧凑小下标。</p>
+</li>
+<li>
+<p><strong>关键词</strong>: 稀疏值域、Rank 映射、保序。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="三、-贪心与构造">三、 贪心与构造</h3>
+<p>寻找局部最优的不变量与合法解的生成逻辑。</p>
+<ul>
+<li>
+<p><strong><a href="/posts/undefined/">贪心算法体系</a></strong>:</p>
+<ul>
+<li>
+<p><strong>逻辑</strong>: 建立在排序或单调性之上的局部最优决策。</p>
+</li>
+<li>
+<p><strong>关键模型</strong>: 哈夫曼优化、区间翻转贪心、反悔贪心。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/undefined/">构造算法体系</a></strong>:</p>
+<ul>
+<li><strong>逻辑</strong>: 约束拆解。通过分类讨论与极端填充（如 <code>inf</code> 占位）直接生成符合条件的解。</li>
+</ul>
+</li>
+</ul>
+<h3 id="四、-数学与博弈">四、 数学与博弈</h3>
+<p>博弈逻辑的退化与代数公式的分组优化。</p>
+<ul>
+<li>
+<p><strong><a href="/posts/undefined/">数学逻辑优化</a></strong>:</p>
+<ul>
+<li><strong>逻辑</strong>: 利用代数变形（如分组求和）将多变量贡献解耦。</li>
+</ul>
+</li>
+<li>
+<p><strong><a href="/posts/undefined/">逻辑博弈体系</a></strong>:</p>
+<ul>
+<li><strong>逻辑</strong>: 线性函数极值判定（必然在端点取得）、切比雪夫/曼哈顿距离博弈退化。</li>
+</ul>
+</li>
+</ul>
+<h2 id="归档索引">归档索引</h2>
+<p>在实战中，通过以下指纹库进行模式识别：</p>
+<ul>
+<li><a href="/posts/undefined/">基础算法归档数据库</a></li>
+</ul>
+<h2 id="选型决策表">选型决策表</h2>
+<table>
+<thead>
+<tr>
+<th><strong>场景需求</strong></th>
+<th><strong>首选工具</strong></th>
+<th><strong>核心理由</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>区间求和且不修改</strong></td>
+<td><a href="/posts/b22c5db7/">静态数组优化</a></td>
+<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 端点差分</td>
+</tr>
+<tr>
+<td><strong>寻找两个不重叠最优区间</strong></td>
+<td><a href="/posts/4775279/">双指针体系</a></td>
+<td>双指针 + 前后缀 DP</td>
+</tr>
+<tr>
+<td><strong>求解平均值/比例最值</strong></td>
+<td><a href="/posts/66874f84/">二分体系</a></td>
+<td>01 分数规划数学转化</td>
+</tr>
+<tr>
+<td><strong>统计逆序对/序对贡献</strong></td>
+<td><a href="/posts/50dbb92c/">排序体系</a></td>
+<td>归并排序过程量捕获</td>
+</tr>
+<tr>
+<td><strong>大值域坐标下的线段树</strong></td>
+<td><a href="/posts/ef28f194/">离散化体系</a></td>
+<td>坐标映射至紧凑 Rank</td>
+</tr>
+</tbody>
+</table>
+<h2 id="思考范式：如何识别降维机会？">思考范式：如何识别降维机会？</h2>
+<ol>
+<li>
+<p><strong>观察冗余</strong>: 内部循环是否在重复计算区间累加？ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <strong>前缀和</strong>。</p>
+</li>
+<li>
+<p><strong>定位边界</strong>: 解空间的搜索边界是否随着参数单向移动？ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <strong>双指针</strong> 或 <strong>二分</strong>。</p>
+</li>
+<li>
+<p><strong>寻找单调性</strong>: 窗口内的信息摄入是否符合“强汰弱、新汰旧”？ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <strong>单调队列</strong>。</p>
+</li>
+<li>
+<p><strong>解析公式</strong>: 贡献值是否可以按 (颜色/奇偶/余数) 分组并提取公因式？ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <strong>分组优化</strong>。</p>
+</li>
+</ol>
 
                 
               </div>
@@ -383,6 +540,8 @@
       
         <a href="/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="print-no-link">#基础算法</a>
       
+        <a href="/tags/%E9%99%8D%E7%BB%B4%E4%BC%98%E5%8C%96/" class="print-no-link">#降维优化</a>
+      
     </div>
   
 </div>
@@ -393,7 +552,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>基石算法：降维打击的起点 (Basis Guide)</div>
+      <div>基础算法：降维打击的起点 (Basis Guide)</div>
       <div>https://example.com/posts/c28314d6/</div>
     </div>
     <div class="license-meta">
@@ -438,9 +597,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4775279/" title="双指针 (Two Pointers)">
+                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">双指针 (Two Pointers)</span>
+                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -448,8 +607,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/4bddc3c/" title="数据结构：信息的容器与维护 (DS Guide)">
-                        <span class="hidden-mobile">数据结构：信息的容器与维护 (DS Guide)</span>
+                      <a href="/posts/9e0761d7/" title="动态规划：从线性推演到维度打击 (DP Guide)">
+                        <span class="hidden-mobile">动态规划：从线性推演到维度打击 (DP Guide)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

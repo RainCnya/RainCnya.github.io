@@ -27,7 +27,7 @@
 <meta property="og:description" content="数据结构：信息的容器与维护 (Data Structure Guide)  数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。 在星图中，我们按信息的逻辑形态将其划分为线性、树形、集合与高阶应用四大版块。  1. 线性结构：单调性与滑动窗口 处理具有线性先后顺序的数据。核心在于利用“单调性”剔除无用信息。   单调栈与单调队">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-23T15:15:35.403Z">
+<meta property="article:modified_time" content="2025-12-24T08:02:25.350Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南">
 <meta property="article:tag" content="数据结构">
@@ -470,7 +470,7 @@
 <p><strong>静态区间</strong>：<a href="/posts/e6c1b327/">ST表与倍增</a> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 查询)。</p>
 </li>
 <li>
-<p><strong>仅末尾追加</strong>：<a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E/P1198%20%E6%9C%80%E5%A4%A7%E6%95%B0%20(SparseTable_Static_RMQ).md">P1198 最大数 (SparseTable_Static_RMQ)</a> (动态 ST 表)。</p>
+<p><strong>仅末尾追加</strong>：<a href="/posts/undefined/">P1198 最大数 (SparseTable_Static_RMQ)</a> (动态 ST 表)。</p>
 </li>
 <li>
 <p><strong>滑动窗口/固定长区间</strong>：<a href="/posts/621f0544/">单调栈与单调队列</a>] (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)。</p>
@@ -483,13 +483,13 @@
 <p>在实战中，通过以下指纹库进行模式识别：</p>
 <ul>
 <li>
-<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E6%8C%87%E7%BA%B9%E5%BA%93%20(Linear%20Structure%20Context).md">线性结构指纹库 (Linear Structure Context)</a>: 线性、单调性、贡献法。</p>
+<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E6%8C%87%E7%BA%B9%E5%BA%93%20(Linear%20Structure%20Context).md">线性结构指纹库 (Linear Structure Context)</a>: 线性、单调性、贡献法。</p>
 </li>
 <li>
-<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02_%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%8C%87%E7%BA%B9%E5%BA%93%20(Tree_Structure_Context).md">树形结构指纹库 (Tree_Structure_Context)</a>: 聚合、扫描线、跨界合并。</p>
+<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84%E6%8C%87%E7%BA%B9%E5%BA%93%20(Tree_Structure_Context).md">树形结构指纹库 (Tree_Structure_Context)</a>: 聚合、扫描线、跨界合并。</p>
 </li>
 <li>
-<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03_%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E/%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E%E6%8C%87%E7%BA%B9%E5%BA%93%20(Set_Binary_Context).md">集合与倍增指纹库 (Set_Binary_Context)</a>: 连通性、冲突判定、倍增跳跃。</p>
+<p><a href="../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E%E6%8C%87%E7%BA%B9%E5%BA%93%20(Set_Binary_Context).md">集合与倍增指纹库 (Set_Binary_Context)</a>: 连通性、冲突判定、倍增跳跃。</p>
 </li>
 </ul>
 
@@ -591,9 +591,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/c28314d6/" title="基石算法：降维打击的起点 (Basis Guide)">
+                      <a href="/posts/9e0761d7/" title="动态规划：从线性推演到维度打击 (DP Guide)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">基石算法：降维打击的起点 (Basis Guide)</span>
+                        <span class="hidden-mobile">动态规划：从线性推演到维度打击 (DP Guide)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -601,8 +601,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
-                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
+                      <a href="/posts/ef28f194/" title="离散化 (Discretization System)">
+                        <span class="hidden-mobile">离散化 (Discretization System)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/4775279/" target="_self">
-          双指针 (Two Pointers)
+        <a href="/posts/1c960464/" target="_self">
+          动态规划体系综述 (DP Core Synthesis)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/4775279/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1c960464/" target="_self">
         <div>
-          1. 生态位  定义: 利用序列的单调性，通过两个指针的同向或相向移动，将 O(N2)O(N^2)O(N2) 降维至 O(N)O(N)O(N)。 前置依赖: [排序], [前缀和] 解决痛点:  区间搜索: 寻找满足条件的最短/最长连续子区间。 组合优化: 两个有序序列的匹配或合并。   竞品对比:  vs 二分: 双指针是动态的 O(N)O(N)O(N)，二分是静态的 O(Nlog⁡N)O(N
+          1. 生态位  定义: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。 核心要素:  重叠子问题: 必须有重复计算，否则不如直接爆搜。 最优子结构: 大问题的最优解可以由小问题的最优解推导而来。 无后效性: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。    2. 逻辑支点  记忆化搜索 vs 递推:  记忆化 (Top-Down): 适合状态稀疏、状态转
         </div>
       </a>
 
@@ -275,8 +275,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-12 00:19" pubdate>
-              2025-12-12
+            <time datetime="2025-12-16 22:05" pubdate>
+              2025-12-16
             </time>
           </div>
         
@@ -296,7 +296,7 @@
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
   
   
 
@@ -313,148 +313,10 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
-            
-              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/ef28f194/" target="_self">
-          离散化 (Discretization)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/ef28f194/" target="_self">
-        <div>
-          1. 生态位  定义: 在不改变数据相对大小 (Relative Order) 的前提下，将分布稀疏的大值域数据映射为紧凑的小下标数据。 解决痛点:  题目给出的数值范围很大 (如 10910^9109)，但数据量 NNN 较小 (如 10510^5105)。 算法（如树状数组、线段树、差分）的空间复杂度依赖于值域而非数据量。   本质: Value →\to→ Rank 的映射。  2. 逻辑支
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-12 00:00" pubdate>
-              2025-12-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/">#离散化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/fe091ad2/" target="_self">
-          降维优化体系 (Optimization by Dimension Reduction)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/fe091ad2/" target="_self">
-        <div>
-          1. 生态位  定义: 一系列将高复杂度（如 O(N2)O(N^2)O(N2)）算法优化至线性或近线性（O(N)O(N)O(N) / O(Nlog⁡N)O(N \log N)O(NlogN)）的思维范式。 核心地位: 算法竞赛中从“暴力解”通向“正解”的核心桥梁。 本质: Filter &amp; Compress —— 剔除无效计算，压缩冗余状态。  2. 体系全景 我们到底在降什么维？？！
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-12 00:00" pubdate>
-              2025-12-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
+              <a href="/tags/DP/">#DP</a>
             
               <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">#方法论</a>
             
-              <a href="/tags/%E7%B4%A2%E5%BC%95/">#索引</a>
-            
           </div>
         
       </div>
@@ -467,15 +329,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/50dbb92c/" target="_self">
-          基础排序体系 (Basic Sorting System)
+        <a href="/posts/3fd2748a/" target="_self">
+          并查集体系 (DSU System)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/50dbb92c/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3fd2748a/" target="_self">
         <div>
-          1. 生态位  定义: 将无序序列映射为单调序列的过程。本质是消除序列中的 逆序对 (Inversion Pair)。 前置依赖: [递归], [分治思想] 解决痛点:  冒泡排序: 教学模型，用于建立“交换一次相邻元素 = 消除一个逆序对”的理论直觉。 快速排序 (Quick Sort): 解决大规模数据 (N≥105N \ge 10^5N≥105) 的通用排序，追求平均性能极致。 归并排序 (
+          1. 生态位   定义: 维护元素所属集合的拓扑结构，支持 合并 (Union) 与 查询 (Find)。   解决痛点:   动态连通性判定（Kruskal 算法核心）。   逻辑关系的传递与冲突校验（敌人的敌人是朋友）。   离线场景下的动态删点/删边问题。     2. 逻辑支点   路径压缩 (Path Compression): 查询时通过递归或迭代将节点直接挂载到根节点下，使均摊复杂度
         </div>
       </a>
 
@@ -483,8 +345,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-11 23:59" pubdate>
-              2025-12-11
+            <time datetime="2025-12-16 20:30" pubdate>
+              2025-12-16
             </time>
           </div>
         
@@ -504,7 +366,7 @@
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
   
   
 
@@ -521,11 +383,587 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
+              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
             
-              <a href="/tags/%E5%88%86%E6%B2%BB/">#分治</a>
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
+            
+              <a href="/tags/%E6%89%A9%E5%B1%95%E5%9F%9F/">#扩展域</a>
+            
+              <a href="/tags/%E6%97%B6%E5%85%89%E5%80%92%E6%B5%81/">#时光倒流</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5ce7d1f5/" target="_self">
+          堆与优先队列 (Heap &amp; PriorityQueue)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5ce7d1f5/" target="_self">
+        <div>
+          1. 生态位  定义: 一棵完全二叉树，满足父节点权值优于子节点 (大根/小根)。 解决痛点:  动态极值: O(log⁡N)O(\log N)O(logN) 插入与删除， O(1)O(1)O(1) 查询最值。 贪心引擎: 如 Huffman 编码 (合并果子)、Dijkstra。 动态中位数: 利用对顶堆实时维护第 KKK 大元素。    2. 逻辑支点  Structure Invariant
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 20:20" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86/">#数据结构/堆</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%AF%B9%E9%A1%B6%E5%A0%86/">#数据结构/对顶堆</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/33f15c14/" target="_self">
+          线段树体系 (Segment Tree System)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/33f15c14/" target="_self">
+        <div>
+          1. 生态位   定义: 基于二分思想的平衡树形结构，将序列划分为 O(N)O(N)O(N) 个节点，支持 O(log⁡N)O(\log N)O(logN) 的区间修改与查询。   解决痛点: 复杂的区间合并逻辑（非简单可加性）与多种标记叠加。   核心依赖: 算子必须满足结合律。   2. 逻辑支点   懒标记 (Lazy Tag): 延迟更新的核心。只有在访问子节点时才进行下传（PushDow
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 20:10" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
+            
+              <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">#扫描线</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/eef750c1/" target="_self">
+          树状数组体系 (Binary Indexed Tree)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/eef750c1/" target="_self">
+        <div>
+          1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(NlogN) 权值统计。     核心依赖: 信息必须满足 结合
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 20:00" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
             
               <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/cd7fb2f0/" target="_self">
+          MST体系与瓶颈路 (MST, LCA &amp; Bottleneck)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/cd7fb2f0/" target="_self">
+        <div>
+          1. 生态位  MST (最小生成树): 图的稀疏化骨架。保留了图的连通性与瓶颈性质。 生态位细分:  Kruskal: 稀疏图首选，易于编写，天然支持“重构树”。 Prim (O(N2)O(N^2)O(N2)): 稠密图 (M≈N2M \approx N^2M≈N2) 首选。   LCA (最近公共祖先): 树上路径信息的聚合点。 联合应用: 瓶颈路问题 —— 在多条路径中寻找“最大边最小”或“
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 17:30" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/MST/">#MST</a>
+            
+              <a href="/tags/%E7%93%B6%E9%A2%88%E8%B7%AF/">#瓶颈路</a>
+            
+              <a href="/tags/Kruskal%E9%87%8D%E6%9E%84%E6%A0%91/">#Kruskal重构树</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d4dd66e8/" target="_self">
+          传递闭包与Bitset优化 (Transitive_Closure_Bitset)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d4dd66e8/" target="_self">
+        <div>
+          1. 生态位  定义: 计算图中所有点对 (u,v)(u, v)(u,v) 是否可达。 解决痛点:  稠密图的连通性查询。 Bitset 优化: 将 O(N3)O(N^3)O(N3) 的 Floyd 优化 1/321/321/32 或 1/641/641/64，解决 N=2000N=2000N=2000 级别的问题。    2. 逻辑支点  Floyd 变体: 若 iii 能到 kkk，且 kkk
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 15:30" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BC%A0%E9%80%92%E9%97%AD%E5%8C%85/">#传递闭包</a>
+            
+              <a href="/tags/Bitset/">#Bitset</a>
+            
+              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/6cae5d5b/" target="_self">
+          差分约束系统 (Difference_Constraints)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/6cae5d5b/" target="_self">
+        <div>
+          1. 生态位  定义: 将形如 Xu−Xv≤WX_u - X_v \le WXu​−Xv​≤W 的不等式组转化为最短路问题。 转化: Xu≤Xv+W  ⟺  dist[u]≤dist[v]+wX_u \le X_v + W \iff dist[u] \le dist[v] + wXu​≤Xv​+W⟺dist[u]≤dist[v]+w。对应边 v→uv \to uv→u，权值 WWW。  2. 逻辑
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 15:20" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+            
+              <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">#差分约束</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2a513a9f/" target="_self">
+          分层图最短路 (Layered_Graph)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2a513a9f/" target="_self">
+        <div>
+          1. 生态位  定义: 将图复制 K+1K+1K+1 层，层间通过特定规则（如免费/状态改变）单向连接。 解决痛点: 二维 Dijkstra 状态。例如有 KKK 次免费机会。  2. 逻辑支点  状态升维: dist[u][k]dist[u][k]dist[u][k] 表示到达 uuu 且消耗 kkk 次机会。 层间连边:  层内: uk→vku_k \to v_kuk​→vk​ (权值 www
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 15:10" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP/">#DP</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E5%88%86%E5%B1%82%E5%9B%BE/">#分层图</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5c86f54/" target="_self">
+          优化建图技巧 (Graph_Optimization)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5c86f54/" target="_self">
+        <div>
+          1. 生态位  定义: 通过引入虚拟节点或数据结构，将 O(N2)O(N^2)O(N2) 的暴力连边降为 O(N)O(N)O(N) 或 O(Nlog⁡N)O(N \log N)O(NlogN)。 解决痛点: 集合连边、区间连边、位运算隐式图。  2. 逻辑支点  虚拟节点 (Hub):  场景: 集合 AAA 向集合 BBB 连边。 策略: 建立中转点 OOO，连边 A→OA \to OA→O 和
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 15:00" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/">#图论建模</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
             
           </div>
         
@@ -537,7 +975,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#board">15</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

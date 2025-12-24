@@ -19,23 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 利用序列的单调性，通过两个指针的同向或相向移动，将 O(N2)O(N^2)O(N2) 降维至 O(N)O(N)O(N)。 前置依赖: [排序], [前缀和] 解决痛点:  区间搜索: 寻找满足条件的最短&#x2F;最长连续子区间。 组合优化: 两个有序序列的匹配或合并。   竞品对比:  vs 二分: 双指针是动态的 O(N)O(N)O(N)，二分是静态的 O(Nlog⁡N)O(N">
+    <meta name="description" content="1. 生态位   定义: 双指针（Two Pointers）是一种利用序列的单调性（Monotonicity），通过维持两个在序列上移动的指针（L,RL, RL,R 或称 left,rightleft, rightleft,right），将原本 O(N2)O(N^2)O(N2) 的暴力扫描压缩至 O(N)O(N)O(N) 的思维范式。   解决痛点:   解决了“连续区间搜索”中重复扫描造成的冗余">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双指针 (Two Pointers)">
+<meta property="og:title" content="双指针体系 (Two Pointers System)">
 <meta property="og:url" content="https://example.com/posts/4775279/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 利用序列的单调性，通过两个指针的同向或相向移动，将 O(N2)O(N^2)O(N2) 降维至 O(N)O(N)O(N)。 前置依赖: [排序], [前缀和] 解决痛点:  区间搜索: 寻找满足条件的最短&#x2F;最长连续子区间。 组合优化: 两个有序序列的匹配或合并。   竞品对比:  vs 二分: 双指针是动态的 O(N)O(N)O(N)，二分是静态的 O(Nlog⁡N)O(N">
+<meta property="og:description" content="1. 生态位   定义: 双指针（Two Pointers）是一种利用序列的单调性（Monotonicity），通过维持两个在序列上移动的指针（L,RL, RL,R 或称 left,rightleft, rightleft,right），将原本 O(N2)O(N^2)O(N2) 的暴力扫描压缩至 O(N)O(N)O(N) 的思维范式。   解决痛点:   解决了“连续区间搜索”中重复扫描造成的冗余">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:19:07.000Z">
-<meta property="article:modified_time" content="2025-12-16T09:34:20.416Z">
+<meta property="article:modified_time" content="2025-12-23T16:11:32.000Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="单调性">
-<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="单调性&#x2F;双指针">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>双指针 (Two Pointers) - MiQiu</title>
+  <title>双指针体系 (Two Pointers System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="双指针 (Two Pointers)"></span>
+            <span id="subtitle" data-typed-text="双指针体系 (Two Pointers System)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          445 字
+          748 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          10 分钟
         
       </span>
     
@@ -319,84 +319,125 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">双指针 (Two Pointers)</h1>
+            <h1 id="seo-header">双指针体系 (Two Pointers System)</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 利用序列的<strong>单调性</strong>，通过两个指针的<strong>同向</strong>或<strong>相向</strong>移动，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 降维至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
-<li><strong>前置依赖</strong>: [排序], [前缀和]</li>
-<li><strong>解决痛点</strong>:
+<li>
+<p><strong>定义</strong>: 双指针（Two Pointers）是一种利用序列的<strong>单调性（Monotonicity）</strong>，通过维持两个在序列上移动的指针（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo separator="true">,</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">L, R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 或称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>f</mi><mi>t</mi><mo separator="true">,</mo><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">left, right</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span></span></span></span>），将原本 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的暴力扫描压缩至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的思维范式。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>:</p>
 <ul>
-<li><strong>区间搜索</strong>: 寻找满足条件的最短/最长连续子区间。</li>
-<li><strong>组合优化</strong>: 两个有序序列的匹配或合并。</li>
+<li>
+<p>解决了“连续区间搜索”中重复扫描造成的冗余。</p>
+</li>
+<li>
+<p>解决了“有序配对”问题中无法快速收缩解空间的问题。</p>
+</li>
 </ul>
 </li>
-<li><strong>竞品对比</strong>:
-<ul>
-<li>vs <strong>二分</strong>: 双指针是动态的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>，二分是静态的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
-</ul>
+<li>
+<p><strong>核心依赖</strong>: 指针的移动必须是<strong>单向且不可逆</strong>的。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
+<h3 id="2-1-Never-Turn-Back-绝不回头">2.1 &quot;Never Turn Back&quot; (绝不回头)</h3>
 <ul>
-<li><strong>核心直觉</strong>: <strong>&quot;Never Turn Back&quot; (绝不回头)</strong>。
+<li>
+<p><strong>渗透点</strong>: 如果当右指针 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 右移时，为了维持某种合法性，左指针 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> <strong>只需要</strong>也向右移动，而永远不需要回退到之前的位置，那么双指针逻辑成立。</p>
+</li>
+<li>
+<p><strong>状态机思维</strong>: 窗口状态由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 排出，由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 摄入。窗口内部的统计量（如 <code>sum</code>, <code>cnt</code>, <code>xor_sum</code>）随着指针移动动态更新。</p>
+</li>
+</ul>
+<h3 id="2-2-核心模型分类">2.2 核心模型分类</h3>
+<ol>
+<li>
+<p><strong>同向双指针 (滑动窗口/尺取法)</strong>:</p>
 <ul>
-<li>当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 右移导致状态变更时，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 只需要跟随右移，无需回退。</li>
+<li>
+<p><strong>逻辑</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 主动扩张寻找新解，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 被动收缩维持合法性。</p>
+</li>
+<li>
+<p><strong>适用</strong>: 寻找满足条件的“最短”或“最长”子段。</p>
+</li>
+<li>
+<p><strong>模型映射</strong>: <a href="/posts/undefined/">P1638 逛画展 (TP_Range_Cover)</a> (最短全覆盖区间)。</p>
+</li>
 </ul>
 </li>
-<li><strong>物理模型</strong>: <strong>滑动窗口</strong>的伸缩。
+<li>
+<p><strong>相向双指针 (对撞指针)</strong>:</p>
 <ul>
-<li><strong>进窗 (Expand)</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 主动摄入。</li>
-<li><strong>出窗 (Shrink)</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 被动排出以维持合法性。</li>
+<li>
+<p><strong>逻辑</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo separator="true">,</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">L, R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 分居两头向中间靠拢。</p>
+</li>
+<li>
+<p><strong>适用</strong>: 有序数组的两数之和、翻转序列、接雨水基础模型。</p>
+</li>
 </ul>
+</li>
+<li>
+<p><strong>位运算单调性 (Bitwise Invariant)</strong>:</p>
+<ul>
+<li>
+<p><strong>渗透点</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>+</mo><mi>B</mi><mo>≥</mo><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A + B \ge A \oplus B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 恒成立。当且仅当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi mathvariant="normal">&amp;</mi><mi>B</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A \&amp; B = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">A</span><span class="mord">&amp;</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 时等号成立。这赋予了位运算区间逻辑的单调性。</p>
+</li>
+<li>
+<p><strong>模型映射</strong>: <a href="/posts/undefined/">AT_arc098_b Xor Sum 2 (TP_Bit_Property)</a>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-3-组合优化与时空转换">2.3 组合优化与时空转换</h3>
+<ul>
+<li>
+<p><strong>逻辑</strong>: 当问题要求选出两个不重叠的区间时，单靠双指针无法直接解决。</p>
+</li>
+<li>
+<p><strong>策略</strong>:</p>
+<ol>
+<li>
+<p>利用双指针扫出所有位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 结尾的最优单段。</p>
+</li>
+<li>
+<p>利用<strong>前后缀分解</strong>将这些局部最优解固化为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">pre[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">re</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">suf[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>。</p>
+</li>
+<li>
+<p>枚举分割点进行拼合。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>模型映射</strong>: <a href="/posts/undefined/">P3143 钻石收藏家 (TP_Prefix_Suffix)</a>。</p>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-尺取法模板-同向双指针">3.1 尺取法模板 (同向双指针)</h3>
-<ul>
-<li><strong>策略</strong>: 寻找和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\ge K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 的<strong>最短</strong>子数组。</li>
-</ul>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Sliding Window
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Standard Sliding Window Template
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> l = <span class="hljs-number">1</span>, sum = <span class="hljs-number">0</span>, ans = n + <span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> r = <span class="hljs-number">1</span>; r &lt;= n; ++ r ) <br>&#123;<br>    sum += a[r]; <br>    <span class="hljs-keyword">while</span>( sum &gt;= K ) <br>    &#123;<br>        ans = <span class="hljs-built_in">min</span>( ans, r - l + <span class="hljs-number">1</span> );<br>        sum -= a[l]; <br>        l ++; <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 寻找满足 check 条件的最长/最短区间通用框架</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> l = <span class="hljs-number">1</span>, ans = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> r = <span class="hljs-number">1</span>; r &lt;= n; ++ r )<br>	&#123;<br>		<span class="hljs-comment">// 1. 摄入新元素，更新窗口状态</span><br>		<span class="hljs-built_in">add</span>( a[ r ] );<br><br>		<span class="hljs-comment">// 2. 若状态不再满足 check (或为了寻找更短区间)，收缩左端</span><br>		<span class="hljs-keyword">while</span>( l &lt;= r &amp;&amp; ! <span class="hljs-built_in">check</span>( ) )<br>		&#123;<br>			<span class="hljs-built_in">remove</span>( a[ l ] );<br>			++ l;<br>		&#125;<br><br>		<span class="hljs-comment">// 3. 更新全局答案 (此时 [l, r] 是以 r 结尾的最大合法区间)</span><br>		ans = <span class="hljs-built_in">max</span>( ans, r - l + <span class="hljs-number">1</span> );<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="⚠️-边界与-Hack">⚠️ 边界与 Hack</h3>
-<ul>
-<li>
-<p><strong>[坑点 1]</strong>: 若数组含<strong>负数</strong>，单调性失效，需改用前缀和+单调队列。</p>
-</li>
-<li>
-<p><strong>[坑点 2]</strong>: 求“最长”合法区间时，逻辑通常是 <code>while(invalid) L++</code>。</p>
-</li>
-</ul>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
 <p><strong>变体模型</strong>:</p>
 <ul>
 <li>
-<p><strong>前后缀分解 + 双指针</strong>: (P3143) 选取两个不重叠区间使和最大。</p>
-<ul>
-<li>
-<p>预处理 <code>pre[i]</code> (以 i 结尾的最优解) 和 <code>suf[i]</code> (以 i 开头的最优解)。</p>
+<p><strong>单调队列优化</strong>: 当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 的移动不是基于单调性而是基于“过期”时，演变为单调队列。</p>
 </li>
 <li>
-<p>答案为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>+</mo><mi>s</mi><mi>u</mi><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\max(pre[i] + suf[i+1])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">p</span><span class="mord mathnormal">re</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">])</span></span></span></span>。其中 <code>pre/suf</code> 的计算利用双指针维护。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>相向双指针</strong>: 2-Sum 问题，或接雨水问题。</p>
+<p><strong>回滚莫队</strong>: 当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 无法通过简单 <code>remove</code> 撤销操作时，通过回滚实现不回退。</p>
 </li>
 </ul>
 </li>
@@ -404,10 +445,13 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong>[Luogu P1638]</strong>: 逛画展 - 尺取法</p>
+<p><a href="/posts/undefined/">P1638 逛画展 (TP_Range_Cover)</a></p>
 </li>
 <li>
-<p><strong>[Luogu P3143]</strong>: 钻石收藏家 - 排序 + 双指针 + 前后缀DP</p>
+<p><a href="/posts/undefined/">P3143 钻石收藏家 (TP_Prefix_Suffix)</a></p>
+</li>
+<li>
+<p><a href="/posts/undefined/">AT_arc098_b Xor Sum 2 (TP_Bit_Property)</a></p>
 </li>
 </ul>
 </li>
@@ -452,9 +496,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/" class="print-no-link">#单调性</a>
+        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#单调性/双指针</a>
       
-        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#双指针</a>
+        <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="print-no-link">#滑动窗口</a>
       
     </div>
   
@@ -466,7 +510,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>双指针 (Two Pointers)</div>
+      <div>双指针体系 (Two Pointers System)</div>
       <div>https://example.com/posts/4775279/</div>
     </div>
     <div class="license-meta">
@@ -521,8 +565,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/c28314d6/" title="基石算法：降维打击的起点 (Basis Guide)">
-                        <span class="hidden-mobile">基石算法：降维打击的起点 (Basis Guide)</span>
+                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

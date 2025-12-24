@@ -27,11 +27,11 @@
 <meta property="og:description" content="1. 生态位  定义: 内部元素保持严格单调（递增或递减）的线性数据结构。本质是 &quot;存储有潜力的未来&quot;。 解决痛点:  单调栈: O(N)O(N)O(N) 寻找每个元素左&#x2F;右侧第一个比它大&#x2F;小的元素 (NGE 问题)。 单调队列: O(N)O(N)O(N) 解决滑动窗口内的最值查询 (RMQ)。   竞品对比:     算法 核心优势 劣势&#x2F;局限 适用场景     单调队列 O">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:20:06.000Z">
-<meta property="article:modified_time" content="2025-12-23T15:17:30.642Z">
+<meta property="article:modified_time" content="2025-12-24T08:02:25.286Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="线性优化">
-<meta property="article:tag" content="单调栈">
-<meta property="article:tag" content="单调队列">
+<meta property="article:tag" content="降维优化">
+<meta property="article:tag" content="单调性&#x2F;单调队列">
+<meta property="article:tag" content="单调性&#x2F;单调栈">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -426,16 +426,16 @@
 <p><strong>变体模型</strong>:</p>
 <ul>
 <li>
-<p><strong>二维滑动窗口</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2216%20%E7%90%86%E6%83%B3%E7%9A%84%E6%AD%A3%E6%96%B9%E5%BD%A2%20(MonoQueue_2D).md">P2216 理想的正方形 (MonoQueue_2D)</a> 通过“先行后列”两次一维窗口降维实现。</p>
+<p><strong>二维滑动窗口</strong>: <a href="/posts/undefined/">P2216 理想的正方形 (MonoQueue_2D)</a> 通过“先行后列”两次一维窗口降维实现。</p>
 </li>
 <li>
-<p><strong>悬线法优化</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P1950%20%E9%95%BF%E6%96%B9%E5%BD%A2%20(MonoStack_Suspension_Line).md">P1950 长方形 (MonoStack_Suspension_Line)</a>` 统计子矩形，利用单调栈维护底边的左右边界 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i], R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>悬线法优化</strong>: <a href="/posts/undefined/">P1950 长方形 (MonoStack_Suspension_Line)</a>` 统计子矩形，利用单调栈维护底边的左右边界 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i], R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>全局偏移 (Offset)</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2827%20%E8%9A%AF%E8%9A%93%20(MonoQueue_Offset).md">P2827 蚯蚓 (MonoQueue_Offset)</a> 利用全局增量标记避开 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的全员修改。</p>
+<p><strong>全局偏移 (Offset)</strong>: <a href="/posts/undefined/">P2827 蚯蚓 (MonoQueue_Offset)</a> 利用全局增量标记避开 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的全员修改。</p>
 </li>
 <li>
-<p><strong>轮廓覆盖贪心</strong>: <a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P3467%20PLA-Posters%20(MonoStack_Profile).md">P3467 PLA-Posters (MonoStack_Profile)</a> 利用单调递增栈判断相同高度是否可合并海报。</p>
+<p><strong>轮廓覆盖贪心</strong>: <a href="/posts/undefined/">P3467 PLA-Posters (MonoStack_Profile)</a> 利用单调递增栈判断相同高度是否可合并海报。</p>
 </li>
 </ul>
 </li>
@@ -443,17 +443,17 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P1886%20%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%20(MonoQueue_Sliding_Window).md">P1886 滑动窗口 (MonoQueue_Sliding_Window)</a>: 滑动窗口标准模板。</p>
+<p><a href="/posts/undefined/">P1886 滑动窗口 (MonoQueue_Sliding_Window)</a>: 滑动窗口标准模板。</p>
 </li>
 <li>
-<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2866%20Bad%20Hair%20Day%20S%20(MonoStack_Visibility).md">P2866 Bad Hair Day S (MonoStack_Visibility)</a>: 视角转换典型案例。</p>
+<p><a href="/posts/undefined/">P2866 Bad Hair Day S (MonoStack_Visibility)</a>: 视角转换典型案例。</p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P2032%20%E6%89%AB%E6%8F%8F%20(MonoQueue_Scanning).md">P2032 扫描 (MonoQueue_Scanning)</a></p>
-<p><a href="../../../../10_Library/01_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01_%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/P1440%20%E6%B1%82m%E5%8C%BA%E9%97%B4%E5%86%85%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC%20(MonoQueue_Window_Min).md">P1440 求m区间内的最小值 (MonoQueue_Window_Min)</a></p>
+<p><a href="/posts/undefined/">P2032 扫描 (MonoQueue_Scanning)</a></p>
+<p><a href="/posts/undefined/">P1440 求m区间内的最小值 (MonoQueue_Window_Min)</a></p>
 <hr>
 
                 
@@ -495,11 +495,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BC%98%E5%8C%96/" class="print-no-link">#线性优化</a>
+        <a href="/tags/%E9%99%8D%E7%BB%B4%E4%BC%98%E5%8C%96/" class="print-no-link">#降维优化</a>
       
-        <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" class="print-no-link">#单调栈</a>
+        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="print-no-link">#单调性/单调队列</a>
       
-        <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="print-no-link">#单调队列</a>
+        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E6%A0%88/" class="print-no-link">#单调性/单调栈</a>
       
     </div>
   

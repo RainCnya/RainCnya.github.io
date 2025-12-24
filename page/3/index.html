@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3fd2748a/" target="_self">
-          并查集体系 (DSU System)
+        <a href="/posts/cc4bf061/" target="_self">
+          CF1406C Link Cut Centroids (重心构造)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3fd2748a/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/cc4bf061/" target="_self">
         <div>
-          1. 生态位   定义: 维护元素所属集合的拓扑结构，支持 合并 (Union) 与 查询 (Find)。   解决痛点:   动态连通性判定（Kruskal 算法核心）。   逻辑关系的传递与冲突校验（敌人的敌人是朋友）。   离线场景下的动态删点/删边问题。     2. 逻辑支点   路径压缩 (Path Compression): 查询时通过递归或迭代将节点直接挂载到根节点下，使均摊复杂度
+          CF1406C Link Cut Centroids 1. 核心逻辑 问题本质 删一条边加一条边，使树的重心唯一。 破局思路   单重心: 已经是唯一，无需改变。随便切一条叶子边再连回去。   双重心: 说明有两个相邻点 R1,R2R_1, R_2R1​,R2​ 平分了整棵树。  破坏平衡: 从 R1R_1R1​ 的子树中剪下一个叶子，挂到 R2R_2R2​ 上，使 R2R_2R2​ 变重，成为唯
         </div>
       </a>
 
@@ -275,8 +275,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 20:30" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -291,12 +291,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
 
@@ -313,13 +313,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
+              <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
             
-              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
-            
-              <a href="/tags/%E6%89%A9%E5%B1%95%E5%9F%9F/">#扩展域</a>
-            
-              <a href="/tags/%E6%97%B6%E5%85%89%E5%80%92%E6%B5%81/">#时光倒流</a>
+              <a href="/tags/%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83/">#树的重心</a>
             
           </div>
         
@@ -333,15 +329,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/5ce7d1f5/" target="_self">
-          堆与优先队列 (Heap &amp; PriorityQueue)
+        <a href="/posts/bab96266/" target="_self">
+          CF911F Tree Destruction (构造)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5ce7d1f5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/bab96266/" target="_self">
         <div>
-          1. 生态位  定义: 一棵完全二叉树，满足父节点权值优于子节点 (大根/小根)。 解决痛点:  动态极值: O(log⁡N)O(\log N)O(logN) 插入与删除， O(1)O(1)O(1) 查询最值。 贪心引擎: 如 Huffman 编码 (合并果子)、Dijkstra。 动态中位数: 利用对顶堆实时维护第 KKK 大元素。    2. 逻辑支点  Structure Invariant
+          CF911F Tree Destruction 1. 核心逻辑 问题本质 构造删点顺序，使所有被删节点与剩余某节点的距离之和最大。 破局思路   最远点原理: 树上任意点的最远点一定是直径端点之一。   贪心策略:   Phase 1 (非直径点): 将其与距离较远的直径端点 (AAA 或 BBB) 配对删除 6。   Phase 2 (直径点): 此时树只剩一条链，从一端向另一端逐个删除。
         </div>
       </a>
 
@@ -349,8 +345,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 20:20" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -365,12 +361,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
 
@@ -387,11 +383,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%A0%86/">#堆</a>
+              <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
             
               <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
             
-              <a href="/tags/%E5%AF%B9%E9%A1%B6%E5%A0%86/">#对顶堆</a>
+              <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">#树的直径</a>
             
           </div>
         
@@ -405,15 +401,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/33f15c14/" target="_self">
-          线段树体系 (Segment Tree System)
+        <a href="/posts/b7868cc/" target="_self">
+          P1395 会议 (重心性质)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/33f15c14/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b7868cc/" target="_self">
         <div>
-          1. 生态位   定义: 基于二分思想的平衡树形结构，将序列划分为 O(N)O(N)O(N) 个节点，支持 O(log⁡N)O(\log N)O(logN) 的区间修改与查询。   解决痛点: 复杂的区间合并逻辑（非简单可加性）与多种标记叠加。   核心依赖: 算子必须满足结合律。   2. 逻辑支点   懒标记 (Lazy Tag): 延迟更新的核心。只有在访问子节点时才进行下传（PushDow
+          Luogu-P1395 会议 1. 核心逻辑 问题本质 求树上一点，使得所有节点到该点的距离之和最小。 破局思路   重心性质: 距离和最小的点即为树的重心 8。   距离计算:   找到重心 root。   以 root 为根遍历全树。总距离 = ∑dep[i]\sum \text{dep}[i]∑dep[i] = ∑(siz[i]−1)\sum (\text{siz}[i] - 1)∑(siz
         </div>
       </a>
 
@@ -421,8 +417,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 20:10" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -437,12 +433,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
 
@@ -459,9 +455,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">#线段树</a>
+              <a href="/tags/%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83/">#树的重心</a>
             
-              <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">#扫描线</a>
+              <a href="/tags/%E6%A0%91%E5%BD%A2DP/">#树形DP</a>
             
           </div>
         
@@ -475,15 +471,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/eef750c1/" target="_self">
-          树状数组体系 (Binary Indexed Tree)
+        <a href="/posts/b9909e14/" target="_self">
+          P1099 [NOIP2007] 树网的核
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/eef750c1/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b9909e14/" target="_self">
         <div>
-          1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(NlogN) 权值统计。     核心依赖: 信息必须满足 结合
+          Luogu-P1099 树网的核 1. 核心逻辑 问题本质 在树的直径上截取一段长度 ≤s\le s≤s 的路径 FFF，最小化全树到 FFF 的最大距离（偏心距）。 破局思路   骨架分离:   主干: 直径本身。   枝条 (Branch): 从直径上的节点 uuu 向非直径方向延伸的最远距离 branch[u] 5。     枚举/尺取:   在直径上枚举区间 [i,j][i, j][i,j
         </div>
       </a>
 
@@ -491,8 +487,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 20:00" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -507,12 +503,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
 
@@ -529,11 +525,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%B7%AE%E5%88%86/">#差分</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8F%8C%E6%8C%87%E9%92%88/">#单调性/双指针</a>
             
-              <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
-            
-              <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#树状数组</a>
+              <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">#树的直径</a>
             
           </div>
         
@@ -547,15 +541,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/cd7fb2f0/" target="_self">
-          MST体系与瓶颈路 (MST, LCA &amp; Bottleneck)
+        <a href="/posts/7fb577ad/" target="_self">
+          P1967 货车运输 (最大生成树 + LCA)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/cd7fb2f0/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/7fb577ad/" target="_self">
         <div>
-          1. 生态位  MST (最小生成树): 图的稀疏化骨架。保留了图的连通性与瓶颈性质。 生态位细分:  Kruskal: 稀疏图首选，易于编写，天然支持“重构树”。 Prim (O(N2)O(N^2)O(N2)): 稠密图 (M≈N2M \approx N^2M≈N2) 首选。   LCA (最近公共祖先): 树上路径信息的聚合点。 联合应用: 瓶颈路问题 —— 在多条路径中寻找“最大边最小”或“
+          Luogu-P1967 货车运输 1. 核心逻辑 问题本质 瓶颈路问题 (Bottleneck Path Problem)：在带权图中，寻找两点间的一条路径，使得路径上的最小边权最大。 破局思路   贪心重构 (Kruskal):  想要路径上的最小边权尽可能大，意味着我们需要优先选择边权大的边来连接连通块。 这等价于构造最大生成树 (Maximum Spanning Tree, MaxST)。
         </div>
       </a>
 
@@ -563,8 +557,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 17:30" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -579,12 +573,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
 
@@ -600,368 +594,360 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/MST/">#MST</a>
             
               <a href="/tags/%E7%93%B6%E9%A2%88%E8%B7%AF/">#瓶颈路</a>
             
-              <a href="/tags/Kruskal%E9%87%8D%E6%9E%84%E6%A0%91/">#Kruskal重构树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/d4dd66e8/" target="_self">
-          传递闭包与Bitset优化 (Transitive_Closure_Bitset)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/d4dd66e8/" target="_self">
-        <div>
-          1. 生态位  定义: 计算图中所有点对 (u,v)(u, v)(u,v) 是否可达。 解决痛点:  稠密图的连通性查询。 Bitset 优化: 将 O(N3)O(N^3)O(N3) 的 Floyd 优化 1/321/321/32 或 1/641/641/64，解决 N=2000N=2000N=2000 级别的问题。    2. 逻辑支点  Floyd 变体: 若 iii 能到 kkk，且 kkk
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 15:30" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
-            
-              <a href="/tags/%E4%BC%A0%E9%80%92%E9%97%AD%E5%8C%85/">#传递闭包</a>
-            
-              <a href="/tags/Bitset/">#Bitset</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/6cae5d5b/" target="_self">
-          差分约束系统 (Difference_Constraints)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/6cae5d5b/" target="_self">
-        <div>
-          1. 生态位  定义: 将形如 Xu−Xv≤WX_u - X_v \le WXu​−Xv​≤W 的不等式组转化为最短路问题。 转化: Xu≤Xv+W  ⟺  dist[u]≤dist[v]+wX_u \le X_v + W \iff dist[u] \le dist[v] + wXu​≤Xv​+W⟺dist[u]≤dist[v]+w。对应边 v→uv \to uv→u，权值 WWW。  2. 逻辑
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 15:20" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">#最短路</a>
-            
-              <a href="/tags/%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">#差分约束</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2a513a9f/" target="_self">
-          分层图最短路 (Layered_Graph)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2a513a9f/" target="_self">
-        <div>
-          1. 生态位  定义: 将图复制 K+1K+1K+1 层，层间通过特定规则（如免费/状态改变）单向连接。 解决痛点: 二维 Dijkstra 状态。例如有 KKK 次免费机会。  2. 逻辑支点  状态升维: dist[u][k]dist[u][k]dist[u][k] 表示到达 uuu 且消耗 kkk 次机会。 层间连边:  层内: uk→vku_k \to v_kuk​→vk​ (权值 www
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 15:10" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">#最短路</a>
-            
-              <a href="/tags/%E5%88%86%E5%B1%82%E5%9B%BE/">#分层图</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/5c86f54/" target="_self">
-          优化建图技巧 (Graph_Optimization)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5c86f54/" target="_self">
-        <div>
-          1. 生态位  定义: 通过引入虚拟节点或数据结构，将 O(N2)O(N^2)O(N2) 的暴力连边降为 O(N)O(N)O(N) 或 O(Nlog⁡N)O(N \log N)O(NlogN)。 解决痛点: 集合连边、区间连边、位运算隐式图。  2. 逻辑支点  虚拟节点 (Hub):  场景: 集合 AAA 向集合 BBB 连边。 策略: 建立中转点 OOO，连边 A→OA \to OA→O 和
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 15:00" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">#线段树</a>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/">#图论建模</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/4f9d9d38/" target="_self">
-          树上差分 (Tree_Difference)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/4f9d9d38/" target="_self">
-        <div>
-          1. 生态位  定义: 差分思想在树上的推广。 解决痛点: 离线批量处理路径上的区间修改（+K+K+K），最后一次性查询。  2. 逻辑支点  影响的抵消: 在路径两端施加影响，在 LCA 处消除影响。 点差分:  修改 u→vu \to vu→v 的点权。 操作: cnt[u]++, cnt[v]++, cnt[lca]--, cnt[fa[lca]]--。   边差分:  修改 u→vu \t
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 14:20" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/">#树上差分</a>
-            
               <a href="/tags/LCA/">#LCA</a>
+            
+              <a href="/tags/%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/">#最大生成树</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/ea96a98/" target="_self">
+          P3629 [APIO2010] 巡逻 (两次直径)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ea96a98/" target="_self">
+        <div>
+          Luogu-P3629 [APIO2010] 巡逻 1. 核心逻辑 问题本质 在树上增加 KKK 条边 (K∈{1,2}K \in \{1, 2\}K∈{1,2})，使得遍历所有边（包括新边）恰好一次并回到起点的总路程最小。   原始路程: 2(N−1)2(N-1)2(N−1)。   每加一条成环边，环上的边只需经过一次（减少一次），但新边需经过一次（增加 1）。   收益公式: Δ=RingLe
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+            
+              <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">#树的直径</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/8179d216/" target="_self">
+          复合模型综述 (Composite Models)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8179d216/" target="_self">
+        <div>
+          1. 体系融合 在掌握了 [线性], [背包], [区间], [优化] 四大板块后，高阶题目往往不再是单一模型的直接应用，而是多种模型的复合或非典型转化。 2. 经典案例解析 2.1 飞扬的小鸟 (P1941) —— 背包与状态机的共舞  混合核心: 完全背包 (上升) + 0/1 背包 (下降)。 逻辑陷阱:  通常背包是一个物品选一次。这里是“上升”这个动作在同一列可以执行多次 →\to→ 完
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-17 00:40" pubdate>
+              2025-12-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
+            
+              <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%BD%AC%E5%8C%96/">#模型转化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/ec824ae8/" target="_self">
+          线段树进阶：信息合并 (The Art of Push Up)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ec824ae8/" target="_self">
+        <div>
+          1. 生态位   定义: 探讨线段树在处理 &quot;非简单可加性信息&quot; 时的合并逻辑支点。   核心矛盾: 左右子区间不仅有独立贡献，还存在 跨界 (Cross-Boundary) 交互。   解决痛点: 最大子段和、区间连通性等无法通过简单 sum = L + R 得到的信息。   2. 逻辑支点   GSS 模型 (数值跨界): 在最大子段和问题中，最优解可能源于：左子树内部、右
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-17 00:30" pubdate>
+              2025-12-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
+            
+              <a href="/tags/GSS%E6%A8%A1%E5%9E%8B/">#GSS模型</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/f977dd98/" target="_self">
+          结构优化与逆向思维 (Structure &amp; Reverse Logic)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f977dd98/" target="_self">
+        <div>
+          1. 生态位  定义: 通过分析题目特定的物理约束或逻辑顺序，对 DP 的状态空间或转移路径进行剪枝和重构。 解决痛点:  无效时间: 时间轴过长但事件稀疏 (P5017 摆渡车)。 耦合困境: 正向操作导致状态相互缠绕，无法拆分 (P5851 压路机)。    2. 逻辑支点  Path Compression (路径压缩):  场景: P5017 摆渡车。 策略: 若两批人的到达间隔 &gt;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 23:40" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%86%E5%90%91%E6%80%9D%E7%BB%B4/">#逆向思维</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/c936ec9e/" target="_self">
+          倍增优化策略 (Doubling Strategy)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/c936ec9e/" target="_self">
+        <div>
+          1. 生态位  定义: 利用 2k2^k2k 的跳跃特性，快速计算线性或环形结构上的多次状态转移。 解决痛点:  长路径转移: 需要跳跃 NNN 次，倍增降至 log⁡N\log NlogN。 环形覆盖: 求最少多少个区间能覆盖环 (P6902)。    2. 逻辑支点  核心直觉: &quot;Jump to the Limit&quot; (极限跳跃)。  如果我们知道“跳 1 步最远到哪”，
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 23:30" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%80%8D%E5%A2%9E/">#倍增</a>
+            
+              <a href="/tags/%E5%8C%BA%E9%97%B4%E8%A6%86%E7%9B%96/">#区间覆盖</a>
             
           </div>
         
@@ -973,7 +959,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#board">15</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
