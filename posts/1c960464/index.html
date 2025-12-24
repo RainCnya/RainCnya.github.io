@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。 核心要素:  重叠子问题: 必须有重复计算，否则不如直接爆搜。 最优子结构: 大问题的最优解可以由小问题的最优解推导而来。 无后效性: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。    2. 逻辑支点  记忆化搜索 vs 递推:  记忆化 (Top-Down): 适合状态稀疏、状态转">
+    <meta name="description" content="动态规划综述 1. 生态位   定义: 动态规划是将复杂的多阶段决策过程坍缩为有序状态流转的方法论。   解决痛点: 解决了指数级搜索空间（Brute Force）中的冗余计算问题。   2. 逻辑支点   核心不变量:   最优子结构: 全局最优决策序列的每一个子序列也必须是局部的最优决策。   重叠子问题: 不同的决策路径可以交汇于同一个物理状态。   无后效性 (Non-aftereffec">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态规划体系综述 (DP Core Synthesis)">
+<meta property="og:title" content="动态规划：状态公理与决策本质 (DP Core Synthesis)">
 <meta property="og:url" content="https://example.com/posts/1c960464/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。 核心要素:  重叠子问题: 必须有重复计算，否则不如直接爆搜。 最优子结构: 大问题的最优解可以由小问题的最优解推导而来。 无后效性: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。    2. 逻辑支点  记忆化搜索 vs 递推:  记忆化 (Top-Down): 适合状态稀疏、状态转">
+<meta property="og:description" content="动态规划综述 1. 生态位   定义: 动态规划是将复杂的多阶段决策过程坍缩为有序状态流转的方法论。   解决痛点: 解决了指数级搜索空间（Brute Force）中的冗余计算问题。   2. 逻辑支点   核心不变量:   最优子结构: 全局最优决策序列的每一个子序列也必须是局部的最优决策。   重叠子问题: 不同的决策路径可以交汇于同一个物理状态。   无后效性 (Non-aftereffec">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T14:05:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:11:31.626Z">
+<meta property="article:modified_time" content="2025-12-24T12:27:08.015Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="方法论">
@@ -35,7 +35,7 @@
   
   
   
-  <title>动态规划体系综述 (DP Core Synthesis) - MiQiu</title>
+  <title>动态规划：状态公理与决策本质 (DP Core Synthesis) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="动态规划体系综述 (DP Core Synthesis)"></span>
+            <span id="subtitle" data-typed-text="动态规划：状态公理与决策本质 (DP Core Synthesis)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          267 字
+          510 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -319,50 +319,95 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">动态规划体系综述 (DP Core Synthesis)</h1>
+            <h1 id="seo-header">动态规划：状态公理与决策本质 (DP Core Synthesis)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>动态规划综述</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。</li>
-<li><strong>核心要素</strong>:
-<ul>
-<li><strong>重叠子问题</strong>: 必须有重复计算，否则不如直接爆搜。</li>
-<li><strong>最优子结构</strong>: 大问题的最优解可以由小问题的最优解推导而来。</li>
-<li><strong>无后效性</strong>: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。</li>
-</ul>
+<li>
+<p><strong>定义</strong>: 动态规划是将复杂的多阶段决策过程坍缩为有序状态流转的方法论。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 解决了指数级搜索空间（Brute Force）中的<strong>冗余计算</strong>问题。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>记忆化搜索 vs 递推</strong>:
-<ul>
-<li><strong>记忆化 (Top-Down)</strong>: 适合状态稀疏、状态转移复杂的情况。</li>
-<li><strong>递推 (Bottom-Up)</strong>: 适合状态稠密、甚至可以滚动数组优化空间的情况。</li>
-</ul>
+<li>
+<p><strong>核心不变量</strong>:</p>
+<ol>
+<li>
+<p><strong>最优子结构</strong>: 全局最优决策序列的每一个子序列也必须是局部的最优决策。</p>
 </li>
-<li><strong>消除后效性</strong>:
-<ul>
-<li><strong>增加维度</strong>: 既然当前信息不够，就加一维状态记录它 (如分层图最短路)。</li>
-<li><strong>转化问题</strong>: 如将“环形”转化为“链式”。</li>
-</ul>
+<li>
+<p><strong>重叠子问题</strong>: 不同的决策路径可以交汇于同一个物理状态。</p>
+</li>
+<li>
+<p><strong>无后效性 (Non-aftereffect)</strong>: 状态是历史的完整浓缩。一旦进入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>，后续演化仅取决于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>，与抵达 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 的路径无关。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>渗透点 (Penetration)</strong>:</p>
+<blockquote>
+<p>DP 的本质是 <strong>DAG 上的最短路/最长路</strong>。 所谓的“状态”是图中的节点，“转移”是带权的边，“目标”是路径的测度。如果状态图产生了环，DP 则退化为最短路算法（如 SPFA/Dijkstra）。</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-记忆化搜索模板">3.1 记忆化搜索模板</h3>
+<blockquote>
+<p><strong>Standard</strong>: Airy Strict v3.2</p>
+</blockquote>
+<h3 id="3-1-记忆化搜索-Top-Down">3.1 记忆化搜索 (Top-Down)</h3>
+<p>适用于状态空间稀疏、转移逻辑复杂的场景。</p>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Memoization
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Memoization Template
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> memo[maxn];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( memo[x] != <span class="hljs-number">-1</span> ) <span class="hljs-keyword">return</span> memo[x];<br>    <br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// Transition Logic</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> next : adj[x] )<br>    &#123;<br>        res = <span class="hljs-built_in">max</span>( res, <span class="hljs-built_in">dfs</span>( next ) + <span class="hljs-number">1</span> );<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> memo[x] = res;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 记忆化搜索：本质是带缓存的 DFS</span><br><span class="hljs-type">int</span> memo[ maxn ];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 1. 命中缓存直接返回</span><br>    <span class="hljs-keyword">if</span>( memo[ u ] != <span class="hljs-number">-1</span> ) <br>    &#123;<br>        <span class="hljs-keyword">return</span> memo[ u ];<br>    &#125;<br><br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 2. 遍历所有后继状态 (边)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        res = <span class="hljs-built_in">max</span>( res, <span class="hljs-built_in">dfs</span>( v ) + w[ u ][ v ] );<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> memo[ u ] = res;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
+<h3 id="3-2-递推范式-Bottom-Up">3.2 递推范式 (Bottom-Up)</h3>
+<p>适用于状态稠密、需要滚动数组优化空间或进行维度打击（单调队列/斜率优化）的场景。</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
+        <div class="fold-arrow">▶</div>Code: Tabulation Template
+      </div>
+      <div class="fold-collapse collapse" id="collapse-28ab9646">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 递推：遵循拓扑序进行状态演化</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">memset</span>( f, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>( f ) );<br>    f[ <span class="hljs-number">0</span> ] = start_val;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; i; ++ j )<br>        &#123;<br>            <span class="hljs-comment">// 决策转移</span><br>            <span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>( j, i ) )<br>            &#123;<br>                f[ i ] = <span class="hljs-built_in">max</span>( f[ i ], f[ j ] + <span class="hljs-built_in">cost</span>( j, i ) );<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="4-知识粘附">4. 知识粘附</h2>
+<ul>
+<li>
+<p><strong>变体模型</strong>:</p>
+<ul>
+<li>
+<p><a href="/posts/2a513a9f/">分层图最短路</a>: 典型的“状态升维”以消除后效性的范式。</p>
+</li>
+<li>
+<p><a href="/posts/5a7613f/">最短路图</a>: 将一般图 DP 化的核心中介。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>母题索引</strong>:</p>
+<ul>
+<li><a href="/posts/f06cc821/">P1280 尼克的任务 (Seq_Reverse_DP)</a> —— 逆序决策消除未来影响的典范。</li>
+</ul>
+</li>
+</ul>
+
                 
               </div>
             
@@ -416,7 +461,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>动态规划体系综述 (DP Core Synthesis)</div>
+      <div>动态规划：状态公理与决策本质 (DP Core Synthesis)</div>
       <div>https://example.com/posts/1c960464/</div>
     </div>
     <div class="license-meta">
@@ -461,9 +506,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/a164e19/" title="线性序列体系 (Sequence System)">
+                      <a href="/posts/a164e19/" title="线性DP体系 (Sequence System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">线性序列体系 (Sequence System)</span>
+                        <span class="hidden-mobile">线性DP体系 (Sequence System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

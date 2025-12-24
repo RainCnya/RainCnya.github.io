@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="动态规划：拓扑决策与维度打击  动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。 所有的优化本质上都是在压缩状态空间或加速决策转移。  1. 基础模型 构建 DP 直觉的底层积木。   DP_核心综述：记忆化与递推的同构逻辑。   线性序列体系：LIS &#x2F; LCS 与 Dilworth 定理的对偶性。   背包模型体系：维度限制下的组合优化归约。   区间与环形体系：解决局部合并">
+    <meta name="description" content="动态规划：从线性推演到维度打击  Philosophy: 动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。 所有的优化本质上都在压缩状态空间或加速转移效率。  1. 基础与结构模型 (Foundations) 构建 DP 直觉的底层积木，定义状态演化的拓扑顺序。   动态规划综述: 最优子结构与无后效性的公理化定义，记忆化与递推的同构。   线性DP体系: LIS&#x2F;LCS 与 D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划：从线性推演到维度打击 (DP Guide)">
 <meta property="og:url" content="https://example.com/posts/9e0761d7/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="动态规划：拓扑决策与维度打击  动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。 所有的优化本质上都是在压缩状态空间或加速决策转移。  1. 基础模型 构建 DP 直觉的底层积木。   DP_核心综述：记忆化与递推的同构逻辑。   线性序列体系：LIS &#x2F; LCS 与 Dilworth 定理的对偶性。   背包模型体系：维度限制下的组合优化归约。   区间与环形体系：解决局部合并">
+<meta property="og:description" content="动态规划：从线性推演到维度打击  Philosophy: 动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。 所有的优化本质上都在压缩状态空间或加速转移效率。  1. 基础与结构模型 (Foundations) 构建 DP 直觉的底层积木，定义状态演化的拓扑顺序。   动态规划综述: 最优子结构与无后效性的公理化定义，记忆化与递推的同构。   线性DP体系: LIS&#x2F;LCS 与 D">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T11:32:14.500Z">
+<meta property="article:modified_time" content="2025-12-24T15:08:02.305Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南">
 <meta property="article:tag" content="DP">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          373 字
+          520 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -324,53 +324,58 @@
             
               <div class="markdown-body">
                 
-                <h1>动态规划：拓扑决策与维度打击</h1>
+                <h1>动态规划：从线性推演到维度打击</h1>
 <blockquote>
-<p>动态规划不是背模板，而是寻找 <strong>DAG (有向无环图)</strong> 上的最短路。</p>
-<p>所有的优化本质上都是在压缩状态空间或加速决策转移。</p>
+<p><strong>Philosophy</strong>: 动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。</p>
+<p>所有的优化本质上都在压缩状态空间或加速转移效率。</p>
 </blockquote>
-<h2 id="1-基础模型">1. 基础模型</h2>
-<p>构建 DP 直觉的底层积木。</p>
+<h3 id="1-基础与结构模型-Foundations">1. 基础与结构模型 (Foundations)</h3>
+<p>构建 DP 直觉的底层积木，定义状态演化的拓扑顺序。</p>
 <ul>
 <li>
-<p><a href="/posts/1c960464/">DP_核心综述</a>：记忆化与递推的同构逻辑。</p>
+<p><a href="/posts/1c960464/">动态规划综述</a>: 最优子结构与无后效性的公理化定义，记忆化与递推的同构。</p>
 </li>
 <li>
-<p><a href="/posts/a164e19/">线性序列体系</a>：LIS / LCS 与 Dilworth 定理的对偶性。</p>
+<p><a href="/posts/a164e19/">线性DP体系</a>: LIS/LCS 与 Dilworth 定理的对偶性，解决序列组合优化。</p>
 </li>
 <li>
-<p><a href="/posts/8be0e5f9/">背包模型体系</a>：维度限制下的组合优化归约。</p>
+<p><a href="/posts/8be0e5f9/">背包DP体系</a>: 维度限制下的策略分配。涵盖 01、完全、多重及依赖变体。</p>
 </li>
 <li>
-<p><a href="/posts/a75f3b7c/">区间与环形体系</a>：解决局部合并与断环成链范式。</p>
+<p><a href="/posts/a75f3b7c/">区间DP体系</a>: 局部合并与递归投影。包含断环成链与分裂合并范式。</p>
 </li>
 <li>
-<p><a href="/posts/b6a340a7/">树形DP体系</a>：拓扑最严苛结构下的决策流转。</p>
+<p><a href="/posts/b6a340a7/">树形DP体系</a>: 在树形结构上执行决策。涵盖最大权独立集与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 背包优化。</p>
+</li>
+<li>
+<p><a href="/posts/fbbfeb81/">网格DP体系</a>: 坐标投影与同步频率决策，包含多路并发与对称性特征统计。</p>
 </li>
 </ul>
-<h2 id="2-状态压缩与抽象">2. 状态压缩与抽象</h2>
-<p>针对指数级状态或特殊数值特性的降维打击。</p>
+<h3 id="2-状态压缩-Compression">2. 状态压缩 (Compression)</h3>
+<p>针对指数级集合状态的降维打击。</p>
 <ul>
-<li>[[状压体系]]：集合型与棋盘型基础，包含位运算逻辑与对称性抽离。</li>
+<li><a href="/posts/8b130bbd/">状压DP体系</a>: 集合操作（Subset）与棋盘覆盖。利用位运算算子实现状态空间的物理坍缩。</li>
 </ul>
-<h2 id="3-维度优化">3. 维度优化</h2>
-<p><em>这是 P0 级选手的核心竞争力，旨在消除转移中的</em> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> <em>冗余。</em></p>
+<h3 id="3-维度优化核心-Optimization">3. 维度优化核心 (Optimization)</h3>
+<p>消除决策转移中的冗余，实现复杂度从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 向 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的跨越。</p>
 <ul>
 <li>
-<p>[[单调性优化体系]]：显性滑窗最值（单调队列）与隐性产出单调性（蚯蚓模型）。</p>
+<p><a href="/posts/1bc8a91b/">单调性优化体系</a>: 显性滑窗（单调队列）与隐性有序（蚯蚓模型）的维度加速。</p>
 </li>
 <li>
-<p><a href="/posts/c936ec9e/">倍增优化策略</a>：处理长路径转移与环形覆盖的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span> 跳跃。</p>
+<p><a href="/posts/c936ec9e/">倍增优化体系</a>: 状态转移的“快速幂”。处理超长路径或环形区间全覆盖。</p>
 </li>
 <li>
-<p><a href="/posts/95fc4668/">计数DP方法论</a>：排列组合判定与“正难则反”的容斥逻辑。</p>
+<p><a href="/posts/95fc4668/">计数DP体系</a>]: 容斥原理与正难则反，将全局约束局部化处理。</p>
 </li>
 </ul>
-<h2 id="4-综合与逆向思维">4. 综合与逆向思维</h2>
-<p>处理非最优化问题及复杂缝合场景。</p>
+<h3 id="4-综合与逆向思维-Advanced-Cases">4. 综合与逆向思维 (Advanced Cases)</h3>
+<p>处理模型缝合与非典型逻辑序问题。</p>
 <ul>
-<li><a href="/posts/8179d216/">复合模型综述</a>：时光倒流逻辑、路径压缩与多模型缝合（飞扬的小鸟）。</li>
+<li><a href="/posts/8179d216/">复合模型与逆向思维</a>: 时空压缩逻辑、时光倒流（逆序 DP）与多模型缝合。</li>
 </ul>
+<h2 id="归档索引">归档索引</h2>
+<p>所有题目归档请参考：<a href="/posts/68de3615/">动态规划归档数据库</a></p>
 
                 
               </div>
@@ -480,8 +485,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/c28314d6/" title="基础算法：降维打击的起点 (Basis Guide)">
-                        <span class="hidden-mobile">基础算法：降维打击的起点 (Basis Guide)</span>
+                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

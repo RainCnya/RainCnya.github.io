@@ -19,23 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P1006 传纸条 1. 核心逻辑 问题本质 一来一回两条路径，除起终点外不重叠。 破局思路  转化: 等价于两个人同时从起点出发去终点。 不重叠处理:  严格来说需要判断 (i,j)≠(k,l)(i, j) \neq (k, l)(i,j)&#x3D;(k,l)。 但在求最大权值和的问题中，若 a[i][j]&gt;0a[i][j] &gt; 0a[i][j]&gt;0，分开走一定比重合走（">
+    <meta name="description" content="Luogu-P1006 传纸条 1. 核心逻辑   问题本质: 一来一回两条路径，要求除起点和终点外，路径上的点不得重复。   破局转换:   同向化: 一来一回等价于“两人同时从起点出发去终点”。   互斥逻辑: 在动态规划中，只需在转移时增加限制：r1≠r2r_1 \neq r_2r1​&#x3D;r2​。   隐式优化: 实际上，如果格子权值均为正数，最大收益路径天然会避开重合（因为分开展能获取更多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1006 [NOIP2008] 传纸条">
+<meta property="og:title" content="P1006 [NOIP2008] 传纸条 (Grid_Concurrent_NonOverlap)">
 <meta property="og:url" content="https://example.com/posts/8a9a7c5e/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P1006 传纸条 1. 核心逻辑 问题本质 一来一回两条路径，除起终点外不重叠。 破局思路  转化: 等价于两个人同时从起点出发去终点。 不重叠处理:  严格来说需要判断 (i,j)≠(k,l)(i, j) \neq (k, l)(i,j)&#x3D;(k,l)。 但在求最大权值和的问题中，若 a[i][j]&gt;0a[i][j] &gt; 0a[i][j]&gt;0，分开走一定比重合走（">
+<meta property="og:description" content="Luogu-P1006 传纸条 1. 核心逻辑   问题本质: 一来一回两条路径，要求除起点和终点外，路径上的点不得重复。   破局转换:   同向化: 一来一回等价于“两人同时从起点出发去终点”。   互斥逻辑: 在动态规划中，只需在转移时增加限制：r1≠r2r_1 \neq r_2r1​&#x3D;r2​。   隐式优化: 实际上，如果格子权值均为正数，最大收益路径天然会避开重合（因为分开展能获取更多">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.758Z">
+<meta property="article:modified_time" content="2025-12-24T11:42:09.390Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="网格DP">
 <meta property="article:tag" content="多路DP">
+<meta property="article:tag" content="网格DP">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1006 [NOIP2008] 传纸条 - MiQiu</title>
+  <title>P1006 [NOIP2008] 传纸条 (Grid_Concurrent_NonOverlap) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1006 [NOIP2008] 传纸条"></span>
+            <span id="subtitle" data-typed-text="P1006 [NOIP2008] 传纸条 (Grid_Concurrent_NonOverlap)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          371 字
+          458 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -319,45 +319,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1006 [NOIP2008] 传纸条</h1>
+            <h1 id="seo-header">P1006 [NOIP2008] 传纸条 (Grid_Concurrent_NonOverlap)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1006">Luogu-P1006</a> 传纸条</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p>一来一回两条路径，除起终点外不重叠。</p>
-<h3 id="破局思路">破局思路</h3>
-<ol>
-<li><strong>转化</strong>:<br>
-等价于两个人同时从起点出发去终点。</li>
-<li><strong>不重叠处理</strong>:
 <ul>
-<li>严格来说需要判断 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo mathvariant="normal">≠</mo><mo stretchy="false">(</mo><mi>k</mi><mo separator="true">,</mo><mi>l</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(i, j) \neq (k, l)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mclose">)</span></span></span></span>。</li>
-<li>但在求最大权值和的问题中，若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a[i][j] &gt; 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>，分开走一定比重合走（只算一次权值）更优，因此程序会自动避开重合路径（除起终点）。</li>
-</ul>
+<li>
+<p><strong>问题本质</strong>: 一来一回两条路径，要求除起点和终点外，路径上的点不得重复。</p>
+</li>
+<li>
+<p><strong>破局转换</strong>:</p>
+<ol>
+<li>
+<p><strong>同向化</strong>: 一来一回等价于“两人同时从起点出发去终点”。</p>
+</li>
+<li>
+<p><strong>互斥逻辑</strong>: 在动态规划中，只需在转移时增加限制：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo mathvariant="normal">≠</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_1 \neq r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>隐式优化</strong>: 实际上，如果格子权值均为正数，最大收益路径天然会避开重合（因为分开展能获取更多权值）。但在本题严格定义下，我们通过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_1 &lt; r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的循环顺序，既能去重又能天然保证两人不重合。</p>
 </li>
 </ol>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">60</span>;<br><br><span class="hljs-type">int</span> a[maxn][maxn];<br><span class="hljs-type">int</span> dp[maxn][maxn][maxn][maxn];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;	<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>); cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-type">int</span> n, m;<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j ) cin &gt;&gt; a[i][j];<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>        &#123;<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; ++ k )<br>            &#123;<br>                <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> l = <span class="hljs-number">1</span>; l &lt;= m; ++ l )<br>                &#123;<br>                    <span class="hljs-type">int</span> mx1 = <span class="hljs-built_in">max</span>( dp[i<span class="hljs-number">-1</span>][j][k<span class="hljs-number">-1</span>][l], dp[i<span class="hljs-number">-1</span>][j][k][l<span class="hljs-number">-1</span>] );<br>                    <span class="hljs-type">int</span> mx2 = <span class="hljs-built_in">max</span>( dp[i][j<span class="hljs-number">-1</span>][k<span class="hljs-number">-1</span>][l], dp[i][j<span class="hljs-number">-1</span>][k][l<span class="hljs-number">-1</span>] );<br>                    <span class="hljs-type">int</span> mx = <span class="hljs-built_in">max</span>( mx1, mx2 );<br>                    <br>                    dp[i][j][k][l] = mx + a[i][j] + a[k][l];<br>                    <br>                    <span class="hljs-keyword">if</span>( i == k &amp;&amp; j == l )<br>                    &#123;<br>                        dp[i][j][k][l] -= a[i][j];<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>    cout &lt;&lt; dp[n][m][n][m];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> a[ <span class="hljs-number">55</span> ][ <span class="hljs-number">55</span> ], f[ <span class="hljs-number">110</span> ][ <span class="hljs-number">55</span> ][ <span class="hljs-number">55</span> ], n, m;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j ) cin &gt;&gt; a[ i ][ j ];<br>    &#125;<br><br>    <span class="hljs-comment">// k = r + c (步数)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">2</span>; k &lt;= n + m; ++ k ) <br>    &#123;<br>        <span class="hljs-comment">// 强制 r1 &lt; r2 以规避重合点</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> r1 = <span class="hljs-number">1</span>; r1 &lt;= n; ++ r1 ) <br>        &#123;<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> r2 = r1 + <span class="hljs-number">1</span>; r2 &lt;= n; ++ r2 ) <br>            &#123;<br>                <span class="hljs-type">int</span> c1 = k - r1, c2 = k - r2;<br>                <span class="hljs-keyword">if</span>( c1 &lt; <span class="hljs-number">1</span> || c1 &gt; m || c2 &lt; <span class="hljs-number">1</span> || c2 &gt; m ) <span class="hljs-keyword">continue</span>;<br><br>                <span class="hljs-type">int</span> &amp;res = f[ k ][ r1 ][ r2 ];<br>                res = <span class="hljs-built_in">max</span>( &#123; f[ k - <span class="hljs-number">1</span> ][ r1 ][ r2 ], f[ k - <span class="hljs-number">1</span> ][ r1 - <span class="hljs-number">1</span> ][ r2 ], f[ k - <span class="hljs-number">1</span> ][ r1 ][ r2 - <span class="hljs-number">1</span> ], f[ k - <span class="hljs-number">1</span> ][ r1 - <span class="hljs-number">1</span> ][ r2 - <span class="hljs-number">1</span> ] &#125; );<br>                res += a[ r1 ][ c1 ] + a[ r2 ][ c2 ];<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 终点处特殊处理：由于循环限制 r1 &lt; r2，终点 (n, m) 的结果存在于 f[n+m-1][n-1][n] + a[n][m]</span><br>    <span class="hljs-comment">// 或者简单将步数跑到 n+m-1，最后一步手动指向最终点。</span><br>    cout &lt;&lt; f[ n + m - <span class="hljs-number">1</span> ][ n - <span class="hljs-number">1</span> ][ n ] &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><msup><mi>M</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2 M^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><msup><mi>M</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2 M^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>M</mi><mo stretchy="false">)</mo><mo>⋅</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O( (N+M) \cdot N^2 )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>易错点</strong>: 可用 <code>step</code> 优化至三维 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>K</mi><mo>⋅</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(K \cdot N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，因为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>t</mi><mi>e</mi><mi>p</mi><mo>=</mo><mi>i</mi><mo>+</mo><mi>j</mi><mo>=</mo><mi>k</mi><mo>+</mo><mi>l</mi></mrow><annotation encoding="application/x-tex">step = i+j = k+l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>。</p>
+<p><strong>关键点</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_1 &lt; r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 这一循环不等式是保证路径不重叠的物理级约束。</p>
 </li>
 </ul>
 
@@ -400,9 +406,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BD%91%E6%A0%BCDP/" class="print-no-link">#网格DP</a>
-      
         <a href="/tags/%E5%A4%9A%E8%B7%AFDP/" class="print-no-link">#多路DP</a>
+      
+        <a href="/tags/%E7%BD%91%E6%A0%BCDP/" class="print-no-link">#网格DP</a>
       
     </div>
   
@@ -414,7 +420,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1006 [NOIP2008] 传纸条</div>
+      <div>P1006 [NOIP2008] 传纸条 (Grid_Concurrent_NonOverlap)</div>
       <div>https://example.com/posts/8a9a7c5e/</div>
     </div>
     <div class="license-meta">
@@ -459,9 +465,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/a1b39cf5/" title="P5017 [NOIP 2018] 摆渡车">
+                      <a href="/posts/da930cd8/" title="P1070 [NOIP 2009] 道路游戏 (MQ_DP_Limit_Window)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P5017 [NOIP 2018] 摆渡车</span>
+                        <span class="hidden-mobile">P1070 [NOIP 2009] 道路游戏 (MQ_DP_Limit_Window)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -469,8 +475,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/eed28785/" title="P1941 [NOIP 2014] 飞扬的小鸟">
-                        <span class="hidden-mobile">P1941 [NOIP 2014] 飞扬的小鸟</span>
+                      <a href="/posts/2eb10488/" title="P2051 [AHOI2009] 中国象棋 (Opt_Contour_State)">
+                        <span class="hidden-mobile">P2051 [AHOI2009] 中国象棋 (Opt_Contour_State)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

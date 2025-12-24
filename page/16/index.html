@@ -259,76 +259,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3a5121c3/" target="_self">
-          P3397 地毯
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3a5121c3/" target="_self">
-        <div>
-          Luogu-P3397 地毯 1. 核心逻辑   问题本质: 在二维网格上执行多次矩形区域增量操作，最终查询全局分布。   破局转换:   差分对偶: 区间修改 [x1,y1]∼[x2,y2][x1, y1] \sim [x2, y2][x1,y1]∼[x2,y2] 转化为四个顶点的端点标记。   标记逻辑:   D[x1][y1] += 1 (启动增量)   D[x1][y2 + 1] -= 1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-31 00:00" pubdate>
-              2025-10-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/ee911d25/" target="_self">
           P2671 [NOIP2015] 求和
         </a>
@@ -399,15 +329,85 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/7b3df25b/" target="_self">
-          P1083 [NOIP2012] 借教室
+        <a href="/posts/8668ad14/" target="_self">
+          P2280 [HNOI2003] 激光炸弹
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7b3df25b/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8668ad14/" target="_self">
         <div>
-          Luogu-P1083 借教室 1. 核心逻辑   问题本质: 在有限资源的单调消耗序列中，寻找第一个导致资源崩溃（负值出现）的关键时点。   破局转换:   单调性判定: 如果前 kkk 个订单能满足，则前 k−1k-1k−1 个必然满足；若前 kkk 个无法满足，则后续订单均无效。满足二分答案的逻辑前提。   维度压缩 (Check): 判定 1…mid1 \dots mid1…mid 订单是
+          Luogu-P2280 激光炸弹 1. 核心逻辑   问题本质: 在权值分布的二维网格中，寻找固定大小矩形覆盖的最大权值和。   破局转换:   二维前缀和: 利用 O(RC)O(RC)O(RC) 的预处理实现 O(1)O(1)O(1) 的矩形区域和查询。   坐标偏移: 题目坐标为 [0,5000][0, 5000][0,5000]，为防止 i−1i-1i−1 越界及处理边界条件，建议统一执行
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-31 00:00" pubdate>
+              2025-10-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
+            
+              <a href="/tags/%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2/">#坐标变换</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3a5121c3/" target="_self">
+          P3397 地毯
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3a5121c3/" target="_self">
+        <div>
+          Luogu-P3397 地毯 1. 核心逻辑   问题本质: 在二维网格上执行多次矩形区域增量操作，最终查询全局分布。   破局转换:   差分对偶: 区间修改 [x1,y1]∼[x2,y2][x1, y1] \sim [x2, y2][x1,y1]∼[x2,y2] 转化为四个顶点的端点标记。   标记逻辑:   D[x1][y1] += 1 (启动增量)   D[x1][y2 + 1] -= 1
         </div>
       </a>
 
@@ -456,154 +456,6 @@
               <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
             
               <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/95acfff3/" target="_self">
-          P1314 [NOIP2011] 聪明的质监员
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/95acfff3/" target="_self">
-        <div>
-          1. 核心逻辑   问题本质: 寻找最优阈值 WWW，使得基于该阈值统计的复合函数值 YYY 与目标 SSS 的偏离度最小。   破局转换:   单调性: 阈值 WWW 越高，满足条件的矿石越少，统计值 YYY 呈严格单调递减趋势。   复合前缀和: Y=∑Count×∑ValueY = \sum \text{Count} \times \sum \text{Value}Y=∑Count×∑Val
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-31 00:00" pubdate>
-              2025-10-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">##单调性/二分</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/31dd7f12/" target="_self">
-          P3017 [USACO11MAR] Brownie Slicing G
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/31dd7f12/" target="_self">
-        <div>
-          Luogu-P3017 Brownie Slicing G 1. 核心逻辑   问题本质: 在二维权值矩阵中进行横纵切分，最大化最小区域的权值和。   破局转换:   二分答案: 最小值最大化问题，优先考虑二分最小面积 midmidmid。   维度坍缩 (Check):   行切分 (Outer Greedy): 逐行扫描，直到当前合并的“行块”能够被竖切出 ≥B+1\ge B+1≥B+1 个满
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-31 00:00" pubdate>
-              2025-10-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
             
           </div>
         

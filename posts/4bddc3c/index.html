@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="数据结构：信息的容器与维护  数据结构是对信息的封装。 我们关注信息的合并、修改与查询。 通过引入对数级的拓扑深度，平衡维护代价与检索极速。  1. 线性结构 处理具有线性先后顺序的数据。核心在于利用单调性剔除无用信息。   单调栈与单调队列：淘汰既不新也不强的元素。单调栈解决最近值查询，单调队列解决滑动窗口最值。   [[线性结构对比]]：双指针与单调结构的边界判定与空间权衡。   2. 树形结">
+    <meta name="description" content="数据结构：信息的容器与维护  Philosophy: 数据结构是对信息的封装。 我们关注信息的合并、修改与查询。 通过引入对数级的拓扑深度，平衡维护代价与检索极速。  1. 线性结构 (Linear Structures) 处理具有线性先后顺序的数据。核心在于利用单调性剔除过期冗余信息。   单调栈与单调队列：淘汰既不新也不强的元素。单调栈解决最近值查询，单调队列解决滑动窗口最值。   堆与优先队">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构：信息的容器与维护 (DS Guide)">
 <meta property="og:url" content="https://example.com/posts/4bddc3c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="数据结构：信息的容器与维护  数据结构是对信息的封装。 我们关注信息的合并、修改与查询。 通过引入对数级的拓扑深度，平衡维护代价与检索极速。  1. 线性结构 处理具有线性先后顺序的数据。核心在于利用单调性剔除无用信息。   单调栈与单调队列：淘汰既不新也不强的元素。单调栈解决最近值查询，单调队列解决滑动窗口最值。   [[线性结构对比]]：双指针与单调结构的边界判定与空间权衡。   2. 树形结">
+<meta property="og:description" content="数据结构：信息的容器与维护  Philosophy: 数据结构是对信息的封装。 我们关注信息的合并、修改与查询。 通过引入对数级的拓扑深度，平衡维护代价与检索极速。  1. 线性结构 (Linear Structures) 处理具有线性先后顺序的数据。核心在于利用单调性剔除过期冗余信息。   单调栈与单调队列：淘汰既不新也不强的元素。单调栈解决最近值查询，单调队列解决滑动窗口最值。   堆与优先队">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T11:11:42.657Z">
+<meta property="article:modified_time" content="2025-12-24T15:08:02.307Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南">
 <meta property="article:tag" content="数据结构">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          449 字
+          514 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -326,22 +326,25 @@
                 
                 <h1>数据结构：信息的容器与维护</h1>
 <blockquote>
-<p>数据结构是对信息的封装。</p>
+<p><strong>Philosophy</strong>: 数据结构是对信息的封装。</p>
 <p>我们关注信息的合并、修改与查询。</p>
 <p>通过引入对数级的拓扑深度，平衡维护代价与检索极速。</p>
 </blockquote>
-<h3 id="1-线性结构">1. 线性结构</h3>
-<p>处理具有线性先后顺序的数据。核心在于利用单调性剔除无用信息。</p>
+<h3 id="1-线性结构-Linear-Structures">1. 线性结构 (Linear Structures)</h3>
+<p>处理具有线性先后顺序的数据。核心在于利用单调性剔除过期冗余信息。</p>
 <ul>
 <li>
 <p><a href="/posts/621f0544/">单调栈与单调队列</a>：淘汰既不新也不强的元素。单调栈解决最近值查询，单调队列解决滑动窗口最值。</p>
 </li>
 <li>
+<p><a href="/posts/5ce7d1f5/">堆与优先队列</a>: 维护全局动态最值。涵盖二叉堆实现、反悔贪心应用以及多路归并合并。</p>
+</li>
+<li>
 <p>[[线性结构对比]]：双指针与单调结构的边界判定与空间权衡。</p>
 </li>
 </ul>
-<h3 id="2-树形结构">2. 树形结构</h3>
-<p>利用层级聚合加速信息的下传与合并。</p>
+<h3 id="2-树形结构-Tree-Architectures">2. 树形结构 (Tree Architectures)</h3>
+<p>利用层级聚合加速信息的下传与合并，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 降维至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
 <ul>
 <li>
 <p><a href="/posts/eef750c1/">树状数组体系</a>：二进制拆分逻辑。利用低位特性实现极简的单点修改与前缀和维护。要求维护信息满足可差分性。</p>
@@ -353,8 +356,8 @@
 <p><a href="/posts/ec824ae8/">线段树进阶_信息合并</a>]：处理动态连通性、扫描线面积等复杂聚合逻辑。</p>
 </li>
 </ul>
-<h3 id="3-关系与跳跃">3. 关系与跳跃</h3>
-<p>处理元素间的拓扑关系或通过空间换时间实现快速检索。</p>
+<h3 id="3-关系与跳跃-Relation-Jumping">3. 关系与跳跃 (Relation &amp; Jumping)</h3>
+<p>处理元素间的拓扑联通性或通过空间换时间实现跨越式检索。</p>
 <ul>
 <li>
 <p><a href="/posts/3fd2748a/">并查集体系</a>：维护集合连通性。涵盖路径压缩、按秩合并、扩展域与时光倒流。</p>
@@ -363,10 +366,10 @@
 <p><a href="/posts/e6c1b327/">ST表与倍增</a>：幂次拼合逻辑。实现静态区间最值查询的常数级响应。</p>
 </li>
 </ul>
-<h3 id="4-选型与决策">4. 选型与决策</h3>
+<h3 id="4-选型与决策-Decision-Matrix">4. 选型与决策 (Decision Matrix)</h3>
 <p>针对特定维护需求的工具链选择与思维范式识别：</p>
 <ul>
-<li><a href="/posts/undefined/">数据结构决策</a>：场景驱动的选型映射表与维护机会识别范式。</li>
+<li><a href="/posts/9bad7bd8/">数据结构决策</a>：针对特定维护需求（区间、点、动态性）的选型映射范式。</li>
 </ul>
 <h2 id="归档索引">归档索引</h2>
 <p>所有题目归档请参考：<a href="/posts/8eb12dc3/">数据结构归档数据库</a></p>
@@ -469,9 +472,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                      <a href="/posts/c28314d6/" title="基础算法：降维打击的起点 (Basis Guide)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
+                        <span class="hidden-mobile">基础算法：降维打击的起点 (Basis Guide)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

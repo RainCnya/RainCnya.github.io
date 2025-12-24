@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 在树形结构上，由子树的状态 (v∈son(u)v \in son(u)v∈son(u)) 推导父节点状态 (uuu)。 遍历顺序: 通常采用 DFS 后序遍历 (先子树，后根节点)。  2. 逻辑支点  选择模型 (没有上司的舞会):  dp[u][0]dp[u][0]dp[u][0]: uuu 不选，子节点可选可不选 →∑max⁡(dp[v][0],dp[v][1])\t">
+    <meta name="description" content="树形DP体系 1. 生态位   定义: 在树形拓扑结构上执行决策。状态通常定义为以 uuu 为根的子树的最优解，转移方向由叶节点向根节点回传。   解决痛点: 解决了具备层级依赖关系、连通性约束（如最大独立集）以及路径统计类的组合优化问题。   2. 逻辑支点   核心不变量: 子树独立性。在不考虑换根的情况下，根节点的决策仅受子树状态约束，不受其父节点或兄弟节点影响。   状态转移范式:   选">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树形DP体系 (Tree DP)">
+<meta property="og:title" content="树形DP体系 (Tree DP System)">
 <meta property="og:url" content="https://example.com/posts/b6a340a7/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 在树形结构上，由子树的状态 (v∈son(u)v \in son(u)v∈son(u)) 推导父节点状态 (uuu)。 遍历顺序: 通常采用 DFS 后序遍历 (先子树，后根节点)。  2. 逻辑支点  选择模型 (没有上司的舞会):  dp[u][0]dp[u][0]dp[u][0]: uuu 不选，子节点可选可不选 →∑max⁡(dp[v][0],dp[v][1])\t">
+<meta property="og:description" content="树形DP体系 1. 生态位   定义: 在树形拓扑结构上执行决策。状态通常定义为以 uuu 为根的子树的最优解，转移方向由叶节点向根节点回传。   解决痛点: 解决了具备层级依赖关系、连通性约束（如最大独立集）以及路径统计类的组合优化问题。   2. 逻辑支点   核心不变量: 子树独立性。在不考虑换根的情况下，根节点的决策仅受子树状态约束，不受其父节点或兄弟节点影响。   状态转移范式:   选">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T14:30:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:12:14.654Z">
+<meta property="article:modified_time" content="2025-12-24T12:49:47.495Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="树形DP">
 <meta property="article:tag" content="树上背包">
@@ -35,7 +35,7 @@
   
   
   
-  <title>树形DP体系 (Tree DP) - MiQiu</title>
+  <title>树形DP体系 (Tree DP System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="树形DP体系 (Tree DP)"></span>
+            <span id="subtitle" data-typed-text="树形DP体系 (Tree DP System)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          274 字
+          666 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          9 分钟
         
       </span>
     
@@ -319,33 +319,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">树形DP体系 (Tree DP)</h1>
+            <h1 id="seo-header">树形DP体系 (Tree DP System)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>树形DP体系</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 在树形结构上，由子树的状态 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><mi>s</mi><mi>o</mi><mi>n</mi><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v \in son(u)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">so</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mclose">)</span></span></span></span>) 推导父节点状态 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>)。</li>
-<li><strong>遍历顺序</strong>: 通常采用 <strong>DFS 后序遍历</strong> (先子树，后根节点)。</li>
+<li>
+<p><strong>定义</strong>: 在树形拓扑结构上执行决策。状态通常定义为以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 为根的子树的最优解，转移方向由叶节点向根节点回传。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 解决了具备层级依赖关系、连通性约束（如最大独立集）以及路径统计类的组合优化问题。</p>
+</li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>选择模型 (没有上司的舞会)</strong>:
+<li>
+<p><strong>核心不变量</strong>: <strong>子树独立性</strong>。在不考虑换根的情况下，根节点的决策仅受子树状态约束，不受其父节点或兄弟节点影响。</p>
+</li>
+<li>
+<p><strong>状态转移范式</strong>:</p>
 <ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[u][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 不选，子节点可选可不选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mo>∑</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\to \sum \max(dp[v][0], dp[v][1])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">])</span></span></span></span>。</li>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[u][1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span></span></span></span>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 选，子节点必不选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mo>∑</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\to \sum dp[v][0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0</span><span class="mclose">]</span></span></span></span>。</li>
+<li>
+<p><strong>选择模型</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mn>0</mn><mi mathvariant="normal">/</mi><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">f[ u ][ 0/1 ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">0/1</span><span class="mclose">]</span></span></span></span> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 点选或不选。</p>
+</li>
+<li>
+<p><strong>背包模型</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">f[ u ][ j ]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 为根的子树分配 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个资源。</p>
+</li>
 </ul>
 </li>
-<li><strong>直径模型 (最长链)</strong>:
-<ul>
-<li>维护子树中以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 为起点的最长链 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">d_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和次长链 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
-<li>经过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 的最长路径 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub><mo>+</mo><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_1 + d_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</li>
-</ul>
+<li>
+<p><strong>渗透点 (Penetration)</strong>:</p>
+<blockquote>
+<p><strong>树形背包的</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> <strong>律令</strong>: 在树上做背包时，若通过限制 <code>j</code> 的范围为当前子树大小 <code>sz[ u ]</code>，则合并两个子树的复杂度本质上是枚举两两点对。根据组合逻辑，全局总复杂度坍缩为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 而非 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>⋅</mo><mi>V</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \cdot V)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mclose">)</span></span></span></span>。</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-没有上司的舞会-P1352">3.1 没有上司的舞会 (P1352)</h3>
+<h3 id="3-1-树上最大权独立集-以-P1352-为例">3.1 树上最大权独立集 (以 P1352 为例)</h3>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
@@ -353,20 +366,49 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span> </span><br><span class="hljs-function"></span>&#123;<br>    dp[u][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>    dp[u][<span class="hljs-number">1</span>] = r[u]; <span class="hljs-comment">// r[u] 为快乐指数</span><br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) <br>    &#123;<br>        <span class="hljs-built_in">dfs</span>( v );<br>        dp[u][<span class="hljs-number">0</span>] += <span class="hljs-built_in">max</span>( dp[v][<span class="hljs-number">0</span>], dp[v][<span class="hljs-number">1</span>] );<br>        dp[u][<span class="hljs-number">1</span>] += dp[v][<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> fa )</span></span><br><span class="hljs-function"></span>&#123;<br>    f[ u ][ <span class="hljs-number">1</span> ] = val[ u ]; <span class="hljs-comment">// 选 u，初始权值为自身</span><br>    f[ u ][ <span class="hljs-number">0</span> ] = <span class="hljs-number">0</span>;        <span class="hljs-comment">// 不选 u</span><br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == fa ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs</span>( v, u );<br>        <br>        <span class="hljs-comment">// 1. 若选 u，则子节点 v 必不能选</span><br>        f[ u ][ <span class="hljs-number">1</span> ] += f[ v ][ <span class="hljs-number">0</span> ];<br>        <br>        <span class="hljs-comment">// 2. 若不选 u，则子节点 v 选或不选均可，取最优</span><br>        f[ u ][ <span class="hljs-number">0</span> ] += <span class="hljs-built_in">max</span>( f[ v ][ <span class="hljs-number">0</span> ], f[ v ][ <span class="hljs-number">1</span> ] );<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="3-2-树上背包-Size-优化范式">3.2 树上背包 (Size 优化范式)</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
+        <div class="fold-arrow">▶</div>Code: Tree Knapsack Optimization
+      </div>
+      <div class="fold-collapse collapse" id="collapse-28ab9646">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 核心：利用 sz[u] 限制循环范围，实现 O(N^2) 降维</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> fa )</span></span><br><span class="hljs-function"></span>&#123;<br>    sz[ u ] = <span class="hljs-number">1</span>;<br>    f[ u ][ <span class="hljs-number">1</span> ] = val[ u ];<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == fa ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs</span>( v, u );<br>        <br>        <span class="hljs-comment">// 倒序循环防止同一子树物品复用</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-built_in">min</span>( m, sz[ u ] + sz[ v ] ); j &gt;= <span class="hljs-number">1</span>; -- j )<br>        &#123;<br>            <span class="hljs-comment">// 限制 k 的范围在子树 v 内</span><br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= <span class="hljs-built_in">min</span>( j - <span class="hljs-number">1</span>, sz[ v ] ); ++ k )<br>            &#123;<br>                f[ u ][ j ] = <span class="hljs-built_in">max</span>( f[ u ][ j ], f[ u ][ j - k ] + f[ v ][ k ] );<br>            &#125;<br>        &#125;<br>        sz[ u ] += sz[ v ];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
+<p><strong>进阶模型</strong>:</p>
+<ul>
+<li>
+<p><a href="/posts/1bc8a91b/">单调性优化体系</a>: 换根 DP (二次扫描法) —— 解决“根节点不确定”时的全局统计。</p>
+</li>
+<li>
+<p><a href="/posts/8179d216/">复合模型与逆向思维</a>: 虚树 (Virtual Tree) —— 处理仅有少量关键点的树上 DP。</p>
+</li>
+</ul>
+</li>
+<li>
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352">Luogu-P1352</a></strong>: 没有上司的舞会 (最大权独立集)。</p>
+<p><a href="/posts/8025fa2d/">P1064 金明的预算 (Knapsack_Dependency_Tree)</a> —— 依赖关系在树形结构上的背包表现。</p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2015">Luogu-P2015</a></strong>: 二叉苹果树 (树上背包)。</p>
+<p><a href="/posts/38f7b3d1/">P1040 加分二叉树 (Interval_Tree_Order)</a> —— 中序遍历与子树区间的同构映射。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1352" title="null">P1352 没有上司的舞会</a> —— 树形独立集母题。</p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2014" title="null">P2014 选课</a> —— 树上背包标准范式。</p>
 </li>
 </ul>
 </li>
@@ -425,7 +467,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>树形DP体系 (Tree DP)</div>
+      <div>树形DP体系 (Tree DP System)</div>
       <div>https://example.com/posts/b6a340a7/</div>
     </div>
     <div class="license-meta">
@@ -470,9 +512,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/8b130bbd/" title="状压DP体系">
+                      <a href="/posts/8b130bbd/" title="状压DP体系 (State Compression System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">状压DP体系</span>
+                        <span class="hidden-mobile">状压DP体系 (State Compression System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -480,8 +522,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/a75f3b7c/" title="区间与环形体系 (Interval &amp; Ring System)">
-                        <span class="hidden-mobile">区间与环形体系 (Interval &amp; Ring System)</span>
+                      <a href="/posts/a75f3b7c/" title="区间DP体系 (Interval System)">
+                        <span class="hidden-mobile">区间DP体系 (Interval System)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

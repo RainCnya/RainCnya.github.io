@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/1af256f/" target="_self">
-          CF2152C Triple Removal (前缀和区间查询)
+        <a href="/posts/a15c44d3/" target="_self">
+          CF2152B Catching the Krug (切比雪夫博弈)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/1af256f/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a15c44d3/" target="_self">
         <div>
-          CF-2152C Triple Removal 1. 核心逻辑   问题本质: 判定子区间 [L,R][L, R][L,R] 是否能通过三消规则排空，并计算是否存在“特殊惩罚代价”。   破局转换:   必要条件: 0 和 1 的总数必须均为 3 的倍数。   代价分类:   基础代价: (cnt0/3)+(cnt1/3)(cnt0/3) + (cnt1/3)(cnt0/3)+(cnt1/3)。
+          CF2152B Catching the Krug 1. 核心逻辑   问题本质: 非对称追捕博弈。追捕者 Doran 使用切比雪夫距离，逃跑者 Krug 使用曼哈顿距离。   破局转换:   博弈退化: 追捕者速度具有绝对覆盖优势（对角线移动不降速）。逃跑者唯一的生存策略是全速逃向离追捕者最远的边界。   静态判定: 游戏生存时长完全取决于追捕者到四个边界的最大切比雪夫距离。     2. 代码
         </div>
       </a>
 
@@ -313,9 +313,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
             
-              <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
+              <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/">#博弈论</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
             
           </div>
         
@@ -385,9 +387,79 @@
             
               <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
             
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+            
               <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/">#博弈论</a>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/1af256f/" target="_self">
+          CF2152C Triple Removal (前缀和区间查询)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1af256f/" target="_self">
+        <div>
+          CF-2152C Triple Removal 1. 核心逻辑   问题本质: 判定子区间 [L,R][L, R][L,R] 是否能通过三消规则排空，并计算是否存在“特殊惩罚代价”。   破局转换:   必要条件: 0 和 1 的总数必须均为 3 的倍数。   代价分类:   基础代价: (cnt0/3)+(cnt1/3)(cnt0/3) + (cnt1/3)(cnt0/3)+(cnt1/3)。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-19 00:00" pubdate>
+              2025-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
+            
+              <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
             
           </div>
         
@@ -546,14 +618,14 @@
       <h2 class="index-header">
         
         <a href="/posts/1d4e98a6/" target="_self">
-          CF2158C Annoying Game (最大子段和博弈)
+          CF2158C Annoying Game (DP_Game_Kadane)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/1d4e98a6/" target="_self">
         <div>
-          [CF-2158C] Annoying Game 1. 核心逻辑 问题本质  博弈目标: Alice (加) 与 Bob (减) 轮流操作 kkk 次。Alice 欲最大化最终数组的最大子段和，Bob 欲最小化它。 不变量 (Invariant):  偶数轮 (k%2==0k \% 2 == 0k%2==0): Alice 先手加，Bob 后手减。在最优策略下，Bob 总能抵消 Alice 的操作
+          CF2158C Annoying Game 1. 核心逻辑   问题本质: Alice 与 Bob 轮流操作 kkk 次。Alice 增加元素 ai←ai+bia_i \leftarrow a_i + b_iai​←ai​+bi​，Bob 减去。求在两人最优策略下，最终数组的最大子段和。   破局转换:   博弈不变量 (Invariant):   偶数轮 (kkk 是偶数): Bob 作为后手，
         </div>
       </a>
 
@@ -888,80 +960,6 @@
               <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
             
               <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/">#树的直径</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/7fb577ad/" target="_self">
-          P1967 货车运输 (MaxST_LCA_Bottleneck)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7fb577ad/" target="_self">
-        <div>
-          Luogu-P1967 货车运输 1. 核心逻辑   问题本质: 在带权无向图中，寻找两点间路径，使得路径上的最小边权最大（瓶颈路问题）。   破局转换:   结构坍缩：根据 Kruskal 原理，原图的瓶颈路必然落在其最大生成树 (MaxST) 上。   模型映射：将图转化为最大生成森林，问题转化为求树上两点路径间的边权最小值。   状态维护：利用 LCA 倍增法。定义 f[u][i]f[u][
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-18 00:00" pubdate>
-              2025-12-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/LCA/">#LCA</a>
-            
-              <a href="/tags/%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/">#最大生成树</a>
-            
-              <a href="/tags/%E7%93%B6%E9%A2%88%E8%B7%AF/">#瓶颈路</a>
-            
-              <a href="/tags/%E5%80%8D%E5%A2%9E/">#倍增</a>
             
           </div>
         

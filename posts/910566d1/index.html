@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P5020 货币系统 1. 核心逻辑 问题本质 给定集合 AAA，求最小子集 B⊆AB \subseteq AB⊆A，使得 BBB 能凑出的金额集合与 AAA 完全一致。 破局思路  筛法思想: 若面值 XXX 能被 AAA 中比它小的面值组合出来，则 XXX 是冗余的。 完全背包: 将 AAA 排序。从小到大遍历，把“凑钱”看作完全背包问题。  状态：dp[j] 表示金额 jjj 是">
+    <meta name="description" content="Luogu-P5020 货币系统 1. 核心逻辑   问题本质: 求给定面值集合 AAA 的极大无关子集（即最小的能凑出相同金额集的子集）。   破局转换:   单调性: 一个面值能否被其他面值凑出，只与其较小的面值有关。   背包判定: 排序后，对每个面值 a[i]a[i]a[i]，检查其是否能被 {a[1],…,a[i−1]}\{a[1], \dots, a[i-1]\}{a[1],…,a[i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P5020 [NOIP2018] 货币系统">
+<meta property="og:title" content="P5020 [NOIP2018] 货币系统 (Knapsack_Complete_Sieve)">
 <meta property="og:url" content="https://example.com/posts/910566d1/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P5020 货币系统 1. 核心逻辑 问题本质 给定集合 AAA，求最小子集 B⊆AB \subseteq AB⊆A，使得 BBB 能凑出的金额集合与 AAA 完全一致。 破局思路  筛法思想: 若面值 XXX 能被 AAA 中比它小的面值组合出来，则 XXX 是冗余的。 完全背包: 将 AAA 排序。从小到大遍历，把“凑钱”看作完全背包问题。  状态：dp[j] 表示金额 jjj 是">
+<meta property="og:description" content="Luogu-P5020 货币系统 1. 核心逻辑   问题本质: 求给定面值集合 AAA 的极大无关子集（即最小的能凑出相同金额集的子集）。   破局转换:   单调性: 一个面值能否被其他面值凑出，只与其较小的面值有关。   背包判定: 排序后，对每个面值 a[i]a[i]a[i]，检查其是否能被 {a[1],…,a[i−1]}\{a[1], \dots, a[i-1]\}{a[1],…,a[i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.783Z">
+<meta property="article:modified_time" content="2025-12-24T11:46:49.003Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="数论">
 <meta property="article:tag" content="完全背包">
@@ -35,7 +35,7 @@
   
   
   
-  <title>P5020 [NOIP2018] 货币系统 - MiQiu</title>
+  <title>P5020 [NOIP2018] 货币系统 (Knapsack_Complete_Sieve) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P5020 [NOIP2018] 货币系统"></span>
+            <span id="subtitle" data-typed-text="P5020 [NOIP2018] 货币系统 (Knapsack_Complete_Sieve)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          334 字
+          324 字
         
       </span>
     
@@ -319,46 +319,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P5020 [NOIP2018] 货币系统</h1>
+            <h1 id="seo-header">P5020 [NOIP2018] 货币系统 (Knapsack_Complete_Sieve)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5020">Luogu-P5020</a> 货币系统</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p>给定集合 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>，求最小子集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mo>⊆</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">B \subseteq A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span>，使得 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 能凑出的金额集合与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 完全一致。</p>
-<h3 id="破局思路">破局思路</h3>
-<ol>
-<li><strong>筛法思想</strong>:<br>
-若面值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 能被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 中比它小的面值组合出来，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 是冗余的。</li>
-<li><strong>完全背包</strong>:<br>
-将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 排序。从小到大遍历，把“凑钱”看作完全背包问题。
 <ul>
-<li>状态：<code>dp[j]</code> 表示金额 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 是否可达。</li>
-<li>若当前面值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 对应的 <code>dp[a[i]]</code> 已为真，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 冗余；否则保留 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 并用它更新后续 <code>dp</code> 值。</li>
-</ul>
+<li>
+<p><strong>问题本质</strong>: 求给定面值集合 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 的极大无关子集（即最小的能凑出相同金额集的子集）。</p>
+</li>
+<li>
+<p><strong>破局转换</strong>:</p>
+<ol>
+<li>
+<p><strong>单调性</strong>: 一个面值能否被其他面值凑出，只与其较小的面值有关。</p>
+</li>
+<li>
+<p><strong>背包判定</strong>: 排序后，对每个面值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span>，检查其是否能被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mi>a</mi><mo stretchy="false">[</mo><mn>1</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{a[1], \dots, a[i-1]\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord">1</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]}</span></span></span></span> 凑出。</p>
+</li>
+<li>
+<p><strong>模型坍缩</strong>: 这是一个面值上限固定的<strong>完全背包</strong>可达性问题。</p>
 </li>
 </ol>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxdp = <span class="hljs-number">25000</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-type">int</span> dp[maxdp];<br><span class="hljs-type">int</span> a[maxn];<br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;	<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>); cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-type">int</span> T;<br>    cin &gt;&gt; T;<br>    <span class="hljs-keyword">while</span>( T -- )<br>    &#123;<br>        <span class="hljs-built_in">memset</span>( dp, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>( dp ) );<br>        cin &gt;&gt; n;<br>        <span class="hljs-type">int</span> ans = n;<br><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) cin &gt;&gt; a[i];<br>        <span class="hljs-built_in">sort</span>( a + <span class="hljs-number">1</span>, a + n + <span class="hljs-number">1</span> );<br>        <br>        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( dp[ a[i] ] )<br>            &#123;<br>                ans --;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-comment">// 完全背包更新</span><br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = a[i]; j &lt;= a[n]; ++ j )<br>            &#123;<br>                dp[j] = dp[j] | dp[ j - a[i] ];<br>            &#125;<br>        &#125;<br>        <br>        cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxv = <span class="hljs-number">25005</span>;<br><span class="hljs-type">int</span> a[ <span class="hljs-number">105</span> ], f[ maxv ], n;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) cin &gt;&gt; a[ i ];<br>    <span class="hljs-built_in">sort</span>( a + <span class="hljs-number">1</span>, a + n + <span class="hljs-number">1</span> );<br><br>    <span class="hljs-built_in">memset</span>( f, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>( f ) );<br>    f[ <span class="hljs-number">0</span> ] = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> ans = n;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( f[ a[ i ] ] ) <br>        &#123;<br>            -- ans; <span class="hljs-comment">// 当前面值已被更小面值凑出，冗余</span><br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-comment">// 完全背包更新状态</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = a[ i ]; j &lt;= a[ n ]; ++ j ) <br>        &#123;<br>            f[ j ] |= f[ j - a[ i ] ];<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br>    <span class="hljs-type">int</span> t; cin &gt;&gt; t;<br>    <span class="hljs-keyword">while</span>( t -- ) <span class="hljs-built_in">solve</span>( );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>T</mi><mo>⋅</mo><mi>N</mi><mo>⋅</mo><mtext>MaxVal</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(T \cdot N \cdot \text{MaxVal})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">MaxVal</span></span><span class="mclose">)</span></span></span></span> | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mtext>MaxVal</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\text{MaxVal})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord text"><span class="mord">MaxVal</span></span><span class="mclose">)</span></span></span></span>.</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>T</mi><mo>⋅</mo><mi>n</mi><mo>⋅</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(T \cdot n \cdot \max(A))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">))</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>易错点</strong>: 必须排序，确保先判断小的面值。</p>
+<p><strong>关键点</strong>: 必须从小到大处理以维持背包的因果链条。</p>
 </li>
 </ul>
 
@@ -415,7 +420,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P5020 [NOIP2018] 货币系统</div>
+      <div>P5020 [NOIP2018] 货币系统 (Knapsack_Complete_Sieve)</div>
       <div>https://example.com/posts/910566d1/</div>
     </div>
     <div class="license-meta">
@@ -460,9 +465,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/93509590/" title="P1004 [NOIP2000] 方格取数">
+                      <a href="/posts/8025fa2d/" title="P1064 [NOIP2006] 金明的预算方案 (Knapsack_Dependency_Tree)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1004 [NOIP2000] 方格取数</span>
+                        <span class="hidden-mobile">P1064 [NOIP2006] 金明的预算方案 (Knapsack_Dependency_Tree)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -470,8 +475,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8025fa2d/" title="P1064 [NOIP2006] 金明的预算方案">
-                        <span class="hidden-mobile">P1064 [NOIP2006] 金明的预算方案</span>
+                      <a href="/posts/401ab780/" title="P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)">
+                        <span class="hidden-mobile">P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

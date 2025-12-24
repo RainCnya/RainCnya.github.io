@@ -19,24 +19,24 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 状态仅与序列的位置 (Index) 有关，转移通常依赖前缀 i−1i-1i−1 或 1…i−11 \dots i-11…i−1。 解决痛点:  LIS (最长上升子序列): 选出最长的严格单调递增子序列。 LCS (最长公共子序列): 两个序列中最长的公共部分。   竞品对比:  O(N2)O(N^2)O(N2) LIS: 记录具体方案时使用。 O(Nlog⁡N)O(N \">
+    <meta name="description" content="线性序列体系 1. 生态位   定义: 状态空间随序列索引 iii 线性延伸，转移通常仅依赖于 1…i−11 \dots i-11…i−1 的前缀信息。   解决痛点: 解决了子序列选择、排列匹配等 O(N2)O(N^2)O(N2) 的暴力组合优化，并提供向 O(Nlog⁡N)O(N \log N)O(NlogN) 跨越的贪心支点。   核心不变量: 序列的物理相对位置决定了决策的拓扑序。   2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性序列体系 (Sequence System)">
+<meta property="og:title" content="线性DP体系 (Sequence System)">
 <meta property="og:url" content="https://example.com/posts/a164e19/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 状态仅与序列的位置 (Index) 有关，转移通常依赖前缀 i−1i-1i−1 或 1…i−11 \dots i-11…i−1。 解决痛点:  LIS (最长上升子序列): 选出最长的严格单调递增子序列。 LCS (最长公共子序列): 两个序列中最长的公共部分。   竞品对比:  O(N2)O(N^2)O(N2) LIS: 记录具体方案时使用。 O(Nlog⁡N)O(N \">
+<meta property="og:description" content="线性序列体系 1. 生态位   定义: 状态空间随序列索引 iii 线性延伸，转移通常仅依赖于 1…i−11 \dots i-11…i−1 的前缀信息。   解决痛点: 解决了子序列选择、排列匹配等 O(N2)O(N^2)O(N2) 的暴力组合优化，并提供向 O(Nlog⁡N)O(N \log N)O(NlogN) 跨越的贪心支点。   核心不变量: 序列的物理相对位置决定了决策的拓扑序。   2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T14:10:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:11:37.919Z">
+<meta property="article:modified_time" content="2025-12-24T12:49:20.815Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="线性DP">
-<meta property="article:tag" content="LCS">
 <meta property="article:tag" content="LIS">
+<meta property="article:tag" content="LCS">
+<meta property="article:tag" content="线性DP">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>线性序列体系 (Sequence System) - MiQiu</title>
+  <title>线性DP体系 (Sequence System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="线性序列体系 (Sequence System)"></span>
+            <span id="subtitle" data-typed-text="线性DP体系 (Sequence System)"></span>
           
         </div>
 
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          630 字
+          647 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -320,82 +320,87 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">线性序列体系 (Sequence System)</h1>
+            <h1 id="seo-header">线性DP体系 (Sequence System)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>线性序列体系</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 状态仅与序列的<strong>位置 (Index)</strong> 有关，转移通常依赖前缀 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>…</mo><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \dots i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。</li>
-<li><strong>解决痛点</strong>:
-<ul>
-<li><strong>LIS (最长上升子序列)</strong>: 选出最长的严格单调递增子序列。</li>
-<li><strong>LCS (最长公共子序列)</strong>: 两个序列中最长的公共部分。</li>
-</ul>
+<li>
+<p><strong>定义</strong>: 状态空间随序列索引 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 线性延伸，转移通常仅依赖于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>…</mo><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \dots i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的前缀信息。</p>
 </li>
-<li><strong>竞品对比</strong>:
-<ul>
-<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> LIS</strong>: 记录具体方案时使用。</li>
-<li><strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> LIS</strong>: 仅求长度或利用贪心性质时使用。</li>
-</ul>
+<li>
+<p><strong>解决痛点</strong>: 解决了子序列选择、排列匹配等 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的暴力组合优化，并提供向 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 跨越的贪心支点。</p>
+</li>
+<li>
+<p><strong>核心不变量</strong>: 序列的<strong>物理相对位置</strong>决定了决策的拓扑序。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>LIS 的贪心二分优化</strong>:
+<li>
+<p><strong>LIS (最长上升子序列)</strong>:</p>
 <ul>
-<li><strong>核心直觉</strong>: 同样长度的上升子序列，<strong>结尾元素越小</strong>，它后面能接纳的元素就越多，潜力越大。</li>
-<li><strong>状态重定义</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false">[</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">g[len]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mclose">]</span></span></span></span> 表示长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">len</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span></span></span></span> 的上升子序列的<strong>最小结尾元素</strong>。</li>
-<li><strong>不变量</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span> 数组始终保持<strong>单调递增</strong> (Strictly Increasing)，这是可以使用 <code>lower_bound</code> 的前提。</li>
+<li>
+<p><strong>基础</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>: 每个位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 都在寻找前缀中最优的接纳者 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>贪心优化</strong>: 同样长度的上升序列，结尾元素越小，后续接纳潜力越大。</p>
+</li>
 </ul>
 </li>
-<li><strong>LCS 的排列转化</strong>:
+<li>
+<p><strong>LCS (最长公共子序列)</strong>:</p>
 <ul>
-<li><strong>场景</strong>: 当序列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo separator="true">,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A, B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 均为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∼</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">1 \sim N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 的<strong>排列</strong>时。</li>
-<li><strong>策略</strong>: 将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 映射为基准 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">1, 2, \dots, N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 按映射规则转换。此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo separator="true">,</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A, B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 的公共子序列等价于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">B&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> 的上升子序列。</li>
-<li><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mo>→</mo><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2) \to O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
+<li><strong>二维映射</strong>: 将两序列的匹配态映射为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>×</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N \times M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 的网格决策。</li>
+</ul>
+</li>
+<li>
+<p><strong>Dilworth 定理 (对偶性)</strong>:</p>
+<ul>
+<li><strong>渗透点</strong>: 最小链覆盖数 = 最长反链长度。即覆盖序列所需的最小单调子序列数 = 反单调性的最长子序列长度。</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-LIS-O-N-log-N">3.1 LIS (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>)</h3>
+<h3 id="3-1-LIS-最长上升子序列">3.1 LIS (最长上升子序列)</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: LIS Binary Search
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: LIS O(N^2) & O(N log N)
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 求解最长上升子序列长度</span><br><span class="hljs-comment">// g[k]: 长度为 k 的 LIS 的最小结尾</span><br>vector&lt; <span class="hljs-type">int</span> &gt; g;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> x : a ) <br>    &#123;<br>        <span class="hljs-comment">// 若当前元素大于 g 末尾，直接延长 (Strictly Increasing)</span><br>        <span class="hljs-keyword">if</span>( g.<span class="hljs-built_in">empty</span>() || x &gt; g.<span class="hljs-built_in">back</span>() ) <br>        &#123;<br>            g.<span class="hljs-built_in">push_back</span>( x );<br>        &#125;<br>        <span class="hljs-keyword">else</span> <br>        &#123;<br>            <span class="hljs-comment">// 否则，找到第一个 &gt;= x 的位置替换，保留“更小结尾”的潜能</span><br>            <span class="hljs-comment">// airy style: strictly increasing -&gt; lower_bound</span><br>            <span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">lower_bound</span>( g.<span class="hljs-built_in">begin</span>(), g.<span class="hljs-built_in">end</span>(), x );<br>            *it = x;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// ans = g.size()</span><br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 1. 基础 O(N^2) - 记录前驱方案时常用</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    f[ i ] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; i; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[ j ] &lt; a[ i ] ) f[ i ] = <span class="hljs-built_in">max</span>( f[ i ], f[ j ] + <span class="hljs-number">1</span> );<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 2. 贪心二分优化 O(N log N) - 仅求长度或大数据量</span><br>vector&lt; <span class="hljs-type">int</span> &gt; g;<br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> x : a )<br>&#123;<br>    <span class="hljs-keyword">if</span>( g.<span class="hljs-built_in">empty</span>( ) || x &gt; g.<span class="hljs-built_in">back</span>( ) )<br>    &#123;<br>        g.<span class="hljs-built_in">push_back</span>( x );<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-comment">// 替换第一个 &gt;= x 的位置，保持 g 单调</span><br>        <span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">lower_bound</span>( g.<span class="hljs-built_in">begin</span>( ), g.<span class="hljs-built_in">end</span>( ), x );<br>        *it = x;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="3-2-LCS-Standard-O-N-2">3.2 LCS (Standard <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>)</h3>
+<h3 id="3-2-LCS-最长公共子序列">3.2 LCS (最长公共子序列)</h3>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: LCS
+        <div class="fold-arrow">▶</div>Code: LCS O(NM) Standard
       </div>
       <div class="fold-collapse collapse" id="collapse-28ab9646">
         <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// dp[i][j]: A 前 i 个与 B 前 j 个的 LCS</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] == b[j] ) <br>        &#123;<br>            dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <br>        &#123;<br>            dp[i][j] = <span class="hljs-built_in">max</span>( dp[i<span class="hljs-number">-1</span>][j], dp[i][j<span class="hljs-number">-1</span>] );<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// f[ i ][ j ] 表示 A 前 i 个与 B 前 j 个的匹配长度</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[ i ] == b[ j ] )<br>        &#123;<br>            f[ i ][ j ] = f[ i - <span class="hljs-number">1</span> ][ j - <span class="hljs-number">1</span> ] + <span class="hljs-number">1</span>; <span class="hljs-comment">// 匹配</span><br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            f[ i ][ j ] = <span class="hljs-built_in">max</span>( f[ i - <span class="hljs-number">1</span> ][ j ], f[ i ][ j - <span class="hljs-number">1</span> ] ); <span class="hljs-comment">// 错位</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
+<h3 id="3-3-LCS-转化为-LIS-排列特化">3.3 LCS 转化为 LIS (排列特化)</h3>
+<p>当序列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 的排列时，记录 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 中各元素的出现位置 <code>pos[ val ]</code>。将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 映射为 <code>B'[ i ] = pos[ B[ i ] ]</code>。此时 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>B</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">B&#x27;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> 的 LIS 即为原 LCS。复杂度降至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
-<p><strong>Dilworth 定理</strong>:</p>
+<p><strong>变体模型</strong>:</p>
 <ul>
 <li>
-<p><strong>内容</strong>: 偏序集的最长链长度等于最小反链覆盖数。</p>
+<p><a href="/posts/1bc8a91b/">单调性优化体系</a>: 处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> LIS 转移中的区间最值加速。</p>
 </li>
 <li>
-<p><strong>应用</strong>: 最长上升子序列长度 = 最少(非严格)下降子序列覆盖数。</p>
-</li>
-<li>
-<p><strong>例子</strong>: 一套导弹拦截系统拦截高度递减，要拦截所有导弹最少需要几套系统？ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\iff</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 求原序列的最长上升子序列。</p>
+<p><a href="/posts/95fc4668/">计数DP体系</a>: LCS 转移中的去重容斥计数。</p>
 </li>
 </ul>
 </li>
@@ -403,10 +408,13 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1020">Luogu-P1020</a></strong>: 导弹拦截 (Dilworth定理)。</p>
+<p><a href="/posts/5e9e3688/">P1020 导弹拦截 (Seq_Dilworth_LIS)</a> —— Dilworth 定理终极母题。</p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1439">Luogu-P1439</a></strong>: LCS 模板 (排列转化 LIS)。</p>
+<p><a href="/posts/c041f5c2/">P1091 合唱队形 (Seq_Bidirectional_LIS)</a> —— 双向 LIS 拼合范式。</p>
+</li>
+<li>
+<p><a href="/posts/74f6b4c4/">P2516 最长公共子序列 (LCS_Counting)</a> —— 方案数容斥处理。</p>
 </li>
 </ul>
 </li>
@@ -451,11 +459,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BA%BF%E6%80%A7DP/" class="print-no-link">#线性DP</a>
+        <a href="/tags/LIS/" class="print-no-link">#LIS</a>
       
         <a href="/tags/LCS/" class="print-no-link">#LCS</a>
       
-        <a href="/tags/LIS/" class="print-no-link">#LIS</a>
+        <a href="/tags/%E7%BA%BF%E6%80%A7DP/" class="print-no-link">#线性DP</a>
       
     </div>
   
@@ -467,7 +475,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>线性序列体系 (Sequence System)</div>
+      <div>线性DP体系 (Sequence System)</div>
       <div>https://example.com/posts/a164e19/</div>
     </div>
     <div class="license-meta">
@@ -512,9 +520,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/fbbfeb81/" title="高维与网格DP (High dimensional &amp; grid DP)">
+                      <a href="/posts/fbbfeb81/" title="网格DP (Grid DP System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">高维与网格DP (High dimensional &amp; grid DP)</span>
+                        <span class="hidden-mobile">网格DP (Grid DP System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -522,8 +530,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/1c960464/" title="动态规划体系综述 (DP Core Synthesis)">
-                        <span class="hidden-mobile">动态规划体系综述 (DP Core Synthesis)</span>
+                      <a href="/posts/1c960464/" title="动态规划：状态公理与决策本质 (DP Core Synthesis)">
+                        <span class="hidden-mobile">动态规划：状态公理与决策本质 (DP Core Synthesis)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

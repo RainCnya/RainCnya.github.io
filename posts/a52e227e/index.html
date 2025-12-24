@@ -19,23 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P5322 排兵布阵 1. 核心逻辑 问题本质 在每个城堡（组）投入不同兵力获得不同收益，求总兵力限制下的最大收益。 破局思路  转化: 对于第 iii 个城堡，如果投入兵力 XXX，我们希望 XXX 能够打败 kkk 个对手。最优的 XXX 一定是“第 kkk 强的对手兵力 ×2+1\times 2 + 1×2+1”。 分组背包:  组: 每个城堡 iii 是一个物品组。 决策: 在">
+    <meta name="description" content="Luogu-P5322 排兵布阵 1. 核心逻辑   问题本质: 在 NNN 个独立的关卡中分配有限兵力 MMM，以在不同玩家之间获取最大积分。   破局转换:   代价转化: 对于关卡 iii，若想击败 kkk 个对手，最省兵力的方案是投入“该关卡第 kkk 弱对手兵力的 2 倍 + 1”。   策略枚举: 每个关卡都是一个物品组。在每个组内，我们可以选择击败 0,1,…,S0, 1, \dot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P5322 [BJOI2019] 排兵布阵">
+<meta property="og:title" content="P5322 [BJOI2019] 排兵布阵 (Knapsack_Group_Sorting)">
 <meta property="og:url" content="https://example.com/posts/a52e227e/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P5322 排兵布阵 1. 核心逻辑 问题本质 在每个城堡（组）投入不同兵力获得不同收益，求总兵力限制下的最大收益。 破局思路  转化: 对于第 iii 个城堡，如果投入兵力 XXX，我们希望 XXX 能够打败 kkk 个对手。最优的 XXX 一定是“第 kkk 强的对手兵力 ×2+1\times 2 + 1×2+1”。 分组背包:  组: 每个城堡 iii 是一个物品组。 决策: 在">
+<meta property="og:description" content="Luogu-P5322 排兵布阵 1. 核心逻辑   问题本质: 在 NNN 个独立的关卡中分配有限兵力 MMM，以在不同玩家之间获取最大积分。   破局转换:   代价转化: 对于关卡 iii，若想击败 kkk 个对手，最省兵力的方案是投入“该关卡第 kkk 弱对手兵力的 2 倍 + 1”。   策略枚举: 每个关卡都是一个物品组。在每个组内，我们可以选择击败 0,1,…,S0, 1, \dot">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.791Z">
+<meta property="article:modified_time" content="2025-12-24T11:47:38.245Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="分组背包">
 <meta property="article:tag" content="排序">
+<meta property="article:tag" content="分组背包">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P5322 [BJOI2019] 排兵布阵 - MiQiu</title>
+  <title>P5322 [BJOI2019] 排兵布阵 (Knapsack_Group_Sorting) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P5322 [BJOI2019] 排兵布阵"></span>
+            <span id="subtitle" data-typed-text="P5322 [BJOI2019] 排兵布阵 (Knapsack_Group_Sorting)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          409 字
+          322 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -319,46 +319,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P5322 [BJOI2019] 排兵布阵</h1>
+            <h1 id="seo-header">P5322 [BJOI2019] 排兵布阵 (Knapsack_Group_Sorting)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5322">Luogu-P5322</a> 排兵布阵</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p>在每个城堡（组）投入不同兵力获得不同收益，求总兵力限制下的最大收益。</p>
-<h3 id="破局思路">破局思路</h3>
-<ol>
-<li><strong>转化</strong>:<br>
-对于第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 个城堡，如果投入兵力 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span>，我们希望 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 能够打败 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 个对手。最优的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 一定是“第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 强的对手兵力 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\times 2 + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">×</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>”。</li>
-<li><strong>分组背包</strong>:
 <ul>
-<li><strong>组</strong>: 每个城堡 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 是一个物品组。</li>
-<li><strong>决策</strong>: 在该组中，可以选择打败 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">0, 1, \dots, S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 个对手。</li>
-<li>决策互斥：对一个城堡只能投入一次兵力。</li>
-</ul>
+<li>
+<p><strong>问题本质</strong>: 在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个独立的关卡中分配有限兵力 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>，以在不同玩家之间获取最大积分。</p>
+</li>
+<li>
+<p><strong>破局转换</strong>:</p>
+<ol>
+<li>
+<p><strong>代价转化</strong>: 对于关卡 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>，若想击败 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 个对手，最省兵力的方案是投入“该关卡第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 弱对手兵力的 2 倍 + 1”。</p>
+</li>
+<li>
+<p><strong>策略枚举</strong>: 每个关卡都是一个<strong>物品组</strong>。在每个组内，我们可以选择击败 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">0, 1, \dots, S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 个对手，获得相应的积分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>i</mi><mo>⋅</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">0, i, \dots, i \cdot S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>模型归一</strong>: 标准分组背包。</p>
 </li>
 </ol>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxm = <span class="hljs-number">2e4</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-type">int</span> s, n, m;<br><span class="hljs-type">int</span> a[maxn][maxn]; <span class="hljs-comment">// a[i][j] 表示城堡 i 的第 j 个对手的兵力</span><br><span class="hljs-type">int</span> dp[maxm];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;	<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>); cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; s &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= s; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>        &#123;<br>            cin &gt;&gt; a[i][j];<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-built_in">sort</span>( a[i] + <span class="hljs-number">1</span>, a[i] + s + <span class="hljs-number">1</span> );<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= s; ++ j )<br>        &#123;<br>            <span class="hljs-comment">// 转化为代价</span><br>            a[i][j] = a[i][j] * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 分组背包模板</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; ++ k ) <span class="hljs-comment">// 枚举组 (城堡)</span><br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = m; j &gt;= <span class="hljs-number">0</span>; -- j ) <span class="hljs-comment">// 倒序枚举容量</span><br>        &#123;<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= s; ++ i ) <span class="hljs-comment">// 枚举决策 (打败几个人)</span><br>            &#123;<br>                <span class="hljs-keyword">if</span>( j &gt;= a[k][i] )<br>                    dp[j] = <span class="hljs-built_in">max</span>( dp[j], dp[ j - a[k][i] ] + i * k );<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; dp[m] &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> s, n, m, a[ <span class="hljs-number">105</span> ][ <span class="hljs-number">105</span> ], f[ <span class="hljs-number">20005</span> ];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; s &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= s; ++ i ) <br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j ) cin &gt;&gt; a[ j ][ i ];<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <span class="hljs-built_in">sort</span>( a[ i ] + <span class="hljs-number">1</span>, a[ i ] + s + <span class="hljs-number">1</span> );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = m; j &gt;= <span class="hljs-number">0</span>; -- j ) <br>        &#123;<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= s; ++ k ) <br>            &#123;<br>                <span class="hljs-type">int</span> cost = <span class="hljs-number">2</span> * a[ i ][ k ] + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span>( j &gt;= cost ) f[ j ] = <span class="hljs-built_in">max</span>( f[ j ], f[ j - cost ] + i * k );<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; f[ m ] &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>⋅</mo><mi>M</mi><mo>⋅</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \cdot M \cdot S)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mclose">)</span></span></span></span> | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>.</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>⋅</mo><mi>m</mi><mo>⋅</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \cdot m \cdot s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>易错点</strong>: 决策循环放在容量循环内部，且容量必须倒序。</p>
+<p><strong>关键点</strong>: 预处理排序确定击败 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 人的最小代价。</p>
 </li>
 </ul>
 
@@ -401,9 +406,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/" class="print-no-link">#分组背包</a>
-      
         <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
+      
+        <a href="/tags/%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/" class="print-no-link">#分组背包</a>
       
     </div>
   
@@ -415,7 +420,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P5322 [BJOI2019] 排兵布阵</div>
+      <div>P5322 [BJOI2019] 排兵布阵 (Knapsack_Group_Sorting)</div>
       <div>https://example.com/posts/a52e227e/</div>
     </div>
     <div class="license-meta">
@@ -460,9 +465,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/da930cd8/" title="P1070 [NOIP 2009] 道路游戏">
+                      <a href="/posts/2eb10488/" title="P2051 [AHOI2009] 中国象棋 (Opt_Contour_State)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1070 [NOIP 2009] 道路游戏</span>
+                        <span class="hidden-mobile">P2051 [AHOI2009] 中国象棋 (Opt_Contour_State)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -470,8 +475,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/93509590/" title="P1004 [NOIP2000] 方格取数">
-                        <span class="hidden-mobile">P1004 [NOIP2000] 方格取数</span>
+                      <a href="/posts/93509590/" title="P1004 [NOIP2000] 方格取数 (Grid_Concurrent_Pickup)">
+                        <span class="hidden-mobile">P1004 [NOIP2000] 方格取数 (Grid_Concurrent_Pickup)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

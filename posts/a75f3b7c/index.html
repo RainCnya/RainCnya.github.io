@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 状态定义在连续区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 将大区间分裂为子区间的决策模型。 解决痛点:  合并类问题: 石子合并、能量项链 (局部最优无法推导全局最优，必须枚举分割)。 递归结构: 括号匹配、树的遍历序 (需结合递归性质)。    2. 逻辑支点  区间合并:  dp[i][j]&#x3D;max⁡&#x2F;min⁡{dp[i][k]+dp[k+1][">
+    <meta name="description" content="区间与环形体系 1. 生态位   定义: 状态定义在序列的连续闭区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 或处理端点关系，由小区间收益推导大区间最值的模型。   解决痛点: 解决了全局最优解不具备局部线性增长特性，但具备局部合并特性的场景。   2. 逻辑支点   核心不变量: 拓扑序由区间长度决定。  状态转移必须遵循 len&#x3D;1→Nlen &#x3D; 1 \to Nlen&#x3D;1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="区间与环形体系 (Interval &amp; Ring System)">
+<meta property="og:title" content="区间DP体系 (Interval System)">
 <meta property="og:url" content="https://example.com/posts/a75f3b7c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 状态定义在连续区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 将大区间分裂为子区间的决策模型。 解决痛点:  合并类问题: 石子合并、能量项链 (局部最优无法推导全局最优，必须枚举分割)。 递归结构: 括号匹配、树的遍历序 (需结合递归性质)。    2. 逻辑支点  区间合并:  dp[i][j]&#x3D;max⁡&#x2F;min⁡{dp[i][k]+dp[k+1][">
+<meta property="og:description" content="区间与环形体系 1. 生态位   定义: 状态定义在序列的连续闭区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 或处理端点关系，由小区间收益推导大区间最值的模型。   解决痛点: 解决了全局最优解不具备局部线性增长特性，但具备局部合并特性的场景。   2. 逻辑支点   核心不变量: 拓扑序由区间长度决定。  状态转移必须遵循 len&#x3D;1→Nlen &#x3D; 1 \to Nlen&#x3D;1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T14:25:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:12:10.681Z">
+<meta property="article:modified_time" content="2025-12-24T15:08:02.305Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="区间DP">
 <meta property="article:tag" content="断环成链">
@@ -35,7 +35,7 @@
   
   
   
-  <title>区间与环形体系 (Interval &amp; Ring System) - MiQiu</title>
+  <title>区间DP体系 (Interval System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="区间与环形体系 (Interval &amp; Ring System)"></span>
+            <span id="subtitle" data-typed-text="区间DP体系 (Interval System)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          543 字
+          546 字
         
       </span>
     
@@ -319,77 +319,91 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">区间与环形体系 (Interval &amp; Ring System)</h1>
+            <h1 id="seo-header">区间DP体系 (Interval System)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>区间与环形体系</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 状态定义在<strong>连续区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span></strong> 上，通过枚举<strong>分割点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></strong> 将大区间分裂为子区间的决策模型。</li>
-<li><strong>解决痛点</strong>:
-<ul>
-<li><strong>合并类问题</strong>: 石子合并、能量项链 (局部最优无法推导全局最优，必须枚举分割)。</li>
-<li><strong>递归结构</strong>: 括号匹配、树的遍历序 (需结合递归性质)。</li>
-</ul>
+<li>
+<p><strong>定义</strong>: 状态定义在序列的<strong>连续闭区间</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[i, j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 上，通过枚举<strong>分割点</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 或处理<strong>端点关系</strong>，由小区间收益推导大区间最值的模型。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 解决了<strong>全局最优解不具备局部线性增长特性</strong>，但具备局部合并特性的场景。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>区间合并</strong>:
+<li>
+<p><strong>核心不变量</strong>: <strong>拓扑序由区间长度决定</strong>。</p>
 <ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mi mathvariant="normal">/</mi><mi>min</mi><mo>⁡</mo><mo stretchy="false">{</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>+</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">}</mo><mo>+</mo><mi>C</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp[i][j] = \max/\min \{ dp[i][k] + dp[k+1][j] \} + Cost(i, j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">/</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span><span class="mopen">{</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]}</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">os</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>。</li>
-<li><strong>枚举顺序</strong>: 先枚举<strong>区间长度 (len)</strong>，再枚举<strong>左端点 (i)</strong>。</li>
+<li>状态转移必须遵循 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo>=</mo><mn>1</mn><mo>→</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">len = 1 \to N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 的物理演化。</li>
 </ul>
 </li>
-<li><strong>断环成链 (The Broken Ring)</strong>:
+<li>
+<p><strong>断环成链 (The Broken Ring)</strong>:</p>
 <ul>
-<li>策略: 将长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 的环复制一遍接在末尾，形成长度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>N</mi></mrow><annotation encoding="application/x-tex">2N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 的链。</li>
-<li>答案: 在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mi>N</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i][i+N-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> 中取最优值 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">1 \le i \le N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7955em;vertical-align:-0.136em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>)。</li>
+<li>环形结构的通用解法：将序列复制一倍接在末尾，使得环上任意长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 的路径都对应长链上的一个子区间。</li>
 </ul>
+</li>
+<li>
+<p><strong>渗透点 (Penetration)</strong>:</p>
+<blockquote>
+<p>区间 DP 是在试图寻找“最后一次操作”发生在哪里。 不管是石子合并的最后一捏，还是括号匹配的最后一次闭合，端点或分割点就是那个决定全局权值的逻辑锚点。</p>
+</blockquote>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-石子合并-区间-DP">3.1 石子合并 (区间 DP)</h3>
+<h3 id="3-1-标准区间合并模板">3.1 标准区间合并模板</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Stone Merge
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Interval Merge
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// sum[i] 为前缀和</span><br><span class="hljs-comment">// dp[i][j] 表示合并 i..j 的最小代价</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> len = <span class="hljs-number">2</span>; len &lt;= n; ++ len ) <span class="hljs-comment">// 阶段：长度</span><br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + len - <span class="hljs-number">1</span> &lt;= n; ++ i ) <span class="hljs-comment">// 状态：左端点</span><br>    &#123;<br>        <span class="hljs-type">int</span> j = i + len - <span class="hljs-number">1</span>;<br>        dp[i][j] = INF;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = i; k &lt; j; ++ k ) <span class="hljs-comment">// 决策：分割点</span><br>        &#123;<br>            dp[i][j] = <span class="hljs-built_in">min</span>( dp[i][j], <br>                            dp[i][k] + dp[k<span class="hljs-number">+1</span>][j] + sum[j] - sum[i<span class="hljs-number">-1</span>] );<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 核心：三层循环。len -&gt; left -&gt; split</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> len = <span class="hljs-number">2</span>; len &lt;= n; ++ len )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> l = <span class="hljs-number">1</span>; l + len - <span class="hljs-number">1</span> &lt;= n; ++ l )<br>    &#123;<br>        <span class="hljs-type">int</span> r = l + len - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = l; k &lt; r; ++ k )<br>        &#123;<br>            f[ l ][ r ] = <span class="hljs-built_in">max</span>( f[ l ][ r ], f[ l ][ k ] + f[ k + <span class="hljs-number">1</span> ][ r ] + <span class="hljs-built_in">cost</span>( l, r ) );<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="3-2-递归结构-CF149D-括号涂色">3.2 递归结构 (CF149D 括号涂色)</h3>
-<ul>
-<li><strong>逻辑分支</strong>: 处理区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l, r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 时，需区分它是<strong>嵌套结构</strong> <code>(...)</code> 还是<strong>拼接结构</strong> <code>AB</code>。</li>
-</ul>
+<h3 id="3-2-递归结构-括号-树序">3.2 递归结构 (括号/树序)</h3>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: Recursive Interval
+        <div class="fold-arrow">▶</div>Code: Recursive Structure
       </div>
       <div class="fold-collapse collapse" id="collapse-28ab9646">
         <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// match[l] == r: Nested ( ... )</span><br><span class="hljs-comment">// match[l] &lt; r : Concatenated A B</span><br><span class="hljs-function">ll <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> cl, <span class="hljs-type">int</span> cr )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l + <span class="hljs-number">1</span> == r ) <span class="hljs-keyword">return</span> <span class="hljs-built_in">check</span>(cl, cr); <span class="hljs-comment">// Base case</span><br>    <span class="hljs-keyword">if</span>( memo[l][r][cl][cr] != <span class="hljs-number">-1</span> ) <span class="hljs-keyword">return</span> memo[l][r][cl][cr];<br>    <br>    ll ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( match[l] == r ) <span class="hljs-comment">// Nested</span><br>    &#123;<br>        <span class="hljs-keyword">if</span>( ! <span class="hljs-built_in">check_valid</span>(cl, cr) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> ncl = <span class="hljs-number">0</span>; ncl &lt; <span class="hljs-number">3</span>; ++ ncl )<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> ncr = <span class="hljs-number">0</span>; ncr &lt; <span class="hljs-number">3</span>; ++ ncr )<br>                 <span class="hljs-keyword">if</span>( ! <span class="hljs-built_in">conflict</span>(cl, ncl) &amp;&amp; ! <span class="hljs-built_in">conflict</span>(cr, ncr) )<br>                     ans += <span class="hljs-built_in">dfs</span>( l + <span class="hljs-number">1</span>, r - <span class="hljs-number">1</span>, ncl, ncr );<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-comment">// Concatenated: split at match[l]</span><br>    &#123;<br>        <span class="hljs-type">int</span> k = match[l];<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> mcl = <span class="hljs-number">0</span>; mcl &lt; <span class="hljs-number">3</span>; ++ mcl )<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> mcr = <span class="hljs-number">0</span>; mcr &lt; <span class="hljs-number">3</span>; ++ mcr )<br>                <span class="hljs-keyword">if</span>( ! <span class="hljs-built_in">conflict</span>(mcl, mcr) )<br>                    ans += <span class="hljs-built_in">dfs</span>( l, k, cl, mcl ) * <span class="hljs-built_in">dfs</span>( k + <span class="hljs-number">1</span>, r, mcr, cr );<br>    &#125;<br>    <span class="hljs-keyword">return</span> memo[l][r][cl][cr] = ans % MOD;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 针对 CF149D 等题型，通过 DFS + 记忆化处理匹配逻辑</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">solve</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> state )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span> base_case;<br>    <span class="hljs-keyword">if</span>( memo[ l ][ r ][ state ] != <span class="hljs-number">-1</span> ) <span class="hljs-keyword">return</span> memo[ l ][ r ][ state ];<br><br>    <span class="hljs-keyword">if</span>( match[ l ] == r ) <span class="hljs-comment">// 嵌套型</span><br>    &#123;<br>        <span class="hljs-comment">// 递归处理子区间 [l+1, r-1]</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-comment">// 拼接型</span><br>    &#123;<br>        <span class="hljs-comment">// 裂解为 [l, match[l]] 和 [match[l]+1, r]</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
+<p><strong>变体模型</strong>:</p>
+<ul>
+<li>
+<p><a href="/posts/b6a340a7/">树形DP体系</a>: 当区间 DP 的状态映射至树的 DFS 序时，产生交叉。</p>
+</li>
+<li>
+<p><a href="/posts/1bc8a91b/">单调性优化体系</a>: 四边形不等式对区间 DP <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mo stretchy="false">)</mo><mo>→</mo><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3) \to O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的降维优化。</p>
+</li>
+</ul>
+</li>
+<li>
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1880">Luogu-P1880</a></strong>: 石子合并 (区间/环形)。</p>
+<p><a href="/posts/5af5b988/">P4170 涂色 (Interval_Coloring)</a> —— 边界贪心与分裂合并的入门。</p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1063">Luogu-P1063</a></strong>: 能量项链 (环形乘法合并)。</p>
+<p><a href="/posts/73486b1b/">P3205 合唱队 (Interval_Queue_Insert)</a> —— 逆向生长视角下的状态定义。</p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/149/D">CF149D</a></strong>: Coloring Brackets (递归区间)。</p>
+<p><a href="/posts/6ba58ea6/">P5851 Greedy Pie Eaters (Interval_Reverse_Aux)</a> —— 辅助数组对区间最后一次跨越的捕捉。</p>
 </li>
 </ul>
 </li>
@@ -448,7 +462,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>区间与环形体系 (Interval &amp; Ring System)</div>
+      <div>区间DP体系 (Interval System)</div>
       <div>https://example.com/posts/a75f3b7c/</div>
     </div>
     <div class="license-meta">
@@ -493,9 +507,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/b6a340a7/" title="树形DP体系 (Tree DP)">
+                      <a href="/posts/b6a340a7/" title="树形DP体系 (Tree DP System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">树形DP体系 (Tree DP)</span>
+                        <span class="hidden-mobile">树形DP体系 (Tree DP System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -503,8 +517,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8be0e5f9/" title="背包模型体系 (Knapsack System)">
-                        <span class="hidden-mobile">背包模型体系 (Knapsack System)</span>
+                      <a href="/posts/8be0e5f9/" title="背包DP体系 (Knapsack System)">
+                        <span class="hidden-mobile">背包DP体系 (Knapsack System)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

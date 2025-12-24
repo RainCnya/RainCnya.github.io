@@ -259,155 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/da930cd8/" target="_self">
-          P1070 [NOIP 2009] 道路游戏
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/da930cd8/" target="_self">
-        <div>
-          Luogu-P1070 道路游戏 (单调队列优化版) 1. 核心逻辑 问题本质 购买机器人行走并收集金币。核心在于路径是斜向的。 破局思路  公式变形: 朴素 DP 是 O(MNP)O(MNP)O(MNP)。利用路径 (i,j)→(i+1,j+1)(i, j) \to (i+1, j+1)(i,j)→(i+1,j+1) 的对角线特性。 令 id=(i−j)(modN)id = (i - j) \p
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-23 00:00" pubdate>
-              2025-11-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/a52e227e/" target="_self">
-          P5322 [BJOI2019] 排兵布阵
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/a52e227e/" target="_self">
-        <div>
-          Luogu-P5322 排兵布阵 1. 核心逻辑 问题本质 在每个城堡（组）投入不同兵力获得不同收益，求总兵力限制下的最大收益。 破局思路  转化: 对于第 iii 个城堡，如果投入兵力 XXX，我们希望 XXX 能够打败 kkk 个对手。最优的 XXX 一定是“第 kkk 强的对手兵力 ×2+1\times 2 + 1×2+1”。 分组背包:  组: 每个城堡 iii 是一个物品组。 决策: 在
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-22 00:00" pubdate>
-              2025-11-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%88%86%E7%BB%84%E8%83%8C%E5%8C%85/">#分组背包</a>
-            
-              <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/93509590/" target="_self">
-          P1004 [NOIP2000] 方格取数
+          P1004 [NOIP2000] 方格取数 (Grid_Concurrent_Pickup)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/93509590/" target="_self">
         <div>
-          Luogu-P1004 方格取数 1. 核心逻辑 问题本质 走两次方格取数，路径可重叠但数只能取一次。求最大和。 破局思路  多路并发: 看作两个人同时走。状态需记录两人的坐标。 状态定义: dp[i][j][k][l] 表示 A 走到 (i,j)(i, j)(i,j)，B 走到 (k,l)(k, l)(k,l)。 去重: 当 A, B 走到同一点（i=ki=ki=k 且 j=lj=lj=l）时，
+          Luogu-P1004 方格取数 1. 核心逻辑   问题本质: 求走两次方格，路径可重叠但数只能取一次时的最大权值总和。   破局转换:   多路并发: 将“先后走两次”映射为“两人同时从 (1,1)(1,1)(1,1) 出发”。   步数降维: 设两人走的步数为 kkk。由于每次只能向右或向下，第一人的位置 (r1,c1)(r_1, c_1)(r1​,c1​) 满足 r1+c1=k+2r_1
         </div>
       </a>
 
@@ -453,79 +313,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BD%91%E6%A0%BCDP/">#网格DP</a>
-            
               <a href="/tags/%E5%A4%9A%E8%B7%AFDP/">#多路DP</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/910566d1/" target="_self">
-          P5020 [NOIP2018] 货币系统
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/910566d1/" target="_self">
-        <div>
-          Luogu-P5020 货币系统 1. 核心逻辑 问题本质 给定集合 AAA，求最小子集 B⊆AB \subseteq AB⊆A，使得 BBB 能凑出的金额集合与 AAA 完全一致。 破局思路  筛法思想: 若面值 XXX 能被 AAA 中比它小的面值组合出来，则 XXX 是冗余的。 完全背包: 将 AAA 排序。从小到大遍历，把“凑钱”看作完全背包问题。  状态：dp[j] 表示金额 jjj 是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-17 00:00" pubdate>
-              2025-11-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
-            
-              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
+              <a href="/tags/%E7%BD%91%E6%A0%BCDP/">#网格DP</a>
             
           </div>
         
@@ -540,14 +330,14 @@
       <h2 class="index-header">
         
         <a href="/posts/8025fa2d/" target="_self">
-          P1064 [NOIP2006] 金明的预算方案
+          P1064 [NOIP2006] 金明的预算方案 (Knapsack_Dependency_Tree)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/8025fa2d/" target="_self">
         <div>
-          Luogu-P1064 金明的预算方案 1. 核心逻辑 问题本质 依赖背包：选附件必须选主件。每个主件最多 2 个附件。 破局思路  转化: 将“主件 + 它的所有附件组合”看作一个物品组。 决策枚举: 对于一个主件 iii 及其附件 f1,f2f1, f2f1,f2，互斥的决策有：  仅选 iii i+f1i + f1i+f1 i+f2i + f2i+f2 i+f1+f2i + f1 + f2i
+          Luogu-P1064 金明的预算方案 1. 核心逻辑   问题本质: 存在主从依赖关系的 0/1 背包（选附件必选主件）。   破局转换:   决策坍缩: 由于每个主件最多只有 2 个附件，对于一个主件组，其合法策略只有 4 种：   (主件)   (主件 + 附件1)   (主件 + 附件2)   (主件 + 附件1 + 附件2)     模型归一: 这 4 种策略在同一组内是互斥的，问题坍缩
         </div>
       </a>
 
@@ -609,15 +399,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/434887bc/" target="_self">
-          P4310 绝世好题
+        <a href="/posts/910566d1/" target="_self">
+          P5020 [NOIP2018] 货币系统 (Knapsack_Complete_Sieve)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/434887bc/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/910566d1/" target="_self">
         <div>
-          Luogu-P4310 绝世好题 1. 核心逻辑 问题本质 求最长子序列，满足相邻两项 ai&amp;ai−1≠0a_i \And a_{i-1} \neq 0ai​&amp;ai−1​=0。 破局思路  瓶颈: N=105N=10^5N=105，朴素 DP O(N2)O(N^2)O(N2) 超时。 按位压缩: 值域虽大，但二进制位只有 30 位。 定义 dp[k]：以第 kkk 位为 1 的数
+          Luogu-P5020 货币系统 1. 核心逻辑   问题本质: 求给定面值集合 AAA 的极大无关子集（即最小的能凑出相同金额集的子集）。   破局转换:   单调性: 一个面值能否被其他面值凑出，只与其较小的面值有关。   背包判定: 排序后，对每个面值 a[i]a[i]a[i]，检查其是否能被 {a[1],…,a[i−1]}\{a[1], \dots, a[i-1]\}{a[1],…,a[i
         </div>
       </a>
 
@@ -625,8 +415,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-15 00:00" pubdate>
-              2025-11-15
+            <time datetime="2025-11-17 00:00" pubdate>
+              2025-11-17
             </time>
           </div>
         
@@ -663,9 +453,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
             
-              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
+              <a href="/tags/%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85/">#完全背包</a>
             
           </div>
         
@@ -680,14 +470,14 @@
       <h2 class="index-header">
         
         <a href="/posts/401ab780/" target="_self">
-          P6902 [ICPC 2014 WF] Surveillance
+          P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/401ab780/" target="_self">
         <div>
-          Luogu-P6902 Surveillance 1. 核心逻辑 问题本质 环形区间最小覆盖问题。 破局思路  倍增 DP:  f[i][j]: 从 iii 出发，使用 2j2^j2j 个区间能覆盖到的最远右端点。 预处理 f[i][0]：贪心选择左端点 ≤i\le i≤i 且右端点最大的区间。   破环成链: 将环展平为 2N2N2N。 查询: 对于每个起点 i∈[1,N]i \in [1, N
+          Luogu-P6902 Surveillance 1. 核心逻辑   问题本质: 环形序列上选取最少的区间实现全覆盖。   破局转换:   破环成链: 序列倍增至 2N2N2N，环形区间转化为链上区间。   贪心预处理: f[i][0]f[ i ][ 0 ]f[i][0] 表示从位置 iii 出发，使用 1 个区间能到达的最远右边界。   倍增跳跃: f[i][j]=f[f[i][j−1]][j−
         </div>
       </a>
 
@@ -735,7 +525,7 @@
             
               <a href="/tags/DP/">#DP</a>
             
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
             
               <a href="/tags/%E5%80%8D%E5%A2%9E/">#倍增</a>
             
@@ -751,15 +541,161 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/434887bc/" target="_self">
+          P4310 绝世好题 (Opt_Bitmask_And)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/434887bc/" target="_self">
+        <div>
+          Luogu-P4310 绝世好题 1. 核心逻辑   问题本质: 求最长子序列，满足相邻元素按位与运算不为 0。   破局转换:   瓶颈分析: N=105N=10^5N=105，朴素 O(N2)O(N^2)O(N2) LIS 模型无法接受。   数值特性: ai&amp;ai−1≠0a_i \And a_{i-1} \neq 0ai​&amp;ai−1​=0 意味着它们在二进制下至少共享一个为
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-15 00:00" pubdate>
+              2025-11-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
+            
+              <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/74f6b4c4/" target="_self">
+          P2516 [HAOI2010] 最长公共子序列 (LCS_Counting)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/74f6b4c4/" target="_self">
+        <div>
+          Luogu-P2516 最长公共子序列 (计数) 1. 核心逻辑   问题本质: 求两个字符串的 LCS 长度及满足该长度的非空子序列方案数。   破局转换:   状态定义:   f[i][j]f[i][j]f[i][j]：LCS 长度。   g[i][j]g[i][j]g[i][j]：方案数。     转移方程:   若 A[i]==B[j]A[i] == B[j]A[i]==B[j]:   f
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-13 00:00" pubdate>
+              2025-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%98%A0%E5%B0%84/">#映射</a>
+            
+              <a href="/tags/LIS/">#LIS</a>
+            
+              <a href="/tags/LCS/">#LCS</a>
+            
+              <a href="/tags/%E8%AE%A1%E6%95%B0DP/">#计数DP</a>
+            
+              <a href="/tags/%E6%BB%9A%E5%8A%A8%E6%95%B0%E7%BB%84/">#滚动数组</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/31829f80/" target="_self">
-          P2519 [HAOI2011] problem a
+          P2519 [HAOI2011] problem a (Interval_Weighted_Scheduling)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/31829f80/" target="_self">
         <div>
-          Luogu-P2519 problem a 1. 核心逻辑 问题本质 NNN 个人说真话（排名信息），求最多有多少人说的是真话（且不矛盾）。 破局思路  信息转化: &quot;aaa 个人比我高，bbb 个人比我矮&quot; ⇒\Rightarrow⇒ 该人的排名区间是 [a+1,N−b][a+1, N-b][a+1,N−b]。 去伪存真:  如果 a+b≥Na+b \ge Na+b≥N，矛盾
+          Luogu-P2519 problem a 1. 核心逻辑   问题本质: 确定最多的说真话人数，使得所有人的排名信息不产生物理冲突。   破局转换:   排名映射: 若某人说“aaa 个人比我高，bbb 个人比我矮”，则其可能的排名区间为 [a+1,N−b][a + 1, N - b][a+1,N−b]。   冲突剔除:   若 a+b≥Na + b \ge Na+b≥N，该说法物理不可能，直接
         </div>
       </a>
 
@@ -821,78 +757,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/74f6b4c4/" target="_self">
-          P2516 [HAOI2010] 最长公共子序列
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/74f6b4c4/" target="_self">
-        <div>
-          Luogu-P2516 最长公共子序列 (计数) 1. 核心逻辑 问题本质 求 LCS 的长度及其方案数。 破局思路  状态:  dp[j]: LCS 长度。 cnt[j]: 对应方案数。 使用滚动数组优化第一维。   转移:  若 A[i]==B[j]A[i] == B[j]A[i]==B[j]: 长度 +1，方案数继承左上。 若 A[i]≠B[j]A[i] \neq B[j]A[i]=B[j
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-13 00:00" pubdate>
-              2025-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/LCS/">#LCS</a>
-            
-              <a href="/tags/LIS/">#LIS</a>
-            
-              <a href="/tags/%E6%98%A0%E5%B0%84/">#映射</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/77237d38/" target="_self">
           P6835 [Cnoi2019] 线性生物
         </a>
@@ -901,7 +765,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/77237d38/" target="_self">
         <div>
-          Luogu-P6835 线性生物 1. 核心逻辑 问题本质 链式结构带返祖边，求 1→N+11 \to N+11→N+1 的期望步数。 破局思路  状态定义: E[x]E[x]E[x] 表示从 xxx 走到 x+1x+1x+1 的期望步数。（将长路径拆解为相邻点期望之和）。 方程推导: 从 xxx 出发有 degdegdeg 条边，1 条去 x+1x+1x+1，其他去 y≤xy \le xy≤x。
+          Luogu-P6835 线性生物 ## 1. 核心逻辑   问题本质: 在带返祖边的链式图上，求从起点 111 走到终点 N+1N+1N+1 的期望步数。   破局转换:   期望线性性: 总期望 = ∑i=1NE(i→i+1)\sum_{i=1}^{N} E(i \to i+1)∑i=1N​E(i→i+1)。   方程构建: 从点 iii 出发有 degideg_idegi​ 条边。其中 1 条
         </div>
       </a>
 
@@ -947,9 +811,155 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
+            
               <a href="/tags/DAG/">#DAG</a>
             
               <a href="/tags/%E6%9C%9F%E6%9C%9BDP/">#期望DP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5e9e3688/" target="_self">
+          P1020 [NOIP1999] 导弹拦截 (Seq_Dilworth_LIS)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5e9e3688/" target="_self">
+        <div>
+          Luogu-P1020 导弹拦截 1. 核心逻辑   问题本质: 求最长不上升子序列（LDS）长度，以及覆盖全集所需的最小 LDS 数量。   破局转换:   第一问: 直接求 LDS 长度。由于 NNN 较大，需使用 O(Nlog⁡N)O(N \log N)O(NlogN) 贪心二分优化。   第二问 (Dilworth 定理): 最小链覆盖数 = 最长反链长度。   “不上升”的反链即为“严格
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-11 00:00" pubdate>
+              2025-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+            
+              <a href="/tags/LIS/">#LIS</a>
+            
+              <a href="/tags/Dilworth%E5%AE%9A%E7%90%86/">#Dilworth定理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/f06cc821/" target="_self">
+          P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f06cc821/" target="_self">
+        <div>
+          Luogu-P1280 尼克的任务 ## 1. 核心逻辑   问题本质: 确定最优的任务选择策略，使得非工作时间（空暇时间）最大化。   破局转换:   正难则反: 正向决策时，当前任务的选择会直接决定“下一次能开始决策”的时间点，这种“跨度”在正向推导时状态不连贯。   逆序定义: f[i] 表示从时刻 iii 到 NNN（时刻 NNN 结束）所能获得的最大空暇时间。   转移逻辑:   若时刻
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-11 00:00" pubdate>
+              2025-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
+            
+              <a href="/tags/%E9%80%86%E5%BA%8FDP/">#逆序DP</a>
+            
+              <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/">#任务调度</a>
             
           </div>
         

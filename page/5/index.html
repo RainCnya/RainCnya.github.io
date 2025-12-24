@@ -259,157 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/95fc4668/" target="_self">
-          计数DP方法论 (Counting Methodology)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/95fc4668/" target="_self">
-        <div>
-          1. 生态位  定义: 求解满足特定约束的方案总数 (Answer is Number of Ways)。 解决痛点:  组合爆炸: 直接搜索无法处理指数级方案。 复杂约束: &quot;至少一个&quot;、&quot;至多一半&quot; 等限制条件 (P5664 Emiya)。    2. 逻辑支点  核心直觉 1: 循环序决定排列/组合。  组合 (Combination): 物品无序
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 22:40" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E6%95%B0DP/">#计数DP</a>
-            
-              <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">#组合数学</a>
-            
-              <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">#容斥原理</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/8b130bbd/" target="_self">
-          状压DP体系
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/8b130bbd/" target="_self">
-        <div>
-          1. 生态位  定义: 将集合状态 (S⊆{1…N}S \subseteq \{1 \dots N\}S⊆{1…N}) 压缩为二进制整数，利用位运算进行转移。 适用范围: 数据规模极小 (N≤20N \le 20N≤20)。  2. 逻辑支点  集合操作:  i∈Si \in Si∈S: (S &gt;&gt; i) &amp; 1 S∪{i}S \cup \{i\}S∪{i}: S | (1 &
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 22:35" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%8A%B6%E5%8E%8BDP/">#状压DP</a>
-            
-              <a href="/tags/TSP/">#TSP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/b6a340a7/" target="_self">
-          树形DP体系 (Tree DP)
+          树形DP体系 (Tree DP System)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/b6a340a7/" target="_self">
         <div>
-          1. 生态位  定义: 在树形结构上，由子树的状态 (v∈son(u)v \in son(u)v∈son(u)) 推导父节点状态 (uuu)。 遍历顺序: 通常采用 DFS 后序遍历 (先子树，后根节点)。  2. 逻辑支点  选择模型 (没有上司的舞会):  dp[u][0]dp[u][0]dp[u][0]: uuu 不选，子节点可选可不选 →∑max⁡(dp[v][0],dp[v][1])\t
+          树形DP体系 1. 生态位   定义: 在树形拓扑结构上执行决策。状态通常定义为以 uuu 为根的子树的最优解，转移方向由叶节点向根节点回传。   解决痛点: 解决了具备层级依赖关系、连通性约束（如最大独立集）以及路径统计类的组合优化问题。   2. 逻辑支点   核心不变量: 子树独立性。在不考虑换根的情况下，根节点的决策仅受子树状态约束，不受其父节点或兄弟节点影响。   状态转移范式:   选
         </div>
       </a>
 
@@ -472,14 +330,14 @@
       <h2 class="index-header">
         
         <a href="/posts/a75f3b7c/" target="_self">
-          区间与环形体系 (Interval &amp; Ring System)
+          区间DP体系 (Interval System)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/a75f3b7c/" target="_self">
         <div>
-          1. 生态位  定义: 状态定义在连续区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 将大区间分裂为子区间的决策模型。 解决痛点:  合并类问题: 石子合并、能量项链 (局部最优无法推导全局最优，必须枚举分割)。 递归结构: 括号匹配、树的遍历序 (需结合递归性质)。    2. 逻辑支点  区间合并:  dp[i][j]=max⁡/min⁡{dp[i][k]+dp[k+1][
+          区间与环形体系 1. 生态位   定义: 状态定义在序列的连续闭区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 或处理端点关系，由小区间收益推导大区间最值的模型。   解决痛点: 解决了全局最优解不具备局部线性增长特性，但具备局部合并特性的场景。   2. 逻辑支点   核心不变量: 拓扑序由区间长度决定。  状态转移必须遵循 len=1→Nlen = 1 \to Nlen=1
         </div>
       </a>
 
@@ -542,14 +400,14 @@
       <h2 class="index-header">
         
         <a href="/posts/8be0e5f9/" target="_self">
-          背包模型体系 (Knapsack System)
+          背包DP体系 (Knapsack System)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/8be0e5f9/" target="_self">
         <div>
-          1. 生态位  定义: 在有限容量 (Capacity) 限制下，通过组合选择物品以达成最大价值 (Value) 的模型。 本质: 维度限制下的组合优化。 解决痛点: 资源分配、子集和问题、策略博弈。  2. 逻辑支点  核心直觉: 循环方向决定复用性。  倒序 (V→wV \to wV→w): 隔离当前层影响   ⟹  \implies⟹ 物品仅被选 1次 (0/1 背包/分组背包)。 正序 (
+          背包模型体系 1. 生态位   定义: 在有限容量/重量资源限制下，通过对离散物品进行最优组合选择，实现价值最大化的模型。   解决痛点: 解决了子集选择问题、资源分配及“恰好凑成”类的可达性判定问题。   本质: 维度限制下的路径规划。   2. 逻辑支点   核心不变量: 循环方向决定复用性。   倒序 (V→wV \to wV→w): 隔离当前层的决策影响，确保每个物品仅选 1次 (01 背
         </div>
       </a>
 
@@ -612,14 +470,14 @@
       <h2 class="index-header">
         
         <a href="/posts/fbbfeb81/" target="_self">
-          高维与网格DP (High dimensional &amp; grid DP)
+          网格DP (Grid DP System)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/fbbfeb81/" target="_self">
         <div>
-          1. 生态位  定义: 状态包含多个维度的线性 DP，常出现于网格图的路径规划问题。 场景: 数字金字塔、从 (1,1)(1,1)(1,1) 走到 (N,M)(N,M)(N,M) 的最优路径。  2. 逻辑支点  多线程并发 (传纸条模型):  问题: 两条路径不能重叠，求最大权值和。 转化: 两个人同时从起点出发。 状态: dp[k][x1][x2]dp[k][x_1][x_2]dp[k][x1
+          网格DP体系 1. 生态位   定义: 状态定义在二维坐标 (i,j)(i, j)(i,j) 或其高维扩展上，利用网格的步进方向（通常为向右、向下）自然建立 DAG 拓扑序。   解决痛点: 解决了网格图中的路径计数、最值规划、多路径互斥以及基于局部连通性的覆盖问题。   核心不变量: 方向性即序。只要移动方向不产生回路，坐标本身就是天然的阶段标识。   2. 逻辑支点   模型坍缩:   单路模
         </div>
       </a>
 
@@ -665,9 +523,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%A4%9A%E8%B7%AFDP/">#多路DP</a>
-            
               <a href="/tags/%E7%BD%91%E6%A0%BC%E5%9B%BE/">#网格图</a>
+            
+              <a href="/tags/%E5%A4%9A%E8%B7%AFDP/">#多路DP</a>
             
           </div>
         
@@ -682,14 +540,14 @@
       <h2 class="index-header">
         
         <a href="/posts/a164e19/" target="_self">
-          线性序列体系 (Sequence System)
+          线性DP体系 (Sequence System)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/a164e19/" target="_self">
         <div>
-          1. 生态位  定义: 状态仅与序列的位置 (Index) 有关，转移通常依赖前缀 i−1i-1i−1 或 1…i−11 \dots i-11…i−1。 解决痛点:  LIS (最长上升子序列): 选出最长的严格单调递增子序列。 LCS (最长公共子序列): 两个序列中最长的公共部分。   竞品对比:  O(N2)O(N^2)O(N2) LIS: 记录具体方案时使用。 O(Nlog⁡N)O(N \
+          线性序列体系 1. 生态位   定义: 状态空间随序列索引 iii 线性延伸，转移通常仅依赖于 1…i−11 \dots i-11…i−1 的前缀信息。   解决痛点: 解决了子序列选择、排列匹配等 O(N2)O(N^2)O(N2) 的暴力组合优化，并提供向 O(Nlog⁡N)O(N \log N)O(NlogN) 跨越的贪心支点。   核心不变量: 序列的物理相对位置决定了决策的拓扑序。   2
         </div>
       </a>
 
@@ -735,11 +593,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
+              <a href="/tags/LIS/">#LIS</a>
             
               <a href="/tags/LCS/">#LCS</a>
             
-              <a href="/tags/LIS/">#LIS</a>
+              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
             
           </div>
         
@@ -754,14 +612,14 @@
       <h2 class="index-header">
         
         <a href="/posts/1c960464/" target="_self">
-          动态规划体系综述 (DP Core Synthesis)
+          动态规划：状态公理与决策本质 (DP Core Synthesis)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/1c960464/" target="_self">
         <div>
-          1. 生态位  定义: 将原问题分解为相对独立的子问题，并记录子问题的解以避免重复计算。 核心要素:  重叠子问题: 必须有重复计算，否则不如直接爆搜。 最优子结构: 大问题的最优解可以由小问题的最优解推导而来。 无后效性: 状态一旦确定，其后的演变只与当前状态有关，与“怎么走到这一步”无关。    2. 逻辑支点  记忆化搜索 vs 递推:  记忆化 (Top-Down): 适合状态稀疏、状态转
+          动态规划综述 1. 生态位   定义: 动态规划是将复杂的多阶段决策过程坍缩为有序状态流转的方法论。   解决痛点: 解决了指数级搜索空间（Brute Force）中的冗余计算问题。   2. 逻辑支点   核心不变量:   最优子结构: 全局最优决策序列的每一个子序列也必须是局部的最优决策。   重叠子问题: 不同的决策路径可以交汇于同一个物理状态。   无后效性 (Non-aftereffec
         </div>
       </a>
 
@@ -877,13 +735,13 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
-            
               <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
             
-              <a href="/tags/%E6%97%B6%E5%85%89%E5%80%92%E6%B5%81/">#时光倒流</a>
+              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
             
               <a href="/tags/%E6%89%A9%E5%B1%95%E5%9F%9F/">#扩展域</a>
+            
+              <a href="/tags/%E6%97%B6%E5%85%89%E5%80%92%E6%B5%81/">#时光倒流</a>
             
           </div>
         
@@ -956,6 +814,150 @@
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%A0%86/">#数据结构/堆</a>
             
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%AF%B9%E9%A1%B6%E5%A0%86/">#数据结构/对顶堆</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/33f15c14/" target="_self">
+          线段树体系 (Segment Tree System)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/33f15c14/" target="_self">
+        <div>
+          线段树体系 (Segment Tree System) 1. 生态位   定义: 基于二分思想的平衡树形结构，将序列划分为 O(N)O(N)O(N) 个节点，支持 O(log⁡N)O(\log N)O(logN) 的区间修改与查询。   解决痛点: 复杂的区间合并逻辑（非简单可加性）与多种标记叠加。   核心依赖: 算子必须满足结合律。   2. 逻辑支点   懒标记 (Lazy Tag): 延迟
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 20:10" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
+            
+              <a href="/tags/%E6%89%AB%E6%8F%8F%E7%BA%BF/">#扫描线</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/eef750c1/" target="_self">
+          树状数组体系 (Binary Indexed Tree)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/eef750c1/" target="_self">
+        <div>
+          树状数组体系 (Binary Indexed Tree) 1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(Nlo
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-16 20:00" pubdate>
+              2025-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/">#逆序对</a>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
             
           </div>
         

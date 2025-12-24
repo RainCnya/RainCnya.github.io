@@ -19,23 +19,24 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P1280 尼克的任务 1. 核心逻辑 问题本质 任务调度，求最大空暇时间。 破局思路  正难则反: 正向 DP 难以确定当前选择对未来的影响。倒序 DP 更清晰：dp[i] 表示从时刻 iii 到 NNN 的最大空暇。 转移:  若时刻 iii 无任务：dp[i] &#x3D; dp[i+1] + 1。 若时刻 iii 有任务：必须选一个。dp[i] &#x3D; max(dp[i + duration">
+    <meta name="description" content="Luogu-P1280 尼克的任务 ## 1. 核心逻辑   问题本质: 确定最优的任务选择策略，使得非工作时间（空暇时间）最大化。   破局转换:   正难则反: 正向决策时，当前任务的选择会直接决定“下一次能开始决策”的时间点，这种“跨度”在正向推导时状态不连贯。   逆序定义: f[i] 表示从时刻 iii 到 NNN（时刻 NNN 结束）所能获得的最大空暇时间。   转移逻辑:   若时刻">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1280 [NOIP1993] 尼克的任务">
+<meta property="og:title" content="P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP)">
 <meta property="og:url" content="https://example.com/posts/f06cc821/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P1280 尼克的任务 1. 核心逻辑 问题本质 任务调度，求最大空暇时间。 破局思路  正难则反: 正向 DP 难以确定当前选择对未来的影响。倒序 DP 更清晰：dp[i] 表示从时刻 iii 到 NNN 的最大空暇。 转移:  若时刻 iii 无任务：dp[i] &#x3D; dp[i+1] + 1。 若时刻 iii 有任务：必须选一个。dp[i] &#x3D; max(dp[i + duration">
+<meta property="og:description" content="Luogu-P1280 尼克的任务 ## 1. 核心逻辑   问题本质: 确定最优的任务选择策略，使得非工作时间（空暇时间）最大化。   破局转换:   正难则反: 正向决策时，当前任务的选择会直接决定“下一次能开始决策”的时间点，这种“跨度”在正向推导时状态不连贯。   逆序定义: f[i] 表示从时刻 iii 到 NNN（时刻 NNN 结束）所能获得的最大空暇时间。   转移逻辑:   若时刻">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.789Z">
+<meta property="article:modified_time" content="2025-12-24T11:37:50.162Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="线性DP">
 <meta property="article:tag" content="逆序DP">
+<meta property="article:tag" content="任务调度">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1280 [NOIP1993] 尼克的任务 - MiQiu</title>
+  <title>P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1280 [NOIP1993] 尼克的任务"></span>
+            <span id="subtitle" data-typed-text="P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP)"></span>
           
         </div>
 
@@ -261,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          280 字
+          352 字
         
       </span>
     
@@ -273,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -319,45 +320,59 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1280 [NOIP1993] 尼克的任务</h1>
+            <h1 id="seo-header">P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1280">Luogu-P1280</a> 尼克的任务</h1>
-<h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p>任务调度，求最大空暇时间。</p>
-<h3 id="破局思路">破局思路</h3>
-<ol>
-<li><strong>正难则反</strong>:<br>
-正向 DP 难以确定当前选择对未来的影响。<strong>倒序 DP</strong> 更清晰：<code>dp[i]</code> 表示从时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 的最大空暇。</li>
-<li><strong>转移</strong>:
+<h2 id="1-核心逻辑">## 1. 核心逻辑</h2>
 <ul>
-<li>若时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 无任务：<code>dp[i] = dp[i+1] + 1</code>。</li>
-<li>若时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 有任务：必须选一个。<code>dp[i] = max(dp[i + duration])</code>。</li>
+<li>
+<p><strong>问题本质</strong>: 确定最优的任务选择策略，使得非工作时间（空暇时间）最大化。</p>
+</li>
+<li>
+<p><strong>破局转换</strong>:</p>
+<ol>
+<li>
+<p><strong>正难则反</strong>: 正向决策时，当前任务的选择会直接决定“下一次能开始决策”的时间点，这种“跨度”在正向推导时状态不连贯。</p>
+</li>
+<li>
+<p><strong>逆序定义</strong>: <code>f[i]</code> 表示从时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>（时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 结束）所能获得的最大空暇时间。</p>
+</li>
+<li>
+<p><strong>转移逻辑</strong>:</p>
+<ul>
+<li>
+<p>若时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> <strong>无起始任务</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">]</mo><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">f[i] = f[i + 1] + 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。</p>
+</li>
+<li>
+<p>若时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> <strong>有起始任务</strong>: 必须从这些任务中选一个执行，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo>+</mo><mi>d</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f[i] = \max(f[i + duration])</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mclose">])</span></span></span></span>。</p>
+</li>
 </ul>
 </li>
 </ol>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e4</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-type">int</span> dp[maxn];<br><span class="hljs-type">int</span> n, k;<br>vector&lt;<span class="hljs-type">int</span>&gt; v[maxn]; <span class="hljs-comment">// v[i] 存储时刻 i 开始的所有任务时长</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;	<br>    cin &gt;&gt; n &gt;&gt; k;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> p, t;<br>        cin &gt;&gt; p &gt;&gt; t;<br>        v[p].<span class="hljs-built_in">push_back</span>( t );<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( !v[i].<span class="hljs-built_in">empty</span>( ) )<br>        &#123;<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> len : v[i] )<br>            &#123;<br>                dp[i] = <span class="hljs-built_in">max</span>( dp[i], dp[ i + len ] );<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            dp[i] = dp[i + <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; dp[<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e4</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">int</span> n, k, f[ maxn ];<br>vector&lt; <span class="hljs-type">int</span> &gt; tasks[ maxn ];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br><br>    cin &gt;&gt; n &gt;&gt; k;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; ++ i ) <br>    &#123;<br>        <span class="hljs-type">int</span> p, t;<br>        cin &gt;&gt; p &gt;&gt; t;<br>        tasks[ p ].<span class="hljs-built_in">push_back</span>( t );<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; -- i ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( tasks[ i ].<span class="hljs-built_in">empty</span>( ) ) <br>        &#123;<br>            f[ i ] = f[ i + <span class="hljs-number">1</span> ] + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <br>        &#123;<br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> len : tasks[ i ] ) <br>            &#123;<br>                f[ i ] = <span class="hljs-built_in">max</span>( f[ i ], f[ i + len ] );<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; f[ <span class="hljs-number">1</span> ] &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>K</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N + K)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span> | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>K</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N + K)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>易错点</strong>: 只有当当前时刻<strong>没有任何任务</strong>时，才能算作空暇时间并 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>。</p>
+<p><strong>关键点</strong>: 逆向 DP 能够自动处理“未来的最优选择”，从而简化时刻 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 的分支逻辑。</p>
 </li>
 </ul>
 
@@ -404,6 +419,8 @@
       
         <a href="/tags/%E9%80%86%E5%BA%8FDP/" class="print-no-link">#逆序DP</a>
       
+        <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/" class="print-no-link">#任务调度</a>
+      
     </div>
   
 </div>
@@ -414,7 +431,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1280 [NOIP1993] 尼克的任务</div>
+      <div>P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP)</div>
       <div>https://example.com/posts/f06cc821/</div>
     </div>
     <div class="license-meta">
@@ -459,9 +476,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/c041f5c2/" title="P1091 [NOIP2004] 合唱队形">
+                      <a href="/posts/5e9e3688/" title="P1020 [NOIP1999] 导弹拦截 (Seq_Dilworth_LIS)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1091 [NOIP2004] 合唱队形</span>
+                        <span class="hidden-mobile">P1020 [NOIP1999] 导弹拦截 (Seq_Dilworth_LIS)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -469,8 +486,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/5e9e3688/" title="P1020 [NOIP1999] 导弹拦截">
-                        <span class="hidden-mobile">P1020 [NOIP1999] 导弹拦截</span>
+                      <a href="/posts/c041f5c2/" title="P1091 [NOIP2004] 合唱队形 (Seq_Bidirectional_LIS)">
+                        <span class="hidden-mobile">P1091 [NOIP2004] 合唱队形 (Seq_Bidirectional_LIS)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

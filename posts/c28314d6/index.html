@@ -19,19 +19,19 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="基础算法指南  所有高级算法都是基础算子的复合叠加。 所谓降维打击，本质上是针对特定冗余执行的逻辑简化。 核心在于通过过滤剔除无效状态，或通过压缩将区间操作坍缩为点操作。  1. 排序与二分 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。   排序体系：归并与快排的对">
+    <meta name="description" content="基础算法：降维打击的起点  Philosophy: 所有高级算法都是基础算子的复合叠加。 降维打击的本质，在于识别冗余状态并利用数学&#x2F;物理性质将其坍缩。  1. 排序与二分 (Sorting &amp; Binary) 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础算法：降维打击的起点 (Basis Guide)">
 <meta property="og:url" content="https://example.com/posts/c28314d6/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="基础算法指南  所有高级算法都是基础算子的复合叠加。 所谓降维打击，本质上是针对特定冗余执行的逻辑简化。 核心在于通过过滤剔除无效状态，或通过压缩将区间操作坍缩为点操作。  1. 排序与二分 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。   排序体系：归并与快排的对">
+<meta property="og:description" content="基础算法：降维打击的起点  Philosophy: 所有高级算法都是基础算子的复合叠加。 降维打击的本质，在于识别冗余状态并利用数学&#x2F;物理性质将其坍缩。  1. 排序与二分 (Sorting &amp; Binary) 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T11:10:31.983Z">
+<meta property="article:modified_time" content="2025-12-24T15:08:02.307Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="指南">
 <meta property="article:tag" content="基础算法">
 <meta property="article:tag" content="降维优化">
+<meta property="article:tag" content="指南">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          513 字
+          509 字
         
       </span>
     
@@ -325,14 +325,13 @@
             
               <div class="markdown-body">
                 
-                <h1>基础算法指南</h1>
+                <h1>基础算法：降维打击的起点</h1>
 <blockquote>
-<p>所有高级算法都是基础算子的复合叠加。</p>
-<p>所谓降维打击，本质上是针对特定冗余执行的逻辑简化。</p>
-<p>核心在于通过过滤剔除无效状态，或通过压缩将区间操作坍缩为点操作。</p>
+<p><strong>Philosophy</strong>: 所有高级算法都是基础算子的复合叠加。</p>
+<p>降维打击的本质，在于识别冗余状态并利用数学/物理性质将其坍缩。</p>
 </blockquote>
-<h3 id="1-排序与二分">1. 排序与二分</h3>
-<p>逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。</p>
+<h3 id="1-排序与二分-Sorting-Binary">1. 排序与二分 (Sorting &amp; Binary)</h3>
+<p>逻辑<strong>分治</strong>与边界锁定的核心工具，将搜索空间压缩至对数级。</p>
 <ul>
 <li>
 <p><a href="/posts/66874f84/">二分体系</a>：锁定分界线，将求解最值转换为合法性判定。</p>
@@ -344,7 +343,7 @@
 <p><a href="/posts/50dbb92c/">排序体系</a>：归并与快排的对称美学，用于捕捉逆序对或偏序贡献。</p>
 </li>
 </ul>
-<h3 id="2-降维优化体系">2. 降维优化体系</h3>
+<h3 id="2-降维优化体系-Dimension-Reduction">2. 降维优化体系 (Dimension Reduction)</h3>
 <p>旨在挖掘单调性、不回退性或数学可逆性的工具箱。</p>
 <ul>
 <li>
@@ -357,7 +356,7 @@
 <p>[[离散化体系]]：将稀疏大值域压缩为紧凑小下标，为数据结构提供索引。</p>
 </li>
 </ul>
-<h3 id="3-贪心与构造">3. 贪心与构造</h3>
+<h3 id="3-贪心与构造-Greedy-Constructive">3. 贪心与构造 (Greedy &amp; Constructive)</h3>
 <p>寻找局部最优不变量与合法解的生成逻辑。</p>
 <ul>
 <li>
@@ -367,7 +366,7 @@
 <p><a href="/posts/bc9a4630/">构造算法体系</a>：约束拆解。通过分类讨论与极端填充生成符合条件的解空间。</p>
 </li>
 </ul>
-<h3 id="4-数学与博弈">4. 数学与博弈</h3>
+<h3 id="4-数学与博弈-Math-Game">4. 数学与博弈 (Math &amp; Game)</h3>
 <p>代数公式的解耦与博弈逻辑的简化。</p>
 <ul>
 <li>
@@ -377,10 +376,10 @@
 <p><a href="/posts/7f4b8a8/">逻辑博弈体系</a>：线性函数极值判定与距离度量的转换。</p>
 </li>
 </ul>
-<h3 id="5-选型与决策">5. 选型与决策</h3>
+<h3 id="5-选型与决策-Decision-Matrix">5. 选型与决策 (Decision Matrix)</h3>
 <p>针对特定场景的工具链选择与降维机会识别：</p>
 <ul>
-<li><a href="/posts/undefined/">基础算法决策</a>：场景驱动的算法选型映射表与思维范式。</li>
+<li><a href="/posts/d5d69e99/">基础算法决策</a>：场景驱动的算法选型映射表与降维机会识别范式。</li>
 </ul>
 <h2 id="归档索引">归档索引</h2>
 <p>所有题目归档请参考：<a href="/posts/5755fe4f/">基础算法归档数据库</a></p>
@@ -424,11 +423,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8C%87%E5%8D%97/" class="print-no-link">#指南</a>
-      
         <a href="/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="print-no-link">#基础算法</a>
       
         <a href="/tags/%E9%99%8D%E7%BB%B4%E4%BC%98%E5%8C%96/" class="print-no-link">#降维优化</a>
+      
+        <a href="/tags/%E6%8C%87%E5%8D%97/" class="print-no-link">#指南</a>
       
     </div>
   
@@ -485,9 +484,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/9e0761d7/" title="动态规划：从线性推演到维度打击 (DP Guide)">
+                      <a href="/posts/4775279/" title="双指针体系 (Two Pointers System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态规划：从线性推演到维度打击 (DP Guide)</span>
+                        <span class="hidden-mobile">双指针体系 (Two Pointers System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -495,8 +494,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/ef28f194/" title="离散化 (Discretization System)">
-                        <span class="hidden-mobile">离散化 (Discretization System)</span>
+                      <a href="/posts/4bddc3c/" title="数据结构：信息的容器与维护 (DS Guide)">
+                        <span class="hidden-mobile">数据结构：信息的容器与维护 (DS Guide)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

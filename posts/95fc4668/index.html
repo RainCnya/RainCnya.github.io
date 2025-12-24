@@ -19,24 +19,24 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 求解满足特定约束的方案总数 (Answer is Number of Ways)。 解决痛点:  组合爆炸: 直接搜索无法处理指数级方案。 复杂约束: &quot;至少一个&quot;、&quot;至多一半&quot; 等限制条件 (P5664 Emiya)。    2. 逻辑支点  核心直觉 1: 循环序决定排列&#x2F;组合。  组合 (Combination): 物品无序">
+    <meta name="description" content="计数DP体系 1. 生态位   定义: 专注于求解满足特定复杂约束的“方案总数”而非“最优值”的模型。   解决痛点: 解决了全局性约束（如：某列不得超过总数一半）导致的合法状态定义困难。   2. 逻辑支点   正难则反 (Inclusion-Exclusion):   渗透点: 当正面构造状态需要记录太多历史信息时，转而计算“非法方案数”。   逻辑归约: 全局非法往往可以坍缩为某个局部特征的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计数DP方法论 (Counting Methodology)">
+<meta property="og:title" content="计数DP方法论 (Counting System)">
 <meta property="og:url" content="https://example.com/posts/95fc4668/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 求解满足特定约束的方案总数 (Answer is Number of Ways)。 解决痛点:  组合爆炸: 直接搜索无法处理指数级方案。 复杂约束: &quot;至少一个&quot;、&quot;至多一半&quot; 等限制条件 (P5664 Emiya)。    2. 逻辑支点  核心直觉 1: 循环序决定排列&#x2F;组合。  组合 (Combination): 物品无序">
+<meta property="og:description" content="计数DP体系 1. 生态位   定义: 专注于求解满足特定复杂约束的“方案总数”而非“最优值”的模型。   解决痛点: 解决了全局性约束（如：某列不得超过总数一半）导致的合法状态定义困难。   2. 逻辑支点   正难则反 (Inclusion-Exclusion):   渗透点: 当正面构造状态需要记录太多历史信息时，转而计算“非法方案数”。   逻辑归约: 全局非法往往可以坍缩为某个局部特征的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T14:40:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:12:39.205Z">
+<meta property="article:modified_time" content="2025-12-24T15:08:02.305Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="计数DP">
-<meta property="article:tag" content="组合数学">
 <meta property="article:tag" content="容斥原理">
+<meta property="article:tag" content="组合数学">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>计数DP方法论 (Counting Methodology) - MiQiu</title>
+  <title>计数DP方法论 (Counting System) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="计数DP方法论 (Counting Methodology)"></span>
+            <span id="subtitle" data-typed-text="计数DP方法论 (Counting System)"></span>
           
         </div>
 
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          576 字
+          470 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          8 分钟
+          6 分钟
         
       </span>
     
@@ -320,91 +320,89 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">计数DP方法论 (Counting Methodology)</h1>
+            <h1 id="seo-header">计数DP方法论 (Counting System)</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>计数DP体系</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 求解满足特定约束的<strong>方案总数</strong> (Answer is Number of Ways)。</li>
-<li><strong>解决痛点</strong>:
-<ul>
-<li><strong>组合爆炸</strong>: 直接搜索无法处理指数级方案。</li>
-<li><strong>复杂约束</strong>: &quot;至少一个&quot;、&quot;至多一半&quot; 等限制条件 (P5664 Emiya)。</li>
-</ul>
+<li>
+<p><strong>定义</strong>: 专注于求解满足特定复杂约束的“方案总数”而非“最优值”的模型。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 解决了全局性约束（如：某列不得超过总数一半）导致的合法状态定义困难。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>核心直觉 1: 循环序决定排列/组合</strong>。
+<li>
+<p><strong>正难则反 (Inclusion-Exclusion)</strong>:</p>
 <ul>
-<li><strong>组合 (Combination)</strong>: 物品无序 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <strong>先枚举物品，再枚举容量</strong>。</li>
-<li><strong>排列 (Permutation)</strong>: 物品有序 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> <strong>先枚举容量，再枚举物品</strong>。</li>
+<li>
+<p><strong>渗透点</strong>: 当正面构造状态需要记录太多历史信息时，转而计算“非法方案数”。</p>
+</li>
+<li>
+<p><strong>逻辑归约</strong>: 全局非法往往可以坍缩为某个局部特征的极端表现（如 P5664 中只需枚举哪一个单列非法）。</p>
+</li>
 </ul>
 </li>
-<li><strong>核心直觉 2: 正难则反 (Inclusion-Exclusion)</strong>。
+<li>
+<p><strong>状态机模型</strong>:</p>
 <ul>
-<li>当限制条件是 &quot;Globally Constraint&quot; (如所有食材不超过总数的一半) 时，直接构造很难。</li>
-<li><strong>转化</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mo>−</mo><mi>I</mi><mi>l</mi><mi>l</mi><mi>e</mi><mi>g</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Total - Illegal</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>。</li>
-<li><strong>非法判定</strong>: 只需要枚举<strong>哪一个</strong>成分超过了一半，就可以将全局约束转化为局部约束。</li>
+<li>将计数过程视为在有限自动机（DFA）上的行走，每个字符或决策是一次状态转移。</li>
+</ul>
+</li>
+<li>
+<p><strong>核心不变量</strong>: <strong>循环序决定对称性</strong>。</p>
+<ul>
+<li>
+<p>先物品后容量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 组合（不计顺序）。</p>
+</li>
+<li>
+<p>先容量后物品 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\implies</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.549em;vertical-align:-0.024em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span></span></span></span> 排列（计算顺序）。</p>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-整数划分-P1025">3.1 整数划分 (P1025)</h3>
+<h3 id="3-1-容斥差值-DP-以-Emiya-家今天的饭为例">3.1 容斥差值 DP (以 Emiya 家今天的饭为例)</h3>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
-        <div class="fold-arrow">▶</div>Code: Integer Partition
+        <div class="fold-arrow">▶</div>Code: Exclusion DP Pattern
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// dp[i][j]: 将 i 划分为 j 份的方案数</span><br><span class="hljs-comment">// 策略: </span><br><span class="hljs-comment">// 1. j 份中至少有 1 份是 1 -&gt; dp[i-1][j-1] (拿掉这个 1)</span><br><span class="hljs-comment">// 2. j 份都大于 1 -&gt; 每份减去 1 -&gt; dp[i-j][j]</span><br>dp[i][j] = dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + dp[i-j][j];<br></code></pre></td></tr></table></figure>
-        </div>
-      </div>
-    </div>
-<h3 id="3-2-容斥原理-P5664-Emiya-家今天的饭">3.2 容斥原理 (P5664 Emiya 家今天的饭)</h3>
-<ul>
-<li>
-<p><strong>问题</strong>: 选 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 道菜，每行最多 1 个，每列最多 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">⌊</mo><mi>K</mi><mi mathvariant="normal">/</mi><mn>2</mn><mo stretchy="false">⌋</mo></mrow><annotation encoding="application/x-tex">\lfloor K/2 \rfloor</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord">/2</span><span class="mclose">⌋</span></span></span></span> 个。</p>
-</li>
-<li>
-<p><strong>策略</strong>:</p>
-<ol>
-<li>
-<p>计算总方案数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">Total</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> (只考虑行限制，不考虑列限制)。</p>
-</li>
-<li>
-<p>枚举<strong>非法列</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> (即该列选了超过一半)。</p>
-</li>
-<li>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 行，列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> 比其他列<strong>多选</strong>了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 个。</p>
-</li>
-</ol>
-</li>
-</ul>
-
-    <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: Inclusion-Exclusion DP
-      </div>
-      <div class="fold-collapse collapse" id="collapse-28ab9646">
-        <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// Total Ways: Product(sum[i] + 1) - 1 (减去全空的情况)</span><br><br><span class="hljs-type">long</span> <span class="hljs-type">long</span> illegal = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> c = <span class="hljs-number">1</span>; c &lt;= m; ++ c ) <span class="hljs-comment">// 枚举非法列</span><br>&#123;<br>    <span class="hljs-built_in">memset</span>( dp, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(dp) );<br>    dp[<span class="hljs-number">0</span>][n] = <span class="hljs-number">1</span>; <span class="hljs-comment">// Offset n (用 n 代表 0 差值，防止负下标)</span><br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = n - i; j &lt;= n + i; ++ j )<br>        &#123;<br>            <span class="hljs-comment">// 1. 不选这行</span><br>            dp[i][j] = dp[i<span class="hljs-number">-1</span>][j];<br>            <span class="hljs-comment">// 2. 选非法列 c (+1 diff)</span><br>            <span class="hljs-keyword">if</span>( j &gt; <span class="hljs-number">0</span> )<br>                dp[i][j] = (dp[i][j] + dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] * a[i][c]) % MOD;<br>            <span class="hljs-comment">// 3. 选其他列 (-1 diff)</span><br>            <span class="hljs-comment">// others = row_sum[i] - a[i][c]</span><br>            <span class="hljs-keyword">if</span>( j &lt; <span class="hljs-number">2</span>*n )<br>                dp[i][j] = (dp[i][j] + dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">+1</span>] * (sum[i] - a[i][c])) % MOD;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 统计 diff &gt; 0 的情况 (即 j &gt; n)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = n + <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">2</span>*n; ++ j ) <br>        illegal = (illegal + dp[n][j]) % MOD;<br>&#125;<br><span class="hljs-comment">// Ans = (Total - illegal + MOD) % MOD</span><br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 核心：f[ i ][ j ] 记录 (非法列选择数 - 其余列选择数) 的差值</span><br>f[ <span class="hljs-number">0</span> ][ n ] = <span class="hljs-number">1</span>; <span class="hljs-comment">// 偏移量 n 防止负下标</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = n - i; j &lt;= n + i; ++ j )<br>    &#123;<br>        <span class="hljs-comment">// 1. 不选：继承方案数</span><br>        f[ i ][ j ] = f[ i - <span class="hljs-number">1</span> ][ j ];<br>        <span class="hljs-comment">// 2. 选非法列 c：差值 +1</span><br>        f[ i ][ j ] = ( f[ i ][ j ] + f[ i - <span class="hljs-number">1</span> ][ j - <span class="hljs-number">1</span> ] * a[ i ][ c ] ) % mod;<br>        <span class="hljs-comment">// 3. 选其他列：差值 -1</span><br>        f[ i ][ j ] = ( f[ i ][ j ] + f[ i - <span class="hljs-number">1</span> ][ j + <span class="hljs-number">1</span> ] * others[ i ] ) % mod;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
+<p><strong>变体模型</strong>:</p>
+<ul>
+<li>
+<p><a href="/posts/8b130bbd/">状压DP体系</a>: 针对小规模集合的精确计数。</p>
+</li>
+<li>
+<p><a href="/posts/a164e19/">线性DP体系</a>: 波动序列与排列对称性的结合。</p>
+</li>
+</ul>
+</li>
+<li>
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1025">Luogu-P1025</a></strong>: 数的划分。</p>
+<p><a href="/posts/1fc9d42/">P5664 Emiya 家今天的饭 (Inclusion_Exclusion_Grid)</a> —— 全局约束向局部非法的容斥映射。</p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5664">Luogu-P5664</a></strong>: Emiya 家今天的饭 (容斥 DP 经典)。</p>
+<p><a href="/posts/64a7bd0f/">P2467 地精部落 (Seq_Wiggle_Permutation)</a> —— 补集对称性在排列计数中的应用。</p>
+</li>
+<li>
+<p><a href="/posts/7c9286d9/">P1758 管道取珠 (Grid_Walking_Conversion)</a> —— 平方和方案数的同步博弈转化。</p>
 </li>
 </ul>
 </li>
@@ -451,9 +449,9 @@
       
         <a href="/tags/%E8%AE%A1%E6%95%B0DP/" class="print-no-link">#计数DP</a>
       
-        <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="print-no-link">#组合数学</a>
-      
         <a href="/tags/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/" class="print-no-link">#容斥原理</a>
+      
+        <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="print-no-link">#组合数学</a>
       
     </div>
   
@@ -465,7 +463,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>计数DP方法论 (Counting Methodology)</div>
+      <div>计数DP方法论 (Counting System)</div>
       <div>https://example.com/posts/95fc4668/</div>
     </div>
     <div class="license-meta">
@@ -510,9 +508,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/ec3ba026/" title="状压与状态抽象 (State Compression &amp; Abstraction)">
+                      <a href="/posts/1bc8a91b/" title="单调性优化体系 (Monotonicity System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">状压与状态抽象 (State Compression &amp; Abstraction)</span>
+                        <span class="hidden-mobile">单调性优化体系 (Monotonicity System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -520,8 +518,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8b130bbd/" title="状压DP体系">
-                        <span class="hidden-mobile">状压DP体系</span>
+                      <a href="/posts/8b130bbd/" title="状压DP体系 (State Compression System)">
+                        <span class="hidden-mobile">状压DP体系 (State Compression System)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

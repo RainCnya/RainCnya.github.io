@@ -260,14 +260,14 @@
       <h2 class="index-header">
         
         <a href="/posts/c041f5c2/" target="_self">
-          P1091 [NOIP2004] 合唱队形
+          P1091 [NOIP2004] 合唱队形 (Seq_Bidirectional_LIS)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/c041f5c2/" target="_self">
         <div>
-          Luogu-P1091 合唱队形 1. 核心逻辑 问题本质 求最长的“先升后降”子序列。 破局思路  转化: 枚举峰值 iii。 以 iii 结尾的最长合唱队形 = (以 iii 结尾的最长上升子序列) + (以 iii 开始的最长下降子序列) - 1。 双向 DP:  dp1[i]: 从左向右的 LIS。 dp2[i]: 从右向左的 LIS (相当于从左向右的 LDS 的反向视角)。    2.
+          Luogu-P1091 合唱队形 1. 核心逻辑   问题本质: 寻找一个最长的子序列，满足先严格上升后严格下降（山峰模型）。   破局转换:   局部枚举: 枚举合唱队形的“山峰”位置 iii (1≤i≤N1 \le i \le N1≤i≤N)。   叠加态:   f[i]f[i]f[i]：以 iii 结尾的最长上升子序列长度。   g[i]g[i]g[i]：以 iii 开头的最长下降子序列长度
         </div>
       </a>
 
@@ -316,148 +316,6 @@
               <a href="/tags/LIS/">#LIS</a>
             
               <a href="/tags/%E5%8F%8C%E5%90%91DP/">#双向DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/f06cc821/" target="_self">
-          P1280 [NOIP1993] 尼克的任务
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/f06cc821/" target="_self">
-        <div>
-          Luogu-P1280 尼克的任务 1. 核心逻辑 问题本质 任务调度，求最大空暇时间。 破局思路  正难则反: 正向 DP 难以确定当前选择对未来的影响。倒序 DP 更清晰：dp[i] 表示从时刻 iii 到 NNN 的最大空暇。 转移:  若时刻 iii 无任务：dp[i] = dp[i+1] + 1。 若时刻 iii 有任务：必须选一个。dp[i] = max(dp[i + duration
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-11 00:00" pubdate>
-              2025-11-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
-            
-              <a href="/tags/%E9%80%86%E5%BA%8FDP/">#逆序DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/5e9e3688/" target="_self">
-          P1020 [NOIP1999] 导弹拦截
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5e9e3688/" target="_self">
-        <div>
-          Luogu-P1020 导弹拦截 1. 核心逻辑 问题本质 求最长不上升子序列 (LDS) 长度，以及最少需要多少个这样的序列才能覆盖全集。 破局思路  第一问 (LDS): 直接 DP 或 二分栈。代码中使用 O(N2)O(N^2)O(N2) DP。 第二问 (覆盖数): Dilworth 定理: 偏序集的最小链覆盖数 = 最长反链长度。  “不上升”的反链是“严格上升”。 问题转化为求 最长上
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-11 00:00" pubdate>
-              2025-11-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
-            
-              <a href="/tags/LIS/">#LIS</a>
-            
-              <a href="/tags/Dilworth%E5%AE%9A%E7%90%86/">#Dilworth定理</a>
             
           </div>
         
@@ -539,85 +397,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/2f2b56ea/" target="_self">
-          P3800 Power收集
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2f2b56ea/" target="_self">
-        <div>
-          Luogu-P3800 Power收集 1. 核心逻辑 问题本质 在 N×MN \times MN×M 网格中，从第一行走到最后一行，每步可向左/右/下移动（限制横向距离 TTT），求最大权值和。 破局思路  状态: dp[i][j]dp[i][j]dp[i][j] 表示到达 (i,j)(i, j)(i,j) 的最大值。 转移: dp[i][j]=val[i][j]+max⁡{dp[i−1][k]
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-08 00:00" pubdate>
-              2025-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%BD%91%E6%A0%BCDP/">#网格DP</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/b8c79668/" target="_self">
-          P2569 [SCOI2010] 股票交易
+          P2569 [SCOI2010] 股票交易 (MQ_DP_MultiState)
         </a>
       </h2>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/b8c79668/" target="_self">
         <div>
-          Luogu-P2569 股票交易 1. 核心逻辑 问题本质 TTT 天内买卖股票，每天有限制买入/卖出数量，两次交易需间隔 WWW 天。 破局思路  状态: dp[i][j]dp[i][j]dp[i][j] 表示第 iii 天持有 jjj 股的最大收益。 转移:  不交易: dp[i][j]=dp[i−1][j]dp[i][j] = dp[i-1][j]dp[i][j]=dp[i−1][j]。 凭
+          Luogu-P2569 股票交易 ## 1. 核心逻辑   问题本质: 含有买入/卖出数量限制及 WWW 天冷却期的财富最大化问题。   破局转换:   状态定义: f[i][j]f[ i ][ j ]f[i][j] 为第 iii 天持有 jjj 股时的最大收益。   四种决策:   凭空买入: f[i][j]=−APi⋅jf[ i ][ j ] = -AP_i \cdot jf[i][j]=−A
         </div>
       </a>
 
@@ -679,15 +467,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/5c9bbb8b/" target="_self">
-          P1419 寻找段落
+        <a href="/posts/2f2b56ea/" target="_self">
+          P3800 Power收集 (MQ_DP_Grid_Movement)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5c9bbb8b/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2f2b56ea/" target="_self">
         <div>
-          Luogu-P1419 寻找段落 1. 核心逻辑   问题本质: 在长度限制 [S,T][S, T][S,T] 内，寻找最大化的区间平均值。   破局转换:   01 分数规划: 求 ∑ailen≥mid\frac{\sum a_i}{len} \ge midlen∑ai​​≥mid。   转化为 ∑(ai−mid)≥0\sum (a_i - mid) \ge 0∑(ai​−mid)≥0。   令
+          Luogu-P3800 Power收集 ## 1. 核心逻辑   问题本质: 在 N×MN \times MN×M 网格中规划路径，每层可横向移动 TTT 步，最大化权值和。   破局转换:   状态定义: f[i][j]f[ i ][ j ]f[i][j] 表示到达第 iii 行第 jjj 列时的最大能量。   转移方程: f[i][j]=val[i][j]+max⁡k∈[j−T,j+T]{f[
         </div>
       </a>
 
@@ -695,8 +483,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
             </time>
           </div>
         
@@ -716,7 +504,7 @@
   
     <span>></span>
     
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
   
   
 
@@ -733,11 +521,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
-            
-              <a href="/tags/%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#分数规划</a>
+              <a href="/tags/%E7%BD%91%E6%A0%BCDP/">#网格DP</a>
             
           </div>
         
@@ -873,9 +659,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
-            
               <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
             
           </div>
         
@@ -946,6 +732,220 @@
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
             
               <a href="/tags/RMQ/">#RMQ</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/18200319/" target="_self">
+          P2216 [HAOI2007] 理想的正方形
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/18200319/" target="_self">
+        <div>
+          Luogu-P2216 理想的正方形 1. 核心逻辑   问题本质: 求 N×NN \times NN×N 矩形区域内的极差。本质是二维空间下的滑动窗口 RMQ。   破局转换:  先对每一行做一维滑动窗口，求出 row_min[i][j] 和 row_max[i][j]（表示第 iii 行，以 jjj 结尾的长度 NNN 的最值）。 再对得到的 row 数组的每一列做滑动窗口，求出 area_m
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/RMQ/">#RMQ</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5c9bbb8b/" target="_self">
+          P1419 寻找段落
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5c9bbb8b/" target="_self">
+        <div>
+          Luogu-P1419 寻找段落 1. 核心逻辑   问题本质: 在长度限制 [S,T][S, T][S,T] 内，寻找最大化的区间平均值。   破局转换:   01 分数规划: 求 ∑ailen≥mid\frac{\sum a_i}{len} \ge midlen∑ai​​≥mid。   转化为 ∑(ai−mid)≥0\sum (a_i - mid) \ge 0∑(ai​−mid)≥0。   令
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+            
+              <a href="/tags/%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#分数规划</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/758c84b3/" target="_self">
+          P1714 切蛋糕 (MQ_DP_PrefixSum)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/758c84b3/" target="_self">
+        <div>
+          Luogu-P1714 切蛋糕 1. 核心逻辑   问题本质: 寻找长度不超过 MMM 的最大子段和。   破局转换:   代数变形: 子段和 S[i…j]=sum[j]−sum[i−1]S[ i \dots j ] = \text{sum}[ j ] - \text{sum}[ i - 1 ]S[i…j]=sum[j]−sum[i−1]。   极值条件: 固定右端点 jjj，目标是寻找 i∈[j
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
             
           </div>
         
