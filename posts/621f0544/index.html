@@ -426,16 +426,16 @@
 <p><strong>变体模型</strong>:</p>
 <ul>
 <li>
-<p><strong>二维滑动窗口</strong>: <a href="/posts/undefined/">P2216 理想的正方形 (MonoQueue_2D)</a> 通过“先行后列”两次一维窗口降维实现。</p>
+<p><strong>二维滑动窗口</strong>: <a href="/posts/18200319/">P2216 理想的正方形 (MonoQueue_2D)</a> 通过“先行后列”两次一维窗口降维实现。</p>
 </li>
 <li>
-<p><strong>悬线法优化</strong>: <a href="/posts/undefined/">P1950 长方形 (MonoStack_Suspension_Line)</a>` 统计子矩形，利用单调栈维护底边的左右边界 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i], R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>悬线法优化</strong>: <a href="/posts/1bb13521/">P1950 长方形 (MonoStack_Suspension_Line)</a>` 统计子矩形，利用单调栈维护底边的左右边界 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">L[i], R[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>全局偏移 (Offset)</strong>: <a href="/posts/undefined/">P2827 蚯蚓 (MonoQueue_Offset)</a> 利用全局增量标记避开 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的全员修改。</p>
+<p><strong>全局偏移 (Offset)</strong>: <a href="/posts/21cfea74/">P2827 蚯蚓 (MonoQueue_Offset)</a> 利用全局增量标记避开 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的全员修改。</p>
 </li>
 <li>
-<p><strong>轮廓覆盖贪心</strong>: <a href="/posts/undefined/">P3467 PLA-Posters (MonoStack_Profile)</a> 利用单调递增栈判断相同高度是否可合并海报。</p>
+<p><strong>轮廓覆盖贪心</strong>: <a href="/posts/c58c71ee/">P3467 PLA-Posters (MonoStack_Profile)</a> 利用单调递增栈判断相同高度是否可合并海报。</p>
 </li>
 </ul>
 </li>
@@ -443,17 +443,17 @@
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><a href="/posts/undefined/">P1886 滑动窗口 (MonoQueue_Sliding_Window)</a>: 滑动窗口标准模板。</p>
+<p><a href="/posts/7d6e628/">P1886 滑动窗口 (MonoQueue_Sliding_Window)</a>: 滑动窗口标准模板。</p>
 </li>
 <li>
-<p><a href="/posts/undefined/">P2866 Bad Hair Day S (MonoStack_Visibility)</a>: 视角转换典型案例。</p>
+<p><a href="/posts/c971b93/">P2866 Bad Hair Day S (MonoStack_Visibility)</a>: 视角转换典型案例。</p>
 </li>
 </ul>
 </li>
 </ul>
 <hr>
-<p><a href="/posts/undefined/">P2032 扫描 (MonoQueue_Scanning)</a></p>
-<p><a href="/posts/undefined/">P1440 求m区间内的最小值 (MonoQueue_Window_Min)</a></p>
+<p><a href="/posts/ca407f52/">P2032 扫描 (MonoQueue_Scanning)</a></p>
+<p><a href="/posts/5cc1d263/">P1440 求m区间内的最小值 (MonoQueue_Window_Min)</a></p>
 <hr>
 
                 

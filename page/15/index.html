@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/63edd0b2/" target="_self">
-          P3258 [JLOI2014] 松鼠的新家
+        <a href="/posts/73d3a184/" target="_self">
+          P3128 [USACO15DEC] Max Flow P
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/63edd0b2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/73d3a184/" target="_self">
         <div>
-          Luogu-P3258 松鼠的新家 1. 核心逻辑 问题本质 按顺序访问树上的一系列点 a1→a2→⋯→ana_1 \to a_2 \to \dots \to a_na1​→a2​→⋯→an​。求每个点被经过的次数。 破局思路  路径拆解: 路径 ai→ai+1a_i \to a_{i+1}ai​→ai+1​ 是一次树上路径覆盖。 点权差分: 同 P3128，利用差分统计每次路径的覆盖。 重复扣除
+          Luogu-P3128 Max Flow P 1. 核心逻辑 问题本质 KKK 次路径加 1，求最终点权最大的点。 破局思路  树上差分 (点权): 路径 (u,v)(u, v)(u,v) 上所有点权加 1。  dif[u]++ dif[v]++ dif[LCA(u, v)]-- dif[Father(LCA(u, v))]--   求和: 自底向上 DFS，累加子树差分值得到原值。  2. 代码
         </div>
       </a>
 
@@ -313,9 +313,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/">#树上差分</a>
+              <a href="/tags/LCA/">#LCA</a>
             
-              <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">#拓扑排序</a>
+              <a href="/tags/%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/">#树上差分</a>
             
           </div>
         
@@ -399,76 +399,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3a5121c3/" target="_self">
-          P3397 地毯
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3a5121c3/" target="_self">
-        <div>
-          Luogu-P3397 地毯 1. 核心逻辑   问题本质: 在二维网格上执行多次矩形区域增量操作，最终查询全局分布。   破局转换:   差分对偶: 区间修改 [x1,y1]∼[x2,y2][x1, y1] \sim [x2, y2][x1,y1]∼[x2,y2] 转化为四个顶点的端点标记。   标记逻辑:   D[x1][y1] += 1 (启动增量)   D[x1][y2 + 1] -= 1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-31 00:00" pubdate>
-              2025-10-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/8668ad14/" target="_self">
           P2280 [HNOI2003] 激光炸弹
         </a>
@@ -539,15 +469,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/9b24815e/" target="_self">
-          P2882 [USACO07MAR] Face The Right Way G
+        <a href="/posts/3a5121c3/" target="_self">
+          P3397 地毯
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/9b24815e/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3a5121c3/" target="_self">
         <div>
-          Luogu-P2882 Face The Right Way 1. 核心逻辑   问题本质: 枚举翻转步长 KKK，求最少操作数使所有牛面向前方。   破局转换:   强制性贪心: 从左至右扫描，若当前牛面向后方，必须且只能以它为左端点进行长为 KKK 的翻转。因为之前的牛已经调整好，这是唯一的纠错机会。   维度压缩 (Check): 频繁的区间翻转利用差分思想进行 O(1)O(1)O(1) 打
+          Luogu-P3397 地毯 1. 核心逻辑   问题本质: 在二维网格上执行多次矩形区域增量操作，最终查询全局分布。   破局转换:   差分对偶: 区间修改 [x1,y1]∼[x2,y2][x1, y1] \sim [x2, y2][x1,y1]∼[x2,y2] 转化为四个顶点的端点标记。   标记逻辑:   D[x1][y1] += 1 (启动增量)   D[x1][y2 + 1] -= 1
         </div>
       </a>
 
@@ -593,7 +523,81 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/7b3df25b/" target="_self">
+          P1083 [NOIP2012] 借教室
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/7b3df25b/" target="_self">
+        <div>
+          Luogu-P1083 借教室 1. 核心逻辑   问题本质: 在有限资源的单调消耗序列中，寻找第一个导致资源崩溃（负值出现）的关键时点。   破局转换:   单调性判定: 如果前 kkk 个订单能满足，则前 k−1k-1k−1 个必然满足；若前 kkk 个无法满足，则后续订单均无效。满足二分答案的逻辑前提。   维度压缩 (Check): 判定 1…mid1 \dots mid1…mid 订单是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-31 00:00" pubdate>
+              2025-10-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
             
               <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
             
@@ -679,89 +683,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/7b3df25b/" target="_self">
-          P1083 [NOIP2012] 借教室
+        <a href="/posts/9b24815e/" target="_self">
+          P2882 [USACO07MAR] Face The Right Way G
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7b3df25b/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/9b24815e/" target="_self">
         <div>
-          Luogu-P1083 借教室 1. 核心逻辑   问题本质: 在有限资源的单调消耗序列中，寻找第一个导致资源崩溃（负值出现）的关键时点。   破局转换:   单调性判定: 如果前 kkk 个订单能满足，则前 k−1k-1k−1 个必然满足；若前 kkk 个无法满足，则后续订单均无效。满足二分答案的逻辑前提。   维度压缩 (Check): 判定 1…mid1 \dots mid1…mid 订单是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-10-31 00:00" pubdate>
-              2025-10-31
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/31dd7f12/" target="_self">
-          P3017 [USACO11MAR] Brownie Slicing G
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/31dd7f12/" target="_self">
-        <div>
-          Luogu-P3017 Brownie Slicing G 1. 核心逻辑   问题本质: 在二维权值矩阵中进行横纵切分，最大化最小区域的权值和。   破局转换:   二分答案: 最小值最大化问题，优先考虑二分最小面积 midmidmid。   维度坍缩 (Check):   行切分 (Outer Greedy): 逐行扫描，直到当前合并的“行块”能够被竖切出 ≥B+1\ge B+1≥B+1 个满
+          Luogu-P2882 Face The Right Way 1. 核心逻辑   问题本质: 枚举翻转步长 KKK，求最少操作数使所有牛面向前方。   破局转换:   强制性贪心: 从左至右扫描，若当前牛面向后方，必须且只能以它为左端点进行长为 KKK 的翻转。因为之前的牛已经调整好，这是唯一的纠错机会。   维度压缩 (Check): 频繁的区间翻转利用差分思想进行 O(1)O(1)O(1) 打
         </div>
       </a>
 
@@ -809,11 +739,7 @@
             
               <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/">#逆运算/差分</a>
             
           </div>
         
@@ -881,9 +807,83 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+            
               <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/31dd7f12/" target="_self">
+          P3017 [USACO11MAR] Brownie Slicing G
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/31dd7f12/" target="_self">
+        <div>
+          Luogu-P3017 Brownie Slicing G 1. 核心逻辑   问题本质: 在二维权值矩阵中进行横纵切分，最大化最小区域的权值和。   破局转换:   二分答案: 最小值最大化问题，优先考虑二分最小面积 midmidmid。   维度坍缩 (Check):   行切分 (Outer Greedy): 逐行扫描，直到当前合并的“行块”能够被竖切出 ≥B+1\ge B+1≥B+1 个满
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-10-31 00:00" pubdate>
+              2025-10-31
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7/">#单调性</a>
+            
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
             
           </div>
         
