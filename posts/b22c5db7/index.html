@@ -19,19 +19,19 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位   定义: 处理静态数组区间查询与修改的“对偶技巧”。   解决痛点: 将 O(N)O(N)O(N) 的区间处理降低至 O(1)O(1)O(1) 的端点处理。   核心依赖: 算子必须满足结合律与可逆性（加减、异或）。   2. 逻辑支点 2.1 对偶性 差分是前缀和的逆运算。   关系: D[i]&#x3D;A[i]−A[i−1]  ⟺  A[i]&#x3D;∑j&#x3D;1iD[j]D[i] &#x3D; A[i]">
+    <meta name="description" content="静态数组优化 (Prefix Sum &amp; Difference) 1. 生态位   定义: 处理静态数组区间查询与修改的“对偶技巧”。   解决痛点: 将 O(N)O(N)O(N) 的区间处理降低至 O(1)O(1)O(1) 的端点处理。   核心依赖: 算子必须满足结合律与可逆性（加减、异或）。   2. 逻辑支点 2.1 对偶性 差分是前缀和的逆运算。   关系: D[i]&#x3D;A[i]−">
 <meta property="og:type" content="article">
 <meta property="og:title" content="静态数组优化 (Prefix Sum &amp; Difference)">
 <meta property="og:url" content="https://example.com/posts/b22c5db7/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位   定义: 处理静态数组区间查询与修改的“对偶技巧”。   解决痛点: 将 O(N)O(N)O(N) 的区间处理降低至 O(1)O(1)O(1) 的端点处理。   核心依赖: 算子必须满足结合律与可逆性（加减、异或）。   2. 逻辑支点 2.1 对偶性 差分是前缀和的逆运算。   关系: D[i]&#x3D;A[i]−A[i−1]  ⟺  A[i]&#x3D;∑j&#x3D;1iD[j]D[i] &#x3D; A[i]">
+<meta property="og:description" content="静态数组优化 (Prefix Sum &amp; Difference) 1. 生态位   定义: 处理静态数组区间查询与修改的“对偶技巧”。   解决痛点: 将 O(N)O(N)O(N) 的区间处理降低至 O(1)O(1)O(1) 的端点处理。   核心依赖: 算子必须满足结合律与可逆性（加减、异或）。   2. 逻辑支点 2.1 对偶性 差分是前缀和的逆运算。   关系: D[i]&#x3D;A[i]−">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:19:11.000Z">
 <meta property="article:modified_time" content="2025-12-23T16:08:26.000Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="逆运算">
 <meta property="article:tag" content="逆运算&#x2F;前缀和">
 <meta property="article:tag" content="逆运算&#x2F;差分">
+<meta property="article:tag" content="逆运算">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          485 字
+          494 字
         
       </span>
     
@@ -325,7 +325,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>静态数组优化 (Prefix Sum &amp; Difference)</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
 <li>
 <p><strong>定义</strong>: 处理<strong>静态数组</strong>区间查询与修改的“对偶技巧”。</p>
@@ -436,11 +437,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/" class="print-no-link">#逆运算</a>
-      
         <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#逆运算/前缀和</a>
       
         <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/" class="print-no-link">#逆运算/差分</a>
+      
+        <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/" class="print-no-link">#逆运算</a>
       
     </div>
   
@@ -616,7 +617,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

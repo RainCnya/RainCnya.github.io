@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P1395 会议 1. 核心逻辑 问题本质 求树上一点，使得所有节点到该点的距离之和最小。 破局思路   重心性质: 距离和最小的点即为树的重心 8。   距离计算:   找到重心 root。   以 root 为根遍历全树。总距离 &#x3D; ∑dep[i]\sum \text{dep}[i]∑dep[i] &#x3D; ∑(siz[i]−1)\sum (\text{siz}[i] - 1)∑(siz">
+    <meta name="description" content="Luogu-P1395 会议 1. 核心逻辑   问题本质: 寻找树上一个点，使得所有节点到该点的距离之和最小。   破局转换:   重心性质: 树上所有点到某点的距离和最小，该点即为树的重心。   计算优化:   全局距离和 &#x3D; ∑u≠rootsiz[u]\sum_{u \neq root} siz[u]∑u&#x3D;root​siz[u]。   物理含义：每一条边被经过的次数，等于其下方子树的节点个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1395 会议 (重心性质)">
+<meta property="og:title" content="P1395 会议 (Centroid_MinDist)">
 <meta property="og:url" content="https://example.com/posts/b7868cc/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P1395 会议 1. 核心逻辑 问题本质 求树上一点，使得所有节点到该点的距离之和最小。 破局思路   重心性质: 距离和最小的点即为树的重心 8。   距离计算:   找到重心 root。   以 root 为根遍历全树。总距离 &#x3D; ∑dep[i]\sum \text{dep}[i]∑dep[i] &#x3D; ∑(siz[i]−1)\sum (\text{siz}[i] - 1)∑(siz">
+<meta property="og:description" content="Luogu-P1395 会议 1. 核心逻辑   问题本质: 寻找树上一个点，使得所有节点到该点的距离之和最小。   破局转换:   重心性质: 树上所有点到某点的距离和最小，该点即为树的重心。   计算优化:   全局距离和 &#x3D; ∑u≠rootsiz[u]\sum_{u \neq root} siz[u]∑u&#x3D;root​siz[u]。   物理含义：每一条边被经过的次数，等于其下方子树的节点个">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.874Z">
+<meta property="article:modified_time" content="2025-12-24T10:49:16.945Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="树的重心">
 <meta property="article:tag" content="树形DP">
@@ -35,7 +35,7 @@
   
   
   
-  <title>P1395 会议 (重心性质) - MiQiu</title>
+  <title>P1395 会议 (Centroid_MinDist) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1395 会议 (重心性质)"></span>
+            <span id="subtitle" data-typed-text="P1395 会议 (Centroid_MinDist)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          481 字
+          364 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          5 分钟
         
       </span>
     
@@ -319,35 +319,40 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1395 会议 (重心性质)</h1>
+            <h1 id="seo-header">P1395 会议 (Centroid_MinDist)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1395">Luogu-P1395</a> 会议</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p>求树上一点，使得所有节点到该点的距离之和最小。</p>
-<h3 id="破局思路">破局思路</h3>
-<ol>
-<li>
-<p><strong>重心性质</strong>: 距离和最小的点即为<strong>树的重心</strong> 8。</p>
-</li>
-<li>
-<p><strong>距离计算</strong>:</p>
 <ul>
 <li>
-<p>找到重心 <code>root</code>。</p>
+<p><strong>问题本质</strong>: 寻找树上一个点，使得所有节点到该点的距离之和最小。</p>
 </li>
 <li>
-<p>以 <code>root</code> 为根遍历全树。总距离 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mtext>dep</mtext><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\sum \text{dep}[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">dep</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mo stretchy="false">(</mo><mtext>siz</mtext><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum (\text{siz}[i] - 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord text"><span class="mord">siz</span></span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>?</p>
+<p><strong>破局转换</strong>:</p>
+<ol>
+<li>
+<p><strong>重心性质</strong>: 树上所有点到某点的距离和最小，该点即为<strong>树的重心</strong>。</p>
 </li>
 <li>
-<p>更简单的转化: <strong>每一条边被经过的次数</strong>等于该边下方子树的大小。即 Ans = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>u</mi><mo mathvariant="normal">≠</mo><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow></msub><mtext>siz</mtext><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\sum_{u \ne root} \text{siz}[u]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">u</span><span class="mrel mtight"><span class="mrel mtight"><span class="mord vbox mtight"><span class="thinbox mtight"><span class="rlap mtight"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord mtight"><span class="mrel mtight"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel mtight">=</span></span><span class="mord mathnormal mtight">roo</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">siz</span></span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span></span></span></span> 9。</p>
+<p><strong>计算优化</strong>:</p>
+<ul>
+<li>
+<p>全局距离和 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mrow><mi>u</mi><mo mathvariant="normal">≠</mo><mi>r</mi><mi>o</mi><mi>o</mi><mi>t</mi></mrow></msub><mi>s</mi><mi>i</mi><mi>z</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\sum_{u \neq root} siz[u]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1858em;vertical-align:-0.4358em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">u</span><span class="mrel mtight"><span class="mrel mtight"><span class="mord vbox mtight"><span class="thinbox mtight"><span class="rlap mtight"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord mtight"><span class="mrel mtight"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel mtight">=</span></span><span class="mord mathnormal mtight">roo</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4358em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span></span></span></span>。</p>
+</li>
+<li>
+<p>物理含义：每一条边被经过的次数，等于其下方子树的节点个数。</p>
 </li>
 </ul>
 </li>
+<li>
+<p><strong>字典序限制</strong>: 若存在双重心，输出编号较小的一个。</p>
+</li>
 </ol>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
@@ -356,17 +361,17 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">5e4</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> inf = <span class="hljs-number">0x3f3f3f3f</span>;<br><br>vector&lt; <span class="hljs-type">int</span> &gt; adj[maxn];<br><span class="hljs-type">int</span> siz[maxn];<br><span class="hljs-type">int</span> f[maxn]; <span class="hljs-comment">// 记录最大子树大小</span><br><span class="hljs-type">int</span> n;<br><br><span class="hljs-comment">// 第一遍 DFS: 寻找重心</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u , <span class="hljs-type">int</span> fa )</span></span><br><span class="hljs-function"></span>&#123;<br>    siz[u] = <span class="hljs-number">1</span>;<br>    f[u] = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == fa ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs</span>( v, u );<br>        siz[u] += siz[v];<br>        f[u] = <span class="hljs-built_in">max</span>( f[u], siz[v] );<br>    &#125;<br><br>    f[u] = <span class="hljs-built_in">max</span>( f[u], n - siz[u] ); <span class="hljs-comment">// 考虑父节点方向的连通块</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; n;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) f[i] = inf;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v;<br>        cin &gt;&gt; u &gt;&gt; v;<br>        adj[u].<span class="hljs-built_in">push_back</span>( v );<br>        adj[v].<span class="hljs-built_in">push_back</span>( u );<br>    &#125;       <br><br>    <span class="hljs-built_in">dfs</span>( <span class="hljs-number">1</span>, <span class="hljs-number">0</span> );<br><br>    <span class="hljs-comment">// 寻找重心 (若有多个，取编号最小)</span><br>    <span class="hljs-type">int</span> root_sum = inf;<br>    <span class="hljs-type">int</span> root_pos = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( f[i] &lt; root_sum )<br>        &#123;<br>            root_sum = f[i];<br>            root_pos = i;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; root_pos &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br><br>    <span class="hljs-comment">// 第二遍 DFS: 以重心为根重新计算 siz</span><br>    <span class="hljs-built_in">memset</span>( siz, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>( siz ) );<br>    <span class="hljs-built_in">dfs</span>( root_pos, <span class="hljs-number">0</span> );<br><br>    ll ans = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-comment">// 统计总距离：所有节点的子树大小之和 (减去根节点的 siz=n)</span><br>    <span class="hljs-comment">// 逻辑：每条边贡献 = 这条边下方的节点数</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        ans += siz[i];<br>    &#125;<br><br>    cout &lt;&lt; ans - n &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">50050</span>;<br>vector&lt; <span class="hljs-type">int</span> &gt; adj[ maxn ];<br><span class="hljs-type">int</span> siz[ maxn ], f[ maxn ], n, root_pos;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs_centroid</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> fa )</span></span><br><span class="hljs-function"></span>&#123;<br>    siz[ u ] = <span class="hljs-number">1</span>;<br>    f[ u ] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == fa ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs_centroid</span>( v, u );<br>        siz[ u ] += siz[ v ];<br>        f[ u ] = <span class="hljs-built_in">max</span>( f[ u ], siz[ v ] );<br>    &#125;<br>    f[ u ] = <span class="hljs-built_in">max</span>( f[ u ], n - siz[ u ] );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs_siz</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> fa )</span></span><br><span class="hljs-function"></span>&#123;<br>    siz[ u ] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == fa ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs_siz</span>( v, u );<br>        siz[ u ] += siz[ v ];<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> ); cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br>    cin &gt;&gt; n;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>, u, v; i &lt; n; ++ i )<br>    &#123;<br>        cin &gt;&gt; u &gt;&gt; v;<br>        adj[ u ].<span class="hljs-built_in">push_back</span>( v ); adj[ v ].<span class="hljs-built_in">push_back</span>( u );<br>    &#125;<br><br>    <span class="hljs-built_in">dfs_centroid</span>( <span class="hljs-number">1</span>, <span class="hljs-number">0</span> );<br>    <span class="hljs-type">int</span> min_val = <span class="hljs-number">1e9</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( f[ i ] &lt; min_val ) &#123; min_val = f[ i ]; root_pos = i; &#125;<br>    &#125;<br><br>    <span class="hljs-built_in">dfs_siz</span>( root_pos, <span class="hljs-number">0</span> );<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) ans += siz[ i ];<br>    <br>    cout &lt;&lt; root_pos &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; ans - n &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。优于 Floyd 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 和每个点 BFS 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>拓展</strong>: 若点带权 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 人)，重心定义变为“最大加权子树和最小”，结论依然适用。</p>
+<p><strong>核心思路</strong>: 理解距离总和向子树大小之和的映射转化（贡献法）。</p>
 </li>
 </ul>
 
@@ -423,7 +428,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1395 会议 (重心性质)</div>
+      <div>P1395 会议 (Centroid_MinDist)</div>
       <div>https://example.com/posts/b7868cc/</div>
     </div>
     <div class="license-meta">
@@ -468,9 +473,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/ea96a98/" title="P3629 [APIO2010] 巡逻 (两次直径)">
+                      <a href="/posts/7fb577ad/" title="P1967 货车运输 (MaxST_LCA_Bottleneck)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P3629 [APIO2010] 巡逻 (两次直径)</span>
+                        <span class="hidden-mobile">P1967 货车运输 (MaxST_LCA_Bottleneck)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -478,8 +483,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/b9909e14/" title="P1099 [NOIP2007] 树网的核">
-                        <span class="hidden-mobile">P1099 [NOIP2007] 树网的核</span>
+                      <a href="/posts/ea96a98/" title="P3629 [APIO2010] 巡逻 (Diameter_Greedy)">
+                        <span class="hidden-mobile">P3629 [APIO2010] 巡逻 (Diameter_Greedy)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -587,7 +592,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

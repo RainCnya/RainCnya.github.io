@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/7d6e628/" target="_self">
-          P1886 滑动窗口 / [模板] 单调队列
+        <a href="/posts/c041f5c2/" target="_self">
+          P1091 [NOIP2004] 合唱队形
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7d6e628/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/c041f5c2/" target="_self">
         <div>
-          Luogu-P1886 滑动窗口 1. 核心逻辑   问题本质: O(N)O(N)O(N) 维护滑动窗口的最值（最大与最小）。   破局转换: 淘汰“不再如此时新，也不如此时强”的过时元素。   2. 代码实现                      ▶AcCode                                  12345678910111213141516171819202
+          Luogu-P1091 合唱队形 1. 核心逻辑 问题本质 求最长的“先升后降”子序列。 破局思路  转化: 枚举峰值 iii。 以 iii 结尾的最长合唱队形 = (以 iii 结尾的最长上升子序列) + (以 iii 开始的最长下降子序列) - 1。 双向 DP:  dp1[i]: 从左向右的 LIS。 dp2[i]: 从右向左的 LIS (相当于从左向右的 LDS 的反向视角)。    2.
         </div>
       </a>
 
@@ -275,220 +275,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
-            
-              <a href="/tags/RMQ/">#RMQ</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/ca407f52/" target="_self">
-          P2032 扫描
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/ca407f52/" target="_self">
-        <div>
-          Luogu-P2032 扫描 1. 核心逻辑  问题本质: 求区间长度为 KKK 的连续子区间最大值。标准滑动窗口 RMQ。  2. 代码实现                      ▶AcCode                                  123456789101112131415161718192021222324252627282930313233343536373
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/18200319/" target="_self">
-          P2216 [HAOI2007] 理想的正方形
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/18200319/" target="_self">
-        <div>
-          Luogu-P2216 理想的正方形 1. 核心逻辑   问题本质: 求 N×NN \times NN×N 矩形区域内的极差。本质是二维空间下的滑动窗口 RMQ。   破局转换:  先对每一行做一维滑动窗口，求出 row_min[i][j] 和 row_max[i][j]（表示第 iii 行，以 jjj 结尾的长度 NNN 的最值）。 再对得到的 row 数组的每一列做滑动窗口，求出 area_m
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
-            
-              <a href="/tags/RMQ/">#RMQ</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/860d8b92/" target="_self">
-          P3957 [NOIP2017] 跳房子
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/860d8b92/" target="_self">
-        <div>
-          Luogu-P3957 跳房子 1. 核心逻辑 问题本质 花费 ggg 金币改造机器人，使得跳跃范围变为 [max⁡(1,D−g),D+g][\max(1, D-g), D+g][max(1,D−g),D+g]。求最小 ggg 使得得分 ≥K\ge K≥K。 破局思路  二分答案: 花费 ggg 具有单调性。二分 ggg。 判定 (Check): 在固定跳跃范围 [L,R][L, R][L,R]
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
+            <time datetime="2025-11-11 00:00" pubdate>
+              2025-11-11
             </time>
           </div>
         
@@ -525,11 +313,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DP/">#DP</a>
+              <a href="/tags/LIS/">#LIS</a>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
+              <a href="/tags/%E5%8F%8C%E5%90%91DP/">#双向DP</a>
             
           </div>
         
@@ -543,15 +329,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/dcc774/" target="_self">
-          P2034 选择数字
+        <a href="/posts/f06cc821/" target="_self">
+          P1280 [NOIP1993] 尼克的任务
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/dcc774/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f06cc821/" target="_self">
         <div>
-          Luogu-P2034 选择数字 1. 核心逻辑 问题本质 选择若干数使得和最大，但不能连续选择超过 KKK 个。 破局思路  正难则反: 总和固定，问题转化为：剔除若干个数使得和最小，且任意两个剔除的数之间间隔不能超过 KKK（保证连续选择不超过 KKK 个，即每段连续数字必须被“打断”）。 或者直接 DP：  dp[i] 表示前 iii 个数，且第 iii 个数不选（作为断点）时的最大合法收益
+          Luogu-P1280 尼克的任务 1. 核心逻辑 问题本质 任务调度，求最大空暇时间。 破局思路  正难则反: 正向 DP 难以确定当前选择对未来的影响。倒序 DP 更清晰：dp[i] 表示从时刻 iii 到 NNN 的最大空暇。 转移:  若时刻 iii 无任务：dp[i] = dp[i+1] + 1。 若时刻 iii 有任务：必须选一个。dp[i] = max(dp[i + duration
         </div>
       </a>
 
@@ -559,148 +345,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/628847e6/" target="_self">
-          P2627 [USACO11OPEN] Mowing the Lawn G
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/628847e6/" target="_self">
-        <div>
-          Luogu-P2627 修剪草坪 1. 核心逻辑 问题本质 选出若干只奶牛使得效率和最大，且连续选择的奶牛数不超过 KKK。 (与 P2034 选择数字完全一致，只是背景不同) 破局思路  模型转化: dp[i]dp[i]dp[i] 表示前 iii 只奶牛符合要求的最大效率。dp[i]=max⁡i−K≤j≤i{dp[j−1]+sum(j+1,i)}dp[i] = \max_{i-K \le j \
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP/">#DP</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/5efb4c60/" target="_self">
-          P1725 琪露诺
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5efb4c60/" target="_self">
-        <div>
-          Luogu-P1725 琪露诺 1. 核心逻辑 问题本质 跳格子 DP。每次跳跃范围 [L,R][L, R][L,R]，求最大权值和。 破局思路  状态: dp[i]dp[i]dp[i] 表示到达 iii 的最大权值。 转移:dp[i]=a[i]+max⁡i−R≤k≤i−L{dp[k]}dp[i] = a[i] + \max_{i-R \le k \le i-L} \{ dp[k] \} dp[i
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
+            <time datetime="2025-11-11 00:00" pubdate>
+              2025-11-11
             </time>
           </div>
         
@@ -739,7 +385,7 @@
             
               <a href="/tags/%E7%BA%BF%E6%80%A7DP/">#线性DP</a>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
+              <a href="/tags/%E9%80%86%E5%BA%8FDP/">#逆序DP</a>
             
           </div>
         
@@ -753,15 +399,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/758c84b3/" target="_self">
-          P1714 切蛋糕
+        <a href="/posts/5e9e3688/" target="_self">
+          P1020 [NOIP1999] 导弹拦截
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/758c84b3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5e9e3688/" target="_self">
         <div>
-          Luogu-P1714 切蛋糕 1. 核心逻辑 问题本质 求长度不超过 MMM 的最大子段和。 破局思路  前缀和: 子段和 Sum(i,j)=S[j]−S[i−1]Sum(i, j) = S[j] - S[i-1]Sum(i,j)=S[j]−S[i−1]。 转化: 对于固定的右端点 iii，我们需要找到 j∈[i−M,i−1]j \in [i-M, i-1]j∈[i−M,i−1]，使得 S[j]
+          Luogu-P1020 导弹拦截 1. 核心逻辑 问题本质 求最长不上升子序列 (LDS) 长度，以及最少需要多少个这样的序列才能覆盖全集。 破局思路  第一问 (LDS): 直接 DP 或 二分栈。代码中使用 O(N2)O(N^2)O(N2) DP。 第二问 (覆盖数): Dilworth 定理: 偏序集的最小链覆盖数 = 最长反链长度。  “不上升”的反链是“严格上升”。 问题转化为求 最长上
         </div>
       </a>
 
@@ -769,8 +415,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
+            <time datetime="2025-11-11 00:00" pubdate>
+              2025-11-11
             </time>
           </div>
         
@@ -807,9 +453,219 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+            
+              <a href="/tags/LIS/">#LIS</a>
+            
+              <a href="/tags/Dilworth%E5%AE%9A%E7%90%86/">#Dilworth定理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/1bb13521/" target="_self">
+          P1950 长方形
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1bb13521/" target="_self">
+        <div>
+          Luogu-P1950 长方形 1. 核心逻辑  悬线法 + 单调栈加速。复杂度 O(NM)O(NM)O(NM)。  2. 代码实现                      ▶AcCode                                  12345678910111213141516171819202122232425262728293031323334353637383940
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E6%A0%88/">#单调性/单调栈</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2f2b56ea/" target="_self">
+          P3800 Power收集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2f2b56ea/" target="_self">
+        <div>
+          Luogu-P3800 Power收集 1. 核心逻辑 问题本质 在 N×MN \times MN×M 网格中，从第一行走到最后一行，每步可向左/右/下移动（限制横向距离 TTT），求最大权值和。 破局思路  状态: dp[i][j]dp[i][j]dp[i][j] 表示到达 (i,j)(i, j)(i,j) 的最大值。 转移: dp[i][j]=val[i][j]+max⁡{dp[i−1][k]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BD%91%E6%A0%BCDP/">#网格DP</a>
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/b8c79668/" target="_self">
+          P2569 [SCOI2010] 股票交易
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b8c79668/" target="_self">
+        <div>
+          Luogu-P2569 股票交易 1. 核心逻辑 问题本质 TTT 天内买卖股票，每天有限制买入/卖出数量，两次交易需间隔 WWW 天。 破局思路  状态: dp[i][j]dp[i][j]dp[i][j] 表示第 iii 天持有 jjj 股的最大收益。 转移:  不交易: dp[i][j]=dp[i−1][j]dp[i][j] = dp[i-1][j]dp[i][j]=dp[i−1][j]。 凭
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
+            
+              <a href="/tags/%E5%A4%9A%E7%8A%B6%E6%80%81DP/">#多状态DP</a>
             
           </div>
         
@@ -879,9 +735,9 @@
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
             
-              <a href="/tags/%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#分数规划</a>
-            
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#分数规划</a>
             
           </div>
         
@@ -895,15 +751,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/c971b93/" target="_self">
-          P2866 [USACO06NOV] Bad Hair Day S
+        <a href="/posts/5cc1d263/" target="_self">
+          P1440 求m区间内的最小值
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/c971b93/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5cc1d263/" target="_self">
         <div>
-          Luogu-P2866 Bad Hair Day S 1. 核心逻辑  视角转换：谁在看我。  2. 代码实现                      ▶AcCode                                  12345678910111213141516171819202122232425262728// P2866 [USACO06NOV] Bad Hair Day
+          Luogu-P1440 求m区间内的最小值 1. 核心逻辑  求 Ai−m…Ai−1A_{i-m} \dots A_{i-1}Ai−m​…Ai−1​ 的最小值。不含 AiA_iAi​。  2. 代码实现                      ▶AcCode                                  123456789101112131415161718192021222
         </div>
       </a>
 
@@ -911,8 +767,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-06 00:00" pubdate>
-              2025-11-06
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
             </time>
           </div>
         
@@ -949,7 +805,147 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E6%A0%88/">#单调性/单调栈</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/ca407f52/" target="_self">
+          P2032 扫描
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ca407f52/" target="_self">
+        <div>
+          Luogu-P2032 扫描 1. 核心逻辑  问题本质: 求区间长度为 KKK 的连续子区间最大值。标准滑动窗口 RMQ。  2. 代码实现                      ▶AcCode                                  123456789101112131415161718192021222324252627282930313233343536373
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/7d6e628/" target="_self">
+          P1886 滑动窗口 / [模板] 单调队列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/7d6e628/" target="_self">
+        <div>
+          Luogu-P1886 滑动窗口 1. 核心逻辑   问题本质: O(N)O(N)O(N) 维护滑动窗口的最值（最大与最小）。   破局转换: 淘汰“不再如此时新，也不如此时强”的过时元素。   2. 代码实现                      ▶AcCode                                  12345678910111213141516171819202
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/RMQ/">#RMQ</a>
             
           </div>
         
@@ -961,7 +957,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/12/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/#board">14</a><a class="page-number" href="/page/15/#board">15</a><a class="extend next" rel="next" href="/page/14/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/12/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/#board">14</a><a class="page-number" href="/page/15/#board">15</a><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/14/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -1011,7 +1007,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

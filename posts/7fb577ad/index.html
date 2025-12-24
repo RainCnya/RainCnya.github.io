@@ -19,24 +19,25 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P1967 货车运输 1. 核心逻辑 问题本质 瓶颈路问题 (Bottleneck Path Problem)：在带权图中，寻找两点间的一条路径，使得路径上的最小边权最大。 破局思路   贪心重构 (Kruskal):  想要路径上的最小边权尽可能大，意味着我们需要优先选择边权大的边来连接连通块。 这等价于构造最大生成树 (Maximum Spanning Tree, MaxST)。">
+    <meta name="description" content="Luogu-P1967 货车运输 1. 核心逻辑   问题本质: 在带权无向图中，寻找两点间路径，使得路径上的最小边权最大（瓶颈路问题）。   破局转换:   结构坍缩：根据 Kruskal 原理，原图的瓶颈路必然落在其最大生成树 (MaxST) 上。   模型映射：将图转化为最大生成森林，问题转化为求树上两点路径间的边权最小值。   状态维护：利用 LCA 倍增法。定义 f[u][i]f[u][">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1967 货车运输 (最大生成树 + LCA)">
+<meta property="og:title" content="P1967 货车运输 (MaxST_LCA_Bottleneck)">
 <meta property="og:url" content="https://example.com/posts/7fb577ad/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P1967 货车运输 1. 核心逻辑 问题本质 瓶颈路问题 (Bottleneck Path Problem)：在带权图中，寻找两点间的一条路径，使得路径上的最小边权最大。 破局思路   贪心重构 (Kruskal):  想要路径上的最小边权尽可能大，意味着我们需要优先选择边权大的边来连接连通块。 这等价于构造最大生成树 (Maximum Spanning Tree, MaxST)。">
+<meta property="og:description" content="Luogu-P1967 货车运输 1. 核心逻辑   问题本质: 在带权无向图中，寻找两点间路径，使得路径上的最小边权最大（瓶颈路问题）。   破局转换:   结构坍缩：根据 Kruskal 原理，原图的瓶颈路必然落在其最大生成树 (MaxST) 上。   模型映射：将图转化为最大生成森林，问题转化为求树上两点路径间的边权最小值。   状态维护：利用 LCA 倍增法。定义 f[u][i]f[u][">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.882Z">
+<meta property="article:modified_time" content="2025-12-24T10:18:57.719Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="瓶颈路">
 <meta property="article:tag" content="LCA">
 <meta property="article:tag" content="最大生成树">
+<meta property="article:tag" content="瓶颈路">
+<meta property="article:tag" content="倍增">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1967 货车运输 (最大生成树 + LCA) - MiQiu</title>
+  <title>P1967 货车运输 (MaxST_LCA_Bottleneck) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1967 货车运输 (最大生成树 + LCA)"></span>
+            <span id="subtitle" data-typed-text="P1967 货车运输 (MaxST_LCA_Bottleneck)"></span>
           
         </div>
 
@@ -262,7 +263,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          829 字
+          673 字
         
       </span>
     
@@ -274,7 +275,7 @@
         
         
           <!-- compatible with older versions-->
-          11 分钟
+          9 分钟
         
       </span>
     
@@ -320,71 +321,54 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1967 货车运输 (最大生成树 + LCA)</h1>
+            <h1 id="seo-header">P1967 货车运输 (MaxST_LCA_Bottleneck)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1967">Luogu-P1967</a> 货车运输</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p><strong>瓶颈路问题 (Bottleneck Path Problem)</strong>：在带权图中，寻找两点间的一条路径，使得路径上的<strong>最小边权最大</strong>。</p>
-<h3 id="破局思路">破局思路</h3>
+<ul>
+<li>
+<p><strong>问题本质</strong>: 在带权无向图中，寻找两点间路径，使得路径上的<strong>最小边权最大</strong>（瓶颈路问题）。</p>
+</li>
+<li>
+<p><strong>破局转换</strong>:</p>
 <ol>
 <li>
-<p><strong>贪心重构 (Kruskal)</strong>:</p>
-<ul>
-<li>想要路径上的最小边权尽可能大，意味着我们需要优先选择边权大的边来连接连通块。</li>
-<li>这等价于构造<strong>最大生成树 (Maximum Spanning Tree, MaxST)</strong>。</li>
-<li>根据 MST 的性质，两点在 MST 上的唯一路径，即为原图中的瓶颈路（Maximin Path）。</li>
-</ul>
+<p><strong>结构坍缩</strong>：根据 Kruskal 原理，原图的瓶颈路必然落在其<strong>最大生成树 (MaxST)</strong> 上。</p>
 </li>
 <li>
-<p><strong>树上查询 (LCA +倍增)</strong>:</p>
-<ul>
-<li>原图转化为最大生成森林后，问题变为：查询树上 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 路径间的最小边权。</li>
-<li>利用 <strong>LCA (最近公共祖先)</strong> 配合 <strong>倍增数组</strong> <code>min_w[u][i]</code>（表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 向上跳 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span> 步路径上的最小边权）即可在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 内完成单次查询。</li>
-</ul>
+<p><strong>模型映射</strong>：将图转化为最大生成森林，问题转化为求树上两点路径间的边权最小值。</p>
 </li>
 <li>
-<p><strong>算法形态</strong>:</p>
-<ul>
-<li><strong>预处理</strong>: Kruskal 重构图 -&gt; 构建最大生成森林。</li>
-<li><strong>DFS</strong>: 处理每个连通块，初始化倍增表 <code>f</code> 和 <code>min_w</code>。</li>
-<li><strong>Query</strong>: LCA 求解 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 路径最小值。</li>
-</ul>
+<p><strong>状态维护</strong>：利用 LCA 倍增法。定义 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">f[u][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 点向上跳 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>i</mi></msup></mrow><annotation encoding="application/x-tex">2^i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8247em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span> 步的祖先，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi><mi mathvariant="normal">_</mi><mi>w</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">min\_w[u][i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">min</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 为该段路径的权值最小值。</p>
 </li>
 </ol>
+</li>
+<li>
+<p><strong>关键点</strong>: 图可能不连通，需处理为最大生成森林（循环调用 DFS 覆盖全点集）。</p>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-9ce46e3d" role="button" aria-expanded="false" aria-controls="collapse-9ce46e3d">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-9ce46e3d">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <pre><code class="language-cpp">// P1967 货车运输// Key Logic: MaxST (Kruskal) + LCA (Binary Lifting)// Airy Style v3.1#include&lt;bits/stdc++.h&gt;using namespace std;using ll = long long;using PII = pair&lt;int, int&gt;;const int maxn = 1e4 + 50;const int maxm = 5e4 + 50;const int inf = 0x3f3f3f3f;struct Edge {    int u, v, w;    bool operator &lt; ( const Edge &amp;other ) const     {        return w &gt; other.w; // 最大生成树，按权值降序    }} edges[maxm];int fa[maxn];int f[maxn][20];     // LCA 倍增祖先int min_w[maxn][20]; // 路径最小边权int dep[maxn];bool vis[maxn];vector&lt;PII&gt; adj[maxn];int n, m, q;int find( int x ){    if( x == fa[x] ) return fa[x];    else return fa[x] = find( fa[x] );}void kruskal( ){    for( int i = 1; i &lt;= n; ++ i ) fa[i] = i;    sort( edges + 1, edges + m + 1 );    for( int i = 1; i &lt;= m; ++ i )    {        auto [u, v, w] = edges[i];        int ru = find( u ), rv = find( v );        if( ru != rv )        {            fa[ru] = rv;            adj[u].push_back({ v, w });            adj[v].push_back({ u, w });        }    }}void dfs( int u, int father, int w ){    vis[u] = 1;    dep[u] = dep[father] + 1;    f[u][0] = father;    min_w[u][0] = w;    for( int i = 1; i &lt; 20; ++ i )    {        f[u][i] = f[ f[u][i-1] ][i-1];        min_w[u][i] = min( min_w[u][i-1], min_w[ f[u][i-1] ][i-1] );    }        for( auto [v, val] : adj[u] )    {        if( v != father )         {            dfs( v, u, val );        }    }}int query( int x, int y ){    int ans = inf;    if( dep[x] &lt; dep[y] ) swap( x, y );        // 1. Align depth    for( int i = 19; i &gt;= 0; -- i )    {        if( dep[ f[x][i] ] &gt;= dep[y] )        {            ans = min( ans, min_w[x][i] );            x = f[x][i];        }    }    if( x == y ) return ans;    // 2. Jump together    for( int i = 19; i &gt;= 0; -- i )    {        if( f[x][i] != f[y][i] )        {            ans = min( ans, min_w[x][i] );            ans = min( ans, min_w[y][i] );            x = f[x][i];            y = f[y][i];        }    }        // 3. Final step to LCA    ans = min( ans, min_w[x][0] );    ans = min( ans, min_w[y][0] );    return ans;}int main( ){    ios::sync_with_stdio(0);    cin.tie(0); cout.tie(0);    cin &gt;&gt; n &gt;&gt; m;    for( int i = 1; i &lt;= m; ++ i )    {        int u, v, w;        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;        edges[i] = { u, v, w };    }    kruskal( );    // 森林处理：可能存在不连通的情况    memset( min_w, 0x3f, sizeof( min_w ) );    for( int i = 1; i &lt;= n; ++ i )    {        if( !vis[i] )         {            dfs( i, 0, inf );        }    }    cin &gt;&gt; q;    for( int i = 1; i &lt;= q; ++ i )    {        int x, y;        cin &gt;&gt; x &gt;&gt; y;        if( find( x ) != find( y ) )        {            cout &lt;&lt; -1 &lt;&lt; '\n';        }        else        {            cout &lt;&lt; query( x, y ) &lt;&lt; '\n';        }    }    return 0;}</code></pre>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e4</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxm = <span class="hljs-number">5e4</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> inf = <span class="hljs-number">0x3f3f3f3f</span>;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Edge</span> <br>&#123;<br>    <span class="hljs-type">int</span> u, v, w;<br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; ( <span class="hljs-type">const</span> Edge &amp;other ) <span class="hljs-type">const</span> <br>    &#123;<br>        <span class="hljs-keyword">return</span> w &gt; other.w; <br>    &#125;<br>&#125; edges[ maxm ];<br><br><span class="hljs-type">int</span> fa[ maxn ], f[ maxn ][ <span class="hljs-number">20</span> ], min_w[ maxn ][ <span class="hljs-number">20</span> ], dep[ maxn ];<br><span class="hljs-type">bool</span> vis[ maxn ];<br>vector&lt; pair&lt; <span class="hljs-type">int</span>, <span class="hljs-type">int</span> &gt; &gt; adj[ maxn ];<br><span class="hljs-type">int</span> n, m, q;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> x == fa[ x ] ? x : fa[ x ] = <span class="hljs-built_in">find</span>( fa[ x ] );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> father, <span class="hljs-type">int</span> w )</span></span><br><span class="hljs-function"></span>&#123;<br>    vis[ u ] = <span class="hljs-number">1</span>;<br>    dep[ u ] = dep[ father ] + <span class="hljs-number">1</span>;<br>    f[ u ][ <span class="hljs-number">0</span> ] = father;<br>    min_w[ u ][ <span class="hljs-number">0</span> ] = w;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">20</span>; ++ i )<br>    &#123;<br>        f[ u ][ i ] = f[ f[ u ][ i - <span class="hljs-number">1</span> ] ][ i - <span class="hljs-number">1</span> ];<br>        min_w[ u ][ i ] = <span class="hljs-built_in">min</span>( min_w[ u ][ i - <span class="hljs-number">1</span> ], min_w[ f[ u ][ i - <span class="hljs-number">1</span> ] ][ i - <span class="hljs-number">1</span> ] );<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> &amp;e : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( e.first != father ) <span class="hljs-built_in">dfs</span>( e.first, u, e.second );<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">query</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> ans = inf;<br>    <span class="hljs-keyword">if</span>( dep[ x ] &lt; dep[ y ] ) <span class="hljs-built_in">swap</span>( x, y );<br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">19</span>; i &gt;= <span class="hljs-number">0</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( dep[ f[ x ][ i ] ] &gt;= dep[ y ] )<br>        &#123;<br>            ans = <span class="hljs-built_in">min</span>( ans, min_w[ x ][ i ] );<br>            x = f[ x ][ i ];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>( x == y ) <span class="hljs-keyword">return</span> ans;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">19</span>; i &gt;= <span class="hljs-number">0</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( f[ x ][ i ] != f[ y ][ i ] )<br>        &#123;<br>            ans = <span class="hljs-built_in">min</span>( &#123; ans, min_w[ x ][ i ], min_w[ y ][ i ] &#125; );<br>            x = f[ x ][ i ];<br>            y = f[ y ][ i ];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>( &#123; ans, min_w[ x ][ <span class="hljs-number">0</span> ], min_w[ y ][ <span class="hljs-number">0</span> ] &#125; );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> ); cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) cin &gt;&gt; edges[ i ].u &gt;&gt; edges[ i ].v &gt;&gt; edges[ i ].w;<br><br>    <span class="hljs-built_in">iota</span>( fa + <span class="hljs-number">1</span>, fa + n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span> );<br>    <span class="hljs-built_in">sort</span>( edges + <span class="hljs-number">1</span>, edges + m + <span class="hljs-number">1</span> );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> fu = <span class="hljs-built_in">find</span>( edges[ i ].u ), fv = <span class="hljs-built_in">find</span>( edges[ i ].v );<br>        <span class="hljs-keyword">if</span>( fu != fv )<br>        &#123;<br>            fa[ fu ] = fv;<br>            adj[ edges[ i ].u ].<span class="hljs-built_in">push_back</span>( &#123; edges[ i ].v, edges[ i ].w &#125; );<br>            adj[ edges[ i ].v ].<span class="hljs-built_in">push_back</span>( &#123; edges[ i ].u, edges[ i ].w &#125; );<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-built_in">memset</span>( min_w, <span class="hljs-number">0x3f</span>, <span class="hljs-built_in">sizeof</span>( min_w ) );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( ! vis[ i ] ) <span class="hljs-built_in">dfs</span>( i, <span class="hljs-number">0</span>, inf );<br>    &#125;<br><br>    cin &gt;&gt; q;<br>    <span class="hljs-keyword">while</span>( q -- )<br>    &#123;<br>        <span class="hljs-type">int</span> x, y; cin &gt;&gt; x &gt;&gt; y;<br>        <span class="hljs-keyword">if</span>( <span class="hljs-built_in">find</span>( x ) != <span class="hljs-built_in">find</span>( y ) ) cout &lt;&lt; <span class="hljs-string">&quot;-1\n&quot;</span>;<br>        <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-built_in">query</span>( x, y ) &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>M</mi><mo>+</mo><mi>Q</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M \log M + Q \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>M</mi><mo>+</mo><mi>Q</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M \log M + Q \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>易错点</strong>:</p>
-<ul>
-<li>
-<p><strong>非连通图</strong>: 图可能不是连通的，必须处理为<strong>森林</strong>（在主函数循环调用 DFS）。</p>
-</li>
-<li>
-<p><strong>并查集状态</strong>: 询问前需再次使用 <code>find</code> 判断连通性（虽然 MST 已建好，但直接用并查集判断最快）。</p>
-</li>
-<li>
-<p><strong>初始化</strong>: <code>min_w</code> 需初始化为无穷大，避免 LCA 跳出边界时取到 0。</p>
-</li>
-</ul>
+<p><strong>核心思路</strong>: 利用最大生成树保留所有潜在的“瓶颈最优路径”，结合倍增极速检索。注意森林环境下的 DFS 初始化。</p>
 </li>
 </ul>
 
@@ -427,11 +411,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%93%B6%E9%A2%88%E8%B7%AF/" class="print-no-link">#瓶颈路</a>
-      
         <a href="/tags/LCA/" class="print-no-link">#LCA</a>
       
         <a href="/tags/%E6%9C%80%E5%A4%A7%E7%94%9F%E6%88%90%E6%A0%91/" class="print-no-link">#最大生成树</a>
+      
+        <a href="/tags/%E7%93%B6%E9%A2%88%E8%B7%AF/" class="print-no-link">#瓶颈路</a>
+      
+        <a href="/tags/%E5%80%8D%E5%A2%9E/" class="print-no-link">#倍增</a>
       
     </div>
   
@@ -443,7 +429,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1967 货车运输 (最大生成树 + LCA)</div>
+      <div>P1967 货车运输 (MaxST_LCA_Bottleneck)</div>
       <div>https://example.com/posts/7fb577ad/</div>
     </div>
     <div class="license-meta">
@@ -488,9 +474,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/b9909e14/" title="P1099 [NOIP2007] 树网的核">
+                      <a href="/posts/bab96266/" title="CF911F Tree Destruction (Diameter_Constructive)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1099 [NOIP2007] 树网的核</span>
+                        <span class="hidden-mobile">CF911F Tree Destruction (Diameter_Constructive)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -498,8 +484,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/8179d216/" title="复合模型综述 (Composite Models)">
-                        <span class="hidden-mobile">复合模型综述 (Composite Models)</span>
+                      <a href="/posts/b7868cc/" title="P1395 会议 (Centroid_MinDist)">
+                        <span class="hidden-mobile">P1395 会议 (Centroid_MinDist)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -607,7 +593,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

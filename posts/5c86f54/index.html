@@ -19,18 +19,18 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 通过引入虚拟节点或数据结构，将 O(N2)O(N^2)O(N2) 的暴力连边降为 O(N)O(N)O(N) 或 O(Nlog⁡N)O(N \log N)O(NlogN)。 解决痛点: 集合连边、区间连边、位运算隐式图。  2. 逻辑支点  虚拟节点 (Hub):  场景: 集合 AAA 向集合 BBB 连边。 策略: 建立中转点 OOO，连边 A→OA \to OA→O 和">
+    <meta name="description" content="优化建图技巧 1. 生态位   定义: 优化建图是针对大规模边数（通常是 O(N2)O(N^2)O(N2) 或区间连边）执行的降维打击。其核心在于引入“中转机制”，通过添加辅助性的虚拟节点或利用树形结构，将稠密的直连关系转化为稀疏的级联关系，从而使边数从平方级坍缩至对数级或线性级。   解决痛点: 解决了集合间全连接、区间对节点连边、区间对区间连边导致的内存溢出（MLE）与时限超支（TLE）问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="优化建图技巧 (Graph_Optimization)">
 <meta property="og:url" content="https://example.com/posts/5c86f54/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 通过引入虚拟节点或数据结构，将 O(N2)O(N^2)O(N2) 的暴力连边降为 O(N)O(N)O(N) 或 O(Nlog⁡N)O(N \log N)O(NlogN)。 解决痛点: 集合连边、区间连边、位运算隐式图。  2. 逻辑支点  虚拟节点 (Hub):  场景: 集合 AAA 向集合 BBB 连边。 策略: 建立中转点 OOO，连边 A→OA \to OA→O 和">
+<meta property="og:description" content="优化建图技巧 1. 生态位   定义: 优化建图是针对大规模边数（通常是 O(N2)O(N^2)O(N2) 或区间连边）执行的降维打击。其核心在于引入“中转机制”，通过添加辅助性的虚拟节点或利用树形结构，将稠密的直连关系转化为稀疏的级联关系，从而使边数从平方级坍缩至对数级或线性级。   解决痛点: 解决了集合间全连接、区间对节点连边、区间对区间连边导致的内存溢出（MLE）与时限超支（TLE）问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T07:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T07:49:19.719Z">
+<meta property="article:modified_time" content="2025-12-24T11:05:59.000Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="图论建模">
 <meta property="article:tag" content="数据结构&#x2F;线段树">
+<meta property="article:tag" content="图论建模">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          287 字
+          666 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          9 分钟
         
       </span>
     
@@ -324,57 +324,62 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>优化建图技巧</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 通过引入<strong>虚拟节点</strong>或数据结构，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的暴力连边降为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</li>
-<li><strong>解决痛点</strong>: 集合连边、区间连边、位运算隐式图。</li>
+<li>
+<p><strong>定义</strong>: 优化建图是针对大规模边数（通常是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 或区间连边）执行的降维打击。其核心在于引入“中转机制”，通过添加辅助性的虚拟节点或利用树形结构，将稠密的直连关系转化为稀疏的级联关系，从而使边数从平方级坍缩至对数级或线性级。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 解决了集合间全连接、区间对节点连边、区间对区间连边导致的内存溢出（MLE）与时限超支（TLE）问题。</p>
+</li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>虚拟节点 (Hub)</strong>:
-<ul>
-<li>场景: 集合 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 向集合 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 连边。</li>
-<li>策略: 建立中转点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi></mrow><annotation encoding="application/x-tex">O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span>，连边 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>O</mi></mrow><annotation encoding="application/x-tex">A \to O</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">O \to B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>。</li>
-</ul>
+<li>
+<p><strong>虚拟中转（Hub Node）</strong>: 若集合 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> 中的每个点都需要向集合 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> 中的每个点连边，通过建立一个虚拟节点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi></mrow><annotation encoding="application/x-tex">P</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span>，将连边转化为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>P</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \to P \to B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>，边数从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>A</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><mi mathvariant="normal">∣</mi><mi>B</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|A| \cdot |B|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">A</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">∣</span></span></span></span> 降至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>A</mi><mi mathvariant="normal">∣</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>B</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|A| + |B|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal">A</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">∣</span></span></span></span>。</p>
 </li>
-<li><strong>线段树优化</strong>:
-<ul>
-<li>场景: 点向区间连边。</li>
-<li>策略: 建立入树和出树，叶子为实际点。点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 连向入树的区间节点。</li>
-</ul>
+<li>
+<p><strong>线段树优化建图</strong>: 利用线段树的区间覆盖特性。建立两棵线段树（入树与出树），树内部节点向下/向上连权值为 0 的边。区间连边操作转化为在线段树上对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 个区间节点进行连边。</p>
 </li>
-<li><strong>隐式位运算图</strong>:
-<ul>
-<li>场景: 边权由 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>⊕</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u \oplus v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 决定。</li>
-<li>策略: 仅当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 二进制差一位时连边，最短路即为逐位修正的过程。</li>
-</ul>
+<li>
+<p><strong>渗透点</strong>: 优化建图的本质是“熵减”。通过引入结构化的中转点，消除了重复的路径信息。线段树优化建图实际上是将拓扑空间进行了二分划分。</p>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
+<h3 id="3-1-线段树优化建图-Range-to-Node">3.1 线段树优化建图 (Range-to-Node)</h3>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Virtual Node ([P1983](https://www.luogu.com.cn/problem/P1983))
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Segment Tree Graph Optimization
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 虚拟汇点: 优化 &quot;未停靠集合&quot; -&gt; &quot;停靠集合&quot; 的连边</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">build_virtual</span><span class="hljs-params">( <span class="hljs-type">int</span> train_id )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> virtual_node = n + train_id; <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = start_stat; i &lt;= end_stat; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( ! is_stop[i] ) <span class="hljs-built_in">add_edge</span>( i, virtual_node, <span class="hljs-number">0</span> );<br>        <span class="hljs-keyword">else</span> <span class="hljs-built_in">add_edge</span>( virtual_node, i, <span class="hljs-number">1</span> );<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> ls[ maxn &lt;&lt; <span class="hljs-number">2</span> ], rs[ maxn &lt;&lt; <span class="hljs-number">2</span> ], tot;<br><br><span class="hljs-comment">// type 0: 入树 (从父向子连 0 边); type 1: 出树 (从子向父连 0 边)</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">build</span><span class="hljs-params">( <span class="hljs-type">int</span> &amp;u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> type )</span></span><br><span class="hljs-function"></span>&#123;<br>    u = ++ tot;<br>    <span class="hljs-keyword">if</span>( l == r )<br>    &#123;<br>        <span class="hljs-comment">// 叶子节点连接对应的物理点</span><br>        <span class="hljs-keyword">if</span>( type == <span class="hljs-number">0</span> ) <span class="hljs-built_in">add_edge</span>( u, l, <span class="hljs-number">0</span> );<br>        <span class="hljs-keyword">else</span> <span class="hljs-built_in">add_edge</span>( l, u, <span class="hljs-number">0</span> );<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">build</span>( ls[ u ], l, mid, type );<br>    <span class="hljs-built_in">build</span>( rs[ u ], mid + <span class="hljs-number">1</span>, r, type );<br>    <br>    <span class="hljs-keyword">if</span>( type == <span class="hljs-number">0</span> )<br>    &#123;<br>        <span class="hljs-built_in">add_edge</span>( u, ls[ u ], <span class="hljs-number">0</span> );<br>        <span class="hljs-built_in">add_edge</span>( u, rs[ u ], <span class="hljs-number">0</span> );<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-built_in">add_edge</span>( ls[ u ], u, <span class="hljs-number">0</span> );<br>        <span class="hljs-built_in">add_edge</span>( rs[ u ], u, <span class="hljs-number">0</span> );<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 区间连边：node -&gt; [L, R]</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">link</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, <span class="hljs-type">int</span> L, <span class="hljs-type">int</span> R, <span class="hljs-type">int</span> from, <span class="hljs-type">int</span> w )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( L &lt;= l &amp;&amp; r &lt;= R )<br>    &#123;<br>        <span class="hljs-built_in">add_edge</span>( from, u, w );<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span>( L &lt;= mid ) <span class="hljs-built_in">link</span>( ls[ u ], l, mid, L, R, from, w );<br>    <span class="hljs-keyword">if</span>( R &gt; mid ) <span class="hljs-built_in">link</span>( rs[ u ], mid + <span class="hljs-number">1</span>, r, L, R, from, w );<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
+<p><strong>变体模型</strong>:</p>
+<ul>
+<li>
+<p><strong>前缀/后缀优化建图</strong>: 利用前缀和思想，建立链式虚拟点处理单向区间连边。</p>
+</li>
+<li>
+<p><strong>位运算隐式建图</strong>: 利用状态压缩或异或特性，在搜索过程中动态发现边。</p>
+</li>
+</ul>
+</li>
+<li>
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF786B">CF786B</a></strong>: Legacy (线段树优化)。</p>
+<p>[[P1983 车站分级 (Virtual_Node)]] —— 虚拟 Hub 节点优化全连接。</p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1983">P1983</a></strong>: 车站分级 (虚拟点)。</p>
-</li>
-<li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4366">P4366</a></strong>: 最短路 (位运算)。</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/CF786B" title="null">CF786B Legacy</a> —— 线段树优化建图模板。</p>
 </li>
 </ul>
 </li>
@@ -419,9 +424,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/" class="print-no-link">#图论建模</a>
-      
         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="print-no-link">#数据结构/线段树</a>
+      
+        <a href="/tags/%E5%9B%BE%E8%AE%BA%E5%BB%BA%E6%A8%A1/" class="print-no-link">#图论建模</a>
       
     </div>
   
@@ -597,7 +602,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

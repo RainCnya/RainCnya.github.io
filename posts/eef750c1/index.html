@@ -19,20 +19,20 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(NlogN) 权值统计。     核心依赖: 信息必须满足 结合">
+    <meta name="description" content="树状数组体系 (Binary Indexed Tree) 1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(Nlo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树状数组体系 (Binary Indexed Tree)">
 <meta property="og:url" content="https://example.com/posts/eef750c1/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(NlogN) 权值统计。     核心依赖: 信息必须满足 结合">
+<meta property="og:description" content="树状数组体系 (Binary Indexed Tree) 1. 生态位   定义: 利用 x&amp;−xx \&amp; -xx&amp;−x (Lowbit) 性质，将前缀信息拆分为 O(log⁡N)O(\log N)O(logN) 个独立子区间。   解决痛点:   动态前缀和：单点修改与前缀查询的常数极小化。   逆序对：配合离散化，实现 O(Nlog⁡N)O(N \log N)O(Nlo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T12:00:00.000Z">
 <meta property="article:modified_time" content="2025-12-23T14:29:01.000Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="逆序对">
-<meta property="article:tag" content="逆运算">
 <meta property="article:tag" content="逆运算&#x2F;差分">
+<meta property="article:tag" content="逆运算">
 <meta property="article:tag" content="数据结构&#x2F;树状数组">
+<meta property="article:tag" content="逆序对">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -263,7 +263,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          413 字
+          420 字
         
       </span>
     
@@ -326,7 +326,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>树状数组体系 (Binary Indexed Tree)</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
 <li>
 <p><strong>定义</strong>: 利用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi mathvariant="normal">&amp;</mi><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x \&amp; -x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mord">&amp;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> (Lowbit) 性质，将前缀信息拆分为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 个独立子区间。</p>
@@ -438,13 +439,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/" class="print-no-link">#逆序对</a>
+        <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/" class="print-no-link">#逆运算/差分</a>
       
         <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/" class="print-no-link">#逆运算</a>
       
-        <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/" class="print-no-link">#逆运算/差分</a>
-      
         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" class="print-no-link">#数据结构/树状数组</a>
+      
+        <a href="/tags/%E9%80%86%E5%BA%8F%E5%AF%B9/" class="print-no-link">#逆序对</a>
       
     </div>
   
@@ -620,7 +621,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

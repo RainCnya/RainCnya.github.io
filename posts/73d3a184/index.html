@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P3128 Max Flow P 1. 核心逻辑 问题本质 KKK 次路径加 1，求最终点权最大的点。 破局思路  树上差分 (点权): 路径 (u,v)(u, v)(u,v) 上所有点权加 1。  dif[u]++ dif[v]++ dif[LCA(u, v)]-- dif[Father(LCA(u, v))]--   求和: 自底向上 DFS，累加子树差分值得到原值。  2. 代码">
+    <meta name="description" content="Luogu-P3128 Max Flow P 1. 核心逻辑   问题本质: 给定 KKK 条路径，每条路径覆盖的点权 +1+1+1，求全树点权的最大值。   破局转换:   差分降维：直接覆盖路径复杂度为 O(N)O(N)O(N)。利用树上点差分将路径修改坍缩为端点标记，复杂度降至 O(1)O(1)O(1)。   差分协议：对于路径 (u,v)(u, v)(u,v)，标记逻辑如下：   diff">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P3128 [USACO15DEC] Max Flow P">
+<meta property="og:title" content="P3128 [USACO15DEC] Max Flow P (LCA_Point_Difference)">
 <meta property="og:url" content="https://example.com/posts/73d3a184/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P3128 Max Flow P 1. 核心逻辑 问题本质 KKK 次路径加 1，求最终点权最大的点。 破局思路  树上差分 (点权): 路径 (u,v)(u, v)(u,v) 上所有点权加 1。  dif[u]++ dif[v]++ dif[LCA(u, v)]-- dif[Father(LCA(u, v))]--   求和: 自底向上 DFS，累加子树差分值得到原值。  2. 代码">
+<meta property="og:description" content="Luogu-P3128 Max Flow P 1. 核心逻辑   问题本质: 给定 KKK 条路径，每条路径覆盖的点权 +1+1+1，求全树点权的最大值。   破局转换:   差分降维：直接覆盖路径复杂度为 O(N)O(N)O(N)。利用树上点差分将路径修改坍缩为端点标记，复杂度降至 O(1)O(1)O(1)。   差分协议：对于路径 (u,v)(u, v)(u,v)，标记逻辑如下：   diff">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.901Z">
+<meta property="article:modified_time" content="2025-12-24T10:27:13.202Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="LCA">
 <meta property="article:tag" content="树上差分">
@@ -35,7 +35,7 @@
   
   
   
-  <title>P3128 [USACO15DEC] Max Flow P - MiQiu</title>
+  <title>P3128 [USACO15DEC] Max Flow P (LCA_Point_Difference) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P3128 [USACO15DEC] Max Flow P"></span>
+            <span id="subtitle" data-typed-text="P3128 [USACO15DEC] Max Flow P (LCA_Point_Difference)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          413 字
+          515 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -319,48 +319,59 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P3128 [USACO15DEC] Max Flow P</h1>
+            <h1 id="seo-header">P3128 [USACO15DEC] Max Flow P (LCA_Point_Difference)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3128">Luogu-P3128</a> Max Flow P</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 次路径加 1，求最终点权最大的点。</p>
-<h3 id="破局思路">破局思路</h3>
-<ol>
-<li><strong>树上差分 (点权)</strong>:<br>
-路径 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(u, v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span> 上所有点权加 1。
 <ul>
-<li><code>dif[u]++</code></li>
-<li><code>dif[v]++</code></li>
-<li><code>dif[LCA(u, v)]--</code></li>
-<li><code>dif[Father(LCA(u, v))]--</code></li>
+<li>
+<p><strong>问题本质</strong>: 给定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 条路径，每条路径覆盖的点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>，求全树点权的最大值。</p>
+</li>
+<li>
+<p><strong>破局转换</strong>:</p>
+<ol>
+<li>
+<p><strong>差分降维</strong>：直接覆盖路径复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。利用<strong>树上点差分</strong>将路径修改坍缩为端点标记，复杂度降至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>差分协议</strong>：对于路径 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(u, v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span>，标记逻辑如下：</p>
+<ul>
+<li>
+<p><code>diff[u]++</code>, <code>diff[v]++</code></p>
+</li>
+<li>
+<p><code>diff[LCA(u, v)]--</code>, <code>diff[fa[LCA(u, v)]]--</code></p>
+</li>
 </ul>
 </li>
-<li><strong>求和</strong>:<br>
-自底向上 DFS，累加子树差分值得到原值。</li>
+<li>
+<p><strong>贡献回收</strong>：利用 DFS 进行自底向上的前缀和汇总。节点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 的真实点权等于其子树内所有差分标记之和。</p>
+</li>
 </ol>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
         <div class="fold-arrow">▶</div>AcCode
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> inf = <span class="hljs-number">1e9</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">5e4</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxlg = <span class="hljs-number">20</span>;<br><br><span class="hljs-type">int</span> n, k;<br><span class="hljs-type">int</span> ans = -inf;<br><span class="hljs-type">int</span> dif[maxn], sum[maxn];<br><span class="hljs-type">int</span> dep[maxn], fa[maxn][maxlg];<br>vector&lt;<span class="hljs-type">int</span>&gt; adj[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> father )</span></span><br><span class="hljs-function"></span>&#123;<br>    fa[u][<span class="hljs-number">0</span>] = father;<br>    dep[u] = dep[father] + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>        <span class="hljs-keyword">if</span>( v != father ) <span class="hljs-built_in">dfs</span>( v, u );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">stInit</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; maxlg; ++ j )<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>            fa[i][j] = fa[ fa[i][j<span class="hljs-number">-1</span>] ][j<span class="hljs-number">-1</span>];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getlca</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( dep[u] &lt; dep[v] ) <span class="hljs-built_in">swap</span>( u, v );<br>    <span class="hljs-type">int</span> diff = dep[u] - dep[v];<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; (<span class="hljs-number">1</span> &lt;&lt; i) &lt;= diff; ++ i )<br>        <span class="hljs-keyword">if</span>( (<span class="hljs-number">1</span> &lt;&lt; i ) &amp; diff ) u = fa[u][i];<br>    <span class="hljs-keyword">if</span>( u == v ) <span class="hljs-keyword">return</span> u;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = maxlg - <span class="hljs-number">1</span> ; i &gt;= <span class="hljs-number">0</span>; -- i )<br>        <span class="hljs-keyword">if</span>( fa[u][i] != fa[v][i] ) &#123; u = fa[u][i]; v = fa[v][i]; &#125;<br>    <span class="hljs-keyword">return</span> fa[u][<span class="hljs-number">0</span>];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">getsum</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> father )</span></span><br><span class="hljs-function"></span>&#123;<br>    sum[u] = dif[u];<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v != father )<br>        &#123;<br>            <span class="hljs-built_in">getsum</span>( v, u );<br>            sum[u] += sum[v];<br>        &#125;<br>    &#125;<br>    ans = <span class="hljs-built_in">max</span>( ans, sum[u] );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>); cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin &gt;&gt; n &gt;&gt; k;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n - <span class="hljs-number">1</span>; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v; cin &gt;&gt; u &gt;&gt; v;<br>        adj[u].<span class="hljs-built_in">push_back</span>( v ); adj[v].<span class="hljs-built_in">push_back</span>( u );<br>    &#125;<br>    <br>    <span class="hljs-built_in">dfs</span>( <span class="hljs-number">1</span>, <span class="hljs-number">0</span> );<br>    <span class="hljs-built_in">stInit</span>( );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> s, t; cin &gt;&gt; s &gt;&gt; t;<br>        <span class="hljs-type">int</span> rt = <span class="hljs-built_in">getlca</span>( s, t );<br>        dif[s] ++, dif[t] ++;<br>        dif[rt] --, dif[ fa[rt][<span class="hljs-number">0</span>] ] --;<br>    &#125;<br>    <span class="hljs-built_in">getsum</span>( <span class="hljs-number">1</span>, <span class="hljs-number">0</span> );<br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">50005</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxlg = <span class="hljs-number">20</span>;<br><br>vector&lt; <span class="hljs-type">int</span> &gt; adj[ maxn ];<br><span class="hljs-type">int</span> f[ maxn ][ maxlg ], dep[ maxn ], diff[ maxn ];<br><span class="hljs-type">int</span> n, k, ans = <span class="hljs-number">0</span>;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs_lca</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> father )</span></span><br><span class="hljs-function"></span>&#123;<br>    dep[ u ] = dep[ father ] + <span class="hljs-number">1</span>;<br>    f[ u ][ <span class="hljs-number">0</span> ] = father;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; maxlg; ++ i )<br>    &#123;<br>        f[ u ][ i ] = f[ f[ u ][ i - <span class="hljs-number">1</span> ] ][ i - <span class="hljs-number">1</span> ];<br>    &#125;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v != father ) <span class="hljs-built_in">dfs_lca</span>( v, u );<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get_lca</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( dep[ u ] &lt; dep[ v ] ) <span class="hljs-built_in">swap</span>( u, v );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = maxlg - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( dep[ f[ u ][ i ] ] &gt;= dep[ v ] ) u = f[ u ][ i ];<br>    &#125;<br>    <span class="hljs-keyword">if</span>( u == v ) <span class="hljs-keyword">return</span> u;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = maxlg - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; -- i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( f[ u ][ i ] != f[ v ][ i ] )<br>        &#123;<br>            u = f[ u ][ i ];<br>            v = f[ v ][ i ];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> f[ u ][ <span class="hljs-number">0</span> ];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs_sum</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> father )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v != father )<br>        &#123;<br>            <span class="hljs-built_in">dfs_sum</span>( v, u );<br>            diff[ u ] += diff[ v ];<br>        &#125;<br>    &#125;<br>    ans = <span class="hljs-built_in">max</span>( ans, diff[ u ] );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br><br>    cin &gt;&gt; n &gt;&gt; k;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v;<br>        cin &gt;&gt; u &gt;&gt; v;<br>        adj[ u ].<span class="hljs-built_in">push_back</span>( v );<br>        adj[ v ].<span class="hljs-built_in">push_back</span>( u );<br>    &#125;<br><br>    <span class="hljs-built_in">dfs_lca</span>( <span class="hljs-number">1</span>, <span class="hljs-number">0</span> );<br><br>    <span class="hljs-keyword">while</span>( k -- )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v;<br>        cin &gt;&gt; u &gt;&gt; v;<br>        <span class="hljs-type">int</span> lca = <span class="hljs-built_in">get_lca</span>( u, v );<br>        ++ diff[ u ];<br>        ++ diff[ v ];<br>        -- diff[ lca ];<br>        -- diff[ f[ lca ][ <span class="hljs-number">0</span> ] ];<br>    &#125;<br><br>    <span class="hljs-built_in">dfs_sum</span>( <span class="hljs-number">1</span>, <span class="hljs-number">0</span> );<br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>K</mi><mo stretchy="false">)</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O((N+K) \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>.</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>K</mi><mo stretchy="false">)</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O((N+K) \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。主要开销在于 LCA 初始化与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 次查询。</p>
 </li>
 <li>
-<p><strong>易错点</strong>: 点差分操作位置：<code>lca</code> 和 <code>fa[lca]</code> 都要减。</p>
+<p><strong>关键点</strong>: 理解点差分中 <code>fa[lca]</code> 的减法逻辑。它确保了路径贡献仅止步于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi>C</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">LCA</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">A</span></span></span></span> 节点，而不会向其父辈祖先渗透，从而实现精确的链式覆盖。</p>
 </li>
 </ul>
 
@@ -417,7 +428,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P3128 [USACO15DEC] Max Flow P</div>
+      <div>P3128 [USACO15DEC] Max Flow P (LCA_Point_Difference)</div>
       <div>https://example.com/posts/73d3a184/</div>
     </div>
     <div class="license-meta">
@@ -462,9 +473,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/63edd0b2/" title="P3258 [JLOI2014] 松鼠的新家">
+                      <a href="/posts/248b3a56/" title="P2680 [NOIP2015] 运输计划 (LCA_Difference_BinarySearch)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P3258 [JLOI2014] 松鼠的新家</span>
+                        <span class="hidden-mobile">P2680 [NOIP2015] 运输计划 (LCA_Difference_BinarySearch)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -472,8 +483,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/121e91e/" title="AT_arc100_c Or Plus Max">
-                        <span class="hidden-mobile">AT_arc100_c Or Plus Max</span>
+                      <a href="/posts/63edd0b2/" title="P3258 [JLOI2014] 松鼠的新家 (LCA_Point_Difference_Unique)">
+                        <span class="hidden-mobile">P3258 [JLOI2014] 松鼠的新家 (LCA_Point_Difference_Unique)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -581,7 +592,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

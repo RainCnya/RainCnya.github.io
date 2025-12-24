@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 差分思想在树上的推广。 解决痛点: 离线批量处理路径上的区间修改（+K+K+K），最后一次性查询。  2. 逻辑支点  影响的抵消: 在路径两端施加影响，在 LCA 处消除影响。 点差分:  修改 u→vu \to vu→v 的点权。 操作: cnt[u]++, cnt[v]++, cnt[lca]--, cnt[fa[lca]]--。   边差分:  修改 u→vu \t">
+    <meta name="description" content="树上差分 1. 生态位   定义: 差分是前缀和的逆运算，其本质是“贡献的局部标记”。在树上，它通过在路径端点施加抵消性的增量，将路径范围的修改坍缩为 O(1)O(1)O(1) 的端点打标。   解决痛点: 离线批量处理海量的树上路径修改任务（如：路径加 KKK、路径覆盖统计），最后通过一次自底向上的聚合（DFS 汇总）还原全局信息。   2. 逻辑支点   影响抵消机制:   点差分: diff">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树上差分 (Tree_Difference)">
 <meta property="og:url" content="https://example.com/posts/4f9d9d38/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 差分思想在树上的推广。 解决痛点: 离线批量处理路径上的区间修改（+K+K+K），最后一次性查询。  2. 逻辑支点  影响的抵消: 在路径两端施加影响，在 LCA 处消除影响。 点差分:  修改 u→vu \to vu→v 的点权。 操作: cnt[u]++, cnt[v]++, cnt[lca]--, cnt[fa[lca]]--。   边差分:  修改 u→vu \t">
+<meta property="og:description" content="树上差分 1. 生态位   定义: 差分是前缀和的逆运算，其本质是“贡献的局部标记”。在树上，它通过在路径端点施加抵消性的增量，将路径范围的修改坍缩为 O(1)O(1)O(1) 的端点打标。   解决痛点: 离线批量处理海量的树上路径修改任务（如：路径加 KKK、路径覆盖统计），最后通过一次自底向上的聚合（DFS 汇总）还原全局信息。   2. 逻辑支点   影响抵消机制:   点差分: diff">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-16T06:20:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:10:29.752Z">
+<meta property="article:modified_time" content="2025-12-24T11:07:54.000Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="LCA">
 <meta property="article:tag" content="树上差分">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          212 字
+          420 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -324,49 +324,83 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>树上差分</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 差分思想在树上的推广。</li>
-<li><strong>解决痛点</strong>: <strong>离线</strong>批量处理路径上的区间修改（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">+K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>），最后一次性查询。</li>
+<li>
+<p><strong>定义</strong>: 差分是前缀和的逆运算，其本质是“贡献的局部标记”。在树上，它通过在路径端点施加抵消性的增量，将路径范围的修改坍缩为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 的端点打标。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 离线批量处理海量的树上路径修改任务（如：路径加 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>、路径覆盖统计），最后通过一次自底向上的聚合（DFS 汇总）还原全局信息。</p>
+</li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>影响的抵消</strong>: 在路径两端施加影响，在 <strong>LCA</strong> 处消除影响。</li>
-<li><strong>点差分</strong>:
+<li>
+<p><strong>影响抵消机制</strong>:</p>
 <ul>
-<li>修改 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>→</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u \to v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的点权。</li>
-<li>操作: <code>cnt[u]++</code>, <code>cnt[v]++</code>, <code>cnt[lca]--</code>, <code>cnt[fa[lca]]--</code>。</li>
+<li>
+<p><strong>点差分</strong>: <code>diff[u]++</code>, <code>diff[v]++</code>, <code>diff[LCA]--</code>, <code>diff[fa[LCA]]--</code>。旨在统计节点被覆盖的频次。</p>
+</li>
+<li>
+<p><strong>边差分</strong>: <code>diff[u]++</code>, <code>diff[v]++</code>, <code>diff[LCA]-=2</code>。旨在统计边被覆盖的频次（权值通常挂在深节点上）。</p>
+</li>
 </ul>
 </li>
-<li><strong>边差分</strong>:
+<li>
+<p><strong>渗透点</strong>:</p>
 <ul>
-<li>修改 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>→</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u \to v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的边权（下放给深度深的节点）。</li>
-<li>操作: <code>cnt[u]++</code>, <code>cnt[v]++</code>, <code>cnt[lca]-=2</code>。</li>
+<li>
+<p>点差分的 <code>fa[LCA]</code> 减法是为了彻底切断路径贡献向上传递的“溢出”，确保贡献仅局限在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>→</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u \to v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 的链上。</p>
+</li>
+<li>
+<p>差分还原的本质是子树和。</p>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Tree Difference
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Tree Difference & DFS Recovery
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 点差分示例: diff[u]++</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_path</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v, <span class="hljs-type">int</span> lca_node )</span></span><br><span class="hljs-function"></span>&#123;<br>    diff[u] ++;<br>    diff[v] ++;<br>    diff[lca_node] --;<br>    diff[ fa[lca_node] ] --;<br>&#125;<br><br><span class="hljs-comment">// 自底向上求前缀和</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs_sum</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> f )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == f ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs_sum</span>( v, u );<br>        diff[u] += diff[v];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 1. 端点标记 (以点差分为例)</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_path</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> rt = <span class="hljs-built_in">get_lca</span>( u, v );<br>    ++ diff[ u ];<br>    ++ diff[ v ];<br>    -- diff[ rt ];<br>    -- diff[ fa[ rt ][ <span class="hljs-number">0</span> ] ];<br>&#125;<br><br><span class="hljs-comment">// 2. 自底向上汇总还原</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs_sum</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> father )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( v != father )<br>        &#123;<br>            <span class="hljs-built_in">dfs_sum</span>( v, u );<br>            diff[ u ] += diff[ v ];<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 此时 diff[u] 即为该点的最终权值/覆盖次数</span><br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
+<p><strong>变体应用</strong>:</p>
+<ul>
+<li>
+<p><strong>序列修正</strong>: 处理路径拼接时的转折点重复计算（如 P3258）。</p>
+</li>
+<li>
+<p><strong>桶计数结合</strong>: 利用 DFS 序进出栈的桶差值统计动态属性（如 P1600）。</p>
+</li>
+</ul>
+</li>
+<li>
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p>**<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3128">Luogu-P3128</a> **: Max Flow P (点差分)。</p>
+<p><a href="/posts/73d3a184/">P3128 Max Flow P (LCA_Point_Difference)</a></p>
 </li>
 <li>
-<p>**<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3258">Luogu-P3258</a> **: 松鼠的新家 (注意端点重复计算)。</p>
+<p><a href="/posts/63edd0b2/">P3258 松鼠的新家 (LCA_Point_Difference_Unique)</a></p>
+</li>
+<li>
+<p><a href="/posts/d728e06b/">P3406 海底高铁 (Chain_Difference)</a>]</p>
+</li>
+<li>
+<p><a href="/posts/248b3a56/">P2680 运输计划 (LCA_Difference_BinarySearch)</a></p>
+</li>
+<li>
+<p><a href="/posts/7dd0a134/">P1600 天天爱跑步 (LCA_Bucket_Difference)</a></p>
 </li>
 </ul>
 </li>
@@ -589,7 +623,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

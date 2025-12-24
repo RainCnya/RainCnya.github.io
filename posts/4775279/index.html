@@ -19,12 +19,12 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位   定义: 双指针（Two Pointers）是一种利用序列的单调性（Monotonicity），通过维持两个在序列上移动的指针（L,RL, RL,R 或称 left,rightleft, rightleft,right），将原本 O(N2)O(N^2)O(N2) 的暴力扫描压缩至 O(N)O(N)O(N) 的思维范式。   解决痛点:   解决了“连续区间搜索”中重复扫描造成的冗余">
+    <meta name="description" content="双指针体系 (Two Pointers System) 1. 生态位   定义: 双指针（Two Pointers）是一种利用序列的单调性（Monotonicity），通过维持两个在序列上移动的指针（L,RL, RL,R 或称 left,rightleft, rightleft,right），将原本 O(N2)O(N^2)O(N2) 的暴力扫描压缩至 O(N)O(N)O(N) 的思维范式。   解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="双指针体系 (Two Pointers System)">
 <meta property="og:url" content="https://example.com/posts/4775279/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位   定义: 双指针（Two Pointers）是一种利用序列的单调性（Monotonicity），通过维持两个在序列上移动的指针（L,RL, RL,R 或称 left,rightleft, rightleft,right），将原本 O(N2)O(N^2)O(N2) 的暴力扫描压缩至 O(N)O(N)O(N) 的思维范式。   解决痛点:   解决了“连续区间搜索”中重复扫描造成的冗余">
+<meta property="og:description" content="双指针体系 (Two Pointers System) 1. 生态位   定义: 双指针（Two Pointers）是一种利用序列的单调性（Monotonicity），通过维持两个在序列上移动的指针（L,RL, RL,R 或称 left,rightleft, rightleft,right），将原本 O(N2)O(N^2)O(N2) 的暴力扫描压缩至 O(N)O(N)O(N) 的思维范式。   解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:19:07.000Z">
 <meta property="article:modified_time" content="2025-12-23T16:11:32.000Z">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          748 字
+          754 字
         
       </span>
     
@@ -324,7 +324,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>双指针体系 (Two Pointers System)</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
 <li>
 <p><strong>定义</strong>: 双指针（Two Pointers）是一种利用序列的<strong>单调性（Monotonicity）</strong>，通过维持两个在序列上移动的指针（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo separator="true">,</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">L, R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 或称 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>e</mi><mi>f</mi><mi>t</mi><mo separator="true">,</mo><mi>r</mi><mi>i</mi><mi>g</mi><mi>h</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">left, right</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">h</span><span class="mord mathnormal">t</span></span></span></span>），将原本 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的暴力扫描压缩至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的思维范式。</p>
@@ -565,8 +566,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/c28314d6/" title="基础算法：降维打击的起点 (Basis Guide)">
-                        <span class="hidden-mobile">基础算法：降维打击的起点 (Basis Guide)</span>
+                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -674,7 +675,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

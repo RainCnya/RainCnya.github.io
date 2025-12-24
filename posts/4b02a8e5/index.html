@@ -19,18 +19,18 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Philosophy: 一切皆图。不等式是图，同余系是图，矩阵变换也是图。 图论的本质是将离散的状态 (Nodes) 与 逻辑的关系 (Edges) 可视化，从而利用拓扑性质解决代数问题。  🌍 宏观视野 (Overview &amp; Modeling) 建模是图论的灵魂，优化是图论的骨架。  图论建模综述 (Graph Core Synthesis): 必读。解析图论建模的三大范式：差分约">
+    <meta name="description" content="图论：# 拓扑关联与建模范式  一切皆图。不等式是图，同余系是图，状态机也是图。 图论的本质是将离散的状态与逻辑的关系可视化，从而利用拓扑性质解决代数问题。  0. 建模与优化 解决如何将现实约束映射为图论算子，并处理海量连边的降维问题。   图论建模综述：解析差分约束、同余最短路、时空图三大建模范式。   优化建图技巧：解决边数爆炸的手段，涵盖虚拟 Hub 节点与线段树优化建图。   1. 路径">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论：结构映射与状态流转 (Graph Guide)">
 <meta property="og:url" content="https://example.com/posts/4b02a8e5/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Philosophy: 一切皆图。不等式是图，同余系是图，矩阵变换也是图。 图论的本质是将离散的状态 (Nodes) 与 逻辑的关系 (Edges) 可视化，从而利用拓扑性质解决代数问题。  🌍 宏观视野 (Overview &amp; Modeling) 建模是图论的灵魂，优化是图论的骨架。  图论建模综述 (Graph Core Synthesis): 必读。解析图论建模的三大范式：差分约">
+<meta property="og:description" content="图论：# 拓扑关联与建模范式  一切皆图。不等式是图，同余系是图，状态机也是图。 图论的本质是将离散的状态与逻辑的关系可视化，从而利用拓扑性质解决代数问题。  0. 建模与优化 解决如何将现实约束映射为图论算子，并处理海量连边的降维问题。   图论建模综述：解析差分约束、同余最短路、时空图三大建模范式。   优化建图技巧：解决边数爆炸的手段，涵盖虚拟 Hub 节点与线段树优化建图。   1. 路径">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:26:20.079Z">
+<meta property="article:modified_time" content="2025-12-24T11:14:25.148Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="指南">
 <meta property="article:tag" content="图论">
+<meta property="article:tag" content="指南">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          541 字
+          614 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          8 分钟
         
       </span>
     
@@ -324,38 +324,76 @@
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p><strong>Philosophy</strong>: 一切皆图。不等式是图，同余系是图，矩阵变换也是图。<br>
-图论的本质是将<strong>离散的状态</strong> (Nodes) 与 <strong>逻辑的关系</strong> (Edges) 可视化，从而利用拓扑性质解决代数问题。</p>
+                <h1>图论：# 拓扑关联与建模范式</h1>
+<blockquote>
+<p>一切皆图。不等式是图，同余系是图，状态机也是图。</p>
+<p>图论的本质是将离散的状态与逻辑的关系可视化，从而利用拓扑性质解决代数问题。</p>
 </blockquote>
-<h3 id="🌍-宏观视野-Overview-Modeling">🌍 宏观视野 (Overview &amp; Modeling)</h3>
-<p>建模是图论的灵魂，优化是图论的骨架。</p>
+<h3 id="0-建模与优化">0. 建模与优化</h3>
+<p>解决如何将现实约束映射为图论算子，并处理海量连边的降维问题。</p>
 <ul>
-<li><strong><a href="/posts/54aea480/">图论建模综述 (Graph Core Synthesis)</a></strong>: <strong>必读</strong>。解析图论建模的三大范式：差分约束（不等式映射）、同余最短路（数值折叠）、动态 Floyd（时间轴展开）。</li>
-<li><strong><a href="/posts/5c86f54/">优化建图技巧 (Graph Optimization)</a></strong>: 当边数爆炸 (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>≈</mo><msup><mi>N</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">M \approx N^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>) 时的降维打击。涵盖虚拟节点 (Hub)、线段树优化建图、位运算隐式图。</li>
+<li>
+<p><a href="/posts/54aea480/">图论建模综述</a>：解析差分约束、同余最短路、时空图三大建模范式。</p>
+</li>
+<li>
+<p><a href="/posts/5c86f54/">优化建图技巧</a>：解决边数爆炸的手段，涵盖虚拟 Hub 节点与线段树优化建图。</p>
+</li>
 </ul>
-<h3 id="🛣️-最短路与状态-Shortest-Path-States">🛣️ 最短路与状态 (Shortest Path &amp; States)</h3>
-<p>最短路不仅是求距离，更是<strong>状态转移的最小代价</strong>。</p>
+<h3 id="1-路径与代价">1. 路径与代价</h3>
+<p>最短路不仅是物理距离，更是状态转移的最小化成本。</p>
 <ul>
-<li><strong><a href="/posts/a535be86/">最短路体系 (SSSP System)</a></strong>: Dijkstra、SPFA 与 Floyd 的逻辑支点，以及最短路图 (DAG) 的计数应用。</li>
-<li><strong><a href="/posts/2a513a9f/">分层图最短路 (Layered Graph)</a></strong>: 处理“有限次免费/折扣”或“状态切换”的二维最短路模型。</li>
-<li><strong><a href="/posts/6cae5d5b/">差分约束系统 (Difference Constraints)</a></strong>: 将形如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>u</mi></msub><mo>−</mo><msub><mi>X</mi><mi>v</mi></msub><mo>≤</mo><mi>W</mi></mrow><annotation encoding="application/x-tex">X_u - X_v \le W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span> 的代数不等式组转化为最短路模型。</li>
+<li>
+<p><a href="/posts/a535be86/">最短路体系</a>：Dijkstra、SPFA 与 Floyd 的三位一体选型策略。</p>
+</li>
+<li>
+<p><a href="/posts/2a513a9f/">分层图最短路</a>：处理有限次特殊机会或不可逆状态切换的“空间拉伸”建模。</p>
+</li>
+<li>
+<p><a href="/posts/undefined/">最短路图</a>：剥离非最优边，将复杂图坍缩为纯净的 DAG 以释放计数潜力。</p>
+</li>
+<li>
+<p><a href="/posts/undefined/">同余最短路</a>：利用模运算将巨大值域空间折叠进有限的同余环。</p>
+</li>
+<li>
+<p><a href="/posts/6cae5d5b/">差分约束系统</a>：将代数不等式组映射为边约束，判定逻辑一致性。</p>
+</li>
 </ul>
-<h3 id="🔗-连通性与遍历-Connectivity-Traversal">🔗 连通性与遍历 (Connectivity &amp; Traversal)</h3>
-<p>研究图的<strong>结构特征</strong>，将环拆解，将图分层。</p>
+<h3 id="2-结构与连通">2. 结构与连通</h3>
+<p>提取图的物理拓扑特征，化环为链，识别关键节点。</p>
 <ul>
-<li><strong><a href="/posts/dbe3a645/">Tarjan SCC 与缩点 (Tarjan SCC)</a></strong>: <strong>必读</strong>。化环为链，将有向图转化为 DAG 进行 DP 或递推。</li>
-<li><strong><a href="/posts/d4dd66e8/">传递闭包与Bitset优化 (Transitive Closure)</a></strong>: 利用 Bitset 并行加速，在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mi mathvariant="normal">/</mi><mi>w</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3/w)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mclose">)</span></span></span></span> 复杂度下解决稠密图的连通性查询。</li>
-<li><strong><a href="/posts/3fe2b20c/">欧拉回路与路径 (Eulerian Path)</a></strong>: 边遍历问题（一笔画）。Hierholzer 算法的圈套圈逻辑。</li>
+<li>
+<p><a href="/posts/dbe3a645/">Tarjan SCC 与缩点</a>：识别强连通分量，将有向有环图转化为 DAG。</p>
+</li>
+<li>
+<p><a href="/posts/3fe2b20c/">欧拉回路与路径</a>：研究边完全覆盖的约束逻辑，Hierholzer 算法的应用。</p>
+</li>
+<li>
+<p><a href="/posts/d4dd66e8/">传递闭包与Bitset优化</a>：利用位运算并行化提速稠密图的可达性统计。</p>
+</li>
 </ul>
-<h3 id="🌳-树上问题-Tree-Algorithms">🌳 树上问题 (Tree Algorithms)</h3>
-<p>树是特殊的图（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 边，无环连通）。</p>
+<h3 id="3-树上问题">3. 树上问题</h3>
+<p>处理树这一高度对称且路径唯一的特殊图结构。</p>
 <ul>
-<li><strong><a href="/posts/cd7fb2f0/">MST体系与瓶颈路 (MST, LCA &amp; Bottleneck)</a></strong>: <strong>必读</strong>。最小生成树与 LCA 的结合，解决“路径最大边最小”的瓶颈路问题。包含 Kruskal 重构树。</li>
-<li><strong><a href="/posts/447bed30/">树的直径与重心 (Tree Properties)</a></strong>: 树的“最长跨度”与“平衡中心”，点分治与树形 DP 的基础。</li>
-<li><strong><a href="/posts/5e08b96b/">重链剖分 (HLD System)</a></strong>: 将树“线性化”为序列，结合线段树维护路径信息。</li>
-<li><strong><a href="/posts/4f9d9d38/">树上差分 (Tree Difference)</a></strong>: 离线处理批量的树上路径修改任务。</li>
+<li>
+<p><a href="/posts/447bed30/">树的直径与重心</a>：识别树的物理跨度极限与拓扑平衡中心。</p>
+</li>
+<li>
+<p><a href="/posts/cd7fb2f0/">MST体系与瓶颈路</a>：锁定点对间的瓶颈最优路径，Kruskal 重构树的映射。</p>
+</li>
+<li>
+<p><a href="/posts/4f9d9d38/">树上差分</a>：将路径修改坍缩为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 的端点打标，子树和还原贡献。</p>
+</li>
+<li>
+<p><a href="/posts/5e08b96b/">重链剖分</a>：树结构线性化范式，实现向线段树区间的逻辑投影。</p>
+</li>
 </ul>
+<h3 id="4-选型与决策">4. 选型与决策</h3>
+<p>针对图论特征的建模思维路径与工具映射：</p>
+<ul>
+<li><a href="/posts/undefined/">图论决策</a>](图论选型决策)：场景驱动的图论工具映射逻辑与图论思维范式。</li>
+</ul>
+<h2 id="归档索引">归档索引</h2>
+<p>所有题目归档请参考：<a href="/posts/undefined/">图论归档数据库</a></p>
 
                 
               </div>
@@ -396,9 +434,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8C%87%E5%8D%97/" class="print-no-link">#指南</a>
-      
         <a href="/tags/%E5%9B%BE%E8%AE%BA/" class="print-no-link">#图论</a>
+      
+        <a href="/tags/%E6%8C%87%E5%8D%97/" class="print-no-link">#指南</a>
       
     </div>
   
@@ -455,9 +493,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/9e0761d7/" title="动态规划：从线性推演到维度打击 (DP Guide)">
+                      <a href="/posts/4775279/" title="双指针体系 (Two Pointers System)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态规划：从线性推演到维度打击 (DP Guide)</span>
+                        <span class="hidden-mobile">双指针体系 (Two Pointers System)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -574,7 +612,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

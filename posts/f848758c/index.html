@@ -19,23 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P1195 口袋的天空 1. 核心逻辑 问题本质 给定 NNN 个离散点，要求通过连接边（代价最小化）形成恰好 KKK 个连通分量。 破局思路   逆向思维: 标准 MST 是将 NNN 个点连成 1 个连通块，需要 N−1N-1N−1 条边。本题目标是 KKK 个连通块。   公式推导: 初始有 NNN 个连通块。每连接一条有效边（合并两个不同集合），连通块数量 −1-1−1。 Ta">
+    <meta name="description" content="Luogu-P1195 口袋的天空 1. 核心逻辑   问题本质: 将 NNN 个离散点通过代价最小的边连成恰好 KKK 个连通块。   核心切入点:   不变量推导：初始有 NNN 个连通块。每次有效的合并（选取一条 MST 边）会使块数 −1-1−1。   目标转换：要使块数变为 KKK，需要执行 N−KN - KN−K 次合并。   策略选择：Kruskal 算法天生支持按权值排序，只需在完">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1195 口袋的天空">
+<meta property="og:title" content="P1195 口袋的天空 (Kruskal_K_Components)">
 <meta property="og:url" content="https://example.com/posts/f848758c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P1195 口袋的天空 1. 核心逻辑 问题本质 给定 NNN 个离散点，要求通过连接边（代价最小化）形成恰好 KKK 个连通分量。 破局思路   逆向思维: 标准 MST 是将 NNN 个点连成 1 个连通块，需要 N−1N-1N−1 条边。本题目标是 KKK 个连通块。   公式推导: 初始有 NNN 个连通块。每连接一条有效边（合并两个不同集合），连通块数量 −1-1−1。 Ta">
+<meta property="og:description" content="Luogu-P1195 口袋的天空 1. 核心逻辑   问题本质: 将 NNN 个离散点通过代价最小的边连成恰好 KKK 个连通块。   核心切入点:   不变量推导：初始有 NNN 个连通块。每次有效的合并（选取一条 MST 边）会使块数 −1-1−1。   目标转换：要使块数变为 KKK，需要执行 N−KN - KN−K 次合并。   策略选择：Kruskal 算法天生支持按权值排序，只需在完">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-08T00:58:10.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:13:26.895Z">
+<meta property="article:modified_time" content="2025-12-24T10:18:49.224Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="连通性">
 <meta property="article:tag" content="最小生成树">
+<meta property="article:tag" content="连通性">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1195 口袋的天空 - MiQiu</title>
+  <title>P1195 口袋的天空 (Kruskal_K_Components) - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1195 口袋的天空"></span>
+            <span id="subtitle" data-typed-text="P1195 口袋的天空 (Kruskal_K_Components)"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          520 字
+          373 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          5 分钟
         
       </span>
     
@@ -319,31 +319,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1195 口袋的天空</h1>
+            <h1 id="seo-header">P1195 口袋的天空 (Kruskal_K_Components)</h1>
             
             
               <div class="markdown-body">
                 
                 <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1195">Luogu-P1195</a> 口袋的天空</h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
-<h3 id="问题本质">问题本质</h3>
-<p>给定 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个离散点，要求通过连接边（代价最小化）形成恰好 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 个连通分量</strong>。</p>
-<h3 id="破局思路">破局思路</h3>
+<ul>
+<li>
+<p><strong>问题本质</strong>: 将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个离散点通过代价最小的边连成恰好 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 个连通块。</p>
+</li>
+<li>
+<p><strong>核心切入点</strong>:</p>
 <ol>
 <li>
-<p><strong>逆向思维</strong>: 标准 MST 是将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个点连成 <strong>1</strong> 个连通块，需要 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 条边。本题目标是 <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></strong> 个连通块。</p>
+<p><strong>不变量推导</strong>：初始有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个连通块。每次有效的合并（选取一条 MST 边）会使块数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。</p>
 </li>
 <li>
-<p>公式推导:</p>
-<p>初始有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个连通块。每连接一条有效边（合并两个不同集合），连通块数量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。</p>
-<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>Target Edges</mtext><mo>=</mo><mtext>Initial Components</mtext><mo>−</mo><mtext>Target Components</mtext><mo>=</mo><mi>N</mi><mo>−</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\text{Target Edges} = \text{Initial Components} - \text{Target Components} = N - K
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Target Edges</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Initial Components</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Target Components</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span></span></p>
+<p><strong>目标转换</strong>：要使块数变为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>，需要执行 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">N - K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 次合并。</p>
 </li>
 <li>
-<p>算法形态:</p>
-<p>运行标准 Kruskal，但在合并次数 cnt 达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">N-K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 时强制终止。</p>
+<p><strong>策略选择</strong>：Kruskal 算法天生支持按权值排序，只需在完成第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">N - K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 条边时停止即可。</p>
 </li>
 </ol>
+</li>
+<li>
+<p><strong>坑点</strong>: 若图中原本的连通分量数就多于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span>，或者边不足以将点合并至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 块，需输出 <code>No Answer</code>。</p>
+</li>
+</ul>
 <h2 id="2-代码实现">2. 代码实现</h2>
 
     <div class="fold">
@@ -352,28 +356,17 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e3</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxm = <span class="hljs-number">1e4</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Edge</span> &#123;<br>    <span class="hljs-type">int</span> u, v, w;<br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt;( <span class="hljs-type">const</span> Edge &amp;other ) <span class="hljs-type">const</span> &#123;<br>        <span class="hljs-keyword">return</span> w &lt; other.w;<br>    &#125;<br>&#125; edges[maxm];<br><br><span class="hljs-type">int</span> fa[maxn];<br><span class="hljs-type">int</span> n, m, k;<br>ll mst_weight;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( x == fa[x] ) <span class="hljs-keyword">return</span> fa[x];<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> fa[x] = <span class="hljs-built_in">find</span>( fa[x] );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">kruskal</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) fa[i] = i;<br>    <span class="hljs-built_in">sort</span>( edges + <span class="hljs-number">1</span>, edges + m + <span class="hljs-number">1</span> );<br><br>    <span class="hljs-comment">// 特判: 初始即满足 K 个连通块</span><br>    <span class="hljs-keyword">if</span>( n == k ) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br><br>    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">auto</span> [u, v, w] = edges[i];<br>        <span class="hljs-type">int</span> ru = <span class="hljs-built_in">find</span>( u ), rv = <span class="hljs-built_in">find</span>( v );<br><br>        <span class="hljs-keyword">if</span>( ru != rv )<br>        &#123;<br>            fa[ru] = rv;<br>            mst_weight += w;<br>            cnt ++;<br>            <span class="hljs-comment">// 核心: 只需要合并 N-K 次</span><br>            <span class="hljs-keyword">if</span>( cnt == n - k ) <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> cnt == n - k;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;<br><br>    <span class="hljs-comment">// 严谨特判: 目标块数 &gt; 初始点数，不可能完成</span><br>    <span class="hljs-comment">// 虽然后续 sort 也不影响，但在逻辑上应拦截</span><br>    <span class="hljs-comment">/* if (n &lt; k) &#123; cout &lt;&lt; &quot;No Answer\n&quot;; return 0; &#125; */</span> <br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> u, v, w;<br>        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;<br>        edges[i] = &#123;u, v, w&#125;;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">kruskal</span>( ) ) cout &lt;&lt; mst_weight &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>; <br>    <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;No Answer&quot;</span> &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Edge</span> <br>&#123;<br>    <span class="hljs-type">int</span> u, v, w;<br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; ( <span class="hljs-type">const</span> Edge &amp;other ) <span class="hljs-type">const</span> <br>    &#123;<br>        <span class="hljs-keyword">return</span> w &lt; other.w;<br>    &#125;<br>&#125; edges[ <span class="hljs-number">10005</span> ];<br><br><span class="hljs-type">int</span> fa[ <span class="hljs-number">1005</span> ], n, m, k;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> x == fa[ x ] ? x : fa[ x ] = <span class="hljs-built_in">find</span>( fa[ x ] );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> ); cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; ++ i ) cin &gt;&gt; edges[ i ].u &gt;&gt; edges[ i ].v &gt;&gt; edges[ i ].w;<br><br>    <span class="hljs-built_in">sort</span>( edges, edges + m );<br>    <span class="hljs-built_in">iota</span>( fa + <span class="hljs-number">1</span>, fa + n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span> );<br><br>    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>, ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( cnt == n - k ) <span class="hljs-keyword">break</span>;<br>        <span class="hljs-type">int</span> fu = <span class="hljs-built_in">find</span>( edges[ i ].u ), fv = <span class="hljs-built_in">find</span>( edges[ i ].v );<br>        <span class="hljs-keyword">if</span>( fu != fv )<br>        &#123;<br>            fa[ fu ] = fv;<br>            ans += edges[ i ].w;<br>            ++ cnt;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span>( cnt == n - k ) cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;No Answer\n&quot;</span>;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
 <li>
-<p><strong>复杂度</strong>: Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M \log M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span> (排序) | Space: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> (DSU).</p>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M \log M)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>易错点</strong>:</p>
-<ul>
-<li>
-<p>终止条件是 <code>cnt == n - k</code>，而非 <code>cnt == k - 1</code>。</p>
-</li>
-<li>
-<p>若图本身不连通，即便遍历完所有边也可能无法达到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 个块（此时 <code>cnt &lt; n - k</code>），必须判 <code>No Answer</code>。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>关联题目</strong>: P1967 [NOIP2013] 货车运输 (MST 的下一阶段：重构树)。</p>
+<p><strong>核心思路</strong>: 理解最小生成树合并过程与连通块数量的线性相关性。</p>
 </li>
 </ul>
 
@@ -416,9 +409,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/" class="print-no-link">#连通性</a>
-      
         <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="print-no-link">#最小生成树</a>
+      
+        <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/" class="print-no-link">#连通性</a>
       
     </div>
   
@@ -430,7 +423,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1195 口袋的天空</div>
+      <div>P1195 口袋的天空 (Kruskal_K_Components)</div>
       <div>https://example.com/posts/f848758c/</div>
     </div>
     <div class="license-meta">
@@ -485,8 +478,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/e4145a20/" title="P2149 Elaxia 的路线">
-                        <span class="hidden-mobile">P2149 Elaxia 的路线</span>
+                      <a href="/posts/e4145a20/" title="P2149 Elaxia 的路线 (Dijkstra_Common_Path)">
+                        <span class="hidden-mobile">P2149 Elaxia 的路线 (Dijkstra_Common_Path)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -594,7 +587,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

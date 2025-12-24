@@ -304,7 +304,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/9e0761d7/" target="_self">
         <div>
-          Philosophy: 动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。  🏗️ 基础与模型 (The Foundation)  DP 核心综述 (DP Core Synthesis): 记忆化与递推的同构。 线性序列体系 (Sequence System): LIS/LCS 与 Dilworth 定理。 背包模型体系 (Knapsack System): 万物皆可背包。 区
+          动态规划：拓扑决策与维度打击  动态规划不是背模板，而是寻找 DAG (有向无环图) 上的最短路。 所有的优化本质上都是在压缩状态空间或加速决策转移。  1. 基础模型 构建 DP 直觉的底层积木。   DP_核心综述：记忆化与递推的同构逻辑。   线性序列体系：LIS / LCS 与 Dilworth 定理的对偶性。   背包模型体系：维度限制下的组合优化归约。   区间与环形体系：解决局部合并
         </div>
       </a>
 
@@ -376,7 +376,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/4b02a8e5/" target="_self">
         <div>
-          Philosophy: 一切皆图。不等式是图，同余系是图，矩阵变换也是图。 图论的本质是将离散的状态 (Nodes) 与 逻辑的关系 (Edges) 可视化，从而利用拓扑性质解决代数问题。  🌍 宏观视野 (Overview &amp; Modeling) 建模是图论的灵魂，优化是图论的骨架。  图论建模综述 (Graph Core Synthesis): 必读。解析图论建模的三大范式：差分约
+          图论：# 拓扑关联与建模范式  一切皆图。不等式是图，同余系是图，状态机也是图。 图论的本质是将离散的状态与逻辑的关系可视化，从而利用拓扑性质解决代数问题。  0. 建模与优化 解决如何将现实约束映射为图论算子，并处理海量连边的降维问题。   图论建模综述：解析差分约束、同余最短路、时空图三大建模范式。   优化建图技巧：解决边数爆炸的手段，涵盖虚拟 Hub 节点与线段树优化建图。   1. 路径
         </div>
       </a>
 
@@ -422,9 +422,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%8C%87%E5%8D%97/">#指南</a>
-            
               <a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>
+            
+              <a href="/tags/%E6%8C%87%E5%8D%97/">#指南</a>
             
           </div>
         
@@ -448,7 +448,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/4bddc3c/" target="_self">
         <div>
-          数据结构：信息的容器与维护 (Data Structure Guide)  数据结构是对信息 (Info) 的封装。我们关注信息的合并 (Merge)、修改 (Update) 与查询 (Query)。 在星图中，我们按信息的逻辑形态将其划分为线性、树形、集合与高阶应用四大版块。  1. 线性结构：单调性与滑动窗口 处理具有线性先后顺序的数据。核心在于利用“单调性”剔除无用信息。   单调栈与单调队
+          数据结构：信息的容器与维护  数据结构是对信息的封装。 我们关注信息的合并、修改与查询。 通过引入对数级的拓扑深度，平衡维护代价与检索极速。  1. 线性结构 处理具有线性先后顺序的数据。核心在于利用单调性剔除无用信息。   单调栈与单调队列：淘汰既不新也不强的元素。单调栈解决最近值查询，单调队列解决滑动窗口最值。   [[线性结构对比]]：双指针与单调结构的边界判定与空间权衡。   2. 树形结
         </div>
       </a>
 
@@ -520,7 +520,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/posts/c28314d6/" target="_self">
         <div>
-          基础算法：逻辑降维与分治艺术 (Basis Guide)  所有高级算法都是基础算子的复合叠加。所谓“大招”，本质上是针对特定冗余执行的降维打击。 核心公式: 过滤 &amp; 压缩   过滤: 利用题目性质（单调性、及时性）剔除必然不优的无效计算。   压缩: 利用数学工具（可逆性、结合律）将区间级操作压缩为端点级或对数级操作。    1. 排序与二分 逻辑分治与边界锁定的艺术，将搜索空间从线性
+          基础算法指南  所有高级算法都是基础算子的复合叠加。 所谓降维打击，本质上是针对特定冗余执行的逻辑简化。 核心在于通过过滤剔除无效状态，或通过压缩将区间操作坍缩为点操作。  1. 排序与二分 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。   排序体系：归并与快排的对
         </div>
       </a>
 
@@ -584,15 +584,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/8eb12dc3/" target="_self">
-          数据结构归档数据库
+        <a href="/posts/3e793abc/" target="_self">
+          图论归档数据库
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/8eb12dc3/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3e793abc/" target="_self">
         <div>
-          数据结构归档数据库 (Data Structure Database)            题目 ID 名称 核心模型 核心思路 / 关键特性   01 线性结构 (栈/队列/倍增)      P1886 滑动窗口 [P1886 滑动窗口 (MonoQueue_Sliding_Window) 单调队列标准模板，存储下标解决生命周期过期问题。   P2216 理想的正方形 P2216 理想的正方形
+          图论归档数据库 (Graph Theory Database)# 图论归档数据库 (Graph Theory Database)    题目 ID 名称 核心模型 核心思路 / 关键特性     00 建模与综述      P1119 灾后重建 P1119 灾后重建 (Floyd_Dynamic_Time) 阶段性：利用 Floyd 最外层循环 kkk 的物理含义处理动态加点。   P1983 车
         </div>
       </a>
 
@@ -600,39 +600,11 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-24 15:54" pubdate>
+            <time datetime="2025-12-24 18:28" pubdate>
               2025-12-24
             </time>
           </div>
         
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
         
         
           <div class="post-meta">
@@ -654,15 +626,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/fabd521e/" target="_self">
-          二分进阶：复合判定模型 (Binary Search Advanced)
+        <a href="/posts/cd9dd626/" target="_self">
+          同余最短路 (Modulo Shortest Path)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/fabd521e/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/cd9dd626/" target="_self">
         <div>
-          1. 生态位   定义: 当问题的解空间具备单调性，但 check() 过程涉及复杂数据处理（如区间修改、均值转化、多维贪心）时的综合建模方案。   解决痛点: 突破了简单暴力 O(N2)O(N^2)O(N2) 判定的瓶颈，通过前缀和、单调队列、差分等算子将判定复杂度压制在 O(N)O(N)O(N)。   核心地位: 是从“基础二分”迈向“中高阶建模”的关键跳板。   2. 逻辑支点 2.1 01
+          同余最短路 (Modulo Shortest Path) 1. 生态位   定义: 同余最短路利用模运算将巨大或无限的值域空间折叠进有限的同余环中，通过寻找每个余数类的“最小进入代价”，实现从无限组合到有限路径的周期归一化映射。它本质上是值域空间的“周期缩放”，将 O(B)O(B)O(B) 的背包问题优化为 O(mlog⁡m)O(m \log m)O(mlogm) 的图论搜索。   解决痛点: 解
         </div>
       </a>
 
@@ -670,49 +642,19 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-24 00:15" pubdate>
+            <time datetime="2025-12-24 18:01" pubdate>
               2025-12-24
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
             
-              <a href="/tags/%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#分数规划</a>
-            
-              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+              <a href="/tags/%E6%95%B0%E8%AE%BA/">#数论</a>
             
           </div>
         
@@ -726,15 +668,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/5755fe4f/" target="_self">
-          基础算法归档数据库
+        <a href="/posts/5a7613f/" target="_self">
+          最短路图 (Shortest Path DAG)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5755fe4f/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5a7613f/" target="_self">
         <div>
-          题目 ID 名称 核心模型 核心思路 / 关键特性   01 排序与二分      P1908 逆序对 P1908 逆序对 (BIT_Inversion) 在归并排序过程中，利用位置偏移统计跨区间贡献。   P1083 借教室 P1083 借教室 (BS_Ans_Difference) 二分订单量 + 差分数组，实现对资源的线性判定。   P1314 聪明的质监员 P1314
+          最短路图 (Shortest Path DAG) 1. 生态位   定义: 通过剥离所有非最优路径边，将复杂图精炼提取为纯净的有向无环图（DAG），从而释放拓扑计数与动态规划的潜力。它仅包含满足 dist(S,u)+w(u,v)+dist(v,T)=dist(S,T)dist(S, u) + w(u, v) + dist(v, T) = dist(S, T)dist(S,u)+w(u,v)+dis
         </div>
       </a>
 
@@ -742,47 +684,21 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-24 00:08" pubdate>
+            <time datetime="2025-12-24 18:00" pubdate>
               2025-12-24
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">##数据库</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>
             
-              <a href="/tags/%E7%B4%A2%E5%BC%95/">#索引</a>
+              <a href="/tags/DAG/">#DAG</a>
+            
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/">#最短路</a>
             
           </div>
         
@@ -796,15 +712,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/bc9a4630/" target="_self">
-          构造算法体系 (Constructive System)
+        <a href="/posts/a246a529/" target="_self">
+          图论决策
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/bc9a4630/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a246a529/" target="_self">
         <div>
-          1. 生态位   定义: 不通过搜索或判定，而是根据题目约束直接推导出符合要求的解的算法。   解决痛点: 解决了由于解空间过于巨大或规则过于复杂，导致标准算法无法触达的问题。   核心依赖: 对约束边界（Extreme Cases）的精细拆解。   2. 核心思路 2.1 自由度最大化   思路: 在满足硬性约束的前提下，其余位置填入“最安全”或“最极端”的数值，为冲突留出余量。   技巧: 使
+          图论决策  图论选型的本质是建立现实约束与拓扑结构之间的映射。通过识别问题的物理或代数特征，选择最契合的图论工具。  1. 场景决策映射表           场景需求 首选工具 核心理由   不等式组的一致性判定 差分约束系统 负环检测对应代数约束冲突   有限次机会下的最短路径 分层图最短路 状态升维后的层级跳转逻辑   有向图中寻找等价集合 Tarjan SCC 与缩点 缩点消除环路干扰，转
         </div>
       </a>
 
@@ -812,47 +728,19 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-24 00:00" pubdate>
+            <time datetime="2025-12-24 17:03" pubdate>
               2025-12-24
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9E%84%E9%80%A0/">#构造</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>
             
-              <a href="/tags/%E9%80%BB%E8%BE%91%E6%8E%A8%E5%AF%BC/">#逻辑推导</a>
+              <a href="/tags/%E9%80%89%E5%9E%8B%E5%86%B3%E7%AD%96/">#选型决策</a>
             
           </div>
         
@@ -866,15 +754,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/7dbdb89d/" target="_self">
-          数学逻辑优化 (Mathematical Logic Optimization)
+        <a href="/posts/9bad7bd8/" target="_self">
+          数据结构决策
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7dbdb89d/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/9bad7bd8/" target="_self">
         <div>
-          1. 生态位   定义: 利用代数恒等式变形、组合意义转换或分组贡献法，将复杂的 O(N2)O(N^2)O(N2) 级数学统计逻辑优化至线性的思维范式。   解决痛点: 解决了直接模拟公式计算导致的复杂度爆炸。   本质: 代数降维 —— 通过提取公因式或利用前缀和维护子项，实现对求和号（∑\sum∑）的坍缩。   2. 逻辑支点 2.1 贡献拆解 (Contribution Decomposit
+          数据结构决策  数据结构选型的核心在于识别信息的物理特性与操作的时效要求。  1. 思考范式：如何识别维护机会   观察信息形态   信息是否具有结合律？若有，考虑 线段树体系。   信息是否具有可差分性？若有，优先选择轻量的 树状数组体系。     分析修改特征   修改是单点还是区间的？   静态查询或仅在末尾追加时，ST表与倍增 往往优于树形结构。     寻找逻辑关系   涉及关系传递或排
         </div>
       </a>
 
@@ -882,49 +770,19 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-24 00:00" pubdate>
+            <time datetime="2025-12-24 16:59" pubdate>
               2025-12-24
             </time>
           </div>
         
         
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E9%99%8D%E7%BB%B4%E4%BC%98%E5%8C%96/">#降维优化</a>
+              <a href="/tags/%E9%80%89%E5%9E%8B%E5%86%B3%E7%AD%96/">#选型决策</a>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
-            
-              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97/">#逆运算</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>
             
           </div>
         
@@ -936,7 +794,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#board">15</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -986,7 +844,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

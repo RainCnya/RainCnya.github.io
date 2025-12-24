@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 在加权图中，寻找从源点到目标点总权值最小的路径。 核心机制: 松弛 (Relaxation)。 算法选型:     算法 核心逻辑 适用场景 复杂度     Dijkstra 贪心 + 优先队列 非负权单源最短路 O(Mlog⁡N)O(M \log N)O(MlogN)   SPFA 队列 + 反复入队 负权边&#x2F;判负环 Avg O(kM)O(kM)O(kM), Max O(">
+    <meta name="description" content="最短路体系 (SSSP System) 1. 生态位   定义: 在加权图中，寻找从源点到目标点总权值最小的路径。   解决痛点:   物理映射: 路径导航、流量分配。   逻辑降维: 将复杂的代数约束（差分约束）或状态转换（同余最短路）转化为图论路径搜索。     核心：松弛操作（Relaxation）。   2. 逻辑支点   核心不变量: 三角不等式 dist[v]≤dist[u]+w(u,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最短路体系 (SSSP System)">
 <meta property="og:url" content="https://example.com/posts/a535be86/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 在加权图中，寻找从源点到目标点总权值最小的路径。 核心机制: 松弛 (Relaxation)。 算法选型:     算法 核心逻辑 适用场景 复杂度     Dijkstra 贪心 + 优先队列 非负权单源最短路 O(Mlog⁡N)O(M \log N)O(MlogN)   SPFA 队列 + 反复入队 负权边&#x2F;判负环 Avg O(kM)O(kM)O(kM), Max O(">
+<meta property="og:description" content="最短路体系 (SSSP System) 1. 生态位   定义: 在加权图中，寻找从源点到目标点总权值最小的路径。   解决痛点:   物理映射: 路径导航、流量分配。   逻辑降维: 将复杂的代数约束（差分约束）或状态转换（同余最短路）转化为图论路径搜索。     核心：松弛操作（Relaxation）。   2. 逻辑支点   核心不变量: 三角不等式 dist[v]≤dist[u]+w(u,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T17:33:58.000Z">
-<meta property="article:modified_time" content="2025-12-24T08:26:20.079Z">
+<meta property="article:modified_time" content="2025-12-24T11:05:16.000Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="图论&#x2F;最短路">
 <meta property="article:tag" content="最短路图">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          668 字
+          843 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -324,122 +324,126 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>最短路体系 (SSSP System)</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 在加权图中，寻找从源点到目标点总权值最小的路径。</li>
-<li><strong>核心机制</strong>: <strong>松弛 (Relaxation)</strong>。</li>
-<li><strong>算法选型</strong>:</li>
+<li>
+<p><strong>定义</strong>: 在加权图中，寻找从源点到目标点总权值最小的路径。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>:</p>
+<ul>
+<li>
+<p><strong>物理映射</strong>: 路径导航、流量分配。</p>
+</li>
+<li>
+<p><strong>逻辑降维</strong>: 将复杂的代数约束（差分约束）或状态转换（同余最短路）转化为图论路径搜索。</p>
+</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">算法</th>
-<th style="text-align:left">核心逻辑</th>
-<th style="text-align:left">适用场景</th>
-<th style="text-align:left">复杂度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Dijkstra</strong></td>
-<td style="text-align:left"><strong>贪心</strong> + 优先队列</td>
-<td style="text-align:left"><strong>非负权</strong>单源最短路</td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>M</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(M \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>SPFA</strong></td>
-<td style="text-align:left"><strong>队列</strong> + 反复入队</td>
-<td style="text-align:left"><strong>负权</strong>边/判负环</td>
-<td style="text-align:left">Avg <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(kM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mclose">)</span></span></span></span>, Max <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>M</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(NM)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">NM</span><span class="mclose">)</span></span></span></span></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>Floyd</strong></td>
-<td style="text-align:left"><strong>DP</strong> + 阶段划分</td>
-<td style="text-align:left"><strong>多源</strong>最短路 / 传递闭包</td>
-<td style="text-align:left"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></td>
-</tr>
-</tbody>
-</table>
+</li>
+<li>
+<p><strong>核心</strong>：松弛操作（Relaxation）。</p>
+</li>
+</ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>Dijkstra (确定的贪心)</strong>
-<ul>
-<li>将节点分为“已确定”和“未确定”。每次选出距离最小的未确定点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span>，<strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 的最短路不可能再被后续节点优化</strong>（基于非负权前提）。</li>
-</ul>
+<li>
+<p><strong>核心不变量</strong>: 三角不等式 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo>≤</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo>+</mo><mi>w</mi><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dist[v] \le dist[u] + w(u, v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span>。算法的本质是不断寻找并消除违反此不等式的边。</p>
 </li>
-<li><strong>SPFA (纠错的代价)</strong>
-<ul>
-<li>允许节点多次入队。如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 的距离被更新（纠错），那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 的邻居可能也需要随之更新。</li>
-</ul>
+<li>
+<p><strong>状态转移/数学推导</strong>: 对于分层图模型，状态升维为：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>=</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>+</mo><mi>w</mi><mo separator="true">,</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>+</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dist[u][k] = \min(dist[u][k], dist[v][k] + w, dist[v][k-1] + 0)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 代表消耗的“特殊权力”次数。</p>
 </li>
-<li><strong>Floyd (阶段性中转)</strong>
+<li>
+<p><strong>渗透点 (Penetration)</strong>:</p>
 <ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dp[k][i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 表示“仅允许经过节点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>…</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">1 \dots k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> 作为中转”的最短路。</li>
+<li>
+<p><strong>Dijkstra</strong> 的本质是排队。每个点在被选出的一刻，其在该约束环境下的最优性即确立。</p>
+</li>
+<li>
+<p><strong>SPFA</strong> 的本质是纠错。当一个点的代价被优化，其所有邻居都获得了被重新审视的机会。</p>
+</li>
+<li>
+<p><strong>Floyd</strong> 的本质是插点。它通过动态解锁中转点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，逐步完善全图的通达代价。</p>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
-<h3 id="3-1-Dijkstra-标准模板">3.1 Dijkstra (标准模板)</h3>
+<h3 id="3-1-Dijkstra-标准模板：优先队列">3.1 Dijkstra (标准模板：优先队列)</h3>
+<p>适用于<strong>非负权</strong>单源最短路，是大多数场景下的标准选型。</p>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Dijkstra Heap
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Dijkstra Standard
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// SSSP Template (Non-negative weights)</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">( <span class="hljs-type">int</span> st )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) dist[i] = INF, vis[i] = <span class="hljs-number">0</span>;<br>    dist[st] = <span class="hljs-number">0</span>;<br>    <br>    priority_queue&lt; PII, vector&lt; PII &gt;, greater&lt; PII &gt; &gt; pq;<br>    pq.<span class="hljs-built_in">push</span>( &#123;<span class="hljs-number">0</span>, st&#125; );<br>    <br>    <span class="hljs-keyword">while</span>( ! pq.<span class="hljs-built_in">empty</span>( ) ) <br>    &#123;<br>        <span class="hljs-keyword">auto</span> [d, u] = pq.<span class="hljs-built_in">top</span>( ); pq.<span class="hljs-built_in">pop</span>( );<br>        <br>        <span class="hljs-keyword">if</span>( vis[u] ) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// Lazy deletion</span><br>        vis[u] = <span class="hljs-number">1</span>;<br>        <br>        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> [v, w] : adj[u] ) <br>        &#123;<br>            <span class="hljs-keyword">if</span>( dist[u] + w &lt; dist[v] ) <br>            &#123;<br>                dist[v] = dist[u] + w;<br>                pq.<span class="hljs-built_in">push</span>( &#123;dist[v], v&#125; );<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">( <span class="hljs-type">int</span> st )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        dist[ i ] = inf;<br>        vis[ i ] = <span class="hljs-number">0</span>;<br>    &#125;<br>    dist[ st ] = <span class="hljs-number">0</span>;<br>    priority_queue&lt; PII, vector&lt; PII &gt;, greater&lt; PII &gt; &gt; pq;<br>    pq.<span class="hljs-built_in">push</span>( &#123; <span class="hljs-number">0</span>, st &#125; );<br><br>    <span class="hljs-keyword">while</span>( !pq.<span class="hljs-built_in">empty</span>( ) )<br>    &#123;<br>        <span class="hljs-keyword">auto</span> [ d, u ] = pq.<span class="hljs-built_in">top</span>( );<br>        pq.<span class="hljs-built_in">pop</span>( );<br><br>        <span class="hljs-keyword">if</span>( vis[ u ] ) <span class="hljs-keyword">continue</span>;<br>        vis[ u ] = <span class="hljs-number">1</span>;<br><br>        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> &amp;e : adj[ u ] )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( dist[ u ] + e.w &lt; dist[ e.v ] )<br>            &#123;<br>                dist[ e.v ] = dist[ u ] + e.w;<br>                pq.<span class="hljs-built_in">push</span>( &#123; dist[ e.v ], e.v &#125; );<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="3-2-SPFA-判负环">3.2 SPFA (判负环)</h3>
+<h3 id="3-2-SPFA-队列优化：负权与负环">3.2 SPFA (队列优化：负权与负环)</h3>
+<p>适用于<strong>含负权边</strong>或需要判定<strong>负环</strong>（差分约束核心）的场景。</p>
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
-        <div class="fold-arrow">▶</div>Code: SPFA Queue
+        <div class="fold-arrow">▶</div>Code: SPFA with Negative Cycle Detection
       </div>
       <div class="fold-collapse collapse" id="collapse-28ab9646">
         <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// Negative Cycle Detection</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">spfa</span><span class="hljs-params">( <span class="hljs-type">int</span> st )</span> </span><br><span class="hljs-function"></span>&#123;<br>    queue&lt; <span class="hljs-type">int</span> &gt; q;<br>    q.<span class="hljs-built_in">push</span>( st ); vis[st] = <span class="hljs-number">1</span>; dist[st] = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-keyword">while</span>( ! q.<span class="hljs-built_in">empty</span>( ) ) <br>    &#123;<br>        <span class="hljs-type">int</span> u = q.<span class="hljs-built_in">front</span>( ); q.<span class="hljs-built_in">pop</span>( );<br>        vis[u] = <span class="hljs-number">0</span>; <span class="hljs-comment">// Not in queue now</span><br>        <br>        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> [v, w] : adj[u] ) <br>        &#123;<br>            <span class="hljs-keyword">if</span>( dist[u] + w &lt; dist[v] ) <br>            &#123;<br>                dist[v] = dist[u] + w;<br>                cnt[v] = cnt[u] + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span>( cnt[v] &gt; n ) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// Negative Cycle</span><br>                <br>                <span class="hljs-keyword">if</span>( ! vis[v] ) <br>                &#123;<br>                    q.<span class="hljs-built_in">push</span>( v );<br>                    vis[v] = <span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">spfa</span><span class="hljs-params">( <span class="hljs-type">int</span> st )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        dist[ i ] = inf;<br>        vis[ i ] = <span class="hljs-number">0</span>;<br>        cnt[ i ] = <span class="hljs-number">0</span>;<br>    &#125;<br>    dist[ st ] = <span class="hljs-number">0</span>;<br>    queue&lt; <span class="hljs-type">int</span> &gt; q;<br>    q.<span class="hljs-built_in">push</span>( st );<br>    vis[ st ] = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">while</span>( !q.<span class="hljs-built_in">empty</span>( ) )<br>    &#123;<br>        <span class="hljs-type">int</span> u = q.<span class="hljs-built_in">front</span>( );<br>        q.<span class="hljs-built_in">pop</span>( );<br>        vis[ u ] = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> &amp;e : adj[ u ] )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( dist[ u ] + e.w &lt; dist[ e.v ] )<br>            &#123;<br>                dist[ e.v ] = dist[ u ] + e.w;<br>                cnt[ e.v ] = cnt[ u ] + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span>( cnt[ e.v ] &gt;= n ) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">// 发现负环</span><br><br>                <span class="hljs-keyword">if</span>( !vis[ e.v ] )<br>                &#123;<br>                    q.<span class="hljs-built_in">push</span>( e.v );<br>                    vis[ e.v ] = <span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h3 id="3-3-Floyd-最小环变体">3.3 Floyd (最小环变体)</h3>
+<h3 id="3-3-Floyd-多源汇：阶段插点">3.3 Floyd (多源汇：阶段插点)</h3>
+<p>适用于<strong>多源最短路</strong>、<strong>传递闭包</strong>或<strong>最小环</strong>判定。</p>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-30aae009" role="button" aria-expanded="false" aria-controls="collapse-30aae009">
-        <div class="fold-arrow">▶</div>Code: Floyd Variant
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-e064c6af" role="button" aria-expanded="false" aria-controls="collapse-e064c6af">
+        <div class="fold-arrow">▶</div>Code: Floyd Standard & Min-Cycle Variant
       </div>
-      <div class="fold-collapse collapse" id="collapse-30aae009">
+      <div class="fold-collapse collapse" id="collapse-e064c6af">
         <div class="fold-content">
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-comment">// Floyd with Min-Cycle</span><br><span class="hljs-comment">// k 必须在最外层</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; ++ k ) <br>&#123;<br>    <span class="hljs-comment">// 1. Check Min Cycle (using nodes 1..k-1)</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; k; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; k; ++ j )<br>        &#123;<br>             ans = <span class="hljs-built_in">min</span>( ans, dist[i][j] + mat[i][k] + mat[k][j] );<br>        &#125;<br>    &#125;<br>             <br>    <span class="hljs-comment">// 2. Standard Relaxation</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j )<br>        &#123;<br>            dist[i][j] = <span class="hljs-built_in">min</span>( dist[i][j], dist[i][k] + dist[k][j] );<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 标准 Floyd: k 必须在最外层</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> k = <span class="hljs-number">1</span>; k &lt;= n; ++ k )<br>&#123;<br>    <span class="hljs-comment">// 变体: 寻找最小环 (在用 k 更新 dist 前)</span><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    for( int i = 1; i &lt; k; ++ i )</span><br><span class="hljs-comment">        for( int j = i + 1; j &lt; k; ++ j )</span><br><span class="hljs-comment">            ans = min( ans, dist[ i ][ j ] + w[ i ][ k ] + w[ k ][ j ] );</span><br><span class="hljs-comment">    */</span><br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; ++ j )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( dist[ i ][ k ] + dist[ k ][ j ] &lt; dist[ i ][ j ] )<br>            &#123;<br>                dist[ i ][ j ] = dist[ i ][ k ] + dist[ k ][ j ];<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h2 id="4-高阶建模">4. 高阶建模</h2>
+<h2 id="4-知识粘附-Adhesion">4. 知识粘附 (Adhesion)</h2>
 <ul>
 <li>
-<p><strong>最短路图</strong>: 原图中满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>S</mi><mo separator="true">,</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi>w</mi><mo>+</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>v</mi><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">)</mo><mo>=</mo><mo>=</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">(</mo><mi>S</mi><mo separator="true">,</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dist(S, u) + w + dist(v, T) == dist(S, T)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">u</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">==</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span> 的边构成的 DAG。用于路径计数。</p>
+<p><strong>变体模型</strong>:</p>
+<ul>
+<li>
+<p><a href="/posts/2a513a9f/">分层图最短路</a>: 处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 次特殊操作的机会。</p>
 </li>
 <li>
-<p><strong>分层图</strong>: 处理“有限次免费/折扣”状态（详见 <strong><a href="/posts/2a513a9f/">分层图最短路</a></strong>）。</p>
+<p>[[最短路图]]: 提取所有属于最短路的边，转化为 DAG 进行计数或 DP。</p>
 </li>
 <li>
-<p><strong>差分约束</strong>: 处理不等式组（详见 <strong><a href="/posts/6cae5d5b/">差分约束系统</a>)</strong>）。</p>
+<p>[[同余最短路]]: 将数值范围映射为余数类节点，压缩解空间。</p>
 </li>
 </ul>
-<h2 id="5-知识粘附">5. 知识粘附</h2>
-<ul>
+</li>
 <li>
 <p><strong>母题索引</strong>:</p>
 <ul>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2829">Luogu P2829</a> 大逃离</strong> (次短路)</p>
+<p><a href="/posts/2e445cc0/">CF1076D Edge Deletion (Dijkstra_SPT)</a></p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2149">Luogu P2149</a> Elaxia 的路线</strong> (最短路图)</p>
+<p><a href="/posts/73e92509/">P1993 小K的农场 (Difference_Constraints)</a></p>
 </li>
 <li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5034">Luogu P5304</a> 旅行者</strong>(多源染色)</p>
+<p><a href="/posts/6c8a9ff1/">P2371 墨墨的等式 (Modulo_Shortest_Path)</a></p>
+</li>
+<li>
+<p><a href="/posts/e2f4f077/">P1119 灾后重建 (Floyd_Dynamic_Time)</a></p>
+</li>
+<li>
+<p><a href="/posts/417ca395/">P6175 无向图的最小环 (Floyd_Min_Cycle)</a></p>
 </li>
 </ul>
 </li>
@@ -543,9 +547,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/12512919/" title="P7771 【模板】欧拉路径">
+                      <a href="/posts/ad8e1953/" title="P2812 校园网络 (Tarjan_SCC_DAG)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P7771 【模板】欧拉路径</span>
+                        <span class="hidden-mobile">P2812 校园网络 (Tarjan_SCC_DAG)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -662,7 +666,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

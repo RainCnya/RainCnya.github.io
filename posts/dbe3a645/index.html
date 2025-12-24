@@ -19,18 +19,18 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="1. 生态位  定义: 在有向图中，找到最大子图，使得子图中任意两点 u,vu, vu,v 互相可达。 解决痛点:  化环为链: 将有向有环图转化为 DAG。 传递性分析: 强连通分量内部的所有点在可达性上是等价的。    2. 逻辑支点  dfn (物理时间): 节点被 DFS 首次访问的时间戳。 low (回溯能力): 节点通过有向边能回溯到的、且仍在栈中的最小 dfn。 SCC 根判定: d">
+    <meta name="description" content="Tarjan SCC 与缩点 1. 生态位   定义: 连通性是图的“拓扑灵魂”。强连通分量（SCC）内部所有点在可达性上是等价的。通过缩点，我们可以剥离环的冗余干扰，将复杂的有向有环图坍缩为纯净的 DAG（有向无环图）。   解决痛点: 实现了图论问题向动态规划或拓扑递推的范式转化。用于社交网络影响力闭环分析、可达性一致性判定等。   2. 逻辑支点   不变量维护:   时间戳 (DFN):">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tarjan SCC 与缩点 (Tarjan_SCC)">
 <meta property="og:url" content="https://example.com/posts/dbe3a645/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="1. 生态位  定义: 在有向图中，找到最大子图，使得子图中任意两点 u,vu, vu,v 互相可达。 解决痛点:  化环为链: 将有向有环图转化为 DAG。 传递性分析: 强连通分量内部的所有点在可达性上是等价的。    2. 逻辑支点  dfn (物理时间): 节点被 DFS 首次访问的时间戳。 low (回溯能力): 节点通过有向边能回溯到的、且仍在栈中的最小 dfn。 SCC 根判定: d">
+<meta property="og:description" content="Tarjan SCC 与缩点 1. 生态位   定义: 连通性是图的“拓扑灵魂”。强连通分量（SCC）内部所有点在可达性上是等价的。通过缩点，我们可以剥离环的冗余干扰，将复杂的有向有环图坍缩为纯净的 DAG（有向无环图）。   解决痛点: 实现了图论问题向动态规划或拓扑递推的范式转化。用于社交网络影响力闭环分析、可达性一致性判定等。   2. 逻辑支点   不变量维护:   时间戳 (DFN):">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-15T03:30:00.000Z">
-<meta property="article:modified_time" content="2025-12-18T08:09:38.821Z">
+<meta property="article:modified_time" content="2025-12-24T11:08:07.000Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="Tarjan">
 <meta property="article:tag" content="强连通分量">
+<meta property="article:tag" content="Tarjan">
 <meta property="article:tag" content="缩点">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          332 字
+          394 字
         
       </span>
     
@@ -325,57 +325,65 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1-生态位">1. 生态位</h2>
+                <h1>Tarjan SCC 与缩点</h1>
+<h2 id="1-生态位">1. 生态位</h2>
 <ul>
-<li><strong>定义</strong>: 在有向图中，找到最大子图，使得子图中任意两点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 互相可达。</li>
-<li><strong>解决痛点</strong>:
-<ul>
-<li><strong>化环为链</strong>: 将有向有环图转化为 <strong>DAG</strong>。</li>
-<li><strong>传递性分析</strong>: 强连通分量内部的所有点在可达性上是等价的。</li>
-</ul>
+<li>
+<p><strong>定义</strong>: 连通性是图的“拓扑灵魂”。强连通分量（SCC）内部所有点在可达性上是等价的。通过缩点，我们可以剥离环的冗余干扰，将复杂的有向有环图坍缩为纯净的 DAG（有向无环图）。</p>
+</li>
+<li>
+<p><strong>解决痛点</strong>: 实现了图论问题向动态规划或拓扑递推的范式转化。用于社交网络影响力闭环分析、可达性一致性判定等。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
-<li><strong>dfn (物理时间)</strong>: 节点被 DFS 首次访问的时间戳。</li>
-<li><strong>low (回溯能力)</strong>: 节点通过有向边能回溯到的、且<strong>仍在栈中</strong>的最小 <code>dfn</code>。</li>
-<li><strong>SCC 根判定</strong>: <code>dfn[u] == low[u]</code>。说明 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 无法回到更早的祖先，栈中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 及其上方节点构成一个 SCC。</li>
-<li><strong>DAG 补全定理</strong>:
+<li>
+<p><strong>不变量维护</strong>:</p>
 <ul>
-<li>覆盖全图最少源点 = 入度为 0 的 SCC 数量。</li>
-<li>强连通最少加边 = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>in_zero</mtext><mo separator="true">,</mo><mtext>out_zero</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\max( \text{in\_zero}, \text{out\_zero} )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord text"><span class="mord">in_zero</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">out_zero</span></span><span class="mclose">)</span></span></span></span>。</li>
+<li>
+<p><strong>时间戳 (DFN)</strong>: 节点被首次访问的物理序。</p>
+</li>
+<li>
+<p><strong>回溯值 (LOW)</strong>: 节点能回溯到的、且<strong>仍在搜索栈中</strong>的最小 DFN。</p>
+</li>
 </ul>
+</li>
+<li>
+<p><strong>缩点准则</strong>: 当发现 <code>dfn[u] == low[u]</code> 时，意味着 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 是该强连通分量的“树根”，搜索栈中自 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 以上的所有节点共同构成一个 SCC。</p>
+</li>
+<li>
+<p><strong>渗透点</strong>: Tarjan 的核心是利用“搜索栈”暂存尚未归属的路径支路。一旦某支路无法向上回溯，其逻辑封闭性即告确立。</p>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
 
     <div class="fold">
-      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
-        <div class="fold-arrow">▶</div>Code: Tarjan SCC
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
+        <div class="fold-arrow">▶</div>Code: Tarjan SCC Standard
       </div>
-      <div class="fold-collapse collapse" id="collapse-076edf11">
+      <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span></span><br><span class="hljs-function"></span>&#123;<br>    dfn[u] = low[u] = ++ idx;<br>    stk.<span class="hljs-built_in">push</span>( u );<br>    in_stk[u] = <span class="hljs-literal">true</span>;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( ! dfn[v] )<br>        &#123;<br>            <span class="hljs-built_in">tarjan</span>( v );<br>            low[u] = <span class="hljs-built_in">min</span>( low[u], low[v] );<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( in_stk[v] )<br>        &#123;<br>            <span class="hljs-comment">// 返祖边: 只能用 dfn 更新</span><br>            low[u] = <span class="hljs-built_in">min</span>( low[u], dfn[v] );<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span>( dfn[u] == low[u] )<br>    &#123;<br>        ++ scc_cnt;<br>        <span class="hljs-type">int</span> v;<br>        <span class="hljs-keyword">do</span><br>        &#123;<br>            v = stk.<span class="hljs-built_in">top</span>( );<br>            stk.<span class="hljs-built_in">pop</span>( );<br>            in_stk[v] = <span class="hljs-literal">false</span>;<br>            scc_id[v] = scc_cnt;<br>        &#125; <span class="hljs-keyword">while</span>( v != u );<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">tarjan</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span></span><br><span class="hljs-function"></span>&#123;<br>    dfn[ u ] = low[ u ] = ++ idx;<br>    stk.<span class="hljs-built_in">push</span>( u );<br>    in_stk[ u ] = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[ u ] )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( !dfn[ v ] )<br>        &#123;<br>            <span class="hljs-built_in">tarjan</span>( v );<br>            low[ u ] = <span class="hljs-built_in">min</span>( low[ u ], low[ v ] );<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( in_stk[ v ] )<br>        &#123;<br>            low[ u ] = <span class="hljs-built_in">min</span>( low[ u ], dfn[ v ] );<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span>( dfn[ u ] == low[ u ] )<br>    &#123;<br>        ++ scc_cnt;<br>        <span class="hljs-type">int</span> v;<br>        <span class="hljs-keyword">do</span> <br>        &#123;<br>            v = stk.<span class="hljs-built_in">top</span>( );<br>            stk.<span class="hljs-built_in">pop</span>( );<br>            in_stk[ v ] = <span class="hljs-number">0</span>;<br>            scc_id[ v ] = scc_cnt;<br>        &#125; <span class="hljs-keyword">while</span>( v != u );<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
-<p><strong>变体</strong>:</p>
+<p><strong>变体模型</strong>:</p>
 <ul>
-<li><strong>割点/桥</strong>: 逻辑相似但无栈，判定条件为 <code>low[v] &gt;= dfn[u]</code>。</li>
+<li>
+<p><strong>割点与桥</strong>: 无向图中的关键连通点/边。</p>
+</li>
+<li>
+<p><strong>2-SAT</strong>: 利用强连通性判定布尔方程组的可满足性。</p>
+</li>
 </ul>
 </li>
 <li>
 <p><strong>母题索引</strong>:</p>
 <ul>
-<li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P28121">Luogu P2812</a></strong>: 校园网络 (DAG 补边)。</p>
-</li>
-<li>
-<p><strong><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P23411">Luogu P2341</a></strong>: 受欢迎的牛 (缩点)。</p>
-</li>
+<li><a href="/posts/ad8e1953/">P2812 校园网络 (Tarjan_SCC_DAG)</a></li>
 </ul>
 </li>
 </ul>
@@ -419,9 +427,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Tarjan/" class="print-no-link">#Tarjan</a>
-      
         <a href="/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" class="print-no-link">#强连通分量</a>
+      
+        <a href="/tags/Tarjan/" class="print-no-link">#Tarjan</a>
       
         <a href="/tags/%E7%BC%A9%E7%82%B9/" class="print-no-link">#缩点</a>
       
@@ -599,7 +607,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   

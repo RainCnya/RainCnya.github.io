@@ -259,6 +259,496 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/148132d/" target="_self">
+          P2829 大逃离 (Strict_Second_Shortest_Path)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/148132d/" target="_self">
+        <div>
+          Luogu-P2829 大逃离 (次短路) 1. 核心逻辑   问题本质: 求无向图中从起点到终点的严格次短路（且满足某些特定点的度数约束）。   核心切入点:   状态扩展: 在 Dijkstra 中维护两个状态：d1[u]（最短路）和 d2[u]（次短路）。   转移逻辑: 对于边 (u,v,w)(u, v, w)(u,v,w)，计算新路径 len=d+wlen = d + wlen=d+w：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-29 00:00" pubdate>
+              2025-11-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E6%AC%A1%E7%9F%AD%E8%B7%AF/">#次短路</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3417472e/" target="_self">
+          P1197 [JSOI2008] 星球大战
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3417472e/" target="_self">
+        <div>
+          Luogu-P1197 星球大战 1. 核心逻辑   问题本质: 动态删点并查询连通块个数。   破局转换:   逆转思维 (Reverse)：并查集不支持分裂，但极度擅长合并。   时光倒流：记录打击序列，先计算所有星球被打击后的“最终荒芜态”。   倒序修复：从打击序列末尾开始恢复星球。   恢复星球 iii，连通块数暂时 +1+1+1。   遍历 iii 的邻居，若邻居已修复，执行 merg
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-28 00:00" pubdate>
+              2025-11-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%BF%9E%E9%80%9A%E6%80%A7/">#连通性</a>
+            
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
+            
+              <a href="/tags/%E6%97%B6%E5%85%89%E5%80%92%E6%B5%81/">#时光倒流</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3cab7524/" target="_self">
+          P1198 [JSOI2008] 最大数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3cab7524/" target="_self">
+        <div>
+          Luogu-P1198 最大数 1. 核心逻辑   问题本质: 末尾不断追加元素的动态序列，查询后缀最值。   破局转换:   动态 ST 表：通常 ST 表是静态的，但在末尾追加时，旧的倍增值并不会受影响。   递推维护：当加入第 cnt 个元素时，利用 ST[cnt][j]=max⁡(ST[cnt][j−1],ST[cnt−2j−1][j−1])ST[cnt][j] = \max(ST[cnt
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-28 00:00" pubdate>
+              2025-11-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/RMQ/">#RMQ</a>
+            
+              <a href="/tags/ST%E8%A1%A8/">#ST表</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d06e55a1/" target="_self">
+          P1525 [NOIP2010] 关押罪犯
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d06e55a1/" target="_self">
+        <div>
+          Luogu-P1525 关押罪犯 1. 核心逻辑   问题本质: 将 NNN 个元素分入两类，使同类间的最大冲突值最小。   破局转换:   贪心排序：按仇恨值从大到小排序，优先处理破坏力大的关系。   扩展域 (Enemy of Enemy is Friend)：   每个罪犯 iii 映射两个状态：iii (罪犯所在的监狱) 和 i+Ni+Ni+N (其对手所在的监狱)。   处理仇恨 (u,
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-28 00:00" pubdate>
+              2025-11-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">#贪心</a>
+            
+              <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">#并查集</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2e445cc0/" target="_self">
+          CF1076D Edge Deletion (Dijkstra_SPT)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2e445cc0/" target="_self">
+        <div>
+          Luogu-CF1076D Edge Deletion 1. 核心逻辑   问题本质: 在保留最多 KKK 条边的前提下，最大化“到源点距离不变”的点数。   破局转换:   结构提取：只要保留最短路树（SPT）上的边，对应点的最短路长度就不会改变。   贪心策略：SPT 是一棵树，节点数 NNN，边数 N−1N-1N−1。如果 K&lt;N−1K &lt; N-1K&lt;N−1，为了让尽可能多
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-25 00:00" pubdate>
+              2025-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E6%A0%91/">#最短路树</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/a3e9be80/" target="_self">
+          CF149D Coloring Brackets
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a3e9be80/" target="_self">
+        <div>
+          Luogu-CF149D Coloring Brackets 1. 核心逻辑 问题本质 给括号序列染色（红/蓝/无），满足匹配括号中有且仅有一个有色，且相邻有色括号颜色不同。 破局思路  预处理: 栈求出匹配位置 p[i]。 状态定义: dp[l][r][cl][cr]：区间 [l,r][l, r][l,r]，左端颜色 clclcl，右端颜色 crcrcr 的方案数。 递归转移 (DFS):  匹
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-25 00:00" pubdate>
+              2025-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
+            
+              <a href="/tags/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D/">#括号匹配</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/6ba58ea6/" target="_self">
+          P5851 [USACO19DEC] Greedy Pie Eaters P
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/6ba58ea6/" target="_self">
+        <div>
+          Luogu-P5851 Greedy Pie Eaters P 1. 核心逻辑 问题本质 区间覆盖模型。在 [1,N][1, N][1,N] 上有若干个带权区间，选取若干个互不重叠的“吃法”，使得权值和最大。 这里的“互不重叠”定义较特殊：每次取一个区间，区间内的饼被吃掉，权值累加。 破局思路  辅助数组 g[i][j][k]: 表示在区间 [i,j][i, j][i,j] 内，必须选取一个覆盖了
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-25 00:00" pubdate>
+              2025-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/8102430d/" target="_self">
           P1063 [NOIP2006] 能量项链
         </a>
@@ -399,350 +889,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/5af5b988/" target="_self">
-          P4170 [CQOI2007] 涂色
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5af5b988/" target="_self">
-        <div>
-          Luogu-P4170 涂色 1. 核心逻辑 问题本质 区间染色问题，求刷出目标字符串的最少次数。 破局思路  首尾相同: 若 s[l]==s[r]s[l] == s[r]s[l]==s[r]，则涂 lll 时可以顺带涂 rrr（或者反之），代价不增加。 dp[l][r]=min⁡(dp[l+1][r],dp[l][r−1])dp[l][r] = \min(dp[l+1][r], dp[l][r-
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/73486b1b/" target="_self">
-          P3205 [HNOI2010] 合唱队
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/73486b1b/" target="_self">
-        <div>
-          Luogu-P3205 合唱队 1. 核心逻辑 问题本质 给定最终排好的队列（身高），求初始的入队方案数。 破局思路  逆向思维: 最后一个人（第 NNN 个入队的）一定是在当前队列的最左或最右。 状态定义:  dp[l][r][0]dp[l][r][0]dp[l][r][0]: 区间 [l,r][l, r][l,r] 形成，且最后一人是 lll。 dp[l][r][1]dp[l][r][1]dp
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/e4f80a95/" target="_self">
-          P2890 Cheapest Palindrome
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/e4f80a95/" target="_self">
-        <div>
-          Luogu-P2890 Cheapest Palindrome 1. 核心逻辑 问题本质 将字符串通过增删字符变为回文串的最小代价。 破局思路  等价性: 构造回文串时，在左边删除一个字符，等价于在右边添加一个相同字符。 Cost(ch)=min⁡(add_cost[ch],del_cost[ch])\text{Cost}(ch) = \min(\text{add\_cost}[ch], \tex
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/dd76d016/" target="_self">
-          P1880 [NOI1995] 石子合并
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/dd76d016/" target="_self">
-        <div>
-          Luogu-P1880 石子合并 1. 核心逻辑 问题本质 环形石子合并，求最大/最小得分。 破局思路  破环成链: 将环断开并复制一倍，形成长度为 2N2N2N 的链。原环上的任意区间等价于新链上的某个长度为 NNN 的子区间。 状态定义: dp[i][j]：合并区间 [i,j][i, j][i,j] 的最优得分。 转移方程:dp[i][j]=max⁡/min⁡k=ij−1{dp[i][k]+d
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-              <a href="/tags/%E7%A0%B4%E7%8E%AF%E6%88%90%E9%93%BE/">#破环成链</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/38f7b3d1/" target="_self">
-          P1040 [NOIP2003] 加分二叉树
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/38f7b3d1/" target="_self">
-        <div>
-          Luogu-P1040 加分二叉树 1. 核心逻辑 问题本质 构建一棵中序遍历为 1…N1 \dots N1…N 的二叉树，使其加分最大。 破局思路  树与区间: 中序遍历是有序的，意味着树的任意子树都对应原数组的一个连续区间 [l,r][l, r][l,r]。 枚举根节点: 在 [l,r][l, r][l,r] 中枚举 kkk 作为根。左子树为 [l,k−1][l, k-1][l,k−1]，右子
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8C%BA%E9%97%B4DP/">#区间DP</a>
-            
-              <a href="/tags/%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">#树的遍历</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/1fc9d42/" target="_self">
           P5664 [CSP-S 2019] Emiya 家今天的饭
         </a>
@@ -807,151 +953,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/64a7bd0f/" target="_self">
-          P2467 [SDOI2010] 地精部落
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/64a7bd0f/" target="_self">
-        <div>
-          Luogu-P2467 地精部落 1. 核心逻辑 问题本质 求长度为 NNN 的抖动序列（波动序列）方案数。 破局思路  对称性: 若 AAA 是抖动序列，则 AAA 的取反序列也是。只需计算一种情况（如第一步是山峰）×2\times 2×2。 DP 构造: dp[i][j]dp[i][j]dp[i][j]: 1…i1 \dots i1…i 的排列，第一项是 jjj，且是山峰（j&gt;nextj
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E6%95%B0DP/">#计数DP</a>
-            
-              <a href="/tags/%E6%8E%92%E5%88%97/">#排列</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/a1b39cf5/" target="_self">
-          P5017 [NOIP 2018] 摆渡车
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/a1b39cf5/" target="_self">
-        <div>
-          Luogu-P5017 摆渡车 1. 核心逻辑 问题本质 规划发车时间，最小化所有人的等待时间和。 破局思路  状态: dp[t] 表示时刻 ttt 发车时的最小总代价。 剪枝策略:  转移范围：m≤k≤2mm \le k \le 2mm≤k≤2m。发车间隔不需要超过 2m2m2m，因为大间隔不如多发一班车。 路径压缩: 如果两个到达时间间隔过大 (&gt;2m&gt; 2m&gt;2m)，中间的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA/">#图论</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/9/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#board">15</a><a class="extend next" rel="next" href="/page/11/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/9/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/#board">16</a><a class="extend next" rel="next" href="/page/11/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -1001,7 +1007,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 3.2 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
     </div>
   
   
