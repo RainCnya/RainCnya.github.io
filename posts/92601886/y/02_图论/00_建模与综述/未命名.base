@@ -1,0 +1,12 @@
+views:
+  - type: table
+    name: 表格
+    filters:
+      and:
+        - file.inFolder("20_Publish/00_Atlas")
+    groupBy:
+      property: file.folder
+      direction: ASC
+    order:
+      - file.name
+      - tags

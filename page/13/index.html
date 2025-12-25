@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/c041f5c2/" target="_self">
-          P1091 [NOIP2004] 合唱队形 (Seq_Bidirectional_LIS)
+        <a href="/posts/f06cc821/" target="_self">
+          P1280 [NOIP1993] 尼克的任务 (Seq_Reverse_DP)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/c041f5c2/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f06cc821/" target="_self">
         <div>
-          Luogu-P1091 合唱队形 1. 核心逻辑   问题本质: 寻找一个最长的子序列，满足先严格上升后严格下降（山峰模型）。   破局转换:   局部枚举: 枚举合唱队形的“山峰”位置 iii (1≤i≤N1 \le i \le N1≤i≤N)。   叠加态:   f[i]f[i]f[i]：以 iii 结尾的最长上升子序列长度。   g[i]g[i]g[i]：以 iii 开头的最长下降子序列长度
+          Luogu-P1280 尼克的任务 ## 1. 核心逻辑   问题本质: 确定最优的任务选择策略，使得非工作时间（空暇时间）最大化。   破局转换:   正难则反: 正向决策时，当前任务的选择会直接决定“下一次能开始决策”的时间点，这种“跨度”在正向推导时状态不连贯。   逆序定义: f[i] 表示从时刻 iii 到 NNN（时刻 NNN 结束）所能获得的最大空暇时间。   转移逻辑:   若时刻
         </div>
       </a>
 
@@ -313,9 +313,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/LIS/">#LIS</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E9%80%86%E5%90%91%E6%80%9D%E7%BB%B4/">##算法/逆向思维</a>
             
-              <a href="/tags/%E5%8F%8C%E5%90%91DP/">#双向DP</a>
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
             
           </div>
         
@@ -385,75 +385,7 @@
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E6%A0%88/">#单调性/单调栈</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/b8c79668/" target="_self">
-          P2569 [SCOI2010] 股票交易 (MQ_DP_MultiState)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/b8c79668/" target="_self">
-        <div>
-          Luogu-P2569 股票交易 ## 1. 核心逻辑   问题本质: 含有买入/卖出数量限制及 WWW 天冷却期的财富最大化问题。   破局转换:   状态定义: f[i][j]f[ i ][ j ]f[i][j] 为第 iii 天持有 jjj 股时的最大收益。   四种决策:   凭空买入: f[i][j]=−APi⋅jf[ i ][ j ] = -AP_i \cdot jf[i][j]=−A
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-08 00:00" pubdate>
-              2025-11-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
-            
-              <a href="/tags/%E5%A4%9A%E7%8A%B6%E6%80%81DP/">#多状态DP</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%A1%E7%8C%AE%E6%B3%95/">##算法/贡献法</a>
             
           </div>
         
@@ -521,9 +453,151 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">##单调性/单调队列</a>
             
-              <a href="/tags/%E7%BD%91%E6%A0%BCDP/">#网格DP</a>
+              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/b8c79668/" target="_self">
+          P2569 [SCOI2010] 股票交易 (MQ_DP_MultiState)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b8c79668/" target="_self">
+        <div>
+          Luogu-P2569 股票交易 ## 1. 核心逻辑   问题本质: 含有买入/卖出数量限制及 WWW 天冷却期的财富最大化问题。   破局转换:   状态定义: f[i][j]f[ i ][ j ]f[i][j] 为第 iii 天持有 jjj 股时的最大收益。   四种决策:   凭空买入: f[i][j]=−APi⋅jf[ i ][ j ] = -AP_i \cdot jf[i][j]=−A
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5c9bbb8b/" target="_self">
+          P1419 寻找段落
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5c9bbb8b/" target="_self">
+        <div>
+          Luogu-P1419 寻找段落 1. 核心逻辑   问题本质: 在长度限制 [S,T][S, T][S,T] 内，寻找最大化的区间平均值。   破局转换:   01 分数规划: 求 ∑ailen≥mid\frac{\sum a_i}{len} \ge midlen∑ai​​≥mid。   转化为 ∑(ai−mid)≥0\sum (a_i - mid) \ge 0∑(ai​−mid)≥0。   令
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-07 00:00" pubdate>
+              2025-11-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#数学/分数规划</a>
             
           </div>
         
@@ -605,76 +679,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/ca407f52/" target="_self">
-          P2032 扫描
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/ca407f52/" target="_self">
-        <div>
-          Luogu-P2032 扫描 1. 核心逻辑  问题本质: 求区间长度为 KKK 的连续子区间最大值。标准滑动窗口 RMQ。  2. 代码实现                      ▶AcCode                                  123456789101112131415161718192021222324252627282930313233343536373
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-07 00:00" pubdate>
-              2025-11-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/7d6e628/" target="_self">
           P1886 滑动窗口 / [模板] 单调队列
         </a>
@@ -731,7 +735,7 @@
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
             
-              <a href="/tags/RMQ/">#RMQ</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-RMQ/">#数据结构/RMQ</a>
             
           </div>
         
@@ -799,11 +803,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
             
-              <a href="/tags/RMQ/">#RMQ</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-RMQ/">##数据结构/RMQ</a>
             
           </div>
         
@@ -817,15 +819,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/5c9bbb8b/" target="_self">
-          P1419 寻找段落
+        <a href="/posts/ca407f52/" target="_self">
+          P2032 扫描
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/5c9bbb8b/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ca407f52/" target="_self">
         <div>
-          Luogu-P1419 寻找段落 1. 核心逻辑   问题本质: 在长度限制 [S,T][S, T][S,T] 内，寻找最大化的区间平均值。   破局转换:   01 分数规划: 求 ∑ailen≥mid\frac{\sum a_i}{len} \ge midlen∑ai​​≥mid。   转化为 ∑(ai−mid)≥0\sum (a_i - mid) \ge 0∑(ai​−mid)≥0。   令
+          Luogu-P2032 扫描 1. 核心逻辑  问题本质: 求区间长度为 KKK 的连续子区间最大值。标准滑动窗口 RMQ。  2. 代码实现                      ▶AcCode                                  123456789101112131415161718192021222324252627282930313233343536373
         </div>
       </a>
 
@@ -854,7 +856,7 @@
   
     <span>></span>
     
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/10-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
   
   
 
@@ -870,10 +872,6 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
-            
-              <a href="/tags/%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#分数规划</a>
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
             
@@ -945,7 +943,7 @@
             
               <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E4%BC%98%E5%8C%96/">#单调队列优化</a>
+              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
             
           </div>
         
