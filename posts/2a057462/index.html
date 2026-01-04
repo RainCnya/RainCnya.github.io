@@ -27,7 +27,7 @@
 <meta property="og:description" content="前缀和与差分 1. 生态位   识别:   题目涉及大量重复的静态区间求和查询。   题目涉及大量重复的区间统一增减修改。     地位: 基础算法底座。利用算子的可逆性实现区间信息与点位信息的对偶互换。   用途: 将 O(N)O(N)O(N) 的区间扫描，通过预处理转化为 O(1)O(1)O(1) 的点位读取。   2. 逻辑支点   核心原理：存账本:  物理直觉：前缀和相当于记“余额”，差">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T04:43:20.764Z">
-<meta property="article:modified_time" content="2026-01-04T05:39:51.246Z">
+<meta property="article:modified_time" content="2026-01-04T11:03:37.543Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="难度&#x2F;P1">
 <meta property="article:tag" content="算法&#x2F;前缀和">
@@ -394,13 +394,13 @@
 <h2 id="4-知识关联">4. 知识关联</h2>
 <ul>
 <li>
-<p><strong>母题</strong>: <a  href="/posts/8668ad14/">P2280 激光炸弹 (PrefixSum_2D)</a> —— 二维前缀和最经典的逻辑体现。</p>
+<p><strong>母题</strong>: [[P2280 激光炸弹 (PrefixSum_2D)]] —— 二维前缀和最经典的逻辑体现。</p>
 </li>
 <li>
-<p><strong>实战案例</strong>: <a  href="/posts/undefined/">ABC439D Kadomatsu Subsequence</a> —— 动态维护前缀/后缀权值频率，实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的贡献度统计。</p>
+<p><strong>实战案例</strong>: <a  href="/posts/d9d9e338/">ABC439D Kadomatsu Subsequence</a> —— 动态维护前缀/后缀权值频率，实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的贡献度统计。</p>
 </li>
 <li>
-<p><strong>牢笔记参考</strong>: <a  href="/posts/b22c5db7/">静态数组优化</a></p>
+<p><strong>牢笔记参考</strong>: [[静态数组优化]]</p>
 </li>
 </ul>
 
@@ -410,6 +410,41 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%88%98%E6%9C%AF/" class="category-chain-item">00_基础与战术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%88%98%E6%9C%AF/04-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">04_降维技巧</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
     <div class="post-meta">

@@ -19,23 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="06 字符串算法 核心指南  核心哲学：字符串算法不是在玩文字游戏，而是在海量字符中寻找特定的“印记”。 它的本质是：利用已经看过的部分，跳过不可能匹配的部分； 或者干脆给整段文字建一个像字典一样的“结构化索引”，实现瞬间定位。  1. 知识图谱与演化   核心抓手: 前缀复用、状态转移、后缀索引、对称中心。   演化路径:   单模匹配：KMP。学会利用已经匹配好的前缀信息，在匹配失败时不要傻傻">
+    <meta name="description" content="[L2] 60_字符串算法  核心哲学：字符串算法不是在玩文字游戏，而是在海量字符中寻找特定的“印记”。 本质：利用已经看过的部分，跳过不可能匹配的部分； 或者干脆给整段文字建一个像字典一样的“结构化索引”，实现瞬间定位。  1. 知识图谱与演化   核心工具: 前缀复用、状态转移、后缀索引、对称中心。   演化路径:   单模匹配：学会利用匹配失败处的前缀信息，通过预处理跳转位置，避免从头开始的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="06 字符串算法 核心指南">
+<meta property="og:title" content="[L2] 60_字符串算法">
 <meta property="og:url" content="https://example.com/posts/6fb16570/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="06 字符串算法 核心指南  核心哲学：字符串算法不是在玩文字游戏，而是在海量字符中寻找特定的“印记”。 它的本质是：利用已经看过的部分，跳过不可能匹配的部分； 或者干脆给整段文字建一个像字典一样的“结构化索引”，实现瞬间定位。  1. 知识图谱与演化   核心抓手: 前缀复用、状态转移、后缀索引、对称中心。   演化路径:   单模匹配：KMP。学会利用已经匹配好的前缀信息，在匹配失败时不要傻傻">
+<meta property="og:description" content="[L2] 60_字符串算法  核心哲学：字符串算法不是在玩文字游戏，而是在海量字符中寻找特定的“印记”。 本质：利用已经看过的部分，跳过不可能匹配的部分； 或者干脆给整段文字建一个像字典一样的“结构化索引”，实现瞬间定位。  1. 知识图谱与演化   核心工具: 前缀复用、状态转移、后缀索引、对称中心。   演化路径:   单模匹配：学会利用匹配失败处的前缀信息，通过预处理跳转位置，避免从头开始的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T02:58:07.330Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:57.641Z">
+<meta property="article:modified_time" content="2026-01-04T10:42:41.942Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="#难度&#x2F;P2">
 <meta property="article:tag" content="#指南&#x2F;字符串">
+<meta property="article:tag" content="#难度&#x2F;P2">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>06 字符串算法 核心指南 - MiQiu</title>
+  <title>[L2] 60_字符串算法 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="06 字符串算法 核心指南"></span>
+            <span id="subtitle" data-typed-text="[L2] 60_字符串算法"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          985 字
+          885 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          13 分钟
+          12 分钟
         
       </span>
     
@@ -319,36 +319,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">06 字符串算法 核心指南</h1>
+            <h1 id="seo-header">[L2] 60_字符串算法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>06 字符串算法 核心指南</h1>
+                <h1>[L2] 60_字符串算法</h1>
 <blockquote>
-<p><strong>核心哲学</strong>：字符串算法不是在玩文字游戏，而是在海量字符中寻找特定的“印记”。<br>
-它的本质是：利用已经看过的部分，跳过不可能匹配的部分；<br>
+<p><strong>核心哲学</strong>：字符串算法不是在玩文字游戏，而是在海量字符中寻找特定的“印记”。</p>
+<p>本质：利用已经看过的部分，跳过不可能匹配的部分；<br>
 或者干脆给整段文字建一个像字典一样的“结构化索引”，实现瞬间定位。</p>
 </blockquote>
 <h2 id="1-知识图谱与演化">1. 知识图谱与演化</h2>
 <ul>
 <li>
-<p><strong>核心抓手</strong>: 前缀复用、状态转移、后缀索引、对称中心。</p>
+<p><strong>核心工具</strong>: 前缀复用、状态转移、后缀索引、对称中心。</p>
 </li>
 <li>
 <p><strong>演化路径</strong>:</p>
 <ol>
 <li>
-<p><strong>单模匹配</strong>：KMP。学会利用已经匹配好的前缀信息，在匹配失败时不要傻傻地从头开始，而是“跳”到下一个可能成功的位置。</p>
+<p><strong>单模匹配</strong>：学会利用匹配失败处的前缀信息，通过预处理跳转位置，避免从头开始的暴力回溯。</p>
 </li>
 <li>
-<p><strong>多模匹配</strong>：AC 自动机。当有多个目标串时，把它们建成一棵树，让文本只扫一遍就能同时发现所有目标。</p>
+<p><strong>多模并发</strong>：当目标串变多时，将它们聚合成树形结构，让文本只扫一遍就能同时撞击所有目标。</p>
 </li>
 <li>
-<p><strong>后缀全索引</strong>：后缀数组 (SA) 与后缀自动机 (SAM)。这是字符串的“核武器”，通过把字符串的所有后缀排好序或建成自动机，解决几乎所有子串问题。</p>
+<p><strong>后缀全量化</strong>：字符串算法的顶峰。通过对所有后缀进行排序或构建自动机，将子串查询、计数等问题转化为图上的路径或区间问题。</p>
 </li>
 <li>
-<p><strong>对称处理</strong>：Manacher 与回文自动机 (PAM)。利用回文串的对称特性，极速寻找最长回文或统计回文个数。</p>
+<p><strong>对称逻辑</strong>：利用回文串的中心对称特性，减少对重复区域的半径探测，或构建专门的回文索引结构。</p>
 </li>
 </ol>
 </li>
@@ -356,90 +356,102 @@
 <h2 id="2-决策矩阵">2. 决策矩阵</h2>
 <ul>
 <li>
-<p><strong>题目要求在长文本里找一个固定目标串</strong>: 优先选 KMP。</p>
+<p><strong>长文本中寻找一个固定目标串</strong>: 优先选 [[Note] KMP 算法]。</p>
 </li>
 <li>
-<p><strong>题目给出一堆目标串，要求在文本里统计出现次数</strong>: 采用 AC 自动机。</p>
+<p><strong>在一堆目标串中统计出现次数</strong>: 采用 [[Note] AC 自动机]。</p>
 </li>
 <li>
-<p><strong>题目涉及“子串出现次数”、“不同子串个数”或“最长公共子串”</strong>:</p>
+<p><strong>涉及“子串出现次数”、“不同子串个数”或“最长公共子串”</strong>:</p>
 <ul>
 <li>
-<p>如果追求逻辑简洁且内存充裕，首选后缀自动机 (SAM)。</p>
+<p>若追求逻辑简洁且内存充裕，首选 [[Note] 后缀自动机]。</p>
 </li>
 <li>
-<p>如果涉及大规模的字典序排序或内存极度受限，采用后缀数组 (SA)。</p>
+<p>若涉及字典序大规模排序或内存极度受限，采用 [[Note] 后缀数组]。</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>题目要求寻找最长回文子串</strong>:</p>
+<p><strong>寻找最长回文子串</strong>:</p>
 <ul>
 <li>
-<p>线性时间内解决，用 Manacher。</p>
+<p>线性时间内极速解决，用 [[Note] 曼纳海尔算法]。</p>
 </li>
 <li>
-<p>如果涉及回文串的嵌套关系或统计不同回文串个数，用回文自动机 (PAM)。</p>
+<p>若涉及回文串的复杂嵌套关系或统计不同回文串个数，用 [[Note] 回文自动机]。</p>
 </li>
 </ul>
+</li>
+<li>
+<p><strong>正统算法难以实现或需要模糊匹配</strong>: 采用进制 [[Note] 哈希]。</p>
 </li>
 </ul>
 <h2 id="3-核心板块索引">3. 核心板块索引</h2>
 <h3 id="3-1-匹配与自动机">3.1 匹配与自动机</h3>
 <ul>
 <li>
-<p><strong>[L3] 01 匹配与自动机</strong>: 解决“在哪里出现了什么”的问题。</p>
+<p><strong>[L3] 61 匹配与自动机</strong>: 解决“在哪里出现了什么”的问题。</p>
+<ul>
+<li>
+<p>[[Note] KMP 算法]: 前缀复用的跳跃逻辑。</p>
 </li>
 <li>
-<p><strong>[Note] KMP 算法</strong>: 核心是 <code>next</code> 数组，代表“当前位置最长的公共前后缀”，决定了匹配失败时的跳跃距离。</p>
+<p>[[Note] AC 自动机]: 多模式串并发跳转的失败指针。</p>
 </li>
 <li>
-<p><strong>[Note] AC 自动机</strong>: 核心是在 Trie 树上建立 Fail 指针，实现多模式串的同步跳转。</p>
+<p>[[Note] 后缀自动机]: 压缩子串状态的终极结构。</p>
 </li>
-<li>
-<p><strong>[Note] 后缀自动机 (SAM)</strong>: 字符串算法的巅峰。核心是把所有子串压缩进有限的状态里，每个状态代表一组出现位置相同的子串。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-2-结构化索引">3.2 结构化索引</h3>
 <ul>
 <li>
-<p><strong>[L3] 02 结构化索引</strong>: 解决字符串的全局统计与排序。</p>
+<p><strong>[L3] 62 结构化索引</strong>: 字符串的全局统计与排序工具。</p>
+<ul>
+<li>
+<p>[[Note] 后缀数组]: 后缀集合的倍增排序。</p>
 </li>
 <li>
-<p><strong>[Note] 后缀数组 (SA)</strong>: 核心是通过倍增算法对所有后缀进行排序，配合 <code>height</code> 数组观察相邻后缀的相似度。</p>
+<p>[[Note] 哈希]: 字符串的数值化映射与模糊匹配。</p>
 </li>
 <li>
-<p><strong>[Note] 散列 (Hash)</strong>: 最后的杀手锏。当正统算法写不出来时，用进制哈希把字符串转成数字，在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 时间内进行模糊匹配。</p>
+<p>[[Note] 后缀平衡树]: 动态维护后缀顺序的进阶结构。</p>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="3-3-回文处理">3.3 回文处理</h3>
 <ul>
 <li>
-<p><strong>[L3] 03 回文处理</strong>: 利用对称美解决问题。</p>
+<p><strong>[L3]63 回文处理</strong>: 利用对称性解决计数与长度问题。</p>
+<ul>
+<li>
+<p>[[Note] 曼纳海尔算法]: 线性回文半径探测。</p>
 </li>
 <li>
-<p><strong>[Note] Manacher</strong>: 核心是利用之前已经算好的回文半径，减少对对称中心的重复探测。</p>
+<p>[[Note] 回文自动机]: 为回文串量身定制的字典树。</p>
 </li>
-<li>
-<p><strong>[Note] 回文自动机 (PAM)</strong>: 为回文串建立的特殊树形结构，每个节点代表一个唯一的回文子串。</p>
+</ul>
 </li>
 </ul>
 <h2 id="4-依赖与规划">4. 依赖与规划</h2>
 <ul>
 <li>
-<p><strong>前置依赖</strong>: 必须掌握基础的递归、Trie 树（字典树）的构建、以及哈希冲突的基本处理。</p>
+<p><strong>前置依赖</strong>: 掌握字典树 (Trie)、基本递归逻辑、以及字符串进制 Hash 思想。</p>
 </li>
 <li>
 <p><strong>学习路径</strong>:</p>
 <ol>
 <li>
-<p><strong>P1 (基础)</strong>：熟练写出 KMP 和 Manacher，理解“利用已知信息跳过重复计算”的精髓。</p>
+<p><strong>P1 (基础)</strong>：熟练写出 KMP、曼纳海尔算法以及字符串哈希，理解“利用已知信息减少重复探测”及“特征值压缩”的精髓。</p>
 </li>
 <li>
-<p><strong>P2 (中坚)</strong>：攻克 AC 自动机。这是跨入区域赛高阶字符串题目的门槛。</p>
+<p><strong>P2 (中坚)</strong>：攻克 AC 自动机。掌握在 Trie 树上通过 Fail 指针进行多模式串并行处理的逻辑。</p>
 </li>
 <li>
-<p><strong>P3 (顶尖)</strong>：掌握 SAM（后缀自动机）和 PAM（回文自动机）。这是解决复杂子串博弈的终极工具。</p>
+<p><strong>P3 (顶尖)</strong>：掌握后缀自动机 (SAM)、后缀数组 (SA) 与回文自动机 (PAM)。这是解决复杂子串逻辑、字典序统计及回文博弈问题的终极武器。</p>
 </li>
 </ol>
 </li>
@@ -486,9 +498,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/" class="print-no-link">##难度/P2</a>
-      
         <a href="/tags/%E6%8C%87%E5%8D%97-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="print-no-link">##指南/字符串</a>
+      
+        <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/" class="print-no-link">##难度/P2</a>
       
     </div>
   
@@ -500,7 +512,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>06 字符串算法 核心指南</div>
+      <div>[L2] 60_字符串算法</div>
       <div>https://example.com/posts/6fb16570/</div>
     </div>
     <div class="license-meta">
@@ -545,9 +557,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/135a5f67/" title="[L2] 70 博弈论 核心指南">
+                      <a href="/posts/cf153fd/" title="[L2] 70_博弈论">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">[L2] 70 博弈论 核心指南</span>
+                        <span class="hidden-mobile">[L2] 70_博弈论</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -555,8 +567,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/fd1d1436/" title="05 计算几何 核心指南">
-                        <span class="hidden-mobile">05 计算几何 核心指南</span>
+                      <a href="/posts/fd1d1436/" title="[L2] 50_计算几何">
+                        <span class="hidden-mobile">[L2] 50_计算几何</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

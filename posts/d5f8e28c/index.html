@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="00 基础与战术 核心指南  核心哲学：算法竞赛不是死记硬背模板，而是从杂乱的题目描述中剥离出不变的数理规律。 基础算法的本质只有两步：看清哪些是干扰你的废话，然后用最简单的数学逻辑把问题拆散。  1. 知识图谱与演化   核心抓手: 贡献度拆解、不变量构造、单调性观察、信息简化。   演化路径:   暴力模拟：最原始的逻辑复现，不带任何优化地跟着题目走。   局部贪心：通过观察局部性质尝试突破全">
+    <meta name="description" content="[L2] 00_基础与战术  核心哲学：算法竞赛不是死记硬背模板，而是从杂乱的题目描述中剥离出不变的数理规律。 基础算法的本质只有两步：看清哪些是干扰你的废话，然后用最简单的数学逻辑把问题拆散。  1. 知识图谱与演化   核心抓手: 贡献度拆解、不变量构造、单调性观察、信息简化。   演化路径:   暴力模拟：最原始的逻辑复现，不带任何优化地跟着题目走。   局部贪心：通过观察局部性质尝试突破全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[L2] 00 基础与战术 核心指南">
+<meta property="og:title" content="[L2] 00_基础与战术">
 <meta property="og:url" content="https://example.com/posts/d5f8e28c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="00 基础与战术 核心指南  核心哲学：算法竞赛不是死记硬背模板，而是从杂乱的题目描述中剥离出不变的数理规律。 基础算法的本质只有两步：看清哪些是干扰你的废话，然后用最简单的数学逻辑把问题拆散。  1. 知识图谱与演化   核心抓手: 贡献度拆解、不变量构造、单调性观察、信息简化。   演化路径:   暴力模拟：最原始的逻辑复现，不带任何优化地跟着题目走。   局部贪心：通过观察局部性质尝试突破全">
+<meta property="og:description" content="[L2] 00_基础与战术  核心哲学：算法竞赛不是死记硬背模板，而是从杂乱的题目描述中剥离出不变的数理规律。 基础算法的本质只有两步：看清哪些是干扰你的废话，然后用最简单的数学逻辑把问题拆散。  1. 知识图谱与演化   核心抓手: 贡献度拆解、不变量构造、单调性观察、信息简化。   演化路径:   暴力模拟：最原始的逻辑复现，不带任何优化地跟着题目走。   局部贪心：通过观察局部性质尝试突破全">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-03T11:41:32.173Z">
-<meta property="article:modified_time" content="2026-01-04T05:18:21.014Z">
+<meta property="article:modified_time" content="2026-01-04T10:44:50.348Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南&#x2F;基础">
 <meta property="article:tag" content="难度&#x2F;P1">
@@ -35,7 +35,7 @@
   
   
   
-  <title>[L2] 00 基础与战术 核心指南 - MiQiu</title>
+  <title>[L2] 00_基础与战术 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[L2] 00 基础与战术 核心指南"></span>
+            <span id="subtitle" data-typed-text="[L2] 00_基础与战术"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          916 字
+          937 字
         
       </span>
     
@@ -319,12 +319,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[L2] 00 基础与战术 核心指南</h1>
+            <h1 id="seo-header">[L2] 00_基础与战术</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>00 基础与战术 核心指南</h1>
+                <h1>[L2] 00_基础与战术</h1>
 <blockquote>
 <p><strong>核心哲学</strong>：算法竞赛不是死记硬背模板，而是从杂乱的题目描述中剥离出不变的数理规律。<br>
 基础算法的本质只有两步：看清哪些是干扰你的废话，然后用最简单的数学逻辑把问题拆散。</p>
@@ -392,6 +392,9 @@
 <ul>
 <li>
 <p>[[Note] 折半搜索]: 任务切半，分别搜完再合并，大幅降低运行时间。</p>
+</li>
+<li>
+<p>[[Note] 启发式搜索]: 利用估价函数引导搜索方向，杀掉无效分支。</p>
 </li>
 <li>
 <p>[[Note] 模拟退火]: 针对最优化问题，通过“随机乱跳”撞出最优解。</p>
@@ -512,7 +515,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[L2] 00 基础与战术 核心指南</div>
+      <div>[L2] 00_基础与战术</div>
       <div>https://example.com/posts/d5f8e28c/</div>
     </div>
     <div class="license-meta">
@@ -557,9 +560,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/da537d0d/" title="01 高阶数据结构 核心指南">
+                      <a href="/posts/da537d0d/" title="[L2] 10_高阶数据结构">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">01 高阶数据结构 核心指南</span>
+                        <span class="hidden-mobile">[L2] 10_高阶数据结构</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

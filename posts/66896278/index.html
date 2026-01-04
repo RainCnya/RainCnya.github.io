@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="04 高等数学 核心指南  核心哲学：高等数学在竞赛里的本质只有两个字——“找补”。 因为计算机跑不动天文数字，所以我们要找公式跳过中间步骤，或者找规律把大问题补成小问题。 它的核心逻辑是：如果数字大到没法枚举，那就寻找它的内部结构。  1. 知识图谱与演化   核心抓手: 素数分布、基底转换、容斥补偿、变换加速。   演化路径:   基础算术：质因数分解、最大公约数（GCD）。解决最基本的整除关">
+    <meta name="description" content="[L2] 40_高等数学  核心哲学：数学在竞赛里的本质是“找补”。 因为计算机跑不动天文数字，所以我们要找公式跳过中间步骤，或者找规律把大问题补成小问题。 如果数字大到没法枚举，那就寻找它的内部结构。  1. 知识图谱与演化   核心工具: 素数分布、基底转换、容斥补偿、变换加速。   演化路径:   基础整除：质因数分解、最大公约数。解决最基本的分配与倍数关系。   内在规律：线性基、数论函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="04 高等数学 核心指南">
+<meta property="og:title" content="[L2] 40_高等数学">
 <meta property="og:url" content="https://example.com/posts/66896278/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="04 高等数学 核心指南  核心哲学：高等数学在竞赛里的本质只有两个字——“找补”。 因为计算机跑不动天文数字，所以我们要找公式跳过中间步骤，或者找规律把大问题补成小问题。 它的核心逻辑是：如果数字大到没法枚举，那就寻找它的内部结构。  1. 知识图谱与演化   核心抓手: 素数分布、基底转换、容斥补偿、变换加速。   演化路径:   基础算术：质因数分解、最大公约数（GCD）。解决最基本的整除关">
+<meta property="og:description" content="[L2] 40_高等数学  核心哲学：数学在竞赛里的本质是“找补”。 因为计算机跑不动天文数字，所以我们要找公式跳过中间步骤，或者找规律把大问题补成小问题。 如果数字大到没法枚举，那就寻找它的内部结构。  1. 知识图谱与演化   核心工具: 素数分布、基底转换、容斥补偿、变换加速。   演化路径:   基础整除：质因数分解、最大公约数。解决最基本的分配与倍数关系。   内在规律：线性基、数论函数">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T02:54:58.706Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:57.644Z">
+<meta property="article:modified_time" content="2026-01-04T10:31:44.322Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="难度&#x2F;P2">
 <meta property="article:tag" content="指南&#x2F;数学">
@@ -35,7 +35,7 @@
   
   
   
-  <title>04 高等数学 核心指南 - MiQiu</title>
+  <title>[L2] 40_高等数学 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="04 高等数学 核心指南"></span>
+            <span id="subtitle" data-typed-text="[L2] 40_高等数学"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          923 字
+          827 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          12 分钟
+          11 分钟
         
       </span>
     
@@ -319,36 +319,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">04 高等数学 核心指南</h1>
+            <h1 id="seo-header">[L2] 40_高等数学</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>04 高等数学 核心指南</h1>
+                <h1>[L2] 40_高等数学</h1>
 <blockquote>
-<p><strong>核心哲学</strong>：高等数学在竞赛里的本质只有两个字——“找补”。<br>
-因为计算机跑不动天文数字，所以我们要找公式跳过中间步骤，或者找规律把大问题补成小问题。<br>
-它的核心逻辑是：如果数字大到没法枚举，那就寻找它的内部结构。</p>
+<p><strong>核心哲学</strong>：数学在竞赛里的本质是“找补”。</p>
+<p>因为计算机跑不动天文数字，所以我们要找公式跳过中间步骤，或者找规律把大问题补成小问题。<br>
+如果数字大到没法枚举，那就寻找它的内部结构。</p>
 </blockquote>
 <h2 id="1-知识图谱与演化">1. 知识图谱与演化</h2>
 <ul>
 <li>
-<p><strong>核心抓手</strong>: 素数分布、基底转换、容斥补偿、变换加速。</p>
+<p><strong>核心工具</strong>: 素数分布、基底转换、容斥补偿、变换加速。</p>
 </li>
 <li>
 <p><strong>演化路径</strong>:</p>
 <ol>
 <li>
-<p><strong>基础算术</strong>：质因数分解、最大公约数（GCD）。解决最基本的整除关系。</p>
+<p><strong>基础整除</strong>：质因数分解、最大公约数。解决最基本的分配与倍数关系。</p>
 </li>
 <li>
-<p><strong>结构发现</strong>：线性基、数论函数。发现一组数可以用更少的“基底”表示，或者函数值之间存在某种神奇的关联。</p>
+<p><strong>内在规律</strong>：线性基、数论函数。发现一组数可以用更少的“骨架”来表示，或者不同数字之间存在某种连锁反应。</p>
 </li>
 <li>
-<p><strong>批量计算</strong>：杜教筛、FFT（快速傅里叶变换）。不再一个一个算，而是通过公式或者特殊的频率转换，一次性算出一大堆结果。</p>
+<p><strong>批量求和</strong>：各种筛法、快速傅里叶变换。不再一个一个算，而是利用公式或频率转换，一次性算出一大堆结果。</p>
 </li>
 <li>
-<p><strong>形式化工具</strong>：生成函数。把组合计数问题变成多项式乘法，利用代数运算代替复杂的脑力逻辑。</p>
+<p><strong>代数转换</strong>：生成函数。将复杂的数数问题变成多项式乘法，让计算机通过代数运算自动得出答案。</p>
 </li>
 </ol>
 </li>
@@ -356,94 +356,102 @@
 <h2 id="2-决策矩阵">2. 决策矩阵</h2>
 <ul>
 <li>
-<p><strong>题目涉及“质数”、“约数”或“求</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum f(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span><strong>”，且范围极广（</strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>10</mn></msup><mo>+</mo></mrow><annotation encoding="application/x-tex">10^{10}+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span><span class="mord">+</span></span></span></span><strong>）</strong>:</p>
+<p><strong>题目涉及“质数”、“约数”且范围极大（</strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">10^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span> <strong>以上）</strong>:</p>
 <ul>
 <li>
-<p>如果是质因数分解，考虑 Pollard Rho。</p>
+<p>如果是求大数分解，考虑 [[Note] Pollard Rho]。</p>
 </li>
 <li>
-<p>如果是求积性函数的和，考虑杜教筛或亚线性求和技巧。</p>
+<p>如果是求大量积性函数的和，考虑 [[Note] 亚线性求和]。</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>题目要求从一堆数里选几个，让异或和最大</strong>: 优先选线性基。</p>
+<p><strong>要求从一堆数里选几个，让异或和最大</strong>: 优先考虑 [[Note] 线性基]。</p>
 </li>
 <li>
-<p><strong>题目涉及“恰好满足几个条件”的计数，且正面难算</strong>: 考虑容斥原理或二项式反演。</p>
+<p><strong>涉及“恰好满足几个条件”的计数，且正面难算</strong>: 考虑 [[Note] 容斥原理] 或二项式反演。</p>
 </li>
 <li>
-<p><strong>题目涉及两个序列的交叉乘积求和（卷积）</strong>: 采用 FFT/NTT。</p>
+<p><strong>涉及两个序列的交叉乘积求和（卷积）</strong>: 采用 [[Note] FFT 与 NTT]。</p>
 </li>
 <li>
-<p><strong>题目涉及概率与期望，且存在递推关系</strong>: 结合矩阵快速幂或线性方程组高斯消元。</p>
+<p><strong>涉及概率与期望，且存在明显的递推关系</strong>: 结合 [[Note] 矩阵快速幂] 或线性方程组高斯消元。</p>
 </li>
 </ul>
 <h2 id="3-核心板块索引">3. 核心板块索引</h2>
 <h3 id="3-1-数论基础">3.1 数论基础</h3>
 <ul>
 <li>
-<p><strong>[L3] 01 数论基础</strong>: 解决数与数之间的整除和分布规律。</p>
+<p><strong>[L3] 41 数论基础</strong>: 解决数字本身的整除和分布规律。</p>
+<ul>
+<li>
+<p>[[Note] 亚线性求和]: 利用积性跳着算，解决超大范围求和。</p>
 </li>
 <li>
-<p><strong>[Note] 亚线性求和</strong>: 核心是“利用函数的积性，跳着算”，解决超大范围的求和。</p>
+<p>[[Note] Pollard Rho]: 寻找分解大数的随机化捷径。</p>
 </li>
-<li>
-<p><strong>[Note] Pollard Rho</strong>: 利用随机化在大数分解中寻找公因数的捷径。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-2-组合计数">3.2 组合计数</h3>
 <ul>
 <li>
-<p><strong>[L3] 02 组合计数</strong>: 解决“有多少种方案”的问题。</p>
+<p><strong>[L3] 42 组合计数</strong>: 解决“有多少种方案”的问题。</p>
+<ul>
+<li>
+<p>[[Note] 容斥原理]: 先多算再扣除，处理重叠条件的利器。</p>
 </li>
 <li>
-<p><strong>[Note] 容斥原理</strong>: 核心是“先不计代价地多算，再把重复的扣掉”。</p>
+<p>[[Note] 生成函数]: 用多项式乘法代替大脑逻辑的自动化计数。</p>
 </li>
-<li>
-<p><strong>[Note] 生成函数</strong>: 把每一个选项看作多项式的一个幂次，通过乘法实现方案的自动组合。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-3-线性代数">3.3 线性代数</h3>
 <ul>
 <li>
-<p><strong>[L3] 03 线性代数</strong>: 解决多变量之间的线性关系与空间表示。</p>
+<p><strong>[L3] 43 线性代数</strong>: 解决多变量之间的线性关系与空间表示。</p>
+<ul>
+<li>
+<p>[[Note] 线性基]: 用最少的数代表原本一堆数的异或空间。</p>
 </li>
 <li>
-<p><strong>[Note] 线性基</strong>: 核心是“用最少的数代表原本一堆数能异或出来的所有结果”。</p>
+<p>[[Note] 矩阵快速幂]: 将线性递推的速度从跑步变为飞行。</p>
 </li>
-<li>
-<p><strong>[Note] 矩阵快速幂</strong>: 利用结合律，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的递推加速到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-4-多项式">3.4 多项式</h3>
 <ul>
 <li>
-<p><strong>[L3] 04 多项式</strong>: 计算竞赛中的“重工业”，解决批量乘法。</p>
+<p><strong>[L3] 44 多项式</strong>: 解决批量乘法的重型工业。</p>
+<ul>
+<li>
+<p>[[Note] FFT 与 NTT]: 将数值转换到频率空间，实现极速卷积。</p>
 </li>
 <li>
-<p><strong>[Note] FFT/NTT</strong>: 核心是将数值转换到频率空间，实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的极速卷积。</p>
+<p>[[Note] 多项式全家桶]: 处理求逆、开方等高阶代数操作。</p>
 </li>
-<li>
-<p><strong>[Note] 多项式求逆/开方</strong>: 利用牛顿迭代法，在代数层面对序列进行高级操作。</p>
+</ul>
 </li>
 </ul>
 <h2 id="4-依赖与规划">4. 依赖与规划</h2>
 <ul>
 <li>
-<p><strong>前置依赖</strong>: 必须完全精通快速幂、欧几里得算法、以及逆元的计算。</p>
+<p><strong>前置依赖</strong>: 熟练掌握快速幂、欧几里得算法、以及逆元的计算逻辑。</p>
 </li>
 <li>
 <p><strong>学习路径</strong>:</p>
 <ol>
 <li>
-<p><strong>P1 (基础)</strong>：掌握扩展欧几里得、费马小定理以及基础组合数。</p>
+<p><strong>P1 (基础)</strong>：掌握扩展欧几里得、费马小定理及基础组合数。</p>
 </li>
 <li>
-<p><strong>P2 (中坚)</strong>：攻克线性基、容斥原理和基础数论函数。这是 Phase 2.5 进阶的核心。</p>
+<p><strong>P2 (中坚)</strong>：攻克线性基、容斥原理和基础数论函数。</p>
 </li>
 <li>
-<p><strong>P3 (顶尖)</strong>：掌握杜教筛、生成函数和多项式全家桶。</p>
+<p><strong>P3 (顶尖)</strong>：掌握杜教筛、生成函数和多项式卷积，处理超高难度的计数与求和。</p>
 </li>
 </ol>
 </li>
@@ -504,7 +512,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>04 高等数学 核心指南</div>
+      <div>[L2] 40_高等数学</div>
       <div>https://example.com/posts/66896278/</div>
     </div>
     <div class="license-meta">
@@ -549,9 +557,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/fd1d1436/" title="05 计算几何 核心指南">
+                      <a href="/posts/fd1d1436/" title="[L2] 50_计算几何">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">05 计算几何 核心指南</span>
+                        <span class="hidden-mobile">[L2] 50_计算几何</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -559,8 +567,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/2a5aca6a/" title="03 动态规划优化 核心指南">
-                        <span class="hidden-mobile">03 动态规划优化 核心指南</span>
+                      <a href="/posts/2a5aca6a/" title="[L2] 03 动态规划优化">
+                        <span class="hidden-mobile">[L2] 03 动态规划优化</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

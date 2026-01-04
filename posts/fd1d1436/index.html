@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="05 计算几何 核心指南  核心哲学：计算几何不是在玩尺规作图，而是在用“不精准”的浮点数去模拟精准的物理世界。 它的核心逻辑只有两个： 一是如何优雅地处理那点儿讨人嫌的精度误差， 二是如何通过“扫描”或“旋转”把杂乱分布的点变成有序的线条。  1. 知识图谱与演化   核心抓手: 向量运算、极角排序、凸性观察、扫描线。   演化路径:   点线面基础：最原始的坐标运算。学会如何判断一个点在不在直">
+    <meta name="description" content="[L2] 50_计算几何  核心哲学：计算几何不是在玩尺规作图，而是在用“不精准”的浮点数去模拟精准的物理世界。 它的核心逻辑只有两个： 一是如何优雅地处理精度误差，二是如何通过“扫描”或“旋转”把杂乱分布的点变成有序的线条。  1. 知识图谱与演化   核心工具: 向量运算、极角排序、凸性观察、扫描线。   演化路径:   点线面基础：最原始的坐标运算。学会判断点与线的相对位置，以及线段之间的交">
 <meta property="og:type" content="article">
-<meta property="og:title" content="05 计算几何 核心指南">
+<meta property="og:title" content="[L2] 50_计算几何">
 <meta property="og:url" content="https://example.com/posts/fd1d1436/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="05 计算几何 核心指南  核心哲学：计算几何不是在玩尺规作图，而是在用“不精准”的浮点数去模拟精准的物理世界。 它的核心逻辑只有两个： 一是如何优雅地处理那点儿讨人嫌的精度误差， 二是如何通过“扫描”或“旋转”把杂乱分布的点变成有序的线条。  1. 知识图谱与演化   核心抓手: 向量运算、极角排序、凸性观察、扫描线。   演化路径:   点线面基础：最原始的坐标运算。学会如何判断一个点在不在直">
+<meta property="og:description" content="[L2] 50_计算几何  核心哲学：计算几何不是在玩尺规作图，而是在用“不精准”的浮点数去模拟精准的物理世界。 它的核心逻辑只有两个： 一是如何优雅地处理精度误差，二是如何通过“扫描”或“旋转”把杂乱分布的点变成有序的线条。  1. 知识图谱与演化   核心工具: 向量运算、极角排序、凸性观察、扫描线。   演化路径:   点线面基础：最原始的坐标运算。学会判断点与线的相对位置，以及线段之间的交">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T02:56:14.568Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:57.638Z">
+<meta property="article:modified_time" content="2026-01-04T10:47:47.706Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="难度&#x2F;P2">
 <meta property="article:tag" content="指南&#x2F;几何">
@@ -35,7 +35,7 @@
   
   
   
-  <title>05 计算几何 核心指南 - MiQiu</title>
+  <title>[L2] 50_计算几何 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="05 计算几何 核心指南"></span>
+            <span id="subtitle" data-typed-text="[L2] 50_计算几何"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          939 字
+          933 字
         
       </span>
     
@@ -319,37 +319,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">05 计算几何 核心指南</h1>
+            <h1 id="seo-header">[L2] 50_计算几何</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>05 计算几何 核心指南</h1>
+                <h1>[L2] 50_计算几何</h1>
 <blockquote>
-<p><strong>核心哲学</strong>：计算几何不是在玩尺规作图，而是在用“不精准”的浮点数去模拟精准的物理世界。<br>
-它的核心逻辑只有两个：<br>
-一是如何优雅地处理那点儿讨人嫌的精度误差，<br>
-二是如何通过“扫描”或“旋转”把杂乱分布的点变成有序的线条。</p>
+<p><strong>核心哲学</strong>：计算几何不是在玩尺规作图，而是在用“不精准”的浮点数去模拟精准的物理世界。</p>
+<p>它的核心逻辑只有两个：<br>
+一是如何优雅地处理精度误差，二是如何通过“扫描”或“旋转”把杂乱分布的点变成有序的线条。</p>
 </blockquote>
 <h2 id="1-知识图谱与演化">1. 知识图谱与演化</h2>
 <ul>
 <li>
-<p><strong>核心抓手</strong>: 向量运算、极角排序、凸性观察、扫描线。</p>
+<p><strong>核心工具</strong>: 向量运算、极角排序、凸性观察、扫描线。</p>
 </li>
 <li>
 <p><strong>演化路径</strong>:</p>
 <ol>
 <li>
-<p><strong>点线面基础</strong>：最原始的坐标运算。学会如何判断一个点在不在直线左边，以及两条线段怎么求交点。</p>
+<p><strong>点线面基础</strong>：最原始的坐标运算。学会判断点与线的相对位置，以及线段之间的交点判定。</p>
 </li>
 <li>
-<p><strong>凸性封装</strong>：凸包。发现一组点中只有“最外面那一圈”是有用的，通过扔掉内部点大幅简化搜索空间。</p>
+<p><strong>凸性封装</strong>：凸包。识破一组点中只有“最外面那一圈”是有用的，通过剔除内部点来极大缩小搜索空间。</p>
 </li>
 <li>
-<p><strong>旋转与扫描</strong>：利用单调性。让尺子（扫描线）在平面上划过，或者让卡尺（旋转卡壳）绕着凸包转动，把静态的分布变成动态的过程。</p>
+<p><strong>旋转与扫描</strong>：利用单调性。让尺子（扫描线）在平面上划过，或让卡尺（旋转卡壳）绕着凸包转动，把静态分布变成动态过程。</p>
 </li>
 <li>
-<p><strong>多维与切割</strong>：半平面交。把无数次的切割操作合并，寻找最终留下的那个共同重叠的“核心区域”。</p>
+<p><strong>多维与切割</strong>：半平面交。将多次的区域切割操作合并，寻找所有限制条件下的共同重叠区域。</p>
 </li>
 </ol>
 </li>
@@ -357,22 +356,31 @@
 <h2 id="2-决策矩阵">2. 决策矩阵</h2>
 <ul>
 <li>
-<p><strong>涉及“点集最远距离”或“求外接形状”</strong>: 优先求凸包。如果需要求直径，在凸包基础上利用旋转卡壳寻找对踵点。</p>
+<p><strong>涉及“点集最远距离”或“求外接形状”</strong>:</p>
+<ul>
+<li>优先求凸包。若要求直径，在凸包基础上利用 [[Note] 旋转卡壳] 寻找对踵点。</li>
+</ul>
 </li>
 <li>
-<p><strong>涉及“矩形面积并”或“复杂覆盖统计”</strong>: 采用扫描线。将二维平面切成一根根竖线，配合线段树动态维护覆盖长度。</p>
+<p><strong>涉及“矩形面积并”或“复杂覆盖统计”</strong>:</p>
+<ul>
+<li>采用 [[Note] 扫描线]。将二维平面切成条状，配合线段树动态维护。</li>
+</ul>
 </li>
 <li>
-<p><strong>涉及“判断一个点是否在很多个限制区域内”</strong>: 采用半平面交。寻找所有半平面的共同交集。</p>
+<p><strong>涉及“判断一个点是否在多个限制区域内”</strong>:</p>
+<ul>
+<li>采用 [[Note] 半平面交]。寻找所有半平面的共同交集空间。</li>
+</ul>
 </li>
 <li>
-<p><strong>遇到浮点数报错或诡异的 WA</strong>:</p>
+<p><strong>遇到浮点数报错或诡异的判题失败</strong>:</p>
 <ul>
 <li>
-<p>检查 <code>eps</code> 精度控制（不要直接用 <code>==</code> 判断）。</p>
+<p>检查精度控制逻辑（严禁直接用 <code>==</code> 判断浮点数）。</p>
 </li>
 <li>
-<p>如果题目给的是整数坐标且没有开方运算，尝试全过程使用 <code>long long</code> 避免精度损耗。</p>
+<p>若题目给定的是整数坐标且不涉及开方，强制全过程使用 <code>long long</code> 运算以彻底杀掉精度损耗。</p>
 </li>
 </ul>
 </li>
@@ -381,64 +389,78 @@
 <h3 id="3-1-几何基础">3.1 几何基础</h3>
 <ul>
 <li>
-<p><strong>[L3] 01 几何基础</strong>: 计算几何的敲门砖。</p>
+<p><strong>[L3] 51 几何基础</strong>: 计算几何的起点。</p>
+<ul>
+<li>
+<p>[[Note] 精度控制]: 核心是“不直信浮点数”，通过极小偏移量修正逻辑判定。</p>
 </li>
 <li>
-<p><strong>[Note] 精度控制</strong>: 核心是“不要直接相信浮点数”，通过一个极小的偏移量来修正判定。</p>
+<p>[[Note] 向量工具]: 利用叉积判断方向，利用点积判断投影。</p>
 </li>
-<li>
-<p><strong>[Note] 向量工具</strong>: 利用叉积判断点在向量的哪一侧，利用点积判断投影位置。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-2-凸包与旋转卡壳">3.2 凸包与旋转卡壳</h3>
 <ul>
 <li>
-<p><strong>[L3] 02 凸包与旋转卡壳</strong>: 提取点集的骨架。</p>
+<p><strong>[L3] 52 凸包与旋转卡壳</strong>: 提取点集的骨架。</p>
+<ul>
+<li>
+<p>[[Note] 安德鲁算法]: 通过两次扫描稳健地构建点集的最外围边界。</p>
 </li>
 <li>
-<p><strong>[Note] 安德鲁算法 (Andrew)</strong>：通过两次扫描（上凸壳+下凸壳）稳健地构建出最外围。</p>
+<p>[[Note] 旋转卡壳]: 利用凸包单调性，像转动卡尺一样寻找几何特征。</p>
 </li>
-<li>
-<p><strong>[Note] 旋转卡壳</strong>: 核心是“利用凸包的单调性”，像转动卡尺一样寻找最远点对。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-3-扫描线与半平面">3.3 扫描线与半平面</h3>
 <ul>
 <li>
-<p><strong>[L3] 03 扫描线与半平面</strong>: 解决区域覆盖与切割。</p>
+<p><strong>[L3] 53 扫描线与半平面</strong>: 解决区域覆盖与切割。</p>
+<ul>
+<li>
+<p>[[Note] 扫描线]: 将二维面积问题降维成一根动线在时间轴上的积分。</p>
 </li>
 <li>
-<p><strong>[Note] 扫描线</strong>: 核心是“把二维降成一维”，把平面的面积问题变成一根动线在时间轴上的积分。</p>
+<p>[[Note] 半平面交]: 排序后利用双端队列寻找多个切割区域的共同核心。</p>
 </li>
-<li>
-<p><strong>[Note] 半平面交</strong>: 核心是“排序后维护双端队列”，寻找所有切割区域共同围成的凸多边形。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-4-三维几何">3.4 三维几何</h3>
 <ul>
 <li>
-<p><strong>[L3] 04 三维几何</strong>: 从平面跨越到立体空间。</p>
+<p><strong>[L3] 54 三维几何</strong>: 从平面跨越到立体空间。</p>
+<ul>
+<li>
+<p>[[Note] 空间向量基础]: 引入三维叉积（法向量）与空间平面方程。</p>
 </li>
 <li>
-<p><strong>[Note] 三维凸包</strong>: 通过不断“面片翻转”来包裹空间点集。</p>
+<p>[[Note] 三维凸包]: 利用面片翻转逻辑包裹空间点集。</p>
+</li>
+<li>
+<p>[[Note] 最小外接球]: 空间随机增量法处理最远点对约束。</p>
+</li>
+</ul>
 </li>
 </ul>
 <h2 id="4-依赖与规划">4. 依赖与规划</h2>
 <ul>
 <li>
-<p><strong>前置依赖</strong>: 必须掌握基本的三角函数、<code>double</code> 类型精度特性、以及基础的线段树原理（用于扫描线优化）。</p>
+<p><strong>前置依赖</strong>: 熟练掌握双精度浮点数特性、基础三角函数、以及线段树优化（用于扫描线）。</p>
 </li>
 <li>
 <p><strong>学习路径</strong>:</p>
 <ol>
 <li>
-<p><strong>P1 (基础)</strong>：写出一套稳健、简洁且没有任何冗余的几何模板（点、线、叉积）。</p>
+<p><strong>P1 (基础)</strong>：构建一套没有任何冗余的基础几何模板（点、线、叉积算子）。</p>
 </li>
 <li>
-<p><strong>P2 (中坚)</strong>：掌握凸包和扫描线。这是区域赛几何题目的“及格线”。</p>
+<p><strong>P2 (中坚)</strong>：掌握凸包与扫描线。这是区域赛几何题目的生存底线。</p>
 </li>
 <li>
-<p><strong>P3 (顶尖)</strong>：攻克半平面交、闵可夫斯基和、以及动态凸包。</p>
+<p><strong>P3 (顶尖)</strong>：攻克半平面交、闵可夫斯基和、以及动态凸包等复杂模型。</p>
 </li>
 </ol>
 </li>
@@ -499,7 +521,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>05 计算几何 核心指南</div>
+      <div>[L2] 50_计算几何</div>
       <div>https://example.com/posts/fd1d1436/</div>
     </div>
     <div class="license-meta">
@@ -544,9 +566,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/6fb16570/" title="06 字符串算法 核心指南">
+                      <a href="/posts/6fb16570/" title="[L2] 60_字符串算法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">06 字符串算法 核心指南</span>
+                        <span class="hidden-mobile">[L2] 60_字符串算法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -554,8 +576,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/66896278/" title="04 高等数学 核心指南">
-                        <span class="hidden-mobile">04 高等数学 核心指南</span>
+                      <a href="/posts/66896278/" title="[L2] 40_高等数学">
+                        <span class="hidden-mobile">[L2] 40_高等数学</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

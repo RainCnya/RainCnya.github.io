@@ -19,23 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="07 博弈论 核心指南  核心哲学：博弈论不是在算计人心，而是在推演规则。 它的本质是：如果一个局面能到达的下一步里有一个是对方必输的，那你现在就赢定了。 我们要做的，就是把复杂的规则拆成一个个独立的、可以算清楚的“分值”。  1. 知识图谱与演化   核心抓手: 状态转换、胜负对等、分值化、资源拆解。   演化路径:   规律找补：最原始的博弈。通过手算几个小规模情况，观察出“奇数必胜”或“偶数">
+    <meta name="description" content="[L2] 70_博弈论  核心哲学：博弈论不是在算计人心，而是在推演规则。 它的本质是：如果一个局面能到达的下一步里有一个是对方必输的，那你现在就赢定了。 我们要做的，就是把复杂的规则拆成一个个独立的、可以算清楚的“分值”。  1. 知识图谱与演化   核心工具：状态转换、独立性拆解、分值化、资源对等性。   演化路径：   规律找补：最原始的博弈。通过手算几个小规模情况，观察出“奇数必胜”或“特">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[L2] 70 博弈论 核心指南">
-<meta property="og:url" content="https://example.com/posts/135a5f67/index.html">
+<meta property="og:title" content="[L2] 70_博弈论">
+<meta property="og:url" content="https://example.com/posts/cf153fd/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="07 博弈论 核心指南  核心哲学：博弈论不是在算计人心，而是在推演规则。 它的本质是：如果一个局面能到达的下一步里有一个是对方必输的，那你现在就赢定了。 我们要做的，就是把复杂的规则拆成一个个独立的、可以算清楚的“分值”。  1. 知识图谱与演化   核心抓手: 状态转换、胜负对等、分值化、资源拆解。   演化路径:   规律找补：最原始的博弈。通过手算几个小规模情况，观察出“奇数必胜”或“偶数">
+<meta property="og:description" content="[L2] 70_博弈论  核心哲学：博弈论不是在算计人心，而是在推演规则。 它的本质是：如果一个局面能到达的下一步里有一个是对方必输的，那你现在就赢定了。 我们要做的，就是把复杂的规则拆成一个个独立的、可以算清楚的“分值”。  1. 知识图谱与演化   核心工具：状态转换、独立性拆解、分值化、资源对等性。   演化路径：   规律找补：最原始的博弈。通过手算几个小规模情况，观察出“奇数必胜”或“特">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T02:59:01.335Z">
-<meta property="article:modified_time" content="2026-01-04T05:19:32.542Z">
+<meta property="article:modified_time" content="2026-01-04T11:03:49.944Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="#指南&#x2F;博弈论">
-<meta property="article:tag" content="#难度&#x2F;P2">
+<meta property="article:tag" content="难度&#x2F;P2">
+<meta property="article:tag" content="指南&#x2F;博弈论">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>[L2] 70 博弈论 核心指南 - MiQiu</title>
+  <title>[L2] 70_博弈论 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[L2] 70 博弈论 核心指南"></span>
+            <span id="subtitle" data-typed-text="[L2] 70_博弈论"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          847 字
+          853 字
         
       </span>
     
@@ -319,36 +319,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[L2] 70 博弈论 核心指南</h1>
+            <h1 id="seo-header">[L2] 70_博弈论</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>07 博弈论 核心指南</h1>
+                <h1>[L2] 70_博弈论</h1>
 <blockquote>
-<p><strong>核心哲学</strong>：博弈论不是在算计人心，而是在推演规则。<br>
-它的本质是：如果一个局面能到达的下一步里有一个是对方必输的，那你现在就赢定了。<br>
+<p><strong>核心哲学</strong>：博弈论不是在算计人心，而是在推演规则。</p>
+<p>它的本质是：如果一个局面能到达的下一步里有一个是对方必输的，那你现在就赢定了。<br>
 我们要做的，就是把复杂的规则拆成一个个独立的、可以算清楚的“分值”。</p>
 </blockquote>
 <h2 id="1-知识图谱与演化">1. 知识图谱与演化</h2>
 <ul>
 <li>
-<p><strong>核心抓手</strong>: 状态转换、胜负对等、分值化、资源拆解。</p>
+<p><strong>核心工具</strong>：状态转换、独立性拆解、分值化、资源对等性。</p>
 </li>
 <li>
-<p><strong>演化路径</strong>:</p>
+<p><strong>演化路径</strong>：</p>
 <ol>
 <li>
-<p><strong>规律找补</strong>：最原始的博弈。通过手算几个小规模情况，观察出“奇数必胜”或“偶数必胜”的规律。</p>
+<p><strong>规律找补</strong>：最原始的博弈。通过手算几个小规模情况，观察出“奇数必胜”或“特定取模必胜”的规律。</p>
 </li>
 <li>
-<p><strong>公平博弈 (Nim)</strong>：发现游戏可以被拆解。如果一个大游戏由几个小游戏组成，且规则完全一致，我们就可以用异或运算把它们的“分值”合并。</p>
+<p><strong>独立性拆解</strong>：发现游戏可以被物理拆分。如果一个大游戏由几个规则完全相同且互不干扰的小游戏组成，利用异或运算即可将各个分支的胜负态合并。</p>
 </li>
 <li>
-<p><strong>分值化 (SG 函数)</strong>：万物皆可 Nim。通过给每一个局面算一个“分值”（SG 值），把任何奇奇怪怪的博弈规则都转化成简单的数字博弈。</p>
+<p><strong>状态分值化</strong>：利用 SG 函数实现“万物皆可 Nim”。通过 MEX 运算给每一个局部局面计算一个分值，将任何诡异的跳转规则都坍缩为简单的数字增减。</p>
 </li>
 <li>
-<p><strong>非对称博弈</strong>：进入更高级的领域。当双方的权力不相等（你能走的步我不能走）时，利用超现实数来衡量谁更有“后手优势”。</p>
+<p><strong>非对称博弈</strong>：进入更高级的领域。当双方的资源不对等（你能走的步我不能走）时，利用超现实数来衡量谁更有“后手优势”。</p>
 </li>
 </ol>
 </li>
@@ -356,73 +356,86 @@
 <h2 id="2-决策矩阵">2. 决策矩阵</h2>
 <ul>
 <li>
-<p><strong>题目规则简单且局面唯一（如：每次取</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∼</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">1 \sim k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> <strong>个石子）</strong>: 优先尝试找规律（找补）。看当前状态对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 取模的结果。</p>
+<p><strong>题目规则简单且局面唯一（如：每次取</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>∼</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">1 \sim k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span> <strong>个石子）</strong>：</p>
+<ul>
+<li>优先尝试找规律（找补）。看当前状态对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 取模的结果。</li>
+</ul>
 </li>
 <li>
-<p><strong>题目涉及多个独立的堆或独立的游戏分支</strong>:</p>
+<p><strong>局面由多个独立的堆或分支组成</strong>：</p>
 <ul>
 <li>
-<p>如果规则对双方完全平等，采用 SG 函数。</p>
+<p><strong>规则对称（公平博弈）</strong>：先分别计算每个分支的 SG 值，最后全部执行异或。若异或和不为 0，则先手必胜。</p>
 </li>
 <li>
-<p>先分别计算每个分支的 SG 值，最后全部异或起来。如果结果不为 0，先手必胜。</p>
+<p><strong>规则不对称（不公平博弈）</strong>：考虑权值加和，判断终局优势归属。</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>题目涉及“树上取石子”或“删边游戏”</strong>: 考虑树上博弈模型，利用递归方式合并子树的 SG 值。</p>
+<p><strong>题目涉及“树上删边”或“动态图移动”</strong>：</p>
+<ul>
+<li>采用递归模型处理。利用子树合并逻辑推导根节点的 SG 分值。</li>
+</ul>
 </li>
 <li>
-<p><strong>题目涉及“双方可选步不一样”（如：白方只能动白棋）</strong>: 考虑不公平博弈。</p>
+<p><strong>正面推导跳转逻辑极其复杂</strong>：</p>
+<ul>
+<li>尝试逆向思维。从终局必败态反向推导所有能到达该态的必胜态。</li>
+</ul>
 </li>
 </ul>
 <h2 id="3-核心板块索引">3. 核心板块索引</h2>
 <h3 id="3-1-公平博弈">3.1 公平博弈</h3>
 <ul>
 <li>
-<p><strong>[L3] 01 公平博弈</strong>: 博弈论的入场券。解决规则对称下的胜负判定。</p>
+<p><strong>[L3] 01 公平博弈</strong>：博弈论的入场券。解决规则对称下的胜负判定。</p>
+<ul>
+<li>
+<p><strong>[[Nim 游戏及其变体]]</strong>：博弈论的基石。核心是“异或和为 0”代表平衡（必败），不为 0 代表不平衡（必胜）。</p>
 </li>
 <li>
-<p><strong>[Note] Nim 游戏</strong>: 博弈论的基石。核心是“异或和为 0”代表平衡（必败），不为 0 代表不平衡（必胜）。</p>
+<p>[[SG 函数]]：万能映射工具。利用 MEX 运算将局面跳转转化为数字分值。</p>
 </li>
-<li>
-<p><strong>[Note] SG 函数</strong>: 核心是 <code>MEX</code> 运算（求最小未出现的非负整数）。它能把复杂的跳转规则坍缩成一个数字。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-2-进阶博弈">3.2 进阶博弈</h3>
 <ul>
 <li>
-<p><strong>[L3] 02 进阶博弈</strong>: 解决更诡异、更贴近真实的策略对抗。</p>
+<p><strong>[L3] 02 进阶博弈</strong>: 解决规则不对称或具有特殊限制的策略对抗。</p>
+<ul>
+<li>
+<p>[[Note] 不公平博弈]: 当玩家身份决定可选操作时，衡量局面“重量”的逻辑。</p>
 </li>
 <li>
-<p><strong>[Note] 不公平博弈</strong>: 当玩家身份决定了可选操作时，利用权值叠加来判断终局。</p>
+<p>[[Note] 动态图博弈]: 涉及环路与无限状态的博弈判定。</p>
 </li>
-<li>
-<p><strong>[Note] 超现实数基础</strong>: 衡量博弈局面的“重量”，每一步操作都是在消耗或增加自己的优势权重。</p>
+</ul>
 </li>
 </ul>
 <h2 id="4-依赖与规划">4. 依赖与规划</h2>
 <ul>
 <li>
-<p><strong>前置依赖</strong>: 必须掌握基础的位运算（异或）、简单的递归思维、以及基本的数学归纳法。</p>
+<p><strong>前置依赖</strong>: 基础位运算（异或）、递归思维、数学归纳法。</p>
 </li>
 <li>
 <p><strong>学习路径</strong>:</p>
 <ol>
 <li>
-<p><strong>P1 (基础)</strong>：熟练掌握 Nim 游戏和基础的 SG 函数推导，能独立手算前几个状态找规律。</p>
+<p><strong>P1 (基础)</strong>：熟练推导 Nim 游戏及基础 SG 值，能通过手算观察周期规律。</p>
 </li>
 <li>
-<p><strong>P2 (中坚)</strong>：学会把复杂的题型（如树上删边、图上移动）规约为 SG 模型。这是 Phase 2.5 冲金的核心。</p>
+<p><strong>P2 (中坚)</strong>：学会将图论或树形结构规约为 SG 模型，理解独立游戏的异或合并逻辑。</p>
 </li>
 <li>
-<p><strong>P3 (顶尖)</strong>：攻克不公平博弈和具有无限状态的动态博弈。</p>
+<p><strong>P3 (顶尖)</strong>：掌握不公平博弈的权值估算，以及处理带环图的博弈平衡态。</p>
 </li>
 </ol>
 </li>
 </ul>
 <h2 id="5-题目归档">5. 题目归档</h2>
-<p>所有题目复盘请参考：[[07 博弈论 归档数据库]]</p>
+<p>所有题目复盘请参考：[[70 博弈论 归档数据库]]</p>
 
                 
               </div>
@@ -463,9 +476,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8C%87%E5%8D%97-%E5%8D%9A%E5%BC%88%E8%AE%BA/" class="print-no-link">##指南/博弈论</a>
+        <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/" class="print-no-link">#难度/P2</a>
       
-        <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/" class="print-no-link">##难度/P2</a>
+        <a href="/tags/%E6%8C%87%E5%8D%97-%E5%8D%9A%E5%BC%88%E8%AE%BA/" class="print-no-link">#指南/博弈论</a>
       
     </div>
   
@@ -477,8 +490,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[L2] 70 博弈论 核心指南</div>
-      <div>https://example.com/posts/135a5f67/</div>
+      <div>[L2] 70_博弈论</div>
+      <div>https://example.com/posts/cf153fd/</div>
     </div>
     <div class="license-meta">
       
@@ -532,8 +545,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/6fb16570/" title="06 字符串算法 核心指南">
-                        <span class="hidden-mobile">06 字符串算法 核心指南</span>
+                      <a href="/posts/6fb16570/" title="[L2] 60_字符串算法">
+                        <span class="hidden-mobile">[L2] 60_字符串算法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

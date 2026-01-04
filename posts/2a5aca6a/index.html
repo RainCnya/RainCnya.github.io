@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="03 动态规划优化 核心指南  核心哲学：动态规划本质上是在一堆决策里找最优路径。 所谓“优化”，就是利用数学直觉发现： 有些决策注定是垃圾，我们可以提前扔掉； 有些计算是重复的，我们可以只算一次。  1. 知识图谱与演化   核心抓手: 状态精简、决策单调性、贡献度复用、维度拆解。   演化路径:   基础模型：线性、背包、区间、树形。解决“怎么定义状态”和“怎么转”的问题。   状态压缩：当状">
+    <meta name="description" content="[L2] 30_动态规划优化  核心哲学：动态规划是在决策空间中有向无环图上寻找最优路径。 优化的直觉在于：“剪枝”：提前识破某个决策是永远不可能胜出的“垃圾”， “降维”：要么通过数学工具将重复的搜索复杂度。  1. 知识图谱与演化   核心工具: 状态精简、决策单调性、贡献度复用、维度拆解。   演化路径:   基础模型：线性、背包、区间、树形。解决“怎么定义状态”和“怎么转”的问题。   状">
 <meta property="og:type" content="article">
-<meta property="og:title" content="03 动态规划优化 核心指南">
+<meta property="og:title" content="[L2] 03 动态规划优化">
 <meta property="og:url" content="https://example.com/posts/2a5aca6a/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="03 动态规划优化 核心指南  核心哲学：动态规划本质上是在一堆决策里找最优路径。 所谓“优化”，就是利用数学直觉发现： 有些决策注定是垃圾，我们可以提前扔掉； 有些计算是重复的，我们可以只算一次。  1. 知识图谱与演化   核心抓手: 状态精简、决策单调性、贡献度复用、维度拆解。   演化路径:   基础模型：线性、背包、区间、树形。解决“怎么定义状态”和“怎么转”的问题。   状态压缩：当状">
+<meta property="og:description" content="[L2] 30_动态规划优化  核心哲学：动态规划是在决策空间中有向无环图上寻找最优路径。 优化的直觉在于：“剪枝”：提前识破某个决策是永远不可能胜出的“垃圾”， “降维”：要么通过数学工具将重复的搜索复杂度。  1. 知识图谱与演化   核心工具: 状态精简、决策单调性、贡献度复用、维度拆解。   演化路径:   基础模型：线性、背包、区间、树形。解决“怎么定义状态”和“怎么转”的问题。   状">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T02:53:51.597Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:57.635Z">
+<meta property="article:modified_time" content="2026-01-04T10:47:11.612Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="难度&#x2F;P2">
 <meta property="article:tag" content="指南&#x2F;DP">
@@ -35,7 +35,7 @@
   
   
   
-  <title>03 动态规划优化 核心指南 - MiQiu</title>
+  <title>[L2] 03 动态规划优化 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="03 动态规划优化 核心指南"></span>
+            <span id="subtitle" data-typed-text="[L2] 03 动态规划优化"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          917 字
+          989 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          12 分钟
+          13 分钟
         
       </span>
     
@@ -319,22 +319,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">03 动态规划优化 核心指南</h1>
+            <h1 id="seo-header">[L2] 03 动态规划优化</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>03 动态规划优化 核心指南</h1>
+                <h1>[L2] 30_动态规划优化</h1>
 <blockquote>
-<p><strong>核心哲学</strong>：动态规划本质上是在一堆决策里找最优路径。<br>
-所谓“优化”，就是利用数学直觉发现：<br>
-有些决策注定是垃圾，我们可以提前扔掉；<br>
-有些计算是重复的，我们可以只算一次。</p>
+<p><strong>核心哲学</strong>：动态规划是在决策空间中有向无环图上寻找最优路径。</p>
+<p>优化的直觉在于：“剪枝”：提前识破某个决策是永远不可能胜出的“垃圾”，<br>
+“降维”：要么通过数学工具将重复的搜索复杂度。</p>
 </blockquote>
 <h2 id="1-知识图谱与演化">1. 知识图谱与演化</h2>
 <ul>
 <li>
-<p><strong>核心抓手</strong>: 状态精简、决策单调性、贡献度复用、维度拆解。</p>
+<p><strong>核心工具</strong>: 状态精简、决策单调性、贡献度复用、维度拆解。</p>
 </li>
 <li>
 <p><strong>演化路径</strong>:</p>
@@ -343,13 +342,13 @@
 <p><strong>基础模型</strong>：线性、背包、区间、树形。解决“怎么定义状态”和“怎么转”的问题。</p>
 </li>
 <li>
-<p><strong>状态压缩</strong>：当状态很碎但范围很小时，把一堆开关状态塞进一个二进制数里。</p>
+<p><strong>状态压缩</strong>：利用位运算将零散的状态压缩为整数，在小规模数据下实现全状态空间的覆盖。</p>
 </li>
 <li>
-<p><strong>决策优化</strong>：利用单调队列、斜率、四边形不等式，让原本需要扫一遍的决策过程，变成一眼看穿。</p>
+<p><strong>决策优化</strong>：利用单调队列、斜率、四边形不等式。利用数学性质从决策点降维。</p>
 </li>
 <li>
-<p><strong>结构结合</strong>：让 DP 跑在自动机（SAM/AC）或数据结构上，处理更复杂的限制条件。</p>
+<p><strong>异构结合</strong>：将 DP 的转移逻辑挂载在自动机（如 AC 自动机）或数据结构上，处理带有复杂字符串限制或动态区间修改的决策任务。</p>
 </li>
 </ol>
 </li>
@@ -357,94 +356,111 @@
 <h2 id="2-决策矩阵">2. 决策矩阵</h2>
 <ul>
 <li>
-<p><strong>状态看起来像“开关”且范围</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">N \le 20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span></span></span></span>: 优先考虑状压 DP。</p>
+<p><strong>状态看起来像开关且规模</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">N \le 20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span></span></span></span>: 优先考虑 [[Note] 状压 DP]。若涉及网格图的连通性维护，升级为 [[Note] 插头 DP]。</p>
 </li>
 <li>
 <p><strong>转移方程形如</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>d</mi><mi>p</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>+</mo><mtext>cost</mtext><mo stretchy="false">(</mo><mi>j</mi><mo separator="true">,</mo><mi>i</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">dp[i] = \min(dp[j] + \text{cost}(j, i))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord mathnormal">d</span><span class="mord mathnormal">p</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">cost</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mclose">))</span></span></span></span><strong>，且</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>cost</mtext></mrow><annotation encoding="application/x-tex">\text{cost}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">cost</span></span></span></span></span> <strong>满足决策单调性</strong>:</p>
 <ul>
 <li>
-<p>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>cost</mtext></mrow><annotation encoding="application/x-tex">\text{cost}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">cost</span></span></span></span></span> 是简单的窗口最值，用单调队列。</p>
+<p>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>cost</mtext></mrow><annotation encoding="application/x-tex">\text{cost}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">cost</span></span></span></span></span> 为简单的窗口最值，采用 [[Note] 单调队列优化]。</p>
 </li>
 <li>
-<p>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>cost</mtext></mrow><annotation encoding="application/x-tex">\text{cost}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">cost</span></span></span></span></span> 带坐标乘积项（如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>×</mo><mi>b</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i] \times b[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>），考虑斜率优化。</p>
+<p>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>cost</mtext></mrow><annotation encoding="application/x-tex">\text{cost}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">cost</span></span></span></span></span> 包含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span> 的乘积项（如坐标乘积），采用 [[Note] 斜率优化]。</p>
+</li>
+<li>
+<p>若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>cost</mtext></mrow><annotation encoding="application/x-tex">\text{cost}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">cost</span></span></span></span></span> 满足区间包含单调性，尝试 [[Note] 四边形不等式]。</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>题目涉及字符串匹配且需要统计方案数</strong>: 结合自动机（如 AC 自动机、SAM）进行状态转移。</p>
+<p><strong>题目涉及字符串匹配统计且要求方案数</strong>: 结合自动机（如 AC 自动机、后缀自动机）进行路径计数。</p>
 </li>
 <li>
-<p><strong>树形 DP 统计子树信息且复杂度过高</strong>: 考虑轻重链剖分（长链剖分）或 DSU on Tree 优化。</p>
+<p><strong>树形统计涉及子树合且复杂度过高</strong>: 考虑长链剖分或树上启发式合并（DSU on Tree）。</p>
 </li>
 </ul>
 <h2 id="3-核心板块索引">3. 核心板块索引</h2>
 <h3 id="3-1-经典模型">3.1 经典模型</h3>
 <ul>
 <li>
-<p><strong>[L3] 01 经典模型</strong>: DP 的底座。解决线性、背包、区间和树上的逻辑闭环。</p>
+<p><strong>[L3] 31 经典模型</strong>: DP 的底层架构。</p>
+<ul>
+<li>
+<p>[[Note] 线性 DP]: 解决具有明显线性演化规律的决策。</p>
 </li>
 <li>
-<p><strong>[Note] 树形 DP</strong>: 在递归回溯中维护子树的最优状态。</p>
+<p>[[Note] 区间 DP]: 解决以区间为单位进行合并或分裂的问题。</p>
 </li>
 <li>
-<p><strong>[Note] 背包体系</strong>: 解决“选或不选”的资源分配问题。</p>
+<p>[[Note] 树形 DP]: 在递归回溯中维护子树的最优状态。</p>
+</li>
+<li>
+<p>[[Note] 背包体系]: 处理资源受限下的选择博弈。</p>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="3-2-状态压缩">3.2 状态压缩</h3>
 <ul>
 <li>
-<p><strong>[L3] 02 状态压缩</strong>: 解决“小规模但多维度”的状态表示。</p>
+<p><strong>[L3] 32 状态压缩</strong>: 解决“小规模但多维度”的状态表示。</p>
+<ul>
+<li>
+<p>[[Note] 状压 DP]: 利用位运算将多个开关状态压缩为单一整数。</p>
 </li>
 <li>
-<p><strong>[Note] 状压 DP</strong>: 利用二进制位运算，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个开关状态压缩为一个整数。</p>
+<p>[[Note] 插头 DP]: 处理网格图路径连通性的终极手段。</p>
 </li>
-<li>
-<p><strong>[Note] 插头 DP</strong>: 处理网格图连通性的极致压缩手段。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-3-决策优化">3.3 决策优化</h3>
 <ul>
 <li>
-<p><strong>[L3] 03 决策优化</strong>: 杀掉转移复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的利器。</p>
+<p><strong>[L3] 33 决策优化</strong>: 降维复杂度 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的利器。</p>
+<ul>
+<li>
+<p>[[Note] 单调队列优化]: 及时踢出没用的决策，保持候选集合的纯净。</p>
 </li>
 <li>
-<p><strong>[Note] 单调队列优化</strong>: 丢弃那些“又老又差”的决策，保持决策窗口的单调性。</p>
+<p>[[Note] 斜率优化]: 利用凸包性质在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 内锁定最优解。</p>
 </li>
 <li>
-<p><strong>[Note] 斜率优化</strong>: 将转移看成寻找凸壳上的点，通过维护凸壳来快速定位最优决策点。</p>
+<p>[[Note] 四边形不等式]: 利用决策点的单调移动性减少搜索范围。</p>
 </li>
-<li>
-<p><strong>[Note] 四边形不等式</strong>: 利用决策点的单调移动，将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 压制到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
+</ul>
 </li>
 </ul>
 <h3 id="3-4-自动机-DP">3.4 自动机 DP</h3>
 <ul>
 <li>
-<p><strong>[L3] 04 自动机 DP</strong>: 字符串与 DP 的跨界组合。</p>
+<p><strong>[L3] 34 自动机 DP</strong>: 字符串与 DP 的跨界组合。</p>
+<ul>
+<li>
+<p>[[Note] 数位 DP]: 针对大范围数字统计的按位决策。</p>
 </li>
 <li>
-<p><strong>[Note] 数位 DP</strong>: 解决“统计区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>L</mi><mo separator="true">,</mo><mi>R</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[L, R]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mclose">]</span></span></span></span> 内满足条件的数字个数”，核心是按位填写。</p>
+<p>[[Note] 自动机与 DP 结合]: 在状态机图上进行动态演化。</p>
 </li>
-<li>
-<p><strong>[Note] AC 自动机 DP</strong>: 在多模式匹配图上进行路径计数或最值求解。</p>
+</ul>
 </li>
 </ul>
 <h2 id="4-依赖与规划">4. 依赖与规划</h2>
 <ul>
 <li>
-<p><strong>前置依赖</strong>: 必须熟练掌握递归、记忆化搜索、以及基础的线性与区间 DP 推导。</p>
+<p><strong>前置依赖</strong>: 熟练掌握递归、记忆化搜索、基本的数学期望知识以及位运算。</p>
 </li>
 <li>
 <p><strong>学习路径</strong>:</p>
 <ol>
 <li>
-<p><strong>P1 (基础)</strong>：能独立推导出基础 DP 方程，不再因为“状态定义不清楚”而卡壳。</p>
+<p><strong>P1 (基础)</strong>：能够独立完成基础 DP 的状态定义与方程推导，解决简单线性与区间模型。</p>
 </li>
 <li>
-<p><strong>P2 (中坚)</strong>：攻克状压 DP 和单调队列优化。这是 CF 1900 左右最常出现的逻辑卡点。</p>
+<p><strong>P2 (中坚)</strong>：攻克状压 DP 与单调队列优化。这是处理中等难度题目（CF 1800-2100）的核心算力。</p>
 </li>
 <li>
-<p><strong>P3 (顶尖)</strong>：掌握斜率优化、插头 DP 和复杂的自动机结合模型。</p>
+<p><strong>P3 (顶尖)</strong>：掌握斜率优化、插头 DP 及自动机结合模型。学会识别决策单调性并执行数学降维。</p>
 </li>
 </ol>
 </li>
@@ -505,7 +521,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>03 动态规划优化 核心指南</div>
+      <div>[L2] 03 动态规划优化</div>
       <div>https://example.com/posts/2a5aca6a/</div>
     </div>
     <div class="license-meta">
@@ -550,9 +566,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/66896278/" title="04 高等数学 核心指南">
+                      <a href="/posts/66896278/" title="[L2] 40_高等数学">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">04 高等数学 核心指南</span>
+                        <span class="hidden-mobile">[L2] 40_高等数学</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -560,8 +576,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/d856fe0d/" title="02 图论与网络流 核心指南">
-                        <span class="hidden-mobile">02 图论与网络流 核心指南</span>
+                      <a href="/posts/d856fe0d/" title="[L2] 20 图论与网络流">
+                        <span class="hidden-mobile">[L2] 20 图论与网络流</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
