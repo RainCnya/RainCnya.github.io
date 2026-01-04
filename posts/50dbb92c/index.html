@@ -19,19 +19,19 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="排序体系 (Sorting System) 1. 生态位   定义: 将无序序列映射为单调序列。本质是消除序列中的 逆序对 (Inversion Pair)。   解决痛点:   Quick Sort: O(Nlog⁡N)O(N \log N)O(NlogN) 的平均性能极致，原址排序。   Merge Sort: 解决稳定性需求及**过程量（逆序对）**统计。     2. 逻辑支点 2.1 分">
+    <meta name="description" content="排序体系 1. 生态位   本质定义: 将无序序列映射为单调序列。本质是消除序列中的 逆序对。   降维打击:   快速排序: 通过 Partition 确定基准位置，实现平均 O(Nlog⁡N)O(N \log N)O(NlogN) 的原址排序，是工业级排序的底座。   归并排序: 稳定的 O(Nlog⁡N)O(N \log N)O(NlogN) 方案。其真正的威力在于合并过程（Merge）是一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序体系 (Sorting System)">
 <meta property="og:url" content="https://example.com/posts/50dbb92c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="排序体系 (Sorting System) 1. 生态位   定义: 将无序序列映射为单调序列。本质是消除序列中的 逆序对 (Inversion Pair)。   解决痛点:   Quick Sort: O(Nlog⁡N)O(N \log N)O(NlogN) 的平均性能极致，原址排序。   Merge Sort: 解决稳定性需求及**过程量（逆序对）**统计。     2. 逻辑支点 2.1 分">
+<meta property="og:description" content="排序体系 1. 生态位   本质定义: 将无序序列映射为单调序列。本质是消除序列中的 逆序对。   降维打击:   快速排序: 通过 Partition 确定基准位置，实现平均 O(Nlog⁡N)O(N \log N)O(NlogN) 的原址排序，是工业级排序的底座。   归并排序: 稳定的 O(Nlog⁡N)O(N \log N)O(NlogN) 方案。其真正的威力在于合并过程（Merge）是一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T15:59:55.000Z">
 <meta property="article:modified_time" content="2025-12-23T16:13:36.000Z">
 <meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="单调性&#x2F;双指针">
 <meta property="article:tag" content="算法&#x2F;排序">
 <meta property="article:tag" content="算法&#x2F;分治">
-<meta property="article:tag" content="单调性&#x2F;双指针">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          432 字
+          501 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -325,44 +325,47 @@
             
               <div class="markdown-body">
                 
-                <h1>排序体系 (Sorting System)</h1>
+                <h1>排序体系</h1>
 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
 <li>
-<p><strong>定义</strong>: 将无序序列映射为单调序列。本质是消除序列中的 <strong>逆序对 (Inversion Pair)</strong>。</p>
+<p><strong>本质定义</strong>: 将无序序列映射为单调序列。本质是消除序列中的 <strong>逆序对</strong>。</p>
 </li>
 <li>
-<p><strong>解决痛点</strong>:</p>
+<p><strong>降维打击</strong>:</p>
 <ul>
 <li>
-<p><strong>Quick Sort</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的平均性能极致，原址排序。</p>
+<p><strong>快速排序</strong>: 通过 Partition 确定基准位置，实现平均 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的原址排序，是工业级排序的底座。</p>
 </li>
 <li>
-<p><strong>Merge Sort</strong>: 解决稳定性需求及**过程量（逆序对）**统计。</p>
+<p><strong>归并排序</strong>: 稳定的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 方案。其真正的威力在于合并过程（Merge）是一个天然的<strong>计数器</strong>，可捕捉偏序关系。</p>
 </li>
 </ul>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
-<h3 id="2-1-分治的对偶性">2.1 分治的对偶性</h3>
 <ul>
 <li>
-<p><strong>快速排序 (Quick Sort)</strong>: <strong>重“分”轻“合”</strong>。通过 Partition 确定基准位置，递归后天然有序。</p>
+<p><strong>分治对偶性</strong>:</p>
+<ul>
+<li>
+<p>快速排序：<strong>重“分”轻“合”</strong>。核心逻辑在递归前，基准点锁定后子区间天然独立。</p>
 </li>
 <li>
-<p><strong>归并排序 (Merge Sort)</strong>: <strong>轻“分”重“合”</strong>。无脑对半切开，在 <code>Merge</code> 阶段利用两个有序子序列的“拉链式”合并实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。</p>
+<p>归并排序：<strong>轻“分”重“合”</strong>。核心逻辑在递归后，利用子区间的有序性实现线性合并。</p>
 </li>
 </ul>
-<h3 id="2-2-归并与逆序对">2.2 归并与逆序对</h3>
+</li>
+<li>
+<p><strong>不变量</strong>:</p>
 <ul>
 <li>
-<p><strong>核心直觉</strong>: 交换相邻元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span></span></span></span> 消除一个逆序对。</p>
+<p>在归并合并左区间 <code>L</code> 与右区间 <code>R</code> 时，若发现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>&gt;</mo><mi>a</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i] &gt; a[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，由于 <code>L</code> 区间已单调递增，则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>i</mi><mo>…</mo><mi>m</mi><mi>i</mi><mi>d</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[i \dots mid]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">mi</span><span class="mord mathnormal">d</span><span class="mclose">]</span></span></span></span> 这一连续段的所有元素均与 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">a[j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span> 构成逆序对。</p>
 </li>
 <li>
-<p><strong>统计逻辑</strong>: 在合并时，若左子序列当前元素 <code>a[i]</code> 大于右子序列当前元素 <code>a[j]</code>，则左序列剩余的所有元素 <code>a[i...mid]</code> 均与 <code>a[j]</code> 构成逆序对。</p>
+<p>贡献量恒等于 <code>mid - i + 1</code>。</p>
 </li>
-<li>
-<p><strong>贡献量</strong>: <code>ans += (ll)(mid - i + 1)</code>。</p>
+</ul>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
@@ -373,20 +376,20 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// tmp 数组必须全局定义，防止内存抖动</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge_sort</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span>;<br>	<span class="hljs-type">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span>;<br><br>	<span class="hljs-built_in">merge_sort</span>( l, mid );<br>	<span class="hljs-built_in">merge_sort</span>( mid + <span class="hljs-number">1</span>, r );<br><br>	<span class="hljs-type">int</span> i = l, j = mid + <span class="hljs-number">1</span>, k = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span>( i &lt;= mid &amp;&amp; j &lt;= r )<br>	&#123;<br>		<span class="hljs-keyword">if</span>( a[ i ] &lt;= a[ j ] )<br>		&#123;<br>			tmp[ k ++ ] = a[ i ++ ];<br>		&#125;<br>		<span class="hljs-keyword">else</span><br>		&#123;<br>			tmp[ k ++ ] = a[ j ++ ];<br>			<span class="hljs-comment">// Invariant: i 到 mid 所有的数都比 a[j] 大</span><br>			total_inversions += ( ll )( mid - i + <span class="hljs-number">1</span> );<br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">while</span>( i &lt;= mid ) tmp[ k ++ ] = a[ i ++ ];<br>	<span class="hljs-keyword">while</span>( j &lt;= r ) tmp[ k ++ ] = a[ j ++ ];<br><br>	<span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> p = <span class="hljs-number">0</span>; p &lt; k; ++ p ) a[ l + p ] = tmp[ p ];<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 归并排序及其逆序对统计</span><br><span class="hljs-comment">// Standard: Airy Logic v3.2</span><br><br><span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;<br><span class="hljs-type">int</span> a[maxn], tmp[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge_sort</span><span class="hljs-params">( <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &gt;= r ) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span>;<br><br>    <span class="hljs-built_in">merge_sort</span>( l, mid );<br>    <span class="hljs-built_in">merge_sort</span>( mid + <span class="hljs-number">1</span>, r );<br><br>    <span class="hljs-type">int</span> i = l, j = mid + <span class="hljs-number">1</span>, k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>( i &lt;= mid &amp;&amp; j &lt;= r )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] &lt;= a[j] )<br>        &#123;<br>            tmp[k ++] = a[i ++];<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            tmp[k ++] = a[j ++];<br>            <span class="hljs-comment">// 逻辑支点：左侧剩余元素均构成逆序</span><br>            ans += (<span class="hljs-type">long</span> <span class="hljs-type">long</span>)( mid - i + <span class="hljs-number">1</span> );<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">while</span>( i &lt;= mid ) tmp[k ++] = a[i ++];<br>    <span class="hljs-keyword">while</span>( j &lt;= r ) tmp[k ++] = a[j ++];<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> p = <span class="hljs-number">0</span>; p &lt; k; ++ p )<br>    &#123;<br>        a[ l + p ] = tmp[ p ];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
-<p><strong>变体</strong>: <strong>Quick Select</strong> (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 第 K 大数)。</p>
+<p><strong>Quick Select</strong>: 基于 Partition 的第 K 大数查询，通过剪枝实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 期望复杂度。</p>
 </li>
 <li>
-<p><strong>进阶</strong>: <strong>CDQ 分治</strong>（基于归并排序思想处理多维偏序）。</p>
+<p><strong>CDQ 分治</strong>: 归并排序思维的高维抽象，将时间或维度差异转化为归并过程中的贡献统计。</p>
 </li>
 <li>
-<p><a href="/posts/ef28f194/">离散化体系</a>: 离散化是权值树状数组统计逆序对的前置。</p>
+<p><strong>母题</strong>: <a  href="/posts/7cebce35/">P1908 逆序对 (BIT_Inversion)</a> —— 排序体系的逻辑基石。</p>
 </li>
 </ul>
 
@@ -407,17 +410,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/98-Patchouli/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%8C%E5%88%86/" class="category-chain-item">01_排序与二分</a>
+  <a href="/categories/98-Patchouli/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%8C%E5%88%86/" class="category-chain-item">01_排序与二分</a>
   
   
 
@@ -436,11 +439,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#单调性/双指针</a>
+      
         <a href="/tags/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/" class="print-no-link">#算法/排序</a>
       
         <a href="/tags/%E7%AE%97%E6%B3%95-%E5%88%86%E6%B2%BB/" class="print-no-link">#算法/分治</a>
-      
-        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#单调性/双指针</a>
       
     </div>
   
@@ -497,9 +500,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/ef28f194/" title="离散化 (Discretization System)">
+                      <a href="/posts/ef28f194/" title="离散化">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">离散化 (Discretization System)</span>
+                        <span class="hidden-mobile">离散化</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

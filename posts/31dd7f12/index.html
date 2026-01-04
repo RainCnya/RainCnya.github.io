@@ -19,18 +19,18 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P3017 Brownie Slicing G 1. 核心逻辑   问题本质: 在二维权值矩阵中进行横纵切分，最大化最小区域的权值和。   破局转换:   二分答案: 最小值最大化问题，优先考虑二分最小面积 midmidmid。   维度坍缩 (Check):   行切分 (Outer Greedy): 逐行扫描，直到当前合并的“行块”能够被竖切出 ≥B+1\ge B+1≥B+1 个满">
+    <meta name="description" content="Luogu-P3017 Brownie Slicing G 1. 核心逻辑   模型抽象: 二维网格划分，最大化最小块权值和。   破局路径:   二分答案: 最小值最大化问题，锁定最小可能面积为 midmidmid。   维度坍缩:   外层（行）: 贪心行切分。逐行扫描，当前行块能满足列向切分约束时，立即切断，为下方行留出更多资源。   内层（列）: 在确定的行块高度内，执行一维贪心竖切。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P3017 [USACO11MAR] Brownie Slicing G">
 <meta property="og:url" content="https://example.com/posts/31dd7f12/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P3017 Brownie Slicing G 1. 核心逻辑   问题本质: 在二维权值矩阵中进行横纵切分，最大化最小区域的权值和。   破局转换:   二分答案: 最小值最大化问题，优先考虑二分最小面积 midmidmid。   维度坍缩 (Check):   行切分 (Outer Greedy): 逐行扫描，直到当前合并的“行块”能够被竖切出 ≥B+1\ge B+1≥B+1 个满">
+<meta property="og:description" content="Luogu-P3017 Brownie Slicing G 1. 核心逻辑   模型抽象: 二维网格划分，最大化最小块权值和。   破局路径:   二分答案: 最小值最大化问题，锁定最小可能面积为 midmidmid。   维度坍缩:   外层（行）: 贪心行切分。逐行扫描，当前行块能满足列向切分约束时，立即切断，为下方行留出更多资源。   内层（列）: 在确定的行块高度内，执行一维贪心竖切。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-25T10:28:36.993Z">
+<meta property="article:modified_time" content="2026-01-04T04:12:46.437Z">
 <meta property="article:author" content="Miqiu">
-<meta property="article:tag" content="单调性&#x2F;二分">
 <meta property="article:tag" content="逆运算&#x2F;前缀和">
+<meta property="article:tag" content="单调性&#x2F;二分">
 <meta property="article:tag" content="算法&#x2F;贪心">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          414 字
+          460 字
         
       </span>
     
@@ -329,27 +329,30 @@
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
 <ul>
 <li>
-<p><strong>问题本质</strong>: 在二维权值矩阵中进行横纵切分，最大化最小区域的权值和。</p>
+<p><strong>模型抽象</strong>: 二维网格划分，最大化最小块权值和。</p>
 </li>
 <li>
-<p><strong>破局转换</strong>:</p>
+<p><strong>破局路径</strong>:</p>
 <ol>
 <li>
-<p><strong>二分答案</strong>: 最小值最大化问题，优先考虑二分最小面积 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">mi</span><span class="mord mathnormal">d</span></span></span></span>。</p>
+<p><strong>二分答案</strong>: 最小值最大化问题，锁定最小可能面积为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">mi</span><span class="mord mathnormal">d</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>维度坍缩 (Check)</strong>:</p>
+<p><strong>维度坍缩</strong>:</p>
 <ul>
 <li>
-<p><strong>行切分 (Outer Greedy)</strong>: 逐行扫描，直到当前合并的“行块”能够被竖切出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>B</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ge B+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 个满足 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">\ge mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">mi</span><span class="mord mathnormal">d</span></span></span></span> 的区域。</p>
+<p><strong>外层（行）</strong>: 贪心行切分。逐行扫描，当前行块能满足列向切分约束时，立即切断，为下方行留出更多资源。</p>
 </li>
 <li>
-<p><strong>列切分 (Inner Greedy)</strong>: 在锁定的行块内，利用二维前缀和快速计算矩形面积，贪心寻找竖切线。</p>
+<p><strong>内层（列）</strong>: 在确定的行块高度内，执行一维贪心竖切。</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>二维前缀和</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 判定任意矩形块是否达标。</p>
+<p><strong>判定核心</strong>: 判定在当前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">mid</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">mi</span><span class="mord mathnormal">d</span></span></span></span> 下，能否横切 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>A</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ge A+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 次且每块横向切片能纵切 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>B</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\ge B+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 次。</p>
+</li>
+<li>
+<p><strong>二维前缀和</strong>: 预处理 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><mi>m</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">sum[i][j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，实现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 子矩阵权值提取。</p>
 </li>
 </ol>
 </li>
@@ -362,13 +365,18 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// P3017 Brownie Slicing G</span><br><span class="hljs-comment">// Key Logic: Binary Search Min Area + 2D Prefix Sum + Nested Greedy Slicing</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">505</span>;<br><span class="hljs-type">int</span> r, c, a, b;<br><span class="hljs-type">int</span> sum[ maxn ][ maxn ];<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">( <span class="hljs-type">int</span> mid )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> row_cnt = <span class="hljs-number">0</span>, last_row = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= r; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> col_cnt = <span class="hljs-number">0</span>, last_col = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 尝试在该行切断，看当前行块是否支持 B 次竖切</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= c; ++ j )<br>        &#123;<br>            <span class="hljs-type">int</span> area = sum[ i ][ j ] - sum[ last_row ][ j ] - sum[ i ][ last_col ] + sum[ last_row ][ last_col ];<br>            <span class="hljs-keyword">if</span>( area &gt;= mid )<br>            &#123;<br>                ++ col_cnt;<br>                last_col = j;<br>            &#125;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>( col_cnt &gt;= b + <span class="hljs-number">1</span> )<br>        &#123;<br>            ++ row_cnt;<br>            last_row = i;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> row_cnt &gt;= a + <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br><br>    cin &gt;&gt; r &gt;&gt; c &gt;&gt; a &gt;&gt; b;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= r; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= c; ++ j )<br>        &#123;<br>            <span class="hljs-type">int</span> x; cin &gt;&gt; x;<br>            sum[ i ][ j ] = sum[ i - <span class="hljs-number">1</span> ][ j ] + sum[ i ][ j - <span class="hljs-number">1</span> ] - sum[ i - <span class="hljs-number">1</span> ][ j - <span class="hljs-number">1</span> ] + x;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">int</span> L = <span class="hljs-number">0</span>, R = sum[ r ][ c ], ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>( L &lt;= R )<br>    &#123;<br>        <span class="hljs-type">int</span> mid = L + ( ( R - L ) &gt;&gt; <span class="hljs-number">1</span> );<br>        <span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>( mid ) )<br>        &#123;<br>            ans = mid;<br>            L = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            R = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// P3017 Brownie Slicing G</span><br><span class="hljs-comment">// Standard: Airy Logic v3.2 (Compact Index)</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">505</span>;<br><span class="hljs-type">int</span> r, c, a, b;<br><span class="hljs-type">int</span> sum[maxn][maxn];<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">( <span class="hljs-type">int</span> mid )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> row_cnt = <span class="hljs-number">0</span>, last_row = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= r; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> col_cnt = <span class="hljs-number">0</span>, last_col = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 尝试在该行切断，看当前行块是否支持 B 次竖切</span><br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= c; ++ j )<br>        &#123;<br>            <span class="hljs-type">int</span> area = sum[i][j] - sum[last_r][j] - sum[i][last_c] + sum[last_r][last_c];<br>            <br>            <span class="hljs-keyword">if</span>( area &gt;= mid )<br>            &#123;<br>                ++ col_cnt;<br>                last_col = j;<br>            &#125;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>( col_cnt &gt;= b + <span class="hljs-number">1</span> )<br>        &#123;<br>            ++ row_cnt;<br>            last_row = i;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> row_cnt &gt;= a + <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br><br>    cin &gt;&gt; r &gt;&gt; c &gt;&gt; a &gt;&gt; b;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= r; ++ i )<br>    &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= c; ++ j )<br>        &#123;<br>            <span class="hljs-type">int</span> x; cin &gt;&gt; x;<br>            sum[ i ][ j ] = sum[ i - <span class="hljs-number">1</span> ][ j ] + sum[ i ][ j - <span class="hljs-number">1</span> ] - sum[ i - <span class="hljs-number">1</span> ][ j - <span class="hljs-number">1</span> ] + x;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">int</span> L = <span class="hljs-number">0</span>, R = sum[ r ][ c ], ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>( L &lt;= R )<br>    &#123;<br>        <span class="hljs-type">int</span> mid = L + ( ( R - L ) &gt;&gt; <span class="hljs-number">1</span> );<br>        <span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>( mid ) )<br>        &#123;<br>            ans = mid;<br>            L = mid + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            R = mid - <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
-<h2 id="3-归档备注">3. 归档备注</h2>
+<h2 id="3-复盘">3. 复盘</h2>
 <ul>
-<li><strong>核心不变量</strong>: 贪心原则是“刚好够就切”，为后续区域留出最大生存空间。</li>
+<li>
+<p><strong>复杂度</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>R</mi><mo>⋅</mo><mi>C</mi><mo>⋅</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>TotalSum</mtext><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(R \cdot C \cdot \log(\text{TotalSum}))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord text"><span class="mord">TotalSum</span></span><span class="mclose">))</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>不变量</strong>: 贪心逻辑“刚好满足就切”是保证全局可行解空间最大的最优策略。</p>
+</li>
 </ul>
 
                 
@@ -388,17 +396,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%8C%E5%88%86/" class="category-chain-item">01_排序与二分</a>
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%8C%E5%88%86/" class="category-chain-item">01_排序与二分</a>
   
   
 
@@ -417,9 +425,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/" class="print-no-link">#单调性/二分</a>
-      
         <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#逆运算/前缀和</a>
+      
+        <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/" class="print-no-link">#单调性/二分</a>
       
         <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/" class="print-no-link">#算法/贪心</a>
       
@@ -478,9 +486,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/7b3df25b/" title="P1083 [NOIP2012] 借教室">
+                      <a href="/posts/95acfff3/" title="P1314 [NOIP2011] 聪明的质监员">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1083 [NOIP2012] 借教室</span>
+                        <span class="hidden-mobile">P1314 [NOIP2011] 聪明的质监员</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -488,8 +496,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/95acfff3/" title="P1314 [NOIP2011] 聪明的质监员">
-                        <span class="hidden-mobile">P1314 [NOIP2011] 聪明的质监员</span>
+                      <a href="/posts/8668ad14/" title="P2280 [HNOI2003] 激光炸弹">
+                        <span class="hidden-mobile">P2280 [HNOI2003] 激光炸弹</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="基础算法：降维打击的起点  Philosophy: 所有高级算法都是基础算子的复合叠加。 降维打击的本质，在于识别冗余状态并利用数学&#x2F;物理性质将其坍缩。  1. 排序与二分 (Sorting &amp; Binary) 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。">
+    <meta name="description" content="基础算法：降维打击的起点  Philosophy: 所有高级算法都是基础算子的复合叠加。 降维打击的本质，在于识别冗余状态并利用数学&#x2F;物理性质将其坍缩。  1. 排序与二分 (Sorting &amp; Binary) 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：  单调二分：锁定分界线，将求解最值转换为合法性判定。 单峰三分：处理凸性函数的极值锁定。    二分进阶_复">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础算法：降维打击的起点 (Basis Guide)">
 <meta property="og:url" content="https://example.com/posts/c28314d6/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="基础算法：降维打击的起点  Philosophy: 所有高级算法都是基础算子的复合叠加。 降维打击的本质，在于识别冗余状态并利用数学&#x2F;物理性质将其坍缩。  1. 排序与二分 (Sorting &amp; Binary) 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：锁定分界线，将求解最值转换为合法性判定。   二分进阶_复合判定模型：结合分数规划、贪心等模型进行复杂判定。">
+<meta property="og:description" content="基础算法：降维打击的起点  Philosophy: 所有高级算法都是基础算子的复合叠加。 降维打击的本质，在于识别冗余状态并利用数学&#x2F;物理性质将其坍缩。  1. 排序与二分 (Sorting &amp; Binary) 逻辑分治与边界锁定的核心工具，将搜索空间压缩至对数级。   二分体系：  单调二分：锁定分界线，将求解最值转换为合法性判定。 单峰三分：处理凸性函数的极值锁定。    二分进阶_复">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-12-25T01:19:14.346Z">
+<meta property="article:modified_time" content="2026-01-04T04:12:46.433Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="指南&#x2F;基础算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -260,7 +260,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          509 字
+          536 字
         
       </span>
     
@@ -332,13 +332,17 @@
 <p>逻辑<strong>分治</strong>与边界锁定的核心工具，将搜索空间压缩至对数级。</p>
 <ul>
 <li>
-<p><a href="/posts/66874f84/">二分体系</a>：锁定分界线，将求解最值转换为合法性判定。</p>
+<p><a href="/posts/9f633e52/">二分体系</a>：</p>
+<ul>
+<li><strong>单调二分</strong>：锁定分界线，将求解最值转换为合法性判定。</li>
+<li><strong>单峰三分</strong>：处理凸性函数的极值锁定。</li>
+</ul>
 </li>
 <li>
-<p><a href="/posts/fabd521e/">二分进阶_复合判定模型</a>：结合分数规划、贪心等模型进行复杂判定。</p>
+<p><a href="/posts/fabd521e/">二分进阶_复合判定模型</a>：结合分数规划、WQS二分 等模型进行复杂判定。</p>
 </li>
 <li>
-<p><a href="/posts/50dbb92c/">排序体系</a>：归并与快排的对称美学，用于捕捉逆序对或偏序贡献。</p>
+<p><a href="/posts/50dbb92c/">排序体系</a>：归并与快排的对称美学，以及<strong>邻项交换法</strong>，用于捕捉逆序对或偏序贡献。</p>
 </li>
 </ul>
 <h3 id="2-降维优化体系-Dimension-Reduction">2. 降维优化体系 (Dimension Reduction)</h3>
@@ -399,12 +403,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/98-Patchouli/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
 
@@ -478,9 +482,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4775279/" title="双指针体系 (Two Pointers System)">
+                      <a href="/posts/4775279/" title="双指针体系">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">双指针体系 (Two Pointers System)</span>
+                        <span class="hidden-mobile">双指针体系</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

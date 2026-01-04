@@ -19,12 +19,12 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="离散化 (Discretization System) 1. 生态位   定义: 在不改变数据相对大小 (Relative Order) 的前提下，将分布稀疏的大值域数据（如 10910^9109）映射为紧凑的小下标（如 10510^5105）的过程。   解决痛点:   解决了算法空间复杂度依赖于值域而非数据量的问题。   使得权值树状数组、权值线段树等结构能够处理大值域输入。     本质:">
+    <meta name="description" content="离散化 1. 生态位   本质定义: 在保持数据全序关系不变的前提下，将稀疏的大值域映射到紧凑的连续下标空间。   解决痛点: 解决了算法复杂度与值域耦合的问题，是权值数据结构（BIT&#x2F;线段树）的必备前置插件。   2. 逻辑支点   不变量: 映射函数 fff 为单调增函数，即 A&lt;B  ⟺  f(A)&lt;f(B)A &lt; B \iff f(A) &lt; f(B)A&lt;B⟺f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="离散化 (Discretization System)">
+<meta property="og:title" content="离散化">
 <meta property="og:url" content="https://example.com/posts/ef28f194/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="离散化 (Discretization System) 1. 生态位   定义: 在不改变数据相对大小 (Relative Order) 的前提下，将分布稀疏的大值域数据（如 10910^9109）映射为紧凑的小下标（如 10510^5105）的过程。   解决痛点:   解决了算法空间复杂度依赖于值域而非数据量的问题。   使得权值树状数组、权值线段树等结构能够处理大值域输入。     本质:">
+<meta property="og:description" content="离散化 1. 生态位   本质定义: 在保持数据全序关系不变的前提下，将稀疏的大值域映射到紧凑的连续下标空间。   解决痛点: 解决了算法复杂度与值域耦合的问题，是权值数据结构（BIT&#x2F;线段树）的必备前置插件。   2. 逻辑支点   不变量: 映射函数 fff 为单调增函数，即 A&lt;B  ⟺  f(A)&lt;f(B)A &lt; B \iff f(A) &lt; f(B)A&lt;B⟺f">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-12-11T16:00:00.000Z">
 <meta property="article:modified_time" content="2025-12-23T16:09:32.000Z">
@@ -34,7 +34,7 @@
   
   
   
-  <title>离散化 (Discretization System) - MiQiu</title>
+  <title>离散化 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="离散化 (Discretization System)"></span>
+            <span id="subtitle" data-typed-text="离散化"></span>
           
         </div>
 
@@ -260,7 +260,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          559 字
+          428 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -318,63 +318,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">离散化 (Discretization System)</h1>
+            <h1 id="seo-header">离散化</h1>
             
             
               <div class="markdown-body">
                 
-                <h1>离散化 (Discretization System)</h1>
+                <h1>离散化</h1>
 <h2 id="1-生态位">1. 生态位</h2>
 <ul>
 <li>
-<p><strong>定义</strong>: 在不改变数据<strong>相对大小 (Relative Order)</strong> 的前提下，将分布稀疏的大值域数据（如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span>）映射为紧凑的小下标（如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>10</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>）的过程。</p>
+<p><strong>本质定义</strong>: 在保持数据<strong>全序关系</strong>不变的前提下，将稀疏的大值域映射到紧凑的连续下标空间。</p>
 </li>
 <li>
-<p><strong>解决痛点</strong>:</p>
-<ul>
-<li>
-<p>解决了算法空间复杂度依赖于<strong>值域</strong>而非数据量的问题。</p>
-</li>
-<li>
-<p>使得权值树状数组、权值线段树等结构能够处理大值域输入。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>本质</strong>: <strong>Value</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> <strong>Rank</strong> 的单调保序映射。</p>
+<p><strong>解决痛点</strong>: 解决了算法复杂度与值域耦合的问题，是权值数据结构（BIT/线段树）的必备前置插件。</p>
 </li>
 </ul>
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
-<h3 id="2-1-排名映射">2.1 排名映射</h3>
 <ul>
 <li>
-<p><strong>核心不变量</strong>: 若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&lt;</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A &lt; B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span>，则离散化后的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi>a</mi><mi>n</mi><mi>k</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mi>R</mi><mi>a</mi><mi>n</mi><mi>k</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Rank(A) &lt; Rank(B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal" style="margin-right:0.03148em;">ank</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mord mathnormal" style="margin-right:0.03148em;">ank</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>不变量</strong>: 映射函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> 为单调增函数，即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&lt;</mo><mi>B</mi><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mi>f</mi><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo><mo>&lt;</mo><mi>f</mi><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A &lt; B \iff f(A) &lt; f(B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7224em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7073em;vertical-align:-0.024em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span>。</p>
 </li>
 <li>
-<p><strong>映射逻辑</strong>:</p>
+<p><strong>维度映射流</strong>:</p>
 <ol>
 <li>
-<p><strong>收集 (Collect)</strong>: 汇总所有需要参与大小比较的数值。</p>
+<p><strong>采样</strong>: 收集所有可能影响逻辑的数值点。</p>
 </li>
 <li>
-<p><strong>排序 (Sort)</strong>: 建立全序关系。</p>
+<p><strong>排序/去重</strong>: 构建保序的字典索引。</p>
 </li>
 <li>
-<p><strong>去重 (Unique)</strong>: 确定唯一排名点，构建“字典”。</p>
-</li>
-<li>
-<p><strong>查找 (Query)</strong>: 利用二分查找（<code>lower_bound</code>）锁定原值对应的位置。</p>
+<p><strong>映射</strong>: 利用 <code>lower_bound</code> 检索原值在字典中的 Rank。</p>
 </li>
 </ol>
 </li>
-</ul>
-<h3 id="2-2-离散化的“增量”处理">2.2 离散化的“增量”处理</h3>
-<ul>
 <li>
-<p><strong>渗透点</strong>: 如果题目涉及<strong>区间覆盖</strong>（如扫描线或区间染色），仅离散化端点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo separator="true">,</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">L, R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 可能会导致原本不相邻的区间在离散化后变得“相邻”，从而丢失中间的缝隙。</p>
-</li>
-<li>
-<p><strong>技巧</strong>: 在离散化序列中额外加入 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，为区间之间的“空白”预留逻辑空间。</p>
+<p><strong>逻辑补丁</strong>: 在处理区间覆盖（如扫描线）时，若需表达“不相邻”性质，离散化需额外采样 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，防止原本不相邻的逻辑块被强制“贴合”。</p>
 </li>
 </ul>
 <h2 id="3-实战部署">3. 实战部署</h2>
@@ -392,21 +371,10 @@
 <h2 id="4-知识粘附">4. 知识粘附</h2>
 <ul>
 <li>
-<p><strong>母题</strong>:</p>
-<ul>
-<li>
-<p><a href="/posts/7cebce35/">P1908 逆序对 (BIT_Inversion)</a>: 在使用树状数组统计逆序对前，必须先进行离散化。</p>
+<p><strong>权值索引</strong>: <a  href="/posts/7cebce35/">P1908 逆序对 (BIT_Inversion)</a> —— 离散化作为数据结构索引的母题。</p>
 </li>
 <li>
-<p><a href="/posts/8668ad14/">P2280 激光炸弹 (PrefixSum_2D)</a>: 坐标偏移实质上是离散化的简化版。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>进阶</strong>:</p>
-<ul>
-<li><strong>扫描线</strong>: <a href="/posts/33f15c14/">线段树体系</a> 中的离散化是处理连续面积的基础。</li>
-</ul>
+<p><strong>坐标平移</strong>: <a  href="/posts/8668ad14/">P2280 激光炸弹 (PrefixSum_2D)</a> —— 离散化的简化版，处理固定偏移。</p>
 </li>
 </ul>
 
@@ -427,17 +395,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/00-Atlas/" class="category-chain-item">00_Atlas</a>
+  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/98-Patchouli/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/00-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">02_降维技巧</a>
+  <a href="/categories/98-Patchouli/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">02_降维技巧</a>
   
   
 
@@ -468,7 +436,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>离散化 (Discretization System)</div>
+      <div>离散化</div>
       <div>https://example.com/posts/ef28f194/</div>
     </div>
     <div class="license-meta">
@@ -513,9 +481,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/4b02a8e5/" title="图论：结构映射与状态流转 (Graph Guide)">
+                      <a href="/posts/9e0761d7/" title="动态规划：从线性推演到维度打击 (DP Guide)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图论：结构映射与状态流转 (Graph Guide)</span>
+                        <span class="hidden-mobile">动态规划：从线性推演到维度打击 (DP Guide)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
