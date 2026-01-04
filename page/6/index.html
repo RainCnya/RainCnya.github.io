@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/ea96a98/" target="_self">
-          P3629 [APIO2010] 巡逻 (Diameter_Greedy)
+        <a href="/posts/a15c44d3/" target="_self">
+          CF2152B Catching the Krug (切比雪夫博弈)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/ea96a98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a15c44d3/" target="_self">
         <div>
-          Luogu-P3629 [APIO2010] 巡逻 1. 核心逻辑   问题本质: 在树上添加 K∈{1,2}K \in \{1, 2\}K∈{1,2} 条边，使得遍历所有边（包含新边）并回到起点的总代价最小。   破局转换:   初始状态: 不加边时，每条边必走两次，总和 2(N−1)2(N-1)2(N−1)。   K=1K=1K=1 策略: 添加直径 L1L_1L1​ 的两端，形成一个大环。环
+          CF2152B Catching the Krug 1. 核心逻辑   问题本质: 非对称追捕博弈。追捕者 Doran 使用切比雪夫距离，逃跑者 Krug 使用曼哈顿距离。   破局转换:   博弈退化: 追捕者速度具有绝对覆盖优势（对角线移动不降速）。逃跑者唯一的生存策略是全速逃向离追捕者最远的边界。   静态判定: 游戏生存时长完全取决于追捕者到四个边界的最大切比雪夫距离。     2. 代码
         </div>
       </a>
 
@@ -275,8 +275,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-18 00:00" pubdate>
-              2025-12-18
+            <time datetime="2025-12-19 00:00" pubdate>
+              2025-12-19
             </time>
           </div>
         
@@ -296,12 +296,12 @@
   
     <span>></span>
     
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E6%95%B0%E5%AD%A6%E4%B8%8E%E5%8D%9A%E5%BC%88/" class="category-chain-item">04_数学与博弈</a>
   
   
 
@@ -322,7 +322,161 @@
             
               <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/">#算法/贪心</a>
             
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/">#数学/博弈论</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/4679a094/" target="_self">
+          CF2157D Billion Players Game (十亿玩家博弈)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/4679a094/" target="_self">
+        <div>
+          CF2157D Billion Players Game 1. 核心逻辑   问题本质: 制定策略最大化最坏情况收益 max⁡min⁡p∈[l,r]∑gaini(p)\max \min_{p \in [l, r]} \sum \text{gain}_i(p)maxminp∈[l,r]​∑gaini​(p)。   破局转换:   线性极值: 策略固定时，总收益函数 f(p)=∑±(p−ai)f(p)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-19 00:00" pubdate>
+              2025-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E6%95%B0%E5%AD%A6%E4%B8%8E%E5%8D%9A%E5%BC%88/" class="category-chain-item">04_数学与博弈</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/">#数学/博弈论</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%87%BD%E6%95%B0%E6%9E%81%E5%80%BC/">#数学/函数极值</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d48bd7b3/" target="_self">
+          CF2157C Meximum Array 2 (Mex与Min约束构造)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d48bd7b3/" target="_self">
+        <div>
+          CF2157C Meximum Array 2 1. 核心逻辑   问题本质: 根据 Min 与 MEX 的双重约束构造合法序列。   破局转换:   约束解析:   min⁡=k\min = kmin=k 要求所有元素 ≥k\ge k≥k。   MEX=k\text{MEX} = kMEX=k 要求包含 [0,k−1][0, k-1][0,k−1] 且剔除 kkk。     冲突消解: 若一个点
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-19 00:00" pubdate>
+              2025-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/03-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">03_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-MEX/">#数学/MEX</a>
             
           </div>
         
@@ -413,15 +567,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/8179d216/" target="_self">
-          复合模型与逆向思维  (Composite &amp; Reverse Logic)
+        <a href="/posts/cc4bf061/" target="_self">
+          CF1406C Link Cut Centroids (Centroid_LinkCut)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/8179d216/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/cc4bf061/" target="_self">
         <div>
-          复合模型与逆向思维 1. 生态位   定义: 针对非典型 DP 场景，通过物理空间的路径压缩、逻辑序的时光倒流，或多种基础模型（背包、状压等）的异构缝合，将高熵问题转化为标准 DAG 路径搜索。   解决痛点: 解决了时间轴过长但事件稀疏（P5017）、正向决策受未来状态深度耦合（P1280）、以及单一模型无法覆盖多维约束（P1941）的困境。   2. 逻辑支点   Path Compressi
+          CF1406C Link Cut Centroids 1. 核心逻辑   问题本质: 仅通过删除一条边并添加一条边，使给定的树拥有唯一的重心。   破局转换:   重心性质: 树的重心至多有两个。若只有一个，随便删一条叶子边再连回去即可。   双重心模型: 两个重心 R1,R2R_1, R_2R1​,R2​ 必然相邻。此时整棵树被分为两个大小相等的连通块（各 N/2N/2N/2）。   破坏平衡:
         </div>
       </a>
 
@@ -429,8 +583,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-17 00:40" pubdate>
-              2025-12-17
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -445,17 +599,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BB%B4%E5%BA%A6%E4%BC%98%E5%8C%96/" class="category-chain-item">03_维度优化</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
   
   
 
@@ -473,10 +627,12 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
             
               <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E9%80%86%E5%90%91%E6%80%9D%E7%BB%B4/">#算法/逆向思维</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/">#数学/博弈论</a>
             
           </div>
         
@@ -490,15 +646,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/ec824ae8/" target="_self">
-          线段树进阶：信息合并 (The Art of Push Up)
+        <a href="/posts/bab96266/" target="_self">
+          CF911F Tree Destruction (Diameter_Constructive)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/ec824ae8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/bab96266/" target="_self">
         <div>
-          线段树进阶：信息合并 (The Art of Push Up) 1. 生态位   定义: 探讨线段树在处理 &quot;非简单可加性信息&quot; 时的合并逻辑支点。   核心矛盾: 左右子区间不仅有独立贡献，还存在 跨界 (Cross-Boundary) 交互。   解决痛点: 最大子段和、区间连通性等无法通过简单 sum = L + R 得到的信息。   2. 逻辑支点   GSS 模型 (
+          CF911F Tree Destruction 1. 核心逻辑   问题本质: 构造一个删点序列，使得每次删除节点时，该节点与树中剩余某点的距离之和最大。   破局转换:   距离极限: 树上任意点的最远点必然是直径的端点 AAA 或 BBB 之一。   两阶段贪心:   第一阶段 (挂载点): 优先删除不在直径上的点。对于点 uuu，选择距离更远的直径端点进行配对，贡献为 max⁡(dist(u
         </div>
       </a>
 
@@ -506,8 +662,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-17 00:30" pubdate>
-              2025-12-17
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -522,17 +678,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/02-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-chain-item">02_树形结构</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
   
   
 
@@ -551,9 +707,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%88%86%E6%B2%BB/">#算法/分治</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
             
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
             
           </div>
         
@@ -567,15 +723,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/c936ec9e/" target="_self">
-          倍增优化策略 (Doubling System)
+        <a href="/posts/b9909e14/" target="_self">
+          P1099 [NOIP2007] 树网的核 (Diameter_Core)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/c936ec9e/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b9909e14/" target="_self">
         <div>
-          倍增优化体系 1. 生态位   定义: 利用 2k2^k2k 的复合性质，预处理并维护状态在 20,21,…,2log⁡N2^0, 2^1, \dots, 2^{\log N}20,21,…,2logN 步长下的转移结果。   解决痛点: 解决了线性链或环上超长路径（如 10910^9109 步）的重复决策合并，将 O(N)O(N)O(N) 转移跨越至 O(log⁡N)O(\log N)O(log
+          Luogu-P1099 树网的核 1. 核心逻辑   问题本质: 在树的直径上截取一段长度不超过 sss 的路径 FFF，最小化全树所有点到 FFF 的距离的最大值（偏心距）。   破局转换:   偏心距分解: 对于选定的核 F=[i,j]F=[i, j]F=[i,j]，最大距离来源于三部分：   直径外：直径上所有点向外延伸的“枝条”长度的最大值。   直径内左侧：端点 AAA 到 FFF 左端
         </div>
       </a>
 
@@ -583,8 +739,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 23:30" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -599,17 +755,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BB%B4%E5%BA%A6%E4%BC%98%E5%8C%96/" class="category-chain-item">03_维度优化</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
   
   
 
@@ -628,9 +784,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%80%8D%E5%A2%9E/">#数据结构/倍增</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
             
-              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8F%8C%E6%8C%87%E9%92%88/">#单调性/双指针</a>
             
           </div>
         
@@ -644,15 +800,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/1bc8a91b/" target="_self">
-          单调性优化体系 (Monotonicity System)
+        <a href="/posts/b7868cc/" target="_self">
+          P1395 会议 (Centroid_MinDist)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/1bc8a91b/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b7868cc/" target="_self">
         <div>
-          单调性优化体系 1. 生态位   定义: 通过挖掘转移方程中的单调性特征，利用单调队列（Deque）或多路队列，将转移复杂度从 O(K)O(K)O(K) 甚至 O(log⁡N)O(\log N)O(logN) 强行降至 O(1)O(1)O(1) 的维度打击技术。   解决痛点: 解决了多重背包 O(Vlog⁡C)O(V \log C)O(VlogC) 瓶颈、定长区间最值查询以及高频产出元素的排序开
+          Luogu-P1395 会议 1. 核心逻辑   问题本质: 寻找树上一个点，使得所有节点到该点的距离之和最小。   破局转换:   重心性质: 树上所有点到某点的距离和最小，该点即为树的重心。   计算优化:   全局距离和 = ∑u≠rootsiz[u]\sum_{u \neq root} siz[u]∑u=root​siz[u]。   物理含义：每一条边被经过的次数，等于其下方子树的节点个
         </div>
       </a>
 
@@ -660,8 +816,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 23:10" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -676,17 +832,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BB%B4%E5%BA%A6%E4%BC%98%E5%8C%96/" class="category-chain-item">03_维度优化</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
   
   
 
@@ -705,9 +861,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
             
-              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#算法/贡献法</a>
             
           </div>
         
@@ -721,15 +877,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/95fc4668/" target="_self">
-          计数DP方法论 (Counting System)
+        <a href="/posts/7fb577ad/" target="_self">
+          P1967 货车运输 (MaxST_LCA_Bottleneck)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/95fc4668/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/7fb577ad/" target="_self">
         <div>
-          计数DP体系 1. 生态位   定义: 专注于求解满足特定复杂约束的“方案总数”而非“最优值”的模型。   解决痛点: 解决了全局性约束（如：某列不得超过总数一半）导致的合法状态定义困难。   2. 逻辑支点   正难则反 (Inclusion-Exclusion):   渗透点: 当正面构造状态需要记录太多历史信息时，转而计算“非法方案数”。   逻辑归约: 全局非法往往可以坍缩为某个局部特征的
+          Luogu-P1967 货车运输 1. 核心逻辑   问题本质: 在带权无向图中，寻找两点间路径，使得路径上的最小边权最大（瓶颈路问题）。   破局转换:   结构坍缩：根据 Kruskal 原理，原图的瓶颈路必然落在其最大生成树 (MaxST) 上。   模型映射：将图转化为最大生成森林，问题转化为求树上两点路径间的边权最小值。   状态维护：利用 LCA 倍增法。定义 f[u][i]f[u][
         </div>
       </a>
 
@@ -737,8 +893,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 22:40" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -753,17 +909,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">02_高级模型</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
   
   
 
@@ -782,9 +938,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-MST/">#树论/MST</a>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/">#数学/容斥原理</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-LCA/">#树论/LCA</a>
             
           </div>
         
@@ -798,15 +954,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/8b130bbd/" target="_self">
-          状压DP体系 (State Compression System)
+        <a href="/posts/ea96a98/" target="_self">
+          P3629 [APIO2010] 巡逻 (Diameter_Greedy)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/8b130bbd/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ea96a98/" target="_self">
         <div>
-          状压体系 1. 生态位   定义: 将集合状态（Subset）或小型拓扑结构通过二进制位映射为一个整数。利用位运算的并行特性，在 O(1)O(1)O(1) 时间内执行集合的交、并、补及归属判定。   解决痛点: 解决了 N≤20N \le 20N≤20 级规模下，指数级子集选择、TSP 路径规划以及棋盘覆盖等无法线性扫描的难题。   2. 逻辑支点   核心不变量: 位权独立性。每一个二进制位代表
+          Luogu-P3629 [APIO2010] 巡逻 1. 核心逻辑   问题本质: 在树上添加 K∈{1,2}K \in \{1, 2\}K∈{1,2} 条边，使得遍历所有边（包含新边）并回到起点的总代价最小。   破局转换:   初始状态: 不加边时，每条边必走两次，总和 2(N−1)2(N-1)2(N−1)。   K=1K=1K=1 策略: 添加直径 L1L_1L1​ 的两端，形成一个大环。环
         </div>
       </a>
 
@@ -814,8 +970,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 22:35" pubdate>
-              2025-12-16
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
             </time>
           </div>
         
@@ -830,17 +986,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E9%AB%98%E7%BA%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">02_高级模型</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
   
   
 
@@ -859,161 +1015,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DP-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/">#DP/状态压缩</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/b6a340a7/" target="_self">
-          树形DP体系 (Tree DP System)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/b6a340a7/" target="_self">
-        <div>
-          树形DP体系 1. 生态位   定义: 在树形拓扑结构上执行决策。状态通常定义为以 uuu 为根的子树的最优解，转移方向由叶节点向根节点回传。   解决痛点: 解决了具备层级依赖关系、连通性约束（如最大独立集）以及路径统计类的组合优化问题。   2. 逻辑支点   核心不变量: 子树独立性。在不考虑换根的情况下，根节点的决策仅受子树状态约束，不受其父节点或兄弟节点影响。   状态转移范式:   选
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 22:30" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01-%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B/" class="category-chain-item">01_基础模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP-%E6%A0%91%E5%BD%A2/">#DP/树形</a>
-            
-              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/a75f3b7c/" target="_self">
-          区间DP体系 (Interval System)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/a75f3b7c/" target="_self">
-        <div>
-          区间与环形体系 1. 生态位   定义: 状态定义在序列的连续闭区间 [i,j][i, j][i,j] 上，通过枚举分割点 kkk 或处理端点关系，由小区间收益推导大区间最值的模型。   解决痛点: 解决了全局最优解不具备局部线性增长特性，但具备局部合并特性的场景。   2. 逻辑支点   核心不变量: 拓扑序由区间长度决定。  状态转移必须遵循 len=1→Nlen = 1 \to Nlen=1
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-16 22:25" pubdate>
-              2025-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/98-Patchouli/" class="category-chain-item">98_Patchouli</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/98-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01-%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B/" class="category-chain-item">01_基础模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP-%E5%8C%BA%E9%97%B4/">#DP/区间</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E7%8E%AF%E5%BD%A2%E5%A4%84%E7%90%86/">#算法/环形处理</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/">#算法/贪心</a>
             
           </div>
         
@@ -1025,7 +1029,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#board">18</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
