@@ -259,6 +259,391 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/a1b39cf5/" target="_self">
+          P5017 [NOIP 2018] 摆渡车 (MQ_DP_Path_Compression)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a1b39cf5/" target="_self">
+        <div>
+          Luogu-P5017 摆渡车 1. 核心逻辑   问题本质: 时轴上的任务覆盖最小化代价。发车间隔必须 ≥m\ge m≥m。   破局转换:   状态定义: f[t]f[ t ]f[t] 为在时刻 ttt 发出一班车时的最小等待总时长。   物理剪枝:   转移范围只需考察 [t−2m,t−m][t-2m, t-m][t−2m,t−m]，因为间隔超过 2m2m2m 一定不如在中间多发一班车。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-24 00:00" pubdate>
+              2025-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05-%E4%BC%98%E5%8C%96%E6%A8%A1%E5%9E%8B/" class="category-chain-item">05_优化模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E7%A6%BB%E6%95%A3%E5%8C%96/">#算法/离散化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/eed28785/" target="_self">
+          P1941 [NOIP 2014] 飞扬的小鸟 (Knapsack_Mixed_Fly)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/eed28785/" target="_self">
+        <div>
+          Luogu-P1941 飞扬的小鸟 1. 核心逻辑   问题本质: 在网格中规划路径，上升可以执行无限次（完全背包），下降固定每秒发生一次（0/1 背包）。   破局转换:   阶段划分: 时间时刻 iii 作为 DP 阶段。   混合转移:   上升: 同一秒点多次   ⟹  \implies⟹ f[i][j] = min(f[i-1][j-x], f[i][j-x]) + 1。   下降: 每
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-23 00:00" pubdate>
+              2025-11-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/02-%E8%83%8C%E5%8C%85%E6%A8%A1%E5%9E%8B/" class="category-chain-item">02_背包模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/8a9a7c5e/" target="_self">
+          P1006 [NOIP2008] 传纸条 (Grid_Concurrent_NonOverlap)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8a9a7c5e/" target="_self">
+        <div>
+          Luogu-P1006 传纸条 1. 核心逻辑   问题本质: 一来一回两条路径，要求除起点和终点外，路径上的点不得重复。   破局转换:   同向化: 一来一回等价于“两人同时从起点出发去终点”。   互斥逻辑: 在动态规划中，只需在转移时增加限制：r1≠r2r_1 \neq r_2r1​=r2​。   隐式优化: 实际上，如果格子权值均为正数，最大收益路径天然会避开重合（因为分开展能获取更多
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-23 00:00" pubdate>
+              2025-11-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/" class="category-chain-item">03_网格模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%A4%9A%E8%B7%AF%E5%B9%B6%E5%8F%91/">#算法/多路并发</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/da930cd8/" target="_self">
+          P1070 [NOIP 2009] 道路游戏 (MQ_DP_Limit_Window)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/da930cd8/" target="_self">
+        <div>
+          Luogu-P1070 道路游戏 (单调队列优化版) 1. 核心逻辑   问题本质: 周期性网格上的斜向移动决策。机器人购买后可走 1∼P1 \sim P1∼P 步。   破局转换:   维度分解: 路径 (i,j)→(i+1,j+1)(i, j) \to (i+1, j+1)(i,j)→(i+1,j+1) 遵循规律 (i−j)(modN)=const(i - j) \pmod N = \text
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-23 00:00" pubdate>
+              2025-11-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/" class="category-chain-item">03_网格模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
+            
+              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2eb10488/" target="_self">
+          P2051 [AHOI2009] 中国象棋 (Opt_Contour_State)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2eb10488/" target="_self">
+        <div>
+          Luogu-P2051 中国象棋 1. 核心逻辑   问题本质: 在 N×MN \times MN×M 棋盘放炮，每行每列最多 2 个，求合法方案总数。   破局转换:   特征提取: 一行一行决策。对于下一行，它不关心具体哪一列放了炮，只关心“还有多少列可以放”。   对称抽象: 状态定义为 f[i][j][k]f[i][j][k]f[i][j][k]，表示前 iii 行，有 jjj 列放了 1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-23 00:00" pubdate>
+              2025-11-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/" class="category-chain-item">03_网格模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#算法/贡献法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/a52e227e/" target="_self">
           P5322 [BJOI2019] 排兵布阵 (Knapsack_Group_Sorting)
         </a>
@@ -320,9 +705,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
-            
               <a href="/tags/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/">#算法/排序</a>
+            
+              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
             
           </div>
         
@@ -551,9 +936,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
-            
               <a href="/tags/%E6%95%B0%E5%AD%A6-%E6%95%B0%E8%AE%BA/">#数学/数论</a>
+            
+              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
             
           </div>
         
@@ -628,394 +1013,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
               <a href="/tags/%E6%95%B0%E5%AD%A6-%E4%BD%8D%E8%BF%90%E7%AE%97/">#数学/位运算</a>
-            
-              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/401ab780/" target="_self">
-          P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/401ab780/" target="_self">
-        <div>
-          Luogu-P6902 Surveillance 1. 核心逻辑   问题本质: 环形序列上选取最少的区间实现全覆盖。   破局转换:   破环成链: 序列倍增至 2N2N2N，环形区间转化为链上区间。   贪心预处理: f[i][0]f[ i ][ 0 ]f[i][0] 表示从位置 iii 出发，使用 1 个区间能到达的最远右边界。   倍增跳跃: f[i][j]=f[f[i][j−1]][j−
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-15 00:00" pubdate>
-              2025-11-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/05-%E4%BC%98%E5%8C%96%E6%A8%A1%E5%9E%8B/" class="category-chain-item">05_优化模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%80%8D%E5%A2%9E/">#数据结构/倍增</a>
-            
-              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/74f6b4c4/" target="_self">
-          P2516 [HAOI2010] 最长公共子序列 (LCS_Counting)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/74f6b4c4/" target="_self">
-        <div>
-          Luogu-P2516 最长公共子序列 (计数) 1. 核心逻辑   问题本质: 求两个字符串的 LCS 长度及满足该长度的非空子序列方案数。   破局转换:   状态定义:   f[i][j]f[i][j]f[i][j]：LCS 长度。   g[i][j]g[i][j]g[i][j]：方案数。     转移方程:   若 A[i]==B[j]A[i] == B[j]A[i]==B[j]:   f
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-13 00:00" pubdate>
-              2025-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">01_线性模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
-            
-              <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/31829f80/" target="_self">
-          P2519 [HAOI2011] problem a (Interval_Weighted_Scheduling)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/31829f80/" target="_self">
-        <div>
-          Luogu-P2519 problem a 1. 核心逻辑   问题本质: 确定最多的说真话人数，使得所有人的排名信息不产生物理冲突。   破局转换:   排名映射: 若某人说“aaa 个人比我高，bbb 个人比我矮”，则其可能的排名区间为 [a+1,N−b][a + 1, N - b][a+1,N−b]。   冲突剔除:   若 a+b≥Na + b \ge Na+b≥N，该说法物理不可能，直接
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-13 00:00" pubdate>
-              2025-11-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">01_线性模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/">#单调性/二分</a>
-            
-              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/77237d38/" target="_self">
-          P6835 [Cnoi2019] 线性生物
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/77237d38/" target="_self">
-        <div>
-          Luogu-P6835 线性生物 ## 1. 核心逻辑   问题本质: 在带返祖边的链式图上，求从起点 111 走到终点 N+1N+1N+1 的期望步数。   破局转换:   期望线性性: 总期望 = ∑i=1NE(i→i+1)\sum_{i=1}^{N} E(i \to i+1)∑i=1N​E(i→i+1)。   方程构建: 从点 iii 出发有 degideg_idegi​ 条边。其中 1 条
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-12 00:00" pubdate>
-              2025-11-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/06-%E8%AE%A1%E6%95%B0%E4%B8%8E%E6%9C%9F%E6%9C%9B/" class="category-chain-item">06_计数与期望</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
-            
-              <a href="/tags/%E6%95%B0%E5%AD%A6-%E6%9C%9F%E6%9C%9B/">#数学/期望</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/c041f5c2/" target="_self">
-          P1091 [NOIP2004] 合唱队形 (Seq_Bidirectional_LIS)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/c041f5c2/" target="_self">
-        <div>
-          Luogu-P1091 合唱队形 1. 核心逻辑   问题本质: 寻找一个最长的子序列，满足先严格上升后严格下降（山峰模型）。   破局转换:   局部枚举: 枚举合唱队形的“山峰”位置 iii (1≤i≤N1 \le i \le N1≤i≤N)。   叠加态:   f[i]f[i]f[i]：以 iii 结尾的最长上升子序列长度。   g[i]g[i]g[i]：以 iii 开头的最长下降子序列长度
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-11 00:00" pubdate>
-              2025-11-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/" class="category-chain-item">01_线性模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%89%8D%E5%90%8E%E7%BC%80/">#算法/前后缀</a>
-            
-              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
             
           </div>
         
@@ -1027,7 +1027,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/15/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="page-number" href="/page/15/#board">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/17/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/15/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/#board">14</a><a class="page-number" href="/page/15/#board">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/#board">17</a><a class="page-number" href="/page/18/#board">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="extend next" rel="next" href="/page/17/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
