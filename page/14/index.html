@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/6c8a9ff1/" target="_self">
-          P2371 墨墨的等式 (Modulo_Shortest_Path)
+        <a href="/posts/a3783e6/" target="_self">
+          P3199 最小圈 (Fractional_Programming_Graph)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/6c8a9ff1/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a3783e6/" target="_self">
         <div>
-          Luogu-P2371 墨墨的等式 1. 核心逻辑   问题本质: 求解 ∑aixi=B\sum a_i x_i = B∑ai​xi​=B 在区间 [L,R][L, R][L,R] 内有多少个 BBB 存在非负整数解。   破局转换:   状态坍缩：直接求解组合数不可行。考虑模 mn=min⁡{ai}mn = \min\{a_i\}mn=min{ai​} 的余数类。   建模映射：令 dist[i
+          Luogu-P3199 最小圈 1. 核心逻辑   问题本质: 在有向图中寻找一个环，最小化环上边权的平均值 ∑w∣V∣\frac{\sum w}{|V|}∣V∣∑w​。   核心切入点:   01 分数规划: 假设平均值为 λ\lambdaλ，判定是否存在环满足 ∑w∣V∣&lt;λ\frac{\sum w}{|V|} &lt; \lambda∣V∣∑w​&lt;λ。   数学变换: ∑w&lt
         </div>
       </a>
 
@@ -322,7 +322,84 @@
             
               <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%90%8C%E4%BD%99%E7%B3%BB/">#数学/同余系</a>
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#数学/分数规划</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/417ca395/" target="_self">
+          P6175 无向图的最小环 (Floyd_Min_Cycle)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/417ca395/" target="_self">
+        <div>
+          Luogu-P6175 无向图的最小环 1. 核心逻辑   问题本质: 在无向加权图中寻找一个权值和最小的简单环。   核心切入点:   Floyd 阶段性: Floyd 算法在外层循环到 kkk 时，d[i][j] 存储的是仅通过节点 1…k−11 \dots k-11…k−1 的最短路。   环的构造: 一个经过 kkk 且由 1…k1 \dots k1…k 点组成的最小环，可以由 i↔ji
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-01 00:00" pubdate>
+              2025-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E5%B0%8F%E7%8E%AF/">#图论/最小环</a>
             
           </div>
         
@@ -477,83 +554,6 @@
               <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
             
               <a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%BB%BA%E6%A8%A1/">#图论/建模</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/417ca395/" target="_self">
-          P6175 无向图的最小环 (Floyd_Min_Cycle)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/417ca395/" target="_self">
-        <div>
-          Luogu-P6175 无向图的最小环 1. 核心逻辑   问题本质: 在无向加权图中寻找一个权值和最小的简单环。   核心切入点:   Floyd 阶段性: Floyd 算法在外层循环到 kkk 时，d[i][j] 存储的是仅通过节点 1…k−11 \dots k-11…k−1 的最短路。   环的构造: 一个经过 kkk 且由 1…k1 \dots k1…k 点组成的最小环，可以由 i↔ji
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-01 00:00" pubdate>
-              2025-12-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E5%B0%8F%E7%8E%AF/">#图论/最小环</a>
             
           </div>
         
@@ -875,83 +875,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/2e445cc0/" target="_self">
-          CF1076D Edge Deletion (Dijkstra_SPT)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2e445cc0/" target="_self">
-        <div>
-          Luogu-CF1076D Edge Deletion 1. 核心逻辑   问题本质: 在保留最多 KKK 条边的前提下，最大化“到源点距离不变”的点数。   破局转换:   结构提取：只要保留最短路树（SPT）上的边，对应点的最短路长度就不会改变。   贪心策略：SPT 是一棵树，节点数 NNN，边数 N−1N-1N−1。如果 K&lt;N−1K &lt; N-1K&lt;N−1，为了让尽可能多
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-25 00:00" pubdate>
-              2025-11-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF%E6%A0%91/">#树论/最短路树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/a3e9be80/" target="_self">
           CF149D Coloring Brackets (Interval_Recursive_Match)
         </a>
@@ -1023,11 +946,88 @@
     </article>
   </div>
 
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/8102430d/" target="_self">
+          P1063 [NOIP2006] 能量项链 (Interval_Ring_Merge)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8102430d/" target="_self">
+        <div>
+          Luogu-P1063 能量项链 ## 1. 核心逻辑   问题本质: 珠子 iii 的参数为 (ai,ai+1)(a_i, a_{i+1})(ai​,ai+1​)，合并珠子 i,ji, ji,j 产生能量 ai⋅amid+1⋅aj+1a_i \cdot a_{mid+1} \cdot a_{j+1}ai​⋅amid+1​⋅aj+1​。求释放能量的最大值。   破局转换:   模型归约: 本质是“
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-25 00:00" pubdate>
+              2025-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04-%E5%8C%BA%E9%97%B4%E6%A8%A1%E5%9E%8B/" class="category-chain-item">04_区间模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/DP-%E5%8C%BA%E9%97%B4/">#DP/区间</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E7%8E%AF%E5%BD%A2%E5%A4%84%E7%90%86/">#算法/环形处理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/13/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/#board">12</a><a class="page-number" href="/page/13/#board">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/#board">15</a><a class="page-number" href="/page/16/#board">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="extend next" rel="next" href="/page/15/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/13/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/#board">12</a><a class="page-number" href="/page/13/#board">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/#board">15</a><a class="page-number" href="/page/16/#board">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/15/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

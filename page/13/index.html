@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/40e03907/" target="_self">
-          P6033 [加强] 合并果子
+        <a href="/posts/21cfea74/" target="_self">
+          P2827 [NOIP2016] 蚯蚓
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/40e03907/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/21cfea74/" target="_self">
         <div>
-          Luogu-P6033 合并果子 1. 核心逻辑   问题本质: 求哈夫曼树的最小带权路径长度。在 N=107N=10^7N=107 下规避 O(Nlog⁡N)O(N \log N)O(NlogN) 的优先队列。   破局转换:   单调性: 在输入有序的前提下，新合成出的节点权值也具备单调递增性。   双队列优化:   q1: 存放初始权值（桶排序后推入，天然有序）。   q2: 存放新合成的权
+          Luogu-P2827 蚯蚓 1. 核心逻辑   问题本质: 动态维护最大值切分。利用隐含单调性避开优先队列的 O(Mlog⁡N)O(M \log N)O(MlogN)。   破局转换:   隐含单调性：先切开的蚯蚓分段一定比后切开的长。维护三个单调队列。   全局偏移 (Offset)：利用 offset 记录累计增长，入队时减去增量抵消时差。     2. 代码实现
         </div>
       </a>
 
@@ -296,12 +296,12 @@
   
     <span>></span>
     
-  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/99-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/03-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">03_贪心与构造</a>
+  <a href="/categories/99-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/" class="category-chain-item">01_线性结构</a>
   
   
 
@@ -319,8 +319,6 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/">#算法/贪心</a>
             
               <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#单调性/单调队列</a>
             
@@ -397,9 +395,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%88%86%E6%B2%BB/">#算法/分治</a>
-            
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%88%86%E6%B2%BB/">#算法/分治</a>
             
           </div>
         
@@ -551,9 +549,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%89%AB%E6%8F%8F%E7%BA%BF/">#算法/扫描线</a>
-            
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%89%AB%E6%8F%8F%E7%BA%BF/">#算法/扫描线</a>
             
           </div>
         
@@ -796,83 +794,6 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/73e92509/" target="_self">
-          P1993 小K的农场 (Difference_Constraints)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/73e92509/" target="_self">
-        <div>
-          Luogu-P1993 小K的农场 1. 核心逻辑   问题本质: 给定一系列变量间的差值约束，判定是否有解。   破局转换:   代数转几何：将 xa−xb≤wx_a - x_b \le wxa​−xb​≤w 映射为图论中的边 b→wab \xrightarrow{w} abw​a。   标准转化：   xa−xb≥c  ⟹  xb−xa≤−c  ⟹  b←−cax_a - x_b \ge c
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-01 00:00" pubdate>
-              2025-12-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">#图论/差分约束</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
         <a href="/posts/8b78c35a/" target="_self">
           P1144 最短路计数 (Shortest_Path_Counting)
         </a>
@@ -950,15 +871,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/a3783e6/" target="_self">
-          P3199 最小圈 (Fractional_Programming_Graph)
+        <a href="/posts/73e92509/" target="_self">
+          P1993 小K的农场 (Difference_Constraints)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/a3783e6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/73e92509/" target="_self">
         <div>
-          Luogu-P3199 最小圈 1. 核心逻辑   问题本质: 在有向图中寻找一个环，最小化环上边权的平均值 ∑w∣V∣\frac{\sum w}{|V|}∣V∣∑w​。   核心切入点:   01 分数规划: 假设平均值为 λ\lambdaλ，判定是否存在环满足 ∑w∣V∣&lt;λ\frac{\sum w}{|V|} &lt; \lambda∣V∣∑w​&lt;λ。   数学变换: ∑w&lt
+          Luogu-P1993 小K的农场 1. 核心逻辑   问题本质: 给定一系列变量间的差值约束，判定是否有解。   破局转换:   代数转几何：将 xa−xb≤wx_a - x_b \le wxa​−xb​≤w 映射为图论中的边 b→wab \xrightarrow{w} abw​a。   标准转化：   xa−xb≥c  ⟹  xb−xa≤−c  ⟹  b←−cax_a - x_b \ge c
         </div>
       </a>
 
@@ -1011,9 +932,86 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92/">#数学/分数规划</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F/">#图论/差分约束</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/6c8a9ff1/" target="_self">
+          P2371 墨墨的等式 (Modulo_Shortest_Path)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/6c8a9ff1/" target="_self">
+        <div>
+          Luogu-P2371 墨墨的等式 1. 核心逻辑   问题本质: 求解 ∑aixi=B\sum a_i x_i = B∑ai​xi​=B 在区间 [L,R][L, R][L,R] 内有多少个 BBB 存在非负整数解。   破局转换:   状态坍缩：直接求解组合数不可行。考虑模 mn=min⁡{ai}mn = \min\{a_i\}mn=min{ai​} 的余数类。   建模映射：令 dist[i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-01 00:00" pubdate>
+              2025-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%90%8C%E4%BD%99%E7%B3%BB/">#数学/同余系</a>
             
           </div>
         
@@ -1025,7 +1023,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/12/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/#board">14</a><a class="page-number" href="/page/15/#board">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="extend next" rel="next" href="/page/14/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/12/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#board">11</a><a class="page-number" href="/page/12/#board">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/#board">14</a><a class="page-number" href="/page/15/#board">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/14/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

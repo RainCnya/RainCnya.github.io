@@ -19,22 +19,23 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="Luogu-P1638 逛画展 1. 核心逻辑   问题本质: 寻找包含全量特征（M 种画师）的最短连续子序列。   破局转换:   双指针单调性: 随着右端点 RRR 增加，包含的特征数单调不减；若当前已集齐，右移 LLL 仅会使区间更短。   伸缩策略:   扩张 (Expand): RRR 指针主动向右，记录画师出现频次。   收缩 (Shrink): 当满足全量覆盖时，尝试右移 LLL。若">
+    <meta name="description" content="Luogu-P1638 逛画展 1. 核心逻辑   问题本质: 寻找包含全量特征（M 种画师）的最短连续子序列。   破局转换:   双指针单调性: 随着右端点 RRR 增加，包含的特征数单调不减；若当前已集齐，右移 LLL 仅会使区间更短。   伸缩策略:   扩张: RRR 指针主动向右，记录画师出现频次。   收缩: 当满足全量覆盖时，尝试右移 LLL。若 LLL 指向的画师在窗口内仍有余量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1638 逛画展">
+<meta property="og:title" content="[Leaf] [P1638] 逛画展">
 <meta property="og:url" content="https://example.com/posts/690b243c/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="Luogu-P1638 逛画展 1. 核心逻辑   问题本质: 寻找包含全量特征（M 种画师）的最短连续子序列。   破局转换:   双指针单调性: 随着右端点 RRR 增加，包含的特征数单调不减；若当前已集齐，右移 LLL 仅会使区间更短。   伸缩策略:   扩张 (Expand): RRR 指针主动向右，记录画师出现频次。   收缩 (Shrink): 当满足全量覆盖时，尝试右移 LLL。若">
+<meta property="og:description" content="Luogu-P1638 逛画展 1. 核心逻辑   问题本质: 寻找包含全量特征（M 种画师）的最短连续子序列。   破局转换:   双指针单调性: 随着右端点 RRR 增加，包含的特征数单调不减；若当前已集齐，右移 LLL 仅会使区间更短。   伸缩策略:   扩张: RRR 指针主动向右，记录画师出现频次。   收缩: 当满足全量覆盖时，尝试右移 LLL。若 LLL 指向的画师在窗口内仍有余量">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-11-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:46.437Z">
+<meta property="article:modified_time" content="2026-01-13T13:04:11.679Z">
 <meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="P1&#x2F;基础">
 <meta property="article:tag" content="单调性&#x2F;双指针">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1638 逛画展 - MiQiu</title>
+  <title>[Leaf] [P1638] 逛画展 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1638 逛画展"></span>
+            <span id="subtitle" data-typed-text="[Leaf] [P1638] 逛画展"></span>
           
         </div>
 
@@ -318,7 +319,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1638 逛画展</h1>
+            <h1 id="seo-header">[Leaf] [P1638] 逛画展</h1>
             
             
               <div class="markdown-body">
@@ -339,10 +340,10 @@
 <p><strong>伸缩策略</strong>:</p>
 <ul>
 <li>
-<p><strong>扩张 (Expand)</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 指针主动向右，记录画师出现频次。</p>
+<p><strong>扩张</strong>: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 指针主动向右，记录画师出现频次。</p>
 </li>
 <li>
-<p><strong>收缩 (Shrink)</strong>: 当满足全量覆盖时，尝试右移 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>。若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 指向的画师在窗口内仍有余量（<code>cnt[a[L]] &gt; 1</code>），则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 的移动不改变“全量覆盖”这一不变量。</p>
+<p><strong>收缩</strong>: 当满足全量覆盖时，尝试右移 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span>。若 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 指向的画师在窗口内仍有余量（<code>cnt[a[L]] &gt; 1</code>），则 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi></mrow><annotation encoding="application/x-tex">L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span></span></span></span> 的移动不改变“全量覆盖”这一不变量。</p>
 </li>
 </ul>
 </li>
@@ -357,13 +358,18 @@
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// P1638 逛画展</span><br><span class="hljs-comment">// Key Logic: Two Pointers for Shortest Range Cover</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxm = <span class="hljs-number">2005</span>;<br><br><span class="hljs-type">int</span> n, m, a[ maxn ], bucket[ maxm ];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br><br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) cin &gt;&gt; a[ i ];<br><br>    <span class="hljs-type">int</span> L = <span class="hljs-number">1</span>, cnt = <span class="hljs-number">0</span>, min_len = <span class="hljs-number">2e9</span>, ansL = <span class="hljs-number">0</span>, ansR = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> R = <span class="hljs-number">1</span>; R &lt;= n; ++ R )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( ! bucket[ a[ R ] ] ) ++ cnt;<br>        ++ bucket[ a[ R ] ];<br><br>        <span class="hljs-keyword">while</span>( cnt == m )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( R - L + <span class="hljs-number">1</span> &lt; min_len )<br>            &#123;<br>                min_len = R - L + <span class="hljs-number">1</span>;<br>                ansL = L; ansR = R;<br>            &#125;<br><br>            -- bucket[ a[ L ] ];<br>            <span class="hljs-keyword">if</span>( ! bucket[ a[ L ] ] ) -- cnt;<br>            ++ L;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; ansL &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; ansR &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e6</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxm = <span class="hljs-number">2005</span>;<br><br><span class="hljs-type">int</span> n, m, a[maxn], bucket[maxm];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>( <span class="hljs-number">0</span> );<br>    cin.<span class="hljs-built_in">tie</span>( <span class="hljs-number">0</span> );<br><br>    cin &gt;&gt; n &gt;&gt; m;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) cin &gt;&gt; a[ i ];<br><br>    <span class="hljs-type">int</span> L = <span class="hljs-number">1</span>, cnt = <span class="hljs-number">0</span>, <br>    <span class="hljs-type">int</span> min_len = <span class="hljs-number">2e9</span>;<br>    <span class="hljs-type">int</span> ansL = <span class="hljs-number">0</span>, ansR = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> R = <span class="hljs-number">1</span>; R &lt;= n; ++ R )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( ! bucket[ a[R] ] ) ++ cnt;<br>        ++ bucket[ a[R] ];<br><br>        <span class="hljs-keyword">while</span>( cnt == m )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( R - L + <span class="hljs-number">1</span> &lt; min_len )<br>            &#123;<br>                min_len = R - L + <span class="hljs-number">1</span>;<br>                ansL = L; ansR = R;<br>            &#125;<br><br>            -- bucket[ a[L] ];<br>            <span class="hljs-keyword">if</span>( ! bucket[ a[L] ] ) -- cnt;<br>            ++ L;<br>        &#125;<br>    &#125;<br><br>    cout &lt;&lt; ansL &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; ansR &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="3-归档备注">3. 归档备注</h2>
 <ul>
-<li><strong>易错点</strong>: 注意 <code>cnt</code> 仅在桶从 0 变 1 或从 1 变 0 时触发更新。</li>
+<li>
+<p><strong>易错点</strong>: 注意 <code>cnt</code> 仅在桶从 0 变 1 或从 1 变 0 时触发更新。</p>
+</li>
+<li>
+<p><strong>关联知识点</strong>：<a  href="/posts/c29d9edd/">双指针</a></p>
+</li>
 </ul>
 
                 
@@ -412,6 +418,8 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/P1-%E5%9F%BA%E7%A1%80/" class="print-no-link">#P1/基础</a>
+      
         <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E5%8F%8C%E6%8C%87%E9%92%88/" class="print-no-link">#单调性/双指针</a>
       
     </div>
@@ -424,7 +432,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1638 逛画展</div>
+      <div>[Leaf] [P1638] 逛画展</div>
       <div>https://example.com/posts/690b243c/</div>
     </div>
     <div class="license-meta">
@@ -469,9 +477,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/1be22388/" title="AT_arc098_b Xor Sum 2">
+                      <a href="/posts/c58c71ee/" title="P3467 [POI2008] PLA-Posters">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AT_arc098_b Xor Sum 2</span>
+                        <span class="hidden-mobile">P3467 [POI2008] PLA-Posters</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -479,8 +487,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/c971b93/" title="P2866 [USACO06NOV] Bad Hair Day S">
-                        <span class="hidden-mobile">P2866 [USACO06NOV] Bad Hair Day S</span>
+                      <a href="/posts/34ceb65d/" title="P1052 [NOIP2005] 过河 (Linear_Coord_Compression)">
+                        <span class="hidden-mobile">P1052 [NOIP2005] 过河 (Linear_Coord_Compression)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

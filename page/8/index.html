@@ -336,15 +336,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/c64787d4/" target="_self">
-          CF2171D Rae Taylor and Trees (Tree_Existence_Construction)
+        <a href="/posts/1af256f/" target="_self">
+          CF2152C Triple Removal (前缀和区间查询)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/c64787d4/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1af256f/" target="_self">
         <div>
-          CF2171D Rae Taylor and Trees (Easy) 1. 核心逻辑   问题本质: 给定排列 PPP，判断是否存在一棵树，使得任意边 (u,v)(u, v)(u,v) (设 u&lt;vu &lt; vu&lt;v) 均满足 uuu 在 PPP 中出现的位置早于 vvv。   核心切入点:   必要条件分析: 若树存在，则对于任何一种将点集划分为左右两半的切分，必须存在一条边跨
+          CF-2152C Triple Removal 1. 核心逻辑   问题本质: 判定子区间 [L,R][L, R][L,R] 是否能通过三消规则排空，并计算是否存在“特殊惩罚代价”。   破局转换:   必要条件: 0 和 1 的总数必须均为 3 的倍数。   代价分类:   基础代价: (cnt0/3)+(cnt1/3)(cnt0/3) + (cnt1/3)(cnt0/3)+(cnt1/3)。
         </div>
       </a>
 
@@ -373,12 +373,12 @@
   
     <span>></span>
     
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">02_降维技巧</a>
   
   
 
@@ -397,9 +397,86 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%9E%84%E9%80%A0/">#树论/构造</a>
+              <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/">#逆运算/前缀和</a>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%80%A7%E8%B4%A8%E5%88%86%E6%9E%90/">#算法/性质分析</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d48bd7b3/" target="_self">
+          CF2157C Meximum Array 2 (Mex与Min约束构造)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d48bd7b3/" target="_self">
+        <div>
+          CF2157C Meximum Array 2 1. 核心逻辑   问题本质: 根据 Min 与 MEX 的双重约束构造合法序列。   破局转换:   约束解析:   min⁡=k\min = kmin=k 要求所有元素 ≥k\ge k≥k。   MEX=k\text{MEX} = kMEX=k 要求包含 [0,k−1][0, k-1][0,k−1] 且剔除 kkk。     冲突消解: 若一个点
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-19 00:00" pubdate>
+              2025-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/03-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">03_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-MEX/">#数学/MEX</a>
             
           </div>
         
@@ -474,9 +551,86 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
               <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/">#数学/博弈论</a>
             
-              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/c64787d4/" target="_self">
+          CF2171D Rae Taylor and Trees (Tree_Existence_Construction)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/c64787d4/" target="_self">
+        <div>
+          CF2171D Rae Taylor and Trees (Easy) 1. 核心逻辑   问题本质: 给定排列 PPP，判断是否存在一棵树，使得任意边 (u,v)(u, v)(u,v) (设 u&lt;vu &lt; vu&lt;v) 均满足 uuu 在 PPP 中出现的位置早于 vvv。   核心切入点:   必要条件分析: 若树存在，则对于任何一种将点集划分为左右两半的切分，必须存在一条边跨
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-19 00:00" pubdate>
+              2025-12-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%9E%84%E9%80%A0/">#树论/构造</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%80%A7%E8%B4%A8%E5%88%86%E6%9E%90/">#算法/性质分析</a>
             
           </div>
         
@@ -628,88 +782,11 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
+            
               <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/">#数学/博弈论</a>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
-            
               <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/bab96266/" target="_self">
-          CF911F Tree Destruction (Diameter_Constructive)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/bab96266/" target="_self">
-        <div>
-          CF911F Tree Destruction 1. 核心逻辑   问题本质: 构造一个删点序列，使得每次删除节点时，该节点与树中剩余某点的距离之和最大。   破局转换:   距离极限: 树上任意点的最远点必然是直径的端点 AAA 或 BBB 之一。   两阶段贪心:   第一阶段 (挂载点): 优先删除不在直径上的点。对于点 uuu，选择距离更远的直径端点进行配对，贡献为 max⁡(dist(u
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-18 00:00" pubdate>
-              2025-12-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
             
           </div>
         
@@ -800,6 +877,83 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/bab96266/" target="_self">
+          CF911F Tree Destruction (Diameter_Constructive)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/bab96266/" target="_self">
+        <div>
+          CF911F Tree Destruction 1. 核心逻辑   问题本质: 构造一个删点序列，使得每次删除节点时，该节点与树中剩余某点的距离之和最大。   破局转换:   距离极限: 树上任意点的最远点必然是直径的端点 AAA 或 BBB 之一。   两阶段贪心:   第一阶段 (挂载点): 优先删除不在直径上的点。对于点 uuu，选择距离更远的直径端点进行配对，贡献为 max⁡(dist(u
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-18 00:00" pubdate>
+              2025-12-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9E%84%E9%80%A0/">#算法/构造</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/b7868cc/" target="_self">
           P1395 会议 (Centroid_MinDist)
         </a>
@@ -861,163 +1015,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
-            
               <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#算法/贡献法</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/7fb577ad/" target="_self">
-          P1967 货车运输 (MaxST_LCA_Bottleneck)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/7fb577ad/" target="_self">
-        <div>
-          Luogu-P1967 货车运输 1. 核心逻辑   问题本质: 在带权无向图中，寻找两点间路径，使得路径上的最小边权最大（瓶颈路问题）。   破局转换:   结构坍缩：根据 Kruskal 原理，原图的瓶颈路必然落在其最大生成树 (MaxST) 上。   模型映射：将图转化为最大生成森林，问题转化为求树上两点路径间的边权最小值。   状态维护：利用 LCA 倍增法。定义 f[u][i]f[u][
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-18 00:00" pubdate>
-              2025-12-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-MST/">#树论/MST</a>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-LCA/">#树论/LCA</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/ea96a98/" target="_self">
-          P3629 [APIO2010] 巡逻 (Diameter_Greedy)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/ea96a98/" target="_self">
-        <div>
-          Luogu-P3629 [APIO2010] 巡逻 1. 核心逻辑   问题本质: 在树上添加 K∈{1,2}K \in \{1, 2\}K∈{1,2} 条边，使得遍历所有边（包含新边）并回到起点的总代价最小。   破局转换:   初始状态: 不加边时，每条边必走两次，总和 2(N−1)2(N-1)2(N−1)。   K=1K=1K=1 策略: 添加直径 L1L_1L1​ 的两端，形成一个大环。环
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-12-18 00:00" pubdate>
-              2025-12-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/03-%E6%A0%91%E4%B8%8A%E9%97%AE%E9%A2%98/" class="category-chain-item">03_树上问题</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/">#算法/贪心</a>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
             
           </div>
         
@@ -1029,7 +1029,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/#board">21</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#board">20</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

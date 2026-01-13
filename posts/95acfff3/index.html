@@ -21,21 +21,22 @@
   
     <meta name="description" content="Luogu-P1314 P1314 聪明的质监员 1. 核心逻辑   模型抽象: 给定阈值 WWW，统计量 Y(W)Y(W)Y(W) 与目标 SSS 的偏差最小化。   破局路径:   单调性: WWW 增加，满足条件的矿石（wi≥Ww_i \ge Wwi​≥W）子集缩小。YYY 值作为非负权值的乘积和，随 WWW 严格单调递减。   判定加速: Y&#x3D;∑(count(wi≥W)×sum(vi wh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1314 [NOIP2011] 聪明的质监员">
+<meta property="og:title" content="[Leaf] [P1314] [NOIP2011] 聪明的质监员">
 <meta property="og:url" content="https://example.com/posts/95acfff3/index.html">
 <meta property="og:site_name" content="MiQiu">
 <meta property="og:description" content="Luogu-P1314 P1314 聪明的质监员 1. 核心逻辑   模型抽象: 给定阈值 WWW，统计量 Y(W)Y(W)Y(W) 与目标 SSS 的偏差最小化。   破局路径:   单调性: WWW 增加，满足条件的矿石（wi≥Ww_i \ge Wwi​≥W）子集缩小。YYY 值作为非负权值的乘积和，随 WWW 严格单调递减。   判定加速: Y&#x3D;∑(count(wi≥W)×sum(vi wh">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:46.436Z">
+<meta property="article:modified_time" content="2026-01-13T13:38:18.491Z">
 <meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="P2&#x2F;提高">
 <meta property="article:tag" content="单调性&#x2F;二分">
 <meta property="article:tag" content="逆运算&#x2F;前缀和">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1314 [NOIP2011] 聪明的质监员 - MiQiu</title>
+  <title>[Leaf] [P1314] [NOIP2011] 聪明的质监员 - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1314 [NOIP2011] 聪明的质监员"></span>
+            <span id="subtitle" data-typed-text="[Leaf] [P1314] [NOIP2011] 聪明的质监员"></span>
           
         </div>
 
@@ -261,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          455 字
+          464 字
         
       </span>
     
@@ -319,7 +320,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P1314 [NOIP2011] 聪明的质监员</h1>
+            <h1 id="seo-header">[Leaf] [P1314] [NOIP2011] 聪明的质监员</h1>
             
             
               <div class="markdown-body">
@@ -364,6 +365,9 @@
 </li>
 <li>
 <p><strong>反思</strong>: 偏差函数 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi>Y</mi><mo>−</mo><mi>S</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|Y-S|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord">∣</span></span></span></span> 呈“V”型，二分实际上是在寻找函数通过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 的零点（或最接近点）。</p>
+</li>
+<li>
+<p><strong>关联知识点</strong>：<a  href="/posts/9f633e52/">二分体系</a></p>
 </li>
 </ul>
 
@@ -413,6 +417,8 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/P2-%E6%8F%90%E9%AB%98/" class="print-no-link">#P2/提高</a>
+      
         <a href="/tags/%E5%8D%95%E8%B0%83%E6%80%A7-%E4%BA%8C%E5%88%86/" class="print-no-link">#单调性/二分</a>
       
         <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#逆运算/前缀和</a>
@@ -427,7 +433,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1314 [NOIP2011] 聪明的质监员</div>
+      <div>[Leaf] [P1314] [NOIP2011] 聪明的质监员</div>
       <div>https://example.com/posts/95acfff3/</div>
     </div>
     <div class="license-meta">
@@ -472,9 +478,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/7b3df25b/" title="P1083 [NOIP2012] 借教室">
+                      <a href="/posts/7b3df25b/" title="[Leaf] [P1083] [NOIP2012] 借教室">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1083 [NOIP2012] 借教室</span>
+                        <span class="hidden-mobile">[Leaf] [P1083] [NOIP2012] 借教室</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -482,8 +488,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/31dd7f12/" title="P3017 [USACO11MAR] Brownie Slicing G">
-                        <span class="hidden-mobile">P3017 [USACO11MAR] Brownie Slicing G</span>
+                      <a href="/posts/31dd7f12/" title="[Leaf] [P3017] [USACO11MAR] Brownie Slicing G">
+                        <span class="hidden-mobile">[Leaf] [P3017] [USACO11MAR] Brownie Slicing G</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
