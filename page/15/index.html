@@ -259,15 +259,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/posts/3cab7524/" target="_self">
-          P1198 [JSOI2008] 最大数
+        <a href="/posts/a87389cd/" target="_self">
+          P5304 旅行者 (MultiSource_Dijkstra_Coloring)
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/3cab7524/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a87389cd/" target="_self">
         <div>
-          Luogu-P1198 最大数 1. 核心逻辑   问题本质: 末尾不断追加元素的动态序列，查询后缀最值。   破局转换:   动态 ST 表：通常 ST 表是静态的，但在末尾追加时，旧的倍增值并不会受影响。   递推维护：当加入第 cnt 个元素时，利用 ST[cnt][j]=max⁡(ST[cnt][j−1],ST[cnt−2j−1][j−1])ST[cnt][j] = \max(ST[cnt
+          Luogu-P5304 旅行者 1. 核心逻辑   问题本质: 给定 KKK 个关键点，寻找这 KKK 个点中任意两点间的最短路径长度。   核心切入点:   暴力局限: 运行 KKK 次 Dijkstra 会超时。   染色/势力范围模型:   运行一次多源 Dijkstra，求出每个点 uuu 距离最近的关键点 col1[u] 及距离 d1[u]。   建立反图，运行一次多源反向 Dijkst
         </div>
       </a>
 
@@ -275,8 +275,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-28 00:00" pubdate>
-              2025-11-28
+            <time datetime="2025-12-01 00:00" pubdate>
+              2025-12-01
             </time>
           </div>
         
@@ -296,12 +296,12 @@
   
     <span>></span>
     
-  <a href="/categories/99-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03-%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E/" class="category-chain-item">03_集合与倍增</a>
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
   
   
 
@@ -320,9 +320,86 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%80%8D%E5%A2%9E/">#数据结构/倍增</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
             
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-RMQ/">#数据结构/RMQ</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%9F%93%E8%89%B2%E6%B3%95/">#算法/染色法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/148132d/" target="_self">
+          P2829 大逃离 (Strict_Second_Shortest_Path)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/148132d/" target="_self">
+        <div>
+          Luogu-P2829 大逃离 (次短路) 1. 核心逻辑   问题本质: 求无向图中从起点到终点的严格次短路（且满足某些特定点的度数约束）。   核心切入点:   状态扩展: 在 Dijkstra 中维护两个状态：d1[u]（最短路）和 d2[u]（次短路）。   转移逻辑: 对于边 (u,v,w)(u, v, w)(u,v,w)，计算新路径 len=d+wlen = d + wlen=d+w：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-29 00:00" pubdate>
+              2025-11-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%AC%A1%E7%9F%AD%E8%B7%AF/">#图论/次短路</a>
             
           </div>
         
@@ -413,6 +490,83 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/3cab7524/" target="_self">
+          P1198 [JSOI2008] 最大数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3cab7524/" target="_self">
+        <div>
+          Luogu-P1198 最大数 1. 核心逻辑   问题本质: 末尾不断追加元素的动态序列，查询后缀最值。   破局转换:   动态 ST 表：通常 ST 表是静态的，但在末尾追加时，旧的倍增值并不会受影响。   递推维护：当加入第 cnt 个元素时，利用 ST[cnt][j]=max⁡(ST[cnt][j−1],ST[cnt−2j−1][j−1])ST[cnt][j] = \max(ST[cnt
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-28 00:00" pubdate>
+              2025-11-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">01_数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/03-%E9%9B%86%E5%90%88%E4%B8%8E%E5%80%8D%E5%A2%9E/" class="category-chain-item">03_集合与倍增</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%80%8D%E5%A2%9E/">#数据结构/倍增</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-RMQ/">#数据结构/RMQ</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/d06e55a1/" target="_self">
           P1525 [NOIP2010] 关押罪犯
         </a>
@@ -477,83 +631,6 @@
               <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/">#算法/贪心</a>
             
               <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%B9%B6%E6%9F%A5%E9%9B%86/">#数据结构/并查集</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/2e445cc0/" target="_self">
-          CF1076D Edge Deletion (Dijkstra_SPT)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/2e445cc0/" target="_self">
-        <div>
-          Luogu-CF1076D Edge Deletion 1. 核心逻辑   问题本质: 在保留最多 KKK 条边的前提下，最大化“到源点距离不变”的点数。   破局转换:   结构提取：只要保留最短路树（SPT）上的边，对应点的最短路长度就不会改变。   贪心策略：SPT 是一棵树，节点数 NNN，边数 N−1N-1N−1。如果 K&lt;N−1K &lt; N-1K&lt;N−1，为了让尽可能多
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-25 00:00" pubdate>
-              2025-11-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF%E6%A0%91/">#树论/最短路树</a>
             
           </div>
         
@@ -798,6 +875,83 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/posts/2e445cc0/" target="_self">
+          CF1076D Edge Deletion (Dijkstra_SPT)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2e445cc0/" target="_self">
+        <div>
+          Luogu-CF1076D Edge Deletion 1. 核心逻辑   问题本质: 在保留最多 KKK 条边的前提下，最大化“到源点距离不变”的点数。   破局转换:   结构提取：只要保留最短路树（SPT）上的边，对应点的最短路长度就不会改变。   贪心策略：SPT 是一棵树，节点数 NNN，边数 N−1N-1N−1。如果 K&lt;N−1K &lt; N-1K&lt;N−1，为了让尽可能多
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-25 00:00" pubdate>
+              2025-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">02_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/99-Library/02-%E5%9B%BE%E8%AE%BA/01-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="category-chain-item">01_最短路及其应用</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF%E6%A0%91/">#树论/最短路树</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/posts/7c9286d9/" target="_self">
           P1758 [NOI2009] 管道取珠 (Grid_Walking_Conversion)
         </a>
@@ -862,160 +1016,6 @@
               <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
             
               <a href="/tags/%E6%95%B0%E5%AD%A6-%E6%80%A7%E8%B4%A8%E8%BD%AC%E6%8D%A2/">#数学/性质转换</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/38f7b3d1/" target="_self">
-          P1040 [NOIP2003] 加分二叉树 (Interval_Tree_Order)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/38f7b3d1/" target="_self">
-        <div>
-          Luogu-P1040 加分二叉树 1. 核心逻辑   问题本质: 给定中序遍历序列 1,2,…,N1, 2, \dots, N1,2,…,N，寻找一颗加分最高的二叉树。规则：左子树分 ×\times× 右子树分 +++ 根节点分。   破局转换:   遍历映射: 中序遍历的子树必然对应原序列的一个连续区间 [l,r][l, r][l,r]。   阶段决策: 枚举 k∈[l,r]k \in [l,
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04-%E5%8C%BA%E9%97%B4%E6%A8%A1%E5%9E%8B/" class="category-chain-item">04_区间模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP-%E5%8C%BA%E9%97%B4/">#DP/区间</a>
-            
-              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%81%8D%E5%8E%86/">#树论/遍历</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/posts/e4f80a95/" target="_self">
-          P2890 Cheapest Palindrome (Interval_Palindrome)
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/posts/e4f80a95/" target="_self">
-        <div>
-          Luogu-P2890 Cheapest Palindrome 1. 核心逻辑   问题本质: 通过最小代价的增删操作将字符串转化为回文。   破局转换:   代价等价性: 在回文构造中，“删除左侧 s[l]s[l]s[l]” 等价于 “在右侧添加 s[l]s[l]s[l]”，目标都是使两端对称。因此每个字符的综合代价 Cost(c)=min⁡(Add(c),Del(c))Cost(c) = \m
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-11-24 00:00" pubdate>
-              2025-11-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/04-%E5%8C%BA%E9%97%B4%E6%A8%A1%E5%9E%8B/" class="category-chain-item">04_区间模型</a>
-  
-  
-
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/DP-%E5%8C%BA%E9%97%B4/">#DP/区间</a>
-            
-              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%AF%B9%E7%A7%B0%E6%80%A7/">#算法/对称性</a>
             
           </div>
         
