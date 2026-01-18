@@ -21,21 +21,22 @@
   
     <meta name="description" content="Luogu-P2882 Face The Right Way 1. 核心逻辑   问题本质: 枚举翻转步长 KKK，求最少操作数使所有牛面向前方。   破局转换:   强制性贪心: 从左至右扫描，若当前牛面向后方，必须且只能以它为左端点进行长为 KKK 的翻转。因为之前的牛已经调整好，这是唯一的纠错机会。   维度压缩 (Check): 频繁的区间翻转利用差分思想进行 O(1)O(1)O(1) 打">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P2882 [USACO07MAR] Face The Right Way G">
+<meta property="og:title" content="[Leaf] [P2882] Face The Right Way G">
 <meta property="og:url" content="https://example.com/posts/9b24815e/index.html">
 <meta property="og:site_name" content="MiQiu">
 <meta property="og:description" content="Luogu-P2882 Face The Right Way 1. 核心逻辑   问题本质: 枚举翻转步长 KKK，求最少操作数使所有牛面向前方。   破局转换:   强制性贪心: 从左至右扫描，若当前牛面向后方，必须且只能以它为左端点进行长为 KKK 的翻转。因为之前的牛已经调整好，这是唯一的纠错机会。   维度压缩 (Check): 频繁的区间翻转利用差分思想进行 O(1)O(1)O(1) 打">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:46.437Z">
+<meta property="article:modified_time" content="2026-01-18T06:48:45.628Z">
 <meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="策略&#x2F;贪心">
+<meta property="article:tag" content="P1&#x2F;提高-">
 <meta property="article:tag" content="逆运算&#x2F;差分">
-<meta property="article:tag" content="算法&#x2F;贪心">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P2882 [USACO07MAR] Face The Right Way G - MiQiu</title>
+  <title>[Leaf] [P2882] Face The Right Way G - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P2882 [USACO07MAR] Face The Right Way G"></span>
+            <span id="subtitle" data-typed-text="[Leaf] [P2882] Face The Right Way G"></span>
           
         </div>
 
@@ -261,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          391 字
+          400 字
         
       </span>
     
@@ -273,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -319,7 +320,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">P2882 [USACO07MAR] Face The Right Way G</h1>
+            <h1 id="seo-header">[Leaf] [P2882] Face The Right Way G</h1>
             
             
               <div class="markdown-body">
@@ -365,6 +366,9 @@
 <li>
 <p><strong>逻辑指纹</strong>: 差分扫描线维护当前受到的“覆盖状态”，是处理频繁、固定长度区间加减/翻转的通用降维工具。</p>
 </li>
+<li>
+<p><strong>相关知识点</strong>：<a  href="/posts/undefined/">贪心体系</a></p>
+</li>
 </ul>
 
                 
@@ -384,17 +388,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/03-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">03_贪心与构造</a>
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">04_贪心与构造</a>
   
   
 
@@ -413,9 +417,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/" class="print-no-link">#逆运算/差分</a>
+        <a href="/tags/%E7%AD%96%E7%95%A5-%E8%B4%AA%E5%BF%83/" class="print-no-link">#策略/贪心</a>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83/" class="print-no-link">#算法/贪心</a>
+        <a href="/tags/P1-%E6%8F%90%E9%AB%98/" class="print-no-link">#P1/提高-</a>
+      
+        <a href="/tags/%E9%80%86%E8%BF%90%E7%AE%97-%E5%B7%AE%E5%88%86/" class="print-no-link">#逆运算/差分</a>
       
     </div>
   
@@ -427,7 +433,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P2882 [USACO07MAR] Face The Right Way G</div>
+      <div>[Leaf] [P2882] Face The Right Way G</div>
       <div>https://example.com/posts/9b24815e/</div>
     </div>
     <div class="license-meta">
@@ -472,9 +478,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/121e91e/" title="AT_arc100_c Or Plus Max (Opt_SOS_Bitmask)">
+                      <a href="/posts/ee911d25/" title="[Leaf] [P2671] 求和">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">AT_arc100_c Or Plus Max (Opt_SOS_Bitmask)</span>
+                        <span class="hidden-mobile">[Leaf] [P2671] 求和</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -482,8 +488,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/ee911d25/" title="P2671 [NOIP2015] 求和">
-                        <span class="hidden-mobile">P2671 [NOIP2015] 求和</span>
+                      <a href="/posts/7b3df25b/" title="[Leaf] [P1083] [NOIP2012] 借教室">
+                        <span class="hidden-mobile">[Leaf] [P1083] [NOIP2012] 借教室</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

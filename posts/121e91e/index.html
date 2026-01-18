@@ -19,23 +19,24 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="AtCoder-ARC100C Or Plus Max 1. 核心逻辑   问题本质: 对于每个 K∈[1,2N−1]K \in [1, 2^N-1]K∈[1,2N−1]，求 max⁡{A[i]+A[j]}\max \{ A[i] + A[j] \}max{A[i]+A[j]}，满足 i∨j≤Ki \lor j \le Ki∨j≤K（即 i,ji, ji,j 都是 KKK 的子集）。   破局转换">
+    <meta name="description" content="ARC100C - Or Plus Max 1. 核心逻辑   问题本质: 对于每个 K∈[1,2N−1]K \in [1, 2^N-1]K∈[1,2N−1]，求 max⁡{A[i]+A[j]}\max \{ A[i] + A[j] \}max{A[i]+A[j]}，满足 i∨j≤Ki \lor j \le Ki∨j≤K（即 i,ji, ji,j 都是 KKK 的子集）。   破局转换:   子集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AT_arc100_c Or Plus Max (Opt_SOS_Bitmask)">
+<meta property="og:title" content="ARC100C Or Plus Max">
 <meta property="og:url" content="https://example.com/posts/121e91e/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="AtCoder-ARC100C Or Plus Max 1. 核心逻辑   问题本质: 对于每个 K∈[1,2N−1]K \in [1, 2^N-1]K∈[1,2N−1]，求 max⁡{A[i]+A[j]}\max \{ A[i] + A[j] \}max{A[i]+A[j]}，满足 i∨j≤Ki \lor j \le Ki∨j≤K（即 i,ji, ji,j 都是 KKK 的子集）。   破局转换">
+<meta property="og:description" content="ARC100C - Or Plus Max 1. 核心逻辑   问题本质: 对于每个 K∈[1,2N−1]K \in [1, 2^N-1]K∈[1,2N−1]，求 max⁡{A[i]+A[j]}\max \{ A[i] + A[j] \}max{A[i]+A[j]}，满足 i∨j≤Ki \lor j \le Ki∨j≤K（即 i,ji, ji,j 都是 KKK 的子集）。   破局转换:   子集">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-04T04:12:46.439Z">
+<meta property="article:modified_time" content="2026-01-18T06:48:45.628Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="DP&#x2F;SOS">
 <meta property="article:tag" content="数学&#x2F;位运算">
+<meta property="article:tag" content="P2&#x2F;省选-">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>AT_arc100_c Or Plus Max (Opt_SOS_Bitmask) - MiQiu</title>
+  <title>ARC100C Or Plus Max - MiQiu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -232,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AT_arc100_c Or Plus Max (Opt_SOS_Bitmask)"></span>
+            <span id="subtitle" data-typed-text="ARC100C Or Plus Max"></span>
           
         </div>
 
@@ -261,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          417 字
+          423 字
         
       </span>
     
@@ -319,12 +320,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AT_arc100_c Or Plus Max (Opt_SOS_Bitmask)</h1>
+            <h1 id="seo-header">ARC100C Or Plus Max</h1>
             
             
               <div class="markdown-body">
                 
-                <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_arc100_c">AtCoder-ARC100C</a> Or Plus Max</h1>
+                <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_arc100_c">ARC100C - Or Plus Max</a></h1>
 <h2 id="1-核心逻辑">1. 核心逻辑</h2>
 <ul>
 <li>
@@ -373,6 +374,9 @@
 <li>
 <p><strong>关键点</strong>: 理解 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>∨</mo><mi>j</mi><mo>≤</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">i \lor j \le K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∨</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> 与子集关系的等价性。SOS DP 的核心在于 Top2 信息的无损合并。</p>
 </li>
+<li>
+<p><strong>相关知识点</strong>：<a  href="/posts/5db37e5a/">SOS DP</a></p>
+</li>
 </ul>
 
                 
@@ -392,17 +396,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/99-Library/" class="category-chain-item">99_Library</a>
+  <a href="/categories/10-Library/" class="category-chain-item">10_Library</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">03_动态规划</a>
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/99-Library/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/06-%E8%AE%A1%E6%95%B0%E4%B8%8E%E6%9C%9F%E6%9C%9B/" class="category-chain-item">06_计数与期望</a>
+  <a href="/categories/10-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">01_降维技巧</a>
   
   
 
@@ -425,6 +429,8 @@
       
         <a href="/tags/%E6%95%B0%E5%AD%A6-%E4%BD%8D%E8%BF%90%E7%AE%97/" class="print-no-link">#数学/位运算</a>
       
+        <a href="/tags/P2-%E7%9C%81%E9%80%89/" class="print-no-link">#P2/省选-</a>
+      
     </div>
   
 </div>
@@ -435,7 +441,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AT_arc100_c Or Plus Max (Opt_SOS_Bitmask)</div>
+      <div>ARC100C Or Plus Max</div>
       <div>https://example.com/posts/121e91e/</div>
     </div>
     <div class="license-meta">
@@ -480,9 +486,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/62485430/" title="P1719 最大加权矩形 (Grid_2D_to_1D_MaxSub)">
+                      <a href="/posts/63edd0b2/" title="P3258 [JLOI2014] 松鼠的新家 (LCA_Point_Difference_Unique)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1719 最大加权矩形 (Grid_2D_to_1D_MaxSub)</span>
+                        <span class="hidden-mobile">P3258 [JLOI2014] 松鼠的新家 (LCA_Point_Difference_Unique)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -490,8 +496,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/9b24815e/" title="P2882 [USACO07MAR] Face The Right Way G">
-                        <span class="hidden-mobile">P2882 [USACO07MAR] Face The Right Way G</span>
+                      <a href="/posts/d728e06b/" title="P3406 海底高铁 (Chain_Difference)">
+                        <span class="hidden-mobile">P3406 海底高铁 (Chain_Difference)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

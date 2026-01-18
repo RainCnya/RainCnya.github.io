@@ -19,15 +19,15 @@
   <meta name="author" content="Miqiu">
   <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
   
-    <meta name="description" content="离散化 1. 生态位   识别:   数字的绝对值极大（如 10910^9109），导致数组开不下或值域相关算法失效。   题目逻辑只关心数字的大小关系（谁比谁大），而不关心数字之间具体的差值。     地位: 权值类数据结构（如树状数组、线段树）的必备预处理插件。   用途: 挤掉值域中的空隙，将大值域映射到紧凑的连续下标空间。   2. 逻辑支点   核心原理：排队领号:  物理直觉：不管你原">
+    <meta name="description" content="离散化 1. 生态位   识别:   数字的绝对值极大（如 10910^9109），导致数组开不下或值域相关算法失效。   题目逻辑只关心数字的大小关系（谁比谁大），而不关心数字之间具体的差值。     地位: 权值类数据结构（如树状数组、线段树）的必备预处理。   用途: 挤掉值域中的空隙，将大值域映射到紧凑的连续下标空间。   2. 逻辑支点   核心原理：映射:  物理直觉：不管你原来的身份">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Note] 离散化">
 <meta property="og:url" content="https://example.com/posts/26262b8/index.html">
 <meta property="og:site_name" content="MiQiu">
-<meta property="og:description" content="离散化 1. 生态位   识别:   数字的绝对值极大（如 10910^9109），导致数组开不下或值域相关算法失效。   题目逻辑只关心数字的大小关系（谁比谁大），而不关心数字之间具体的差值。     地位: 权值类数据结构（如树状数组、线段树）的必备预处理插件。   用途: 挤掉值域中的空隙，将大值域映射到紧凑的连续下标空间。   2. 逻辑支点   核心原理：排队领号:  物理直觉：不管你原">
+<meta property="og:description" content="离散化 1. 生态位   识别:   数字的绝对值极大（如 10910^9109），导致数组开不下或值域相关算法失效。   题目逻辑只关心数字的大小关系（谁比谁大），而不关心数字之间具体的差值。     地位: 权值类数据结构（如树状数组、线段树）的必备预处理。   用途: 挤掉值域中的空隙，将大值域映射到紧凑的连续下标空间。   2. 逻辑支点   核心原理：映射:  物理直觉：不管你原来的身份">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T04:43:46.992Z">
-<meta property="article:modified_time" content="2026-01-13T13:50:16.588Z">
+<meta property="article:modified_time" content="2026-01-18T06:31:21.833Z">
 <meta property="article:author" content="Miqiu">
 <meta property="article:tag" content="难度&#x2F;P1">
 <meta property="article:tag" content="算法&#x2F;离散化">
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          504 字
+          479 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          6 分钟
         
       </span>
     
@@ -339,7 +339,7 @@
 </ol>
 </li>
 <li>
-<p><strong>地位</strong>: 权值类数据结构（如树状数组、线段树）的必备预处理插件。</p>
+<p><strong>地位</strong>: 权值类数据结构（如树状数组、线段树）的必备预处理。</p>
 </li>
 <li>
 <p><strong>用途</strong>: 挤掉值域中的<strong>空隙</strong>，将大值域映射到紧凑的连续下标空间。</p>
@@ -348,7 +348,7 @@
 <h2 id="2-逻辑支点">2. 逻辑支点</h2>
 <ul>
 <li>
-<p><strong>核心原理：排队领号</strong>:</p>
+<p><strong>核心原理：映射</strong>:</p>
 <ul>
 <li><strong>物理直觉</strong>：不管你原来的身份证号是多少，我们只看你在所有出现过的数字里排第几。只要相对顺序不变，逻辑就不变。</li>
 </ul>
@@ -365,6 +365,9 @@
 <li>
 <p><strong>相邻性处理</strong>：在涉及区间覆盖的逻辑中，如果需要区分 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的空隙，离散化时需额外采样 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 点，防止空隙被强制“挤没”。</p>
 </li>
+<li>
+<p><strong>映射</strong>：利用 <code>lower_bound</code> 检索原值在字典中的 <code>Rank</code>。</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -372,24 +375,21 @@
 
     <div class="fold">
       <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-65ad56e5" role="button" aria-expanded="false" aria-controls="collapse-65ad56e5">
-        <div class="fold-arrow">▶</div>代码实现: 标准离散化模板
+        <div class="fold-arrow">▶</div>标准离散化模板
       </div>
       <div class="fold-collapse collapse" id="collapse-65ad56e5">
         <div class="fold-content">
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">50</span>;<br><span class="hljs-type">int</span> a[maxn], b[maxn];<br><span class="hljs-type">int</span> n, len;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">discretize</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 1. 复制数据到辅助数组 b 作为字典</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        b[i] = a[i];<br>    &#125;<br>    <br>    <span class="hljs-comment">// 2. 确立有序值域：排序 + 去重</span><br>    <span class="hljs-built_in">sort</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> );<br>    len = <span class="hljs-built_in">unique</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> ) - ( b + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 3. 映射映射：将原始值替换为在字典中的排名</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        a[i] = <span class="hljs-built_in">lower_bound</span>( b + <span class="hljs-number">1</span>, b + len + <span class="hljs-number">1</span>, a[i] ) - b;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 还原逻辑：原值 = b[ a[i] ]</span><br></code></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a[maxn], b[maxn];<br><span class="hljs-type">int</span> n;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">discretize</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 构建字典 b 数组</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        b[i] = a[i];<br>    &#125;<br>    <br>    <span class="hljs-comment">// 确立有序值域：排序 + 去重</span><br>    <span class="hljs-built_in">sort</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> );<br>    <span class="hljs-type">int</span> m = <span class="hljs-built_in">unique</span>( b + <span class="hljs-number">1</span>, b + n + <span class="hljs-number">1</span> ) - ( b + <span class="hljs-number">1</span> );<br>    <br>    <span class="hljs-comment">// 映射：将原始值替换为在字典中的排名</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        a[i] = <span class="hljs-built_in">lower_bound</span>( b + <span class="hljs-number">1</span>, b + m + <span class="hljs-number">1</span>, a[i] ) - b;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 还原逻辑：原值 = b[ a[i] ]</span><br></code></pre></td></tr></table></figure>
         </div>
       </div>
     </div>
 <h2 id="4-知识关联">4. 知识关联</h2>
 <ul>
 <li>
-<p><strong>母题</strong>: <a  href="/posts/7cebce35/">P1908 逆序对 (BIT_Inversion)</a> —— 离散化作为树状数组索引的最本原体现。</p>
+<p><strong>母题</strong>: <a  href="/posts/7cebce35/">P1908 逆序对 BIT</a> —— 离散化作为树状数组索引的母题。</p>
 </li>
 <li>
-<p><strong>关联笔记</strong>: [[Note] 扫描线算法] —— 离散化在几何面积并中的核心应用。</p>
-</li>
-<li>
-<p><strong>牢笔记参考：</strong> <a  href="/posts/ef28f194/">离散化体系</a></p>
+<p><strong>关联笔记</strong>: [[扫描线算法]] —— 离散化在几何面积并中的核心应用。</p>
 </li>
 </ul>
 
@@ -508,8 +508,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/a16f083f/" title="[L3] 04 降维技巧">
-                        <span class="hidden-mobile">[L3] 04 降维技巧</span>
+                      <a href="/posts/2a057462/" title="[Note] 前缀和与差分">
+                        <span class="hidden-mobile">[Note] 前缀和与差分</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
