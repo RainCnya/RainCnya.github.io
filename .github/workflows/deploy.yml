@@ -24,7 +24,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
+          # 1. 告诉虚拟机你是谁（这两行必须加，邮箱名字随便填或写你的 GitHub 账号）
+          git config --global user.name "MiQiu"
+          git config --global user.email "RainCnya@gmail.com"
+          
+          # 2. 执行原有的部署逻辑
           npx hexo clean
           npx hexo generate
-          # 这里也要注意，如果 deploy 报错，也可以尝试用 npx
           npx hexo deploy
