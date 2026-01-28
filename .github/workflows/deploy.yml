@@ -22,14 +22,9 @@ jobs:
 
       - name: Generate and Deploy
         env:
-          # 使用刚才配置的 Secret
           GH_TOKEN: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
-          hexo clean
-          hexo generate
-          # 使用插件直接部署，或者用动作脚本推送到分支
-          npm install hexo-deployer-git --save
-          git config --global user.name "Your Name"
-          git config --global user.email "your@email.com"
-          # 这一步会读取 _config.yml 里的 deploy 配置
-          hexo deploy
+          npx hexo clean
+          npx hexo generate
+          # 这里也要注意，如果 deploy 报错，也可以尝试用 npx
+          npx hexo deploy
