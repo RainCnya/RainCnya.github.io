@@ -102,7 +102,7 @@ deploy:
   type: git
   # repo: git@github.com:RainCnya/RainCnya.github.io.git
   repo: https://github.com/RainCnya/RainCnya.github.io.git
-  branch: main
+  branch: gh-pages  # 必须改写成 gh-pages，以此区分源码
 
 # abbrlink config (永久链接插件)
 abbrlink:
