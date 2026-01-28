@@ -100,7 +100,8 @@ theme: fluid
 ## 如果是本地 hexo d，推荐配置 SSH 密钥，这样就不用填 token 了
 deploy:
   type: git
-  repo: git@github.com:RainCnya/RainCnya.github.io.git
+  # repo: git@github.com:RainCnya/RainCnya.github.io.git
+  repo: https://github.com/RainCnya/RainCnya.github.io.git
   branch: main
 
 # abbrlink config (永久链接插件)
