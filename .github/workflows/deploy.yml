@@ -1,0 +1,35 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main # 只有当 main 分支有变动时才触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate and Deploy
+        env:
+          # 使用刚才配置的 Secret
+          GH_TOKEN: ${{ secrets.HEXO_DEPLOY_KEY }}
+        run: |
+          hexo clean
+          hexo generate
+          # 使用插件直接部署，或者用动作脚本推送到分支
+          npm install hexo-deployer-git --save
+          git config --global user.name "Your Name"
+          git config --global user.email "your@email.com"
+          # 这一步会读取 _config.yml 里的 deploy 配置
+          hexo deploy
