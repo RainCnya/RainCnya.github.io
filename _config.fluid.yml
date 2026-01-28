@@ -1,0 +1,604 @@
+#---------------------------
+# Hexo Theme Fluid
+# Author: Fluid-dev
+# Configured by: Qu Xi & Anya (v7.0 Purple Rain Edition)
+#---------------------------
+
+#---------------------------
+# 全局
+# Global
+#---------------------------
+
+# 浏览器标签图标
+favicon: /img/Rain.png
+apple_touch_icon: /img/Rain.png
+tab_title_separator: " - "
+force_https: false
+
+# 代码块增强 (Mac 风格 + Atom Dark)
+code:
+  copy_btn: true
+  language:
+    enable: true
+    default: "cpp"
+  highlight:
+    enable: true
+    line_number: true
+    lib: "highlightjs"
+    highlightjs:
+      style: 'atom-one-dark'
+      style_dark: 'atom-one-dark'
+    prismjs:
+      style: "default"
+      style_dark: "tomorrow night"
+      preprocess: true
+    # 开启 Mac 风格圆点
+    mac3d: true
+
+# 有趣的功能 (打字机)
+fun_features:
+  typing:
+    enable: true
+    typeSpeed: 70
+    cursorChar: "_"
+    loop: false
+    scope: []
+  anchorjs:
+    enable: true
+    element: h1,h2,h3,h4,h5,h6
+    placement: left
+    visible: hover
+    icon: ""
+  progressbar:
+    enable: true
+    height_px: 3
+    color: "#7E57C2" # 紫色进度条
+    options: { showSpinner: false, trickleSpeed: 100 }
+
+# 暗色模式
+dark_mode:
+  enable: true
+  default: auto
+
+# -----------------------------------------------------------------
+# 注入外部资源 (字体 CSS)
+# -----------------------------------------------------------------
+head:
+  html: |
+    <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+
+# -----------------------------------------------------------------
+# Color Scheme: [Purple Rain] (鸢尾花与雨)
+# -----------------------------------------------------------------
+color:
+  body_bg_color: "#F7F7F9"
+  body_bg_color_dark: "#1A1B26"
+  navbar_bg_color: "#4A4E69"
+  navbar_bg_color_dark: "#24283B"
+  navbar_text_color: "#F2E9E4"
+  navbar_text_color_dark: "#C0CAF5"
+  subtitle_color: "#FFFFFF"
+  subtitle_color_dark: "#C0CAF5"
+  text_color: "#22223B"
+  text_color_dark: "#A9B1D6"
+  sec_text_color: "#9A8C98"
+  sec_text_color_dark: "#565F89"
+  board_color: "#FFFFFF"
+  board_color_dark: "#1F2335"
+  post_text_color: "#22223B"
+  post_text_color_dark: "#C0CAF5"
+  post_heading_color: "#1A202C"
+  post_heading_color_dark: "#C0CAF5"
+  
+  # 核心点缀: 紫色
+  post_link_color: "#7E57C2" 
+  post_link_color_dark: "#BB9AF7"
+  link_hover_color: "#673AB7"
+  link_hover_color_dark: "#9D7CD8"
+  link_hover_bg_color: "#F3E5F5"
+  link_hover_bg_color_dark: "#292E42"
+  line_color: "#EAECEF"
+  line_color_dark: "#292E42"
+  scrollbar_color: "#C9C9C9"
+  scrollbar_color_dark: "#414868"
+  scrollbar_hover_color: "#9575CD"
+  scrollbar_hover_color_dark: "#7AA2F7"
+  button_bg_color: "transparent"
+  button_bg_color_dark: "transparent"
+  button_hover_bg_color: "#F2F3F5"
+  button_hover_bg_color_dark: "#3B4261"
+
+# 字体配置 (霞鹜文楷)
+font:
+  font_size: 16px
+  font_family: '"LXGW WenKai Screen", "Microsoft YaHei", sans-serif'
+  code_font_size: 85%
+
+custom_js:
+
+# -----------------------------------------------------------------
+# [关键修复] 挂载自定义 CSS (毛玻璃/渐变特效)
+# -----------------------------------------------------------------
+custom_css:
+  - /css/custom.css
+
+web_analytics:
+  enable: true
+  follow_dnt: true
+  baidu:
+  google:
+    measurement_id:
+  tencent:
+    sid:
+    cid:
+  leancloud:
+    app_id: azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz
+    app_key: pvy1eRs2A9HXC5kAIQrRh0Eo 
+    server_url: https://azofrmg6.lc-cn-n1-shared.com
+    path: window.location.pathname
+    ignore_local: true
+  umami:
+    src:
+    website_id:
+    domains:
+    start_time: 2024-01-01
+    token:
+    api_server:
+
+canonical:
+  enable: false
+
+lazyload:
+  enable: true
+  loading_img: /img/loading.gif
+  onlypost: false
+  offset_factor: 2
+
+iconfont: //at.alicdn.com/t/c/font_1736178_k526ubmyhba.css
+
+#---------------------------
+# 页头
+#---------------------------
+navbar:
+  blog_title: "MiQiu"
+  ground_glass:
+    enable: false # 我们在 custom.css 里手动实现了更高级的毛玻璃，这里关掉防止冲突
+    px: 3
+    alpha: 0.7
+  menu:
+    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
+    - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+
+search:
+  enable: true
+  path: /local-search.xml
+  generate_path: /local-search.xml
+  field: post
+  content: true
+
+banner:
+  parallax: true
+  width_height_ratio: 1.0
+
+scroll_down_arrow:
+  enable: true
+  banner_height_limit: 80
+  scroll_after_turning_page: true
+
+scroll_top_arrow:
+  enable: true
+
+open_graph:
+  enable: true
+  twitter_card: summary_large_image
+  twitter_id:
+  twitter_site:
+  google_plus:
+  fb_admins:
+  fb_app_id:
+
+#---------------------------
+# 页脚 (集成 OJ 链接与版本号)
+#---------------------------
+footer:
+  content: '
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    <br>
+    <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span>
+    <br>
+    <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> | 
+    <a href="https://codeforces.com" target="_blank">Codeforces</a> | 
+    <a href="https://atcoder.jp" target="_blank">AtCoder</a>
+    '
+  statistics:
+    enable: true
+    source: "leancloud"
+    pv_format: "总访问量 {} 次"
+    uv_format: "总访客数 {} 人"
+  beian:
+    enable: false
+
+#---------------------------
+# 首页
+# Home Page
+#---------------------------
+index:
+  # 首页大图 (确认文件名是 default.png 还是你上传的 webp)
+  banner_img: /img/banner_index.webp
+  banner_img_height: 100
+  banner_mask_alpha: 0.5
+
+  slogan:
+    enable: true
+    # 【核心修复】直接填入内容，不要留空！
+    # 因为你的版本不支持 sub_text，所以必须填在这里。
+    text: "愿你的旅途永远璀璨，愿你的夏日永不凋零。"
+    
+    # 暂时禁用 API，确保本地文字生效
+    api:
+      enable: false
+      url: ""
+      method: "GET"
+      headers: {}
+      keys: []
+
+  # 保持其他配置不变
+  auto_excerpt:
+    enable: true
+  post_url_target: _self
+  post_meta:
+    date: true
+    category: true
+    tag: true
+  post_sticky:
+    enable: true
+    icon: "iconfont icon-top"
+
+#---------------------------
+# 文章页
+#---------------------------
+post:
+  banner_img: /img/banner_page.webp
+  banner_img_height: 70
+  banner_mask_alpha: 0.3
+  default_index_img:
+  meta:
+    author:
+      enable: true
+    date:
+      enable: true
+      format: "LL a"
+    wordcount:
+      enable: true
+      format: "{} 字"
+    min2read:
+      enable: true
+      awl: 2
+      wpm: 40
+      format: "{} 分钟"
+    views:
+      enable: true
+      source: "leancloud"
+      format: "{} 次"
+  updated:
+    enable: false
+    date_format: "LL a"
+    relative: true
+    note_class: info
+  category_bar:
+    enable: true
+    specific: true
+    placement: left
+    post_order_by: "title"
+    post_limit: 0
+  toc:
+    enable: true
+    placement: right
+    headingSelector: "h1,h2,h3,h4,h5,h6"
+    collapseDepth: 0
+  copyright:
+    enable: true
+    license: 'BY'
+    author:
+      enable: true
+    post_date:
+      enable: true
+      format: "LL"
+    update_date:
+      enable: false
+      format: "LL"
+  prev_next:
+    enable: true
+  image_caption:
+    enable: true
+  image_zoom:
+    enable: true
+    img_url_replace: ['', '']
+  footnote:
+    enable: true
+    header: ''
+  math:
+    enable: true
+    specific: false
+    engine: katex
+  mermaid:
+    enable: false
+    specific: false
+    options: { theme: 'default' }
+  comments:
+    enable: false
+    type: valine
+
+#---------------------------
+# 评论插件
+#---------------------------
+utterances:
+  repo:
+  issue_term: pathname
+  label: utterances
+  theme: github-light
+  theme_dark: github-dark
+
+disqus:
+  shortname:
+  disqusjs: false
+  apikey: 
+    - 'KEY1'
+  api: https://disqus.skk.moe/disqus/
+  admin: 
+  adminLabel: 
+
+gitalk:
+  clientID:
+  clientSecret:
+  repo:
+  owner:
+  admin: ['name']
+  language: zh-CN
+  labels: ['Gitalk']
+  perPage: 10
+  pagerDirection: last
+  distractionFreeMode: false
+  createIssueManually: true
+  proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token
+
+valine:
+  appId: azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz
+  appKey: pvy1eRs2A9HXC5kAIQrRh0Eo
+  path: window.location.pathname
+  placeholder:
+  avatar: 'retro'
+  meta: ['nick', 'mail', 'link']
+  requiredFields: []
+  pageSize: 10
+  lang: 'zh-CN'
+  highlight: false
+  recordIP: false
+  serverURLs: ''
+  emojiCDN:
+  emojiMaps:
+  enableQQ: false
+
+waline:
+  serverURL: ''
+  path: window.location.pathname
+  meta: ['nick', 'mail', 'link']
+  requiredMeta: ['nick']
+  lang: 'zh-CN'
+  emoji: ['https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo']
+  dark: 'html[data-user-color-scheme="dark"]'
+  wordLimit: 0
+  pageSize: 10
+
+changyan:
+  appid: ''
+  appkey: ''
+
+livere:
+  uid: ''
+
+remark42:
+  host:
+  site_id:
+  max_shown_comments: 10
+  locale: zh
+  components: ['embed']
+
+twikoo:
+  envId:
+  region: ap-shanghai
+  path: window.location.pathname
+
+cusdis:
+  host:
+  app_id:
+  lang: zh-cn
+
+giscus:
+  repo:
+  repo-id:
+  category:
+  category-id:
+  theme-light: light
+  theme-dark: dark
+  mapping: pathname
+  reactions-enabled: 1
+  emit-metadata: 0
+  input-position: top
+  lang: zh-CN
+
+discuss:
+  serverURLs:
+  path: window.location.pathname
+
+#---------------------------
+# 其他页面
+#---------------------------
+archive:
+  banner_img: /img/banner_page.webp
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+
+category:
+  enable: true
+  banner_img: /img/banner_page.webp
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+  order_by: "-length"
+  collapse_depth: 0
+  post_order_by: "-date"
+  post_limit: 10
+
+tag:
+  enable: true
+  banner_img: /img/banner_page.webp
+  banner_img_height: 80
+  banner_mask_alpha: 0.3
+  tagcloud:
+    min_font: 15
+    max_font: 30
+    unit: px
+    start_color: "#BBBBEE"
+    end_color: "#337ab7"
+
+about:
+  enable: true
+  banner_img: /img/banner_about.jpg
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+  avatar: /img/avatar.jpg
+  name: "MiQiu"
+  intro: "原来期待比踽凉更难，碎了时间"
+  icons:
+    - { class: "iconfont icon-github-fill", link: "https://github.com/RainCnya/", tip: "GitHub" }
+    # - { class: "iconfont icon-wechat-fill", qrcode: "/img/qrcode.png" }
+
+page:
+  banner_img: /img/banner_page.webp
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+
+page404:
+  enable: true
+  banner_img: /img/banner_page.webp
+  banner_img_height: 85
+  banner_mask_alpha: 0.3
+  redirect_delay: 5000
+
+#---------------------------
+# 友链页 (基于你的收藏夹定制)
+#---------------------------
+links:
+  enable: true
+  banner_img: /img/banner_links.webp # 确保这个图片文件存在！
+  banner_img_height: 60
+  banner_mask_alpha: 0.3
+  
+  # 这里的 items 是把你收藏夹里的神器变成了卡片
+  items:
+    # --- 核心刷题平台 ---
+    - {
+      title: "Luogu",
+      intro: "洛谷 - 算法竞赛刷题社区",
+      link: "https://www.luogu.com.cn/",
+      avatar: "https://www.google.com/s2/favicons?domain=luogu.com.cn&sz=128"
+    }
+    - {
+      title: "Codeforces",
+      intro: "CF - 全球顶尖算法竞技场",
+      link: "https://codeforces.com/",
+      avatar: "https://www.google.com/s2/favicons?domain=codeforces.com&sz=128"
+    }
+    - {
+      title: "AtCoder",
+      intro: "高质量的日本算法竞赛",
+      link: "https://atcoder.jp/",
+      avatar: "https://www.google.com/s2/favicons?domain=atcoder.jp&sz=128"
+    }
+    - {
+      title: "Clist",
+      intro: "全网算法比赛日程表",
+      link: "https://clist.by/",
+      avatar: "https://www.google.com/s2/favicons?domain=clist.by&sz=128"
+    }
+    
+    # --- 知识库 & 圣经 ---
+    - {
+      title: "OI Wiki",
+      intro: "算法竞赛知识圣经",
+      link: "https://oi-wiki.org/",
+      avatar: "https://oi-wiki.org/favicon.ico"
+    }
+    - {
+      title: "CS DIY",
+      intro: "北大信科：计算机自学指南",
+      link: "https://csdiy.wiki/",
+      avatar: "https://csdiy.wiki/logo.png"
+    }
+    - {
+      title: "Missing Semester",
+      intro: "MIT: 计算机教育中缺失的一课",
+      link: "https://missing-semester-cn.github.io/",
+      avatar: "https://missing-semester-cn.github.io/favicon.ico"
+    }
+
+    # --- 实用工具 ---
+    - {
+      title: "VisuAlgo",
+      intro: "数据结构与算法可视化",
+      link: "https://visualgo.net/zh",
+      avatar: "https://visualgo.net/img/favicon.png"
+    }
+    - {
+      title: "Graph Editor",
+      intro: "CSAcademy 图论绘图工具",
+      link: "https://csacademy.com/app/graph_editor/",
+      avatar: "https://csacademy.com/favicon.ico"
+    }
+    - {
+      title: "OEIS",
+      intro: "整数数列在线百科全书",
+      link: "https://oeis.org/",
+      avatar: "https://oeis.org/favicon.ico"
+    }
+
+  onerror_avatar: /img/avatar.jpg
+  custom:
+    enable: true
+    content: '<hr><p>欢迎交换友链！(Ver 3.2)<br>留言格式：<br>名称：MiQiu<br>简介：愿你的旅途永远璀璨<br>链接：https://你的域名</p>'
+  comments:
+    enable: true
+    type: valine
+
+static_prefix:
+  internal_js: /js
+  internal_css: /css
+  internal_img: /img
+  anchor: https://lib.baomitu.com/anchor-js/5.0.0/
+  github_markdown: https://lib.baomitu.com/github-markdown-css/4.0.0/
+  jquery: https://lib.baomitu.com/jquery/3.6.4/
+  bootstrap: https://lib.baomitu.com/twitter-bootstrap/4.6.1/
+  prismjs: https://lib.baomitu.com/prism/1.29.0/
+  tocbot: https://lib.baomitu.com/tocbot/4.20.1/
+  typed: https://lib.baomitu.com/typed.js/2.0.12/
+  fancybox: https://lib.baomitu.com/fancybox/3.5.7/
+  nprogress: https://lib.baomitu.com/nprogress/0.2.0/
+  mathjax: https://lib.baomitu.com/mathjax/3.2.2/
+  katex: https://lib.baomitu.com/KaTeX/0.16.2/
+  busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/
+  clipboard: https://lib.baomitu.com/clipboard.js/2.0.11/
+  mermaid: https://lib.baomitu.com/mermaid/8.14.0/
+  valine: https://lib.baomitu.com/valine/1.5.1/
+  waline: https://registry.npmmirror.com/@waline/client/2.15.8/files/dist/
+  gitalk: https://lib.baomitu.com/gitalk/1.8.0/
+  disqusjs: https://lib.baomitu.com/disqusjs/1.3.0/
+  twikoo: https://lib.baomitu.com/twikoo/1.6.8/
+  discuss: https://lib.baomitu.com/discuss/1.2.1/
+  hint: https://lib.baomitu.com/hint.css/2.7.0/
+  moment: https://lib.baomitu.com/moment.js/2.29.4/

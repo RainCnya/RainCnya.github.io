@@ -1,0 +1,141 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: MiQiu
+subtitle: '愿你的旅途永远璀璨' # 这里填一句兜底的 Slogan，防止 Fluid 打字机挂了显示空白
+description: 'MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学' # 优化描述，利于 SEO
+keywords: 'ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法' # 增加关键词
+author: Miqiu
+language: zh-CN
+timezone: 'Asia/Shanghai' # 明确时区，防止文章发布时间错乱
+
+# URL
+## 【关键】请填入你部署后的真实域名！
+## 如果你只有 GitHub Pages，通常是 https://raincnya.github.io
+url: https://example.com
+permalink: posts/:abbrlink/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render: 
+  - '_templates/**'
+  - '.obsidian/**'
+  - 'README.md' # 跳过 README 渲染
+
+# Writing
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+
+# 【重要】关闭 Hexo 默认高亮，交给 Fluid 主题处理
+# Fluid 使用 highlightjs，这里关闭以防双重渲染导致样式崩坏
+syntax_highlighter: false
+highlight:
+  enable: false
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+meta_generator: true
+
+# Date / Time format
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: 'mtime' # 建议用 mtime，这样你修改文章后更新时间会自动变
+
+# Pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+include:
+exclude:
+ignore:
+
+# Extensions
+theme: fluid
+
+# Deployment
+## 【安全警告】Token 建议使用环境变量，不要明文写在这里
+## 如果是本地 hexo d，推荐配置 SSH 密钥，这样就不用填 token 了
+deploy:
+  type: git
+  repo: git@github.com:RainCnya/RainCnya.github.io.git
+  branch: main
+
+# abbrlink config (永久链接插件)
+abbrlink:
+  alg: crc32
+  rep: hex
+  drafts: false
+  force: false
+  writeback: true
+
+# Generate categories from directory-tree (自动分类插件)
+auto_category:
+  enable: true
+  depth: 3
+
+# -----------------------------------------------------------------
+# Markdown 渲染配置 (KaTeX 数学公式支持)
+# -----------------------------------------------------------------
+markdown:
+  preset: 'default'
+  plugins:
+    - '@traptitech/markdown-it-katex'
+    # - 'markdown-it-image-lazy-loading' # 推荐：如果有图片懒加载插件
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '""\'
+
+# -----------------------------------------------------------------
+# Obsidian WikiLink Support (Title-Based)
+# -----------------------------------------------------------------
+titlebased_link:
+  enable: true
+  # 如果链接找不到，保留原样而不是抛出错误（防止构建崩溃）
+  ignore_not_found: true
