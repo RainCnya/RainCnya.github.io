@@ -1,10 +1,15 @@
 ---
-title: "[Note] ST表与倍增"
+title: '[Note] ST表与倍增'
 tags:
   - 数据结构/倍增
   - 数据结构/RMQ
   - 难度/P1/普及
-date: 2026-01-30
+categories:
+  - 00_Atlas
+  - 10_数据结构
+  - 11_树形结构
+abbrlink: 880cf989
+date: 2026-01-30 00:00:00
 ---
 
 # ST表与倍增

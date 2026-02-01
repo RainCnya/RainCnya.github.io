@@ -1,9 +1,14 @@
 ---
-title: "[Leaf] [ABC443G] Another Mod of Linear Problem"
+title: '[Leaf] [ABC443G] Another Mod of Linear Problem'
 tags:
   - 数论/类欧几里得
   - 难度/P3/省选
-date: 2026-01-31
+categories:
+  - 10_Library
+  - 40_数学
+  - 41_数论基础
+abbrlink: cbc2f5b3
+date: 2026-01-31 00:00:00
 ---
 # [G - Another Mod of Linear Problem](https://atcoder.jp/contests/abc443/tasks/abc443_g)
 
@@ -109,4 +114,4 @@ int main( )
 	
 - **碎碎念**: 残念！！！就差一点特判我就AK了，这题难点有三个，第一是推导数学公式的能力，第二是类欧几里得算法的掌握，第三就是细节了，边界情况，爆 `longlong`。
     
-- **关联笔记**: [类欧几里得算法]]
+- **关联笔记**: [[类欧几里得算法]]

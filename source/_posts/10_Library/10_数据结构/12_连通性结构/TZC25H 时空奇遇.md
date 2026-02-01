@@ -6,9 +6,9 @@ tags:
 categories:
   - 10_Library
   - 10_数据结构
-  - 12_动态连通性
+  - 12_连通性结构
 abbrlink: f3ae506a
-date: 2026-01-05
+date: 2026-01-05 00:00:00
 ---
 # [9512:归元大帝的时空奇遇](https://www.tzcoder.cn/acmhome/problemdetail.do?method=showdetail&id=9512)
 

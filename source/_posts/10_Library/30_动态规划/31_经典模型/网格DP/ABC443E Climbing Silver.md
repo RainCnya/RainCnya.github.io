@@ -1,9 +1,14 @@
 ---
-title: "[Leaf] [ABC443E] Climbing Silver"
+title: '[Leaf] [ABC443E] Climbing Silver'
 tags:
   - DP/网格
   - 难度/P1/提高-
-date: 2026-01-31
+categories:
+  - 10_Library
+  - 30_动态规划
+  - 31_经典模型
+abbrlink: cb5cdc4d
+date: 2026-01-31 00:00:00
 ---
 # [E - Climbing Silver](https://atcoder.jp/contests/abc443/tasks/abc443_e)
 

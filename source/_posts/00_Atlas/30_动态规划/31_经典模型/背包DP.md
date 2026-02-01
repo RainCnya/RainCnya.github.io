@@ -1,12 +1,17 @@
 ---
-title: "[Note] 背包DP"
+title: '[Note] 背包DP'
 tags:
   - DP/背包
   - 难度/P2/提高
-date: 2026-01-31
+categories:
+  - 00_Atlas
+  - 30_动态规划
+  - 31_经典模型
+abbrlink: 3349ba31
+date: 2026-01-31 00:00:00
 ---
 
-# 背包DP
+# [L4] 背包DP
 
 ## 1. 生态位
 

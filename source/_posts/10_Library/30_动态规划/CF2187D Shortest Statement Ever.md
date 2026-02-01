@@ -1,11 +1,15 @@
 ---
-title: "[Leaf] [CF2187D] Shortest Statement Ever"
+title: '[Leaf] [CF2187D] Shortest Statement Ever'
 tags:
   - DP/数位
   - 策略/构造
   - 策略/贪心
   - 难度/P2/提高
-date: 2026-01-31
+categories:
+  - 10_Library
+  - 30_动态规划
+abbrlink: 3054ee91
+date: 2026-01-31 00:00:00
 ---
 # [CF2187D - Shortest Statement Ever](https://codeforces.com/contest/2188/problem/D)
 
