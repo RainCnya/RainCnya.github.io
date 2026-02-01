@@ -2,10 +2,10 @@
 title: Project Selene | 折桂计划
 tags: Selene
 categories:
-  - 60_Selene
+  - 80_Essays
 archive: true
 abbrlink: Selene
-date: 2026-01-16
+date: 2026-01-16 00:00:00
 ---
 ## 内生秩序
 

@@ -1,10 +1,15 @@
 ---
-title: "[Leaf] [ABC443F] Non-Increasing Number"
+title: '[Leaf] [ABC443F] Non-Increasing Number'
 tags:
   - 图论/同余最短路
   - 搜索/BFS
   - 难度/P2/提高
-date: 2026-01-31
+categories:
+  - 10_Library
+  - 20_图论
+  - 21_最短路与建模
+abbrlink: b673f593
+date: 2026-01-31 00:00:00
 ---
 # [F - Non-Increasing Number](https://atcoder.jp/contests/abc443/tasks/abc443_f)
 

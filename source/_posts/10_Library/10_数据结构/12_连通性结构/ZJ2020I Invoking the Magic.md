@@ -7,9 +7,9 @@ tags:
 categories:
   - 10_Library
   - 10_数据结构
-  - 12_动态连通性
+  - 12_连通性结构
 abbrlink: 7654fe38
-date: 2026-01-20
+date: 2026-01-20 00:00:00
 ---
 # [ZJ2020I - Invoking the Magic](https://codeforces.com/gym/102770/problem/I)
 
