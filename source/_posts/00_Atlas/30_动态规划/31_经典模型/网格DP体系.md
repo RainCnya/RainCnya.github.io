@@ -85,10 +85,10 @@ for( int k = 2; k <= n + m; ++ k )
     
     - [P1004 方格取数 (Grid_Concurrent_Pickup)](P1004%20方格取数%20(Grid_Concurrent_Pickup).md) —— 多路 DP 权值去重范式。
         
-    - [P1006 传纸条 (Grid_Concurrent_NonOverlap)](P1006%20传纸条%20(Grid_Concurrent_NonOverlap).md) —— 互斥路径状态约束。
+    - [P1006 传纸条](P1006%20传纸条.md) —— 互斥路径状态约束。
         
     - [P1758 管道取珠 (Grid_Walking_Conversion)](P1758%20管道取珠%20(Grid_Walking_Conversion).md) —— 平方和向双路同步步进的数学映射。
         
     - [P2051 中国象棋 (Opt_Contour_State)](P2051%20中国象棋%20(Opt_Contour_State).md) —— 典型列特征统计抽象。
         
-    - [P3800 Power 收集 (MQ_DP_Grid_Movement)](P3800%20Power%20收集%20(MQ_DP_Grid_Movement).md) —— 结合单调队列的行级优化。
+    - [P3800 Power 收集](P3800%20Power%20收集.md) —— 结合单调队列的行级优化。

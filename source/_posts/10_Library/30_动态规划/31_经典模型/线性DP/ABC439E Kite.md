@@ -10,7 +10,6 @@ categories:
 abbrlink: 2d2f3a03
 date: 2026-01-05
 ---
-    
 # [ABC439E - Kite](https://atcoder.jp/contests/abc439/tasks/abc439_e "null")
 
 ## 1. 核心逻辑
