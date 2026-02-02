@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [ABC443E] Climbing Silver'
 tags:
-  - DP/网格
+  - DP/线性
   - 难度/P1/提高-
 categories:
   - 10_Library
@@ -125,4 +125,4 @@ int main( )
     
 - **碎碎念**: 这题很明显是用 DP 转移，但 DP 的状态设计更体现这题的水准。然后就是注意多组数据初始化，我用 `memset` 直接 TLE 了（怒！
         
-- **关联笔记**: [[网格DP]] 
+- **关联笔记**: [[线性DP]] 

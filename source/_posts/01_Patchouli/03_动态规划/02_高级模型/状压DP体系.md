@@ -95,5 +95,5 @@ bool conflict( int m1, int m2 )
         
     - [ARC100C Or Plus Max](ARC100C%20Or%20Plus%20Max.md) —— 子集和优化的高阶范式。
         
-    - [P2051 中国象棋 (Opt_Contour_State)](P2051%20中国象棋%20(Opt_Contour_State).md) —— 状态抽象对状压维度的二次压缩。
+    - [P2051 中国象棋](P2051%20中国象棋.md) —— 状态抽象对状压维度的二次压缩。
         
