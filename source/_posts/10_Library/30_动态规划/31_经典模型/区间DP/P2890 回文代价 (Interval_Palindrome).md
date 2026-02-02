@@ -5,9 +5,9 @@ tags:
   - 算法/对称性
 difficulty: 普及+/提高
 categories:
-  - 11_Library
-  - 03_动态规划
-  - 04_区间模型
+  - 10_Library
+  - 30_动态规划
+  - 31_经典模型
 abbrlink: e4f80a95
 date: 2025-11-24 00:00:00
 ---

@@ -5,9 +5,9 @@ tags:
   - 算法/递归
 difficulty: 提高+/省选-
 categories:
-  - 11_Library
-  - 03_动态规划
-  - 04_区间模型
+  - 10_Library
+  - 30_动态规划
+  - 31_经典模型
 abbrlink: a3e9be80
 date: 2025-11-25 00:00:00
 ---

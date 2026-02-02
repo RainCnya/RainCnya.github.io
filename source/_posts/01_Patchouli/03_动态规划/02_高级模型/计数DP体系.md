@@ -76,4 +76,4 @@ for( int i = 1; i <= n; ++ i )
         
     - [P2467 地精部落 (Seq_Wiggle_Permutation)](P2467%20地精部落%20(Seq_Wiggle_Permutation).md) —— 补集对称性在排列计数中的应用。
         
-    - [P1758 管道取珠 (Grid_Walking_Conversion)](P1758%20管道取珠%20(Grid_Walking_Conversion).md) —— 平方和方案数的同步博弈转化。
+    - [P1758 管道取珠](P1758%20管道取珠.md) —— 平方和方案数的同步博弈转化。

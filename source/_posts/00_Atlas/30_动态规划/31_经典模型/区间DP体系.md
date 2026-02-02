@@ -4,9 +4,9 @@ tags:
   - DP/区间
   - 算法/环形处理
 categories:
-  - 01_Patchouli
-  - 03_动态规划
-  - 01_基础模型
+  - 00_Atlas
+  - 30_动态规划
+  - 31_经典模型
 abbrlink: a75f3b7c
 date: 2025-12-16 22:25:00
 ---
@@ -94,5 +94,5 @@ int solve( int l, int r, int state )
         
     - [P3205 合唱队 (Interval_Queue_Insert)](P3205%20合唱队%20(Interval_Queue_Insert).md) —— 逆向生长视角下的状态定义。
         
-    - [P5851 Greedy Pie Eaters (Interval_Reverse_Aux)](P5851%20Greedy%20Pie%20Eaters%20(Interval_Reverse_Aux).md) —— 辅助数组对区间最后一次跨越的捕捉。
+    - [P5851 Greedy Pie Eaters P](P5851%20Greedy%20Pie%20Eaters%20P.md) —— 辅助数组对区间最后一次跨越的捕捉。
         

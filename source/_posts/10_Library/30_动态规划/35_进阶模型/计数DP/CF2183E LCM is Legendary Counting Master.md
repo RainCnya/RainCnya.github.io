@@ -7,8 +7,9 @@ tags:
 categories:
   - 10_Library
   - 30_动态规划
+  - 35_进阶模型
 abbrlink: 2d519ade
-date: 2026-01-14
+date: 2026-01-14 00:00:00
 ---
 # [CF2183E LCM is Legendary Counting Master](https://codeforces.com/contest/2183/problem/E)
 
