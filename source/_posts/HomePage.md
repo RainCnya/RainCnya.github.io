@@ -1,5 +1,5 @@
 ---
-title: "Mi Qiu's Digital Garden"
+title: "[L1] Mi Qiu's Digital Garden"
 tags:
   - Meta/Guide
 categories: []
@@ -16,7 +16,6 @@ updated: 2026-2-3 17:59:54
 > **Constant:** 米秋 | **Status:** 🏛️ TZCACM Team 25
 > **Phase:** 2.5 -> 3.0 知识体系持续构建中
 > **Philosophy:** "Airy & Structured"
-
 
 ---
 
@@ -87,7 +86,7 @@ _核心：推演规则，将复杂的博弈平衡转化为可计算的胜负分�
 
 _核心：一切皆图。离散状态的可视化与代数关系的松弛映射。_
 
-- [[最短路体系]] | [[Tarjan SCC 与缩点]] | [[MST体系与瓶颈路]] | [[差分约束系统]]
+- [[最短路体系]] | [[Tarjan SCC 与缩点]] | [[MST体系与瓶颈路]] | [[差分约束]]
 
 - **归档数据库**： 📂  [[图论归档数据库]]
     
