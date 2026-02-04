@@ -1,8 +1,8 @@
 ---
 title: '[Note] SOS DP'
 tags:
-  - DP/状压
   - 算法/前缀差分
+  - DP/状压
   - 难度/P3
 categories:
   - 210_Atlas
