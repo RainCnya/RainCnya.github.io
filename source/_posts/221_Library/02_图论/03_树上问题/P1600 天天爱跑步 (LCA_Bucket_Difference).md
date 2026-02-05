@@ -2,7 +2,7 @@
 title: 'P1600 [NOIP2016] 天天爱跑步 (LCA_Bucket_Difference)'
 tags:
   - 算法/前缀差分
-  - 图论/数论/LCA
+  - 图论/树论/LCA
   - 组合/贡献法
 difficulty: 省选
 categories:

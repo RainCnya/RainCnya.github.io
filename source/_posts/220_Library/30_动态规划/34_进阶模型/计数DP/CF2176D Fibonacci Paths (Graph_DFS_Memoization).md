@@ -7,9 +7,9 @@ tags:
 difficulty:
   - Div.2 D
 categories:
-  - 221_Library
-  - 02_图论
-  - 02_连通性与拓扑
+  - 220_Library
+  - 30_动态规划
+  - 34_进阶模型
 abbrlink: be70b0c3
 date: 2025-12-18 00:00:00
 ---
