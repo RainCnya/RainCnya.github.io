@@ -2,7 +2,7 @@
 title: 'P3128 [USACO15DEC] Max Flow P (LCA_Point_Difference)'
 tags:
   - 算法/前缀差分
-  - 图论/数论/LCA
+  - 图论/树论/LCA
 difficulty: 普及+/提高
 categories:
   - 221_Library
