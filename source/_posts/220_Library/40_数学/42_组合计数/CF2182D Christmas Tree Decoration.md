@@ -10,7 +10,6 @@ categories:
 abbrlink: 84cedf52
 date: 2026-01-05 00:00:00
 ---
-    
 
 # [CF2182D - Christmas Tree Decoration](https://codeforces.com/contest/2182/problem/D "null")
 
