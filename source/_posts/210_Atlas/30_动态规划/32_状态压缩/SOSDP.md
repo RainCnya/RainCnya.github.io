@@ -1,17 +1,17 @@
 ---
-title: '[Note] SOS DP'
+title: '[Note] SOSDP'
 tags:
   - 算法/前缀差分
   - DP/状压
   - 难度/P3
 categories:
   - 210_Atlas
-  - 00_基础算法
-  - 01_降维技巧
+  - 30_动态规划
+  - 32_状态压缩
 abbrlink: 5db37e5a
 date: 2026-01-04 00:00:00
 ---
-# [L4] SOS DP
+# [L4] SOSDP
 
 ## 1. 生态位
 
