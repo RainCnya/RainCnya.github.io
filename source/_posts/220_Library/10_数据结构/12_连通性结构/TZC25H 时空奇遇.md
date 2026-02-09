@@ -12,7 +12,7 @@ date: 2026-01-05 00:00:00
 ---
 # [9512:归元大帝的时空奇遇](https://www.tzcoder.cn/acmhome/problemdetail.do?method=showdetail&id=9512)
 
-## 1. 题意梗概
+## 1. 题面梗概
 
 **中译中**: 维护一堆势力。支持合并和查询。合并规则为：人多的赢；人一样多就编号小的赢。问最后 1 号是不是那个最终 BOSS。
 

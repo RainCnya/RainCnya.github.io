@@ -14,8 +14,6 @@ date: 2026-01-31 00:00:00
 ---
 # [F - Non-Increasing Number](https://atcoder.jp/contests/abc443/tasks/abc443_f)
 
-^2bd56d
-
 ## 1. 题面梗概
 
 定义一个 “好数字”，它的数位从个位到高位是非递增的。也就是从左往右读，数字是不减的，比如 $112389, 777$ 这种。

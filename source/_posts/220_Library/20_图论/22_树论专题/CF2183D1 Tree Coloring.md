@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [CF2183D1] Tree Coloring'
 tags:
-  - 图论/树论
+  - 树论
   - 策略/贪心
   - 难度/P3
 categories:

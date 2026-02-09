@@ -1,7 +1,7 @@
 ---
 title: '[Note] LCA 体系'
 tags:
-  - 图论/树论
+  - 树论
   - 难度/P3
 categories:
   - 210_Atlas
