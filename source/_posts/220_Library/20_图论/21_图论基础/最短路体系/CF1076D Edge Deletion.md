@@ -1,8 +1,7 @@
 ---
 title: '[Leaf] [CF1076D] Edge Deletion'
 tags:
-  - 图论/最短路
-  - 图论/最短路树
+  - 图论/最短路/最短路树
   - 难度/P3
 categories:
   - 220_Library
@@ -14,7 +13,7 @@ updated: 2026-02-04 14:21:06
 ---
 # [CF1076D Edge Deletion - 洛谷](https://www.luogu.com.cn/problem/CF1076D)
 
-## 1. 题意梗概
+## 1. 题面梗概
 
 **中译中**：给定一个无向有权图，要删掉一些边，最多保留 $k$ 条边。要求在删边后，依然保持从 $1$ 号点出发的最短路长度不变的点数尽可能多，输出保留哪些边。
 

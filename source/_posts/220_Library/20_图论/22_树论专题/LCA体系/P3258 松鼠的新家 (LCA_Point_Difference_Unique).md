@@ -2,12 +2,12 @@
 title: 'P3258 [JLOI2014] 松鼠的新家 (LCA_Point_Difference_Unique)'
 tags:
   - 算法/前缀差分
-  - 图论/树论/LCA
+  - 树论/LCA
 difficulty: 普及+/提高
 categories:
-  - 221_Library
-  - 02_图论
-  - 03_树上问题
+  - 220_Library
+  - 20_图论
+  - 22_树论专题
 abbrlink: 63edd0b2
 date: 2025-11-02 00:00:00
 ---

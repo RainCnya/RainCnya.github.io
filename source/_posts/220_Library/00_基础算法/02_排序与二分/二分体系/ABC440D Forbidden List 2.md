@@ -13,7 +13,7 @@ date: 2026-01-13 00:00:00
   
 # [ABC440D - Forbidden List 2](https://atcoder.jp/contests/abc440/tasks/abc440_d "null")
 
-## 1. 题意梗概（翻译）
+## 1. 题面梗概（翻译）
 
 有一组长度为 $N$ 的各不相同的数列。
 

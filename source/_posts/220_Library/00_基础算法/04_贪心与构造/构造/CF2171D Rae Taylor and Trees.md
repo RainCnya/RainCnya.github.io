@@ -1,13 +1,13 @@
 ---
-title: CF2171D Rae Taylor and Trees (Tree_Existence_Construction)
+title: '[Leaf] [CF2171D] Rae Taylor and Trees'
 tags:
   - 策略/构造
   - 算法/性质分析
-difficulty: Div.3 D
+  - 难度/P3
 categories:
-  - 221_Library
-  - 02_图论
-  - 03_树上问题
+  - 220_Library
+  - 00_基础算法
+  - 04_贪心与构造
 abbrlink: c64787d4
 date: 2025-12-19 00:00:00
 ---
@@ -86,3 +86,5 @@ int main( )
 - **复杂度**: $O(N)$。两次线性扫描。
     
 - **关键点**: 理解拓扑序（出现位置）与数值序（$u < v$）之间的竞争关系。该问题通过检测是否存在「逻辑阻断点」来判定全局可行性。
+
+ - **关联知识点**：[[构造体系]]

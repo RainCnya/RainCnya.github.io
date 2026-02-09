@@ -14,7 +14,7 @@ date: 2026-01-07 00:00:00
 
 # [TZ9547 - Silly Xiao Zhang](https://www.tzcoder.cn/acmhome/problemdetail.do?method=showdetail&id=9547)
 
-## 1. 题意梗概
+## 1. 题面梗概
 
 给定序列 $a$，构造单增序列。若 $a_i > top$ 则强制入栈；若 $a_i < top$ 可选入栈或丢弃。求不同序列方案数。
 
