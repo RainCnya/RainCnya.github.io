@@ -1,5 +1,5 @@
 ---
-title: Endogenous Order
+title: 内生秩序
 tags: Meta/Selene
 categories:
   - 290_Essays
