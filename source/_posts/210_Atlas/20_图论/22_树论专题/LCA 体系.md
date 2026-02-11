@@ -1,7 +1,9 @@
 ---
 title: '[Note] LCA 体系'
 tags:
-  - 树论
+  - 树论/LCA
+  - 树论/树链剖分
+  - 策略/倍增
   - 难度/P3
 categories:
   - 210_Atlas
@@ -74,20 +76,12 @@ int n, m, root;
 // 1. 预处理 DFS
 void dfs( int u, int p )
 {
-    dep[u] = dep[p] + 1;
-    up[u][0] = p;
+    dep[u] = dep[p] + 1, up[u][0] = p;
     
-    // 倍增递推
-    for( int i = 1; i < maxlg; ++ i )
-    {
-        up[u][i] = up[ up[u][i - 1] ][i - 1];
-    }
+    // 倍增核心状态转移：2^i 的祖先 = 2^(i-1) 的祖先的 2^(i-1) 的祖先
+    for( int i = 1; i < maxlg; ++ i ) up[u][i] = up[up[u][i - 1]][i - 1];
     
-    for( int v : adj[u] )
-    {
-        if( v == p ) continue;
-        dfs( v, u );
-    }
+    for( auto v : adj[u] ) if( v != p ) dfs( v, u );
 }
 
 // 2. 查询 LCA
@@ -99,22 +93,12 @@ int get_lca( int u, int v )
     int diff = dep[u] - dep[v];
     
     // u 向上跳，直到和 v 同层
-    for( int i = maxlg - 1; i >= 0; -- i )
-    {
-        // 如果跳 2^i 步还在 v 下面(或同层)，就跳
-        if( ( diff >> i ) & 1 ) u = up[u][i];
-    }
+    for( int i = maxlg - 1; i >= 0; -- i ) if( ( diff >> i ) & 1 ) u = up[u][i];
     
     if( u == v ) return u;
     
     // u 和 v 一起倍增向上跳
-    for( int i = maxlg - 1; i >= 0; -- i )
-    {
-        if( up[u][i] != up[v][i] )
-        {
-            u = up[u][i], v = up[v][i];
-        }
-    }
+    for( int i = maxlg - 1; i >= 0; -- i ) if( up[u][i] != up[v][i] ) u = up[u][i], v = up[v][i];
     
     return up[u][0];
 }
@@ -137,27 +121,15 @@ int top[maxn]; // DFS2 维护链顶
 int n, m, root;
 
 // DFS 1: 计算子树大小、深度、父节点、重儿子
-void dfs1( int u, int p )
+void dfs1( int u, int p ) 
 {
-    fa[u] = p;
-    dep[u] = dep[p] + 1;
-    siz[u] = 1;
-    son[u] = 0; // 初始化重儿子
-    
-    int max_siz = -1;
-    
-    for( int v : adj[u] )
+    dep[u] = dep[p] + 1; fa[u] = p; sz[u] = 1;
+    for( int v : adj[u] ) 
     {
         if( v == p ) continue;
         dfs1( v, u );
-        siz[u] += siz[v];
-        
-        // 更新重儿子：谁的子树大，谁就是重儿子
-        if( siz[v] > max_siz )
-        {
-            max_siz = siz[v];
-            son[u] = v;
-        }
+        sz[u] += sz[v];
+        if( sz[v] > sz[son[u]] ) son[u] = v;
     }
 }
 
