@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="🏛️ 进度记录 ☕ 逻辑内核状态  Constant: 米秋 | Status: 🏛️ TZCACM Team 25 Phase: 2.5 -&gt; 3.0 知识体系持续构建中 Philosophy: &quot;Airy &amp; Structured&quot;   🧭 逻辑支柱  这里是算法体系的骨架。点击导航进入对应的 L2 级架构地图。  00_基础算法 核心：剥离冗余信息，用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[L1] Mi Qiu&#39;s Digital Garden">
+<meta property="og:url" content="https://example.com/posts/92601886/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="🏛️ 进度记录 ☕ 逻辑内核状态  Constant: 米秋 | Status: 🏛️ TZCACM Team 25 Phase: 2.5 -&gt; 3.0 知识体系持续构建中 Philosophy: &quot;Airy &amp; Structured&quot;   🧭 逻辑支柱  这里是算法体系的骨架。点击导航进入对应的 L2 级架构地图。  00_基础算法 核心：剥离冗余信息，用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-09T03:00:09.000Z">
+<meta property="article:modified_time" content="2026-02-03T09:59:54.000Z">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="Meta&#x2F;Guide">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>[L1] Mi Qiu&#39;s Digital Garden - MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_page.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[L1] Mi Qiu&#39;s Digital Garden"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Miqiu
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-11-09 11:00" pubdate>
+          2025年11月9日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          825 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[L1] Mi Qiu&#39;s Digital Garden</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="🏛️-进度记录">🏛️ 进度记录</h2>
+<h3 id="☕-逻辑内核状态">☕ 逻辑内核状态</h3>
+<blockquote>
+<p><strong>Constant:</strong> 米秋 | <strong>Status:</strong> 🏛️ TZCACM Team 25<br>
+<strong>Phase:</strong> 2.5 -&gt; 3.0 知识体系持续构建中<br>
+<strong>Philosophy:</strong> &quot;Airy &amp; Structured&quot;</p>
+</blockquote>
+<hr>
+<h2 id="🧭-逻辑支柱">🧭 逻辑支柱</h2>
+<blockquote>
+<p><em>这里是算法体系的骨架。点击导航进入对应的 L2 级架构地图。</em></p>
+</blockquote>
+<h3 id="a-href-posts-d5f8e28c-00-基础算法-a"><a  href="/posts/d5f8e28c/">00_基础算法</a></h3>
+<p><em>核心：剥离冗余信息，用最简单的数学逻辑（单调性/不变量）拆解问题。</em></p>
+<ul>
+<li>L3 [降维技巧] | L4 <a  href="/posts/c29d9edd/">双指针</a> | <a  href="/posts/2a057462/">前缀和与差分</a> | <a  href="/posts/26262b8/">离散化</a> | <a  href="/posts/17898bcd/">单调栈与队列</a> | [[贡献法]]</li>
+<li>L3 [排序与二分] | L4 <a  href="/posts/9a3a8922/">排序体系</a> | <a  href="/posts/9f633e52/">二分体系</a> | [[三分搜索]]</li>
+<li>L3 [搜索专题] | L4 [[折半搜索]] | [[启发式搜素]] | [[模拟退火]]</li>
+<li>L3 [贪心与构造] | L4 <a  href="/posts/4daaef78/">贪心体系</a> | <a  href="/posts/d5b04992/">构造体系</a></li>
+</ul>
+<h3 id="a-href-posts-da537d0d-10-数据结构-a"><a  href="/posts/da537d0d/">10_数据结构</a></h3>
+<p><em>核心：通过高效的数据管理（切块/复用）来优化时间复杂度。</em></p>
+<ul>
+<li>
+<p>L3 <a  href="/posts/d3fd52/">11_树形结构</a> | L4 <a  href="/posts/dba9a34f/">线段树</a> | <a  href="/posts/43666fa1/">树状数组</a> | [[主席树]] | [[平衡树]] | [[线段树合并]] | [[笛卡尔树]]</p>
+</li>
+<li>
+<p>L3 [连通性结构] | L4 <a  href="/posts/962d2292/">并查集</a> | [[LCT]]</p>
+</li>
+<li>
+<p>L3 [分块与莫队] | L4 [[分块体系]] | [[莫队体系]]</p>
+</li>
+</ul>
+<h3 id="a-href-posts-d856fe0d-20-图论-a"><a  href="/posts/d856fe0d/">20_图论</a></h3>
+<p><em>核心：建立“状态”与“转换”的规则，寻找资源分配或路径代价的最优解。</em></p>
+<ul>
+<li>
+<p>L3 [图论基础] | L4 <a  href="/posts/a535be86/">最短路体系</a> | <a  href="/posts/6cae5d5b/">差分约束</a> | <a  href="/posts/cd9dd626/">同余最短路</a> | [[欧拉回路]]</p>
+</li>
+<li>
+<p>L3 [树论专题] | L4 <a  href="/posts/56fdb705/">LCA 体系</a> | <a  href="/posts/46723656/">树上差分</a> | <a  href="/posts/5e08b96b/">树链剖分</a> | <a  href="/posts/cd7fb2f0/">生成树体系</a> | <a  href="/posts/447bed30/">直径与重心</a> | [[点分治]] | [[虚树]]</p>
+</li>
+<li>
+<p>L3 [连通性专题] | L4 <a  href="/posts/dbe3a645/">SCC 缩点</a> | [[BCC 双连通]] | [[圆方树]] | [[2-SAT]]</p>
+</li>
+<li>
+<p>L3 [匹配专题] | L4 [[二分图匹配]] | [[KM 算法]]</p>
+</li>
+<li>
+<p>L3 [网络流专题] | L4 [[最大流]] | [[费用流]] | [[最小割建模]] | [[上下界网络流]]</p>
+</li>
+</ul>
+<h3 id="a-href-posts-2a5aca6a-30-动态规划-a"><a  href="/posts/2a5aca6a/">30_动态规划</a></h3>
+<p><em>核心：在 DAG 上寻找最优路。通过剪枝（排除无效）与降维（压缩重复）加速决策。</em></p>
+<ul>
+<li>
+<p>L3 [经典模型] | L4 <a  href="/posts/63c36af9/">线性DP</a> | <a  href="/posts/3349ba31/">背包DP</a> | <a  href="/posts/a75f3b7c/">区间DP</a> | [[树形DP]]</p>
+</li>
+<li>
+<p>L3 [状态压缩] | L4 [[状压DP]] | <a  href="/posts/5db37e5a/">SOSDP</a></p>
+</li>
+<li>
+<p>L3 [决策优化] | L4 [[单调队列优化]] | [[斜率优化]] | [[WQS 二分]]</p>
+</li>
+<li>
+<p>L3 [进阶模型] | L4 [[数位 DP]] | [[计数 DP]] | [[自动机 DP]] | [[动态 DP]]</p>
+</li>
+</ul>
+<h3 id="a-href-posts-66896278-40-数学-a"><a  href="/posts/66896278/">40_数学</a></h3>
+<p><em>核心：寻找数字背后的结构捷径（同余/组合/线性空间），跳过暴力枚举。</em></p>
+<ul>
+<li>
+<p>L3 <a  href="/posts/677e8336/">41_数论基础</a> | L4 <a  href="/posts/4eb9ff09/">乘法逆元体系</a> | <a  href="/posts/aa0acc66/">素数筛法</a> | [[莫比乌斯反演]]</p>
+</li>
+<li>
+<p>L3 [组合计数] | L4 [[容斥原理]] | [[生成函数]] | [[特殊数]]</p>
+</li>
+<li>
+<p>L3 [线性代数] | L4 [[线性基]] | [[高斯消元]] | [[矩阵快速幂]]</p>
+</li>
+<li>
+<p>L3 [多项式] | L4 [[FFT/NTT]]</p>
+</li>
+</ul>
+<h3 id="a-href-posts-fd1d1436-50-计算几何-a"><a  href="/posts/fd1d1436/">50_计算几何</a></h3>
+<p><em>核心：用浮点数模拟物理世界，通过扫描与旋转将杂乱空间有序化。</em></p>
+<ul>
+<li>
+<p>L3 [几何基础] | L4 [[向量运算]] | [[最小圆覆盖]] | [[自适应辛普森]]</p>
+</li>
+<li>
+<p>L3 [凸包体系] | L4 [[二维凸包]] | [[旋转卡壳]] | [[闵可夫斯基和]]</p>
+</li>
+<li>
+<p>L3 [扫描线与半平面] | L4 [[面积并]] | [[半平面交]]</p>
+</li>
+</ul>
+<h3 id="a-href-posts-6fb16570-60-字符串-a"><a  href="/posts/6fb16570/">60_字符串</a></h3>
+<p><em>核心：建立结构化索引（自动机/后缀结构），利用已知信息跳过无效匹配。</em></p>
+<ul>
+<li>
+<p>L3 [匹配与自动机] | L4 [[KMP]] | [[AC 自动机]] | [[Trie 树]] | [[SAM]]</p>
+</li>
+<li>
+<p>L3 [结构化索引] | L4 [[后缀数组]] | [[字符串 Hash]]</p>
+</li>
+<li>
+<p>L3 [回文处理] | L4 [[Manacher]] | [[PAM]]</p>
+</li>
+</ul>
+<h3 id="a-href-posts-cf153fd-70-杂项专题-a"><a  href="/posts/cf153fd/">70_杂项专题</a></h3>
+<p><em>核心：推演博弈的必胜分值，或通过离线分治将时间维度转化为空间维度。</em></p>
+<ul>
+<li>
+<p>L3 [公平博弈] | L4 <a  href="/posts/90898f79/">Nim 游戏及其变体</a> | <a  href="/posts/fcbc3385/">SG 函数</a></p>
+</li>
+<li>
+<p>L3 [离线专题] | L4 [[CDQ 分治]] | [[整体二分]]</p>
+</li>
+</ul>
+<h3 id="Essay">Essay</h3>
+<blockquote>
+<p><a  href="/posts/56c8ecc8/">Essay_06_Order</a>，等待并心怀希望吧。</p>
+<p><em>&quot;Wait for the wind, but keep rowing.&quot;</em></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Meta-Guide/" class="print-no-link">#Meta/Guide</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[L1] Mi Qiu&#39;s Digital Garden</div>
+      <div>https://example.com/posts/92601886/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Miqiu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年11月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/5e9e3688/" title="[Leaf] [P1020] 导弹拦截">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Leaf] [P1020] 导弹拦截</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/1bb13521/" title="[Leaf] [P1950] 长方形">
+                        <span class="hidden-mobile">[Leaf] [P1950] 长方形</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

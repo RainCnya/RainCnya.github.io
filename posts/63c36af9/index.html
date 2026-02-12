@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="[L4] 线性DP 1. 生态位   识别:   拓扑序: 序列索引下标自然就是状态转移方向。   无后效性: 当前决策仅取决于 1…i−11 \dots i-11…i−1 的最优子结构。     地位: 基础 DP 模型。本质是记忆化搜索，用空间换时间。   用途: 解决序列上的子序列选择、排列匹配、覆盖划分等最优化问题。   2. 逻辑支点 2.1 核心原理 在线性序列中，下标 iii，自然就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Note] 线性DP">
+<meta property="og:url" content="https://example.com/posts/63c36af9/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="[L4] 线性DP 1. 生态位   识别:   拓扑序: 序列索引下标自然就是状态转移方向。   无后效性: 当前决策仅取决于 1…i−11 \dots i-11…i−1 的最优子结构。     地位: 基础 DP 模型。本质是记忆化搜索，用空间换时间。   用途: 解决序列上的子序列选择、排列匹配、覆盖划分等最优化问题。   2. 逻辑支点 2.1 核心原理 在线性序列中，下标 iii，自然就">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-12T08:06:17.474Z">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="DP&#x2F;线性">
+<meta property="article:tag" content="难度&#x2F;P3">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>[Note] 线性DP - MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_page.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[Note] 线性DP"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Miqiu
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-20 00:00" pubdate>
+          2026年1月20日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          839 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[Note] 线性DP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>[L4] 线性DP</h1>
+<h2 id="1-生态位">1. 生态位</h2>
+<ul>
+<li>
+<p><strong>识别</strong>:</p>
+<ol>
+<li>
+<p><strong>拓扑序</strong>: 序列索引下标自然就是状态转移方向。</p>
+</li>
+<li>
+<p><strong>无后效性</strong>: 当前决策仅取决于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>…</mo><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \dots i-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的最优子结构。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>地位</strong>: 基础 DP 模型。本质是记忆化搜索，用空间换时间。</p>
+</li>
+<li>
+<p><strong>用途</strong>: 解决序列上的<strong>子序列选择</strong>、<strong>排列匹配</strong>、<strong>覆盖划分</strong>等最优化问题。</p>
+</li>
+</ul>
+<h2 id="2-逻辑支点">2. 逻辑支点</h2>
+<h3 id="2-1-核心原理">2.1 核心原理</h3>
+<p>在线性序列中，下标 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>，自然就是拓扑序，这意味着我们无需显式建图，只需按索引顺序扫描，即可天然满足无后效性。</p>
+<h3 id="2-2-基础模型">2.2 基础模型</h3>
+<ol>
+<li>
+<p><strong>LIS 模型</strong>：最长上升子序列( Longest Increasing Subsequence )</p>
+<ul>
+<li><strong>基础 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></strong>: 每个位置 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 都在寻找前缀中最优的接纳者 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span></span></span></span>。</li>
+<li><strong>贪心 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></strong>: 同样长度的上升序列，结尾元素越小，后续接纳潜力越大。</li>
+</ul>
+</li>
+<li>
+<p><strong>LCS 模型</strong>：最长相同子序列( Longest Common Subsequence )</p>
+<ul>
+<li>将两序列匹配映射为二维网格决策（匹配、跳过 A、跳过 B）。</li>
+</ul>
+</li>
+<li>
+<p><strong>Dilworth 定理</strong>：</p>
+<ul>
+<li>最小链覆盖数 = 最长反链长度。将“集合划分”降维为“序列查找”。</li>
+<li>要用最少的单调递增序列覆盖原序列，其数量等于原序列中“最长下降子序列”的长度。</li>
+</ul>
+</li>
+<li>
+<p><strong>多维降维模型</strong>：</p>
+<ul>
+<li><strong>场景</strong>：二维偏序下的子集选择。</li>
+<li>通过排序锁定一维排序，将另一维转化为 LIS 序列处理。</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-实战部署">3. 实战部署</h2>
+<h3 id="3-1-LIS-最长上升子序列">3.1 LIS (最长上升子序列)</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-8f7bdefe" role="button" aria-expanded="false" aria-controls="collapse-8f7bdefe">
+        <div class="fold-arrow">▶</div>LIS 模型
+      </div>
+      <div class="fold-collapse collapse" id="collapse-8f7bdefe">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 1. 基础 O(N^2) - 记录前驱方案时常用</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">LIS</span><span class="hljs-params">( )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>    &#123;<br>        f[i] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; i; ++ j )<br>        &#123;<br>            <span class="hljs-keyword">if</span>( a[j] &lt; a[i] ) f[i] = <span class="hljs-built_in">max</span>( f[i], f[j] + <span class="hljs-number">1</span> );<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 2. 贪心二分优化 O(N log N) - 仅求长度或大数据量</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">LIS</span><span class="hljs-params">( vector&lt;<span class="hljs-type">int</span>&gt; &amp;nums )</span> </span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">// 找到第一个 &gt;= a[i] 的位置并替换</span><br>	<span class="hljs-comment">// lower_bound: &gt;=, 对应严格上升 LIS</span><br>	<span class="hljs-comment">// upper_bound: &gt;, 对应不下降序列</span><br>	<br>	<span class="hljs-comment">// STL vector 写法 </span><br>    vector&lt;<span class="hljs-type">int</span>&gt; g;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> x : nums ) <br>    &#123;<br>        <span class="hljs-keyword">auto</span> it = <span class="hljs-built_in">lower_bound</span>( g.<span class="hljs-built_in">begin</span>( ), g.<span class="hljs-built_in">end</span>( ), x );<br>        <span class="hljs-keyword">if</span>( it == g.<span class="hljs-built_in">end</span>( ) ) g.<span class="hljs-built_in">push_back</span>(x);<br>        <span class="hljs-keyword">else</span> *it = x;<br>    &#125;<br>    <span class="hljs-keyword">return</span> g.<span class="hljs-built_in">size</span>( );<br>    <br>    <span class="hljs-comment">// 静态数组写法</span><br>	<span class="hljs-type">int</span> len = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> x : nums )<br>    &#123;<br>        <span class="hljs-type">int</span> pos = <span class="hljs-built_in">lower_bound</span>( g + <span class="hljs-number">1</span>, g + len + <span class="hljs-number">1</span>, x ) - g;<br>        f[pos] = val;<br>        <span class="hljs-keyword">if</span>( pos &gt; len ) len = pos;<br>    &#125;<br>    <span class="hljs-keyword">return</span> len;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="3-2-LCS-最长公共子序列">3.2 LCS (最长公共子序列)</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-28ab9646" role="button" aria-expanded="false" aria-controls="collapse-28ab9646">
+        <div class="fold-arrow">▶</div>LCS 模型
+      </div>
+      <div class="fold-collapse collapse" id="collapse-28ab9646">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// f[i][j] 表示 A 前 i 个与 B 前 j 个的匹配长度</span><br><span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i )<br>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; ++ j )<br>    &#123;<br>        <span class="hljs-keyword">if</span>( a[i] == b[j] ) &#123;<br>	        f[i][j] = f[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + <span class="hljs-number">1</span>;  <span class="hljs-comment">// 匹配</span><br>	    &#125; <br>	    <span class="hljs-keyword">else</span> <br>	    &#123;<br>			f[i][j] = <span class="hljs-built_in">max</span>( f[i<span class="hljs-number">-1</span>][j], f[i][j<span class="hljs-number">-1</span>] );    <span class="hljs-comment">// 错位</span><br>		&#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="4-知识关联">4. 知识关联</h2>
+<ul>
+<li>
+<p><strong>4.1 Dilworth与降维</strong></p>
+<ul>
+<li>
+<p><a  href="/posts/5e9e3688/">P1020 导弹拦截</a> —— <strong>Dilworth 定理应用</strong>。</p>
+</li>
+<li>
+<p><a  href="/posts/2d2f3a03/">ABC439E Kite</a> —— <strong>二维偏序转化</strong>。</p>
+</li>
+<li>
+<p><a  href="/posts/24bb9c7/">CF2193F Pizza Delivery</a> —— <strong>单向性降维</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>4.2 状态同步与去重计数</strong></p>
+<ul>
+<li>
+<p><a  href="/posts/8a9a7c5e/">P1006 传纸条</a> —— <strong>多路径同步</strong>。</p>
+</li>
+<li>
+<p><a  href="/posts/74f6b4c4/">P2516 最长公共子序列</a> —— <strong>计数类 DP</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>4.3 转移优化</strong></p>
+<ul>
+<li>
+<p><a  href="/posts/a5a4bb40/">ABC442F Diagonal Separation 2</a> —— <strong>后缀和优化</strong>。</p>
+</li>
+<li>
+<p><a  href="/posts/79b83310/">TZ9547 Silly Xiao Zhang</a> —— <strong>单调栈 + 后缀和</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>4.4 复杂约束与离散化</strong></p>
+<ul>
+<li>
+<p><a  href="/posts/34ceb65d/">P1052 过河</a> —— <strong>路径压缩</strong>。</p>
+</li>
+<li>
+<p><a  href="/posts/cb5cdc4d/">ABC443E Climbing Silver</a>—— <strong>复杂状态设计</strong>。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>关联笔记</strong>:</p>
+<ul>
+<li>
+<p><a  href="/posts/43666fa1/">树状数组</a>: LIS 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N \log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 实现同样可以通过权值树状数组实现。</p>
+</li>
+<li>
+<p>[[区间 DP]]: 线性序列向内部折叠、对称性转移的进阶模型。</p>
+</li>
+<li>
+<p>[[单调队列优化]]: 针对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mo>=</mo><mi>min</mi><mo>⁡</mo><mo stretchy="false">{</mo><mi>f</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">}</mo><mo>+</mo><mi>c</mi><mi>o</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">f[i] = \min\{f[j]\} + cost[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">min</span><span class="mopen">{</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]}</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">cos</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 型转移的通用工具。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/" class="print-no-link">#难度/P3</a>
+      
+        <a href="/tags/DP-%E7%BA%BF%E6%80%A7/" class="print-no-link">#DP/线性</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[Note] 线性DP</div>
+      <div>https://example.com/posts/63c36af9/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Miqiu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月20日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/9b9ebd6f/" title="[Leaf] [ZJ2020C] Crossword Validation">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Leaf] [ZJ2020C] Crossword Validation</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/28fc8d87/" title="[Leaf] [ZJ2020B] Bin Packing Problem">
+                        <span class="hidden-mobile">[Leaf] [ZJ2020B] Bin Packing Problem</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

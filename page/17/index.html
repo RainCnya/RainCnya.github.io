@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MiQiu">
+<meta property="og:url" content="https://example.com/page/17/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_index.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="愿你的旅途永远璀璨，愿你的夏日永不凋零。"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/12512919/" target="_self">
+          [Leaf] [P7771] 欧拉路径
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/12512919/" target="_self">
+        <div>
+          Luogu-P7771 【模板】欧拉路径 1. 核心逻辑   问题本质: 寻找有向图中经过每条边恰好一次且字典序最小的路径。   核心切入点:   度数判定:   起点：out=in+1out = in + 1out=in+1（若无，则为任意 in=outin=outin=out 且编号最小的点）。   终点：in=out+1in = out + 1in=out+1。     Hierholzer
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-15 00:00" pubdate>
+              2025-12-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/21-%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">21_图论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E8%BF%9E%E9%80%9A%E6%80%A7/">#图论/连通性</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%AC%A7%E6%8B%89%E8%B7%AF%E5%BE%84/">#图论/欧拉路径</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/ad8e1953/" target="_self">
+          [Leaf] [P2812] 校园网络
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ad8e1953/" target="_self">
+        <div>
+          P2812 校园网络【[USACO]Network of Schools加强版】 - 洛谷 1. 核心逻辑   问题本质: 将含有环的有向图通过缩点转化为 DAG，并利用入度/出度特征求解全局覆盖与强连通补全代价。   破局转换:   逻辑简化: 强连通分量 (SCC) 内部所有点地位等价，共享连通性贡献。   第一问 (最小起点数): 对应缩点后 DAG 中入度为 0 的节点数量。   第二问
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-15 00:00" pubdate>
+              2025-12-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/23-%E8%BF%9E%E9%80%9A%E6%80%A7%E4%B8%93%E9%A2%98/" class="category-chain-item">23_连通性专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E8%BF%9E%E9%80%9A%E6%80%A7-%E5%BC%BA%E8%BF%9E%E9%80%9A/">#图论/连通性/强连通</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/a535be86/" target="_self">
+          [Note] 最短路体系
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a535be86/" target="_self">
+        <div>
+          [L4] 最短路体系 1. 生态位   识别:   寻找从起点到终点的最小代价（权值非负用 Dijkstra，含负权用 SPFA）。   状态分层: 有 kkk 次免费/打折机会 →\to→ 分层图最短路。   逻辑判定: 寻找负环（SPFA）或 最小环（Floyd）。   计数与推导: 统计最短路方案数 →\to→ 最短路 DAG。     地位: 图论的核心求路径工具。   用途: 解决决策空
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-12 01:33" pubdate>
+              2025-12-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/21-%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">21_图论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/e4145a20/" target="_self">
+          [Leaf] [P2149] Elaxia 的路线
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/e4145a20/" target="_self">
+        <div>
+          P2149 [SDOI2009] Elaxia的路线 - 洛谷 1. 题面梗概 中译中: 给两个起点终点对 (x1,y1)(x_1, y_1)(x1​,y1​) 和 (x2,y2)(x_2, y_2)(x2​,y2​) 和一个无向图。求这两对点各自的最短路径集合中，最长公共路径的长度。 2. 逻辑推导 从最短路出发，我们知道两个点之间的最短路往往不止一条，而最长公共路径很明显就是一条链。我们考虑先
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-08 08:54" pubdate>
+              2025-12-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/21-%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">21_图论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%BB%BA%E6%A8%A1/">#图论/建模</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/21cfea74/" target="_self">
+          [Leaf] [P2827] [NOIP2016] 蚯蚓
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/21cfea74/" target="_self">
+        <div>
+          Luogu-P2827 蚯蚓 1. 题面梗概 中译中: 有一堆蚯蚓，每次抓出最长的一根切成两段（比例固定）。切开的同时，没被切的蚯蚓都在变长。问你切的时候的长度，以及最后所有蚯蚓的长度。 难点: 蚯蚓数量随切分不断增加，且全员增长。如果用堆（优先队列），复杂度 O(Mlog⁡(N+M))O( M \log(N+M) )O(Mlog(N+M))，在 7⋅1067 \cdot 10^67⋅106 的数
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-04 00:00" pubdate>
+              2025-12-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">01_降维技巧</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#算法/单调队列</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/40e03907/" target="_self">
+          [Leaf] [P6033] 合并果子
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/40e03907/" target="_self">
+        <div>
+          Luogu-P6033 合并果子 1. 核心逻辑   问题本质: 求哈夫曼树的最小带权路径长度。在 N=107N=10^7N=107 下规避 O(Nlog⁡N)O(N \log N)O(NlogN) 的优先队列。   破局转换:   单调性: 在输入有序的前提下，新合成出的节点权值也具备单调递增性。   双队列优化:   q1: 存放初始权值（桶排序后推入，天然有序）。   q2: 存放新合成的权
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-04 00:00" pubdate>
+              2025-12-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">04_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#算法/单调队列</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E8%B4%AA%E5%BF%83/">#策略/贪心</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/7cebce35/" target="_self">
+          [Leaf] [P1908] 逆序对
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/7cebce35/" target="_self">
+        <div>
+          Luogu-P1908 逆序对 1. 核心逻辑   问题本质: 求满足 i&lt;ji &lt; ji&lt;j 且 ai&gt;aja_i &gt; a_jai​&gt;aj​ 的数对数量。   破局转换:   权值视角：按原序列顺序扫描。对于当前数 aia_iai​，在它之前出现过且比它大的数都会与它构成逆序对。   离散化：由于值域较大（1e9），需通过排序+去重映射到 1…N1 \dots
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-04 00:00" pubdate>
+              2025-12-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">10_数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-chain-item">11_树形结构</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E5%88%86%E6%B2%BB/">#策略/分治</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/8372cd1c/" target="_self">
+          [Leaf] [P5463] 小鱼比可爱
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8372cd1c/" target="_self">
+        <div>
+          Luogu-P5463 小鱼比可爱 1. 核心逻辑   问题本质: 求所有子区间的逆序对总数。   破局转换:   贡献思想：计算每个逆序对 (i,j)(i, j)(i,j) 在多少个区间中出现。区间 [L,R][L, R][L,R] 包含该对的条件是 L≤iL \le iL≤i 且 R≥jR \ge jR≥j。   数学表达：对固定右端点 jjj，其贡献为 ∑i&lt;j,ai&gt;aji×(
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-04 00:00" pubdate>
+              2025-12-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">10_数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-chain-item">11_树形结构</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+              <a href="/tags/%E7%BB%84%E5%90%88-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#组合/贡献法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/b3535987/" target="_self">
+          [Leaf] [P1972] HH的项链
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/b3535987/" target="_self">
+        <div>
+          Luogu-P1972 HH的项链 1. 核心逻辑   问题本质: 区间查询不同数字的数量。   破局转换:   离线处理：将询问按右端点 RRR 从小到大排序。   扫描线思想：当扫描指针移动到 iii 时，我们只希望 a[i]a[i]a[i] 这一种颜色的最右侧那个位置产生贡献。   更新策略：若 a[i]a[i]a[i] 之前在位置 lstlstlst 出现过，则在 BIT 中 add(ls
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-03 00:00" pubdate>
+              2025-12-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">10_数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-chain-item">11_树形结构</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E6%89%AB%E6%8F%8F%E7%BA%BF/">#计算几何/扫描线</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/500cfb67/" target="_self">
+          P4513 小白逛公园
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/500cfb67/" target="_self">
+        <div>
+          Luogu-P4513 小白逛公园 1. 核心逻辑   问题本质: 单点修改，区间查询最大子段和。   破局转换:   信息合并局限：单纯维护区间最大值无法处理跨越中点的子段。   不变量维护：   sum: 区间和。   lmax: 最大前缀。   rmax: 最大后缀。   dat: 区间最大子段和。     合并逻辑 (PushUp)：  dat = max(&#123;L.dat, R.d
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-12-03 00:00" pubdate>
+              2025-12-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">10_数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-chain-item">11_树形结构</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E5%88%86%E6%B2%BB/">#策略/分治</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/16/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/#board">15</a><a class="page-number" href="/page/16/#board">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/#board">18</a><a class="page-number" href="/page/19/#board">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/18/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

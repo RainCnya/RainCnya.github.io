@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="P4216 [SCOI2015] 情报传递 - 洛谷 1. 题面梗概 中译中：给定一颗树，每天会出现以下两个任务：  TTT 号节点每天点权 +1+1+1。 查询 X→YX \to YX→Y 节点路径上节点数，以及节点点权 &gt;C&gt; C&gt;C 的数量。  2. 逻辑推导 直接模拟每一天的点权修改，复杂度是爆炸的。我们需要找到 点权 &gt;C&gt; C&gt;C 跟时间的关系。 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Leaf] [P4216] 情报传递">
+<meta property="og:url" content="https://example.com/posts/3344710b/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="P4216 [SCOI2015] 情报传递 - 洛谷 1. 题面梗概 中译中：给定一颗树，每天会出现以下两个任务：  TTT 号节点每天点权 +1+1+1。 查询 X→YX \to YX→Y 节点路径上节点数，以及节点点权 &gt;C&gt; C&gt;C 的数量。  2. 逻辑推导 直接模拟每一天的点权修改，复杂度是爆炸的。我们需要找到 点权 &gt;C&gt; C&gt;C 跟时间的关系。 2">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-11T12:50:10.000Z">
+<meta property="article:modified_time" content="2026-02-12T08:06:17.481Z">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="树论&#x2F;树链剖分">
+<meta property="article:tag" content="策略&#x2F;离线查询">
+<meta property="article:tag" content="难度&#x2F;P5">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>[Leaf] [P4216] 情报传递 - MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_page.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[Leaf] [P4216] 情报传递"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Miqiu
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-02-11 20:50" pubdate>
+          2026年2月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[Leaf] [P4216] 情报传递</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4216">P4216 [SCOI2015] 情报传递 - 洛谷</a></h1>
+<h2 id="1-题面梗概">1. 题面梗概</h2>
+<p><strong>中译中</strong>：给定一颗树，每天会出现以下两个任务：</p>
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span> 号节点每天点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord">1</span></span></span></span>。</li>
+<li>查询 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">X \to Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span> 节点路径上节点数，以及节点点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">&gt; C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> 的数量。</li>
+</ol>
+<h2 id="2-逻辑推导">2. 逻辑推导</h2>
+<p>直接模拟每一天的点权修改，复杂度是爆炸的。我们需要找到 点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">&gt; C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> 跟时间的关系。</p>
+<h3 id="2-1-转换">2.1 转换</h3>
+<p>假设当前是第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 天，某节点在第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 天开始增长。</p>
+<ul>
+<li>第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 天：点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>。</li>
+<li>第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6984em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 天：点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>。</li>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>…</mo></mrow><annotation encoding="application/x-tex">\dots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.123em;"></span><span class="minner">…</span></span></span></span></li>
+<li>第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 天：点权 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">i - t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>。</li>
+</ul>
+<p>我们需要查询 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mi>t</mi><mo>&gt;</mo><mi>C</mi><mtext>  </mtext><mo>⟺</mo><mtext>  </mtext><mi>t</mi><mo>≤</mo><mi>i</mi><mo>−</mo><mi>C</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i - t &gt; C \iff t \leq i - C - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6542em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7073em;vertical-align:-0.024em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟺</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>，也就是说，对于第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 天的查询而言，只有那些在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mi>C</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i - C - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 天或者之前开始增加的节点，才是需要的。</p>
+<h3 id="2-2-离线">2.2 离线</h3>
+<p>这又是一个区间限制问题。既然每个查询只关心 <strong>早于某个时间点个时间点</strong> 的事件，我们可以考虑离线查询。</p>
+<ol>
+<li><strong>记录事件</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>u</mi><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(u, t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span></span></span></span> 表示节点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 在第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 天激活。</li>
+<li><strong>记录查询</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mi>Y</mi><mo separator="true">,</mo><mi>C</mi><mo separator="true">,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(X,Y,C,i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span> 表示查询在路径 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>→</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x \to y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> 上，有多少个点在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mi>C</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i - C - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 天之前激活。</li>
+</ol>
+<p><strong>离线排序</strong>：</p>
+<ul>
+<li>将所有事件按照 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span> 从小到大排序。</li>
+<li>将所有查询按照 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi><mo>=</mo><mi>i</mi><mo>−</mo><mi>C</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">limit = i - C - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">imi</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7429em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 从小到大排序。</li>
+</ul>
+<p><strong>处理</strong>：遍历询问，每当询问的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>i</mi><mi>m</mi><mi>i</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">limit</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">imi</span><span class="mord mathnormal">t</span></span></span></span> 增加，就把满足条件的激活节点在树上记录。</p>
+<h3 id="2-3-结论">2.3 结论</h3>
+<p>这是个 <strong>树链剖分</strong> + <strong>离线扫描线</strong> 的经典应用。</p>
+<h2 id="3-代码实现">3. 代码实现</h2>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-8f7bdefe" role="button" aria-expanded="false" aria-controls="collapse-8f7bdefe">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-8f7bdefe">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">50</span>;<br><br>vector&lt; <span class="hljs-type">int</span> &gt; adj[maxn];<br><span class="hljs-type">int</span> fa[maxn], dep[maxn], sz[maxn], son[maxn];<br><span class="hljs-type">int</span> top[maxn], dfn[maxn], timer;<br><span class="hljs-type">int</span> n, q;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Seg</span> &#123;<br>    <span class="hljs-type">int</span> l, r;<br>    ll sum, add;<br>&#125; tr[ maxn &lt;&lt; <span class="hljs-number">2</span> ];<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ls u &lt;&lt; 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> rs u &lt;&lt; 1 | 1</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pushdown</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( !tr[u].add ) <span class="hljs-keyword">return</span>;<br>    ll t = tr[u].add;<br>    tr[ls].sum += t * ( tr[ls].r - tr[ls].l + <span class="hljs-number">1</span> );<br>    tr[rs].sum += t * ( tr[rs].r - tr[rs].l + <span class="hljs-number">1</span> );<br>    tr[ls].add += t;<br>    tr[rs].add += t;<br>    tr[u].add = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">build</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span> </span><br><span class="hljs-function"></span>&#123;<br>    tr[u] = &#123; l, r, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> &#125;;<br>    <span class="hljs-keyword">if</span>( l == r ) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">build</span>( ls, l, mid );<br>    <span class="hljs-built_in">build</span>( rs, mid + <span class="hljs-number">1</span>, r );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, ll val )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r ) <br>    &#123;<br>        tr[u].sum += val * ( tr[u].r - tr[u].l + <span class="hljs-number">1</span> );<br>        tr[u].add += val;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-built_in">pushdown</span>( u );<br>    <span class="hljs-type">int</span> mid = ( tr[u].l + tr[u].r ) &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span>( l &lt;= mid ) <span class="hljs-built_in">modify</span>( ls, l, r, val );<br>    <span class="hljs-keyword">if</span>( r &gt; mid ) <span class="hljs-built_in">modify</span>( rs, l, r, val );<br>    tr[u].sum = tr[ls].sum + tr[rs].sum;<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r ) <span class="hljs-keyword">return</span> tr[u].sum;<br>    <span class="hljs-built_in">pushdown</span>( u );<br>    <span class="hljs-type">int</span> mid = ( tr[u].l + tr[u].r ) &gt;&gt; <span class="hljs-number">1</span>;<br>    ll res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( l &lt;= mid ) res += <span class="hljs-built_in">query</span>( ls, l, r );<br>    <span class="hljs-keyword">if</span>( r &gt; mid ) res += <span class="hljs-built_in">query</span>( rs, l, r );<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs1</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> p )</span> </span><br><span class="hljs-function"></span>&#123;<br>    dep[u] = dep[p] + <span class="hljs-number">1</span>; fa[u] = p; sz[u] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) <br>    &#123;<br>        <span class="hljs-built_in">dfs1</span>( v, u );<br>        sz[u] += sz[v];<br>        <span class="hljs-keyword">if</span>( sz[v] &gt; sz[son[u]] ) son[u] = v;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs2</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> t )</span> </span><br><span class="hljs-function"></span>&#123;<br>    top[u] = t; dfn[u] = ++timer;<br>    <span class="hljs-keyword">if</span>( !son[u] ) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-built_in">dfs2</span>( son[u], t );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) <span class="hljs-keyword">if</span>( v != son[u] ) <span class="hljs-built_in">dfs2</span>( v, v );<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">query_path</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v )</span> </span><br><span class="hljs-function"></span>&#123;<br>    ll res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>( top[u] != top[v] ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( dep[top[u]] &lt; dep[top[v]] ) <span class="hljs-built_in">swap</span>( u, v );<br>        res += <span class="hljs-built_in">query</span>( <span class="hljs-number">1</span>, dfn[top[u]], dfn[u] );<br>        u = fa[top[u]];<br>    &#125;<br>    <span class="hljs-keyword">if</span>( dep[u] &gt; dep[v] ) <span class="hljs-built_in">swap</span>( u, v );<br>    res += <span class="hljs-built_in">query</span>( <span class="hljs-number">1</span>, dfn[u], dfn[v] );<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get_lca</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>( top[u] != top[v] ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( dep[top[u]] &lt; dep[top[v]] ) <span class="hljs-built_in">swap</span>( u, v );<br>        u = fa[top[u]];<br>    &#125;<br>    <span class="hljs-keyword">return</span> dep[u] &lt; dep[v] ? u : v;<br>&#125;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Quest</span> &#123; <br>    <span class="hljs-type">int</span> x, y, limit, id, len; <br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; ( <span class="hljs-type">const</span> Quest&amp; oth ) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> limit &lt; oth.limit; &#125;<br>&#125;;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Event</span> &#123;<br>    <span class="hljs-type">int</span> u, time;<br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; ( <span class="hljs-type">const</span> Event&amp; oth ) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> time &lt; oth.time; &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span><br><span class="hljs-function"></span>&#123;<br>    ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>); <br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    <br>    cin &gt;&gt; n;<br>    <span class="hljs-type">int</span> root = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) <br>    &#123;<br>        <span class="hljs-type">int</span> p;<br>        cin &gt;&gt; p;<br>        <span class="hljs-keyword">if</span>( p == <span class="hljs-number">0</span> ) root = i;<br>        <span class="hljs-keyword">else</span> adj[p].<span class="hljs-built_in">push_back</span>( i );<br>    &#125;<br><br>    <span class="hljs-built_in">dfs1</span>( root, <span class="hljs-number">0</span> );<br>    <span class="hljs-built_in">dfs2</span>( root, root );<br>    <span class="hljs-built_in">build</span>( <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, n );<br><br>    cin &gt;&gt; q;<br>    vector&lt; Quest &gt; qs;<br>    vector&lt; Event &gt; es;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= q; ++ i )<br>    &#123;<br>        <span class="hljs-type">int</span> k, x, y, c, u;<br>        cin &gt;&gt; k;<br>        <span class="hljs-keyword">if</span>( k == <span class="hljs-number">1</span> )<br>        &#123;<br>            cin &gt;&gt; x &gt;&gt; y &gt;&gt; c;<br>            <span class="hljs-type">int</span> lca = <span class="hljs-built_in">get_lca</span>( x, y );<br>            <span class="hljs-type">int</span> len = dep[x] + dep[y] - <span class="hljs-number">2</span> * dep[lca] + <span class="hljs-number">1</span>;<br>            qs.<span class="hljs-built_in">push_back</span>(&#123; x, y, i - c - <span class="hljs-number">1</span>, (<span class="hljs-type">int</span>)qs.<span class="hljs-built_in">size</span>( ), len &#125;);<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            cin &gt;&gt; u;<br>            es.<span class="hljs-built_in">push_back</span>(&#123; u, i &#125;);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-built_in">sort</span>( qs.<span class="hljs-built_in">begin</span>( ), qs.<span class="hljs-built_in">end</span>( ) );<br>    <span class="hljs-built_in">sort</span>( es.<span class="hljs-built_in">begin</span>( ), es.<span class="hljs-built_in">end</span>( ) );<br><br>    vector&lt; pair&lt; <span class="hljs-type">int</span>, <span class="hljs-type">int</span> &gt; &gt; <span class="hljs-built_in">ans</span>( qs.<span class="hljs-built_in">size</span>( ) );<br>    <span class="hljs-type">int</span> event_idx = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> q : qs )<br>    &#123;<br>        <span class="hljs-keyword">while</span>( event_idx &lt; es.<span class="hljs-built_in">size</span>( ) &amp;&amp; es[event_idx].time &lt;= q.limit )<br>        &#123;<br>            <span class="hljs-type">int</span> u = es[event_idx].u;<br>            <span class="hljs-built_in">modify</span>( <span class="hljs-number">1</span>, dfn[u], dfn[u], <span class="hljs-number">1</span> );<br>            event_idx ++;<br>        &#125;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-built_in">query_path</span>( q.x, q.y );<br>        ans[q.id] = &#123; q.len, cnt &#125;;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">auto</span> [len, cnt] : ans )<br>    &#123;<br>        cout &lt;&lt; len &lt;&lt; <span class="hljs-string">&#x27; &#x27;</span> &lt;&lt; cnt &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="4-复盘">4. 复盘</h2>
+<ul>
+<li>
+<p><strong>复杂度分析</strong>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>N</mi><mo>+</mo><mi>Q</mi><mo stretchy="false">)</mo><msup><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O( ( N + Q ) \log^2 N )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">((</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1484em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。排序是瓶颈，树剖查询每次 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>N</mi></mrow><annotation encoding="application/x-tex">\log^2 N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0929em;vertical-align:-0.1944em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>。</p>
+</li>
+<li>
+<p><strong>碎碎念</strong>：这题的线段树只做了单点修改，但由于是离线批量处理，理论上可以用树状数组实现，但我偷懒抄的模板（就不改了。</p>
+</li>
+<li>
+<p><strong>关联笔记</strong>：<a  href="/posts/5e08b96b/">树链剖分</a> | <a  href="/posts/56fdb705/">LCA 体系</a></p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/" class="print-no-link">#难度/P5</a>
+      
+        <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" class="print-no-link">#树论/树链剖分</a>
+      
+        <a href="/tags/%E7%AD%96%E7%95%A5-%E7%A6%BB%E7%BA%BF%E6%9F%A5%E8%AF%A2/" class="print-no-link">#策略/离线查询</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[Leaf] [P4216] 情报传递</div>
+      <div>https://example.com/posts/3344710b/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Miqiu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年2月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/eb83cf7a/" title="[Leaf] [CF2196C2] Interactive Graph (Hard Version)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">[Leaf] [CF2196C2] Interactive Graph (Hard Version)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/d47997f/" title="[Leaf] P4211 LCA">
+                        <span class="hidden-mobile">[Leaf] P4211 LCA</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

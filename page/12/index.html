@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MiQiu">
+<meta property="og:url" content="https://example.com/page/12/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_index.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="愿你的旅途永远璀璨，愿你的夏日永不凋零。"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/51752414/" target="_self">
+          [Leaf] [CF2167F] Tree, TREE!!!
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/51752414/" target="_self">
+        <div>
+          CF2167F - Tree, TREE!!! 1. 题面梗概 中译中：定义 f(r)f(r)f(r) 为：以 rrr 为根时，树中所有能作为 “某 kkk 个节点的 LCA” 的节点 uuu 的数量。 求 ∑r=1nf(r)\sum_{r=1}^{n} f(r)∑r=1n​f(r)。 2. 逻辑推导 最简单的思路就是直接枚举 rrr 跑 nnn 次 DFS，复杂度是 O(N2)O(N^2)O(N
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-06 00:00" pubdate>
+              2026-01-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">01_降维技巧</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-LCA/">#树论/LCA</a>
+            
+              <a href="/tags/%E7%BB%84%E5%90%88-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#组合/贡献法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/ed8782a8/" target="_self">
+          [Leaf] [CF2164D] Copy String
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/ed8782a8/" target="_self">
+        <div>
+          CF2164D - Copy String 1. 核心逻辑   模型抽象:  给定变换规则 si′∈{si,si−1}s&#x27;_i \in \{s_i, s_{i-1}\}si′​∈{si​,si−1​}，本质上是字符在单次操作中最多向右移动 1 位。    破局路径:   位移转化: 目标字符串 ttt 的位置 jjj 需要字符 bjb_jbj​，该字符必须由 sss 中的某个位置 iii
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-06 00:00" pubdate>
+              2026-01-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">04_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E6%9E%84%E9%80%A0/">#策略/构造</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E8%B4%AA%E5%BF%83/">#策略/贪心</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/e2c6b2ef/" target="_self">
+          [Leaf] [CF2167E] khba Loves to Sleep!
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/e2c6b2ef/" target="_self">
+        <div>
+          CF2167E - khba Loves to Sleep! 1. 核心逻辑   模型抽象: 在 [0,x][0, x][0,x] 内放置 kkk 个互异传送点，使所有朋友到最近传送点的距离的最小值最大化。   逻辑支点:   反过来思考: 设目标距离为 ddd，则对每个朋友坐标 aia_iai​，区间 (ai−d,ai+d)(a_i - d, a_i + d)(ai​−d,ai​+d) 为传送点
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-06 00:00" pubdate>
+              2026-01-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">04_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">#策略/二分答案</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E6%9E%84%E9%80%A0/">#策略/构造</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/619363dc/" target="_self">
+          [Leaf] [TZ3709] Number Maze
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/619363dc/" target="_self">
+        <div>
+          3709:Number Maze 1. 核心逻辑   模型抽象: 在带约束的网格图中求最短路径。移动判定函数为 f(prev,curr,next)=((val[prev]+val[curr])(modval[next])==0)f(prev, curr, next) = ((val[prev] + val[curr]) \pmod{val[next]} == 0)f(prev,curr,next)
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/03-%E6%90%9C%E7%B4%A2%E6%88%98%E6%9C%AF/" class="category-chain-item">03_搜索战术</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/%E6%90%9C%E7%B4%A2-BFS/">#搜索/BFS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/f3ae506a/" target="_self">
+          [Leaf] [TZ9512] 时空奇遇
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f3ae506a/" target="_self">
+        <div>
+          9512:归元大帝的时空奇遇 1. 题面梗概 中译中: 维护一堆势力。支持合并和查询。合并规则为：人多的赢；人一样多就编号小的赢。问最后 1 号是不是那个最终 BOSS。 2. 逻辑推导 直觉：应对这种动态维护问题，并查集显然就是首选。但标准的并查集只能维护连通性，并无法维护谁更强，不好处理本题复杂的合并问题。 那么我们可以在根节点再维护一个 size[] 数组，用于记录这个势力中的人数。 然后就
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">10_数据结构</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/12-%E8%BF%9E%E9%80%9A%E6%80%A7%E7%BB%93%E6%9E%84/" class="category-chain-item">12_连通性结构</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%B9%B6%E6%9F%A5%E9%9B%86/">#数据结构/并查集</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/84cedf52/" target="_self">
+          [Leaf] [CF2182D] Christmas Tree Decoration
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/84cedf52/" target="_self">
+        <div>
+          CF2182D - Christmas Tree Decoration 1. 核心逻辑   模型抽象: 给定总和 SSS，将其分配给 NNN 个位置，要求任意两位置之差 ≤1\le 1≤1。   逻辑不变量:   在“极差 ≤1\le 1≤1”的强约束下，分配方案是唯一确定的：   每个位置的基础值为 q=S/Nq = S / Nq=S/N。   共有 r=S%Nr = S \% Nr=S%N 个
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/" class="category-chain-item">40_数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/42-%E7%BB%84%E5%90%88%E8%AE%A1%E6%95%B0/" class="category-chain-item">42_组合计数</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%BB%84%E5%90%88-%E8%AE%A1%E6%95%B0/">#组合/计数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d9d9e338/" target="_self">
+          [Leaf] [ABC439D] Kadomatsu Subsequence
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d9d9e338/" target="_self">
+        <div>
+          ABC439D -  Kadomatsu Subsequence 1. 核心逻辑   模型抽象: 给定序列 AAA，统计满足特定比例关系或代数性质的三元组 (i,j,k)(i, j, k)(i,j,k) 数量，且要求 i,ki, ki,k 同时位于 jjj 的同侧。   破局路径:   枚举支点: 固定中间元素 jjj，题目要求 i,ki, ki,k 都在 jjj 左侧或都在 jjj 右侧。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">01_降维技巧</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%89%8D%E7%BC%80%E5%B7%AE%E5%88%86/">#算法/前缀差分</a>
+            
+              <a href="/tags/%E7%BB%84%E5%90%88-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#组合/贡献法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/a0cfe40f/" target="_self">
+          [Leaf] [TZ9508] 灵力平衡
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a0cfe40f/" target="_self">
+        <div>
+          9508:归元大帝的「三界灵力平衡」仪式 1. 核心逻辑   模型抽象:  在三个已排序序列 S1,S2,S3S_1, S_2, S_3S1​,S2​,S3​ 中各取一数 a,b,ca, b, ca,b,c，求 f=∣a−b∣+∣b−c∣+∣c−a∣f = |a-b| + |b-c| + |c-a|f=∣a−b∣+∣b−c∣+∣c−a∣ 的最小值。    破局路径:   代数降维: 设 a≤b≤c
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">01_降维技巧</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/">#算法/双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/a05d1987/" target="_self">
+          [Leaf] [TZ9516] 合数封印
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/a05d1987/" target="_self">
+        <div>
+          9516:归元大帝的「灵阵合数封印」 1. 核心逻辑   模型抽象: 构造 1…n1 \dots n1…n 的全排列，使得任意连续 kkk 个数之和均为合数。   破局路径:   k≥3k \ge 3k≥3 的普适证明: 设起始数为 xxx，连续 kkk 个数的和为 S=k(2x+k−1)2S = \frac{k(2x + k - 1)}{2}S=2k(2x+k−1)​。   若 kkk 为奇数：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">04_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E6%9E%84%E9%80%A0/">#策略/构造</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/391614d0/" target="_self">
+          [Leaf] [CF2182E] New Year&#39;s Gifts
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/391614d0/" target="_self">
+        <div>
+          CF2182E - New Year’s Gifts 1. 核心逻辑   模型抽象: 需求获取有两种路径：  使用免费资源匹配门槛 xxx，或支付额外代价 costcostcost 强行获取。总预算为 KKK。    破局路径:   基准转化: 假设所有需求先拿基础收益（消耗基础开销），计算剩余预算。   第一路径（资源优先）: 按代价降序排序（代价高的优先尝试匹配资源，以节省更多预算）。利用 m
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-05 00:00" pubdate>
+              2026-01-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-chain-item">04_贪心与构造</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E8%B4%AA%E5%BF%83/">#策略/贪心</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%B9%B3%E8%A1%A1%E6%A0%91/">#数据结构/平衡树</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/11/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/#board">10</a><a class="page-number" href="/page/11/#board">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/#board">13</a><a class="page-number" href="/page/14/#board">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/13/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,848 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="[L4] 树链剖分 1. 生态位   识别:   树上路径修改&#x2F;查询: “将 uuu 到 vvv 路径上所有点权值 +k+k+k”、“查询 uuu 到 vvv 路径权值和”。   子树修改&#x2F;查询: “将以 uuu 为根的子树内所有点权值 +k+k+k”。   结合律信息: 维护的信息满足结合律（和、最大值），本质是线段树能维护的信息。     地位：树论与数据结构之间的桥。它将非线性的树结构转化为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Note] 树链剖分">
+<meta property="og:url" content="https://example.com/posts/5e08b96b/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="[L4] 树链剖分 1. 生态位   识别:   树上路径修改&#x2F;查询: “将 uuu 到 vvv 路径上所有点权值 +k+k+k”、“查询 uuu 到 vvv 路径权值和”。   子树修改&#x2F;查询: “将以 uuu 为根的子树内所有点权值 +k+k+k”。   结合律信息: 维护的信息满足结合律（和、最大值），本质是线段树能维护的信息。     地位：树论与数据结构之间的桥。它将非线性的树结构转化为">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-16T06:10:00.000Z">
+<meta property="article:modified_time" content="2025-12-24T11:07:49.000Z">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="数据结构&#x2F;线段树">
+<meta property="article:tag" content="树论&#x2F;LCA">
+<meta property="article:tag" content="树论&#x2F;树链剖分">
+<meta property="article:tag" content="难度&#x2F;P4">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>[Note] 树链剖分 - MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_page.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[Note] 树链剖分"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Miqiu
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-12-16 14:10" pubdate>
+          2025年12月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          16 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[Note] 树链剖分</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>[L4] 树链剖分</h1>
+<h2 id="1-生态位">1. 生态位</h2>
+<ul>
+<li>
+<p><strong>识别</strong>:</p>
+<ol>
+<li>
+<p><strong>树上路径修改/查询</strong>: “将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 路径上所有点权值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">+k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>”、“查询 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span> 路径权值和”。</p>
+</li>
+<li>
+<p><strong>子树修改/查询</strong>: “将以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> 为根的子树内所有点权值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">+k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord">+</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>”。</p>
+</li>
+<li>
+<p><strong>结合律信息</strong>: 维护的信息满足结合律（和、最大值），本质是线段树能维护的信息。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>地位</strong>：树论与数据结构之间的桥。它将非线性的树结构转化为线性的数组结构。</p>
+</li>
+<li>
+<p><strong>用途</strong>：将树上路径操作复杂度从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 降维至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msup><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log^2 N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1484em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984em;"><span style="top:-3.1473em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>，子树操作降维至 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>。同时提供常数极小的 LCA 查询。</p>
+</li>
+</ul>
+<h2 id="2-逻辑支点">2. 逻辑支点</h2>
+<h3 id="2-1-核心原理：轻重边划分">2.1 核心原理：轻重边划分</h3>
+<p>为了让树变得“像数组一样连续”，我们根据 <strong>子树大小 (size)</strong> 对边进行分类：</p>
+<ul>
+<li>
+<p><strong>重儿子</strong>: 父节点的所有儿子中，子树节点数 (<code>sz</code>) 最多的那个。</p>
+</li>
+<li>
+<p><strong>轻儿子</strong>: 除重儿子外的其他儿子。</p>
+</li>
+<li>
+<p><strong>重链</strong>: 由重边首尾相连形成的路径。</p>
+</li>
+</ul>
+<h3 id="2-2-物理性质">2.2 物理性质</h3>
+<ol>
+<li>
+<p><strong>DFN 序连续性</strong>:</p>
+<ul>
+<li>
+<p>在 DFS 过程中<strong>优先遍历重儿子</strong>。</p>
+</li>
+<li>
+<p><strong>推论 1</strong>: 每一条重链上的节点的 DFN 序是连续的（对应线段树上的一段区间）。</p>
+</li>
+<li>
+<p><strong>推论 2</strong>: 任意一颗子树内的 DFN 序也是连续的。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>复杂度保证</strong>:</p>
+<ul>
+<li>
+<p>从树上任意一点走到根节点，经过的<strong>轻边</strong>数量不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 条，经过的<strong>重链</strong>数量也不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 条。</p>
+</li>
+<li>
+<p>因此，路径修改/查询相当于在线段树上操作 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 个区间。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-实战部署">3. 实战部署</h2>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-076edf11" role="button" aria-expanded="false" aria-controls="collapse-076edf11">
+        <div class="fold-arrow">▶</div>树链剖分模版
+      </div>
+      <div class="fold-collapse collapse" id="collapse-076edf11">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e5</span> + <span class="hljs-number">50</span>;<br><br><span class="hljs-comment">// 1. 树的基础结构</span><br>vector&lt;<span class="hljs-type">int</span>&gt; adj[maxn];<br><span class="hljs-type">int</span> fa[maxn], dep[maxn], sz[maxn], son[maxn];    <span class="hljs-comment">// son: 重儿子</span><br><span class="hljs-type">int</span> top[maxn], dfn[maxn], rnk[maxn], timer;      <span class="hljs-comment">// top: 链顶, dfn: DFS序, rnk: DFS序对应的节点</span><br><span class="hljs-type">int</span> w[maxn];        <span class="hljs-comment">// 节点的初始权值</span><br><span class="hljs-type">int</span> n, m, r, mod;   <span class="hljs-comment">// mod 用于取模题目</span><br><br><span class="hljs-comment">// 2. 线段树部分 (Segment Tree)</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> &#123;<br>    <span class="hljs-type">int</span> l, r;<br>    ll sum, add;<br>&#125; tr[maxn &lt;&lt; <span class="hljs-number">2</span>];<br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ls u &lt;&lt; 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> rs u &lt;&lt; 1 | 1</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pushup</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span> </span>&#123;<br>    tr[u].sum = ( tr[ls].sum + tr[rs].sum ) % mod;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pushdown</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( !tr[u].add ) <span class="hljs-keyword">return</span>;<br>    ll t = tr[u].add;<br>    tr[ls].sum = ( tr[ls].sum + t * ( tr[ls].r - tr[ls].l + <span class="hljs-number">1</span> ) ) % mod;<br>    tr[rs].sum = ( tr[rs].sum + t * ( tr[rs].r - tr[rs].l + <span class="hljs-number">1</span> ) ) % mod;<br>    tr[ls].add = ( tr[ls].add + t ) % mod;<br>    tr[rs].add = ( tr[rs].add + t ) % mod;<br>    tr[u].add = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">build</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span> </span><br><span class="hljs-function"></span>&#123;<br>    tr[u] = &#123; l, r, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> &#125;;<br>    <span class="hljs-keyword">if</span>( l == r ) <br>    &#123;<br>        tr[u].sum = w[rnk[l]] % mod; <span class="hljs-comment">// 注意这里用 rnk[l] 获取原节点编号</span><br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> mid = l + r &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">build</span>( ls, l, mid );<br>    <span class="hljs-built_in">build</span>( rs, mid + <span class="hljs-number">1</span>, r );<br>    <span class="hljs-built_in">pushup</span>( u );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r, ll val )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r ) <br>    &#123;<br>        tr[u].sum = ( tr[u].sum + val * ( tr[u].r - tr[u].l + <span class="hljs-number">1</span> ) ) % mod;<br>        tr[u].add = ( tr[u].add + val ) % mod;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-built_in">pushdown</span>( u );<br>    <span class="hljs-type">int</span> mid = tr[u].l + tr[u].r &gt;&gt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span>( l &lt;= mid ) <span class="hljs-built_in">modify</span>( ls, l, r, val );<br>    <span class="hljs-keyword">if</span>( r &gt; mid ) <span class="hljs-built_in">modify</span>( rs, l, r, val );<br>    <span class="hljs-built_in">pushup</span>( u );<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">query</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>( l &lt;= tr[u].l &amp;&amp; tr[u].r &lt;= r ) <span class="hljs-keyword">return</span> tr[u].sum;<br>    <span class="hljs-built_in">pushdown</span>( u );<br>    <span class="hljs-type">int</span> mid = tr[u].l + tr[u].r &gt;&gt; <span class="hljs-number">1</span>;<br>    ll res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( l &lt;= mid ) res = ( res + <span class="hljs-built_in">query</span>( ls, l, r ) ) % mod;<br>    <span class="hljs-keyword">if</span>( r &gt; mid ) res = ( res + <span class="hljs-built_in">query</span>( rs, l, r ) ) % mod;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-comment">// 3. 树链剖分核心函数</span><br><span class="hljs-comment">// DFS 1: 计算 size, depth, father, heavy son</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs1</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> p )</span> </span><br><span class="hljs-function"></span>&#123;<br>    dep[u] = dep[p] + <span class="hljs-number">1</span>; fa[u] = p; sz[u] = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( v == p ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs1</span>( v, u );<br>        sz[u] += sz[v];<br>        <span class="hljs-keyword">if</span>( sz[v] &gt; sz[son[u]] ) son[u] = v;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// DFS 2: 建立重链, 记录 dfn, top</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs2</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> t )</span> </span><br><span class="hljs-function"></span>&#123;<br>    top[u] = t; dfn[u] = ++timer; rnk[tim] = u;<br>    <span class="hljs-keyword">if</span>( !son[u] ) <span class="hljs-keyword">return</span>;   <span class="hljs-comment">// 叶子节点</span><br>    <span class="hljs-built_in">dfs2</span>( son[u], t );      <span class="hljs-comment">// 优先遍历重儿子，保持重链 dfn 连续</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) <br>    &#123;                       <span class="hljs-comment">// 轻儿子的 top 是它自己</span><br>        <span class="hljs-keyword">if</span>( v == fa[u] || v == son[u] ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-built_in">dfs2</span>( v, v );     <br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 4. 树上操作接口</span><br><span class="hljs-comment">// 路径修改</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify_path</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v, <span class="hljs-type">int</span> val )</span> </span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">while</span>( top[u] != top[v] ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( dep[top[u]] &lt; dep[top[v]] ) <span class="hljs-built_in">swap</span>( u, v );<br>        <span class="hljs-built_in">modify</span>( <span class="hljs-number">1</span>, dfn[top[u]], dfn[u], val ); <span class="hljs-comment">// 修改 u 到 top[u]</span><br>        u = fa[top[u]];<br>    &#125;<br>    <span class="hljs-keyword">if</span>( dep[u] &gt; dep[v] ) <span class="hljs-built_in">swap</span>( u, v );<br>    <span class="hljs-built_in">modify</span>( <span class="hljs-number">1</span>, dfn[u], dfn[v], val ); <span class="hljs-comment">// 同一条链上</span><br>&#125;<br><br><span class="hljs-comment">// 路径查询</span><br><span class="hljs-function">ll <span class="hljs-title">query_path</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> v )</span> </span><br><span class="hljs-function"></span>&#123;<br>    ll res = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>( top[u] != top[v] ) <br>    &#123;<br>        <span class="hljs-keyword">if</span>( dep[top[u]] &lt; dep[top[v]] ) <span class="hljs-built_in">swap</span>( u, v );<br>        res = ( res + <span class="hljs-built_in">query</span>( <span class="hljs-number">1</span>, dfn[top[u]], dfn[u] ) ) % mod;<br>        u = fa[top[u]];<br>    &#125;<br>    <span class="hljs-keyword">if</span>( dep[u] &gt; dep[v] ) <span class="hljs-built_in">swap</span>( u, v );<br>    res = ( res + <span class="hljs-built_in">query</span>( <span class="hljs-number">1</span>, dfn[u], dfn[v] ) ) % mod;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-comment">// 子树操作：利用子树 DFN 连续性</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">modify_subtree</span><span class="hljs-params">( <span class="hljs-type">int</span> u, <span class="hljs-type">int</span> val )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">modify</span>( <span class="hljs-number">1</span>, dfn[u], dfn[u] + sz[u] - <span class="hljs-number">1</span>, val );<br>&#125;<br><br><span class="hljs-function">ll <span class="hljs-title">query_subtree</span><span class="hljs-params">( <span class="hljs-type">int</span> u )</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">query</span>( <span class="hljs-number">1</span>, dfn[u], dfn[u] + sz[u] - <span class="hljs-number">1</span> );<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="4-知识关联">4. 知识关联</h2>
+<ul>
+<li>
+<p><strong>母题</strong>：[[Leaf] [P3384] 重链剖分] —— 包含路径修/查、子树修/查的完整功能演示。</p>
+</li>
+<li>
+<p><strong>关联笔记</strong>:</p>
+<ul>
+<li>
+<p><a  href="/posts/dba9a34f/">线段树</a>：HLD 的处理工具。</p>
+</li>
+<li>
+<p><a  href="/posts/56fdb705/">LCA 体系</a>：HLD 也是一种极速求 LCA 的方式（ <code>query_path</code> 过程中最后停留的浅点即为 LCA ）。</p>
+</li>
+<li>
+<p>[[DSU on Tree]]：同样利用轻重边性质，但解决的是不带修改的子树统计问题。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%9A%BE%E5%BA%A6-P4/" class="print-no-link">#难度/P4</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="print-no-link">#数据结构/线段树</a>
+      
+        <a href="/tags/%E6%A0%91%E8%AE%BA-LCA/" class="print-no-link">#树论/LCA</a>
+      
+        <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" class="print-no-link">#树论/树链剖分</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[Note] 树链剖分</div>
+      <div>https://example.com/posts/5e08b96b/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Miqiu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年12月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/6cae5d5b/" title="差分约束系统 (Difference_Constraints)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">差分约束系统 (Difference_Constraints)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/447bed30/" title="[Note] 直径与重心">
+                        <span class="hidden-mobile">[Note] 直径与重心</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

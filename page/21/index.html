@@ -1,0 +1,1197 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MiQiu">
+<meta property="og:url" content="https://example.com/page/21/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_index.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="愿你的旅途永远璀璨，愿你的夏日永不凋零。"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/8025fa2d/" target="_self">
+          [Leaf] [P1064] 金明的预算方案
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8025fa2d/" target="_self">
+        <div>
+          Luogu-P1064 金明的预算方案 1. 题面梗概 中译中: 0/1 背包，但物品之间有依赖关系：附件不能单独买，必须买了它对应的那个主件才能买。一个主件最多两个附件。 2. 逻辑推导 本题的难点在于“依赖”。普通背包是独立决策，但这题你买附件的前置条件是主件。 我们考虑暴力：能不能直接 0/1 背包？很显然是不行的，如果主件没选，附件的转移就是非法的，这不符合 DP 的无后效性。 怎么切入呢
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-17 00:00" pubdate>
+              2025-11-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/910566d1/" target="_self">
+          [Leaf] [P5020] 货币系统
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/910566d1/" target="_self">
+        <div>
+          Luogu-P5020 货币系统 1. 题面梗概 中译中: 给你一个硬币集合 AAA，你要找一个最小的集合 BBB，使得 BBB 能凑出来的钱和 AAA 能凑出来的钱一模一样。求 BBB 里面最少有几个数。 2. 逻辑推导 看到这个题，第一反应是：感觉像是线性代数中的求基，但在数论背景下，我们需要深入分析。 直觉：我猜测我们要找的 BBB 集合应该是 AAA 集合的一个子集，但直觉归直觉，我们需要
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-17 00:00" pubdate>
+              2025-11-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E9%9B%86%E5%90%88/">#数学/集合</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/401ab780/" target="_self">
+          P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/401ab780/" target="_self">
+        <div>
+          Luogu-P6902 Surveillance 1. 核心逻辑   问题本质: 环形序列上选取最少的区间实现全覆盖。   破局转换:   破环成链: 序列倍增至 2N2N2N，环形区间转化为链上区间。   贪心预处理: f[i][0]f[ i ][ 0 ]f[i][0] 表示从位置 iii 出发，使用 1 个区间能到达的最远右边界。   倍增跳跃: f[i][j]=f[f[i][j−1]][j−
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-15 00:00" pubdate>
+              2025-11-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/33-%E5%86%B3%E7%AD%96%E4%BC%98%E5%8C%96/" class="category-chain-item">33_决策优化</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E5%80%8D%E5%A2%9E/">#策略/倍增</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/434887bc/" target="_self">
+          [Leaf] [P4310] 绝世好题
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/434887bc/" target="_self">
+        <div>
+          Luogu-P4310 绝世好题 1. 核心逻辑   问题本质: 求最长子序列，满足相邻元素按位与运算不为 0。   破局转换:   瓶颈分析: N=105N=10^5N=105，朴素 O(N2)O(N^2)O(N2) LIS 模型无法接受。   数值特性: ai&amp;ai−1≠0a_i \And a_{i-1} \neq 0ai​&amp;ai−1​=0 意味着它们在二进制下至少共享一个为
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-15 00:00" pubdate>
+              2025-11-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/34-%E8%BF%9B%E9%98%B6%E6%A8%A1%E5%9E%8B/" class="category-chain-item">34_进阶模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E4%BD%8D%E8%BF%90%E7%AE%97/">#数学/位运算</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/31829f80/" target="_self">
+          [Leaf] [P2519] problem a
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/31829f80/" target="_self">
+        <div>
+          Luogu-P2519 problem a 1. 核心逻辑   问题本质: 确定最多的说真话人数，使得所有人的排名信息不产生物理冲突。   破局转换:   排名映射: 若某人说“aaa 个人比我高，bbb 个人比我矮”，则其可能的排名区间为 [a+1,N−b][a + 1, N - b][a+1,N−b]。   冲突剔除:   若 a+b≥Na + b \ge Na+b≥N，该说法物理不可能，直接
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-13 00:00" pubdate>
+              2025-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P4/">#难度/P4</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">#策略/二分答案</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/74f6b4c4/" target="_self">
+          [Leaf] [P2516] 最长公共子序列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/74f6b4c4/" target="_self">
+        <div>
+          Luogu-P2516 最长公共子序列 1. 题面梗概 求两个字符串的 LCS 长度及满足该长度的非空子序列方案数。 2. 逻辑推导 求方案数，显然是计数 DP 的标志，我们考虑开两个数组分别求 LCS 长度 和 方案数。 定义：f[i][j]f[i][j]f[i][j]：LCS 长度。g[i][j]g[i][j]g[i][j]：方案数。 那么状态转移就从 LCS 的推导中同时完成计数，逻辑参考下
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-13 00:00" pubdate>
+              2025-11-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P4/">#难度/P4</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/77237d38/" target="_self">
+          P6835 [Cnoi2019] 线性生物
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/77237d38/" target="_self">
+        <div>
+          Luogu-P6835 线性生物 ## 1. 核心逻辑   问题本质: 在带返祖边的链式图上，求从起点 111 走到终点 N+1N+1N+1 的期望步数。   破局转换:   期望线性性: 总期望 = ∑i=1NE(i→i+1)\sum_{i=1}^{N} E(i \to i+1)∑i=1N​E(i→i+1)。   方程构建: 从点 iii 出发有 degideg_idegi​ 条边。其中 1 条
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-12 00:00" pubdate>
+              2025-11-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/34-%E8%BF%9B%E9%98%B6%E6%A8%A1%E5%9E%8B/" class="category-chain-item">34_进阶模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E6%A6%82%E7%8E%87/">#数学/概率</a>
+            
+              <a href="/tags/DP-%E8%AE%A1%E6%95%B0/">#DP/计数</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5e9e3688/" target="_self">
+          [Leaf] [P1020] 导弹拦截
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5e9e3688/" target="_self">
+        <div>
+          Luogu-P1020 导弹拦截 1. 核心逻辑  问题本质: 求最长不上升子序列（LDS）长度，以及覆盖全集所需的最小 LDS 数量。    第一问: 直接求 LDS 长度。由于 NNN 较大，需使用 O(Nlog⁡N)O(N \log N)O(NlogN) 贪心二分优化。   第二问 (Dilworth 定理): 最小链覆盖数 = 最长反链长度。   “不上升”的反链即为“严格上升”。   因
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-11 00:00" pubdate>
+              2025-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7-Dilworth%E5%AE%9A%E7%90%86/">#DP/线性/Dilworth定理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/1bb13521/" target="_self">
+          [Leaf] [P1950] 长方形
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/1bb13521/" target="_self">
+        <div>
+          Luogu-P1950 长方形 1. 题面梗概 中译中: 给你一个黑白格点图，问你这里面一共能圈出多少个纯白的长方形？ 2. 逻辑推导 直觉: 暴力数肯定不行，得换个思路。如果我固定长方形的底部在某一行，往上看，这不就是一个个柱状图吗？这就是一个 悬线法 + 贡献法 的典型应用。 我们分析一下，如果只有一行，问题就是要找有多少子区间，这很简单。但如果问的是二维的问题呢？我们可以枚举每一行作为长方形
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">00_基础算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-chain-item">01_降维技巧</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8D%95%E8%B0%83%E6%A0%88/">#算法/单调栈</a>
+            
+              <a href="/tags/%E7%BB%84%E5%90%88-%E8%B4%A1%E7%8C%AE%E6%B3%95/">#组合/贡献法</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E6%82%AC%E7%BA%BF%E6%B3%95/">#算法/悬线法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/2f2b56ea/" target="_self">
+          [Leaf] [P3800] Power收集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/2f2b56ea/" target="_self">
+        <div>
+          Luogu-P3800 Power收集 1. 题面梗概 中译中: 在 N×MN \times MN×M 的网格里，你从第一行出发，每秒下一行。你在第 iii 行第 jjj 列时，下一秒可以跳到第 i+1i+1i+1 行的 [j−T,j+T][j-T, j+T][j−T,j+T] 范围内。有些格子有能量，求通关能拿到的最大能量。 2. 逻辑推理 这是一道典型的网格路径规划，但是加入了一个跳跃距离的限
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-11-08 00:00" pubdate>
+              2025-11-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/33-%E5%86%B3%E7%AD%96%E4%BC%98%E5%8C%96/" class="category-chain-item">33_决策优化</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">#算法/单调队列</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/DP-%E4%BC%98%E5%8C%96/">#DP/优化</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/20/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/#board">19</a><a class="page-number" href="/page/20/#board">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/#board">22</a><a class="page-number" href="/page/23/#board">23</a><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/22/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

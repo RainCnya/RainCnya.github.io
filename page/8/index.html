@@ -1,0 +1,1184 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MiQiu">
+<meta property="og:url" content="https://example.com/page/8/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_index.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="愿你的旅途永远璀璨，愿你的夏日永不凋零。"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/923ca70a/" target="_self">
+          [Note] 唯一分解定理
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/923ca70a/" target="_self">
+        <div>
+          唯一分解定理 1. 生态位   识别:   题目涉及因数个数、因数总和。   需要分析乘积的性质（如判定一个数是否为完全平方数）。   需要推导欧拉函数等积性函数的数学表达式。     地位: 数论的基础原理。它将离散的整数，都映射为一组素数幂次序列的“向量”。   用途: 绕过 O(N)O(N)O(N) 的因数枚举，通过 O(N)O(\sqrt{N})O(N​) 甚至更快的质因数分解，直接利用组
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/" class="category-chain-item">40_数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/41-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">41_数论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P1/">#难度/P1</a>
+            
+              <a href="/tags/%E6%95%B0%E8%AE%BA-%E5%9F%BA%E7%A1%80/">#数论/基础</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/5baf8ab/" target="_self">
+          [Note] 数论导论与位运算
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/5baf8ab/" target="_self">
+        <div>
+          数论导论与位运算 1. 生态位   识别:   需要处理最基础的因倍关系或模运算律。   涉及高次幂取模 ab(modm)a^b \pmod mab(modm)。     地位: 它定义了离散世界运行的“物理定律”。   用途: 确立整除的传递性、模运算的封闭性，并提供 O(log⁡N)O(\log N)O(logN) 的指数级降维工具。   2. 逻辑支点 2.1 物理定律   整除性：   整
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/" class="category-chain-item">40_数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/41-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">41_数论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P1/">#难度/P1</a>
+            
+              <a href="/tags/%E6%95%B0%E8%AE%BA-%E5%9F%BA%E7%A1%80/">#数论/基础</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/aa0acc66/" target="_self">
+          [Note] 素数筛法
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/aa0acc66/" target="_self">
+        <div>
+          素数筛法 1. 生态位   识别:   题目涉及多组询问，范围通常在 [1,106][1, 10^6][1,106] 或更大。   需要批量获取质数，或处理积性函数（如 ϕ,μ,d,σ\phi, \mu, d, \sigmaϕ,μ,d,σ）。     地位: 数论预处理的工具。将单次 O(N)O(\sqrt{N})O(N​) 的质性判定或函数计算，优化为全局 O(N)O(N)O(N) 预处理 +
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/" class="category-chain-item">40_数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/41-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">41_数论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P1/">#难度/P1</a>
+            
+              <a href="/tags/%E6%95%B0%E8%AE%BA-%E7%AD%9B%E6%B3%95/">#数论/筛法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/f34a1508/" target="_self">
+          [Leaf] [ZJ2021F] Fair Distribution
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/f34a1508/" target="_self">
+        <div>
+          ZJ2021F - Fair Distribution 1. 题面梗概 中译中: 有两个数 n,mn, mn,m，目标是让 mmm 是 nnn 的倍数，求最小操作次数。 操作：使 n→n−1n \to n-1n→n−1，或  m→m+1m \to m + 1m→m+1，但是 n≠0n \neq 0n=0。 2. 逻辑推导 注意到 nnn 只能减小，而 mmm 只能增大。  不妨设 1≤n′≤n1
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/" class="category-chain-item">40_数学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/41-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-chain-item">41_数论基础</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E6%95%B0%E8%AE%BA-%E6%95%B4%E9%99%A4/">#数论/整除</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E5%88%86%E5%9D%97/">#策略/分块</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/402e289a/" target="_self">
+          [Leaf] [ZJ2021B] Restore Atlantis
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/402e289a/" target="_self">
+        <div>
+          ZJ2021B - Restore Atlantis 1. 题面梗概 中译中: 有 nnn 个矩形，编号为 1,2,⋯ ,n1, 2,\cdots, n1,2,⋯,n。有 qqq 次查询，每次删除编号在 [si,ti][s_i,t_i][si​,ti​] 范围内的矩形。求剩下的矩形总面积。 约束条件：n,q≤105n,q \leq 10^5n,q≤105， x,y≤2000x,y \leq 2 0
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="category-chain-item">50_计算几何</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/53-%E6%89%AB%E6%8F%8F%E7%BA%BF%E4%B8%8E%E5%8D%8A%E5%B9%B3%E9%9D%A2/" class="category-chain-item">53_扫描线与半平面</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/">#难度/P5</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#数据结构/树状数组</a>
+            
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/">#数据结构/线段树</a>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E6%89%AB%E6%8F%8F%E7%BA%BF/">#计算几何/扫描线</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E7%A6%BB%E7%BA%BF%E6%9F%A5%E8%AF%A2/">#策略/离线查询</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/e3e61edb/" target="_self">
+          [Leaf] [ZJ2021C] Cube
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/e3e61edb/" target="_self">
+        <div>
+          ZH2021C - Cube 1. 题面梗概 中译中: 给定三维空间里的 8 个点，判断它们能不能组成一个正方体。 2. 逻辑推导 验证是否为正方体   ⟺  \iff⟺ 其 888 个顶点间能连出 (82)=28\binom{8}{2} = 28(28​)=28 条线段。 对于这 282828 条线段，他只包括三种情况： 棱长 L2,12L^2,12L2,12 | 面对角线 2L22L^22L2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="category-chain-item">50_计算几何</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/54-%E4%B8%89%E7%BB%B4%E5%87%A0%E4%BD%95/" class="category-chain-item">54_三维几何</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P1/">#难度/P1</a>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E4%B8%89%E7%BB%B4%E5%87%A0%E4%BD%95/">#计算几何/三维几何</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/6ed7e9f3/" target="_self">
+          [Leaf] [ZJ2021M] Game Theory
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/6ed7e9f3/" target="_self">
+        <div>
+          ZJ2021M - Game Theory 1. 题面梗概 中译中：老师和同学玩游戏，老师随机出一个 [1,20][1,20][1,20] 中的数，n−1n - 1n−1 个同学会以最优策略，同样出一个 [1,20][1,20][1,20] 的数，求老师的收益期望。 规则：老师给学生 xxx 分，学生给老师 yyy 分。若 x&gt;yx &gt; yx&gt;y，则老师 +10+10+10 分；
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/" class="category-chain-item">70_杂项专题</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/71-%E5%85%AC%E5%B9%B3%E5%8D%9A%E5%BC%88/" class="category-chain-item">71_公平博弈</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88/">#数学/博弈</a>
+            
+              <a href="/tags/%E6%95%B0%E5%AD%A6-%E6%A6%82%E7%8E%87/">#数学/概率</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/289904fa/" target="_self">
+          [Leaf] [ZJ2021J] Grammy and Jewelry
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/289904fa/" target="_self">
+        <div>
+          ZJ2021J - Grammy and Jewelry 1. 题面梗概 中译中: 图上有 nnn 个点，你在 1 号点，第 iii 有无限个价值为 aia_iai​ 的珠宝。你每次只能搬一个，搬运过程：1→i→11 \to i \to 11→i→1。每条边走 1 分钟。问在 1…T1 \dots T1…T 分钟内，每个时间点能拿到的最大总价值是多少。 2. 逻辑推导 第一反应是背包问题，同时还是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-22 00:00" pubdate>
+              2026-01-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%9C%80%E7%9F%AD%E8%B7%AF/">#图论/最短路</a>
+            
+              <a href="/tags/DP-%E8%83%8C%E5%8C%85/">#DP/背包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/9b9ebd6f/" target="_self">
+          [Leaf] [ZJ2020C] Crossword Validation
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/9b9ebd6f/" target="_self">
+        <div>
+          ZJ2020C - Crossword Validation 1. 题面梗概 中译中: 给你一个 N×NN \times NN×N 的填字游戏方格，以及一个带分数的词典。 规则：方格中横向或纵向连续的极长字母段被称为“候选词”。 判定：如果所有候选词都在词典里，则拼图有效。 目标：输出所有候选词分数的总和，若无效则输出 −1-1−1。 2. 逻辑推导 问这个拼图是否合法，以及它的总分是多少？ 既然
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-20 00:00" pubdate>
+              2026-01-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/60-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="category-chain-item">60_字符串</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2-%E5%93%88%E5%B8%8C/">#字符串/哈希</a>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P2/">#难度/P2</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/63c36af9/" target="_self">
+          [Note] 线性DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/63c36af9/" target="_self">
+        <div>
+          [L4] 线性DP 1. 生态位   识别:   拓扑序: 序列索引下标自然就是状态转移方向。   无后效性: 当前决策仅取决于 1…i−11 \dots i-11…i−1 的最优子结构。     地位: 基础 DP 模型。本质是记忆化搜索，用空间换时间。   用途: 解决序列上的子序列选择、排列匹配、覆盖划分等最优化问题。   2. 逻辑支点 2.1 核心原理 在线性序列中，下标 iii，自然就
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-01-20 00:00" pubdate>
+              2026-01-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/7/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#board">9</a><a class="page-number" href="/page/10/#board">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/9/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

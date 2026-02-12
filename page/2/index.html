@@ -1,0 +1,1203 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MiQiu">
+<meta property="og:url" content="https://example.com/page/2/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_index.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="愿你的旅途永远璀璨，愿你的夏日永不凋零。"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/77269bf1/" target="_self">
+          [Leaf] CF2196C1 Interactive Graph (Simple Version)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/77269bf1/" target="_self">
+        <div>
+          CF2196C1 - Interactive Graph (Simple Version) 1. 题面梗概 中译中：交互题，给定有一个 DAG，你可以询问 所有路径按字典序排序后，第 kkk 条路径是什么。 目标是在有限次数内通过询问把所有的边都还原出来。  限制条件 32⋅(n+m)32 \cdot (n + m)32⋅(n+m) 次询问，n≤15n \leq 15n≤15。  2. 逻辑推导
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-12 10:14" pubdate>
+              2026-02-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/" class="category-chain-item">70_杂项专题</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/73-%E4%BA%A4%E4%BA%92%E4%B8%93%E9%A2%98/" class="category-chain-item">73_交互专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P4/">#难度/P4</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">#策略/二分答案</a>
+            
+              <a href="/tags/%E4%BA%A4%E4%BA%92/">#交互</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%9F%BA%E7%A1%80/">#图论/基础</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/eb83cf7a/" target="_self">
+          [Leaf] [CF2196C2] Interactive Graph (Hard Version)
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/eb83cf7a/" target="_self">
+        <div>
+          CF2196C2 - Interactive Graph (Hard Version) 1. 题面梗概 中译中：交互题，给定有一个 DAG，你可以询问 所有路径按字典序排序后，第 kkk 条路径是什么。 目标是在有限次数内通过询问把所有的边都还原出来。  限制条件 n+mn + mn+m 次询问，n≤30n \leq 30n≤30。  2. 逻辑推导 限制条件不允许我们采用二分了，它要求我们的每一
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-12 00:00" pubdate>
+              2026-02-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/" class="category-chain-item">70_杂项专题</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/73-%E4%BA%A4%E4%BA%92%E4%B8%93%E9%A2%98/" class="category-chain-item">73_交互专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/">#难度/P5</a>
+            
+              <a href="/tags/%E4%BA%A4%E4%BA%92/">#交互</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E5%9F%BA%E7%A1%80/">#图论/基础</a>
+            
+              <a href="/tags/DP-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/">#DP/记忆化搜索</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/3344710b/" target="_self">
+          [Leaf] [P4216] 情报传递
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/3344710b/" target="_self">
+        <div>
+          P4216 [SCOI2015] 情报传递 - 洛谷 1. 题面梗概 中译中：给定一颗树，每天会出现以下两个任务：  TTT 号节点每天点权 +1+1+1。 查询 X→YX \to YX→Y 节点路径上节点数，以及节点点权 &gt;C&gt; C&gt;C 的数量。  2. 逻辑推导 直接模拟每一天的点权修改，复杂度是爆炸的。我们需要找到 点权 &gt;C&gt; C&gt;C 跟时间的关系。 2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-11 20:50" pubdate>
+              2026-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/">#难度/P5</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/">#树论/树链剖分</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E7%A6%BB%E7%BA%BF%E6%9F%A5%E8%AF%A2/">#策略/离线查询</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/d47997f/" target="_self">
+          [Leaf] P4211 LCA
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/d47997f/" target="_self">
+        <div>
+          P4211 [LNOI2014] LCA - 洛谷 1. 题面梗概 中译中：给出一棵 nnn 个节点的有根树，mmm 次询问。每次询问给出 (l,r,z)(l, r, z)(l,r,z)，求 ∑i=lrdep[LCA(i,z)]\sum_{i=l}^{r} dep[LCA(i, z)]∑i=lr​dep[LCA(i,z)]。结果对 201314201314201314 取模。 2. 逻辑推导 直接
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-11 20:25" pubdate>
+              2026-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/">#难度/P5</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/">#树论/树链剖分</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E7%A6%BB%E7%BA%BF/">#策略/离线</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/46723656/" target="_self">
+          [Note] 树上差分
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/46723656/" target="_self">
+        <div>
+          [L4] 树上差分 1. 生态位   识别:   批量路径修改: 给定 MMM 条路径 (u,v)(u, v)(u,v)，对路径上的所有点（或边）增加权值 www。   最终单次查询: 修改完成后，查询每个点（或边）的最终权值。   离线处理: 不需要在线回答每次修改后的状态，而是先修改完再统计。     地位: 树论与降维技巧的结合。它是处理静态树上路径覆盖问题的 O(N+M)O(N+M)O(N
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-11 13:06" pubdate>
+              2026-02-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/210-Atlas/" class="category-chain-item">210_Atlas</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95-%E5%89%8D%E7%BC%80%E5%B7%AE%E5%88%86/">#算法/前缀差分</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-LCA/">#树论/LCA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/af781861/" target="_self">
+          [Leaf] [P5536] 核心城市
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/af781861/" target="_self">
+        <div>
+          P5536 【XR-3】核心城市 - 洛谷 1. 题面梗概 中译中：在一棵树上选 kkk 个互相连接的点作为“核心城市”，使得剩下的城市到这 kkk 个城市的最大距离最小。 2. 逻辑推导 直觉上，这看起来像一个树上的直径问题，或者说是几何中心？ 如果 k=1k = 1k=1 的话，我们发现，这个点应该就在直径路径上的中点。 当 k&gt;1k &gt; 1k&gt;1 时，为了保证核心城市群连通
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-09 20:17" pubdate>
+              2026-02-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88/">#策略/二分答案</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E8%B4%AA%E5%BF%83/">#策略/贪心</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E7%9B%B4%E5%BE%84/">#树论/直径</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/6295d954/" target="_self">
+          [Leaf] [P5666] 树的重心
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/6295d954/" target="_self">
+        <div>
+          P5666 [CSP-S 2019] 树的重心 - 洛谷 1. 题面梗概 中译中：删掉树上的一条边，原本的树会断成两半。求这两半树各自重心的编号之和。 你需要把整棵树的所有边都试一遍，最后求一个总和。 2. 逻辑推导 很显然这题考的是树的重心的知识点。如果暴力删掉每一边，然后对两棵树跑一遍 DFS，复杂度很显然是 O(N2)O(N^2)O(N2) 绝对会炸。 那么我们就得从重心的性质入手了。 2.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-09 16:10" pubdate>
+              2026-02-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/">#难度/P5</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E5%80%8D%E5%A2%9E/">#策略/倍增</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/fe562911/" target="_self">
+          [Leaf] P2726 树的双中心
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/fe562911/" target="_self">
+        <div>
+          P2726 [SHOI2005] 树的双中心 - 洛谷 1. 题面梗概 中译中： 在一棵带有节点权值 W(v)W(v)W(v) 的树上选两个中心点 xxx 和 yyy，最小化所有点到距离其最近中心的权值距离之和。 即最小化下方柿子： S(x,y)=∑v∈V(W(v)⋅min⁡{d(v,x),d(v,y)})S(x,y)=\sum_{v\in V} (W(v)\cdot \min\{d(v,x),d
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-09 00:00" pubdate>
+              2026-02-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-chain-item">22_树论专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P5/">#难度/P5</a>
+            
+              <a href="/tags/%E6%A0%91%E8%AE%BA-%E9%87%8D%E5%BF%83/">#树论/重心</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/8b34838d/" target="_self">
+          [Leaf] [CF2194E] The Turtle Strikes Back
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/8b34838d/" target="_self">
+        <div>
+          CF2194E - The Turtle Strikes Back 1. 题面梗概 中译中： 小 A 从 (1,1)(1,1)(1,1) 走到 (n,m)(n,m)(n,m)，每经过一个格子 (i,j)(i,j)(i,j) 都会获得 ai,ja_{i,j}ai,j​ 的权值。但在小 A 出发后，捣蛋鬼小 BBB 会反转一个格子，ai,j→−ai,ja_{i,j} \to -a_{i,j}ai,j​
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-09 00:00" pubdate>
+              2026-02-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-chain-item">30_动态规划</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-chain-item">31_经典模型</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P4/">#难度/P4</a>
+            
+              <a href="/tags/DP-%E7%BA%BF%E6%80%A7/">#DP/线性</a>
+            
+              <a href="/tags/%E7%AD%96%E7%95%A5-%E8%BD%AC%E6%8D%A2/">#策略/转换</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/posts/87918e5b/" target="_self">
+          [Leaf] P3627 抢掠计划
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/posts/87918e5b/" target="_self">
+        <div>
+          P3627 [APIO2009] 抢掠计划 - 洛谷 1. 题面梗概 中译中: 你是一个强盗，要抢劫城市里的 ATM 机。城市里的路是有向的且可能成环。你可以多次经过某条路或者某个点。你从指定的起点 SSS 出发，最后必须在众多的终点中选择一个撤退。求你最多能抢到多少钱。 2. 逻辑推导 可以重复经过？那不就是环咯，有向图，SCC 缩点先啦。 2.1 拓扑DP 缩完点之后这就是个 DAG 求最长路
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2026-02-07 00:19" pubdate>
+              2026-02-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/220-Library/" class="category-chain-item">220_Library</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-chain-item">20_图论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/23-%E8%BF%9E%E9%80%9A%E6%80%A7%E4%B8%93%E9%A2%98/" class="category-chain-item">23_连通性专题</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%BE%E5%BA%A6-P3/">#难度/P3</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">#图论/拓扑排序</a>
+            
+              <a href="/tags/%E5%9B%BE%E8%AE%BA-%E8%BF%9E%E9%80%9A%E6%80%A7-%E5%BC%BA%E8%BF%9E%E9%80%9A/">#图论/连通性/强连通</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/#board">24</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

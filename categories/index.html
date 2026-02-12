@@ -1,0 +1,4055 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="分类">
+<meta property="og:url" content="https://example.com/categories/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>分类 - MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_page.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="分类"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="220_Library"
+        id="heading-6e36bf7c03696a1345b595ace1b3f5b1" role="tab" data-toggle="collapse" href="#collapse-6e36bf7c03696a1345b595ace1b3f5b1"
+        aria-expanded="false"
+      >
+        220_Library
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>179</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-6e36bf7c03696a1345b595ace1b3f5b1"
+           role="tabpanel" aria-labelledby="heading-6e36bf7c03696a1345b595ace1b3f5b1">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="20_图论"
+        id="heading-117b51d2aadf73f4a27822e01acae6ad" role="tab" data-toggle="collapse" href="#collapse-117b51d2aadf73f4a27822e01acae6ad"
+        aria-expanded="false"
+      >
+        20_图论
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>48</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-117b51d2aadf73f4a27822e01acae6ad"
+           role="tabpanel" aria-labelledby="heading-117b51d2aadf73f4a27822e01acae6ad">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="21_图论基础"
+        id="heading-fc60ecd1873f33d810cbf82e767c3f8e" role="tab" data-toggle="collapse" href="#collapse-fc60ecd1873f33d810cbf82e767c3f8e"
+        aria-expanded="false"
+      >
+        21_图论基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/21-%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>23</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fc60ecd1873f33d810cbf82e767c3f8e"
+           role="tabpanel" aria-labelledby="heading-fc60ecd1873f33d810cbf82e767c3f8e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/16ad971e/" title="[Leaf] [P3243] 菜肴制作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3243] 菜肴制作</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/95cb0c88/" title="[Leaf] [P1983] 车站分级"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1983] 车站分级</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c69476fe/" title="[Leaf] P1038 神经网络"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] P1038 神经网络</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2c78101e/" title="[Leaf] [P4568] 飞行路线"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P4568] 飞行路线</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6dac0796/" title="[Leaf] [P1073] 最优贸易"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1073] 最优贸易</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/38baa9e8/" title="[Leaf] [P9751] 旅游巴士"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P9751] 旅游巴士</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7af08415/" title="[Leaf] [P3489] WIE-Hexer"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3489] WIE-Hexer</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/b673f593/" title="[Leaf] [ABC443F] Non-Increasing Number"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC443F] Non-Increasing Number</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/14c5b012/" title="[Leaf] [CF2193E] Product Queries"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2193E] Product Queries</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f91efdc6/" title="[Leaf] [ZJ2022G] Easy Glide"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2022G] Easy Glide</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/21-%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="22_树论专题"
+        id="heading-6b62d90c0526cf926b5faa396bd33d8b" role="tab" data-toggle="collapse" href="#collapse-6b62d90c0526cf926b5faa396bd33d8b"
+        aria-expanded="false"
+      >
+        22_树论专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>20</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-6b62d90c0526cf926b5faa396bd33d8b"
+           role="tabpanel" aria-labelledby="heading-6b62d90c0526cf926b5faa396bd33d8b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3344710b/" title="[Leaf] [P4216] 情报传递"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P4216] 情报传递</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/d47997f/" title="[Leaf] P4211 LCA"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] P4211 LCA</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/af781861/" title="[Leaf] [P5536] 核心城市"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P5536] 核心城市</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6295d954/" title="[Leaf] [P5666] 树的重心"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P5666] 树的重心</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/fe562911/" title="[Leaf] P2726 树的双中心"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] P2726 树的双中心</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f55ae898/" title="[Leaf] [CF76A] Gift"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF76A] Gift</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a701dd2b/" title="[Leaf] [P2700] 逐个击破"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2700] 逐个击破</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/667c1029/" title="[Leaf] [P1550] Watering Hole G"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1550] Watering Hole G</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/daf0e564/" title="[Leaf] [P5633] 最小度限制生成树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P5633] 最小度限制生成树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6d27c61d/" title="[Leaf] [P4180] 严格最小生成树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P4180] 严格最小生成树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="23_连通性专题"
+        id="heading-6fb6f7d32dd836e84c1d73c5559eb46e" role="tab" data-toggle="collapse" href="#collapse-6fb6f7d32dd836e84c1d73c5559eb46e"
+        aria-expanded="false"
+      >
+        23_连通性专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/20-%E5%9B%BE%E8%AE%BA/23-%E8%BF%9E%E9%80%9A%E6%80%A7%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-6fb6f7d32dd836e84c1d73c5559eb46e"
+           role="tabpanel" aria-labelledby="heading-6fb6f7d32dd836e84c1d73c5559eb46e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/87918e5b/" title="[Leaf] P3627 抢掠计划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] P3627 抢掠计划</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c6dc69f5/" title="[Leaf] [P2515] 软件安装"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2515] 软件安装</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f8dfc080/" title="[Leaf] [P2272] 最大半连通子图"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2272] 最大半连通子图</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4bd1de33/" title="[Leaf] [P1407] 稳定婚姻"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1407] 稳定婚姻</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ad8e1953/" title="[Leaf] [P2812] 校园网络"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2812] 校园网络</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="30_动态规划"
+        id="heading-c94631b5e602b1d619d6701448b40d27" role="tab" data-toggle="collapse" href="#collapse-c94631b5e602b1d619d6701448b40d27"
+        aria-expanded="false"
+      >
+        30_动态规划
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>45</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c94631b5e602b1d619d6701448b40d27"
+           role="tabpanel" aria-labelledby="heading-c94631b5e602b1d619d6701448b40d27">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="31_经典模型"
+        id="heading-ebd88ca1995f14ff28c7446529ed2198" role="tab" data-toggle="collapse" href="#collapse-ebd88ca1995f14ff28c7446529ed2198"
+        aria-expanded="false"
+      >
+        31_经典模型
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>26</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ebd88ca1995f14ff28c7446529ed2198"
+           role="tabpanel" aria-labelledby="heading-ebd88ca1995f14ff28c7446529ed2198">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/8b34838d/" title="[Leaf] [CF2194E] The Turtle Strikes Back"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2194E] The Turtle Strikes Back</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/cb5cdc4d/" title="[Leaf] [ABC443E] Climbing Silver"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC443E] Climbing Silver</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a52e227e/" title="[Leaf] [P5322] 排兵布阵"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P5322] 排兵布阵</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/24bb9c7/" title="[Leaf] [CF2193F] Pizza Delivery"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2193F] Pizza Delivery</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a5a4bb40/" title="[Leaf] [ABC442F] Diagonal Separation 2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC442F] Diagonal Separation 2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/289904fa/" title="[Leaf] [ZJ2021J] Grammy and Jewelry"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2021J] Grammy and Jewelry</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/79c2a83b/" title="[Leaf] [ABC441F] Must Buy"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC441F] Must Buy</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/8e450243/" title="[Leaf] [TZ9549] Signal Transmission"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9549] Signal Transmission</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/79b83310/" title="[Leaf] [TZ9547] Silly Xiao Zhang"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9547] Silly Xiao Zhang</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2d2f3a03/" title="[Leaf] [ABC439E] Kite"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC439E] Kite</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="33_决策优化"
+        id="heading-778ce5f3b3f8f4907f9e3e89e580a308" role="tab" data-toggle="collapse" href="#collapse-778ce5f3b3f8f4907f9e3e89e580a308"
+        aria-expanded="false"
+      >
+        33_决策优化
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/33-%E5%86%B3%E7%AD%96%E4%BC%98%E5%8C%96/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>9</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-778ce5f3b3f8f4907f9e3e89e580a308"
+           role="tabpanel" aria-labelledby="heading-778ce5f3b3f8f4907f9e3e89e580a308">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/a1b39cf5/" title="P5017 [NOIP 2018] 摆渡车 (MQ_DP_Path_Compression)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P5017 [NOIP 2018] 摆渡车 (MQ_DP_Path_Compression)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/da930cd8/" title="[Leaf] [P1070] 道路游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1070] 道路游戏</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/401ab780/" title="P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P6902 [ICPC 2014 WF] Surveillance (Opt_Doubling_Jump)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2f2b56ea/" title="[Leaf] [P3800] Power收集"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3800] Power收集</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/b8c79668/" title="P2569 [SCOI2010] 股票交易 (MQ_DP_MultiState)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P2569 [SCOI2010] 股票交易 (MQ_DP_MultiState)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/758c84b3/" title="P1714 切蛋糕 (MQ_DP_PrefixSum)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P1714 切蛋糕 (MQ_DP_PrefixSum)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/5efb4c60/" title="P1725 琪露诺 (MQ_DP_Jump)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P1725 琪露诺 (MQ_DP_Jump)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/dcc774/" title="P2034 选择数字 (MQ_DP_Breakpoint)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P2034 选择数字 (MQ_DP_Breakpoint)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/860d8b92/" title="[Leaf] [P3957] 跳房子"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3957] 跳房子</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="34_进阶模型"
+        id="heading-186df1789ed276335b48028a90d8cf2a" role="tab" data-toggle="collapse" href="#collapse-186df1789ed276335b48028a90d8cf2a"
+        aria-expanded="false"
+      >
+        34_进阶模型
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/34-%E8%BF%9B%E9%98%B6%E6%A8%A1%E5%9E%8B/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>9</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-186df1789ed276335b48028a90d8cf2a"
+           role="tabpanel" aria-labelledby="heading-186df1789ed276335b48028a90d8cf2a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3054ee91/" title="[Leaf] [CF2187D] Shortest Statement Ever"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2187D] Shortest Statement Ever</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2d519ade/" title="[Leaf] [CF2183E] LCM is Legendary Counting Master"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2183E] LCM is Legendary Counting Master</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/be70b0c3/" title="CF2176D Fibonacci Paths (Graph_DFS_Memoization)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CF2176D Fibonacci Paths (Graph_DFS_Memoization)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7c9286d9/" title="[Leaf] [P1758] 管道取珠"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1758] 管道取珠</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/64a7bd0f/" title="P2467 [SDOI2010] 地精部落 (Seq_Wiggle_Permutation)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P2467 [SDOI2010] 地精部落 (Seq_Wiggle_Permutation)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1fc9d42/" title="P5664 [CSP-S 2019] Emiya 家今天的饭 (Inclusion_Exclusion_Grid)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P5664 [CSP-S 2019] Emiya 家今天的饭 (Inclusion_Exclusion_Grid)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2eb10488/" title="[Leaf] [P2051] 中国象棋"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2051] 中国象棋</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/434887bc/" title="[Leaf] [P4310] 绝世好题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P4310] 绝世好题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/77237d38/" title="P6835 [Cnoi2019] 线性生物"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P6835 [Cnoi2019] 线性生物</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="32_状态压缩"
+        id="heading-af3c2ca56d2d256ea6e9f701ed32c7e0" role="tab" data-toggle="collapse" href="#collapse-af3c2ca56d2d256ea6e9f701ed32c7e0"
+        aria-expanded="false"
+      >
+        32_状态压缩
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/32-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-af3c2ca56d2d256ea6e9f701ed32c7e0"
+           role="tabpanel" aria-labelledby="heading-af3c2ca56d2d256ea6e9f701ed32c7e0">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/121e91e/" title="[Leaf] [ARC100C] Or Plus Max"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ARC100C] Or Plus Max</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="00_基础算法"
+        id="heading-fee7185b8b33253d0f2ca1f33eb35aa3" role="tab" data-toggle="collapse" href="#collapse-fee7185b8b33253d0f2ca1f33eb35aa3"
+        aria-expanded="false"
+      >
+        00_基础算法
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>42</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fee7185b8b33253d0f2ca1f33eb35aa3"
+           role="tabpanel" aria-labelledby="heading-fee7185b8b33253d0f2ca1f33eb35aa3">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/5755fe4f/" title="基础算法题解索引"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">基础算法题解索引</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="04_贪心与构造"
+        id="heading-ef53580c49f39cd9dd110ca4c0d125fd" role="tab" data-toggle="collapse" href="#collapse-ef53580c49f39cd9dd110ca4c0d125fd"
+        aria-expanded="false"
+      >
+        04_贪心与构造
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>17</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ef53580c49f39cd9dd110ca4c0d125fd"
+           role="tabpanel" aria-labelledby="heading-ef53580c49f39cd9dd110ca4c0d125fd">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/90896309/" title="[Leaf] [CF2189C1] XOR Convenience"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2189C1] XOR Convenience</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7a0fbe6b/" title="[Leaf] [CF2189C2] XOR Convenience"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2189C2] XOR Convenience</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/d212ef75/" title="[Leaf] [CF2162E] Beautiful Palindromes"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2162E] Beautiful Palindromes</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/17d02d16/" title="[Leaf] [CF2163B] Siga ta Kymata"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2163B] Siga ta Kymata</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/37c1990d/" title="[Leaf] [ABC441C] Sake and Water"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC441C] Sake and Water</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1e1a52f3/" title="[Leaf] [CF2183B] Yet Another MEX Problem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2183B] Yet Another MEX Problem</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f471a0ac/" title="[Leaf] [CF2183C] War Strategy"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2183C] War Strategy</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ed8782a8/" title="[Leaf] [CF2164D] Copy String"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2164D] Copy String</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e2c6b2ef/" title="[Leaf] [CF2167E] khba Loves to Sleep!"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2167E] khba Loves to Sleep!</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a05d1987/" title="[Leaf] [TZ9516] 合数封印"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9516] 合数封印</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="01_降维技巧"
+        id="heading-c1711f6318be75b130d0b926d07b53ef" role="tab" data-toggle="collapse" href="#collapse-c1711f6318be75b130d0b926d07b53ef"
+        aria-expanded="false"
+      >
+        01_降维技巧
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>15</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c1711f6318be75b130d0b926d07b53ef"
+           role="tabpanel" aria-labelledby="heading-c1711f6318be75b130d0b926d07b53ef">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3cde2f28/" title="[Leaf] [ZJ2022L] Candy Machine"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2022L] Candy Machine</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c10ff944/" title="[Leaf] [ABC440C] Striped Horse"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC440C] Striped Horse</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/51752414/" title="[Leaf] [CF2167F] Tree, TREE!!!"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2167F] Tree, TREE!!!</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/d9d9e338/" title="[Leaf] [ABC439D] Kadomatsu Subsequence"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC439D] Kadomatsu Subsequence</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a0cfe40f/" title="[Leaf] [TZ9508] 灵力平衡"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9508] 灵力平衡</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/21cfea74/" title="[Leaf] [P2827] [NOIP2016] 蚯蚓"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2827] [NOIP2016] 蚯蚓</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1bb13521/" title="[Leaf] [P1950] 长方形"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1950] 长方形</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7d6e628/" title="[Leaf] [P1886] 滑动窗口 / [模板] 单调队列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1886] 滑动窗口 / [模板] 单调队列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/18200319/" title="[Leaf] [P2216] [HAOI2007] 理想的正方形"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2216] [HAOI2007] 理想的正方形</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c971b93/" title="[Leaf] [P2866] [USACO06NOV] Bad Hair Day S"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2866] [USACO06NOV] Bad Hair Day S</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="02_排序与二分"
+        id="heading-ea4ede9d093b06c450e1d1a9bade7d6d" role="tab" data-toggle="collapse" href="#collapse-ea4ede9d093b06c450e1d1a9bade7d6d"
+        aria-expanded="false"
+      >
+        02_排序与二分
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%8C%E5%88%86/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ea4ede9d093b06c450e1d1a9bade7d6d"
+           role="tabpanel" aria-labelledby="heading-ea4ede9d093b06c450e1d1a9bade7d6d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/509521cc/" title="[Leaf] [ABC440D] Forbidden List 2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC440D] Forbidden List 2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/5c9bbb8b/" title="[Leaf] [P1419] 寻找段落"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1419] 寻找段落</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7b3df25b/" title="[Leaf] [P1083] 借教室"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1083] 借教室</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/95acfff3/" title="[Leaf] [P1314] 聪明的质监员"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1314] 聪明的质监员</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/31dd7f12/" title="[Leaf] [P3017] [USACO11MAR] Brownie Slicing G"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3017] [USACO11MAR] Brownie Slicing G</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="03_搜索战术"
+        id="heading-4ed04f67c555ae3f991b11a2f1afea57" role="tab" data-toggle="collapse" href="#collapse-4ed04f67c555ae3f991b11a2f1afea57"
+        aria-expanded="false"
+      >
+        03_搜索战术
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/03-%E6%90%9C%E7%B4%A2%E6%88%98%E6%9C%AF/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-4ed04f67c555ae3f991b11a2f1afea57"
+           role="tabpanel" aria-labelledby="heading-4ed04f67c555ae3f991b11a2f1afea57">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/a20a354/" title="[Leaf] [ZJ2022M] BpbBppbpBB"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2022M] BpbBppbpBB</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7b70f3b7/" title="[Leaf] [ABC441D] Paid Walk"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC441D] Paid Walk</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2288891e/" title="[Leaf] ABC440E Cookies"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] ABC440E Cookies</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/619363dc/" title="[Leaf] [TZ3709] Number Maze"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ3709] Number Maze</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="10_数据结构"
+        id="heading-69d2abb5510208d2a720d60b2e42a075" role="tab" data-toggle="collapse" href="#collapse-69d2abb5510208d2a720d60b2e42a075"
+        aria-expanded="false"
+      >
+        10_数据结构
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>20</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-69d2abb5510208d2a720d60b2e42a075"
+           role="tabpanel" aria-labelledby="heading-69d2abb5510208d2a720d60b2e42a075">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/d162a8bd/" title="数据结构题解索引"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">数据结构题解索引</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="11_树形结构"
+        id="heading-4714b9a7c076b48bf3b78080d7d6354d" role="tab" data-toggle="collapse" href="#collapse-4714b9a7c076b48bf3b78080d7d6354d"
+        aria-expanded="false"
+      >
+        11_树形结构
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>14</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-4714b9a7c076b48bf3b78080d7d6354d"
+           role="tabpanel" aria-labelledby="heading-4714b9a7c076b48bf3b78080d7d6354d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/c74b32e1/" title="[Leaf] [P3369] [模板] 普通平衡树 (权值线段树)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3369] [模板] 普通平衡树 (权值线段树)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1102fd0c/" title="[Leaf] [P6186] [NOI Online #1 提高组] 冒泡排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P6186] [NOI Online #1 提高组] 冒泡排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/8e4a570d/" title="[Leaf] [P3373] [模板] 线段树2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P3373] [模板] 线段树2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/b43ca25d/" title="[Leaf] [P4588] 数学计算"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P4588] 数学计算</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/28fc8d87/" title="[Leaf] [ZJ2020B] Bin Packing Problem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2020B] Bin Packing Problem</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c1cb10d6/" title="[Leaf] [ZJ2020E] Easy DP Problem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2020E] Easy DP Problem</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/44e8719f/" title="[Leaf] [ABC441E] A &gt; B substring"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC441E] A &gt; B substring</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2785680/" title="[Leaf] [ABC439F] Beautiful Kadomatsu"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC439F] Beautiful Kadomatsu</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7cebce35/" title="[Leaf] [P1908] 逆序对"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1908] 逆序对</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/8372cd1c/" title="[Leaf] [P5463] 小鱼比可爱"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P5463] 小鱼比可爱</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="12_连通性结构"
+        id="heading-3e685d89dd2aa48b2a3e558b7f37e873" role="tab" data-toggle="collapse" href="#collapse-3e685d89dd2aa48b2a3e558b7f37e873"
+        aria-expanded="false"
+      >
+        12_连通性结构
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/12-%E8%BF%9E%E9%80%9A%E6%80%A7%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-3e685d89dd2aa48b2a3e558b7f37e873"
+           role="tabpanel" aria-labelledby="heading-3e685d89dd2aa48b2a3e558b7f37e873">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/7654fe38/" title="[Leaf] [2020I] Invoking the Magic"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [2020I] Invoking the Magic</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f3ae506a/" title="[Leaf] [TZ9512] 时空奇遇"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9512] 时空奇遇</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3417472e/" title="[Leaf] [P1197] [JSOI2008] 星球大战"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1197] [JSOI2008] 星球大战</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/d06e55a1/" title="P1525 [NOIP2010] 关押罪犯"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">P1525 [NOIP2010] 关押罪犯</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/fad17f38/" title="[Leaf] [P1955] 程序自动分析"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1955] 程序自动分析</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="70_杂项专题"
+        id="heading-5dc02b4b7ff51e28b54d1c43a4a2d091" role="tab" data-toggle="collapse" href="#collapse-5dc02b4b7ff51e28b54d1c43a4a2d091"
+        aria-expanded="false"
+      >
+        70_杂项专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>11</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-5dc02b4b7ff51e28b54d1c43a4a2d091"
+           role="tabpanel" aria-labelledby="heading-5dc02b4b7ff51e28b54d1c43a4a2d091">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="71_公平博弈"
+        id="heading-bb4b90f08d936aff2a4edf1bd9994b4e" role="tab" data-toggle="collapse" href="#collapse-bb4b90f08d936aff2a4edf1bd9994b4e"
+        aria-expanded="false"
+      >
+        71_公平博弈
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/71-%E5%85%AC%E5%B9%B3%E5%8D%9A%E5%BC%88/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>9</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-bb4b90f08d936aff2a4edf1bd9994b4e"
+           role="tabpanel" aria-labelledby="heading-bb4b90f08d936aff2a4edf1bd9994b4e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/6ed7e9f3/" title="[Leaf] [ZJ2021M] Game Theory"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2021M] Game Theory</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/69ee8cc/" title="[Leaf] [CF2183A] Binary Array Game"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2183A] Binary Array Game</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4d929741/" title="[Leaf] [P1247] 取火柴游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1247] 取火柴游戏</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f17979b5/" title="[Leaf] [P1288] 取石子游戏 II"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1288] 取石子游戏 II</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e6cdd83f/" title="[Leaf] P2148 [SDOI2009] E&amp;D"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] P2148 [SDOI2009] E&amp;D</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e3ad5967/" title="[Leaf] [P1290] 欧几里德的游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P1290] 欧几里德的游戏</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1f6d78bf/" title="[Leaf] [P2197] [模板] Nim 游戏"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2197] [模板] Nim 游戏</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/fe5029ca/" title="[Leaf] [P2575] 高手过招"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [P2575] 高手过招</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1d4e98a6/" title="[Leaf] [CF2158C] Annoying Game"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2158C] Annoying Game</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="73_交互专题"
+        id="heading-a57f8c086301ef93543e24900081d490" role="tab" data-toggle="collapse" href="#collapse-a57f8c086301ef93543e24900081d490"
+        aria-expanded="false"
+      >
+        73_交互专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/73-%E4%BA%A4%E4%BA%92%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-a57f8c086301ef93543e24900081d490"
+           role="tabpanel" aria-labelledby="heading-a57f8c086301ef93543e24900081d490">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/77269bf1/" title="[Leaf] CF2196C1 Interactive Graph (Simple Version)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] CF2196C1 Interactive Graph (Simple Version)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/eb83cf7a/" title="[Leaf] [CF2196C2] Interactive Graph (Hard Version)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2196C2] Interactive Graph (Hard Version)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="40_数学"
+        id="heading-628543f12bcfd8390a07125383991378" role="tab" data-toggle="collapse" href="#collapse-628543f12bcfd8390a07125383991378"
+        aria-expanded="false"
+      >
+        40_数学
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>6</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-628543f12bcfd8390a07125383991378"
+           role="tabpanel" aria-labelledby="heading-628543f12bcfd8390a07125383991378">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="41_数论基础"
+        id="heading-17b78330ef3abc9f2d9c0184750918f1" role="tab" data-toggle="collapse" href="#collapse-17b78330ef3abc9f2d9c0184750918f1"
+        aria-expanded="false"
+      >
+        41_数论基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/41-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-17b78330ef3abc9f2d9c0184750918f1"
+           role="tabpanel" aria-labelledby="heading-17b78330ef3abc9f2d9c0184750918f1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/cbc2f5b3/" title="[Leaf] [ABC443G] Another Mod of Linear Problem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC443G] Another Mod of Linear Problem</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/f34a1508/" title="[Leaf] [ZJ2021F] Fair Distribution"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2021F] Fair Distribution</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e1f12260/" title="[Leaf] [TZ9554] Calc"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9554] Calc</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/631bd66a/" title="[Leaf] [CF2167D] Yet Another Array Problem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2167D] Yet Another Array Problem</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e32cbbf7/" title="[Leaf] [TZ9506] 灵脉共鸣"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ9506] 灵脉共鸣</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="42_组合计数"
+        id="heading-e8a20a141eeb83bf5b449526ad23e86f" role="tab" data-toggle="collapse" href="#collapse-e8a20a141eeb83bf5b449526ad23e86f"
+        aria-expanded="false"
+      >
+        42_组合计数
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/40-%E6%95%B0%E5%AD%A6/42-%E7%BB%84%E5%90%88%E8%AE%A1%E6%95%B0/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e8a20a141eeb83bf5b449526ad23e86f"
+           role="tabpanel" aria-labelledby="heading-e8a20a141eeb83bf5b449526ad23e86f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/84cedf52/" title="[Leaf] [CF2182D] Christmas Tree Decoration"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [CF2182D] Christmas Tree Decoration</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="50_计算几何"
+        id="heading-e6b4228be18dcde3311bb2cd54dc5477" role="tab" data-toggle="collapse" href="#collapse-e6b4228be18dcde3311bb2cd54dc5477"
+        aria-expanded="false"
+      >
+        50_计算几何
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e6b4228be18dcde3311bb2cd54dc5477"
+           role="tabpanel" aria-labelledby="heading-e6b4228be18dcde3311bb2cd54dc5477">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="51_几何基础"
+        id="heading-7f5faec85428e21c51dcc3e1fb47252f" role="tab" data-toggle="collapse" href="#collapse-7f5faec85428e21c51dcc3e1fb47252f"
+        aria-expanded="false"
+      >
+        51_几何基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/51-%E5%87%A0%E4%BD%95%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-7f5faec85428e21c51dcc3e1fb47252f"
+           role="tabpanel" aria-labelledby="heading-7f5faec85428e21c51dcc3e1fb47252f">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/3f05f1b9/" title="[Leaf] [ABC442E] Laser Takahashi"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ABC442E] Laser Takahashi</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/becb779e/" title="[Leaf] [TZ2202] Space Ant"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [TZ2202] Space Ant</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="53_扫描线与半平面"
+        id="heading-e40df0f5fe88e769152f68810f76ccd9" role="tab" data-toggle="collapse" href="#collapse-e40df0f5fe88e769152f68810f76ccd9"
+        aria-expanded="false"
+      >
+        53_扫描线与半平面
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/53-%E6%89%AB%E6%8F%8F%E7%BA%BF%E4%B8%8E%E5%8D%8A%E5%B9%B3%E9%9D%A2/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e40df0f5fe88e769152f68810f76ccd9"
+           role="tabpanel" aria-labelledby="heading-e40df0f5fe88e769152f68810f76ccd9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/402e289a/" title="[Leaf] [ZJ2021B] Restore Atlantis"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2021B] Restore Atlantis</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="54_三维几何"
+        id="heading-8d4e755ae7662d4b3f4e70d2c9a178c5" role="tab" data-toggle="collapse" href="#collapse-8d4e755ae7662d4b3f4e70d2c9a178c5"
+        aria-expanded="false"
+      >
+        54_三维几何
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/54-%E4%B8%89%E7%BB%B4%E5%87%A0%E4%BD%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-8d4e755ae7662d4b3f4e70d2c9a178c5"
+           role="tabpanel" aria-labelledby="heading-8d4e755ae7662d4b3f4e70d2c9a178c5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/e3e61edb/" title="[Leaf] [ZJ2021C] Cube"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2021C] Cube</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="60_字符串"
+        id="heading-064e6cf7d19f9b8d807f90c0cad2ccb5" role="tab" data-toggle="collapse" href="#collapse-064e6cf7d19f9b8d807f90c0cad2ccb5"
+        aria-expanded="false"
+      >
+        60_字符串
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/220-Library/60-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-064e6cf7d19f9b8d807f90c0cad2ccb5"
+           role="tabpanel" aria-labelledby="heading-064e6cf7d19f9b8d807f90c0cad2ccb5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/a58b0ec6/" title="[Leaf] [ZJ2022I] Barbecue"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2022I] Barbecue</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/da53b8d/" title="[Leaf] [ZJ2021L] String Freshman"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2021L] String Freshman</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/9b9ebd6f/" title="[Leaf] [ZJ2020C] Crossword Validation"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Leaf] [ZJ2020C] Crossword Validation</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="210_Atlas"
+        id="heading-27e5c864b48c4d6bfb928ff063e89fe9" role="tab" data-toggle="collapse" href="#collapse-27e5c864b48c4d6bfb928ff063e89fe9"
+        aria-expanded="false"
+      >
+        210_Atlas
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>49</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-27e5c864b48c4d6bfb928ff063e89fe9"
+           role="tabpanel" aria-labelledby="heading-27e5c864b48c4d6bfb928ff063e89fe9">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="20_图论"
+        id="heading-117b51d2aadf73f4a27822e01acae6ad" role="tab" data-toggle="collapse" href="#collapse-117b51d2aadf73f4a27822e01acae6ad"
+        aria-expanded="false"
+      >
+        20_图论
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>13</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-117b51d2aadf73f4a27822e01acae6ad"
+           role="tabpanel" aria-labelledby="heading-117b51d2aadf73f4a27822e01acae6ad">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/d856fe0d/" title="[L2] 20_图论"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 20_图论</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="21_图论基础"
+        id="heading-fc60ecd1873f33d810cbf82e767c3f8e" role="tab" data-toggle="collapse" href="#collapse-fc60ecd1873f33d810cbf82e767c3f8e"
+        aria-expanded="false"
+      >
+        21_图论基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/21-%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>6</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fc60ecd1873f33d810cbf82e767c3f8e"
+           role="tabpanel" aria-labelledby="heading-fc60ecd1873f33d810cbf82e767c3f8e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/cd9dd626/" title="同余最短路 (Modulo Shortest Path)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">同余最短路 (Modulo Shortest Path)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/e1865e3c/" title="[Note] 拓扑排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 拓扑排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c67106e1/" title="[Note] 存图与遍历"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 存图与遍历</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/6cae5d5b/" title="差分约束系统 (Difference_Constraints)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">差分约束系统 (Difference_Constraints)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3fe2b20c/" title="[Note] 欧拉回路与路径"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 欧拉回路与路径</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/a535be86/" title="[Note] 最短路体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 最短路体系</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="22_树论专题"
+        id="heading-6b62d90c0526cf926b5faa396bd33d8b" role="tab" data-toggle="collapse" href="#collapse-6b62d90c0526cf926b5faa396bd33d8b"
+        aria-expanded="false"
+      >
+        22_树论专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/22-%E6%A0%91%E8%AE%BA%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-6b62d90c0526cf926b5faa396bd33d8b"
+           role="tabpanel" aria-labelledby="heading-6b62d90c0526cf926b5faa396bd33d8b">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/46723656/" title="[Note] 树上差分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 树上差分</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/56fdb705/" title="[Note] LCA 体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] LCA 体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/cd7fb2f0/" title="[Note] 生成树体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 生成树体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/5e08b96b/" title="[Note] 树链剖分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 树链剖分</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/447bed30/" title="[Note] 直径与重心"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 直径与重心</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="23_连通性专题"
+        id="heading-6fb6f7d32dd836e84c1d73c5559eb46e" role="tab" data-toggle="collapse" href="#collapse-6fb6f7d32dd836e84c1d73c5559eb46e"
+        aria-expanded="false"
+      >
+        23_连通性专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/20-%E5%9B%BE%E8%AE%BA/23-%E8%BF%9E%E9%80%9A%E6%80%A7%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-6fb6f7d32dd836e84c1d73c5559eb46e"
+           role="tabpanel" aria-labelledby="heading-6fb6f7d32dd836e84c1d73c5559eb46e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/dbe3a645/" title="[Note] SCC 缩点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] SCC 缩点</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="40_数学"
+        id="heading-628543f12bcfd8390a07125383991378" role="tab" data-toggle="collapse" href="#collapse-628543f12bcfd8390a07125383991378"
+        aria-expanded="false"
+      >
+        40_数学
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>9</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-628543f12bcfd8390a07125383991378"
+           role="tabpanel" aria-labelledby="heading-628543f12bcfd8390a07125383991378">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/66896278/" title="[L2] 40_数学"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 40_数学</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="41_数论基础"
+        id="heading-17b78330ef3abc9f2d9c0184750918f1" role="tab" data-toggle="collapse" href="#collapse-17b78330ef3abc9f2d9c0184750918f1"
+        aria-expanded="false"
+      >
+        41_数论基础
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/40-%E6%95%B0%E5%AD%A6/41-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>8</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-17b78330ef3abc9f2d9c0184750918f1"
+           role="tabpanel" aria-labelledby="heading-17b78330ef3abc9f2d9c0184750918f1">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/715ac6ef/" title="[Note] 中国剩余定理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 中国剩余定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4eb9ff09/" title="[Note] 乘法逆元体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 乘法逆元体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/86daf17d/" title="[Note] 扩展欧几里得与裴蜀定理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 扩展欧几里得与裴蜀定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/7cb87255/" title="[Note] 欧拉定理与费马小定理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 欧拉定理与费马小定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/677e8336/" title="[L3] 41_数论基础"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L3] 41_数论基础</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/923ca70a/" title="[Note] 唯一分解定理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 唯一分解定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/5baf8ab/" title="[Note] 数论导论与位运算"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 数论导论与位运算</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/aa0acc66/" title="[Note] 素数筛法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 素数筛法</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="00_基础算法"
+        id="heading-fee7185b8b33253d0f2ca1f33eb35aa3" role="tab" data-toggle="collapse" href="#collapse-fee7185b8b33253d0f2ca1f33eb35aa3"
+        aria-expanded="false"
+      >
+        00_基础算法
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>9</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-fee7185b8b33253d0f2ca1f33eb35aa3"
+           role="tabpanel" aria-labelledby="heading-fee7185b8b33253d0f2ca1f33eb35aa3">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/d5f8e28c/" title="[L2] 00_基础算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 00_基础算法</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="01_降维技巧"
+        id="heading-c1711f6318be75b130d0b926d07b53ef" role="tab" data-toggle="collapse" href="#collapse-c1711f6318be75b130d0b926d07b53ef"
+        aria-expanded="false"
+      >
+        01_降维技巧
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/01-%E9%99%8D%E7%BB%B4%E6%8A%80%E5%B7%A7/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c1711f6318be75b130d0b926d07b53ef"
+           role="tabpanel" aria-labelledby="heading-c1711f6318be75b130d0b926d07b53ef">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2a057462/" title="[Note] 前缀和与差分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 前缀和与差分</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/c29d9edd/" title="[Note] 双指针"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 双指针</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/17898bcd/" title="[Note] 单调栈与队列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 单调栈与队列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/26262b8/" title="[Note] 离散化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 离散化</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="02_排序与二分"
+        id="heading-ea4ede9d093b06c450e1d1a9bade7d6d" role="tab" data-toggle="collapse" href="#collapse-ea4ede9d093b06c450e1d1a9bade7d6d"
+        aria-expanded="false"
+      >
+        02_排序与二分
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/02-%E6%8E%92%E5%BA%8F%E4%B8%8E%E4%BA%8C%E5%88%86/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ea4ede9d093b06c450e1d1a9bade7d6d"
+           role="tabpanel" aria-labelledby="heading-ea4ede9d093b06c450e1d1a9bade7d6d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/9a3a8922/" title="[Note] 排序体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 排序体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/9f633e52/" title="[Note] 二分体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 二分体系</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="04_贪心与构造"
+        id="heading-ef53580c49f39cd9dd110ca4c0d125fd" role="tab" data-toggle="collapse" href="#collapse-ef53580c49f39cd9dd110ca4c0d125fd"
+        aria-expanded="false"
+      >
+        04_贪心与构造
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/00-%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/04-%E8%B4%AA%E5%BF%83%E4%B8%8E%E6%9E%84%E9%80%A0/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ef53580c49f39cd9dd110ca4c0d125fd"
+           role="tabpanel" aria-labelledby="heading-ef53580c49f39cd9dd110ca4c0d125fd">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/d5b04992/" title="[Note] 构造体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 构造体系</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/4daaef78/" title="[Note] 贪心体系"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 贪心体系</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="10_数据结构"
+        id="heading-69d2abb5510208d2a720d60b2e42a075" role="tab" data-toggle="collapse" href="#collapse-69d2abb5510208d2a720d60b2e42a075"
+        aria-expanded="false"
+      >
+        10_数据结构
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>7</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-69d2abb5510208d2a720d60b2e42a075"
+           role="tabpanel" aria-labelledby="heading-69d2abb5510208d2a720d60b2e42a075">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/da537d0d/" title="[L2] 10_数据结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 10_数据结构</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="11_树形结构"
+        id="heading-4714b9a7c076b48bf3b78080d7d6354d" role="tab" data-toggle="collapse" href="#collapse-4714b9a7c076b48bf3b78080d7d6354d"
+        aria-expanded="false"
+      >
+        11_树形结构
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/11-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-4714b9a7c076b48bf3b78080d7d6354d"
+           role="tabpanel" aria-labelledby="heading-4714b9a7c076b48bf3b78080d7d6354d">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/880cf989/" title="[Note] ST表与倍增"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] ST表与倍增</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/dba9a34f/" title="[Note] 线段树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 线段树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/43666fa1/" title="[Note] 树状数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 树状数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/d3fd52/" title="[L3] 11_树形结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L3] 11_树形结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ec824ae8/" title="线段树进阶：信息合并 (The Art of Push Up)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">线段树进阶：信息合并 (The Art of Push Up)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="12_连通性结构"
+        id="heading-3e685d89dd2aa48b2a3e558b7f37e873" role="tab" data-toggle="collapse" href="#collapse-3e685d89dd2aa48b2a3e558b7f37e873"
+        aria-expanded="false"
+      >
+        12_连通性结构
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/10-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/12-%E8%BF%9E%E9%80%9A%E6%80%A7%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-3e685d89dd2aa48b2a3e558b7f37e873"
+           role="tabpanel" aria-labelledby="heading-3e685d89dd2aa48b2a3e558b7f37e873">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/962d2292/" title="[Note] 并查集"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 并查集</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="30_动态规划"
+        id="heading-c94631b5e602b1d619d6701448b40d27" role="tab" data-toggle="collapse" href="#collapse-c94631b5e602b1d619d6701448b40d27"
+        aria-expanded="false"
+      >
+        30_动态规划
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c94631b5e602b1d619d6701448b40d27"
+           role="tabpanel" aria-labelledby="heading-c94631b5e602b1d619d6701448b40d27">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/2a5aca6a/" title="[L2] 30_动态规划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 30_动态规划</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="31_经典模型"
+        id="heading-ebd88ca1995f14ff28c7446529ed2198" role="tab" data-toggle="collapse" href="#collapse-ebd88ca1995f14ff28c7446529ed2198"
+        aria-expanded="false"
+      >
+        31_经典模型
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/31-%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-ebd88ca1995f14ff28c7446529ed2198"
+           role="tabpanel" aria-labelledby="heading-ebd88ca1995f14ff28c7446529ed2198">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/a75f3b7c/" title="[Note] 区间DP"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 区间DP</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/3349ba31/" title="[Note] 背包DP"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 背包DP</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/63c36af9/" title="[Note] 线性DP"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] 线性DP</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="32_状态压缩"
+        id="heading-af3c2ca56d2d256ea6e9f701ed32c7e0" role="tab" data-toggle="collapse" href="#collapse-af3c2ca56d2d256ea6e9f701ed32c7e0"
+        aria-expanded="false"
+      >
+        32_状态压缩
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/30-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/32-%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-af3c2ca56d2d256ea6e9f701ed32c7e0"
+           role="tabpanel" aria-labelledby="heading-af3c2ca56d2d256ea6e9f701ed32c7e0">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/5db37e5a/" title="[Note] SOSDP"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] SOSDP</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="70_杂项专题"
+        id="heading-5dc02b4b7ff51e28b54d1c43a4a2d091" role="tab" data-toggle="collapse" href="#collapse-5dc02b4b7ff51e28b54d1c43a4a2d091"
+        aria-expanded="false"
+      >
+        70_杂项专题
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>4</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-5dc02b4b7ff51e28b54d1c43a4a2d091"
+           role="tabpanel" aria-labelledby="heading-5dc02b4b7ff51e28b54d1c43a4a2d091">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/cf153fd/" title="[L2] 70_杂项专题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 70_杂项专题</span>
+        </a>
+      
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="71_公平博弈"
+        id="heading-bb4b90f08d936aff2a4edf1bd9994b4e" role="tab" data-toggle="collapse" href="#collapse-bb4b90f08d936aff2a4edf1bd9994b4e"
+        aria-expanded="false"
+      >
+        71_公平博弈
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/70-%E6%9D%82%E9%A1%B9%E4%B8%93%E9%A2%98/71-%E5%85%AC%E5%B9%B3%E5%8D%9A%E5%BC%88/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-bb4b90f08d936aff2a4edf1bd9994b4e"
+           role="tabpanel" aria-labelledby="heading-bb4b90f08d936aff2a4edf1bd9994b4e">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/26a61643/" title="[L3] 71_公平博弈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L3] 71_公平博弈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/90898f79/" title="[Note] Nim 游戏及其变体"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] Nim 游戏及其变体</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/fcbc3385/" title="[Note] SG 函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[Note] SG 函数</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="50_计算几何"
+        id="heading-e6b4228be18dcde3311bb2cd54dc5477" role="tab" data-toggle="collapse" href="#collapse-e6b4228be18dcde3311bb2cd54dc5477"
+        aria-expanded="false"
+      >
+        50_计算几何
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/50-%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-e6b4228be18dcde3311bb2cd54dc5477"
+           role="tabpanel" aria-labelledby="heading-e6b4228be18dcde3311bb2cd54dc5477">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/fd1d1436/" title="[L2] 50_计算几何"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 50_计算几何</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="60_字符串"
+        id="heading-064e6cf7d19f9b8d807f90c0cad2ccb5" role="tab" data-toggle="collapse" href="#collapse-064e6cf7d19f9b8d807f90c0cad2ccb5"
+        aria-expanded="false"
+      >
+        60_字符串
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/210-Atlas/60-%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-064e6cf7d19f9b8d807f90c0cad2ccb5"
+           role="tabpanel" aria-labelledby="heading-064e6cf7d19f9b8d807f90c0cad2ccb5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/6fb16570/" title="[L2] 60_字符串"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[L2] 60_字符串</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="290_Essays"
+        id="heading-1f051e43204a2935a941ed6b8ceb730c" role="tab" data-toggle="collapse" href="#collapse-1f051e43204a2935a941ed6b8ceb730c"
+        aria-expanded="false"
+      >
+        290_Essays
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/290-Essays/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>11</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-1f051e43204a2935a941ed6b8ceb730c"
+           role="tabpanel" aria-labelledby="heading-1f051e43204a2935a941ed6b8ceb730c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/56c8ecc8/" title="年度总结"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">年度总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/56c8ecc8/" title="内生秩序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">内生秩序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/Selene/" title="Project Selene | 折桂计划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Project Selene | 折桂计划</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/57d9ba9e/" title="Week0_Prepare"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Week0_Prepare</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/107eb856/" title="双人船"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">双人船</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/2ea33511/" title="月光沐浴的蝴蝶"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">月光沐浴的蝴蝶</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/42d63d0f/" title="橙子汽水"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">橙子汽水</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/ab65d9e6/" title="我从洛谷再出发"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">我从洛谷再出发</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/cfa6377b/" title="时间不是维度"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">时间不是维度</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/19c9c7ed/" title="浪潮之巅"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">浪潮之巅</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/290-Essays/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="211_Patchouli"
+        id="heading-f451ab3944aa14f08689c5b0aef7ffb7" role="tab" data-toggle="collapse" href="#collapse-f451ab3944aa14f08689c5b0aef7ffb7"
+        aria-expanded="false"
+      >
+        211_Patchouli
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/211-Patchouli/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-f451ab3944aa14f08689c5b0aef7ffb7"
+           role="tabpanel" aria-labelledby="heading-f451ab3944aa14f08689c5b0aef7ffb7">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="03_动态规划"
+        id="heading-a2446c7064c471450b4b5d787df22550" role="tab" data-toggle="collapse" href="#collapse-a2446c7064c471450b4b5d787df22550"
+        aria-expanded="false"
+      >
+        03_动态规划
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/211-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>5</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-a2446c7064c471450b4b5d787df22550"
+           role="tabpanel" aria-labelledby="heading-a2446c7064c471450b4b5d787df22550">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="01_基础模型"
+        id="heading-38ff460720484290244014d24ca3eac6" role="tab" data-toggle="collapse" href="#collapse-38ff460720484290244014d24ca3eac6"
+        aria-expanded="false"
+      >
+        01_基础模型
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/211-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/01-%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>3</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-38ff460720484290244014d24ca3eac6"
+           role="tabpanel" aria-labelledby="heading-38ff460720484290244014d24ca3eac6">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/95fc4668/" title="计数DP方法论 (Counting System)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">计数DP方法论 (Counting System)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/8b130bbd/" title="状压DP体系 (State Compression System)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">状压DP体系 (State Compression System)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/b6a340a7/" title="树形DP体系 (Tree DP System)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">树形DP体系 (Tree DP System)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="03_维度优化"
+        id="heading-c492343ae6c0a8cd716b81fad60eb907" role="tab" data-toggle="collapse" href="#collapse-c492343ae6c0a8cd716b81fad60eb907"
+        aria-expanded="false"
+      >
+        03_维度优化
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/211-Patchouli/03-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/03-%E7%BB%B4%E5%BA%A6%E4%BC%98%E5%8C%96/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-c492343ae6c0a8cd716b81fad60eb907"
+           role="tabpanel" aria-labelledby="heading-c492343ae6c0a8cd716b81fad60eb907">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/c936ec9e/" title="倍增优化策略 (Doubling System)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">倍增优化策略 (Doubling System)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/1bc8a91b/" title="单调性优化体系 (Monotonicity System)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">单调性优化体系 (Monotonicity System)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="280_Study"
+        id="heading-a10215b441bd55a92e60e027fd910504" role="tab" data-toggle="collapse" href="#collapse-a10215b441bd55a92e60e027fd910504"
+        aria-expanded="false"
+      >
+        280_Study
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/280-Study/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-a10215b441bd55a92e60e027fd910504"
+           role="tabpanel" aria-labelledby="heading-a10215b441bd55a92e60e027fd910504">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/posts/ba003d1c/" title="C语言程序设计"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">C语言程序设计</span>
+        </a>
+      
+    
+      
+      
+        <a href="/posts/90197d4/" title="计算机导论"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">计算机导论</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
