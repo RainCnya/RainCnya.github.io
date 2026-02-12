@@ -6,7 +6,8 @@ tags:
   - 难度/P3
 categories:
   - 220_Library
-  - 70_博弈论
+  - 70_杂项专题
+  - 71_公平博弈
 abbrlink: 1d4e98a6
 date: 2025-12-19 00:00:00
 ---

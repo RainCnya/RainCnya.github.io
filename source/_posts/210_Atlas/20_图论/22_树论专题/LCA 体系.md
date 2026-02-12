@@ -116,7 +116,7 @@ int get_lca( int u, int v )
 const int maxn = 500010;
 
 vector< int > adj[maxn];
-int fa[maxn], dep[maxn], siz[maxn], son[maxn]; // DFS1 维护信息
+int fa[maxn], dep[maxn], sz[maxn], son[maxn]; // DFS1 维护信息
 int top[maxn]; // DFS2 维护链顶
 int n, m, root;
 
