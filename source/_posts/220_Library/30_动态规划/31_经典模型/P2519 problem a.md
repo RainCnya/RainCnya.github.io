@@ -66,14 +66,14 @@ int main( )
 
     for( int i = 1; i <= n; ++ i ) 
     {
-        f[ i ] = f[ i - 1 ];
-        for( auto &it : intervals[ i ] ) 
+        f[i] = f[ i - 1 ];
+        for( auto &it : intervals[i] ) 
         {
-            f[ i ] = max( f[ i ], f[ it.first - 1 ] + it.second );
+            f[i] = max( f[i], f[ it.first - 1 ] + it.second );
         }
     }
 
-    cout << n - f[ n ] << "\n";
+    cout << n - f[n] << "\n";
     return 0;
 }
 ```

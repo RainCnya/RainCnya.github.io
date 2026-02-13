@@ -54,7 +54,7 @@ bool vis[ maxn ];
 
 void dijkstra( int mn )
 {
-    for( int i = 0; i < mn; ++ i ) dist[ i ] = inf;
+    for( int i = 0; i < mn; ++ i ) dist[i] = inf;
     dist[ 0 ] = 0;
     priority_queue< pli, vector< pli >, greater< pli > > pq;
     pq.push( { 0, 0 } );
@@ -69,10 +69,10 @@ void dijkstra( int mn )
 
         for( int i = 1; i <= n; ++ i )
         {
-            int v = ( u + a[ i ] ) % mn;
-            if( dist[ u ] + a[ i ] < dist[ v ] )
+            int v = ( u + a[i] ) % mn;
+            if( dist[ u ] + a[i] < dist[ v ] )
             {
-                dist[ v ] = dist[ u ] + a[ i ];
+                dist[ v ] = dist[ u ] + a[i];
                 pq.push( { dist[ v ], v } );
             }
         }
@@ -85,9 +85,9 @@ ll calc( ll X, int mn )
     ll res = 0;
     for( int i = 0; i < mn; ++ i )
     {
-        if( dist[ i ] <= X )
+        if( dist[i] <= X )
         {
-            res += ( X - dist[ i ] ) / mn + 1;
+            res += ( X - dist[i] ) / mn + 1;
         }
     }
     return res;
@@ -102,8 +102,8 @@ int main( )
     int mn = 1e9;
     for( int i = 1; i <= n; ++ i )
     {
-        cin >> a[ i ];
-        if( a[ i ] > 0 ) mn = min( mn, a[ i ] );
+        cin >> a[i];
+        if( a[i] > 0 ) mn = min( mn, a[i] );
     }
 
     dijkstra( mn );

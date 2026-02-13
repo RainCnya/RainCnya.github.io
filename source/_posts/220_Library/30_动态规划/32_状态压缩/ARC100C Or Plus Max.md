@@ -64,7 +64,7 @@ int main( )
     for( int i = 0; i < ( 1 << n ); ++ i ) 
     {
         int x; cin >> x;
-        f[ i ].update( x );
+        f[i].update( x );
     }
 
     // SOS DP: 按位转移
@@ -72,14 +72,14 @@ int main( )
     {
         for( int i = 0; i < ( 1 << n ); ++ i ) 
         {
-            if( ( i >> j ) & 1 ) merge( f[ i ], f[ i ^ ( 1 << j ) ] );
+            if( ( i >> j ) & 1 ) merge( f[i], f[ i ^ ( 1 << j ) ] );
         }
     }
 
     int current_max = 0;
     for( int i = 1; i < ( 1 << n ); ++ i ) 
     {
-        current_max = max( current_max, f[ i ].fmax + f[ i ].smax );
+        current_max = max( current_max, f[i].fmax + f[i].smax );
         cout << current_max << "\n";
     }
     return 0;

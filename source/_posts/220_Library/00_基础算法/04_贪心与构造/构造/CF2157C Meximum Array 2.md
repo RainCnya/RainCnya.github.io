@@ -62,8 +62,8 @@ void solve( )
     int s1 = 0, s2 = 0, cur = 0;
     for( int i = 1; i <= n; ++ i )
     {
-        s1 += d1[ i ];
-        s2 += d2[ i ];
+        s1 += d1[i];
+        s2 += d2[i];
 
         // 状态判定
         if( s1 && s2 ) cout << inf;

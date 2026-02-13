@@ -45,9 +45,9 @@ int solve( int k )
     int res = 0, cur = 0;
     for( int i = 1; i <= n; ++ i )
     {
-        cur += dif[ i ];
+        cur += dif[i];
         // 如果 (原始状态 + 翻转次数) 为偶数，说明当前为 B (0)，需翻转
-        if( ( a[ i ] + cur ) % 2 == 0 )
+        if( ( a[i] + cur ) % 2 == 0 )
         {
             if( i + k - 1 > n ) return 1e9;
             ++ res;
@@ -64,7 +64,7 @@ int main( )
     for( int i = 1; i <= n; ++ i )
     {
         char c; scanf( " %c", &c );
-        a[ i ] = ( c == 'F' ? 1 : 0 );
+        a[i] = ( c == 'F' ? 1 : 0 );
     }
 
     int ansk = 1, minm = n;

@@ -51,9 +51,9 @@ struct Edge
     int to, w;
 };
 
-vector< Edge > adj[ maxn ];
-int d1[ maxn ], d2[ maxn ];
-int deg[ maxn ];
+vector< Edge > adj[maxn];
+int d1[maxn], d2[maxn];
+int deg[maxn];
 int n, m, K;
 
 void dijkstra( )
@@ -112,8 +112,8 @@ int main( )
 
     dijkstra( );
 
-    if( d2[ n ] == inf ) cout << "-1\n";
-    else cout << d2[ n ] << "\n";
+    if( d2[n] == inf ) cout << "-1\n";
+    else cout << d2[n] << "\n";
 
     return 0;
 }

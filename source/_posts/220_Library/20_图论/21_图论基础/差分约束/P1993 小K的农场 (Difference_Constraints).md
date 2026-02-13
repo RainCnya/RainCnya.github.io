@@ -63,8 +63,8 @@ bool spfa( )
     queue< int > q;
     for( int i = 1; i <= n; ++ i )
     {
-        dist[ i ] = 0;
-        vis[ i ] = 1;
+        dist[i] = 0;
+        vis[i] = 1;
         q.push( i );
     }
 

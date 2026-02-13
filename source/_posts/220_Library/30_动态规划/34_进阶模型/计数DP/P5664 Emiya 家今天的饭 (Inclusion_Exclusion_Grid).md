@@ -23,7 +23,7 @@ date: 2025-11-24 00:00:00
         
     2. **局部化约束**: 由于每行只能选一个，不可能有两列同时超过一半。因此只需枚举“非法列” $c$。
         
-    3. **差值 DP**: 定义 $f[ i ][ j ]$ 为前 $i$ 行中，非法列 $c$ 选数次数与“其他列选数总次数”之差为 $j$ 的方案数。
+    3. **差值 DP**: 定义 $f[i][ j ]$ 为前 $i$ 行中，非法列 $c$ 选数次数与“其他列选数总次数”之差为 $j$ 的方案数。
         
         - 选列 $c$: $j \leftarrow j+1$。
             
@@ -54,14 +54,14 @@ int main( )
     {
         for( int j = 1; j <= m; ++ j ) 
         {
-            cin >> a[ i ][ j ];
-            s[ i ] = ( s[ i ] + a[ i ][ j ] ) % mod;
+            cin >> a[i][ j ];
+            s[i] = ( s[i] + a[i][ j ] ) % mod;
         }
     }
 
     // 1. 总方案 (每行选一个或不选，最后减去全不选)
     ll total = 1;
-    for( int i = 1; i <= n; ++ i ) total = total * ( s[ i ] + 1 ) % mod;
+    for( int i = 1; i <= n; ++ i ) total = total * ( s[i] + 1 ) % mod;
     total = ( total - 1 + mod ) % mod;
 
     // 2. 减去非法方案 (枚举非法列 c)
@@ -72,11 +72,11 @@ int main( )
         f[ 0 ][ n ] = 1; // 偏移量 n
         for( int i = 1; i <= n; ++ i ) 
         {
-            ll others = ( s[ i ] - a[ i ][ c ] + mod ) % mod;
+            ll others = ( s[i] - a[i][ c ] + mod ) % mod;
             for( int j = n - i; j <= n + i; ++ j ) 
             {
-                f[ i ][ j ] = ( f[ i - 1 ][ j ] + // 不选
-                                f[ i - 1 ][ j - 1 ] * a[ i ][ c ] + // 选 c
+                f[i][ j ] = ( f[ i - 1 ][ j ] + // 不选
+                                f[ i - 1 ][ j - 1 ] * a[i][ c ] + // 选 c
                                 f[ i - 1 ][ j + 1 ] * others ) % mod; // 选其他
             }
         }

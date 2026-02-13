@@ -129,10 +129,10 @@ int main( )
     ll ans = 0;
     for( int i = 1; i < 2 * n; ++ i )
     {
-        int L = lower_bound( raw_y + 1, raw_y + m + 1, lines[ i ].y1 ) - raw_y;
-        int R = lower_bound( raw_y + 1, raw_y + m + 1, lines[ i ].y2 ) - raw_y;
-        modify( 1, L, R - 1, lines[ i ].state );
-        ans += tr[ 1 ].len * ( lines[ i + 1 ].x - lines[ i ].x );
+        int L = lower_bound( raw_y + 1, raw_y + m + 1, lines[i].y1 ) - raw_y;
+        int R = lower_bound( raw_y + 1, raw_y + m + 1, lines[i].y2 ) - raw_y;
+        modify( 1, L, R - 1, lines[i].state );
+        ans += tr[ 1 ].len * ( lines[ i + 1 ].x - lines[i].x );
     }
 
     cout << ans << endl;
