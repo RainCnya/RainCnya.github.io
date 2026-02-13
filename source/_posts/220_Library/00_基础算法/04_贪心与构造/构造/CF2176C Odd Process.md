@@ -63,7 +63,7 @@ void solve( )
         cout << "\n"; return;
     }
 
-    for( int i = 1; i <= ce; ++ i ) sum_e[ i ] = sum_e[ i - 1 ] + evens[ i ];
+    for( int i = 1; i <= ce; ++ i ) sum_e[i] = sum_e[ i - 1 ] + evens[i];
 
     for( int k = 1; k <= n; ++ k )
     {

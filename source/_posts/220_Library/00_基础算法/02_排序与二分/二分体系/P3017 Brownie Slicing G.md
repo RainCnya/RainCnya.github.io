@@ -86,7 +86,7 @@ int main( )
         for( int j = 1; j <= c; ++ j )
         {
             int x; cin >> x;
-            sum[ i ][ j ] = sum[ i - 1 ][ j ] + sum[ i ][ j - 1 ] - sum[ i - 1 ][ j - 1 ] + x;
+            sum[i][ j ] = sum[ i - 1 ][ j ] + sum[i][ j - 1 ] - sum[ i - 1 ][ j - 1 ] + x;
         }
     }
 

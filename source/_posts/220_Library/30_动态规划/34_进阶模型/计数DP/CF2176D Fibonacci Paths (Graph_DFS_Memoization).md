@@ -71,10 +71,10 @@ void solve( )
     cin >> n >> m;
     for( int i = 1; i <= n; ++ i )
     {
-        radj[ i ].clear( );
-        memo[ i ].clear( );
+        radj[i].clear( );
+        memo[i].clear( );
     }
-    for( int i = 1; i <= n; ++ i ) cin >> a[ i ];
+    for( int i = 1; i <= n; ++ i ) cin >> a[i];
 
     vector< pair< int, int > > edges;
     for( int i = 0; i < m; ++ i )

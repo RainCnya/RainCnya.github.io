@@ -12,7 +12,7 @@ categories:
 abbrlink: 2f2b56ea
 date: 2025-11-08 00:00:00
 ---
-# [Luogu-P3800](https://www.luogu.com.cn/problem/P3800) Power收集
+# [P3800 Power 收集 - 洛谷](https://www.luogu.com.cn/problem/P3800)
 
 ## 1. 题面梗概
 
@@ -105,4 +105,4 @@ int main()
     
 - **碎碎念**: 很多网格题一旦涉及区间转移，就可以考虑使用单调队列降维。注意滚动数组的使用，可以节省空间。
     
-- **关联笔记**: [[线性DP]] | [[单调栈与队列]]
+- **关联笔记**: [[线性DP]] | [[单调队列优化]]

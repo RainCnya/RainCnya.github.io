@@ -44,18 +44,18 @@ date: 2025-12-16 22:40:00
 {% fold info @Code: Exclusion DP Pattern %}
 
 ```cpp
-// 核心：f[ i ][ j ] 记录 (非法列选择数 - 其余列选择数) 的差值
+// 核心：f[i][ j ] 记录 (非法列选择数 - 其余列选择数) 的差值
 f[ 0 ][ n ] = 1; // 偏移量 n 防止负下标
 for( int i = 1; i <= n; ++ i )
 {
     for( int j = n - i; j <= n + i; ++ j )
     {
         // 1. 不选：继承方案数
-        f[ i ][ j ] = f[ i - 1 ][ j ];
+        f[i][ j ] = f[ i - 1 ][ j ];
         // 2. 选非法列 c：差值 +1
-        f[ i ][ j ] = ( f[ i ][ j ] + f[ i - 1 ][ j - 1 ] * a[ i ][ c ] ) % mod;
+        f[i][ j ] = ( f[i][ j ] + f[ i - 1 ][ j - 1 ] * a[i][ c ] ) % mod;
         // 3. 选其他列：差值 -1
-        f[ i ][ j ] = ( f[ i ][ j ] + f[ i - 1 ][ j + 1 ] * others[ i ] ) % mod;
+        f[i][ j ] = ( f[i][ j ] + f[ i - 1 ][ j + 1 ] * others[i] ) % mod;
     }
 }
 ```

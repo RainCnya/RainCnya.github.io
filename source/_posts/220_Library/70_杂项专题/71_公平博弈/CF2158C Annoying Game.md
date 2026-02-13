@@ -51,14 +51,14 @@ void solve( )
 {
     int n; ll k;
     cin >> n >> k;
-    for( int i = 1; i <= n; ++ i ) cin >> a[ i ];
-    for( int i = 1; i <= n; ++ i ) cin >> b[ i ];
+    for( int i = 1; i <= n; ++ i ) cin >> a[i];
+    for( int i = 1; i <= n; ++ i ) cin >> b[i];
 
     // 原数组最大子段和 (Kadane)
     ll base_max = -2e18, sum = 0;
     for( int i = 1; i <= n; ++ i ) 
     {
-        sum += a[ i ];
+        sum += a[i];
         base_max = max( base_max, sum );
         if( sum < 0 ) sum = 0;
     }
@@ -74,15 +74,15 @@ void solve( )
     ll current = 0;
     for( int i = 1; i <= n; ++ i ) 
     {
-        current += a[ i ];
-        f[ i ] = current;
+        current += a[i];
+        f[i] = current;
         if( current < 0 ) current = 0;
     }
     current = 0;
     for( int i = n; i >= 1; -- i ) 
     {
-        current += a[ i ];
-        g[ i ] = current;
+        current += a[i];
+        g[i] = current;
         if( current < 0 ) current = 0;
     }
 
@@ -91,7 +91,7 @@ void solve( )
     {
         ll left = max( 0LL, f[ i - 1 ] );
         ll right = max( 0LL, g[ i + 1 ] );
-        ans = max( ans, a[ i ] + b[ i ] + left + right );
+        ans = max( ans, a[i] + b[i] + left + right );
     }
     cout << ans << "\n";
 }

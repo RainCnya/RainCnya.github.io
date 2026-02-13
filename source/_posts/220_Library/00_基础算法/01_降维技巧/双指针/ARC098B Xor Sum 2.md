@@ -53,7 +53,7 @@ int main( )
     cin.tie( 0 );
 
     cin >> n;
-    for( int i = 1; i <= n; ++ i ) cin >> a[ i ];
+    for( int i = 1; i <= n; ++ i ) cin >> a[i];
 
     ll ans = 0, cur_sum = 0;
     int L = 1;

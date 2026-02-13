@@ -45,19 +45,19 @@ void solve( )
 {
     int n;
     cin >> n;
-    for( int i = 1; i <= n; ++ i ) cin >> a[ i ];
+    for( int i = 1; i <= n; ++ i ) cin >> a[i];
 
     pre_min[ 1 ] = a[ 1 ];
-    for( int i = 2; i <= n; ++ i ) pre_min[ i ] = min( pre_min[ i - 1 ], a[ i ] );
+    for( int i = 2; i <= n; ++ i ) pre_min[i] = min( pre_min[ i - 1 ], a[i] );
 
     suf_max[ n ] = a[ n ];
-    for( int i = n - 1; i >= 1; -- i ) suf_max[ i ] = max( suf_max[ i + 1 ], a[ i ] );
+    for( int i = n - 1; i >= 1; -- i ) suf_max[i] = max( suf_max[ i + 1 ], a[i] );
 
     bool ok = true;
     for( int i = 1; i < n; ++ i )
     {
         // 发现数值断层：左侧全员必然作为大于右侧全员的 u 出现
-        if( pre_min[ i ] > suf_max[ i + 1 ] )
+        if( pre_min[i] > suf_max[ i + 1 ] )
         {
             ok = false;
             break;

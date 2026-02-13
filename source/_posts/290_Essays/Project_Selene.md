@@ -1,5 +1,5 @@
 ---
-title: Project Selene | 折桂计划
+title: 折桂计划
 tags: Meta/Selene
 categories:
   - 290_Essays
