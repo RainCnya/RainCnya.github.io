@@ -1,10 +1,15 @@
 ---
-title: "[Leaf] ABC445E Many LCMs"
+title: '[Leaf] ABC445E Many LCMs'
 tags:
   - 数论/整除/LCM
   - 数论/逆元
   - 难度/P4
-date: 2026-2-15 13:34:36
+categories:
+  - 220_Library
+  - 40_数学
+  - 41_数论基础
+abbrlink: 8c170c6a
+date: 2026-02-15 13:34:36
 ---
 
 # [E - Many LCMs](https://atcoder.jp/contests/abc445/tasks/abc445_e)

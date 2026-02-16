@@ -1,10 +1,14 @@
 ---
-title: "[Leaf] ABC445F Exactly K Steps 2"
+title: '[Leaf] ABC445F Exactly K Steps 2'
 tags:
   - 数学/矩阵快速幂
   - DP/优化
   - 难度/P4
-date: 2026-2-15 13:58:01
+categories:
+  - 220_Library
+  - 40_数学
+abbrlink: f7bde76f
+date: 2026-02-15 13:58:01
 ---
 
 # [F - Exactly K Steps 2](https://atcoder.jp/contests/abc445/tasks/abc445_f)
