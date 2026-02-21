@@ -2,7 +2,7 @@
 title: '[Leaf] [TZ9547] Silly Xiao Zhang'
 tags:
   - DP/线性
-  - 数据结构/单调栈
+  - 算法/单调栈单调栈
   - 难度/P3
 categories:
   - 220_Library

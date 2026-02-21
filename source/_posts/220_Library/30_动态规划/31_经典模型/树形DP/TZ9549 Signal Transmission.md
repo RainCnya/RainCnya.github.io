@@ -2,7 +2,7 @@
 title: '[Leaf] [TZ9549] Signal Transmission'
 tags:
   - DP/树形
-  - 数据结构/单调栈
+  - 算法/单调栈单调栈
   - 策略/二分答案
   - 难度/P2
 categories:
