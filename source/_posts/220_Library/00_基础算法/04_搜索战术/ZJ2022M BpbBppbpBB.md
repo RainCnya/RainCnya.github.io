@@ -7,7 +7,7 @@ tags:
 categories:
   - 220_Library
   - 00_基础算法
-  - 03_搜索战术
+  - 04_搜索战术
 abbrlink: a20a354
 date: 2026-01-24 21:31:38
 ---

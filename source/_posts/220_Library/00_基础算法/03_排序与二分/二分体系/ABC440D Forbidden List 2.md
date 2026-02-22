@@ -6,7 +6,7 @@ tags:
 categories:
   - 220_Library
   - 00_基础算法
-  - 02_排序与二分
+  - 03_排序与二分
 abbrlink: 509521cc
 date: 2026-01-13 00:00:00
 ---

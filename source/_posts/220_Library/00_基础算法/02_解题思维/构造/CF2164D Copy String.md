@@ -7,7 +7,7 @@ tags:
 categories:
   - 220_Library
   - 00_基础算法
-  - 04_贪心与构造
+  - 02_解题思维
 abbrlink: ed8782a8
 date: 2026-01-06 00:00:00
 ---

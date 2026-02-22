@@ -8,7 +8,7 @@ tags:
 categories:
   - 220_Library
   - 00_基础算法
-  - 02_排序与二分
+  - 03_排序与二分
 abbrlink: 31dd7f12
 date: 2025-10-31 00:00:00
 ---
