@@ -4,8 +4,8 @@ tags:
   - DP/树形
   - DP/背包
 categories:
-  - 211_Patchouli
-  - 03_动态规划
+  - 210_Atlas
+  - 30_动态规划
   - 01_基础模型
 abbrlink: b6a340a7
 date: 2025-12-16 22:30:00
