@@ -1,3 +1,8 @@
+---
+categories:
+  - 280_Study
+abbrlink: '0'
+---
 
 ### RMQ
 区间最值查询。
