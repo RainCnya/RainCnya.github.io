@@ -1,7 +1,9 @@
 ---
+title: Dictionary
+archive: true
 categories:
   - 280_Study
-abbrlink: '0'
+abbrlink: 50fde6f6
 ---
 
 ### RMQ
