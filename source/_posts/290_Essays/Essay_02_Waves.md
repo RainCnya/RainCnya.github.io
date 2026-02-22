@@ -1,5 +1,5 @@
 ---
-title: 浪潮之巅
+title: 浪潮之巅读后感
 tags: Meta/Essay
 categories:
   - 290_Essays

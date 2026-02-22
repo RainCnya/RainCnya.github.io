@@ -3,8 +3,8 @@ title: 状压DP体系 (State Compression System)
 tags:
   - DP/状压
 categories:
-  - 211_Patchouli
-  - 03_动态规划
+  - 210_Atlas
+  - 30_动态规划
   - 01_基础模型
 abbrlink: 8b130bbd
 date: 2025-12-16 22:35:00

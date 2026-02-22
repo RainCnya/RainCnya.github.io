@@ -4,8 +4,8 @@ tags:
   - DP/计数
   - 数学/容斥
 categories:
-  - 211_Patchouli
-  - 03_动态规划
+  - 210_Atlas
+  - 30_动态规划
   - 01_基础模型
 abbrlink: 95fc4668
 date: 2025-12-16 22:40:00
