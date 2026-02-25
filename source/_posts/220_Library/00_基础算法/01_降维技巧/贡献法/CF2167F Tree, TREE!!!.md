@@ -2,7 +2,7 @@
 title: '[Leaf] [CF2167F] Tree, TREE!!!'
 tags:
   - 树论/LCA
-  - 组合/贡献法
+  - 算法/贡献法
   - 难度/P3
 categories:
   - 220_Library

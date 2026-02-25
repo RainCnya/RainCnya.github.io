@@ -2,7 +2,7 @@
 title: '[Leaf] [P2866] Bad Hair Day S'
 tags:
   - 算法/单调栈
-  - 组合/贡献法
+  - 算法/贡献法
   - 难度/P2
 categories:
   - 220_Library
