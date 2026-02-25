@@ -1,5 +1,5 @@
 ---
-title: '[Leaf] [CF2182E] New Year''s Gifts'
+title: "[Leaf] [CF2182E] New Year's Gifts"
 tags:
   - 策略/贪心
   - 数据结构/平衡树

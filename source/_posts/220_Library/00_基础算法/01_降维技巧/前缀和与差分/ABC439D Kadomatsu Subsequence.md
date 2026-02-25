@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [ABC439D] Kadomatsu Subsequence'
 tags:
-  - 组合/贡献法
+  - 算法/贡献法
   - 算法/前缀差分
   - 难度/P2
 categories:

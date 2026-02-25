@@ -1,10 +1,15 @@
 ---
-title: "[Leaf] [ARC215C] Strong Surname"
+title: '[Leaf] [ARC215C] Strong Surname'
 tags:
   - 算法/前缀差分
   - 策略/转化
   - 难度/P4
-date: 2026-2-24 22:50:27
+categories:
+  - 220_Library
+  - 00_基础算法
+  - 01_降维技巧
+abbrlink: b5dccad
+date: 2026-02-24 22:50:27
 ---
 
 # [C - Strong Surname](https://atcoder.jp/contests/arc215/tasks/arc215_c)
