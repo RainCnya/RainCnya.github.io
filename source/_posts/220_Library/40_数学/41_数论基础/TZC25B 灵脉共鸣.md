@@ -1,9 +1,8 @@
 ---
 title: '[Leaf] [TZ9506] 灵脉共鸣'
 tags:
-  - 数论/整除/GCD
+  - 数论/GCD
   - 难度/P3
-difficulty: P2
 categories:
   - 220_Library
   - 40_数学
