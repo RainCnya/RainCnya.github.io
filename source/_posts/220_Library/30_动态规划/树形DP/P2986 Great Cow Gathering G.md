@@ -1,10 +1,15 @@
 ---
-title: "[Leaf] [P2986] Great Cow Gathering G"
+title: '[Leaf] [P2986] Great Cow Gathering G'
 tags:
   - DP/树形
   - 树论/重心
   - 难度/P3
-date: 2026-2-26 16:45:11
+categories:
+  - 220_Library
+  - 30_动态规划
+  - 树形DP
+abbrlink: f949bfd5
+date: 2026-02-26 16:45:11
 ---
 
 # [P2986 [USACO10MAR] Great Cow Gathering G - 洛谷](https://www.luogu.com.cn/problem/P2986)
