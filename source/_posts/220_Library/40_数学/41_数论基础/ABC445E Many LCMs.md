@@ -1,7 +1,7 @@
 ---
-title: '[Leaf] ABC445E Many LCMs'
+title: '[Leaf] [ABC445E] Many LCMs'
 tags:
-  - 数论/整除/LCM
+  - 数论/LCM
   - 数论/逆元
   - 难度/P4
 categories:
