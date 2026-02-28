@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [ABC443G] Another Mod of Linear Problem'
 tags:
-  - 数论/整除/类欧几里得
+  - 数论/类欧几里得
   - 难度/P5
 categories:
   - 220_Library

@@ -2,7 +2,6 @@
 title: '[Leaf] [CF2171D] Rae Taylor and Trees'
 tags:
   - 策略/构造
-  - 算法/性质分析
   - 难度/P3
 categories:
   - 220_Library

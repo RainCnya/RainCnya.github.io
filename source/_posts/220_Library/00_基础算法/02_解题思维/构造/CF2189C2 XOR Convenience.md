@@ -2,7 +2,7 @@
 title: '[Leaf] [CF2189C2] XOR Convenience'
 tags:
   - 策略/构造
-  - 算法/位运算
+  - 数学/位运算
   - 难度/P2
 categories:
   - 220_Library
