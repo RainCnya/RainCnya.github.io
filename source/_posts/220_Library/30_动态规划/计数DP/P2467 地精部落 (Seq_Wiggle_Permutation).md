@@ -2,8 +2,7 @@
 title: 'P2467 [SDOI2010] 地精部落 (Seq_Wiggle_Permutation)'
 tags:
   - DP/计数
-  - 算法/对称性
-difficulty: 提高+/省选-
+  - 难度/P4
 categories:
   - 220_Library
   - 30_动态规划

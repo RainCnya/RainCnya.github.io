@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [CF2182D] Christmas Tree Decoration'
 tags:
-  - 组合/计数
+  - 数学/组合
   - 难度/P3
 categories:
   - 220_Library

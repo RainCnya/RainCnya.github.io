@@ -1,7 +1,7 @@
 ---
 title: '[Note] SG 函数'
 tags:
-  - 数学/博弈/SG函数
+  - 数学/博弈
   - 难度/P3
 categories:
   - 210_Atlas

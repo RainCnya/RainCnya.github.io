@@ -1,8 +1,7 @@
 ---
 title: '[Leaf] [ZJ2021F] Fair Distribution'
 tags:
-  - 数论/整除
-  - 策略/分块
+  - 数论/整除分块
   - 难度/P3
 categories:
   - 220_Library
@@ -113,4 +112,4 @@ int main( )
     
 - **碎碎念**: 将 $\lceil m/n' \rceil$ 转化为 $\lfloor (m-1)/n' \rfloor + 1$ 是处理上取整分块的 小 Trick 。
         
-- **关联笔记**: [[41_数论基础]]
+- **关联笔记**: [[初等数论]]
