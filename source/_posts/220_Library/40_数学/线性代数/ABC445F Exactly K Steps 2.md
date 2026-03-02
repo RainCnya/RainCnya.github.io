@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [ABC445F] Exactly K Steps 2'
 tags:
-  - 数学/矩阵快速幂
+  - 线代/矩阵快速幂
   - DP/优化
   - 难度/P4
 categories:
