@@ -1,10 +1,15 @@
 ---
-title: "[Leaf] [P2303] Longge 的问题"
+title: '[Leaf] [P2303] Longge 的问题'
 tags:
   - 数论/欧拉函数
   - 算法/贡献法
   - 难度/P4
-date: 2026-2-27 22:04:37
+categories:
+  - 220_Library
+  - 40_数学
+  - 初等数论
+abbrlink: 73f7e552
+date: 2026-02-27 22:04:37
 ---
 
 # [P2303 [SDOI2012] Longge 的问题 - 洛谷](https://www.luogu.com.cn/problem/P2303)

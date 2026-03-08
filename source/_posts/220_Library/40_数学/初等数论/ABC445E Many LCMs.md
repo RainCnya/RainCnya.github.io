@@ -6,7 +6,7 @@ tags:
 categories:
   - 220_Library
   - 40_数学
-  - 41_数论基础
+  - 初等数论
 abbrlink: 8c170c6a
 date: 2026-02-15 13:34:36
 ---

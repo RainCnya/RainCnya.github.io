@@ -6,7 +6,7 @@ tags:
 categories:
   - 220_Library
   - 40_数学
-  - 41_数论基础
+  - 初等数论
 abbrlink: f34a1508
 date: 2026-01-22 00:00:00
 ---

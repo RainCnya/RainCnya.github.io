@@ -7,6 +7,7 @@ tags:
 categories:
   - 220_Library
   - 40_数学
+  - 组合数学
 abbrlink: cba0509f
 date: 2026-02-24 00:00:00
 ---
