@@ -7,6 +7,7 @@ tags:
 categories:
   - 220_Library
   - 40_数学
+  - 线性代数
 abbrlink: f7bde76f
 date: 2026-02-15 13:58:01
 ---

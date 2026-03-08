@@ -6,7 +6,7 @@ tags:
 categories:
   - 220_Library
   - 40_数学
-  - 42_组合计数
+  - 组合数学
 abbrlink: 84cedf52
 date: 2026-01-05 00:00:00
 ---
