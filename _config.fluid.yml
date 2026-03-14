@@ -502,6 +502,12 @@ links:
   
   # 这里的 items 是把你收藏夹里的神器变成了卡片
   items:
+    - {
+      title: "Rookie__",
+      intro: "朋友的博客，分享技术、生活、思考等",
+      link: "https://blog.rookiesama.space/",
+      avatar: "https://blog.rookiesama.space/_astro/yingying.Ba81ZFjz_Z1CHxkf.webp"
+    }
     # --- 核心刷题平台 ---
     - {
       title: "Luogu",
