@@ -2,7 +2,7 @@
 title: 计数DP方法论 (Counting System)
 tags:
   - DP/计数
-  - 数学/容斥
+  - 组合/容斥
 categories:
   - 210_Atlas
   - 30_动态规划
