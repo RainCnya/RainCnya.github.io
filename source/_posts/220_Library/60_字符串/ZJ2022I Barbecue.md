@@ -75,34 +75,24 @@ string s;
 
 int dist[maxn];
 
-void manacher( string &s, int n )
-{
+void manacher( string &s, int n ) {
     s = ' ' + s;
-
     int l = 1, r = 0;
-    for( int i = 1; i <= n; ++ i )
-    {
+    for( int i = 1; i <= n; ++ i ) {
         int k = 1;
         if( i <= r ) k = min( dist[l + r - i], r - i + 1);  
         while( 1 <= i - k && i + k <= n && s[i-k] == s[i+k] ) k ++;
-
         dist[i] = k --;
-        if( i + k > r )
-        {
-            l = i - k;
-            r = i + k;
-        }
+        if( i + k > r ) l = i - k, r = i + k;
     }
 }
 
-void solve( )
-{
+void solve( ) {
     cin >> n >> q;
     cin >> s;
     manacher( s, n );
     
-    for( int i = 1; i <= q; ++ i )
-    {
+    for( int i = 1; i <= q; ++ i ) {
         int l, r;
         cin >> l >> r;
         int len = r - l + 1;
