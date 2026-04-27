@@ -1,0 +1,70 @@
+/* ==========================================================
+   Miqiu's Custom Theme: [Purple Rain & Amber Echo]
+   Path: source/css/custom.css
+   ========================================================== */
+
+/* 1. 字体强制覆盖 (Airy Strict Typography) */
+body, h1, h2, h3, h4, h5, h6, .markdown-body {
+    font-family: "LXGW WenKai Screen", "Microsoft YaHei", sans-serif !important;
+}
+
+/* 2. 毛玻璃质感 (Glassmorphism) */
+/* 首页文章卡片 & 详情页主板 */
+.board {
+    background-color: rgba(255, 255, 255, 0.85) !important; /* 白底微透 */
+    backdrop-filter: blur(12px); /* 核心：背景模糊 */
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px; /* 更大的圆角 */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); /* 柔和阴影 */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* 微光边框 */
+    transition: transform 0.3s ease; /* 悬浮动画准备 */
+}
+
+/* 暗色模式适配 */
+[data-user-color-scheme="dark"] .board {
+    background-color: rgba(30, 30, 40, 0.80) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 鼠标悬浮时，卡片微微上浮 */
+.index-card:hover .board {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(126, 87, 194, 0.15); /* 紫色光晕 */
+}
+
+/* 3. 顶部导航栏 (透明化) */
+.navbar {
+    background-color: rgba(74, 78, 105, 0.8) !important; /* 黛紫色半透明 */
+    backdrop-filter: blur(10px);
+}
+
+/* 4. 进度条 (紫雨流光渐变) */
+#nprogress .bar {
+    background: linear-gradient(90deg, #4A4E69 0%, #AB47BC 50%, #FFD700 100%) !important;
+    height: 3px !important;
+    box-shadow: 0 0 10px rgba(171, 71, 188, 0.7) !important;
+}
+
+/* 5. 滚动条美化 (隐藏笨重的原生滚动条) */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: #9A8C98;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 6. 去除 Banner 图片的黑色遮罩 (让画面更通透) */
+.banner .mask {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 7. 选中文字的颜色 (紫色背景，白色文字) */
+::selection {
+    background: #7E57C2;
+    color: #fff;
+}
