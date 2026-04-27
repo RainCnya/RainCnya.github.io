@@ -1,7 +1,10 @@
 ---
 title: Solution_ABC442 A~D
 tags: ABC
-date: 2026-01-25
+categories:
+  - 270_Solutions
+abbrlink: f720c780
+date: 2026-01-25 00:00:00
 ---
 
 ## [A - Count .](https://atcoder.jp/contests/abc442/tasks/abc442_a)

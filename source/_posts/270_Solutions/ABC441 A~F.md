@@ -1,7 +1,10 @@
 ---
 title: Solution_ABC441 A~F
 tags: ABC
-date: 2026-01-18
+categories:
+  - 270_Solutions
+abbrlink: 5e8edc7c
+date: 2026-01-18 00:00:00
 ---
 
 ## [A - Black Square](https://atcoder.jp/contests/abc441/tasks/abc441_a)

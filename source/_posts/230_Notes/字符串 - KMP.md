@@ -1,7 +1,10 @@
 ---
 title: 字符串 - KMP
 tags: 字符串/KMP
-date: 2026-04-06
+categories:
+  - 230_Notes
+abbrlink: 2add2e2
+date: 2026-04-06 00:00:00
 ---
 
 ## KMP 例题

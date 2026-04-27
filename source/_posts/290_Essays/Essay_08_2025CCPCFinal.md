@@ -1,7 +1,10 @@
 ---
 title: 春天替我记下了这次远行
 tags: Meta/Essay
-date: 2026-04-26
+categories:
+  - 290_Essays
+abbrlink: c86f2161
+date: 2026-04-26 00:00:00
 ---
 
 ## 春天替我记下了这次远行

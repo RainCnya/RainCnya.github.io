@@ -1,7 +1,10 @@
 ---
 title: Solution_ABC448 A~E
 tags: ABC
-date: 2026-03-08
+categories:
+  - 270_Solutions
+abbrlink: ca97efb7
+date: 2026-03-08 00:00:00
 ---
 
 ## [A - chmin](https://atcoder.jp/contests/abc448/tasks/abc448_a)

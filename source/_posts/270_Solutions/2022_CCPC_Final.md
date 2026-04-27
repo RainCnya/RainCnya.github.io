@@ -1,10 +1,13 @@
 ---
-title: "[Solution] 2022_CCPC_Final"
+title: '[Solution] 2022_CCPC_Final'
 tags:
   - 2022
   - CCPC/Final
   - 难度/P5
-date: 2026-04-17
+categories:
+  - 270_Solutions
+abbrlink: 4767817a
+date: 2026-04-17 00:00:00
 ---
 
 ## E. CCPC String
