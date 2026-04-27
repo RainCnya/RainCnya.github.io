@@ -1,10 +1,13 @@
 ---
-title: "[Solution] 2025_CCPC_Chongqing"
+title: '[Solution] 2025_CCPC_Chongqing'
 tags:
   - 2025
   - CCPC/Chongqing
   - 难度/P5
-date: 2026-04-20
+categories:
+  - 270_Solutions
+abbrlink: e02d7750
+date: 2026-04-20 00:00:00
 ---
 
 ## A. New Gomoku

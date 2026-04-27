@@ -1,7 +1,10 @@
 ---
 title: Solution_ABC445 A~D
 tags: ABC
-date: 2026-02-14
+categories:
+  - 270_Solutions
+abbrlink: 45001b90
+date: 2026-02-14 00:00:00
 ---
 
 ## [A - Strong Word](https://atcoder.jp/contests/abc445/tasks/abc445_a)

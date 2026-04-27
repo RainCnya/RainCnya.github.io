@@ -1,7 +1,10 @@
 ---
 title: HDSpring4
 tags: HDS
-date: 2026-04-12
+categories:
+  - 270_Solutions
+abbrlink: bbf66394
+date: 2026-04-12 00:00:00
 ---
 
 ## Easy

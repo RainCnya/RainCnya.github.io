@@ -125,6 +125,7 @@ markdown:
   plugins:
     - '@traptitech/markdown-it-katex'
     # - 'markdown-it-image-lazy-loading' # 推荐：如果有图片懒加载插件
+  smartquotes: false
   render:
     html: true
     xhtmlOut: false

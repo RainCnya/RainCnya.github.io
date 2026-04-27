@@ -1,7 +1,10 @@
 ---
 title: Solution_ABC444 A~E
 tags: ABC
-date: 2026-02-07
+categories:
+  - 270_Solutions
+abbrlink: f6702b6
+date: 2026-02-07 00:00:00
 ---
 
 

@@ -1,8 +1,12 @@
 ---
-title: "[Note] Dilworth定理"
+title: '[Note] Dilworth定理'
 tags:
   - 数学/Dilworth定理
-date: 2026-04-23
+categories:
+  - 220_Library
+  - 40_数学
+abbrlink: 6f3f9d20
+date: 2026-04-23 00:00:00
 ---
 
 # Dilworth定理
