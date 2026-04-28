@@ -1,12 +1,10 @@
 #---------------------------
 # Hexo Theme Fluid
-# Author: Fluid-dev
 # Configured by: Qu Xi & Anya (v7.0 Purple Rain Edition)
 #---------------------------
 
 #---------------------------
-# 全局
-# Global
+# 全局 (Global)
 #---------------------------
 
 # 浏览器标签图标
@@ -68,7 +66,7 @@ head:
     <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
 
 # -----------------------------------------------------------------
-# Color Scheme: [Purple Rain] (鸢尾花与雨)
+# 视觉与色彩 (Purple Rain) (鸢尾花与雨)
 # -----------------------------------------------------------------
 color:
   body_bg_color: "#F7F7F9"
@@ -81,14 +79,10 @@ color:
   subtitle_color_dark: "#C0CAF5"
   text_color: "#22223B"
   text_color_dark: "#A9B1D6"
-  sec_text_color: "#9A8C98"
-  sec_text_color_dark: "#565F89"
   board_color: "#FFFFFF"
   board_color_dark: "#1F2335"
   post_text_color: "#22223B"
   post_text_color_dark: "#C0CAF5"
-  post_heading_color: "#1A202C"
-  post_heading_color_dark: "#C0CAF5"
   
   # 核心点缀: 紫色
   post_link_color: "#7E57C2" 
@@ -97,16 +91,6 @@ color:
   link_hover_color_dark: "#9D7CD8"
   link_hover_bg_color: "#F3E5F5"
   link_hover_bg_color_dark: "#292E42"
-  line_color: "#EAECEF"
-  line_color_dark: "#292E42"
-  scrollbar_color: "#C9C9C9"
-  scrollbar_color_dark: "#414868"
-  scrollbar_hover_color: "#9575CD"
-  scrollbar_hover_color_dark: "#7AA2F7"
-  button_bg_color: "transparent"
-  button_bg_color_dark: "transparent"
-  button_hover_bg_color: "#F2F3F5"
-  button_hover_bg_color_dark: "#3B4261"
 
 # 字体配置 (霞鹜文楷)
 font:
@@ -116,34 +100,18 @@ font:
 
 custom_js:
 
-# -----------------------------------------------------------------
-# [关键修复] 挂载自定义 CSS (毛玻璃/渐变特效)
-# -----------------------------------------------------------------
 custom_css:
   - /css/custom.css
 
 web_analytics:
   enable: true
   follow_dnt: true
-  baidu:
-  google:
-    measurement_id:
-  tencent:
-    sid:
-    cid:
   leancloud:
     app_id: azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz
     app_key: pvy1eRs2A9HXC5kAIQrRh0Eo 
     server_url: https://azofrmg6.lc-cn-n1-shared.com
     path: window.location.pathname
     ignore_local: true
-  umami:
-    src:
-    website_id:
-    domains:
-    start_time: 2024-01-01
-    token:
-    api_server:
 
 canonical:
   enable: false
@@ -163,8 +131,6 @@ navbar:
   blog_title: "MiQiu"
   ground_glass:
     enable: false # 我们在 custom.css 里手动实现了更高级的毛玻璃，这里关掉防止冲突
-    px: 3
-    alpha: 0.7
   menu:
     - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
     - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
@@ -221,34 +187,18 @@ footer:
     source: "leancloud"
     pv_format: "总访问量 {} 次"
     uv_format: "总访客数 {} 人"
-  beian:
-    enable: false
 
 #---------------------------
-# 首页
 # Home Page
 #---------------------------
 index:
-  # 首页大图 (确认文件名是 default.png 还是你上传的 webp)
   banner_img: /img/banner_index.webp
   banner_img_height: 100
   banner_mask_alpha: 0.5
 
   slogan:
     enable: true
-    # 【核心修复】直接填入内容，不要留空！
-    # 因为你的版本不支持 sub_text，所以必须填在这里。
     text: "愿你的旅途永远璀璨，愿你的夏日永不凋零。"
-    
-    # 暂时禁用 API，确保本地文字生效
-    api:
-      enable: false
-      url: ""
-      method: "GET"
-      headers: {}
-      keys: []
-
-  # 保持其他配置不变
   auto_excerpt:
     enable: true
   post_url_target: _self
@@ -338,36 +288,6 @@ post:
 #---------------------------
 # 评论插件
 #---------------------------
-utterances:
-  repo:
-  issue_term: pathname
-  label: utterances
-  theme: github-light
-  theme_dark: github-dark
-
-disqus:
-  shortname:
-  disqusjs: false
-  apikey: 
-    - 'KEY1'
-  api: https://disqus.skk.moe/disqus/
-  admin: 
-  adminLabel: 
-
-gitalk:
-  clientID:
-  clientSecret:
-  repo:
-  owner:
-  admin: ['name']
-  language: zh-CN
-  labels: ['Gitalk']
-  perPage: 10
-  pagerDirection: last
-  distractionFreeMode: false
-  createIssueManually: true
-  proxy: https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token
-
 valine:
   appId: azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz
   appKey: pvy1eRs2A9HXC5kAIQrRh0Eo
@@ -395,47 +315,6 @@ waline:
   dark: 'html[data-user-color-scheme="dark"]'
   wordLimit: 0
   pageSize: 10
-
-changyan:
-  appid: ''
-  appkey: ''
-
-livere:
-  uid: ''
-
-remark42:
-  host:
-  site_id:
-  max_shown_comments: 10
-  locale: zh
-  components: ['embed']
-
-twikoo:
-  envId:
-  region: ap-shanghai
-  path: window.location.pathname
-
-cusdis:
-  host:
-  app_id:
-  lang: zh-cn
-
-giscus:
-  repo:
-  repo-id:
-  category:
-  category-id:
-  theme-light: light
-  theme-dark: dark
-  mapping: pathname
-  reactions-enabled: 1
-  emit-metadata: 0
-  input-position: top
-  lang: zh-CN
-
-discuss:
-  serverURLs:
-  path: window.location.pathname
 
 #---------------------------
 # 其他页面
@@ -477,7 +356,6 @@ about:
   intro: "原来期待比踽凉更难，碎了时间"
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/RainCnya/", tip: "GitHub" }
-    # - { class: "iconfont icon-wechat-fill", qrcode: "/img/qrcode.png" }
 
 page:
   banner_img: /img/banner_page.webp
@@ -500,7 +378,6 @@ links:
   banner_img_height: 60
   banner_mask_alpha: 0.3
   
-  # 这里的 items 是把你收藏夹里的神器变成了卡片
   items:
     - {
       title: "Rookie__",
