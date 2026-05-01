@@ -1,7 +1,10 @@
 ---
 title: 细线
 tags: Meta/Essay
-date: 2026-04-29
+categories:
+  - 290_Essays
+abbrlink: fcff7471
+date: 2026-04-29 00:00:00
 ---
 
 ## 细线
