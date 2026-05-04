@@ -1,8 +1,9 @@
 ---
-title: Solution_ABC445 A~D
+title: '[Solution] ABC445 A~D'
 tags: ABC
 categories:
   - 270_Solutions
+  - ABC
 abbrlink: 45001b90
 date: 2026-02-14 00:00:00
 ---
