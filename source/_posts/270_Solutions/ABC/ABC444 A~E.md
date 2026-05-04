@@ -1,8 +1,9 @@
 ---
-title: Solution_ABC444 A~E
+title: '[Solution] ABC444 A~E'
 tags: ABC
 categories:
   - 270_Solutions
+  - ABC
 abbrlink: f6702b6
 date: 2026-02-07 00:00:00
 ---

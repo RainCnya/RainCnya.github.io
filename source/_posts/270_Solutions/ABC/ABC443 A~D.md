@@ -1,8 +1,9 @@
 ---
-title: Solution_ABC443 A~D
+title: '[Solution] ABC443 A~D'
 tags: ABC
 categories:
   - 270_Solutions
+  - ABC
 abbrlink: ca40ee30
 date: 2026-01-31 00:00:00
 ---

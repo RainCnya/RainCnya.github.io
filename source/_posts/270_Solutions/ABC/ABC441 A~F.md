@@ -1,8 +1,9 @@
 ---
-title: Solution_ABC441 A~F
+title: '[Solution] ABC441 A~F'
 tags: ABC
 categories:
   - 270_Solutions
+  - ABC
 abbrlink: 5e8edc7c
 date: 2026-01-18 00:00:00
 ---

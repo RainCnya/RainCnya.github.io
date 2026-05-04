@@ -1,8 +1,9 @@
 ---
-title: Solution_ABC446 A~E
+title: '[Solution] ABC446 A~E'
 tags: ABC
 categories:
   - 270_Solutions
+  - ABC
 abbrlink: 75a751d6
 date: 2026-02-21 00:00:00
 ---

@@ -1,8 +1,9 @@
 ---
-title: Solution_ABC442 A~D
+title: '[Solution] ABC442 A~D'
 tags: ABC
 categories:
   - 270_Solutions
+  - ABC
 abbrlink: f720c780
 date: 2026-01-25 00:00:00
 ---
