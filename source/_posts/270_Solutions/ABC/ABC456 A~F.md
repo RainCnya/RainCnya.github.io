@@ -1,5 +1,5 @@
 ---
-title: '[Solution] ABC456'
+title: '[Solution] ABC456 A~F'
 tags: ABC
 categories:
   - 270_Solutions
@@ -8,7 +8,7 @@ abbrlink: 90bd9ef3
 date: 2026-05-04 00:00:00
 ---
 
-本次赛时写到 F。
+本次赛时写到 F，G 题惨败生成函数。
 
 ### [A - Dice](https://atcoder.jp/contests/abc456/tasks/abc456_a)
 
