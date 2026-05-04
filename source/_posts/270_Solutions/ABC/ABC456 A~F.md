@@ -8,7 +8,7 @@ abbrlink: 90bd9ef3
 date: 2026-05-04 00:00:00
 ---
 
-本次赛时写到 F，G 题惨败生成函数。
+本次赛时写到 F，G 题惨败生成函数，有趣的是这次的题目都有关联， AB 都是骰子， CD 都是串相关计数，EFG 都是放假（雾。
 
 ### [A - Dice](https://atcoder.jp/contests/abc456/tasks/abc456_a)
 
