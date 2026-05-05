@@ -1,5 +1,5 @@
 ---
-title: 年度总结
+title: 2025年度总结
 tags: Meta/Essay
 categories:
   - 290_Essays

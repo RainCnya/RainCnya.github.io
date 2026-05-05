@@ -7,9 +7,8 @@ archive: true
 abbrlink: cfa6377b
 date: 2025-11-11 12:23:49
 ---
-### 时间不是维度（Time is not dimensions）
 
----
+## 时间不是维度（Time is not dimensions）
 
 #### 相对论
 
@@ -171,5 +170,3 @@ $$
 这不仅是物理学，
 
 更是我们存在的方式。
-
----

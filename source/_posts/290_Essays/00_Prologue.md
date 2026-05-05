@@ -1,5 +1,5 @@
 ---
-title: 00-Prologue
+title: 00-楔子
 tags: Meta/Essay
 categories:
   - 290_Essays
