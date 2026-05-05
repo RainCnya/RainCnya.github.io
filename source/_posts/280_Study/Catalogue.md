@@ -19,7 +19,7 @@ date: 2026-02-22 09:59:41
 4. [[Essay_04_Butterfly]] 月光沐浴的蝴蝶
 5. [[Essay_05_Boat]] 双人船
 6. [[Essay_06_Order]] 内生秩序
-7. [[Essay_07_2025]] 2025年末总结
+7. [[Essay_07_2025Summary]] 2025年末总结
 8. [[Project_Selene]] 折桂计划
 
 ### 故事
