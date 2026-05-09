@@ -322,10 +322,287 @@ void solve( ) {
 
 既然操作包含 "全局乘法" 和 "单点更新 / 查询"，自然会想到用 "线段树" 来维护这个 DP 转移。
 
-- **清零操作**：等价于全局 $\times 0$，这意味着线段树只需要维护单一的区间乘法懒标记就行了。
-
 - 用 $O( \log N )$ 的时间单点查询`target = i + D[i]` 的值 `val`。
 - 若 $D_{i} = D_{i+1}$，对根节点下发乘法标记 `(N - i _ 1)`；否则下发乘法标记 `0`，耗时 $O(1)$。
 - 若 `val > 0`，用 $O( \log N)$ 的时间在位置 `target` 和 `i` 分别加上 `val`。
 
+{% fold info @NlogN %}
+```cpp
+#define ls (u << 1)
+#define rs (u << 1 | 1)
+
+struct Node {
+    int l, r;
+    ll sum, mul;
+} tr[maxn << 2];
+
+void push_up( int u ) {
+    tr[u].sum = (tr[ls].sum + tr[rs].sum) % mod;
+}
+
+void apply( int u, ll v ) {
+    tr[u].sum = (tr[u].sum * v) % mod;
+    tr[u].mul = (tr[u].mul * v) % mod;
+}
+
+void push_down( int u ) {
+    if( tr[u].mul == 1 ) return;
+    apply( ls, tr[u].mul ); 
+    apply( rs, tr[u].mul );
+    tr[u].mul = 1;
+}
+
+void build( int u, int l, int r ) {
+    tr[u] = { l, r, 0, 1 };
+    if( l == r ) return; 
+    int mid = (l + r) >> 1;
+    build( ls, l, mid ); 
+    build( rs, mid + 1, r );
+}
+
+void modify_mul( int u, int l, int r, ll v ) {
+    if( l <= tr[u].l && tr[u].r <= r ) { apply( u, v ); return; }
+    push_down( u );
+    int mid = (tr[u].l + tr[u].r) >> 1;
+    if( l <= mid ) modify_mul( ls, l, r, v );
+    if( mid < r ) modify_mul( rs, l, r, v );
+    push_up( u );
+}
+
+void modify_add( int u, int pos, ll v ) {
+    if( tr[u].l == tr[u].r ) {
+        tr[u].sum = (tr[u].sum + v) % mod;
+        return;
+    }
+    push_down( u );
+    int mid = (tr[u].l + tr[u].r) >> 1;
+    if( pos <= mid ) modify_add( ls, pos, v );
+    else modify_add( rs, pos, v );
+    push_up( u );
+}
+
+ll query( int u, int pos ) {
+    if( tr[u].l == tr[u].r ) return tr[u].sum;
+    push_down( u );
+    int mid = (tr[u].l + tr[u].r) >> 1;
+    if( pos <= mid ) return query( ls, pos );
+    else return query( rs, pos );
+}
+
+ll D[maxn], n;
+ll dp[2][maxn];
+
+void solve( ) {
+    cin >> n;
+    for( int i = 1; i < n; ++ i ) cin >> D[i];
+
+    if( D[n-1] != 1 ) {
+        cout << 0 << '\n';
+        return;
+    }
+    
+    build( 1, 1, n );
+
+    modify_add( 1, n, 1 );
+    modify_add( 1, n - 1, 1 );
+
+    for( int i = n - 2; i >= 1; -- i ) {
+        int tar = i + D[i];
+        ll val = 0;
+        
+        if( tar <= n ) val = query( 1, tar );
+
+        if( D[i] == D[i+1] ) modify_mul( 1, 1, n, n - i - 1 );
+        else modify_mul( 1, 1, n, 0 );
+
+        if( val > 0 ) {
+            modify_add( 1, tar, val );
+            modify_add( 1, i, val );
+        }
+    }
+
+    cout << tr[1].sum << '\n';
+}
+```
+{% endfold %}
+
+##### 全局懒标记 $O(N)$
+
+再深入思考线段树的做法，我们会发现：所有的乘法操作都是 **全局** 的。既然没有“局部区间操作”，杀鸡焉用牛刀 ( 线段树 )？我们完全可以用几个变量和数组把复杂度降到 $O(N)$。
+
+1. **优化全局乘法（乘法逆元）**：
+    
+	维护一个全局乘法因子 `mult`（初始为 1），以及一个真实值数组 `A`。全局乘以 $K$ 时，只需 `mult = (mult * K) % mod`。
+    
+	当我们要往数组里单点增加一个值 `val` 时，为了抵消未来全局 `mult` 的影响，我们实际存入的是 `val * inv(mult)`（即乘以 `mult` 的逆元）。查询时，真实值就是 `A[p] * mult`。
+    
+2. **优化全局清空**：
+    
+    当需要全局清空时，如果我们遍历数组赋 0，复杂度又退化回了 $O(N)$。但注意到，每轮循环最多只会 **新增 2 个** 非零状态。
+    
+    因此，我们维护一个 `active` 动态数组，专门记录当前值不为 0 的下标。需要清空时，只遍历 `active` 里的这几个点将其设为 0，然后清空 `active`。整个推导过程中，加入 `active` 的总人次不超过 $2N$，所以清空操作的总均摊复杂度严格为 $O(N)$。
+
+{% fold info @优化 DP  %}
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+const int maxn = 2e5 + 5;
+const ll mod = 998244353;
+
+ll D[maxn], n;
+ll A[maxn];
+ll inv[maxn];
+
+void solve( ) {
+    cin >> n;
+    for( int i = 1; i < n; ++ i ) cin >> D[i];
+
+    if( D[n-1] != 1 ) {
+        cout << 0 << '\n';
+        return;
+    }
+
+	// 线性求 1 ~ n 的乘法逆元
+    inv[1] = 1;
+    for( int i = 2; i <= n; ++ i ) {
+        inv[i] = (mod - mod / i) * inv[mod % i] % mod;
+    }
+
+    vector<int> active;
+    A[n] = 1;
+    A[n-1] = 1;
+    active.push_back( n );
+    active.push_back( n - 1 );
+
+    ll mult = 1;
+    ll inv_mult = 1;
+
+    for( int i = n - 2; i >= 1; -- i ) {
+        int target = i + D[i];
+        ll val = 0;
+        
+        if( target <= n ) val = A[target] * mult % mod;
+
+        if( D[i] == D[i+1] ) {
+            ll ways = n - i - 1;
+            mult = mult * ways % mod;
+            inv_mult = inv_mult * inv[ways] % mod;
+            if( val > 0 ) {
+                A[target] = ( A[target] + val * inv_mult ) % mod;
+                A[i] = val * inv_mult % mod;
+                active.push_back( i );
+            }
+        } else {
+            for( int p : active ) A[p] = 0;
+            active.clear( );
+            mult = 1;
+            inv_mult = 1;
+            if( val > 0 ) {
+                A[target] = val;
+                A[i] = val;
+                active.push_back( target );
+                active.push_back( i );
+            }
+        }
+    }
+
+    ll ans = 0;
+    for( int p : active ) {
+        ans = ( ans + A[p] * mult ) % mod;
+    }
+    cout << ans << '\n';
+}
+
+int main( ) {
+    cin.tie( 0 )->sync_with_stdio( 0 );
+    solve( );
+    return 0;
+}
+```
+{% endfold %}
+
+### [G - Catch All Apples](https://atcoder.jp/contests/abc457/tasks/abc457_g)
+
+#### 题意
+在数轴上有 $N$ 个苹果，第 $i$ 个苹果会在时间 $T_{i}$ 掉落在 $X_{i}$ 处，你可以在任意位置放置任意机器人，机器人从 0 时刻开始以速度 1 移动，每个机器人同一时刻只能吃一个苹果，求最少需要放置多少个机器人，才能吃完苹果。
+
+> $N \leq 3e5$
+
+#### 思路
+先考虑这样一种情况，假设一个机器人在时间 $T_{i}$ 吃了位于 $X_{i}$ 的苹果，接着要去吃时间 $T_{j}$ 位于 $X_{j}$ 的苹果（ 假设 $T_{i} \geq T_{j}$ ），由于机器人的速度为 1，它能移动的距离 $\leq$ 时间差，即：
+
+$$
+|X_{i} - X_{j}| \leq T_{i} - T_{j}
+$$
+
+如果把绝对值拆开的话，就能得到下面两个不等式：
+
+1. $X_{i} - X_{j} \leq T_{i} - T_{j} \implies T_{j} - X_{j} \leq T_{i} - X_{i}$
+2. $-(X_{i} - X_{J}) \leq T_{i} - T_{j} \implies T_{j} + X_{j} \leq T_{i} + X_{i}$
+
+观察两个柿子，发现形式上是对称的，不妨令 $A = T - X, B = T + X$。
+
+可以得到：$A_{j} \leq A_{i}$ 且 $B_{j} \leq B_{i}$ 时，机器人能从苹果 $j$ 跑到苹果 $i$。
+
+然后在这个 $(A, B)$ 的坐标系中，机器人只能向着右上方前进，这是不是就有点类似 LIS 问题了。
+
+问最少需要几个机器人，这就让我们想到 [P1020 导弹拦截 - 洛谷](https://www.luogu.com.cn/problem/P1020) 这一题，如果每个机器人吃苹果的路线都是一条不断向右上方延长的链。
+
+那么问题就转化为：**求解覆盖所有点的最小链数**。根据离散数学中的 Dilworth 定理：
+
+> 最小链覆盖数 = 最长反链的长度。
+
+**反链** 在本题语境下指的是一组苹果，其中任意两个苹果都无法被同一个机器人吃到，也就是两个苹果 $i, j$ 不满足 $A_{j} \leq A_{i}$ 且 $B_{j} \leq B_{i}$，转化一下就是 $A_{j} > A_{i}$ 且 $B_{j} > B_{i}$。
+
+因此，如果我们把所有的苹果都先按照 A 从小到大排序 ( 保证了 A 是不下降的 )，接着为了让他们互相不可达，它们的 B 坐标必须是 **严格递减** 的，这样就把一个 二维偏序问题，转化为了一个一维偏序问题。
+
+接着就变成了一个 LDS ( 最长严格递减子序列 ) 长度的求解问题，由于规模限制，这里需要采用 $O(N \log N)$ 的求法处理。
+
 #### 代码部分
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+const int maxn = 3e5 + 5;
+
+struct Node { int A, B; } a[maxn];
+int n;
+
+bool cmp( Node a, Node b ) {
+    if( a.A != b.A ) return a.A < b.A;
+    return a.B < b.B;
+}
+
+int LDS( ) {
+    vector<int> g;
+    for( int i = 1; i <= n; ++ i ) {
+	    // 小 Trick: 求 B 的严格递减子序列 <=> 求 -B 的严格递增子序列
+        int x = -a[i].B;
+        auto it = lower_bound( g.begin( ), g.end( ), x );
+        if( it == g.end( ) ) g.push_back( x );
+        else *it = x;
+    }
+    return g.size( );
+}
+
+void solve( ) {
+    cin >> n;
+    for( int i = 1; i <= n; ++ i ) {
+        int t, x;
+        cin >> t >> x;
+        a[i] = { t - x, t + x };
+    }
+    sort( a + 1, a + n + 1, cmp );
+    int res = LDS( );
+    cout << res << '\n';
+}
+
+int main( ) {
+    cin.tie( 0 )->sync_with_stdio( 0 );
+    solve( );
+    return 0;
+}
+```
