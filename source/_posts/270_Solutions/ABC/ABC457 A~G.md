@@ -1,10 +1,11 @@
 ---
-title: "[Solution] ABC456 A~G"
+title: '[Solution] ABC456 A~G'
 tags: ABC
 categories:
   - 270_Solutions
   - ABC
-date: 2026-05-09
+abbrlink: 24d44c51
+date: 2026-05-09 00:00:00
 ---
 
 本次赛时顺利 AK，没想到 G 题居然是后三题里最简单的一道，我在 E 的讨论上卡了好久，我感觉实现上 E 最难。
