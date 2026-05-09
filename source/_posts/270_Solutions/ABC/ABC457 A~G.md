@@ -1,0 +1,331 @@
+---
+title: "[Solution] ABC456 A~G"
+tags: ABC
+categories:
+  - 270_Solutions
+  - ABC
+date: 2026-05-09
+---
+
+本次赛时顺利 AK，没想到 G 题居然是后三题里最简单的一道，我在 E 的讨论上卡了好久，我感觉实现上 E 最难。
+
+### [A - Array](https://atcoder.jp/contests/abc457/tasks/abc457_a)
+
+#### 题意
+给定一个序列 $A$，问第 $x$ 个元素是多少。
+
+#### 思路
+略略略。
+
+### [B - Arrays](https://atcoder.jp/contests/abc457/tasks/abc457_b)
+
+#### 题意
+给定一个二维数组，问第 $x$ 行第 $y$ 个元素是多少。
+
+> $N \leq 2e5, \sum L \leq 2e5$
+
+#### 思路
+这题考察对空间复杂度的理解，发现总共只有 $2e5$ 个元素，而且无法直接开 $N \times N$ 大小的静态数组，所以采用 `vector` 开动态数组不就好了吗。
+
+#### 代码部分
+```cpp
+void solve( ) {
+    int n;
+    cin >> n;
+    vector< vector<int> > a(n + 1);
+    for( int i = 1; i <= n; ++ i ) {
+        int l; cin >> l;
+        a[i].resize( l + 1 );
+        for( int j = 1; j <= l; ++ j ) cin >> a[i][j];
+    }
+    int x, y;
+    cin >> x >> y;
+    cout << a[x][y] << '\n';
+}
+```
+
+### [C - Long Sequence](https://atcoder.jp/contests/abc457/tasks/abc457_c)
+
+#### 题意
+给定一个二维数组 $A$，以及一个一维数组 $C$，然后从 0 开始构造一个数组 $B$，对于每个 $i$ 都放入 $C_{i}$ 个 $A_{i}$，注 $L_{i}$ 为 $A_{i}$ 的长度。
+
+> $\sum L_{i} \leq 2e5, C_{i} \leq 1e9$
+
+#### 思路
+第一眼直接模拟不就行了吗？但是一看数据规模，发现直接模拟会 T，而且会死的很难看，因此考虑优化。
+
+对于每个序列 $A_{i}$  ( 长度为 $L_{i}$ )，它的循环长度是固定的 $C_{i} \times L_{i}$，所以我们可以直接枚举第 $k$ 个元素在哪一行，然后再找到它在这一行的具体位置。
+
+同样是和上一题一样的空间问题，记的开 `long long`，防止溢出即可，由于下标取模不好算，最后选择了 0-index。
+
+#### 代码部分
+```cpp
+void solve( ) {
+    ll n, k;
+    cin >> n >> k;
+
+    vector< vector<int> > a( n );
+    vector<ll> l( n );
+
+    for( int i = 0; i < n; ++ i ) {
+        cin >> l[i];
+        a[i].resize( l[i] );
+        for( int j = 0; j < l[i]; ++ j ) cin >> a[i][j];
+    }
+    
+    vector<ll> c( n );
+    for( int i = 0; i < n; ++ i ) cin >> c[i];
+
+    for( int i = 0; i < n; ++ i ) {
+        ll cnt = c[i] * l[i];
+        if( k <= cnt ) {
+            int idx = ( k - 1 ) % l[i];
+            cout << a[i][idx] << '\n';
+            return;
+        } else k -= cnt;
+    }
+}
+```
+
+### [D - Raise Minimum](https://atcoder.jp/contests/abc457/tasks/abc457_d)
+
+#### 题意
+给定一个序列 $A$，一次操作可以给第 $i$ 个元素增加 $i$，问 $k$ 次操作后序列 $A$ 中最小的元素最大是多少。
+
+> $N \leq 2e5, A_{i} \leq 1e18, k \leq 1e18$
+
+#### 思路
+最大化最小值？这不是明摆着二分答案吗？回头看一眼数据规模 $1e18$，好吧，二分没得跑了。
+
+这里再补充一个观察点，直接求最大值很难，但是判断某个值能不能达成很简单，这个时候就可以用二分答案把最值问题，转化为判定问题来解决。
+
+接着考虑构造 check 函数，对每个数都算一遍至少需要进行多少次操作，如果操作总和加起来 $\leq k$，那么就是可以满足的，答案在右边的区间。
+
+如果 $A_{i} \geq mid$，则操作次数为 $0$，反之，操作次数为 $\left\lceil \frac{mid-A_{i}}{i} \right\rceil$。
+
+#### 代码部分
+```cpp
+ll a[maxn], n, k;
+bool check( ll mid ) {
+    ll cnt = 0;
+    for( int i = 1; i <= n; ++ i ) {
+        if( a[i] < mid ) {
+            ll delta = mid - a[i];
+            ll tmp = ( delta + i - 1 ) / i;
+            if( tmp > k || cnt > k - tmp ) return 0;
+            cnt += tmp;
+        }
+        if( cnt > k ) return 0;
+    }
+    return 1;
+}
+
+void solve( ) {
+    cin >> n >> k;
+    ll minn = inf;
+    for( int i = 1; i <= n; ++ i ) cin >> a[i], minn = min( minn, a[i] );
+
+    ll l = minn, r = inf, ans = minn;
+    while( l <= r ) {
+        ll mid = ( l + r ) >> 1;
+        if( check( mid ) ) ans = mid, l = mid + 1;
+        else r = mid - 1;
+    }
+    cout << ans << '\n';
+}
+```
+
+### [E - Crossing Table Cloth](https://atcoder.jp/contests/abc457/tasks/abc457_e)
+
+#### 题意
+有 $N$ 个格子，$M$ 块布，每一块布覆盖 $[L_{i}, R_{i}]$，有 $Q$ 次询问，每次询问 $[S_{q}, T_{q}]$ 区间是否能被恰好两块布覆盖，且区间外的格子不能被覆盖。
+
+> $N, M, Q \leq 2e5$
+
+#### 思路
+要找两块布恰好覆盖 $[S,T]$ 这个区间，那么一定是下面这种情况：第一块布的左端点在 $S$，第二块布的右端点在 $T$。
+
+为了让两块布相交 / 重叠，我们尽可能找到最长的那块布，对于左端点在 $S$ 的这块布，找到最大的 $R \leq T$；对于右端点在 $T$ 的这块布，找到最小的 $L \geq S$。
+
+如何判定两块布是否能接上呢？只需要满足这个条件即可：$R \geq L - 1$。
+
+但是考虑特殊情况 $R = T, l = S$ 呢？那它可能就是同一块布了。
+
+如何再凑一块布出来呢？分类所有情况，发现只要满足下面四条的任意一条，就能凑出第二块。
+
+1. **重合**：有两块及以上的布本身就是 $[S, T]$ 。
+2. **左边**：存在左端点是 $S$，但右端点 $< T$ 的布。
+3. **中间**：存在左端点 $> S$，右端点 $< T$ 的布。
+4. **右边**：存在左端点 $> S$，右端点是 $T$ 的布。
+
+第一种情况直接用一个 map 存数量就可以判断了，第二和第四种情况都好判断。
+
+第三种情况最特殊，一般的想法是枚举 $[S+1, T-1]$ 区间每个位置作为起点，然后判断是否存在右端点 $< T$，但是这样的复杂度是 $O(n)$，累积就是 $O(n^{2})$，T 了。
+
+考虑优化，发现这种枚举本质上是对每个点做了很多次重复判定的，是否可以用预处理来减少这部分重复判定呢？设 $right[i]$ 为左端点从 $i$ 开始的最小右端点位置，这样一来，只需要判定 `right[s + 1] < t` 是否满足即可。
+
+#### 代码部分
+```cpp
+vector<ll> maxr[maxn], minl[maxn];
+map<pair<ll,ll>, int> mp;
+ll right[maxn];
+
+void solve( ) {
+    cin >> n >> m;
+
+    for( int i = 1; i <= m; ++ i ) {
+        ll l, r;
+        cin >> l >> r;
+        maxr[l].push_back( r );
+        minl[r].push_back( l );
+        mp[{ l, r }] ++;
+    }
+
+    for( int i = 1; i <= n; ++ i ) {
+        if( !maxr[i].empty( ) ) sort( maxr[i].begin( ), maxr[i].end( ) );
+        if( !minl[i].empty( ) ) sort( minl[i].begin( ), minl[i].end( ) );
+    }
+
+    // 从 i 开始最小的右端点
+    right[n + 1] = inf;
+    for( int i = n; i >= 1; -- i ) {
+        right[i] = right[i + 1];
+        // 如果 i 有右端点，更新 right[i] 为最小的右端点
+        if( !maxr[i].empty( ) ) right[i] = min( right[i], maxr[i].front( ) );
+    }
+
+
+    cin >> q;
+    for( int i = 1; i <= q; ++ i ) {
+        ll s, t;
+        cin >> s >> t;
+
+        bool ok = 0;
+        ll l = inf, r = -1;
+
+        // 右端点 <= t 的最大值
+        auto it1 = upper_bound( maxr[s].begin( ), maxr[s].end( ), t );
+        if( it1 != maxr[s].begin( ) ) r = *prev( it1 );
+        // 此处这个 prev 是 it1 的前一个位置，跟 upper_bound 有关
+        // upper_bound 是查询 > t 的最小下标，所以要 -1。
+
+        // 左端点 >= s 的最小值
+        auto it2 = lower_bound( minl[t].begin( ), minl[t].end( ), s );
+        if( it2 != minl[t].end( ) ) l = *it2;
+
+        // 区间合法
+        if( l != inf && r != -1 && r >= l - 1 ) {
+            if( l == s && r == t ) {
+                if( mp[{ s, t }] >= 2 ) ok = 1;
+                else if( !maxr[s].empty( ) && maxr[s].front( ) < t ) ok = 1;
+                else if( right[s + 1] < t ) ok = 1;
+                else if( !minl[t].empty( ) && minl[t].back( ) > s ) ok = 1;
+            }
+            else ok = 1;
+        }
+        if( ok ) cout << "Yes" << '\n';
+        else cout << "No" << '\n';
+    }
+}
+```
+
+### [F - Second Gap](https://atcoder.jp/contests/abc457/tasks/abc457_f)
+
+#### 题意
+给定一个长度为 $N - 1$ 的序列 $D$，我们需要构造一个 $(1, \dots, N)$ 的排列 $P$，使得对于每一个 $1 \le i \le N-1$，在后缀 $(P_i, \dots, P_N)$ 中，最大值和次大值所在下标的差的绝对值恰好等于 $D_i$。求满足条件的排列总数。
+
+> $N \leq 2e5, D_{i} \leq N - i$
+
+#### 思路
+正着推显然是非常困难的，注意到题目条件是基于后缀定义的，不妨试试倒推，从右往左考虑，每次相当于向序列前端添加一个元素 $P_{i}$。
+
+假设在后缀 $S_{i+1} = (P_{i+1},\dots,P_{N})$ 中，最大值的下标为 $p$，次大值的下标为 $q$，已知 $|p-q| = D_{i+1}$。现在加入 $P_{i}$，考虑 $S_{i}$ 的最大值和次大值：
+
+1. $P_{i}$ 成为 $S_{i}$ 的最大值，此时次大值必然是原本 $S_{i+1}$ 的最大值 ( 即 $p$ )，$|i-p| =D_{i}$。
+2. $P_{i}$ 成为 $S_{i}$ 的次大值，此时最大值依然是原本 $S_{i+1}$ 的最大值 ( 即 $p$ )，$|i-p| = D_{i}$。
+3. $P_{i}$ 既不是最大也不是次大，此时 $S_{i}$ 的最大次大与 $S_{i+1}$ 一致。也就是 $D_{i} = D_{i+1}$，那么 $P_{i}$ 可以在剩余的 $(N - i + 1) - 2 = N - i - 1$ 个相对位置中任意选择。
+
+既然明确是是个类递推问题，考虑动态规划 ( 其实动态规划这个名字很奇怪，既不动态也不规划 )。
+
+**状态定义**：
+
+由于次大值的位置在某些情况 (1, 2) 是由前一状态的最大值决定的，所以我们只需要记录**最大值**的位置。设 $f[i][p]$ 表示：在后缀 $S_{i}$ 中，最大值位于下标 $p$ 的方案数。
+
+**状态转移**：
+对于当前位置 $i$ 与上一状态的最大值位置 $p$：
+
+1. 若 $p - i = D_{i}$：
+	- $P_{i}$ 作为最大值，转移到 $f[i][i]$，增加 $f[i+1][p]$。
+	- $P_{i}$ 作为次大值，转移到 $f[i][p]$，增加 $f[i+1][p]$。
+
+2. 若 $D_{i} = D_{i+1}$：
+	- $P_{i}$ 作为平方值：转移到 $f[i][p]$，增加 $f[i+1][p] \times (N - i - 1)$。
+
+##### 暴力 $O(N^{2})$
+
+直接根据状态转移方程构造就可以得到这个，时空复杂度均为 $O(N^{2})$ 的 DP。注意到 每次转移 $i$ 都只依赖于上一层 $i-1$，所以空间上可以用 滚动数组 的技巧来压掉，就得到了下面这种写法：
+
+{% fold info @N^2 %}
+```cpp
+ll D[maxn], n;
+ll dp[2][maxn];
+
+void solve( ) {
+    cin >> n;
+    for( int i = 1; i < n; ++ i ) cin >> D[i];
+
+	// 特殊情况特判，D[n-1] 必须是 1，不然最后两个下标不满足
+    if( D[n-1] != 1 ) {
+        cout << 0 << '\n';
+        return;
+    }
+
+    int pre = 0;
+    // 边界状态（初始状态）
+    dp[pre][n] = dp[pre][n-1] = 1;
+
+    for( int i = n - 2; i >= 1; -- i ) {
+        int cur = pre ^ 1; // 滚动数组
+        fill( dp[cur], dp[cur] + n + 1, 0 );
+        for( int p = i + 1; p <= n; ++ p ) {
+            if( dp[pre][p] == 0 ) continue; // 如果状态不存在，就跳过
+            if( p - i == D[i] ) { // 第一种情况
+                dp[cur][p] = ( dp[cur][p] + dp[pre][p] ) % mod;
+                dp[cur][i] = ( dp[cur][i] + dp[pre][p] ) % mod;
+            }
+            if( D[i] == D[i+1] ) { // 第二种情况
+                ll cnt = n - i - 1;
+                dp[cur][p] = ( dp[cur][p] + cnt * dp[pre][p] ) % mod;
+            }
+        }
+        pre = cur;
+    }
+
+    ll ans = 0;
+    for( int p = 1; p <= n; ++ p ) {
+        ans = ( ans + dp[pre][p] ) % mod;
+    }
+    cout << ans << '\n';
+}
+```
+{% endfold %}
+
+观察内部转移逻辑，我们发现每一轮循环只做了三件事：
+
+1. **单点查询**：查询 $p = i + D_{i}$ 这一点的方案数。
+2. **全局更新**：当 $D_{i} = D_{i+1}$ 时，将所有状态全体乘以 $(N - i - 1)$，当 $D_{i} \neq D_{i+1}$ 的时候，将除了目标值以外的所有状态清零。
+3. **单点更新**：把目标值累加到产生的新状态上。
+
+这三个操作都是典型的数据结构应用场景，我们可以针对性优化：
+
+##### 线段树优化 $O( N \log N )$
+
+既然操作包含 "全局乘法" 和 "单点更新 / 查询"，自然会想到用 "线段树" 来维护这个 DP 转移。
+
+- **清零操作**：等价于全局 $\times 0$，这意味着线段树只需要维护单一的区间乘法懒标记就行了。
+
+- 用 $O( \log N )$ 的时间单点查询`target = i + D[i]` 的值 `val`。
+- 若 $D_{i} = D_{i+1}$，对根节点下发乘法标记 `(N - i _ 1)`；否则下发乘法标记 `0`，耗时 $O(1)$。
+- 若 `val > 0`，用 $O( \log N)$ 的时间在位置 `target` 和 `i` 分别加上 `val`。
+
+#### 代码部分
