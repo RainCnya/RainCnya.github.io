@@ -266,7 +266,7 @@ void solve( ) {
 
 直接根据状态转移方程构造就可以得到这个，时空复杂度均为 $O(N^{2})$ 的 DP。注意到 每次转移 $i$ 都只依赖于上一层 $i-1$，所以空间上可以用 滚动数组 的技巧来压掉，就得到了下面这种写法：
 
-{% fold info @N^2 %}
+{% fold info @O(N^2) %}
 ```cpp
 ll D[maxn], n;
 ll dp[2][maxn];
@@ -327,7 +327,7 @@ void solve( ) {
 - 若 $D_{i} = D_{i+1}$，对根节点下发乘法标记 `(N - i _ 1)`；否则下发乘法标记 `0`，耗时 $O(1)$。
 - 若 `val > 0`，用 $O( \log N)$ 的时间在位置 `target` 和 `i` 分别加上 `val`。
 
-{% fold info @NlogN %}
+{% fold info @O(NlogN) %}
 ```cpp
 #define ls (u << 1)
 #define rs (u << 1 | 1)
@@ -443,15 +443,8 @@ void solve( ) {
     
     因此，我们维护一个 `active` 动态数组，专门记录当前值不为 0 的下标。需要清空时，只遍历 `active` 里的这几个点将其设为 0，然后清空 `active`。整个推导过程中，加入 `active` 的总人次不超过 $2N$，所以清空操作的总均摊复杂度严格为 $O(N)$。
 
-{% fold info @优化 DP  %}
+{% fold info @O(N)  %}
 ```cpp
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
-const int maxn = 2e5 + 5;
-const ll mod = 998244353;
-
 ll D[maxn], n;
 ll A[maxn];
 ll inv[maxn];
@@ -515,12 +508,6 @@ void solve( ) {
     }
     cout << ans << '\n';
 }
-
-int main( ) {
-    cin.tie( 0 )->sync_with_stdio( 0 );
-    solve( );
-    return 0;
-}
 ```
 {% endfold %}
 
@@ -563,12 +550,6 @@ $$
 
 #### 代码部分
 ```cpp
-#include <bits/stdc++.h>
-using namespace std;
-using ll = long long;
-
-const int maxn = 3e5 + 5;
-
 struct Node { int A, B; } a[maxn];
 int n;
 
@@ -599,11 +580,5 @@ void solve( ) {
     sort( a + 1, a + n + 1, cmp );
     int res = LDS( );
     cout << res << '\n';
-}
-
-int main( ) {
-    cin.tie( 0 )->sync_with_stdio( 0 );
-    solve( );
-    return 0;
 }
 ```
