@@ -11,7 +11,7 @@ categories:
 abbrlink: 46822ad0
 date: 2026-01-14 00:00:00
 ---
-# [CF2183D1 Tree Coloring  (Easy Version)](https://codeforces.com/contest/2183/problem/D1)
+# [CF2183D1 Tree Coloring  (Easy Version)](https://codeforces.com/contest/2183/problem/D1)
 
 ## 1. 题面梗概（翻译）
 

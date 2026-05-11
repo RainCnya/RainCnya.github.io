@@ -11,7 +11,7 @@ categories:
 abbrlink: d9d9e338
 date: 2026-01-05 00:00:00
 ---
-# [ABC439D -  Kadomatsu Subsequence](https://atcoder.jp/contests/abc439/tasks/abc439_d "null")
+# [ABC439D -  Kadomatsu Subsequence](https://atcoder.jp/contests/abc439/tasks/abc439_d "null")
 
 ## 1. 核心逻辑
 
