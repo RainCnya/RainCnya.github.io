@@ -330,7 +330,7 @@ void solve( ) {
 #### 思路
 手搓一下样例，发现每条边经过的次数是等于它下面这个子树的叶子节点的数量。然后再特殊考虑存档点的性质，参考下面这个图：
 
-![1006 样例解析.png](./附件/1006.png)
+![1006 样例解析.png](./Attachments/1006.png)
 
 每一条边上标注的是这条边经过了几次，我们惊奇的发现，存档点跟叶子节点对边的贡献居然是等价的。
 
@@ -420,6 +420,7 @@ void solve( ) {
 
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 ll a[maxn], n, k;
 ll sum[maxn], pre[maxn];
@@ -460,6 +461,7 @@ void solve( ) {
     cout << ans << '\n';
 }
 ```
+{% endfold %}
 
 ### 1004 Trade
 
@@ -482,6 +484,7 @@ void solve( ) {
 最后考虑起始条件，由于跟前两天的状态有关，所以我们需要提前处理第一天和第二天的边界情况。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 ll a[maxn], n;
 ll dp[maxn][maxn][2][2];
@@ -536,6 +539,7 @@ void solve( ) {
     cout << ans << '\n';
 }
 ```
+{% endfold %}
 
 ---
 ## Hard
