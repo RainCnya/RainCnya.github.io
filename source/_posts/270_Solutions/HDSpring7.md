@@ -17,6 +17,8 @@ date: 2026-05-10 00:00:00
 简单模拟，分别统计它出现在了多少个 不同的行 和 不同的列，最后判断 行计数 和 列计数 是否都 $= n$ 即可。
 
 #### 代码部分
+
+{% fold info @AcCode %}
 ```cpp
 void solve( ) {
     int n;
@@ -48,6 +50,8 @@ void solve( ) {
     }
 }
 ```
+{% endfold %}
+
 
 ---
 ## Easy
@@ -206,9 +210,10 @@ $$
 
 然后就推完公式了，接着计算就好了，注意 **模意义下的除法**，等于乘上对应的乘法逆元，此处分子为 $P$，分母为 $Q = 2S \pmod{P}$，答案为 $(P \cdot Q^{-1}) \pmod{P}$。
 
-最后看一眼 std，很好，是封装完后只有自己看得懂的模板了 ( 只能说不愧是 Oi爷了 )，还是看看我的吧。
+最后看一眼 std，很好，是封装完后只有自己看得懂的模板了 ( 只能说不愧是 Oi 爷了 )，还是看看我的吧。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 int a[maxn], b[maxn], n;
 
@@ -244,6 +249,7 @@ void solve( ) {
     cout << p * q % mod << '\n';
 }
 ```
+{% endfold %}
 
 ### 1011 01
 
@@ -276,6 +282,7 @@ void solve( ) {
 还有一个限制条件是回文串，相互对称的两个环，它们的奇偶性必须完全相同。若是自己和自己对称的中心环，若 $n$ 为偶数，则环的奇偶性也必须为偶，若 $n$ 为奇数，则无限制，中心元素可以缓冲。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 int cnt[maxn];
 
@@ -309,6 +316,7 @@ void solve( ) {
     else cout << "NO" << '\n';
 }
 ```
+{% endfold %}
 
 ---
 ## Medium
@@ -322,7 +330,7 @@ void solve( ) {
 #### 思路
 手搓一下样例，发现每条边经过的次数是等于它下面这个子树的叶子节点的数量。然后再特殊考虑存档点的性质，参考下面这个图：
 
-![[Pasted image 20260511084701.png]]
+![1006 样例解析.png](./附件/1006.png)
 
 每一条边上标注的是这条边经过了几次，我们惊奇的发现，存档点跟叶子节点对边的贡献居然是等价的。
 
@@ -331,6 +339,7 @@ void solve( ) {
 代码实现上，由于直接存边的数据比较麻烦，所以我把边经过了多少次下方到了边下方的那个节点上，由于树的性质，每个点只有一个父亲，所以不会冲突。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 struct Edge { ll v, w; };
 vector<Edge> adj[maxn];
@@ -377,6 +386,7 @@ void solve( ) {
     cout << ans << '\n';
 }
 ```
+{% endfold %}
 
 ### 1005 Rain
 
@@ -552,6 +562,7 @@ $$
 那么我们就可以考虑把 $\gcd$ 这一状态加入到图中 ( 所谓状态扩展 )，然后再这个扩展图上跑最短路，别忘了最初的问题是求最短的时间。( 这也可以理解为分层图，不过我觉得分层图和状态扩展图是一样的 )
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 struct Edge { ll v, w; };
 vector<Edge> adj[maxn];
@@ -617,6 +628,7 @@ void solve( ) {
     else cout << ans << '\n';
 }
 ```
+{% endfold %}
 
 ### 1003 Livehouse
 
@@ -646,6 +658,7 @@ void solve( ) {
 由于第二个性质，$j$ 的最大值就是所需的乐队数，题目要求乐队数 $\leq k$，所以在转移过程中，只要保证 $j \leq k$ 即可。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 ll dp[maxn][maxn], n;
 // 第 i 天，有 j 个乐队
@@ -677,6 +690,7 @@ void solve( ) {
     cout << '\n';
 }
 ```
+{% endfold %}
 
 ### 1010 Shift
 
@@ -707,6 +721,7 @@ void solve( ) {
 最后是操作 2 查询：枚举当前第 $x$ 行的所有子串，如果某个子串的 Key 在 `cnt` 中出现的次数 $\geq 2$，就说明存在一个与之对应，说明匹配成功。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 using ll = long long;
 using ull = unsigned long long;
@@ -781,7 +796,7 @@ void solve( ) {
     }
 }
 ```
-
+{% endfold %}
 
 ---
 ## Very Hard
