@@ -511,19 +511,21 @@ void solve( ) {
     dp[2][0][0][1] = dp[1][1][1][0] + a[2]; // 第二天卖了
 
     for( int i = 3; i <= n; ++ i ) {
-        for( int j = 0; j < i; ++ j ) {
-            for( int d1 = 0; d1 <= 1; ++ d1 ) {
-                for( int d2 = 0; d2 <= 1; ++ d2 ) {
+        for( int j = 0; j <= i; ++ j ) {
+            for( int d1 = 0; d1 <= 1; ++ d1 ) { // 昨天 i-1 的购买情况
+                for( int d2 = 0; d2 <= 1; ++ d2 ) { // 前天 i-2 的购买情况
                     ll dpi = dp[i-1][j][d1][d2];
                     if( dpi == -inf ) continue;
                     bool buy = ( d1 == 1 ) && ( d2 == 1 ) && ( a[i-1] >= a[i-2] );
                     
-                    // 如果不强制买 并且 还有股票 就可以选择卖出
-                    if( buy == 0 && j > 0 ) { 
+                    // sell 可以卖的情况
+                    if( buy == 0 && j - 1 >= 0 ) {
                         dp[i][j-1][0][d1] = max( dp[i][j-1][0][d1], dpi + a[i] );
                     }
                     // buy
-                    dp[i][j+1][1][d1] = max( dp[i][j+1][1][d1], dpi - a[i] );
+                    if( j + 1 <= n ) { 
+                        dp[i][j+1][1][d1] = max( dp[i][j+1][1][d1], dpi - a[i] );
+                    } 
                 }
             }
         }
