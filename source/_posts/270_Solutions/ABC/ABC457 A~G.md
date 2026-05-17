@@ -1,5 +1,5 @@
 ---
-title: '[Solution] ABC457 A~G'
+title: "[Solution] ABC457 A~G"
 tags: ABC
 categories:
   - 270_Solutions
@@ -29,6 +29,7 @@ date: 2026-05-09 00:00:00
 这题考察对空间复杂度的理解，发现总共只有 $2e5$ 个元素，而且无法直接开 $N \times N$ 大小的静态数组，所以采用 `vector` 开动态数组不就好了吗。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 void solve( ) {
     int n;
@@ -44,6 +45,7 @@ void solve( ) {
     cout << a[x][y] << '\n';
 }
 ```
+{% endfold %}
 
 ### [C - Long Sequence](https://atcoder.jp/contests/abc457/tasks/abc457_c)
 
@@ -60,6 +62,7 @@ void solve( ) {
 同样是和上一题一样的空间问题，记的开 `long long`，防止溢出即可，由于下标取模不好算，最后选择了 0-index。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 void solve( ) {
     ll n, k;
@@ -87,6 +90,7 @@ void solve( ) {
     }
 }
 ```
+{% endfold %}
 
 ### [D - Raise Minimum](https://atcoder.jp/contests/abc457/tasks/abc457_d)
 
@@ -105,6 +109,7 @@ void solve( ) {
 如果 $A_{i} \geq mid$，则操作次数为 $0$，反之，操作次数为 $\left\lceil \frac{mid-A_{i}}{i} \right\rceil$。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 ll a[maxn], n, k;
 bool check( ll mid ) {
@@ -135,6 +140,7 @@ void solve( ) {
     cout << ans << '\n';
 }
 ```
+{% endfold %}
 
 ### [E - Crossing Table Cloth](https://atcoder.jp/contests/abc457/tasks/abc457_e)
 
@@ -166,6 +172,7 @@ void solve( ) {
 考虑优化，发现这种枚举本质上是对每个点做了很多次重复判定的，是否可以用预处理来减少这部分重复判定呢？设 $right[i]$ 为左端点从 $i$ 开始的最小右端点位置，这样一来，只需要判定 `right[s + 1] < t` 是否满足即可。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 vector<ll> maxr[maxn], minl[maxn];
 map<pair<ll,ll>, int> mp;
@@ -229,6 +236,7 @@ void solve( ) {
     }
 }
 ```
+{% endfold %}
 
 ### [F - Second Gap](https://atcoder.jp/contests/abc457/tasks/abc457_f)
 
@@ -551,6 +559,7 @@ $$
 接着就变成了一个 LDS ( 最长严格递减子序列 ) 长度的求解问题，由于规模限制，这里需要采用 $O(N \log N)$ 的求法处理。
 
 #### 代码部分
+{% fold info @AcCode %}
 ```cpp
 struct Node { int A, B; } a[maxn];
 int n;
@@ -584,3 +593,4 @@ void solve( ) {
     cout << res << '\n';
 }
 ```
+{% endfold %}
