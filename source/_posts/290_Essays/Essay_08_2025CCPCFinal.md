@@ -98,4 +98,4 @@ G 题看到子段划分时，我下意识觉得是二维 DP。但 n 的范围是
 
 而我带着春天回来了。
 
-![](Essay_08_2025CCPCFinal.jpg)
+![](2026%20NanChang%20Invitation.jpg)
