@@ -3,6 +3,7 @@ title: 细线
 tags: Meta/Essay
 categories:
   - 290_Essays
+archive: true
 abbrlink: fcff7471
 date: 2026-04-29 00:00:00
 ---
