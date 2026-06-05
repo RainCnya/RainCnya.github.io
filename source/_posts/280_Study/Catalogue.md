@@ -20,7 +20,9 @@ date: 2026-02-22 09:59:41
 5. [[Essay_05_Boat]] 双人船
 6. [[Essay_06_Order]] 内生秩序
 7. [[Essay_07_2025Summary]] 2025年末总结
-8. [[Project_Selene]] 折桂计划
+8. [[Essay_08_2025CCPCFinal]] 我带着春天回来了
+9. [[Essay_09_TheThinThread]] 细线
+10. [[Essay_10_2026ICPCNanChang]] 夏天的星位
 
 ### 故事
 
