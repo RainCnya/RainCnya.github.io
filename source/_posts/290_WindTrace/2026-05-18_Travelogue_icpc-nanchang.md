@@ -1,8 +1,8 @@
 ---
 title: 夏天的星位
-tags: Meta/Essay
+tags: Meta/Travelogue
 categories:
-  - 290_Essays
+  - 290_WindTrace
 archive: true
 abbrlink: c81cc44c
 date: 2026-05-18 00:00:00

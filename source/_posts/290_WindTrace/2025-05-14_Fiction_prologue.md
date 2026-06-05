@@ -1,8 +1,8 @@
 ---
-title: 00-楔子
-tags: Meta/Essay
+title: 楔子 - 青丘弦月
+tags: Meta/Fiction
 categories:
-  - 290_Essays
+  - 290_WindTrace
 archive: true
 abbrlink: ede8027c
 date: 2025-05-14 00:05:18

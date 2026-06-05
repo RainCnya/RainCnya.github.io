@@ -2,7 +2,7 @@
 title: 时间不是维度
 tags: Meta/Essay
 categories:
-  - 290_Essays
+  - 290_WindTrace
 archive: true
 abbrlink: cfa6377b
 date: 2025-11-11 12:23:49

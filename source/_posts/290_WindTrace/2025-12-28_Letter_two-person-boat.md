@@ -1,8 +1,8 @@
 ---
 title: 双人船
-tags: Meta/Essay
+tags: Meta/Letter
 categories:
-  - 290_Essays
+  - 290_WindTrace
 archive: true
 abbrlink: 107eb856
 date: 2025-12-28 22:45:00

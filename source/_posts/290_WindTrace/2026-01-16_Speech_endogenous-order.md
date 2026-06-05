@@ -1,8 +1,8 @@
 ---
 title: 内生秩序
-tags: Meta/Selene
+tags: Meta/Speech
 categories:
-  - 290_Essays
+  - 290_WindTrace
 archive: true
 abbrlink: 56c8ecc8
 date: 2026-01-16 14:00:00
