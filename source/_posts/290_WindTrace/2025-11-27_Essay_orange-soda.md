@@ -2,7 +2,7 @@
 title: 橙子汽水
 tags: Meta/Essay
 categories:
-  - 290_Essays
+  - 290_WindTrace
 archive: true
 abbrlink: 42d63d0f
 date: 2025-11-27 18:11:45
