@@ -1,0 +1,1213 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Rain.png">
+  <link rel="icon" href="/img/Rain.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#4A4E69">
+  <meta name="author" content="Miqiu">
+  <meta name="keywords" content="ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法">
+  
+    <meta name="description" content="[L5] 并查集题型整理 这份笔记作为并查集的主入口，按「问题模型」而不是单纯按模板名字整理。主线是：先用普通并查集维护连通块，再把关系编码成扩展域，再把关系压成带权差值，最后处理队列合并这种特殊位置模型。 一、连通块问题 这一类是并查集的最典型应用，核心在于判断点是否处在同一个连通块内，或者维护连通块数量。 常见变化有三种(暂时整理)：  离散化约束：变量值域很大，但出现的变量有限，先离散化再合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Solution] 并查集题型整理">
+<meta property="og:url" content="https://example.com/posts/f753ba00/index.html">
+<meta property="og:site_name" content="MiQiu">
+<meta property="og:description" content="[L5] 并查集题型整理 这份笔记作为并查集的主入口，按「问题模型」而不是单纯按模板名字整理。主线是：先用普通并查集维护连通块，再把关系编码成扩展域，再把关系压成带权差值，最后处理队列合并这种特殊位置模型。 一、连通块问题 这一类是并查集的最典型应用，核心在于判断点是否处在同一个连通块内，或者维护连通块数量。 常见变化有三种(暂时整理)：  离散化约束：变量值域很大，但出现的变量有限，先离散化再合">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-06-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-09T01:22:13.075Z">
+<meta property="article:author" content="Miqiu">
+<meta property="article:tag" content="数据结构&#x2F;并查集">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>[Solution] 并查集题型整理 - MiQiu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#7E57C2","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"azOfRMg6j8kDZzcjUS25FXKW-gzGzoHsz","app_key":"pvy1eRs2A9HXC5kAIQrRh0Eo","server_url":"https://azofrmg6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+
+  
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>MiQiu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/links/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>友链</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/banner_page.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[Solution] 并查集题型整理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Miqiu
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-06-04 00:00" pubdate>
+          2026年6月4日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          17k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          215 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[Solution] 并查集题型整理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="[l5]-并查集题型整理">[L5] 并查集题型整理</h1>
+<p>这份笔记作为并查集的主入口，按「问题模型」而不是单纯按模板名字整理。主线是：先用普通并查集维护连通块，再把关系编码成扩展域，再把关系压成带权差值，最后处理队列合并这种特殊位置模型。</p>
+<h2 id="一、连通块问题">一、连通块问题</h2>
+<p>这一类是并查集的最典型应用，核心在于判断点是否处在同一个连通块内，或者维护连通块数量。</p>
+<p>常见变化有三种(暂时整理)：</p>
+<ol>
+<li><strong>离散化约束</strong>：变量值域很大，但出现的变量有限，先离散化再合并。</li>
+<li><strong>二分答案 + 连通性检查</strong>：答案具有单调性，每次 <code>check</code> 用并查集判断是否形成阻断或连通。</li>
+<li><strong>反向加点 / 加边</strong>：正着删点不好维护，倒着恢复点，把分裂问题变成合并问题。</li>
+</ol>
+<h3 id="连通块模板">连通块模板</h3>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-8f7bdefe" role="button" aria-expanded="false" aria-controls="collapse-8f7bdefe">
+        <div class="fold-arrow">▶</div>基础并查集
+      </div>
+      <div class="fold-collapse collapse" id="collapse-8f7bdefe">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 并查集：路径压缩 + 按大小合并</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DSU</span> &#123;<br><span class="hljs-comment">/* ======================================== */</span><br><span class="hljs-type">int</span> fa[maxn], siz[maxn];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">( <span class="hljs-type">int</span> N )</span> </span>&#123; <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++ i ) fa[i] = i, siz[i] = <span class="hljs-number">1</span>; &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> fa[x] == x ? x : fa[x] = <span class="hljs-built_in">find</span>( fa[x] ); &#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">merge</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-type">int</span> rx = <span class="hljs-built_in">find</span>( x ), ry = <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">if</span>( rx == ry ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( siz[rx] &gt; siz[ry] ) <span class="hljs-built_in">swap</span>( rx, ry );<br>    fa[rx] = ry, siz[ry] += siz[rx];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>( x ) == <span class="hljs-built_in">find</span>( y ); &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>( x )]; &#125;<br><span class="hljs-comment">/* ======================================== */</span><br>&#125; dsu;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="1-P1955-NOI2015-程序自动分析">1. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1955">P1955 [NOI2015] 程序自动分析</a></h3>
+<h4 id="题意-16">题意</h4>
+<p>给定若干约束，每条约束形如 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_i = x_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 或 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo mathvariant="normal">≠</mo><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_i \neq x_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mspace nobreak"></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>，判断这些约束能否同时成立。</p>
+<blockquote>
+<p>约束数量 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≤</mo><mn>1</mn><mi>e</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">n \le 1e5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mord mathnormal">e</span><span class="mord">5</span></span></span></span>，变量编号值域很大，需要离散化。</p>
+</blockquote>
+<h4 id="思路-16">思路</h4>
+<p>相等关系具有传递性，所以先把所有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_i = x_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 的约束合并起来，得到完整的相等闭包。</p>
+<p>变量编号值域很大，但一组数据中真正出现的变量最多只有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">n</span></span></span></span> 个，所以先用离散化把原变量编号映射成连续下标。</p>
+<p>最后再检查所有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub><mi>e</mi><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_i 
+e x_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">e</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0572em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 的约束，如果两个变量已经处在同一个连通块里，就说明矛盾。</p>
+<p>这题不需要扩展域，因为「不等关系」只用于检查冲突，不需要继续参与传递建模。</p>
+<h4 id="代码部分-16">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-dcdac752" role="button" aria-expanded="false" aria-controls="collapse-dcdac752">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-dcdac752">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Disc</span> &#123; <span class="hljs-comment">/* 板子略 */</span> &#125; disc;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DSU</span> &#123; <span class="hljs-comment">/* 板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Opt</span> &#123; <span class="hljs-type">int</span> i, j, c; &#125;;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br><br>    <span class="hljs-type">bool</span> ok = <span class="hljs-number">1</span>;<br>    <span class="hljs-function">vector&lt;Opt&gt; <span class="hljs-title">a</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br><br>    disc.<span class="hljs-built_in">clear</span>( );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) &#123;<br>        cin &gt;&gt; a[i].i &gt;&gt; a[i].j &gt;&gt; a[i].c;<br>        disc.<span class="hljs-built_in">add</span>( a[i].i );<br>        disc.<span class="hljs-built_in">add</span>( a[i].j );<br>    &#125;<br>    disc.<span class="hljs-built_in">init</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( disc.<span class="hljs-built_in">size</span>( ) );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) &#123;<br>        <span class="hljs-keyword">auto</span> [x, y, c] = a[i];<br>        <span class="hljs-type">int</span> dx = disc.<span class="hljs-built_in">get_idx</span>( x ), dy = disc.<span class="hljs-built_in">get_idx</span>( y );<br>        <span class="hljs-keyword">if</span>( c == <span class="hljs-number">1</span> ) dsu.<span class="hljs-built_in">merge</span>( dx, dy );<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) &#123;<br>        <span class="hljs-keyword">auto</span> [x, y, c] = a[i];<br>        <span class="hljs-type">int</span> dx = disc.<span class="hljs-built_in">get_idx</span>( x ), dy = disc.<span class="hljs-built_in">get_idx</span>( y );<br>        <span class="hljs-keyword">if</span>( c == <span class="hljs-number">0</span> ) <span class="hljs-keyword">if</span>( dsu.<span class="hljs-built_in">same</span>( dx, dy ) ) ok = <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    cout &lt;&lt; ( ok ? <span class="hljs-string">&quot;YES&quot;</span> : <span class="hljs-string">&quot;NO&quot;</span> ) &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="2-P1783-海滩防御">2. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1783">P1783 海滩防御</a></h3>
+<h4 id="题意-17">题意</h4>
+<p>给定一个宽度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 的区域和若干个灯塔。每个灯塔的照亮半径为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>，如果灯塔照亮区域从左边界连通到右边界，就会形成阻断。求最小的阻断半径。</p>
+<h4 id="思路-17">思路</h4>
+<p>答案 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> 具有单调性：如果半径 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> 已经能阻断，那么更大的半径也一定能阻断。因此可以二分答案。</p>
+<p>对于固定的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>，用并查集判断所有灯塔照亮区域之间是否相交。如果两个灯塔距离不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>r</mi></mrow><annotation encoding="application/x-tex">2r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>，就把它们合并。</p>
+<p>额外建立两个虚拟点：左边界 <code>L</code> 和右边界 <code>R</code>；如果某个灯塔距离左边界不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>，就和 <code>L</code> 合并；距离右边界不超过 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>，就和 <code>R</code> 合并。</p>
+<p>最后如果 <code>L</code> 和 <code>R</code> 连通，说明这个半径已经能形成阻断。</p>
+<blockquote>
+<p>此处左右端点和灯塔之间的距离是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>，而两个灯塔之间的距离是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>r</mi></mrow><annotation encoding="application/x-tex">2r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span>。</p>
+</blockquote>
+<h4 id="代码部分-17">代码部分</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">800</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DSU</span> &#123; <span class="hljs-comment">/* 板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Point</span> &#123;<br>    <span class="hljs-type">double</span> x, y;<br>&#125; ps[maxn];<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">( <span class="hljs-type">double</span> r, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> m )</span> </span>&#123;<br>    <span class="hljs-type">int</span> L = <span class="hljs-number">0</span>, R = m + <span class="hljs-number">1</span>;<br>    dsu.<span class="hljs-built_in">init</span>( m + <span class="hljs-number">1</span> );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        <span class="hljs-keyword">if</span>( ps[i].x &lt;= r ) dsu.<span class="hljs-built_in">merge</span>( i, L );<br>        <span class="hljs-keyword">if</span>( n - ps[i].x &lt;= r ) dsu.<span class="hljs-built_in">merge</span>( i, R );<br>    &#125;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= m; ++ j ) &#123;<br>            <span class="hljs-type">double</span> dx = ps[i].x - ps[j].x, dy = ps[i].y - ps[j].y;<br>            <span class="hljs-keyword">if</span>( dx * dx + dy * dy &lt;= <span class="hljs-number">4.0</span> * r * r ) dsu.<span class="hljs-built_in">merge</span>( i, j );<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> dsu.<span class="hljs-built_in">same</span>( L, R );<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    ll n = <span class="hljs-built_in">read</span>( ), m = <span class="hljs-built_in">read</span>( );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) ps[i].x = <span class="hljs-built_in">read</span>( ), ps[i].y = <span class="hljs-built_in">read</span>( );<br>    <span class="hljs-type">double</span> l = <span class="hljs-number">0</span>, r = <span class="hljs-number">200000</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> t = <span class="hljs-number">1</span>; t &lt;= <span class="hljs-number">100</span>; ++ t ) &#123;<br>        <span class="hljs-type">double</span> mid = ( l + r ) / <span class="hljs-number">2.0</span>;<br>        <span class="hljs-keyword">if</span>( <span class="hljs-built_in">check</span>( mid, n, m ) ) r = mid;<br>        <span class="hljs-keyword">else</span> l = mid;<br>    &#125;<br>    cout &lt;&lt; fixed &lt;&lt; <span class="hljs-built_in">setprecision</span>( <span class="hljs-number">2</span> ) &lt;&lt; r &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="3-P1197-JSOI2008-星球大战">3. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1197">P1197 [JSOI2008] 星球大战</a></h3>
+<h4 id="题意-18">题意</h4>
+<p>给定一张无向图，然后依次摧毁若干点。每摧毁一个点后，询问剩余图中有多少个连通块。</p>
+<h4 id="思路-18">思路</h4>
+<p>本题正着思考，每次删点都会让一个连通块分裂，而并查集不擅长处理分裂。</p>
+<p>所以可以考虑反过来做：先把所有被摧毁的点都标记掉，得到最终状态；然后从最后一次摧毁开始，倒着把点一个个恢复回来，这样就转化为了一个合并问题。</p>
+<p>恢复一个点时，连通块数量先加一，再枚举它的邻点。如果邻点当前没有被摧毁，就尝试合并两个连通块；每成功合并一次，连通块数量减一。</p>
+<p>这样就把动态删点问题变成了动态加点 / 加边问题。</p>
+<h4 id="代码部分-18">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-9c51fa20" role="button" aria-expanded="false" aria-controls="collapse-9c51fa20">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-9c51fa20">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">4e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DSU</span> &#123; <span class="hljs-comment">/* 板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br>vector&lt;<span class="hljs-type">int</span>&gt; adj[maxn];<br><span class="hljs-type">bool</span> broken[maxn]; <span class="hljs-comment">// break;</span><br><span class="hljs-type">int</span> ans[maxn];<br><span class="hljs-type">int</span> ks[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( ), m = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( n );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        <span class="hljs-type">int</span> u = <span class="hljs-built_in">read</span>( ) + <span class="hljs-number">1</span>, v = <span class="hljs-built_in">read</span>( ) + <span class="hljs-number">1</span>;<br>        adj[u].<span class="hljs-built_in">push_back</span>( v );<br>        adj[v].<span class="hljs-built_in">push_back</span>( u );<br>    &#125;<br><br>    <span class="hljs-type">int</span> k = <span class="hljs-built_in">read</span>( );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; ++ i ) &#123;<br>        ks[i] = <span class="hljs-built_in">read</span>( ) + <span class="hljs-number">1</span>;<br>        broken[ks[i]] = <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-type">int</span> cnt = n - k; <span class="hljs-comment">// 连通块数量</span><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> u = <span class="hljs-number">1</span>; u &lt;= n; ++ u ) &#123;<br>        <span class="hljs-keyword">if</span>( broken[u] ) <span class="hljs-keyword">continue</span>;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) &#123;<br>            <span class="hljs-keyword">if</span>( broken[v] ) <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span>( dsu.<span class="hljs-built_in">merge</span>( u, v ) ) cnt --;<br>        &#125;<br>    &#125;<br><br>    ans[k + <span class="hljs-number">1</span>] = cnt;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = k; i &gt;= <span class="hljs-number">1</span>; -- i ) &#123;<br>        <span class="hljs-type">int</span> u = ks[i];<br>        broken[u] = <span class="hljs-number">0</span>;<br>        cnt ++;<br>        <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> v : adj[u] ) &#123;<br>            <span class="hljs-keyword">if</span>( broken[v] ) <span class="hljs-keyword">continue</span>;<br>            <span class="hljs-keyword">if</span>( dsu.<span class="hljs-built_in">merge</span>( u, v ) ) cnt --; <span class="hljs-comment">// 尝试恢复 u 的相邻边</span><br>        &#125;<br>        ans[i] = cnt; <span class="hljs-comment">// 恢复 u 后的连通块数量</span><br>    &#125;<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k + <span class="hljs-number">1</span>; ++ i ) &#123;<br>        cout &lt;&lt; ans[i] &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="二、扩展域模型">二、扩展域模型</h2>
+<p>扩展域模型适合处理「同类 / 异类」「敌人 / 朋友」「吃 / 被吃」这类离散关系。</p>
+<p>它的核心是：给每个点拆出若干个离散域，然后把关系转化为连通性，若某个点和它不改相同的域连通，就说明存在矛盾。</p>
+<h3 id="二倍域模板">二倍域模板</h3>
+<p>适用于只有两种相对关系的题，比如同类 / 异类、朋友 / 敌人、二分图两侧。</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-05eef982" role="button" aria-expanded="false" aria-controls="collapse-05eef982">
+        <div class="fold-arrow">▶</div>二倍域模板
+      </div>
+      <div class="fold-collapse collapse" id="collapse-05eef982">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 二倍域并查集：维护同类 / 异类</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ExtDSU</span> &#123;<br><span class="hljs-comment">/* ======================================== */</span><br><span class="hljs-type">int</span> fa[maxn &lt;&lt; <span class="hljs-number">1</span>], siz[maxn &lt;&lt; <span class="hljs-number">1</span>], sz;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">( <span class="hljs-type">int</span> N )</span> </span>&#123; <br>    sz = N; <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= (N &lt;&lt; <span class="hljs-number">1</span>); ++ i ) fa[i] = i, siz[i] = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">rev</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> x &lt;= sz ? x + sz : x - sz; &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> fa[x] == x ? x : fa[x] = <span class="hljs-built_in">find</span>( fa[x] ); &#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">merge</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-type">int</span> rx = <span class="hljs-built_in">find</span>( x ), ry = <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">if</span>( rx == ry ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( siz[rx] &gt; siz[ry] ) <span class="hljs-built_in">swap</span>( rx, ry );<br>    fa[rx] = ry, siz[ry] += siz[rx];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>( x ) == <span class="hljs-built_in">find</span>( y ); &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>( x )]; &#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">setSame</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">same</span>( x, <span class="hljs-built_in">rev</span>( y ) ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">merge</span>( x, y ), <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">rev</span>( x ), <span class="hljs-built_in">rev</span>( y ) );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">setDiff</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">same</span>( x, y ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">merge</span>( x, <span class="hljs-built_in">rev</span>( y ) ), <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">rev</span>( x ), y );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-comment">/* ======================================== */</span><br>&#125; dsu;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="三倍域模板">三倍域模板</h3>
+<p>适用于三元循环关系，比如食物链中的同类、吃、被吃。</p>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-90469042" role="button" aria-expanded="false" aria-controls="collapse-90469042">
+        <div class="fold-arrow">▶</div>三倍域模板
+      </div>
+      <div class="fold-collapse collapse" id="collapse-90469042">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 三倍域并查集：维护同类 / 吃 / 被吃</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ExtDSU</span> &#123;<br><span class="hljs-comment">/* ======================================== */</span><br><span class="hljs-type">int</span> fa[maxn * <span class="hljs-number">3</span>], siz[maxn * <span class="hljs-number">3</span>], sz;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">( <span class="hljs-type">int</span> N )</span> </span>&#123; <br>    sz = N; <br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= (N * <span class="hljs-number">3</span>); ++ i ) fa[i] = i, siz[i] = <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">id</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> k )</span> </span>&#123; <span class="hljs-keyword">return</span> x + k * sz; &#125;<br><span class="hljs-comment">// k = 0: x 自己 | k = 1: x 吃谁 | k = 2: x 被谁吃</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> fa[x] == x ? x : fa[x] = <span class="hljs-built_in">find</span>( fa[x] ); &#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">merge</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-type">int</span> rx = <span class="hljs-built_in">find</span>( x ), ry = <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">if</span>( rx == ry ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( siz[rx] &gt; siz[ry] ) <span class="hljs-built_in">swap</span>( rx, ry );<br>    fa[rx] = ry, siz[ry] += siz[rx];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>( x ) == <span class="hljs-built_in">find</span>( y ); &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>( x )]; &#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">setSame</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">same</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">0</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">1</span>) ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">same</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">0</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">2</span>) ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">0</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">0</span>) );<br>    <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">1</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">1</span>) );<br>    <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">2</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">2</span>) );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">setEat</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">same</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">0</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">0</span>) ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>( <span class="hljs-built_in">same</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">0</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">1</span>) ) ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">0</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">2</span>) );<br>    <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">1</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">0</span>) );<br>    <span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>(x, <span class="hljs-number">2</span>), <span class="hljs-built_in">id</span>(y, <span class="hljs-number">1</span>) );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-comment">/* ======================================== */</span><br>&#125; dsu;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="4-P1892-BOI2003-团伙">4. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1892">P1892 [BOI2003] 团伙</a></h3>
+<h4 id="题意-19">题意</h4>
+<p>有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 个人和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 条关系。<code>F p q</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p, q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> 是朋友；<code>E p q</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p, q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> 是敌人。敌人的敌人是朋友，问最后有多少个团伙。</p>
+<h4 id="思路-19">思路</h4>
+<p>这题不能用二倍域的做法，因为朋友的朋友是朋友，敌人的敌人是朋友，但是敌人的朋友不一定是敌人，这里采用 <code>enemy[]</code> 标记法，只维护题目要求的关系：</p>
+<ul>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p, q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> 是朋友，直接合并。</li>
+<li>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo separator="true">,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p, q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> 是敌人，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 的敌人应该和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> 合并，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">q</span></span></span></span> 的敌人应该和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 合并。</li>
+</ul>
+<p>因为最后只问团伙数量，所以枚举连通块数目即可。</p>
+<h4 id="代码部分-19">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-738764b7" role="button" aria-expanded="false" aria-controls="collapse-738764b7">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-738764b7">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">1e3</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">DSU</span> &#123; <span class="hljs-comment">/* 板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-type">int</span> enemy[maxn];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( ), m = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( n );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        <span class="hljs-type">char</span> opt; cin &gt;&gt; opt;<br>        <span class="hljs-type">int</span> p = <span class="hljs-built_in">read</span>( ), q = <span class="hljs-built_in">read</span>( );<br>        <span class="hljs-keyword">if</span>( opt == <span class="hljs-string">&#x27;F&#x27;</span> ) dsu.<span class="hljs-built_in">merge</span>( p, q );<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span>( enemy[p] ) dsu.<span class="hljs-built_in">merge</span>( enemy[p], q );<br>            <span class="hljs-keyword">else</span> enemy[p] = q;<br>            <span class="hljs-keyword">if</span>( enemy[q] ) dsu.<span class="hljs-built_in">merge</span>( enemy[q], p );<br>            <span class="hljs-keyword">else</span> enemy[q] = p;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) &#123;<br>        <span class="hljs-keyword">if</span>( dsu.<span class="hljs-built_in">find</span>( i ) == i ) ++ cnt;<br>    &#125;<br>    cout &lt;&lt; cnt &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-built_in">solve</span>( );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="5-P1525-NOIP2010-关押罪犯">5. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1525">P1525 [NOIP2010] 关押罪犯</a></h3>
+<h4 id="题意-20">题意</h4>
+<p>有两个监狱，给定若干对罪犯之间的仇恨值。需要安排每个罪犯所在的监狱，使得同一个监狱内冲突值最大的那一对尽可能小。</p>
+<h4 id="思路-20">思路</h4>
+<p>这题的核心是「先保证大的冲突尽量不发生」。</p>
+<p>把所有冲突按照权值从大到小排序，依次处理。对于当前冲突 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(a,b,c)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span>，如果还想让答案小于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>，就必须让 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span></span></span></span> 分到不同监狱。</p>
+<p>因此可以把每个人拆成两个域：<code>x</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 所在阵营，<code>rev(x)</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的对立阵营，要求 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span></span></span></span> 不同，就等价于：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">merge</span>( a, <span class="hljs-built_in">rev</span>( b ) );<br><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">rev</span>( a ), b );<br></code></pre></td></tr></table></figure>
+<p>如果加入这条「不同」约束前，发现 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">b</span></span></span></span> 已经在同一个集合里，就说明权值为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> 的冲突无法再避免，答案就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span>。</p>
+<p>这题本质上是在按边权从大到小维护一个二分图判定，只是用二倍域并查集替代染色过程。</p>
+<h4 id="代码部分-20">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-5d5d193e" role="button" aria-expanded="false" aria-controls="collapse-5d5d193e">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-5d5d193e">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e4</span> + <span class="hljs-number">5</span>;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxm = <span class="hljs-number">1e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ExtDSU</span> &#123; <span class="hljs-comment">/* 二倍域板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-type">int</span> a, b, c;<br>    <span class="hljs-type">bool</span> <span class="hljs-keyword">operator</span> &lt; ( <span class="hljs-type">const</span> Person &amp;oth ) <span class="hljs-type">const</span> &#123; <span class="hljs-keyword">return</span> c &gt; oth.c; &#125;<br>&#125; p[maxm];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( ), m = <span class="hljs-built_in">read</span>( );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        p[i].a = <span class="hljs-built_in">read</span>( ), p[i].b = <span class="hljs-built_in">read</span>( ), p[i].c = <span class="hljs-built_in">read</span>( );<br>    &#125;<br>    <span class="hljs-built_in">sort</span>( p + <span class="hljs-number">1</span>, p + m + <span class="hljs-number">1</span> );<br><br>    dsu.<span class="hljs-built_in">init</span>( n );<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        <span class="hljs-keyword">auto</span> [ai, bi, ci] = p[i];<br>        <span class="hljs-keyword">if</span>( !dsu.<span class="hljs-built_in">setDiff</span>( ai, bi ) ) &#123;<br>            cout &lt;&lt; ci &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; <span class="hljs-number">0</span> &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="6-P2024-NOI2001-食物链：三倍域写法">6. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2024">P2024 [NOI2001] 食物链：三倍域写法</a></h3>
+<h4 id="题意-21">题意</h4>
+<p>有三类动物构成循环捕食关系。给定若干句话：<code>1 x y</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 同类，<code>2 x y</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 吃 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span>，问有多少句话是假话。</p>
+<h4 id="思路-21">思路</h4>
+<p>食物链关系不是简单的同类 / 异类，而是一个长度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span> 的循环关系，所以可以把每个动物拆成三个域：</p>
+<ul>
+<li><code>id(x, 0)</code>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 自己所在的类。</li>
+<li><code>id(x, 1)</code>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 吃的那一类。</li>
+<li><code>id(x, 2)</code>：吃 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的那一类。</li>
+</ul>
+<p>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 同类，那么它们的三层关系都应该对应相同：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>( x, <span class="hljs-number">0</span> ), <span class="hljs-built_in">id</span>( y, <span class="hljs-number">0</span> ) );<br><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>( x, <span class="hljs-number">1</span> ), <span class="hljs-built_in">id</span>( y, <span class="hljs-number">1</span> ) );<br><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>( x, <span class="hljs-number">2</span> ), <span class="hljs-built_in">id</span>( y, <span class="hljs-number">2</span> ) );<br></code></pre></td></tr></table></figure>
+<p>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 吃 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span>，那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 自己这一类等于吃 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 的那一类，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 吃的那一类等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 自己这一类，吃 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 的那一类等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 吃的那一类：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>( x, <span class="hljs-number">0</span> ), <span class="hljs-built_in">id</span>( y, <span class="hljs-number">2</span> ) );<br><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>( x, <span class="hljs-number">1</span> ), <span class="hljs-built_in">id</span>( y, <span class="hljs-number">0</span> ) );<br><span class="hljs-built_in">merge</span>( <span class="hljs-built_in">id</span>( x, <span class="hljs-number">2</span> ), <span class="hljs-built_in">id</span>( y, <span class="hljs-number">1</span> ) );<br></code></pre></td></tr></table></figure>
+<p>加入关系前先判断是否矛盾；如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 超出动物编号范围，也直接判为假话。</p>
+<h4 id="代码部分-21">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-42d133e0" role="button" aria-expanded="false" aria-controls="collapse-42d133e0">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-42d133e0">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">5e4</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ExtDSU</span> &#123; <span class="hljs-comment">/* 三倍域板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( ), k = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( n );<br><br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; ++ i ) &#123;<br>        <span class="hljs-type">int</span> opt = <span class="hljs-built_in">read</span>( ), x = <span class="hljs-built_in">read</span>( ), y = <span class="hljs-built_in">read</span>( );<br>        <span class="hljs-keyword">if</span>( x &gt; n || y &gt; n ) ans ++;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( opt == <span class="hljs-number">1</span> &amp;&amp; !dsu.<span class="hljs-built_in">setSame</span>( x, y ) ) ans ++;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( opt == <span class="hljs-number">2</span> &amp;&amp; !dsu.<span class="hljs-built_in">setEat</span>( x, y ) ) ans ++;<br>    &#125;<br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="三、带权并查集">三、带权并查集</h2>
+<p>带权并查集适合维护「点与点之间的相对关系」。它不再只是问两个点是否连通，还能在连通时查询 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo>−</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>y</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">val[x] - val[y]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">]</span></span></span></span>。</p>
+<p>常见两种版本：</p>
+<ol>
+<li><strong>取模带权并查集</strong>：维护 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo>−</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>y</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo><mtext> </mtext><mo lspace="0.22em" rspace="0.22em"><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">d</mi></mrow></mo><mtext> </mtext><mi>m</mi><mi>o</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">(val[x] - val[y]) \bmod mod</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">])</span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin"><span class="mord"><span class="mord mathrm">mod</span></span></span><span class="mspace" style="margin-right:0.0556em;"></span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">o</span><span class="mord mathnormal">d</span></span></span></span>，适合循环关系，比如食物链。</li>
+<li><strong>势能差带权并查集</strong>：维护真实差值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo>−</mo><mi>v</mi><mi>a</mi><mi>l</mi><mo stretchy="false">[</mo><mi>y</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">val[x] - val[y]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="mclose">]</span></span></span></span>，适合前缀和、距离、区间和一类差分约束。</li>
+</ol>
+<h3 id="带权并查集模板：取模">带权并查集模板：取模</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">// 带权并查集：维护 (val[x] - val[y]) mod mod</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">WDSU</span> &#123;<br><span class="hljs-comment">/* ======================================== */</span><br><span class="hljs-type">static</span> <span class="hljs-type">const</span> <span class="hljs-type">int</span> mod = <span class="hljs-number">3</span>;<br><span class="hljs-type">int</span> fa[maxn], siz[maxn], dis[maxn]; <span class="hljs-comment">// dis[x] = val[x] - val[fa[x]] (mod mod)</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">norm</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> ( x %= mod ) &lt; <span class="hljs-number">0</span> ? x + mod : x; &#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">( <span class="hljs-type">int</span> N )</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++ i ) fa[i] = i, siz[i] = <span class="hljs-number">1</span>, dis[i] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( fa[x] == x ) <span class="hljs-keyword">return</span> x;<br>    <span class="hljs-type">int</span> f = fa[x];<br>    fa[x] = <span class="hljs-built_in">find</span>( f );<br>    dis[x] = <span class="hljs-built_in">norm</span>( dis[x] + dis[f] );<br>    <span class="hljs-keyword">return</span> fa[x];<br>&#125;<br><span class="hljs-comment">// 查询 (val[x] - val[y]) mod mod，调用前最好保证 same(x, y)</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dist</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-built_in">find</span>( x ), <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">norm</span>( dis[x] - dis[y] );<br>&#125;<br><span class="hljs-comment">// 加入关系 val[x] - val[y] = w (mod mod)，返回 false 表示矛盾</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">merge</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, <span class="hljs-type">int</span> w )</span> </span>&#123;<br>    w = <span class="hljs-built_in">norm</span>( w );<br>    <span class="hljs-type">int</span> rx = <span class="hljs-built_in">find</span>( x ), ry = <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">if</span>( rx == ry ) <span class="hljs-keyword">return</span> <span class="hljs-built_in">dist</span>( x, y ) == w;<br>    <span class="hljs-keyword">if</span>( siz[rx] &gt; siz[ry] ) &#123;<br>        fa[ry] = rx;<br>        dis[ry] = <span class="hljs-built_in">norm</span>( -w + dis[x] - dis[y] );<br>        siz[rx] += siz[ry];<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        fa[rx] = ry;<br>        dis[rx] = <span class="hljs-built_in">norm</span>( w - dis[x] + dis[y] );<br>        siz[ry] += siz[rx];<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>( x ) == <span class="hljs-built_in">find</span>( y ); &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>( x )]; &#125;<br><span class="hljs-comment">/* ======================================== */</span><br>&#125; dsu;<br></code></pre></td></tr></table></figure>
+<h3 id="带权并查集模板：势能差">带权并查集模板：势能差</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">// 带权并查集：维护 val[x] - val[y]，不取模</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">WDSU</span> &#123;<br><span class="hljs-comment">/* ======================================== */</span><br><span class="hljs-type">int</span> fa[maxn], siz[maxn];<br>ll dis[maxn]; <span class="hljs-comment">// dis[x] = val[x] - val[fa[x]]</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">( <span class="hljs-type">int</span> N )</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++ i ) fa[i] = i, siz[i] = <span class="hljs-number">1</span>, dis[i] = <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( fa[x] == x ) <span class="hljs-keyword">return</span> x;<br>    <span class="hljs-type">int</span> f = fa[x];<br>    fa[x] = <span class="hljs-built_in">find</span>( f );<br>    dis[x] += dis[f];<br>    <span class="hljs-keyword">return</span> fa[x];<br>&#125;<br><span class="hljs-comment">// 查询 val[x] - val[y]，调用前最好保证 same(x, y)</span><br><span class="hljs-function">ll <span class="hljs-title">dist</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-built_in">find</span>( x ), <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">return</span> dis[x] - dis[y];<br>&#125;<br><span class="hljs-comment">// 加入关系 val[x] - val[y] = w，返回 false 表示矛盾</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">merge</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, ll w )</span> </span>&#123;<br>    <span class="hljs-type">int</span> rx = <span class="hljs-built_in">find</span>( x ), ry = <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">if</span>( rx == ry ) <span class="hljs-keyword">return</span> <span class="hljs-built_in">dist</span>( x, y ) == w;<br>    <span class="hljs-keyword">if</span>( siz[rx] &gt; siz[ry] ) &#123;<br>        fa[ry] = rx;<br>        dis[ry] = -w + dis[x] - dis[y];<br>        siz[rx] += siz[ry];<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        fa[rx] = ry;<br>        dis[rx] = w - dis[x] + dis[y];<br>        siz[ry] += siz[rx];<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>( x ) == <span class="hljs-built_in">find</span>( y ); &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>( x )]; &#125;<br><span class="hljs-comment">/* ======================================== */</span><br>&#125; dsu;<br></code></pre></td></tr></table></figure>
+<h3 id="7-P2024-NOI2001-食物链：带权写法">7. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2024">P2024 [NOI2001] 食物链：带权写法</a></h3>
+<h4 id="题意-22">题意</h4>
+<p>同上一题，判断食物链中有多少句假话。</p>
+<h4 id="思路-22">思路</h4>
+<p>三倍域是把每个点拆成三个域；带权并查集则是把这三种关系压成一个模 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span> 意义下的差值。</p>
+<p>令 <code>dist(x, y) = (val[x] - val[y]) mod 3</code>，那么：</p>
+<ul>
+<li><code>dist(x, y) = 0</code>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 同类。</li>
+<li><code>dist(x, y) = 1</code>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 吃 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span>。</li>
+<li><code>dist(x, y) = 2</code>：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 被 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 吃。</li>
+</ul>
+<p>所以 <code>opt == 1</code> 就是加入 <code>val[x] - val[y] = 0</code>，<code>opt == 2</code> 就是加入 <code>val[x] - val[y] = 1</code>。</p>
+<p>带权并查集的 <code>merge(x, y, w)</code> 本身就可以处理两种情况：如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 已经连通，就检查原有差值是否等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0269em;">w</span></span></span></span>；如果还不连通，就合并两个集合，并维护新根到旧根之间的差值。</p>
+<p>从复习角度看，这个写法比三倍域更抽象，但代码更短，也更接近「关系 = 差值约束」这个本质。</p>
+<h4 id="代码部分-22">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-98e16488" role="button" aria-expanded="false" aria-controls="collapse-98e16488">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-98e16488">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">5e4</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">WDSU</span> &#123; <span class="hljs-comment">/* 带权取模板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( ), k = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( n );<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= k; ++ i ) &#123;<br>        <span class="hljs-type">int</span> opt = <span class="hljs-built_in">read</span>( ), x = <span class="hljs-built_in">read</span>( ), y = <span class="hljs-built_in">read</span>( );<br>        <span class="hljs-keyword">if</span>( x &gt; n || y &gt; n ) ans ++;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( opt == <span class="hljs-number">1</span> ) &#123;<br>            <span class="hljs-keyword">if</span>( dsu.<span class="hljs-built_in">same</span>( x, y ) &amp;&amp; dsu.<span class="hljs-built_in">dist</span>( x, y ) != <span class="hljs-number">0</span> ) ans ++;<br>            <span class="hljs-keyword">else</span> dsu.<span class="hljs-built_in">merge</span>( x, y, <span class="hljs-number">0</span> );<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( opt == <span class="hljs-number">2</span> ) &#123;<br>            <span class="hljs-keyword">if</span>( dsu.<span class="hljs-built_in">same</span>( x, y ) &amp;&amp; dsu.<span class="hljs-built_in">dist</span>( x, y ) != <span class="hljs-number">1</span> ) ans ++;<br>            <span class="hljs-keyword">else</span> dsu.<span class="hljs-built_in">merge</span>( x, y, <span class="hljs-number">1</span> );<br>        &#125;<br>    &#125;<br>    cout &lt;&lt; ans &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="8-P2294-HNOI2005-狡猾的商人">8. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2294">P2294 [HNOI2005] 狡猾的商人</a></h3>
+<h4 id="题意-23">题意</h4>
+<p>给定若干区间和约束：区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mclose">]</span></span></span></span> 的和为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span>。判断这些信息是否自洽。</p>
+<h4 id="思路-23">思路</h4>
+<p>这题看上去是区间信息，实际上可以转成前缀和之间的差值关系。</p>
+<p>设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">pre[i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mclose">]</span></span></span></span> 表示前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span> 项的和，那么区间 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mclose">]</span></span></span></span> 的和为：</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>r</mi><mo stretchy="false">]</mo><mo>−</mo><mi>p</mi><mi>r</mi><mi>e</mi><mo stretchy="false">[</mo><mi>l</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">pre[r] - pre[l - 1] = s
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span></span></p>
+<p>这正好是势能差并查集维护的形式：<code>val[r] - val[l - 1] = s</code>。</p>
+<p>如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">r</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">l - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.0197em;">l</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 已经连通，就检查当前维护出的差值是否等于 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span>；如果还不连通，就把这条差值约束加入并查集。</p>
+<p>注意这里会用到点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span>，所以初始化时需要包含 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∼</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0 \sim n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>。</p>
+<h4 id="代码部分-23">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-1607c597" role="button" aria-expanded="false" aria-controls="collapse-1607c597">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-1607c597">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">WDSU</span> &#123; <span class="hljs-comment">/* 势能差板子略，init 需要包含 0 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( ), m = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( n );<br><br>    <span class="hljs-type">bool</span> ok = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++ i ) &#123;<br>        <span class="hljs-type">int</span> l = <span class="hljs-built_in">read</span>( ), r = <span class="hljs-built_in">read</span>( ), s = <span class="hljs-built_in">read</span>( );<br>        <span class="hljs-keyword">if</span>( !dsu.<span class="hljs-built_in">merge</span>( r, l - <span class="hljs-number">1</span>, s ) ) ok = <span class="hljs-number">0</span>;<br>    &#125;<br><br>    cout &lt;&lt; ( ok ? <span class="hljs-string">&quot;true&quot;</span> : <span class="hljs-string">&quot;false&quot;</span> ) &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> _ = <span class="hljs-built_in">read</span>( );<br>    <span class="hljs-keyword">while</span>( _ -- ) <span class="hljs-built_in">solve</span>( );<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h2 id="四、队列模型">四、队列模型</h2>
+<p>队列模型也是带权思想的一种特殊应用，但它维护的不是抽象关系，而是队列中的真实位置。</p>
+<p>这里的 <code>dis[x]</code> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 到所在队列队头的距离。把 <code>x</code> 所在整列接到 <code>y</code> 所在整列后面时，设 <code>rx = find(x), ry = find(y)</code>，就有：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">fa[rx] = ry;<br>dis[rx] = siz[ry];<br>siz[ry] += siz[rx];<br></code></pre></td></tr></table></figure>
+<p>路径压缩时累加 <code>dis[x] += dis[f]</code>，就能维护每个点到当前队头的距离。注意这个模型不能按 <strong>连通块大小</strong> 进行合并，因为合并方向本身有意义：必须是「<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 所在整列接到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 所在整列后面」。</p>
+<h3 id="队列合并模板">队列合并模板</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">// 队列合并并查集：整列接到整列后面，维护到队头距离</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">QDSU</span> &#123;<br><span class="hljs-comment">/* ======================================== */</span><br><span class="hljs-type">int</span> fa[maxn], siz[maxn];<br>ll dis[maxn]; <span class="hljs-comment">// dis[x] = x 到所在列队头的距离</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">( <span class="hljs-type">int</span> N )</span> </span>&#123; <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++ i ) fa[i] = i, siz[i] = <span class="hljs-number">1</span>, dis[i] = <span class="hljs-number">0</span>; &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>( fa[x] == x ) <span class="hljs-keyword">return</span> x;<br>    <span class="hljs-type">int</span> f = fa[x];<br>    fa[x] = <span class="hljs-built_in">find</span>( fa[x] );<br>    dis[x] += dis[f];<br>    <span class="hljs-keyword">return</span> fa[x];<br>&#125;<br><span class="hljs-comment">// 把 x 所在整列接到 y 所在整列后面</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">move</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-type">int</span> rx = <span class="hljs-built_in">find</span>( x ), ry = <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">if</span>( rx == ry ) <span class="hljs-keyword">return</span>;<br>    fa[rx] = ry;<br>    dis[rx] = siz[ry];<br>    siz[ry] += siz[rx];<br>&#125;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>( x ) == <span class="hljs-built_in">find</span>( y ); &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123; <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>( x )]; &#125;<br><span class="hljs-comment">// x 到队头的距离</span><br><span class="hljs-function">ll <span class="hljs-title">pos</span><span class="hljs-params">( <span class="hljs-type">int</span> x )</span> </span>&#123;<br>    <span class="hljs-built_in">find</span>( x );<br>    <span class="hljs-keyword">return</span> dis[x];<br>&#125;<br><span class="hljs-comment">// x, y 之间隔了几个元素；调用前需保证 same(x, y)</span><br><span class="hljs-function">ll <span class="hljs-title">dist</span><span class="hljs-params">( <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y )</span> </span>&#123;<br>    <span class="hljs-built_in">find</span>( x ), <span class="hljs-built_in">find</span>( y );<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">abs</span>( dis[x] - dis[y] ) - <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-comment">/* ======================================== */</span><br>&#125; dsu;<br></code></pre></td></tr></table></figure>
+<h3 id="9-P1196-NOI2002-银河英雄传说">9. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1196">P1196 [NOI2002] 银河英雄传说</a></h3>
+<h4 id="题意-24">题意</h4>
+<p>一开始每艘战舰单独成列。<code>M x y</code> 表示把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 所在整列接到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 所在整列后面；<code>C x y</code> 询问 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 是否在同一列，如果在同一列，输出它们之间隔了多少艘战舰，否则输出 <code>-1</code>。</p>
+<h4 id="思路-24">思路</h4>
+<p>这题的关键不是普通合并，而是「整列接到整列后面」。</p>
+<p>用 <code>siz[rt]</code> 维护每一列的长度，<code>dis[x]</code> 维护 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 到当前队头的距离。</p>
+<p>当执行 <code>M x y</code> 时，设 <code>rx = find(x), ry = find(y)</code>，要把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 所在整列接到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 所在整列后面，所以：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">fa[rx] = ry;<br>dis[rx] = siz[ry];<br>siz[ry] += siz[rx];<br></code></pre></td></tr></table></figure>
+<p>查询时，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 不在同一列，输出 <code>-1</code>；否则两者之间隔着的战舰数就是：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">abs</span>( dis[x] - dis[y] ) - <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>这里 <code>find</code> 的路径压缩会顺手累加距离，所以查询前调用 <code>find(x), find(y)</code> 后，<code>dis[]</code> 就是到当前队头的真实距离。</p>
+<h4 id="代码部分-24">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-0994800d" role="button" aria-expanded="false" aria-controls="collapse-0994800d">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-0994800d">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">3e4</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">QDSU</span> &#123; <span class="hljs-comment">/* 队列合并板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> T = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( maxn - <span class="hljs-number">1</span> );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= T; ++ i ) &#123;<br>        <span class="hljs-type">char</span> opt;<br>        cin &gt;&gt; opt;<br>        <span class="hljs-type">int</span> x = <span class="hljs-built_in">read</span>( ), y = <span class="hljs-built_in">read</span>( );<br>        <span class="hljs-keyword">if</span>( opt == <span class="hljs-string">&#x27;M&#x27;</span> ) &#123;<br>            dsu.<span class="hljs-built_in">move</span>( x, y );<br>        &#125;<br>        <span class="hljs-keyword">if</span>( opt == <span class="hljs-string">&#x27;C&#x27;</span> ) &#123;<br>            <span class="hljs-keyword">if</span>( !dsu.<span class="hljs-built_in">same</span>( x, y ) ) cout &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>            <span class="hljs-keyword">else</span> cout &lt;&lt; dsu.<span class="hljs-built_in">dist</span>( x, y ) &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+<h3 id="10-P5092-USACO04OPEN-Cube-Stacking">10. <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5092">P5092 [USACO04OPEN] Cube Stacking</a></h3>
+<h4 id="题意-25">题意</h4>
+<p>维护若干队列。支持把 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 所在整列接到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">y</span></span></span></span> 所在整列后面，并查询某个元素 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 到所在队列队头的距离。</p>
+<h4 id="思路-25">思路</h4>
+<p>这题和 P1196 用的是同一个队列合并模型，只是询问更简单。</p>
+<p>P1196 查询的是两个点之间隔了多少元素，所以要用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">dist</span>( x, y ) = <span class="hljs-built_in">abs</span>( dis[x] - dis[y] ) - <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+<p>而这题查询的是单点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> 到队头的距离，因此路径压缩后直接输出：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">pos</span>( x ) = dis[x]<br></code></pre></td></tr></table></figure>
+<p>所以这题可以看作队列合并模板中 <code>pos(x)</code> 的直接应用。</p>
+<h4 id="代码部分-25">代码部分</h4>
+
+    <div class="fold">
+      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-639614a5" role="button" aria-expanded="false" aria-controls="collapse-639614a5">
+        <div class="fold-arrow">▶</div>AcCode
+      </div>
+      <div class="fold-collapse collapse" id="collapse-639614a5">
+        <div class="fold-content">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">using</span> ll = <span class="hljs-type">long</span> <span class="hljs-type">long</span>;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> maxn = <span class="hljs-number">2e5</span> + <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">/* ============================== */</span><br><span class="hljs-function">ll <span class="hljs-title">read</span><span class="hljs-params">( )</span> </span>&#123; <span class="hljs-comment">/* 板子略 */</span> &#125;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">QDSU</span> &#123; <span class="hljs-comment">/* 队列合并板子略 */</span> &#125; dsu;<br><span class="hljs-comment">/* ============================== */</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-built_in">read</span>( );<br>    dsu.<span class="hljs-built_in">init</span>( n );<br><br>    <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++ i ) &#123;<br>        <span class="hljs-type">char</span> opt;<br>        cin &gt;&gt; opt;<br>        <span class="hljs-keyword">if</span>( opt == <span class="hljs-string">&#x27;M&#x27;</span> ) &#123;<br>            <span class="hljs-type">int</span> x = <span class="hljs-built_in">read</span>( ), y = <span class="hljs-built_in">read</span>( );<br>            dsu.<span class="hljs-built_in">move</span>( x, y );<br>        &#125;<br>        <span class="hljs-keyword">if</span>( opt == <span class="hljs-string">&#x27;C&#x27;</span> ) &#123;<br>            <span class="hljs-type">int</span> x = <span class="hljs-built_in">read</span>( );<br>            cout &lt;&lt; dsu.<span class="hljs-built_in">pos</span>( x ) &lt;&lt; <span class="hljs-string">&#x27;\n&#x27;</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/230-Notes/" class="category-chain-item">230_Notes</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/230-Notes/%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="category-chain-item">并查集</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="print-no-link">#数据结构/并查集</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[Solution] 并查集题型整理</div>
+      <div>https://example.com/posts/f753ba00/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Miqiu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年6月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/50fde6f6/" title="Dictionary">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Dictionary</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/488abaac/" title="[Solution] ABC459 C~E">
+                        <span class="hidden-mobile">[Solution] ABC459 C~E</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span> <br> <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> |  <a href="https://codeforces.com" target="_blank">Codeforces</a> |  <a href="https://atcoder.jp" target="_blank">AtCoder</a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script defer src="/js/openkounter.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
