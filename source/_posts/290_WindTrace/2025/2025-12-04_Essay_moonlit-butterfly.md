@@ -3,6 +3,7 @@ title: 月光沐浴下的蝴蝶
 tags: Meta/Essay
 categories:
   - 290_WindTrace
+  - '2025'
 archive: true
 abbrlink: 2ea33511
 date: 2025-12-04 22:54:38

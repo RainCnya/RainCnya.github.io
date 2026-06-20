@@ -3,6 +3,7 @@ title: 浪潮之巅读后感
 tags: Meta/Review
 categories:
   - 290_WindTrace
+  - '2025'
 archive: true
 abbrlink: 19c9c7ed
 date: 2025-11-06 08:45:36

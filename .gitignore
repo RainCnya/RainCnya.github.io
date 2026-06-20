@@ -5,3 +5,5 @@ node_modules/
 public/
 .deploy_git/
 .log
+.cache/
+.private/

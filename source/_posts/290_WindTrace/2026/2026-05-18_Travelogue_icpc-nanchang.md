@@ -3,6 +3,7 @@ title: 夏天的星位
 tags: Meta/Travelogue
 categories:
   - 290_WindTrace
+  - '2026'
 archive: true
 abbrlink: c81cc44c
 date: 2026-05-18 00:00:00
