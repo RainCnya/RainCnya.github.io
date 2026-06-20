@@ -1,0 +1,241 @@
+:root {
+  --paper: #f3f2ee;
+  --ink: #303436;
+  --muted: #747d81;
+  --line: rgba(67, 79, 85, 0.16);
+  --mist: #dce4e7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  color: var(--ink);
+
+  background:
+    linear-gradient(
+      180deg,
+      #dce4e7 0,
+      var(--paper) 32rem,
+      var(--paper) 100%
+    );
+
+  font-family:
+    "Noto Serif SC",
+    "Source Han Serif SC",
+    "Songti SC",
+    "STSong",
+    "SimSun",
+    serif;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+.back-link {
+  position: absolute;
+  top: 1.4rem;
+  left: 1.5rem;
+
+  color: rgba(48, 52, 54, 0.62);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.works-header {
+  padding: 9rem 1.5rem 6rem;
+
+  text-align: center;
+}
+
+.works-eyebrow {
+  margin: 0 0 2rem;
+
+  color: rgba(55, 67, 73, 0.5);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+}
+
+.works-header h1 {
+  margin: 0;
+
+  font-size: clamp(2.8rem, 8vw, 4.6rem);
+  font-weight: 400;
+
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+}
+
+.works-intro {
+  margin: 2rem 0 0;
+
+  color: var(--muted);
+
+  font-size: 0.96rem;
+  letter-spacing: 0.1em;
+}
+
+.works-list {
+  width: min(100% - 2.5rem, 780px);
+  margin: 0 auto;
+  padding-bottom: 8rem;
+
+  display: grid;
+  gap: 1.5rem;
+}
+
+.work-card {
+  display: block;
+
+  padding: 2.5rem 2.6rem;
+
+  color: inherit;
+  background: rgba(255, 255, 255, 0.36);
+
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+
+  text-decoration: none;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+a.work-card:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 255, 255, 0.58);
+
+  box-shadow:
+    0 1.2rem 3rem
+    rgba(55, 67, 73, 0.08);
+}
+
+.work-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  color: var(--muted);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.work-card h2 {
+  margin: 2.3rem 0 0.5rem;
+
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
+.work-card__english {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.work-card__description {
+  margin: 2rem 0 0;
+
+  color: #596267;
+
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.work-card__enter {
+  display: block;
+
+  margin-top: 2.3rem;
+
+  color: #596c75;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.work-card--pending {
+  opacity: 0.55;
+}
+
+.works-footer {
+  padding: 0 1rem 4rem;
+
+  color: var(--muted);
+
+  text-align: center;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    "Microsoft YaHei",
+    sans-serif;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 620px) {
+  .works-header {
+    padding-top: 7.5rem;
+  }
+
+  .works-list {
+    width: min(100% - 2rem, 780px);
+  }
+
+  .work-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .work-card__meta {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}

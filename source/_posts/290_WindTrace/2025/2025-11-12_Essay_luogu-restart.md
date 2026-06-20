@@ -3,6 +3,7 @@ title: 我从洛谷再出发
 tags: Meta/Essay
 categories:
   - 290_WindTrace
+  - '2025'
 archive: true
 abbrlink: ab65d9e6
 date: 2025-11-12 13:00:49

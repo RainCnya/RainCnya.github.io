@@ -33,6 +33,7 @@ skip_render:
   - '_templates/**'
   - '.obsidian/**'
   - 'README.md' # 跳过 README 渲染
+  - "works/**/*"
 
 # Writing
 new_post_name: :title.md

@@ -3,6 +3,7 @@ title: 内生秩序
 tags: Meta/Speech
 categories:
   - 290_WindTrace
+  - '2026'
 archive: true
 abbrlink: 56c8ecc8
 date: 2026-01-16 14:00:00

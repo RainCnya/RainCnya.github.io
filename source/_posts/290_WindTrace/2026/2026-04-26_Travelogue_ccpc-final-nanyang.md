@@ -3,6 +3,7 @@ title: 春天替我记下了这次远行
 tags: Meta/Travelogue
 categories:
   - 290_WindTrace
+  - '2026'
 archive: true
 abbrlink: c86f2161
 date: 2026-04-26 00:00:00

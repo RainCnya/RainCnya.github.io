@@ -3,6 +3,7 @@ title: 双人船
 tags: Meta/Letter
 categories:
   - 290_WindTrace
+  - '2025'
 archive: true
 abbrlink: 107eb856
 date: 2025-12-28 22:45:00
