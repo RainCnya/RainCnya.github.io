@@ -4,7 +4,7 @@ tags: Meta/Essay
 categories:
   - 290_WindTrace
   - '2026'
-archive: true
+archive: false
 abbrlink: '49844373'
 date: 2026-06-25 23:58:00
 ---
