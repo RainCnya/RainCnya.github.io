@@ -7,3 +7,16 @@ public/
 .log
 .cache/
 .private/
+
+# Local application data
+/data/
+*.db
+
+# Generated indexes and audit files
+/blogInfoList.json
+/blog_tree.txt
+
+# Local backups
+*.bundle
+*.bak
+*.backup
