@@ -101,11 +101,11 @@ font:
 custom_js:
 
 custom_css:
-  - /css/custom.css
-  - /css/banner.css
+  - /css/custom_v1.css
+  - /css/banner_v1.css
   - /css/article_v1.css
-  - /css/callout.css
-  - /css/home.css
+  - /css/callout_v1.css
+  - /css/home_v1.css
 
 web_analytics:
   enable: true
