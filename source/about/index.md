@@ -4,57 +4,35 @@ date: 2025-10-31 21:36:14
 layout: about
 updated: 2025-12-18 23:46:22
 ---
-## 👋 **你好哇，我是 MiQiu（米秋）。**
 
+## 你好，我是 MiQiu（米秋）
 
-一个**热爱生活**，也总是**忍不住**想**把混乱变成有序**的学生。
+一个学习计算机、参加算法竞赛，也写一点散文与随笔的学生。
 
-在数字宇宙的角落里，我迷恋在草稿纸上**推演逻辑**的时刻。
-那些散乱的数据如**碎星**，而算法就是连成**星座**的线。
-当真相被层层剥茧，忽然铺展开来的**通透感**，让我沉醉不已。
+我喜欢把混乱慢慢整理成秩序：把零散的知识连成体系，把一道题里纠缠的条件逐一拆开，也把生活中来不及理解的瞬间留在文字里。
 
-我曾因光芒微弱而感到乏力，直到我找到了属于我的 **“桔梗花”**：
-花儿知道自己什么时候会开，但不知道蝴蝶什么时候会来。
-**开花本身，就是我热爱世界的方式**。
+但并不是所有东西都需要被解释。
 
-我不必等到圆满无缺才去传递希望；**我负责盛开，负责发光**；
-至于这束光什么时候能照亮你，**那是风的事情，是时间的事情**。
-只要它出发了，就有被看见的可能。
+风、月亮、汽水、雨声，一次远行，一段没有说完的话——它们会在这里留下自己的位置。
 
-这便是我，相信希望和浪漫的「**米秋**」。
+这里是一座仍在生长的数字花园。
 
-路途遥远，你可以慢慢走，别着急。
+你会看到算法、数学与学习笔记，也会看到《风迹》、节气文字，以及还会陪我走很久的《点线集》。有些作品记录一段已经经过的时光，有些问题则不会很快得到答案。
 
-Bon Voyage. 
+我仍然喜欢桔梗花的比喻：
+
+> 花知道自己什么时候会开，却不知道蝴蝶什么时候会来。  
+> 生长是我的事；风从哪里来，蝴蝶是否停留，交给时间。
+
+至于我是谁，暂时还没有一个最终的名字。
+
+我只知道，我会继续学习，继续写，也继续向更远的地方走。
+
+你可以从任何一篇文字开始，不必着急，也不必按顺序。
+
+**Bon Voyage.**
 
 愿你的旅途星光璀璨，愿你的夏日永不凋零。
 
----
-
-> **Sonnet 18 -- William Shakespeare**
->
-> Shall I compare thee to a summer's day?
-> 
-> Thou are more lovely and more temperate:
-> 
-> Rough winds do shake the darling buds of May,
-> 
-> And summer's lease hath all too small a date:
-> 
-> Sometime too hot the eye of heaven shines.
-> 
-> And every fair from fair sometime declines,
-> 
-> By chance or nature's changing course untrimmed:
-> 
-> But thy eternal summer shall not fade,
-> 
-> Nor lose possession of that fair thou ow'st,
-> 
-> Nor shall eternal lines to time thou grow'st:
-> 
-> So long as men can breathe or eyes can see,
-> 
+> So long as men can breathe or eyes can see,  
 > So long lives this, and this gives life to thee.
-
-
