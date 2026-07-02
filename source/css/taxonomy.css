@@ -1,0 +1,650 @@
+/* ==========================================================
+   Taxonomy Pages
+   分类、标签、归档与单分类文章列表
+   ========================================================== */
+
+
+/* ==========================================================
+   1. 分类总览容器
+   ========================================================== */
+
+.category-list {
+    margin: 1.2rem 0 0;
+    font-family: var(--mq-font-heading);
+}
+
+.category-list > .category {
+    margin: 0 0 0.9rem !important;
+    overflow: hidden;
+
+    background: var(--mq-board-solid);
+
+    border: 1px solid var(--mq-border);
+    border-radius: var(--mq-radius);
+
+    box-shadow:
+        0 2px 10px rgba(34, 34, 59, 0.035);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.category-list > .category:hover {
+    border-color: rgba(116, 111, 167, 0.22);
+
+    box-shadow:
+        0 8px 24px rgba(74, 78, 105, 0.07);
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   2. 一级分类
+   ========================================================== */
+
+.category-list > .category > .category-item {
+    display: flex;
+    min-height: 64px;
+    padding: 0.9rem 1.05rem !important;
+
+    color: var(--mq-heading) !important;
+    text-decoration: none !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--mq-board-solid),
+            var(--mq-soft-bg)
+        ) !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    align-items: center;
+
+    font-size: 1.04rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.category-list > .category > .category-item:hover {
+    color: var(--mq-iris) !important;
+}
+
+.category-list > .category > .category-item .icon-arrowright {
+    margin-left: auto;
+
+    color: var(--mq-text-secondary);
+
+    font-size: 0.82rem;
+
+    transition:
+        color 0.18s ease,
+        transform 0.2s ease;
+}
+
+.category-list
+> .category
+> .category-item[aria-expanded="true"]
+.icon-arrowright {
+    color: var(--mq-iris);
+    transform: rotate(90deg);
+}
+
+
+/* ==========================================================
+   3. 一级分类文章数量
+   ========================================================== */
+
+.category-list > .category > .category-count {
+    display: flex;
+    min-height: 64px;
+    padding: 0.8rem 0.55rem !important;
+
+    color: var(--mq-text-secondary);
+    text-decoration: none;
+
+    background: var(--mq-soft-bg);
+
+    border: 0;
+    border-left: 1px solid var(--mq-border-light);
+
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+
+    font-family: var(--mq-font-code);
+    font-size: 0.78rem;
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.category-list > .category > .category-count:hover {
+    color: var(--mq-iris);
+    background: rgba(116, 111, 167, 0.11);
+}
+
+.category-list > .category > .category-count i {
+    color: var(--mq-iris);
+    font-size: 0.84rem;
+}
+
+
+/* ==========================================================
+   4. 折叠区域
+   ========================================================== */
+
+.category-collapse {
+    width: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(116, 111, 167, 0.025),
+            transparent 120px
+        );
+}
+
+
+/* ==========================================================
+   5. 子分类
+   ========================================================== */
+
+.category-sub {
+    margin: 0 !important;
+
+    border-top: 1px solid var(--mq-border-light);
+}
+
+.category-subitem {
+    display: flex;
+    min-height: 52px;
+    padding: 0.72rem 1rem 0.72rem 1.55rem !important;
+
+    color: var(--mq-text) !important;
+    text-decoration: none !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    align-items: center;
+
+    font-size: 0.94rem;
+    font-weight: 500;
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.category-subitem::before {
+    width: 5px;
+    height: 5px;
+    margin-right: 0.68rem;
+
+    content: "";
+
+    background: var(--mq-iris);
+    border-radius: 50%;
+
+    flex: 0 0 auto;
+    opacity: 0.62;
+}
+
+.category-subitem:hover {
+    color: var(--mq-iris) !important;
+    background: var(--mq-soft-bg) !important;
+}
+
+.category-subitem .icon-arrowright {
+    margin-left: auto;
+
+    color: var(--mq-text-secondary);
+
+    font-size: 0.74rem;
+
+    transition:
+        color 0.18s ease,
+        transform 0.2s ease;
+}
+
+.category-subitem[aria-expanded="true"] .icon-arrowright {
+    color: var(--mq-iris);
+    transform: rotate(90deg);
+}
+
+
+/* 子分类的文章数量 */
+
+.category-sub > .category-count {
+    display: flex;
+    min-height: 52px;
+    padding: 0.65rem 0.5rem !important;
+
+    color: var(--mq-text-secondary);
+    text-decoration: none;
+
+    background: transparent;
+
+    border: 0;
+    border-left: 1px solid var(--mq-border-light);
+
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+
+    font-family: var(--mq-font-code);
+    font-size: 0.74rem;
+}
+
+.category-sub > .category-count:hover {
+    color: var(--mq-iris);
+    background: var(--mq-soft-bg);
+}
+
+
+/* ==========================================================
+   6. 分类内文章列表
+   ========================================================== */
+
+.category-post-list {
+    width: 100%;
+    padding: 0.35rem 0 0.5rem;
+
+    border-top: 1px solid var(--mq-border-light);
+}
+
+.category-post-list .list-group-item {
+    position: relative;
+
+    padding: 0.58rem 1rem 0.58rem 2.15rem;
+
+    color: var(--mq-text-secondary);
+    text-decoration: none;
+
+    background: transparent;
+
+    border: 0;
+    border-radius: 0;
+
+    font-family: var(--mq-font-body);
+    font-size: 0.91rem;
+    line-height: 1.55;
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease,
+        padding-left 0.18s ease;
+}
+
+.category-post-list .list-group-item::before {
+    position: absolute;
+    top: 50%;
+    left: 1.32rem;
+
+    width: 4px;
+    height: 4px;
+
+    content: "";
+
+    background: var(--mq-text-secondary);
+    border-radius: 50%;
+
+    opacity: 0.48;
+    transform: translateY(-50%);
+}
+
+.category-post-list .list-group-item:hover {
+    padding-left: 2.28rem;
+
+    color: var(--mq-iris);
+    background: rgba(116, 111, 167, 0.055);
+}
+
+.category-post-list .list-group-item:hover::before {
+    background: var(--mq-iris);
+    opacity: 0.9;
+}
+
+.category-post-list .list-group-item.active {
+    color: var(--mq-iris);
+    background: var(--mq-soft-bg);
+}
+
+
+/* ==========================================================
+   7. 归档、单分类、单标签页的顶部统计
+   ========================================================== */
+
+#board .list-group > .h4:first-child {
+    margin: 0.4rem 0 0.9rem;
+
+    color: var(--mq-text-secondary);
+
+    font-family: var(--mq-font-heading);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+#board .list-group > hr {
+    height: 1px;
+    margin: 0 0 1.4rem;
+
+    border: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mq-border),
+            transparent 78%
+        );
+}
+
+
+/* ==========================================================
+   8. 归档年份
+   ========================================================== */
+
+#board .list-group > .h5 {
+    display: flex;
+    margin: 1.8rem 0 0.72rem;
+
+    color: var(--mq-heading);
+
+    align-items: center;
+    gap: 0.72rem;
+
+    font-family: var(--mq-font-heading);
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+}
+
+#board .list-group > .h5::after {
+    height: 1px;
+
+    content: "";
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mq-border),
+            transparent
+        );
+
+    flex: 1;
+}
+
+
+/* ==========================================================
+   9. 归档文章条目
+   ========================================================== */
+
+#board .list-group > a.list-group-item {
+    display: grid;
+    min-height: 54px;
+    margin-bottom: 0.42rem;
+    padding: 0.7rem 0.9rem;
+
+    color: var(--mq-text);
+    text-decoration: none;
+
+    background: var(--mq-board-solid);
+
+    border: 1px solid var(--mq-border-light);
+    border-radius: var(--mq-radius-small);
+
+    grid-template-columns: 58px minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+#board .list-group > a.list-group-item:hover {
+    color: var(--mq-iris);
+
+    background: var(--mq-soft-bg);
+    border-color: rgba(116, 111, 167, 0.22);
+
+    box-shadow:
+        0 5px 16px rgba(74, 78, 105, 0.055);
+
+    transform: translateX(2px);
+}
+
+#board .list-group > a.list-group-item time {
+    color: var(--mq-text-secondary);
+
+    font-family: var(--mq-font-code);
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+}
+
+#board .list-group > a.list-group-item .list-group-item-title {
+    min-width: 0;
+    overflow: hidden;
+
+    font-family: var(--mq-font-body);
+    font-size: 0.94rem;
+    line-height: 1.55;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   10. 标签总览
+   将传统大小不一的标签云改成整齐标签索引
+   ========================================================== */
+
+.tagcloud {
+    display: flex;
+    margin: 1.2rem auto 0;
+    padding: 0;
+
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.62rem;
+}
+
+.tagcloud a {
+    display: inline-flex;
+    min-height: 36px;
+    padding: 0.42rem 0.78rem;
+
+    color: var(--mq-text-secondary) !important;
+    text-decoration: none !important;
+
+    background: var(--mq-board-solid);
+
+    border: 1px solid var(--mq-border);
+    border-radius: 999px;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--mq-font-heading);
+    font-size: 0.88rem !important;
+    font-weight: 500;
+    line-height: 1.35;
+
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.tagcloud a::before {
+    margin-right: 0.18rem;
+
+    content: "#";
+
+    color: var(--mq-iris);
+    opacity: 0.72;
+}
+
+.tagcloud a:hover {
+    color: var(--mq-iris) !important;
+
+    background: var(--mq-soft-bg);
+    border-color: rgba(116, 111, 167, 0.28);
+
+    box-shadow:
+        0 4px 14px rgba(74, 78, 105, 0.07);
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   11. 暗色模式
+   ========================================================== */
+
+[data-user-color-scheme="dark"]
+.category-list > .category {
+    background: rgba(31, 35, 53, 0.92);
+
+    box-shadow:
+        0 3px 14px rgba(0, 0, 0, 0.12);
+}
+
+[data-user-color-scheme="dark"]
+.category-list > .category > .category-item {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(31, 35, 53, 0.98),
+            rgba(147, 141, 190, 0.08)
+        ) !important;
+}
+
+[data-user-color-scheme="dark"]
+#board .list-group > a.list-group-item,
+[data-user-color-scheme="dark"]
+.tagcloud a {
+    background: rgba(31, 35, 53, 0.82);
+}
+
+[data-user-color-scheme="dark"]
+#board .list-group > a.list-group-item:hover,
+[data-user-color-scheme="dark"]
+.tagcloud a:hover {
+    background: rgba(147, 141, 190, 0.11);
+    border-color: rgba(147, 141, 190, 0.26);
+}
+
+
+/* ==========================================================
+   12. 移动端
+   ========================================================== */
+
+@media (max-width: 767px) {
+    .category-list {
+        margin-top: 0.8rem;
+    }
+
+    .category-list > .category {
+        margin-bottom: 0.7rem !important;
+    }
+
+    .category-list > .category > .category-item,
+    .category-list > .category > .category-count {
+        min-height: 56px;
+    }
+
+    .category-list > .category > .category-item {
+        padding: 0.78rem 0.85rem !important;
+        font-size: 0.98rem;
+    }
+
+    .category-subitem {
+        min-height: 48px;
+        padding-left: 1.15rem !important;
+        font-size: 0.9rem;
+    }
+
+    .category-post-list .list-group-item {
+        padding-right: 0.8rem;
+        padding-left: 1.7rem;
+
+        font-size: 0.88rem;
+    }
+
+    .category-post-list .list-group-item::before {
+        left: 1rem;
+    }
+
+    .category-post-list .list-group-item:hover {
+        padding-left: 1.7rem;
+        transform: none;
+    }
+
+    #board .list-group > a.list-group-item {
+        min-height: 50px;
+        padding: 0.62rem 0.72rem;
+
+        grid-template-columns: 50px minmax(0, 1fr);
+        gap: 0.55rem;
+    }
+
+    #board .list-group > a.list-group-item:hover {
+        transform: none;
+    }
+
+    #board .list-group > a.list-group-item time {
+        font-size: 0.7rem;
+    }
+
+    #board .list-group > a.list-group-item .list-group-item-title {
+        font-size: 0.9rem;
+    }
+
+    .tagcloud {
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+
+    .tagcloud a {
+        min-height: 33px;
+        padding: 0.36rem 0.65rem;
+
+        font-size: 0.83rem !important;
+    }
+}
+
+
+/* ==========================================================
+   13. 减少动态效果
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .category-list > .category,
+    .category-item,
+    .category-subitem,
+    .category-post-list .list-group-item,
+    #board .list-group > a.list-group-item,
+    .tagcloud a {
+        transition: none !important;
+    }
+}
