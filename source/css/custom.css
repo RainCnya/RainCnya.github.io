@@ -1,70 +1,1116 @@
 /* ==========================================================
-   Miqiu's Custom Theme: [Purple Rain & Amber Echo]
+   MiQiu Blog Theme
+   远星 · 雨夜书页
    Path: source/css/custom.css
    ========================================================== */
 
-/* 1. 字体强制覆盖 (Airy Strict Typography) */
-body, h1, h2, h3, h4, h5, h6, .markdown-body {
-    font-family: "LXGW WenKai Screen", "Microsoft YaHei", sans-serif !important;
+
+/* ==========================================================
+   0. 全局变量
+   ========================================================== */
+
+:root {
+    /* 主色 */
+    --mq-night: #4a4e69;
+    --mq-night-deep: #34374d;
+    --mq-iris: #746fa7;
+    --mq-iris-light: #938dbe;
+    --mq-amber: #c39a62;
+
+    /* 浅色模式 */
+    --mq-bg: #f5f5f8;
+    --mq-board: rgba(255, 255, 255, 0.94);
+    --mq-board-solid: #ffffff;
+    --mq-text: #29293b;
+    --mq-text-secondary: #6f7082;
+    --mq-heading: #222236;
+    --mq-border: rgba(74, 78, 105, 0.12);
+    --mq-border-light: rgba(74, 78, 105, 0.07);
+    --mq-soft-bg: rgba(116, 111, 167, 0.065);
+    --mq-code-inline-bg: rgba(116, 111, 167, 0.10);
+
+    /* 阴影 */
+    --mq-shadow:
+        0 1px 2px rgba(34, 34, 59, 0.035),
+        0 8px 26px rgba(34, 34, 59, 0.055);
+
+    --mq-shadow-hover:
+        0 2px 5px rgba(34, 34, 59, 0.045),
+        0 14px 34px rgba(74, 78, 105, 0.09);
+
+    /* 圆角 */
+    --mq-radius-small: 6px;
+    --mq-radius: 11px;
+    --mq-radius-large: 14px;
+
+    /* 字体 */
+    --mq-font-body:
+        "LXGW WenKai Screen",
+        "LXGW WenKai",
+        "Microsoft YaHei",
+        "PingFang SC",
+        sans-serif;
+
+    --mq-font-heading:
+        "Microsoft YaHei UI",
+        "PingFang SC",
+        "Noto Sans CJK SC",
+        sans-serif;
+
+    --mq-font-code:
+        "Cascadia Code",
+        "JetBrains Mono",
+        "SFMono-Regular",
+        Consolas,
+        monospace;
 }
 
-/* 2. 毛玻璃质感 (Glassmorphism) */
-/* 首页文章卡片 & 详情页主板 */
+
+/* ==========================================================
+   1. 暗色模式变量
+   ========================================================== */
+
+[data-user-color-scheme="dark"] {
+    --mq-bg: #181a24;
+    --mq-board: rgba(31, 35, 53, 0.94);
+    --mq-board-solid: #1f2335;
+    --mq-text: #c4c8dd;
+    --mq-text-secondary: #9299b8;
+    --mq-heading: #d7daec;
+    --mq-border: rgba(192, 202, 245, 0.12);
+    --mq-border-light: rgba(192, 202, 245, 0.07);
+    --mq-soft-bg: rgba(147, 141, 190, 0.10);
+    --mq-code-inline-bg: rgba(147, 141, 190, 0.15);
+
+    --mq-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.18),
+        0 10px 28px rgba(0, 0, 0, 0.22);
+
+    --mq-shadow-hover:
+        0 2px 5px rgba(0, 0, 0, 0.24),
+        0 16px 36px rgba(0, 0, 0, 0.28);
+}
+
+
+/* ==========================================================
+   2. 页面基础
+   ========================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--mq-bg);
+    color: var(--mq-text);
+    font-family: var(--mq-font-body) !important;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+.markdown-body,
+.index-excerpt,
+.post-content {
+    font-family: var(--mq-font-body) !important;
+}
+
+a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+}
+
+::selection {
+    color: #ffffff;
+    background: var(--mq-iris);
+}
+
+::-moz-selection {
+    color: #ffffff;
+    background: var(--mq-iris);
+}
+
+
+/* ==========================================================
+   3. 标题字体与层级
+   ========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar,
+.navbar-brand,
+.index-header,
+.post-title,
+.category-title,
+.tag-title {
+    font-family: var(--mq-font-heading) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--mq-heading);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.markdown-body h1 {
+    margin-top: 0.8em;
+    margin-bottom: 1em;
+    font-size: 2rem;
+    line-height: 1.35;
+}
+
+.markdown-body h2 {
+    margin-top: 2.45em;
+    margin-bottom: 1em;
+    padding-bottom: 0.38em;
+    border-bottom: 1px solid var(--mq-border);
+    font-size: 1.55rem;
+    line-height: 1.45;
+}
+
+.markdown-body h3 {
+    margin-top: 2em;
+    margin-bottom: 0.85em;
+    font-size: 1.28rem;
+    line-height: 1.5;
+}
+
+.markdown-body h4 {
+    margin-top: 1.65em;
+    margin-bottom: 0.75em;
+    font-size: 1.1rem;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 1.4em;
+    margin-bottom: 0.65em;
+}
+
+
+/* ==========================================================
+   4. 主面板与文章卡片
+   ========================================================== */
+
 .board {
-    background-color: rgba(255, 255, 255, 0.85) !important; /* 白底微透 */
-    backdrop-filter: blur(12px); /* 核心：背景模糊 */
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 16px; /* 更大的圆角 */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07); /* 柔和阴影 */
-    border: 1px solid rgba(255, 255, 255, 0.4); /* 微光边框 */
-    transition: transform 0.3s ease; /* 悬浮动画准备 */
+    background-color: var(--mq-board) !important;
+    border: 1px solid var(--mq-border-light);
+    border-radius: var(--mq-radius-large);
+    box-shadow: var(--mq-shadow);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
 }
 
-/* 暗色模式适配 */
-[data-user-color-scheme="dark"] .board {
-    background-color: rgba(30, 30, 40, 0.80) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.index-card {
+    margin-bottom: 1.55rem;
 }
 
-/* 鼠标悬浮时，卡片微微上浮 */
+.index-card .board {
+    overflow: hidden;
+}
+
 .index-card:hover .board {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(126, 87, 194, 0.15); /* 紫色光晕 */
+    transform: translateY(-2px);
+    border-color: rgba(116, 111, 167, 0.18);
+    box-shadow: var(--mq-shadow-hover);
 }
 
-/* 3. 顶部导航栏 (透明化) */
+[data-user-color-scheme="dark"] .index-card:hover .board {
+    border-color: rgba(147, 141, 190, 0.22);
+}
+
+
+/* ==========================================================
+   5. 首页文章卡片
+   ========================================================== */
+
+.index-header {
+    margin-bottom: 0.7rem;
+}
+
+.index-header .index-title {
+    color: var(--mq-heading);
+    font-weight: 600;
+    letter-spacing: 0.012em;
+}
+
+.index-header .index-title:hover {
+    color: var(--mq-iris);
+}
+
+.index-excerpt {
+    color: var(--mq-text);
+    font-size: 0.98rem;
+    line-height: 1.8;
+}
+
+.index-excerpt p {
+    margin-bottom: 0.65em;
+}
+
+.index-info {
+    color: var(--mq-text-secondary);
+    font-size: 0.86rem;
+}
+
+.index-info a {
+    color: var(--mq-text-secondary);
+}
+
+.index-info a:hover {
+    color: var(--mq-iris);
+}
+
+.index-img img {
+    transition:
+        transform 0.45s ease,
+        filter 0.35s ease;
+}
+
+.index-card:hover .index-img img {
+    transform: scale(1.018);
+}
+
+
+/* ==========================================================
+   6. 顶部导航栏
+   ========================================================== */
+
 .navbar {
-    background-color: rgba(74, 78, 105, 0.8) !important; /* 黛紫色半透明 */
-    backdrop-filter: blur(10px);
+    background-color: rgba(62, 65, 91, 0.84) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 2px 14px rgba(25, 26, 40, 0.10);
 }
 
-/* 4. 进度条 (紫雨流光渐变) */
+[data-user-color-scheme="dark"] .navbar {
+    background-color: rgba(31, 35, 53, 0.88) !important;
+    border-bottom-color: rgba(192, 202, 245, 0.07);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    font-size: 0.95rem;
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.navbar-nav .nav-link::after {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    left: 0.75rem;
+
+    height: 1px;
+
+    content: "";
+    background: rgba(255, 255, 255, 0.78);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.22s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+
+/* ==========================================================
+   7. Banner
+   ========================================================== */
+
+.banner {
+    background-color: var(--mq-night-deep);
+}
+
+.banner .mask {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(22, 23, 34, 0.10) 0%,
+            rgba(22, 23, 34, 0.24) 100%
+        ) !important;
+}
+
+.banner .h2,
+.banner .h1,
+.banner-text,
+.banner-text h1,
+.banner-text h2 {
+    font-family: var(--mq-font-heading) !important;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 14px rgba(15, 16, 25, 0.32);
+}
+
+#subtitle {
+    letter-spacing: 0.035em;
+    text-shadow: 0 2px 12px rgba(15, 16, 25, 0.30);
+}
+
+
+/* ==========================================================
+   8. 文章正文排版
+   ========================================================== */
+
+.markdown-body {
+    color: var(--mq-text);
+    font-size: 1rem;
+    line-height: 1.86;
+    letter-spacing: 0.012em;
+    overflow-wrap: break-word;
+}
+
+.markdown-body p {
+    margin-top: 0.86em;
+    margin-bottom: 0.86em;
+}
+
+.markdown-body strong {
+    color: var(--mq-heading);
+    font-weight: 600;
+}
+
+.markdown-body em {
+    color: inherit;
+}
+
+.markdown-body hr {
+    height: 1px;
+    margin: 2.2em 0;
+    border: 0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--mq-border),
+            transparent
+        );
+}
+
+.markdown-body ul,
+.markdown-body ol {
+    padding-left: 1.7em;
+}
+
+.markdown-body li {
+    margin: 0.28em 0;
+}
+
+.markdown-body li::marker {
+    color: var(--mq-iris);
+}
+
+
+/* ==========================================================
+   9. 正文链接
+   ========================================================== */
+
+.markdown-body a {
+    color: var(--mq-iris);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(116, 111, 167, 0.32);
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.markdown-body a:hover {
+    color: var(--mq-night);
+    border-bottom-color: var(--mq-night);
+    background-color: var(--mq-soft-bg);
+}
+
+[data-user-color-scheme="dark"] .markdown-body a {
+    color: #aaa4d5;
+    border-bottom-color: rgba(170, 164, 213, 0.34);
+}
+
+[data-user-color-scheme="dark"] .markdown-body a:hover {
+    color: #c5c0eb;
+    border-bottom-color: #c5c0eb;
+}
+
+
+/* ==========================================================
+   10. 引用块与 Obsidian Callout 降级显示
+   ========================================================== */
+
+.markdown-body blockquote {
+    margin: 1.45em 0;
+    padding: 0.85em 1.15em;
+
+    color: var(--mq-text);
+    background-color: var(--mq-soft-bg);
+
+    border: 0;
+    border-left: 3px solid var(--mq-iris);
+    border-radius: 0 var(--mq-radius-small) var(--mq-radius-small) 0;
+}
+
+.markdown-body blockquote p {
+    margin: 0.42em 0;
+}
+
+.markdown-body blockquote > :first-child {
+    margin-top: 0;
+}
+
+.markdown-body blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   11. 行内代码
+   ========================================================== */
+
+.markdown-body code,
+code {
+    font-family: var(--mq-font-code) !important;
+}
+
+.markdown-body :not(pre) > code {
+    margin: 0 0.12em;
+    padding: 0.12em 0.36em;
+
+    color: #645d98;
+    background-color: var(--mq-code-inline-bg);
+
+    border: 1px solid rgba(116, 111, 167, 0.10);
+    border-radius: 4px;
+
+    font-size: 0.88em;
+    white-space: break-spaces;
+}
+
+[data-user-color-scheme="dark"] .markdown-body :not(pre) > code {
+    color: #c0b9eb;
+    border-color: rgba(147, 141, 190, 0.13);
+}
+
+
+/* ==========================================================
+   12. 代码块
+   ========================================================== */
+
+figure.highlight,
+.highlight,
+pre {
+    font-family: var(--mq-font-code) !important;
+}
+
+figure.highlight {
+    margin: 1.45em 0;
+    overflow: hidden;
+
+    border: 1px solid rgba(116, 111, 167, 0.12);
+    border-radius: var(--mq-radius);
+
+    box-shadow:
+        0 5px 18px rgba(30, 31, 46, 0.10);
+}
+
+figure.highlight table {
+    margin: 0;
+}
+
+figure.highlight pre,
+figure.highlight code,
+.highlight pre,
+.highlight code {
+    font-family: var(--mq-font-code) !important;
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+figure.highlight figcaption {
+    padding: 0.6em 1em;
+    color: #c0c4da;
+    background-color: #24283b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+/* ==========================================================
+   13. 表格
+   ========================================================== */
+
+.markdown-body table {
+    width: 100%;
+    margin: 1.5em 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+
+    border: 1px solid var(--mq-border);
+    border-radius: var(--mq-radius-small);
+}
+
+.markdown-body table th {
+    color: var(--mq-heading);
+    background-color: var(--mq-soft-bg);
+    font-family: var(--mq-font-heading);
+    font-weight: 600;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+    padding: 0.7em 0.85em;
+    border-right: 1px solid var(--mq-border);
+    border-bottom: 1px solid var(--mq-border);
+}
+
+.markdown-body table tr:last-child td {
+    border-bottom: 0;
+}
+
+.markdown-body table th:last-child,
+.markdown-body table td:last-child {
+    border-right: 0;
+}
+
+.markdown-body table tbody tr {
+    transition: background-color 0.16s ease;
+}
+
+.markdown-body table tbody tr:hover {
+    background-color: rgba(116, 111, 167, 0.045);
+}
+
+
+/* ==========================================================
+   14. 图片
+   ========================================================== */
+
+.markdown-body img {
+    max-width: 100%;
+    border-radius: var(--mq-radius-small);
+    box-shadow:
+        0 6px 22px rgba(34, 34, 59, 0.09);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.markdown-body img:hover {
+    box-shadow:
+        0 10px 30px rgba(34, 34, 59, 0.13);
+}
+
+.image-caption {
+    color: var(--mq-text-secondary);
+    font-size: 0.86rem;
+    letter-spacing: 0.015em;
+}
+
+
+/* ==========================================================
+   15. 文章元信息
+   ========================================================== */
+
+.post-meta,
+.post-metas,
+.post-meta a,
+.post-metas a {
+    color: var(--mq-text-secondary);
+}
+
+.post-meta a:hover,
+.post-metas a:hover {
+    color: var(--mq-iris);
+}
+
+.post-content {
+    color: var(--mq-text);
+}
+
+.post-title {
+    color: var(--mq-heading);
+    font-weight: 600;
+    letter-spacing: 0.025em;
+}
+
+
+/* ==========================================================
+   16. 标签与分类
+   ========================================================== */
+
+.tag,
+.post-tag,
+.category,
+.post-category {
+    border-radius: 999px;
+}
+
+.post-tags a,
+.tagcloud a {
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.post-tags a:hover,
+.tagcloud a:hover {
+    color: var(--mq-iris) !important;
+    transform: translateY(-1px);
+}
+
+.category-list-item,
+.archive-item {
+    transition:
+        background-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.category-list-item:hover,
+.archive-item:hover {
+    background-color: var(--mq-soft-bg);
+}
+
+
+/* ==========================================================
+   17. 目录 TOC
+   ========================================================== */
+
+.tocbot-list a,
+.toc-link {
+    color: var(--mq-text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    transition:
+        color 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.tocbot-list a:hover,
+.toc-link:hover,
+.toc-link.is-active-link {
+    color: var(--mq-iris);
+}
+
+.toc-link::before {
+    background-color: var(--mq-border) !important;
+}
+
+.toc-link.is-active-link::before {
+    background-color: var(--mq-iris) !important;
+}
+
+
+/* ==========================================================
+   18. 分类侧栏
+   ========================================================== */
+
+.category-bar {
+    font-family: var(--mq-font-heading);
+}
+
+.category-bar a {
+    color: var(--mq-text-secondary);
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.category-bar a:hover,
+.category-bar .active {
+    color: var(--mq-iris);
+    background-color: var(--mq-soft-bg);
+}
+
+
+/* ==========================================================
+   19. 上一篇 / 下一篇
+   ========================================================== */
+
+.post-prevnext .post-prev,
+.post-prevnext .post-next {
+    border-radius: var(--mq-radius);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.post-prevnext .post-prev:hover,
+.post-prevnext .post-next:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   20. 分页
+   ========================================================== */
+
+.pagination .page-number,
+.pagination .extend {
+    color: var(--mq-text-secondary);
+    border-radius: var(--mq-radius-small);
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.pagination .page-number:hover,
+.pagination .extend:hover {
+    color: var(--mq-iris);
+    background-color: var(--mq-soft-bg);
+}
+
+.pagination .page-number.current {
+    color: #ffffff;
+    background-color: var(--mq-iris);
+}
+
+
+/* ==========================================================
+   21. 搜索框
+   ========================================================== */
+
+.modal-content,
+.search-result-list {
+    color: var(--mq-text);
+    background-color: var(--mq-board-solid);
+    border: 1px solid var(--mq-border);
+    border-radius: var(--mq-radius-large);
+}
+
+.search-input {
+    color: var(--mq-text);
+    background-color: transparent;
+    border-color: var(--mq-border);
+}
+
+.search-input:focus {
+    border-color: var(--mq-iris);
+    box-shadow: 0 0 0 3px rgba(116, 111, 167, 0.11);
+}
+
+.search-result-title {
+    color: var(--mq-heading);
+}
+
+.search-result-title:hover {
+    color: var(--mq-iris);
+}
+
+
+/* ==========================================================
+   22. 页脚
+   ========================================================== */
+
+footer,
+.footer {
+    color: rgba(255, 255, 255, 0.76);
+    font-family: var(--mq-font-body);
+}
+
+footer a,
+.footer a {
+    color: rgba(255, 255, 255, 0.82);
+    transition:
+        color 0.18s ease,
+        opacity 0.18s ease;
+}
+
+footer a:hover,
+.footer a:hover {
+    color: #ffffff;
+}
+
+
+/* ==========================================================
+   23. 加载进度条
+   ========================================================== */
+
 #nprogress .bar {
-    background: linear-gradient(90deg, #4A4E69 0%, #AB47BC 50%, #FFD700 100%) !important;
-    height: 3px !important;
-    box-shadow: 0 0 10px rgba(171, 71, 188, 0.7) !important;
+    height: 2px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--mq-night) 0%,
+            var(--mq-iris) 65%,
+            var(--mq-amber) 100%
+        ) !important;
+
+    box-shadow: none !important;
 }
 
-/* 5. 滚动条美化 (隐藏笨重的原生滚动条) */
+#nprogress .peg {
+    box-shadow:
+        0 0 8px rgba(195, 154, 98, 0.35),
+        0 0 3px rgba(195, 154, 98, 0.28) !important;
+}
+
+
+/* ==========================================================
+   24. 滚动条
+   ========================================================== */
+
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
 }
-::-webkit-scrollbar-thumb {
-    background: #9A8C98;
-    border-radius: 3px;
-}
+
 ::-webkit-scrollbar-track {
     background: transparent;
 }
 
-/* 6. 去除 Banner 图片的黑色遮罩 (让画面更通透) */
-.banner .mask {
-    background-color: rgba(0, 0, 0, 0.1) !important;
+::-webkit-scrollbar-thumb {
+    background-color: rgba(111, 112, 130, 0.52);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
 }
 
-/* 7. 选中文字的颜色 (紫色背景，白色文字) */
-::selection {
-    background: #7E57C2;
-    color: #fff;
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(116, 111, 167, 0.72);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+[data-user-color-scheme="dark"] ::-webkit-scrollbar-thumb {
+    background-color: rgba(146, 153, 184, 0.46);
+}
+
+
+/* ==========================================================
+   25. 回到顶部与悬浮按钮
+   ========================================================== */
+
+#scroll-top-button,
+.scroll-top-button {
+    border-radius: 50%;
+    box-shadow: var(--mq-shadow);
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+#scroll-top-button:hover,
+.scroll-top-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mq-shadow-hover);
+}
+
+
+/* ==========================================================
+   26. 锚点图标
+   ========================================================== */
+
+.anchorjs-link {
+    color: var(--mq-iris) !important;
+    opacity: 0.55;
+    transition: opacity 0.18s ease;
+}
+
+.anchorjs-link:hover {
+    opacity: 1;
+}
+
+
+/* ==========================================================
+   27. 数学公式
+   ========================================================== */
+
+.katex,
+.katex-display {
+    color: var(--mq-text);
+}
+
+.katex-display {
+    margin: 1.35em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25em 0;
+}
+
+
+/* ==========================================================
+   28. 折叠块
+   ========================================================== */
+
+details {
+    margin: 1.3em 0;
+    overflow: hidden;
+
+    background-color: var(--mq-soft-bg);
+    border: 1px solid var(--mq-border);
+    border-radius: var(--mq-radius-small);
+}
+
+details summary {
+    padding: 0.72em 1em;
+    color: var(--mq-heading);
+    cursor: pointer;
+    font-family: var(--mq-font-heading);
+    font-weight: 600;
+}
+
+details > :not(summary) {
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+details[open] summary {
+    border-bottom: 1px solid var(--mq-border);
+}
+
+
+/* ==========================================================
+   29. 友链与作品卡片
+   ========================================================== */
+
+.links-card,
+.link-card,
+.friend-link,
+.work-card {
+    border: 1px solid var(--mq-border-light);
+    border-radius: var(--mq-radius);
+    box-shadow: var(--mq-shadow);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.links-card:hover,
+.link-card:hover,
+.friend-link:hover,
+.work-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(116, 111, 167, 0.18);
+    box-shadow: var(--mq-shadow-hover);
+}
+
+
+/* ==========================================================
+   30. 移动端适配
+   ========================================================== */
+
+@media (max-width: 991px) {
+    .board {
+        border-radius: 10px;
+    }
+
+    .markdown-body {
+        font-size: 0.98rem;
+        line-height: 1.82;
+    }
+
+    .markdown-body h1 {
+        font-size: 1.75rem;
+    }
+
+    .markdown-body h2 {
+        margin-top: 2.15em;
+        font-size: 1.42rem;
+    }
+
+    .markdown-body h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .board {
+        border-right: 0;
+        border-left: 0;
+        border-radius: 8px;
+    }
+
+    .index-card {
+        margin-bottom: 1.05rem;
+    }
+
+    .index-card:hover .board {
+        transform: none;
+    }
+
+    .markdown-body {
+        font-size: 0.96rem;
+        line-height: 1.78;
+        letter-spacing: 0.006em;
+    }
+
+    .markdown-body h1 {
+        font-size: 1.6rem;
+    }
+
+    .markdown-body h2 {
+        margin-top: 2em;
+        font-size: 1.34rem;
+    }
+
+    .markdown-body h3 {
+        font-size: 1.16rem;
+    }
+
+    .markdown-body table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    figure.highlight pre,
+    figure.highlight code,
+    .highlight pre,
+    .highlight code {
+        font-size: 0.84rem;
+    }
+
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+}
+
+
+/* ==========================================================
+   31. 减少动态效果偏好
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

@@ -11,7 +11,7 @@
 favicon: /img/Rain.png
 apple_touch_icon: /img/Rain.png
 tab_title_separator: " - "
-force_https: true
+force_https: false
 
 # 代码块增强 (Mac 风格 + Atom Dark)
 code:
@@ -173,16 +173,22 @@ open_graph:
 #---------------------------
 footer:
   content: '
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
+    <span>MiQiu · 远星书页</span>
     <br>
-    <span style="font-size: 0.85rem; opacity: 0.6;">System Ver. 4.0 (Amber Echo)</span>
+    <span style="font-size: 0.85rem; opacity: 0.65;">
+      Powered by
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener">Hexo</a>
+      &
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">Fluid</a>
+    </span>
     <br>
-    <a href="https://www.luogu.com.cn" target="_blank">Luogu</a> | 
-    <a href="https://codeforces.com" target="_blank">Codeforces</a> | 
-    <a href="https://atcoder.jp" target="_blank">AtCoder</a>
+    <a href="https://www.luogu.com.cn" target="_blank" rel="noopener">Luogu</a>
+    ·
+    <a href="https://codeforces.com" target="_blank" rel="noopener">Codeforces</a>
+    ·
+    <a href="https://atcoder.jp" target="_blank" rel="noopener">AtCoder</a>
     '
+
   statistics:
     enable: true
     source: "leancloud"
@@ -194,8 +200,8 @@ footer:
 #---------------------------
 index:
   banner_img: /img/banner_index.webp
-  banner_img_height: 100
-  banner_mask_alpha: 0.5
+  banner_img_height: 78
+  banner_mask_alpha: 0.38
 
   slogan:
     enable: true
@@ -206,7 +212,7 @@ index:
   post_meta:
     date: true
     category: true
-    tag: true
+    tag: false
   post_sticky:
     enable: true
     icon: "iconfont icon-top"
@@ -216,22 +222,22 @@ index:
 #---------------------------
 post:
   banner_img: /img/banner_page.webp
-  banner_img_height: 70
-  banner_mask_alpha: 0.3
+  banner_img_height: 60
+  banner_mask_alpha: 0.28
   default_index_img:
   meta:
     author:
-      enable: true
+      enable: false
     date:
       enable: true
-      format: "LL a"
+      format: "YYYY-MM-DD"
     wordcount:
       enable: true
       format: "{} 字"
     min2read:
       enable: true
       awl: 2
-      wpm: 40
+      wpm: 60
       format: "{} 分钟"
     views:
       enable: true
@@ -322,14 +328,14 @@ waline:
 #---------------------------
 archive:
   banner_img: /img/banner_page.webp
-  banner_img_height: 60
-  banner_mask_alpha: 0.3
+  banner_img_height: 48
+  banner_mask_alpha: 0.28
 
 category:
   enable: true
   banner_img: /img/banner_page.webp
-  banner_img_height: 60
-  banner_mask_alpha: 0.3
+  banner_img_height: 48
+  banner_mask_alpha: 0.28
   order_by: "-length"
   collapse_depth: 0
   post_order_by: "-date"
@@ -338,8 +344,8 @@ category:
 tag:
   enable: true
   banner_img: /img/banner_page.webp
-  banner_img_height: 80
-  banner_mask_alpha: 0.3
+  banner_img_height: 48
+  banner_mask_alpha: 0.28
   tagcloud:
     min_font: 15
     max_font: 30
@@ -350,8 +356,8 @@ tag:
 about:
   enable: true
   banner_img: /img/banner_about.jpg
-  banner_img_height: 60
-  banner_mask_alpha: 0.3
+  banner_img_height: 52
+  banner_mask_alpha: 0.28
   avatar: /img/avatar.jpg
   name: "MiQiu"
   intro: "原来期待比踽凉更难，碎了时间"
@@ -360,8 +366,8 @@ about:
 
 page:
   banner_img: /img/banner_page.webp
-  banner_img_height: 60
-  banner_mask_alpha: 0.3
+  banner_img_height: 48
+  banner_mask_alpha: 0.28
 
 page404:
   enable: true
@@ -376,8 +382,8 @@ page404:
 links:
   enable: true
   banner_img: /img/banner_links.webp # 确保这个图片文件存在！
-  banner_img_height: 60
-  banner_mask_alpha: 0.3
+  banner_img_height: 48
+  banner_mask_alpha: 0.28
   
   items:
     - {
