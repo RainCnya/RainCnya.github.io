@@ -102,8 +102,9 @@ custom_js:
 
 custom_css:
   - /css/custom.css
+  - /css/banner.css
   - /css/home.css
-  
+
 web_analytics:
   enable: true
   follow_dnt: true
