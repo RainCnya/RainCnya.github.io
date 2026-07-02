@@ -103,7 +103,7 @@ custom_js:
 custom_css:
   - /css/custom.css
   - /css/banner.css
-  - /css/article.css
+  # - /css/article.css
   - /css/callout.css
   - /css/home.css
 

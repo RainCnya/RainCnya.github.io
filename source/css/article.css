@@ -348,3 +348,47 @@
         padding: 0.58em 0.68em;
     }
 }
+
+/* ==========================================================
+   15. Hexo 代码行号对齐修正
+   ========================================================== */
+
+.markdown-body figure.highlight .gutter,
+.markdown-body figure.highlight .code {
+    vertical-align: top !important;
+}
+
+.markdown-body figure.highlight .gutter pre,
+.markdown-body figure.highlight .code pre {
+    margin: 0 !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+
+    font-family: var(--mq-font-code) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.65 !important;
+}
+
+.markdown-body figure.highlight .gutter pre {
+    padding-right: 0.8rem !important;
+    padding-left: 0.8rem !important;
+}
+
+.markdown-body figure.highlight .code pre {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+}
+
+.markdown-body figure.highlight .gutter .line,
+.markdown-body figure.highlight .code .line {
+    display: block;
+    min-height: 1.65em;
+    line-height: 1.65 !important;
+}
+
+@media (max-width: 767px) {
+    .markdown-body figure.highlight .gutter pre,
+    .markdown-body figure.highlight .code pre {
+        font-size: 0.84rem !important;
+    }
+}
