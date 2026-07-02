@@ -106,7 +106,6 @@ custom_css:
   - /css/article.css
   - /css/callout.css
   - /css/home.css
-  # - /css/taxonomy.css
 
 web_analytics:
   enable: true
@@ -352,11 +351,11 @@ tag:
   banner_img_height: 60
   banner_mask_alpha: 0.42
   tagcloud:
-    min_font: 14
-    max_font: 20
+    min_font: 15
+    max_font: 30
     unit: px
-    start_color: "#899575"
-    end_color: "#746FA7"
+    start_color: "#BBBBEE"
+    end_color: "#337ab7"
 
 about:
   enable: true
