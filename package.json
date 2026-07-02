@@ -2,12 +2,13 @@
   "name": "hexo-site",
   "version": "3.0.0",
   "private": true,
-  "check": "node scripts/validate_posts.js",
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
     "server": "hexo server",
-    "preview": "hexo clean && hexo generate && hexo server"
+    "preview": "hexo clean && hexo generate && hexo server",
+    "check:site": "node tools/site_check.js",
+    "check": "npm run clean && npm run build && npm run check:site"
   },
   "hexo": {
     "version": "8.1.1"
