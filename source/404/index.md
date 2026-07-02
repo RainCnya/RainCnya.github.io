@@ -1,12 +1,10 @@
 ---
-title: 404 Not Found
-layout: 404  # 必须写这个
-banner_img: /img/default.png
+title: 页面躲起来了
+date: 2026-07-02
+layout: 404
+comments: false
 ---
 
-**“这里是信息的荒原。”**
+好像钻进了一个空纸箱。
 
-你似乎迷路了。
-这里的熵值已达最大，没有任何有序的信息。
-
-[返回主页](/)
+五秒后带你回到首页。

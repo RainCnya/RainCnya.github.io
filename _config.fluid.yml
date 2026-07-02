@@ -200,8 +200,8 @@ footer:
 #---------------------------
 index:
   banner_img: /img/banner_index.webp
-  banner_img_height: 78
-  banner_mask_alpha: 0.38
+  banner_img_height: 100
+  banner_mask_alpha: 0.5
 
   slogan:
     enable: true
@@ -223,7 +223,7 @@ index:
 post:
   banner_img: /img/banner_page.webp
   banner_img_height: 60
-  banner_mask_alpha: 0.28
+  banner_mask_alpha: 0.38
   default_index_img:
   meta:
     author:
@@ -328,14 +328,14 @@ waline:
 #---------------------------
 archive:
   banner_img: /img/banner_page.webp
-  banner_img_height: 48
-  banner_mask_alpha: 0.28
+  banner_img_height: 60
+  banner_mask_alpha: 0.42
 
 category:
   enable: true
   banner_img: /img/banner_page.webp
-  banner_img_height: 48
-  banner_mask_alpha: 0.28
+  banner_img_height: 60
+  banner_mask_alpha: 0.42
   order_by: "-length"
   collapse_depth: 0
   post_order_by: "-date"
@@ -344,8 +344,8 @@ category:
 tag:
   enable: true
   banner_img: /img/banner_page.webp
-  banner_img_height: 48
-  banner_mask_alpha: 0.28
+  banner_img_height: 60
+  banner_mask_alpha: 0.42
   tagcloud:
     min_font: 15
     max_font: 30
@@ -355,8 +355,8 @@ tag:
 
 about:
   enable: true
-  banner_img: /img/banner_about.jpg
-  banner_img_height: 52
+  banner_img: /img/banner_about.webp
+  banner_img_height: 80
   banner_mask_alpha: 0.28
   avatar: /img/avatar.jpg
   name: "MiQiu"
@@ -366,14 +366,14 @@ about:
 
 page:
   banner_img: /img/banner_page.webp
-  banner_img_height: 48
-  banner_mask_alpha: 0.28
+  banner_img_height: 60
+  banner_mask_alpha: 0.42
 
 page404:
   enable: true
-  banner_img: /img/banner_page.webp
-  banner_img_height: 85
-  banner_mask_alpha: 0.3
+  banner_img: /img/banner_404.jpg
+  banner_img_height: 72
+  banner_mask_alpha: 0.08
   redirect_delay: 5000
 
 #---------------------------
@@ -382,8 +382,8 @@ page404:
 links:
   enable: true
   banner_img: /img/banner_links.webp # 确保这个图片文件存在！
-  banner_img_height: 48
-  banner_mask_alpha: 0.28
+  banner_img_height: 55
+  banner_mask_alpha: 0.30
   
   items:
     - {

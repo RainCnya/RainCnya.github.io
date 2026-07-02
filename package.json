@@ -2,6 +2,7 @@
   "name": "hexo-site",
   "version": "3.0.0",
   "private": true,
+  "check": "node scripts/validate_posts.js",
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
