@@ -102,7 +102,8 @@ custom_js:
 
 custom_css:
   - /css/custom.css
-
+  - /css/home.css
+  
 web_analytics:
   enable: true
   follow_dnt: true
@@ -199,7 +200,7 @@ footer:
 # Home Page
 #---------------------------
 index:
-  banner_img: /img/banner_index.webp
+  banner_img: /img/banner_index_v2.webp
   banner_img_height: 100
   banner_mask_alpha: 0.5
 
@@ -221,7 +222,7 @@ index:
 # 文章页
 #---------------------------
 post:
-  banner_img: /img/banner_page.webp
+  banner_img: /img/banner_page_v2.webp
   banner_img_height: 60
   banner_mask_alpha: 0.38
   default_index_img:
@@ -327,13 +328,13 @@ waline:
 # 其他页面
 #---------------------------
 archive:
-  banner_img: /img/banner_page.webp
+  banner_img: /img/banner_page_v2.webp
   banner_img_height: 60
   banner_mask_alpha: 0.42
 
 category:
   enable: true
-  banner_img: /img/banner_page.webp
+  banner_img: /img/banner_page_v2.webp
   banner_img_height: 60
   banner_mask_alpha: 0.42
   order_by: "-length"
@@ -343,7 +344,7 @@ category:
 
 tag:
   enable: true
-  banner_img: /img/banner_page.webp
+  banner_img: /img/banner_page_v2.webp
   banner_img_height: 60
   banner_mask_alpha: 0.42
   tagcloud:
@@ -355,7 +356,7 @@ tag:
 
 about:
   enable: true
-  banner_img: /img/banner_about.webp
+  banner_img: /img/banner_about_v2.webp
   banner_img_height: 80
   banner_mask_alpha: 0.28
   avatar: /img/avatar.jpg
@@ -365,7 +366,7 @@ about:
     - { class: "iconfont icon-github-fill", link: "https://github.com/RainCnya/", tip: "GitHub" }
 
 page:
-  banner_img: /img/banner_page.webp
+  banner_img: /img/banner_page_v2.webp
   banner_img_height: 60
   banner_mask_alpha: 0.42
 
@@ -381,7 +382,7 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: /img/banner_links.webp # 确保这个图片文件存在！
+  banner_img: /img/banner_links_v2.webp
   banner_img_height: 55
   banner_mask_alpha: 0.30
   

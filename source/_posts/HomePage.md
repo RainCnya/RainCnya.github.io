@@ -1,5 +1,5 @@
 ---
-title: "[L1] Mi Qiu's Digital Garden"
+title: "米秋的数字花园"
 tags:
   - Meta/Guide
 categories: []
@@ -8,6 +8,62 @@ abbrlink: "92601886"
 date: 2025-11-09 11:00:09
 updated: 2026-2-3 17:59:54
 ---
+
+<div class="garden-intro">
+
+这里是米秋的数字花园。
+
+算法、数学、题解与学习记录在这里逐渐生长；风经过的日子，也会被留在纸页之间。
+
+</div>
+
+<div class="garden-entry-grid">
+
+<a class="garden-entry" href="/categories/算法图谱/">
+  <span class="garden-entry-mark">01</span>
+  <strong>算法图谱</strong>
+  <small>从概念、地位、用途与原理出发，建立算法知识结构。</small>
+</a>
+
+<a class="garden-entry" href="/categories/数学体系/">
+  <span class="garden-entry-mark">02</span>
+  <strong>数学体系</strong>
+  <small>整理竞赛数学中的基础工具、推导路径与专题联系。</small>
+</a>
+
+<a class="garden-entry" href="/categories/题型书库/">
+  <span class="garden-entry-mark">03</span>
+  <strong>题型书库</strong>
+  <small>以典型问题为线索，记录模型识别、转化方式与解题经验。</small>
+</a>
+
+<a class="garden-entry" href="/categories/专题笔记/">
+  <span class="garden-entry-mark">04</span>
+  <strong>专题笔记</strong>
+  <small>围绕具体知识点展开的学习记录与阶段性整理。</small>
+</a>
+
+<a class="garden-entry" href="/categories/比赛题解/">
+  <span class="garden-entry-mark">05</span>
+  <strong>比赛题解</strong>
+  <small>记录比赛中的思路、实现、失误与赛后重新理解。</small>
+</a>
+
+<a class="garden-entry" href="/categories/学习档案/">
+  <span class="garden-entry-mark">06</span>
+  <strong>学习档案</strong>
+  <small>课程、复习、计划以及一段段正在推进的学习过程。</small>
+</a>
+
+<a class="garden-entry garden-entry-wide" href="/categories/风迹/">
+  <span class="garden-entry-mark">07</span>
+  <strong>风迹</strong>
+  <small>记录风经过的日子，以及一些被微光照亮的瞬间。</small>
+</a>
+
+</div>
+
+<!-- more -->
 
 ## 进度记录
 

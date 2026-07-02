@@ -1,0 +1,167 @@
+/* ==========================================================
+   Digital Garden 首页导览
+   ========================================================== */
+
+.garden-intro {
+    max-width: 760px;
+    margin: 0.35rem auto 1.8rem;
+    color: var(--mq-text-secondary);
+    font-size: 1rem;
+    line-height: 1.9;
+    text-align: center;
+}
+
+.garden-intro p {
+    margin: 0.3rem 0;
+}
+
+.garden-entry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 1.5rem 0 0.6rem;
+}
+
+.garden-entry {
+    position: relative;
+    display: flex;
+    min-height: 132px;
+    padding: 1.15rem 1.25rem 1.1rem;
+    overflow: hidden;
+
+    color: var(--mq-text) !important;
+    text-decoration: none !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--mq-board-solid),
+            var(--mq-soft-bg)
+        );
+
+    border: 1px solid var(--mq-border);
+    border-radius: var(--mq-radius);
+
+    box-shadow:
+        0 2px 10px rgba(34, 34, 59, 0.035);
+
+    flex-direction: column;
+    justify-content: center;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.garden-entry::after {
+    position: absolute;
+    right: -24px;
+    bottom: -36px;
+
+    width: 110px;
+    height: 110px;
+
+    content: "";
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(195, 154, 98, 0.13),
+            transparent 68%
+        );
+}
+
+.garden-entry:hover {
+    color: var(--mq-text) !important;
+
+    border-color: rgba(116, 111, 167, 0.28);
+
+    box-shadow:
+        0 8px 24px rgba(74, 78, 105, 0.09);
+
+    transform: translateY(-2px);
+}
+
+.garden-entry-wide {
+    grid-column: 1 / -1;
+    min-height: 112px;
+}
+
+.garden-entry-mark {
+    margin-bottom: 0.45rem;
+
+    color: var(--mq-amber);
+
+    font-family: var(--mq-font-code);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+}
+
+.garden-entry strong {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 0.42rem;
+
+    color: var(--mq-heading);
+
+    font-family: var(--mq-font-heading);
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+}
+
+.garden-entry small {
+    position: relative;
+    z-index: 1;
+
+    color: var(--mq-text-secondary);
+
+    font-family: var(--mq-font-body);
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+[data-user-color-scheme="dark"] .garden-entry {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31, 35, 53, 0.98),
+            rgba(147, 141, 190, 0.08)
+        );
+}
+
+[data-user-color-scheme="dark"] .garden-entry::after {
+    background:
+        radial-gradient(
+            circle,
+            rgba(195, 154, 98, 0.10),
+            transparent 68%
+        );
+}
+
+@media (max-width: 767px) {
+    .garden-intro {
+        margin-bottom: 1.3rem;
+        text-align: left;
+    }
+
+    .garden-entry-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .garden-entry,
+    .garden-entry-wide {
+        grid-column: auto;
+        min-height: 112px;
+        padding: 1rem 1.05rem;
+    }
+
+    .garden-entry:hover {
+        transform: none;
+    }
+}
