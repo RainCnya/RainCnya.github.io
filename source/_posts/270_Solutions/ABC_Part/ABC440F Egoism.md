@@ -1,11 +1,15 @@
 ---
-title: "[Leaf] ABC440F Egoism"
+title: '[Leaf] ABC440F Egoism'
 tags:
- - 数据结构/树状数组
- - 算法/离散化
- - 策略/动态维护
-date: 2026-07-09
-updated: 2026-07-09
+  - 数据结构/树状数组
+  - 算法/离散化
+  - 策略/动态维护
+categories:
+  - 270_Solutions
+  - ABC_Part
+abbrlink: 5021de5b
+date: 2026-07-09 00:00:00
+updated: 2026-07-09 00:00:00
 ---
 
 # [ABC440 F - Egoism](https://atcoder.jp/contests/abc440/tasks/abc440_f)

@@ -3,8 +3,11 @@ title: '[Leaf] ABC441D Paid Walk'
 tags:
   - 搜索/DFS
 abbrlink: 7b70f3b7
-date: 2026-07-10
-updated: 2026-07-10
+categories:
+  - 270_Solutions
+  - ABC_Part
+date: 2026-07-10 00:00:00
+updated: 2026-07-10 00:00:00
 ---
 
 # [ABC441D - Paid Walk](https://atcoder.jp/contests/abc441/tasks/abc441_d "null")
