@@ -1,10 +1,14 @@
 ---
-title: "[Leaf] ABC440E Cookies"  
+title: '[Leaf] ABC440E Cookies'
 tags:
- - 策略/贪心
- - 搜索/堆优化
-date: 2026-07-06  
-updated: 2026-07-06
+  - 策略/贪心
+  - 搜索/堆优化
+categories:
+  - 270_Solutions
+  - ABC_Part
+abbrlink: 2288891e
+date: 2026-07-06 00:00:00
+updated: 2026-07-06 00:00:00
 ---
 
 # [ABC440 E - Cookies](https://atcoder.jp/contests/abc440/tasks/abc440_e)  

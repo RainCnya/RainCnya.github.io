@@ -1,8 +1,12 @@
 ---
-title: "[Leaf] ABC439E Kite"
+title: '[Leaf] ABC439E Kite'
 tags: DP/LIS
-date: 2026-07-06
-updated: 2026-07-06
+categories:
+  - 270_Solutions
+  - ABC_Part
+abbrlink: 2d2f3a03
+date: 2026-07-06 00:00:00
+updated: 2026-07-06 00:00:00
 ---
 
 # [E - Kite](https://atcoder.jp/contests/abc439/tasks/abc439_e)

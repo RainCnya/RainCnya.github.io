@@ -1,10 +1,14 @@
 ---
-title: "[Leaf] ABC439F Beautiful Kadomatsu"
-tags: 
- - 组合
- - 数据结构/树状数组
-date: 2026-07-06
-updated: 2026-07-06
+title: '[Leaf] ABC439F Beautiful Kadomatsu'
+tags:
+  - 组合
+  - 数据结构/树状数组
+categories:
+  - 270_Solutions
+  - ABC_Part
+abbrlink: eb0401c4
+date: 2026-07-06 00:00:00
+updated: 2026-07-06 00:00:00
 ---
 # [F - Beautiful Kadomatsu](https://atcoder.jp/contests/abc439/tasks/abc439_f)
 

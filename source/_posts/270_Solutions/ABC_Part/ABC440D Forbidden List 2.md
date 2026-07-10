@@ -1,9 +1,13 @@
 ---
-title: "[Leaf] ABC440D Forbidden List 2"  
+title: '[Leaf] ABC440D Forbidden List 2'
 tags:
- - 二分
-date: 2026-07-06  
-updated: 2026-07-06
+  - 二分
+categories:
+  - 270_Solutions
+  - ABC_Part
+abbrlink: 7f795164
+date: 2026-07-06 00:00:00
+updated: 2026-07-06 00:00:00
 ---
 
 # [ABC440D - Forbidden List 2](https://atcoder.jp/contests/abc440/tasks/abc440_d)
