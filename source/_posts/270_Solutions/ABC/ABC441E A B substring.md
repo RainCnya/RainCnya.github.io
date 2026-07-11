@@ -1,10 +1,14 @@
 ---
-title: "[Leaf] ABC441E A > B substring"
+title: '[Leaf] ABC441E A > B substring'
 tags:
   - 字符串
   - 数据结构/树状数组
-date: 2026-07-10
-updated: 2026-07-10
+categories:
+  - 270_Solutions
+  - ABC
+abbrlink: 97a015b8
+date: 2026-07-10 00:00:00
+updated: 2026-07-10 00:00:00
 ---
 
 # [ABC441E - A > B substring](https://atcoder.jp/contests/abc441/tasks/abc441_e)

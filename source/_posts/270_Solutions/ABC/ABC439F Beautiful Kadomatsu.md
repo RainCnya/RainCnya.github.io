@@ -5,7 +5,7 @@ tags:
   - 数据结构/树状数组
 categories:
   - 270_Solutions
-  - ABC_Part
+  - ABC
 abbrlink: eb0401c4
 date: 2026-07-06 00:00:00
 updated: 2026-07-06 00:00:00

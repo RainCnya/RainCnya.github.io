@@ -4,7 +4,7 @@ tags:
   - 二分
 categories:
   - 270_Solutions
-  - ABC_Part
+  - ABC
 abbrlink: 7f795164
 date: 2026-07-06 00:00:00
 updated: 2026-07-06 00:00:00

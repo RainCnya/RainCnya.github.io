@@ -4,9 +4,8 @@ tags:
   - DP/背包
   - 难度/P4
 categories:
-  - 220_Library
-  - 30_动态规划
-  - 背包DP
+  - 270_Solutions
+  - ABC
 abbrlink: 79c2a83b
 date: 2026-01-19 00:00:00
 ---
