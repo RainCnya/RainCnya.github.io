@@ -1,6 +1,6 @@
 ---
 title: 文字作品
-description: 沿着时间、远行与微光，阅读随笔、游记、书评和年度记录。
+description: 沿着时间、远行与微光，阅读随笔、游记和年度记录。
 tags:
   - Meta/Guide
 comments: false
@@ -28,8 +28,7 @@ updated: 2026-07-12 00:00:00
 ## 远行与比赛
 
 - [[2026-05-18_Travelogue_icpc-nanchang|南昌游记 夏天的星位]]；
-- [[2026-04-26_Travelogue_ccpc-final-nanyang|南阳游记 春天替我记下了这次远行]]；
-- [[2025-11-12_Essay_luogu-restart|我从洛谷再出发]]。
+- [[2026-04-26_Travelogue_ccpc-final-nanyang|南阳游记 春天替我记下了这次远行]]。
 
 比赛在这里不只留下题目和名次，也留下城市、同行者，以及走出赛场之后的心情。
 
@@ -38,11 +37,6 @@ updated: 2026-07-12 00:00:00
 - [[2025-12-04_Essay_moonlit-butterfly|月光沐浴下的蝴蝶]]；
 - [[2025-11-27_Essay_orange-soda|橙子汽水]]；
 - [[2025-05-14_Fiction_prologue|楔子 - 青丘弦月]]。
-
-## 年度记录
-
-- [[2026-02-12_Summary_2025|2025年度总结]]；
-- [[2026-01-16_Speech_endogenous-order|内生秩序]]。
 
 ## 进入完整作品集
 
