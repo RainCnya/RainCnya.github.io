@@ -50,7 +50,7 @@ fun_features:
   progressbar:
     enable: true
     height_px: 3
-    color: "#7E57C2" # 紫色进度条
+    color: "#806AA8" # 柔和灰紫进度条
     options: { showSpinner: false, trickleSpeed: 100 }
 
 # 暗色模式
@@ -69,27 +69,27 @@ head:
 # 视觉与色彩 (Purple Rain) (鸢尾花与雨)
 # -----------------------------------------------------------------
 color:
-  body_bg_color: "#F7F7F9"
+  body_bg_color: "#F3EFE7"
   body_bg_color_dark: "#1A1B26"
-  navbar_bg_color: "#4A4E69"
+  navbar_bg_color: "#555166"
   navbar_bg_color_dark: "#24283B"
-  navbar_text_color: "#F2E9E4"
+  navbar_text_color: "#F8F1E7"
   navbar_text_color_dark: "#C0CAF5"
   subtitle_color: "#FFFFFF"
   subtitle_color_dark: "#C0CAF5"
-  text_color: "#22223B"
+  text_color: "#35313F"
   text_color_dark: "#A9B1D6"
-  board_color: "#FFFFFF"
+  board_color: "#FFFCF6"
   board_color_dark: "#1F2335"
-  post_text_color: "#22223B"
+  post_text_color: "#35313F"
   post_text_color_dark: "#C0CAF5"
   
   # 核心点缀: 紫色
-  post_link_color: "#7E57C2" 
+  post_link_color: "#7863A3"
   post_link_color_dark: "#BB9AF7"
-  link_hover_color: "#673AB7"
+  link_hover_color: "#604B8D"
   link_hover_color_dark: "#9D7CD8"
-  link_hover_bg_color: "#F3E5F5"
+  link_hover_bg_color: "#EEE8F2"
   link_hover_bg_color_dark: "#292E42"
 
 # 字体配置 (霞鹜文楷)
@@ -137,9 +137,7 @@ navbar:
     enable: false # 我们在 custom.css 里手动实现了更高级的毛玻璃，这里关掉防止冲突
   menu:
     - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
-    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
-    - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "works", name: "作品", link: "/works/", icon: "iconfont icon-books" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
     - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
@@ -191,6 +189,14 @@ footer:
     <a href="https://codeforces.com" target="_blank" rel="noopener">Codeforces</a>
     ·
     <a href="https://atcoder.jp" target="_blank" rel="noopener">AtCoder</a>
+    <br>
+    <a href="/categories/">文章分类</a>
+    ·
+    <a href="/tags/">全部标签</a>
+    ·
+    <a href="/archives/">时间归档</a>
+    ·
+    <a href="/recent/">最近更新</a>
     '
 
   statistics:
@@ -398,24 +404,6 @@ links:
     }
     # --- 核心刷题平台 ---
     - {
-      title: "Luogu",
-      intro: "洛谷 - 算法竞赛刷题社区",
-      link: "https://www.luogu.com.cn/",
-      avatar: "https://www.google.com/s2/favicons?domain=luogu.com.cn&sz=128"
-    }
-    - {
-      title: "Codeforces",
-      intro: "CF - 全球顶尖算法竞技场",
-      link: "https://codeforces.com/",
-      avatar: "https://www.google.com/s2/favicons?domain=codeforces.com&sz=128"
-    }
-    - {
-      title: "AtCoder",
-      intro: "高质量的日本算法竞赛",
-      link: "https://atcoder.jp/",
-      avatar: "https://www.google.com/s2/favicons?domain=atcoder.jp&sz=128"
-    }
-    - {
       title: "Clist",
       intro: "全网算法比赛日程表",
       link: "https://clist.by/",
@@ -429,19 +417,6 @@ links:
       link: "https://oi-wiki.org/",
       avatar: "https://oi-wiki.org/favicon.ico"
     }
-    - {
-      title: "CS DIY",
-      intro: "北大信科：计算机自学指南",
-      link: "https://csdiy.wiki/",
-      avatar: "https://csdiy.wiki/logo.png"
-    }
-    - {
-      title: "Missing Semester",
-      intro: "MIT: 计算机教育中缺失的一课",
-      link: "https://missing-semester-cn.github.io/",
-      avatar: "https://missing-semester-cn.github.io/favicon.ico"
-    }
-
     # --- 实用工具 ---
     - {
       title: "VisuAlgo",

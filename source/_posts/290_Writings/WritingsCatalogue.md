@@ -1,18 +1,20 @@
 ---
-title: 风迹作品目录
-description: 按时间整理《风迹》中的随笔、书评、信笺、演讲、总结与游记。
+title: 文字作品目录
+description: 按时间整理随笔、书评、信笺、演讲、总结与游记。
 tags:
   - Meta/Index
 comments: false
 copyright: false
 categories:
-  - 290_WindTrace
+  - 290_Writings
 abbrlink: 7525e7eb
 date: 2026-02-22 09:59:41
 updated: 2026-07-12 00:00:00
 ---
 
-这里按时间收录《风迹》的全部文字。第一次来访，可以先阅读 [[WindTraceGuide|风迹导览]]；已经知道要找哪一篇时，可以直接使用这份目录。
+## 文字作品目录
+
+这里按时间收录全部文字作品。第一次来访，可以先阅读 [[WritingsGuide|文字作品导览]]；已经知道要找哪一篇时，可以直接使用这份目录。
 
 ## 2026
 
@@ -36,7 +38,6 @@ updated: 2026-07-12 00:00:00
 
 ## 其他入口
 
-- [[WindTraceGuide|风迹导览]]：精选文章、主题脉络与阅读建议；
+- [[WritingsGuide|文字作品导览]]：精选文章、主题脉络与阅读建议；
 - [《风迹》作品集](/works/wind-trace/)：独立设计的作品展示；
-- [风迹分类索引](/categories/风迹/)：站点生成的完整分类列表。
-
+- [文字作品分类索引](/categories/文字作品/)：站点生成的完整分类列表。

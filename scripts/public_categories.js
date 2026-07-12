@@ -15,7 +15,7 @@ const ROOT_CATEGORY_MAP = {
   "240_Math": "数学体系",
   "270_Solutions": "比赛题解",
   "280_Study": "学习档案",
-  "290_WindTrace": "风迹",
+  "290_Writings": "文字作品",
 };
 
 /**

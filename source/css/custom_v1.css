@@ -13,6 +13,35 @@
    页面使用清晰的无衬线字体，正文保留轻微书页感
    ========================================================== */
 
+:root {
+    --mq-board-solid: #fffcf6;
+    --mq-soft-bg: #f5efe6;
+    --mq-border: #ddd4c8;
+    --mq-border-light: #e9e1d7;
+    --mq-text: #3b3643;
+    --mq-text-secondary: #746d78;
+    --mq-heading: #302b39;
+    --mq-iris: #7863a3;
+    --mq-amber: #a87943;
+    --mq-radius: 12px;
+    --mq-radius-small: 8px;
+    --mq-font-heading: "Microsoft YaHei", "PingFang SC", sans-serif;
+    --mq-font-body: "LXGW WenKai Screen", "Microsoft YaHei", sans-serif;
+    --mq-font-code: "Cascadia Code", "Consolas", monospace;
+}
+
+[data-user-color-scheme="dark"] {
+    --mq-board-solid: #1f2335;
+    --mq-soft-bg: #292e42;
+    --mq-border: rgba(192, 202, 245, 0.14);
+    --mq-border-light: rgba(192, 202, 245, 0.09);
+    --mq-text: #c0caf5;
+    --mq-text-secondary: #9aa5ce;
+    --mq-heading: #d8def8;
+    --mq-iris: #bb9af7;
+    --mq-amber: #e0af68;
+}
+
 /* 导航、分类、普通页面组件 */
 body {
     font-family:
@@ -20,6 +49,14 @@ body {
         "PingFang SC",
         "Noto Sans CJK SC",
         sans-serif !important;
+
+    color: #35313f;
+    background-color: #f3efe7 !important;
+}
+
+[data-user-color-scheme="dark"] body {
+    color: #a9b1d6;
+    background-color: #1a1b26 !important;
 }
 
 
@@ -68,9 +105,10 @@ body {
 }
 
 /* 2. 主板：沿用旧版毛玻璃，仅略微收敛圆角与阴影 */
-.board {
-    background-color: rgba(255, 255, 255, 0.88) !important;
-    border: 1px solid rgba(255, 255, 255, 0.42);
+.board,
+#board {
+    background-color: rgba(255, 252, 246, 0.92) !important;
+    border: 1px solid rgba(218, 207, 193, 0.72);
     border-radius: 14px;
 
     -webkit-backdrop-filter: blur(10px);
@@ -82,7 +120,8 @@ body {
 }
 
 /* 暗色模式保持原来的夜色，不额外重绘正文颜色 */
-[data-user-color-scheme="dark"] .board {
+[data-user-color-scheme="dark"] .board,
+[data-user-color-scheme="dark"] #board {
     background-color: rgba(30, 30, 40, 0.82) !important;
     border-color: rgba(255, 255, 255, 0.055);
     box-shadow:
@@ -108,7 +147,7 @@ body {
 
 /* 3. 顶部导航栏：保留黛紫透明感 */
 .navbar {
-    background-color: rgba(74, 78, 105, 0.82) !important;
+    background-color: rgba(85, 81, 102, 0.86) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.055);
 
     -webkit-backdrop-filter: blur(10px);
