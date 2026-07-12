@@ -26,6 +26,7 @@ updated: 2026-07-12 00:00:00
 6. [[2026-06-17_Speech_seeing-home-from-afar|走远以后，我才看见家]]｜演讲
 7. [[2026-06-26_Essay_old-capital-thirteen-stars|旧都的十三星]]｜随笔
 8. [[2026-07-06_Fiction_sunny-standby-rainy-rescue|晴天待命，雨天救人]]｜小说
+9. [[2026-07-12_Fiction_are-you-still-there|还在……吗？]]｜小说
 
 ## 2025
 
