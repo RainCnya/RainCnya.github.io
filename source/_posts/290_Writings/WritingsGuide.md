@@ -22,26 +22,26 @@ updated: 2026-07-12 00:00:00
 ## 近期文字
 
 - [[2026-06-26_Essay_old-capital-thirteen-stars|旧都的十三星]]：一场比赛结束以后，以及半年后重新理解那段记忆；
-- [[2026-06-16_Essay_Mr-King|金先生]]：关于相遇与人的记录；
+- [[2026-06-16_Essay_Mr-King|老金？老金。]]：关于相遇与人的记录；
 - [[2026-04-29_Essay_thin-thread|细线]]：留住某些不易察觉的感受。
 
 ## 远行与比赛
 
-- [[2026-05-18_Travelogue_icpc-nanchang|ICPC 南昌游记]]；
-- [[2026-04-26_Travelogue_ccpc-final-nanyang|CCPC Final 南阳游记]]；
-- [[2025-11-12_Essay_luogu-restart|洛谷重启]]。
+- [[2026-05-18_Travelogue_icpc-nanchang|南昌游记 夏天的星位]]；
+- [[2026-04-26_Travelogue_ccpc-final-nanyang|南阳游记 春天替我记下了这次远行]]；
+- [[2025-11-12_Essay_luogu-restart|我从洛谷再出发]]。
 
 比赛在这里不只留下题目和名次，也留下城市、同行者，以及走出赛场之后的心情。
 
 ## 月光、风与夏日
 
-- [[2025-12-04_Essay_moonlit-butterfly|月下蝶]]；
+- [[2025-12-04_Essay_moonlit-butterfly|月光沐浴下的蝴蝶]]；
 - [[2025-11-27_Essay_orange-soda|橙子汽水]]；
-- [[2025-05-14_Fiction_prologue|序章]]。
+- [[2025-05-14_Fiction_prologue|楔子 - 青丘弦月]]。
 
 ## 年度记录
 
-- [[2026-02-12_Summary_2025|2025 年度记录]]；
+- [[2026-02-12_Summary_2025|2025年度总结]]；
 - [[2026-01-16_Speech_endogenous-order|内生秩序]]。
 
 ## 进入完整作品集

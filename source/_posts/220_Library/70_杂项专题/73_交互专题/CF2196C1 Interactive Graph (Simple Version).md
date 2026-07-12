@@ -1,7 +1,7 @@
 ---
 title: "[Leaf] CF2196C1\_Interactive Graph (Simple Version)"
 tags:
-  - 交互
+  - 策略/交互
   - 图论/基础
   - 策略/二分答案
   - 难度/P4

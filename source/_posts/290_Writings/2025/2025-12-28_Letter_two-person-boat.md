@@ -1,8 +1,8 @@
 ---
 title: 双人船
-tags: Meta/Letter
+tags: 写作/信笺
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2025'
 archive: true
 abbrlink: 107eb856

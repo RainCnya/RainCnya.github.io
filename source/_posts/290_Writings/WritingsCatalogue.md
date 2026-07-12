@@ -2,7 +2,7 @@
 title: 文字作品目录
 description: 按时间整理随笔、书评、信笺、演讲、总结与游记。
 tags:
-  - Meta/Index
+  - Meta/Guide
 comments: false
 copyright: false
 categories:
@@ -19,8 +19,8 @@ updated: 2026-07-12 00:00:00
 ## 2026
 
 1. [[2026-01-16_Speech_endogenous-order|内生秩序]]｜演讲
-2. [[2026-02-12_Summary_2025|2025 年末总结]]｜总结
-3. [[2026-04-26_Travelogue_ccpc-final-nanyang|我带着春天回来了]]｜游记
+2. [[2026-02-12_Summary_2025|2025年终总结]]｜总结
+3. [[2026-04-26_Travelogue_ccpc-final-nanyang|春天替我记下了这次远行]]｜游记
 4. [[2026-04-29_Essay_thin-thread|细线]]｜随笔
 5. [[2026-05-18_Travelogue_icpc-nanchang|夏天的星位]]｜游记
 6. [[2026-06-16_Essay_Mr-King|老金？老金。]]｜随笔
@@ -33,7 +33,7 @@ updated: 2026-07-12 00:00:00
 3. [[2025-11-11_Essay_time-is-not-dimension|时间不是维度]]｜随笔
 4. [[2025-11-12_Essay_luogu-restart|我从洛谷再出发]]｜随笔
 5. [[2025-11-27_Essay_orange-soda|橙子汽水]]｜随笔
-6. [[2025-12-04_Essay_moonlit-butterfly|月光沐浴的蝴蝶]]｜随笔
+6. [[2025-12-04_Essay_moonlit-butterfly|月光沐浴下的蝴蝶]]｜随笔
 7. [[2025-12-28_Letter_two-person-boat|双人船]]｜信笺
 
 ## 其他入口

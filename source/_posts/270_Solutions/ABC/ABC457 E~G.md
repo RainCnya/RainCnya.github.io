@@ -1,6 +1,6 @@
 ---
 title: "[Solution] ABC457 A~G"
-tags: ABC
+tags:
 categories:
   - 270_Solutions
   - ABC

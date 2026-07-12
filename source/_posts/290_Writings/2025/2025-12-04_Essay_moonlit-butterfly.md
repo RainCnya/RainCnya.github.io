@@ -1,8 +1,8 @@
 ---
 title: 月光沐浴下的蝴蝶
-tags: Meta/Essay
+tags: 写作/随笔
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2025'
 archive: true
 abbrlink: 2ea33511

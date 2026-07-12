@@ -1,8 +1,8 @@
 ---
 title: 我从洛谷再出发
-tags: Meta/Essay
+tags: 写作/随笔
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2025'
 archive: true
 abbrlink: ab65d9e6

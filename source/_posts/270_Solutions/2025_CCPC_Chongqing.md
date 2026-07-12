@@ -1,8 +1,6 @@
 ---
 title: '[Solution] 2025_CCPC_Chongqing'
 tags:
-  - 2025
-  - CCPC/Chongqing
   - 难度/P5
 categories:
   - 270_Solutions

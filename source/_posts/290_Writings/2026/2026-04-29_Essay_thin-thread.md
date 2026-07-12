@@ -1,8 +1,8 @@
 ---
 title: 细线
-tags: Meta/Essay
+tags: 写作/随笔
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2026'
 archive: true
 abbrlink: fcff7471

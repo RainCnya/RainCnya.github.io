@@ -1,8 +1,8 @@
 ---
 title: 春天替我记下了这次远行
-tags: Meta/Travelogue
+tags: 写作/游记
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2026'
 archive: true
 abbrlink: c86f2161

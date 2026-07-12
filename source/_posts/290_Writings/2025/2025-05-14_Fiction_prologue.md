@@ -1,8 +1,8 @@
 ---
 title: 楔子 - 青丘弦月
-tags: Meta/Fiction
+tags: 写作/小说
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2025'
 archive: true
 abbrlink: ede8027c

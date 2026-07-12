@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [CF2196C2] Interactive Graph (Hard Version)'
 tags:
-  - 交互
+  - 策略/交互
   - 图论/基础
   - DP/记忆化搜索
   - 难度/P5

@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC459 C~E'
-tags: ABC
+tags:
 categories:
   - 270_Solutions
   - ABC

@@ -1,8 +1,8 @@
 ---
 title: 内生秩序
-tags: Meta/Speech
+tags: 写作/演讲
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2026'
 archive: true
 abbrlink: 56c8ecc8

@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC443 A~D'
-tags: ABC
+tags:
 categories:
   - 270_Solutions
   - ABC

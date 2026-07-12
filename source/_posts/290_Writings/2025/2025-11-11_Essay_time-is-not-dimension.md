@@ -1,8 +1,8 @@
 ---
 title: 时间不是维度
-tags: Meta/Essay
+tags: 写作/随笔
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2025'
 archive: true
 abbrlink: cfa6377b

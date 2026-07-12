@@ -1,7 +1,7 @@
 ---
 title: LIS模型
 tags:
-  - 算法/理论
+  - algorithm/理论
   - DP/线性
   - DP/LIS
 categories:

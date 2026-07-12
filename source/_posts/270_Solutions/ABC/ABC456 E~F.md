@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC456 A~F'
-tags: ABC
+tags:
 categories:
   - 270_Solutions
   - ABC

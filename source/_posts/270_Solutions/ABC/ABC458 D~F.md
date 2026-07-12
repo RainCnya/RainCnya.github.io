@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC458 A~F'
-tags: ABC
+tags:
 categories:
   - 270_Solutions
   - ABC

@@ -1,8 +1,8 @@
 ---
 title: 夏天的星位
-tags: Meta/Travelogue
+tags: 写作/游记
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2026'
 archive: true
 abbrlink: c81cc44c

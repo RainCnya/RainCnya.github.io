@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC448 A~E'
-tags: ABC
+tags:
 categories:
   - 270_Solutions
   - ABC

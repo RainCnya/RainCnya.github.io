@@ -1,8 +1,8 @@
 ---
 title: 浪潮之巅读后感
-tags: Meta/Review
+tags: 写作/书评
 categories:
-  - 290_WindTrace
+  - 290_Writings
   - '2025'
 archive: true
 abbrlink: 19c9c7ed

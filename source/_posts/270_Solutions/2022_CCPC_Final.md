@@ -1,8 +1,6 @@
 ---
 title: '[Solution] 2022_CCPC_Final'
 tags:
-  - 2022
-  - CCPC/Final
   - 难度/P5
 categories:
   - 270_Solutions

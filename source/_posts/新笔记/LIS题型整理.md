@@ -1,7 +1,7 @@
 ---
 title: LIS题型整理
 tags:
-  - 算法/题型
+  - algorithm/题型
   - DP/线性
   - DP/LIS
 categories:
