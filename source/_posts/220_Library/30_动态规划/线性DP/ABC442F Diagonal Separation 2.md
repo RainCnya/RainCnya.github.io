@@ -2,7 +2,7 @@
 title: '[Leaf] [ABC442F] Diagonal Separation 2'
 tags:
   - DP/线性
-  - 算法/前缀差分
+  - 优化/前缀差分
   - 难度/P3
 categories:
   - 220_Library

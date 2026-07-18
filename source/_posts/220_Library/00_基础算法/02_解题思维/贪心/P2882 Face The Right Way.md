@@ -2,7 +2,7 @@
 title: '[Leaf] [P2882] Face The Right Way G'
 tags:
   - 策略/贪心
-  - 算法/前缀差分
+  - 优化/前缀差分
   - 难度/P2
 categories:
   - 220_Library

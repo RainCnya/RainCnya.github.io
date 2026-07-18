@@ -3,7 +3,7 @@ title: '[Leaf] [CF2201C] Rigged Bracket Sequence'
 tags:
   - DP/线性
   - DP/计数
-  - 算法/前缀差分
+  - 优化/前缀差分
   - 难度/P5
 categories:
   - 220_Library

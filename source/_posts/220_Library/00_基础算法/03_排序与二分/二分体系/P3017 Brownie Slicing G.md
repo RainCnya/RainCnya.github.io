@@ -2,7 +2,7 @@
 title: '[Leaf] [P3017] [USACO11MAR] Brownie Slicing G'
 tags:
   - 策略/二分答案
-  - 算法/前缀差分
+  - 优化/前缀差分
   - 策略/贪心
   - 难度/P3
 categories:

@@ -1,7 +1,7 @@
 ---
 title: '[Leaf] [ARC215C] Strong Surname'
 tags:
-  - 算法/前缀差分
+  - 优化/前缀差分
   - 策略/转化
   - 难度/P4
 categories:

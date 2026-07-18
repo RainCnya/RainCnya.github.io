@@ -2,7 +2,7 @@
 title: '[Leaf] [ABC446G] 221 Subsequence'
 tags:
   - DP/计数
-  - 算法/前缀差分
+  - 优化/前缀差分
   - 难度/P4
 categories:
   - 220_Library

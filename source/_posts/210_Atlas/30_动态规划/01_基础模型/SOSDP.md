@@ -1,7 +1,7 @@
 ---
 title: '[Note] SOSDP'
 tags:
-  - 算法/前缀差分
+  - 优化/前缀差分
   - DP/状压
   - 难度/P3
 categories:
