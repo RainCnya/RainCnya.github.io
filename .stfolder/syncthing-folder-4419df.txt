@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: oexaw-jpwur
+created: 2026-07-19T21:02:32+08:00

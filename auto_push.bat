@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-cd /d G:\Hexo_Blog
+cd /d H:\Hexo_Blog
 if errorlevel 1 (
     echo Cannot enter blog directory.
     exit /b 1

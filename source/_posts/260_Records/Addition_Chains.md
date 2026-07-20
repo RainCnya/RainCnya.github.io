@@ -1,7 +1,7 @@
 ---
 title: Addition Chains
 tags:
-  - algorithm/problem-note
+  - algorithm/记录
   - 搜索
 status: solved
 categories:

@@ -1,7 +1,7 @@
 ---
 title: CF11D A Simple Task
 tags:
-  - algorithm/problem-note
+  - algorithm/记录
   - DP/状压
 status: solved
 categories:
