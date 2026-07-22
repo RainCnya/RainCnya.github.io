@@ -49,9 +49,7 @@ date: 2026-07-16 00:00:00
 
 ## 实现
 
-{% fold info @代码 %}
-
-```cpp
+```cpp title:"代码" fold
 int n;
 int a[maxn];
 
@@ -93,7 +91,6 @@ void solve( ) {
     }
 }
 ```
-{% endfold %}
 
 ## 复盘
 

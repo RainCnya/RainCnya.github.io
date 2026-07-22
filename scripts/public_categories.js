@@ -9,12 +9,13 @@
  */
 
 const ROOT_CATEGORY_MAP = {
-  "210_Atlas": "算法图谱",
-  "220_Library": "题型书库",
-  "230_Notes": "专题笔记",
-  "240_Math": "数学体系",
-  "270_Solutions": "比赛题解",
-  "280_Study": "学习档案",
+  "210_Atlas": "旧算法",
+  "220_Library": "旧题解",
+  "230_Notes": "笔记",
+  "240_Math": "数学",
+  "260_Records": "新记录",
+  "270_Solutions": "新题解",
+  "280_Study": "学习论",
   "290_Writings": "文字作品",
 };
 

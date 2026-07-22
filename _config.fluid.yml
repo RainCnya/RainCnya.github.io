@@ -402,6 +402,12 @@ links:
       link: "https://blog.rookiesama.space/",
       avatar: "https://blog.rookiesama.space/_astro/yingying.Ba81ZFjz_Z1CHxkf.webp"
     }
+    - {
+      title: "时沐风炎",
+      intro: "时沐风炎的个人博客",
+      link: "https://smfy.space/",
+      avatar: "https://smfy.space/favicon.ico"
+    }
     # --- 核心刷题平台 ---
     - {
       title: "Clist",

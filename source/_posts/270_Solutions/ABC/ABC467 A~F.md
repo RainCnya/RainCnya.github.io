@@ -31,8 +31,7 @@ updated: 2026-07-19 00:00:00
 
 OK 话说回来，这题本质考察式子的化简，避免浮点数计算，以转化为整数的计算来判断。首先给出两种不同的做法：
 
-{% fold info @AAA %}
-```cpp
+```cpp title:"AAA" fold
 void solve1( ) {
     int h = read( ), w = read( );
     double bmi = (double)w * 10000 / h / h;
@@ -48,7 +47,6 @@ void solve2( ) {
     else cout << "No" << '\n';
 }
 ```
-{% endfold %}
 
 前者是我的 AC 代码，后者存在浮点误差导致 WA 的风险。两种做法在实数运算中没有本质区别，但浮点数的运算路径不同，产生的舍入误差也会不同。下文尝试解释这个误差，并给出正解思路。
 
@@ -71,15 +69,13 @@ $$
 
 #### 实现
 
-{% fold info @AAA %}
-```cpp
+```cpp title:"AAA" fold
 void solve( ) {
     ll h = read( ), w = read( );
     if( 400 * w >= h * h ) cout << "Yes" << '\n';
     else cout << "No" << '\n';
 }
 ```
-{% endfold %}
 
 ### [B - Keep the Change](https://atcoder.jp/contests/abc467/tasks/abc467_b)
 
@@ -93,8 +89,7 @@ void solve( ) {
 
 #### 实现
 
-{% fold info @BBB %}
-```cpp
+```cpp title:"BBB" fold
 void solve( ) {
     int n = read( );
     ll x = 0;
@@ -113,7 +108,6 @@ void solve( ) {
     cout << x << '\n';
 }
 ```
-{% endfold %}
 
 ### [C - Adjacent Sums (easy)](https://atcoder.jp/contests/abc467/tasks/abc467_c)
 
@@ -129,8 +123,7 @@ void solve( ) {
 
 #### 实现
 
-{% fold info @CCC %}
-```cpp
+```cpp title:"CCC" fold
 void solve( ) {
     int n = read( ), m = read( );
     for( int i = 1; i <= n; ++ i ) a[i] = read( );
@@ -153,7 +146,6 @@ void solve( ) {
     cout << min( res1, res2 ) << '\n';
 }
 ```
-{% endfold %}
 
 ### [D - Concentric Circles](https://atcoder.jp/contests/abc467/tasks/abc467_d)
 
@@ -194,8 +186,7 @@ $$
 
 #### 实现
 
-{% fold info @DDD %}
-```cpp
+```cpp title:"DDD" fold
 struct Point {
     ll x, y;
 } P, Q, R, S;
@@ -228,7 +219,6 @@ void solve( ) {
 }
 
 ```
-{% endfold %}
 
 ### [E - Adjacent Sums (hard)](https://atcoder.jp/contests/abc467/tasks/abc467_e)
 
@@ -281,8 +271,7 @@ $$
 
 #### 实现
 
-{% fold info @EEE %}
-```cpp
+```cpp title:"EEE" fold
 ll a[maxn], b[maxn], c[maxn];
 
 void solve( ) {
@@ -335,7 +324,6 @@ void solve( ) {
     cout << ans << '\n';
 }
 ```
-{% endfold %}
 
 ### [F - Email Scheduling Optimization](https://atcoder.jp/contests/abc467/tasks/abc467_f)
 
@@ -379,8 +367,7 @@ $$
 
 #### 实现
 
-{% fold info @FFF %}
-```cpp
+```cpp title:"FFF" fold
 ll read( ) { /* 模板代码略 */ }
 
 struct Query { int opt, idx; ll val; };
@@ -489,7 +476,6 @@ void solve( ) {
     }
 }
 ```
-{% endfold %}
 
 ## 三、补题记录
 
@@ -504,4 +490,3 @@ void solve( ) {
   - 权值线段树；
   - 动态二维查询结构。
 - 对于复杂问题，需要进一步提升从暴力模型到可维护结构的转换能力。
-

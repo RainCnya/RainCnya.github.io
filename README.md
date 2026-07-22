@@ -119,6 +119,7 @@ Hexo_Blog/
 - KaTeX 数学公式
 - Obsidian WikiLink / 标题链接
 - Obsidian Callout
+- Codeblock Customizer 代码块标题与折叠
 - Markdown 文件相对链接解析
 - 文章永久链接 `posts/:abbrlink/`
 
@@ -126,7 +127,19 @@ Hexo_Blog/
 
 - `scripts/obsidian_links.js`：解析指向 Markdown 文件的链接。
 - `scripts/obsidian_callout.js`：将 Obsidian Callout 转换为 HTML。
+- `scripts/codeblock_fold.js`：将 Codeblock Customizer 围栏参数转换为 Fluid 原生折叠块。
 - `hexo-filter-titlebased-link`：解析基于标题的 WikiLink。
+
+完整代码推荐使用下面的统一写法：
+
+````markdown
+```cpp title:"参考代码" fold
+#include <bits/stdc++.h>
+using namespace std;
+```
+````
+
+在 Obsidian 中由 Codeblock Customizer 显示标题并折叠；Hexo 构建时会自动转换为 Fluid 原生 `fold`。短代码仍使用普通代码围栏。`title:` 也可以写成 `file:`；省略标题但保留 `fold` 时，博客端标题默认为“代码”。旧文章中的 `{% fold %}` 语法仍然兼容，可以按需逐步迁移。
 
 文章通常需要包含 `title`、`date` 和 `abbrlink`。`abbrlink.writeback` 已启用，新文章首次构建时可能被自动写入永久链接字段。
 

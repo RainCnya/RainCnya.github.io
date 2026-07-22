@@ -1,5 +1,5 @@
 ---
-title: '[Solution] NowCoder_Summer1'
+title: "[Solution] NowCoder_Summer1"
 status: reviewed
 categories:
   - 270_Solutions
@@ -106,8 +106,7 @@ OK，于是我们写了第一版程序 WA 了，原因是我们忽略了第一�
 
 #### 代码
 
-{% fold info @G %}
-```cpp
+```cpp title:"G" fold
 const double eps = 0.01;
 const double d = eps + 1e-8;
 
@@ -129,7 +128,6 @@ void solve( ) {
     }
 }
 ```
-{% endfold %}
 
 ## 三、补题记录
 
@@ -195,8 +193,7 @@ fa[u] = find(fa[u]);
 
 #### 代码
 
-{% fold info @C %}
-```cpp
+```cpp title:"C" fold
 ll a[maxn], val[maxn];
 int fa[maxn], siz[maxn];
 
@@ -264,7 +261,6 @@ void solve( ) {
     }
 }
 ```
-{% endfold %}
 
 
 ### J Show Hand
@@ -283,8 +279,7 @@ void solve( ) {
 
 #### 代码
 
-{% fold info @J %}
-```cpp
+```cpp title:"J" fold
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
@@ -512,7 +507,6 @@ int main( ) {
     return 0;
 }
 ```
-{% endfold %}
 
 ### L Substrings of Substrings
 
@@ -523,3 +517,241 @@ int main( ) {
 数据规模：$n \le 1e5, \sum |t| \le 3e5$。
 
 本题我在赛场上看到了，并且想过了，但是我的直觉告诉我可能是 AC自动机 + 线段树处理。水平不够，就没尝试写了。
+
+#### 思路
+
+首先，这是一个多模式串在同一个主串中做匹配，所以会想到 [[AC自动机]] 来处理这个匹配，然后这题的问题其实分为两个步骤：
+
+1. 得到每个询问串在 $s$ 中的所有出现的位置。
+2. 已知这些出现位置后，如何统计好区间的最大值和总和。
+
+#### Part 1 位置查询
+
+首先把所有的询问串插入 AC 自动机。
+
+对于第 $id$ 个询问串，记录 `ed[id]`表示该询问串对应的 Trie 终点节点。
+
+对于每个 Trie 节点 $u$，记录 `len[u]`。若节点 $u$ 是某个询问串的终点，则 `len[u]` 记为该询问串的长度；否则 `len[u] = 0`。因此，`len[u]` 同时承担了模式串终点标记的作用。
+
+> 注：相同的询问串会落在同一个 Trie 终点，因此可以直接以终点节点作为字符串的唯一标识，重复询问共用同一份答案。
+
+接下来的问题是 “当 AC 自动机扫描主串时，如何枚举当前位置匹配的所有询问串？”。
+
+最朴素的想法是沿着 `fail` 链枚举，但这样会经过大量不是模式串终点的节点，产生许多冗余跳转。为了解决这个问题，我们额外维护一个 `up` 数组，使其直接跳转到最近的模式串终点，它的转移如下：
+
+```cpp
+if( len[fail[u]] ) up[u] = fail[u];
+else up[u] = up[fail[u]];
+```
+
+也就是说，若 `fail[u]` 是某个模式串的终点，则令 `up[u] = fail[u]`；否则继续跳到 `fail[u]` 最近的终点祖先。
+
+不过，`up` 只能跳过非终点节点，实际匹配次数仍可能很多。朴素估计下，总匹配次数似乎可能达到 $\mathcal O(nq)$，因此还需要结合 $\sum |t|$ 的限制进一步分析。
+
+对于固定长度 $l$，主串的每个起点至多对应一个长度为 $l$ 的询问串，因此所有长度为 $l$ 的不同询问串，其出现次数之和不超过 $n$。
+
+设询问串共有 $d$ 种不同长度，总长度为 $T = \sum |t|$，则：$1 + 2 + \dots + d \le T$
+
+所以：$d = \mathcal{O}(\sqrt{T})$，每种长度的总匹配次数为 $\mathcal O(n)$，不同长度只有 $\mathcal O(\sqrt T)$ 种，所以所有询问串的总出现次数为：$\mathcal{O}(n \sqrt{T})$。
+
+沿着 `up`链的每次跳转都对应一次真实的匹配，所以位置查询部分的复杂度为：$\mathcal{O}\left( T \mid \Sigma \mid + n \sqrt{T} \right)$。
+
+#### Part 2 好区间统计
+
+假设我们在 Part 1 中找到了某个询问串在主串中的所有出现起点：：$p_{1} < p_{2} < \dots < p_{k}$。
+
+设询问串长度为 $m$，第 $i$ 次出现覆盖区间：$[p_{i}, p_{i} + m - 1]$。为了快速计算区间和，我们可以对原数组求一次前缀和。
+
+我们先解决 最大的好区间权值和，若好区间包含从 $p$ 开始一次出现，则必须满足 $l \le p, r \ge p + m - 1$，因此最大的权值和应该为 $\displaystyle \max_{r \ge p + m - 1}P_{r+1} - \min_{i \le p}P_{l}$。
+
+对前缀和数组 $P$ 预处理前缀最小值和后缀最大值，那么一次出现位置 $p$ 对应的候选答案就是：$\displaystyle sufmax[p+m] - premin[p]$。枚举所有出现位置取最大值即可。
+
+接着我们考虑第二问，所有好区间权值之和，这一问的难点在于如何避免同一个好区间被多个重复出现统计。
+
+对于任意一个好区间 $[l,r]$，取满足 $p_i\ge l$ 的第一次出现。此时有：$p_{i-1} < l \le p_{i}$，并且 $p_{i} + m - 1 \le r$。
+
+因此，可以将第 $i$ 次出现负责的区间划分为：$l \in [lst + 1, p], r \in [p + m - 1, n - 1]$。设当期出现起点为 $p$，上一次出现起点为 $lst$，那么左右端点的可选数量分别为：$cnt_{L} = p - lst$， $cnt_{R} - n - (p - m + 1)$。当前部分的权值和为：
+
+$$
+\begin{aligned}
+\sum_{l=lst+1}^{p} \sum_{r=p+m-1}^{n-1} (P_{r+1} - P_{l}) \\
+cnt_{L} \sum_{x=p+m}^{n} P_{x} - cnt_{R} \sum_{x=lst+1}^{p}  P_{x}
+\end{aligned}
+$$
+
+瓶颈在于需要多次查询前缀和数组 $P$ 的区间和，因此再对 $P$ 求一次前缀和。这样就可以在 $\mathcal O(1)$ 时间内计算每次出现的贡献。枚举所有出现位置后，即可得到所有好区间的权值之和。
+
+至此，这道题的两个部分均已解决。
+
+#### 代码
+
+```cpp title:"L" fold
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+using i128 = __int128_t;
+
+const int maxn = 3e5 + 5;
+const int sigma = 26;
+const int mod = 998244353;
+const ll inf = 4e18;
+
+ll read( ) {
+    ll x = 0, f = 1;
+    char ch = getchar( );
+    for( ; !isdigit( ch ); ch = getchar( ) ) if( ch == '-' ) f = -1;
+    for( ; isdigit( ch ); ch = getchar( ) ) x = x * 10 + ch - '0';
+    return x * f;
+}
+
+struct ACAM {
+/* ============================== */
+int nxt[maxn][sigma], fail[maxn];
+int up[maxn], ed[maxn], len[maxn];
+int tot;
+
+int getid( char ch ) { return ch - 'a'; }
+
+void init( ) {
+    for( int i = 0; i <= tot; ++ i ) {
+        for( int c = 0; c < sigma; ++ c ) {
+            nxt[i][c] = 0;
+        }
+        fail[i] = 0;
+        up[i] = 0;
+        len[i] = 0;
+    }
+    tot = 0;
+}
+
+void insert( string s, int id ) {
+    int u = 0;
+    for( char ch : s ) {
+        int v = getid( ch );
+        if( !nxt[u][v] ) nxt[u][v] = ++ tot;
+        u = nxt[u][v];
+    }
+    ed[id] = u;
+    len[u] = s.size( );
+}
+
+void build( ) {
+    queue<int> q;
+    for( int c = 0; c < sigma; ++ c ) {
+        int v = nxt[0][c];
+        if( v ) {
+            fail[v] = 0;
+            q.push( v );
+        }
+    }
+    while( !q.empty( ) ) {
+        int u = q.front( );
+        q.pop( );
+        if( len[fail[u]] ) up[u] = fail[u];
+        else up[u] = up[fail[u]];
+        for( int c = 0; c < sigma; ++ c ) {
+            int v = nxt[u][c];
+            if( v ) {
+                fail[v] = nxt[fail[u]][c];
+                q.push( v );
+            }
+            else nxt[u][c] = nxt[fail[u]][c];
+        }
+    }
+}
+/* ============================== */
+} acam;
+
+ll a[maxn], sum1[maxn], sum2[maxn];
+ll premin[maxn], sufmax[maxn];
+
+vector<int> pos[maxn];
+
+bool vis[maxn];
+ll ansmax[maxn], anssum[maxn];
+
+ll ask( int l, int r ) {
+    if( l > r ) return 0;
+    ll res = sum2[r];
+    if( l ) res -= sum2[l - 1];
+    if( res < 0 ) res += mod;
+    return res;
+}
+
+void solve( ) {
+    int n = read( ), q = read( );
+    string s;
+    cin >> s;
+    for( int i = 1; i <= n; ++ i ) {
+        a[i] = read( );
+        sum1[i] = sum1[i-1] + a[i];
+    }
+
+    premin[0] = sum1[0];
+    for( int i = 1; i <= n; ++ i ) {
+        premin[i] = min( premin[i-1], sum1[i] );
+    }
+
+    sufmax[n] = sum1[n];
+    for( int i = n - 1; i >= 0; -- i ) {
+        sufmax[i] = max( sufmax[i+1], sum1[i] );
+    }
+
+    for( int i = 1; i <= n; ++ i ) {
+        sum2[i] = ( sum2[i-1] + sum1[i] ) % mod;
+        if( sum2[i] < 0 ) sum2[i] += mod;
+    }
+
+    acam.init( );
+    for( int i = 1; i <= q; ++ i ) {
+        string t;
+        cin >> t;
+        acam.insert( t, i );
+    }
+    acam.build( );
+
+    int u = 0;
+    for( int i = 0; i < n; ++ i ) {
+        u = acam.nxt[u][s[i] - 'a'];
+        for( int v = u; v; v = acam.up[v] ) {
+            if( acam.len[v] ) pos[v].push_back( i - acam.len[v] + 1 );
+        }
+    }
+
+    for( int i = 1; i <= q; ++ i ) {
+        int u = acam.ed[i];
+        if( vis[u] ) {
+            cout << ansmax[u] << " " << anssum[u] << '\n';
+            continue;
+        }
+        int m = acam.len[u];
+        ll mx = -inf;
+        for( int p : pos[u] ) {
+            mx = max( mx, sufmax[p + m] - premin[p] );
+        }
+
+        ll sum = 0;
+        int lst = -1;
+        for( int p : pos[u] ) {
+            ll cntl = p - lst;
+            ll cntr = n - p - m + 1;
+            ll sumr = ask( p + m, n );
+            ll suml = ask( lst + 1, p );
+            sum = ( sum + cntl % mod * sumr % mod ) % mod;
+            sum = ( sum - cntr % mod * suml % mod + mod ) % mod;
+            lst = p;
+        }
+        vis[u] = 1;
+        ansmax[u] = mx;
+        anssum[u] = sum;
+        cout << mx << " " << sum << '\n';
+    }
+
+}
+
+int main( ) {
+    solve( );
+    return 0;
+}
+```

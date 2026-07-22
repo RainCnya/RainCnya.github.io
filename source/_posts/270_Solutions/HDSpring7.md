@@ -18,40 +18,38 @@ date: 2026-05-11 00:00:00
 
 #### 代码部分
 
-{% fold info @AcCode %}
-```cpp
-void solve( ) {
-    int n;
-    cin >> n;
-
-    vector< vector<bool> > row( n * n + 1, vector<bool>( n * n + 1, false ) );
-    vector< vector<bool> > col( n * n + 1, vector<bool>( n * n + 1, false ) );
-
-    vector< int > rcnt( n * n + 1, 0 );
-    vector< int > ccnt( n * n + 1, 0 );
-    
-    for( int i = 1; i <= n; ++ i ) {
-        for( int j = 1; j <= n; ++ j ) {
-            int x;
-            cin >> x;
-            if( !row[x][i] ) row[x][i] = true, rcnt[x] ++;
-            if( !col[x][j] ) col[x][j] = true, ccnt[x] ++;
-        }
-    }
-
-    vector< int > res;
-    for( int i = 1; i <= n * n; ++ i ) {
-        if( rcnt[i] == n && ccnt[i] == n ) res.push_back( i );
-    }
-
-    cout << res.size( ) << '\n';
-    for( int i = 0; i < res.size( ); ++ i ) {
-        cout << res[i] << " ";
-    }
-}
-```
-{% endfold %}
-
+> [!code]- AcCode
+> ```cpp
+> void solve( ) {
+>     int n;
+>     cin >> n;
+> 
+>     vector< vector<bool> > row( n * n + 1, vector<bool>( n * n + 1, false ) );
+>     vector< vector<bool> > col( n * n + 1, vector<bool>( n * n + 1, false ) );
+> 
+>     vector< int > rcnt( n * n + 1, 0 );
+>     vector< int > ccnt( n * n + 1, 0 );
+>     
+>     for( int i = 1; i <= n; ++ i ) {
+>         for( int j = 1; j <= n; ++ j ) {
+>             int x;
+>             cin >> x;
+>             if( !row[x][i] ) row[x][i] = true, rcnt[x] ++;
+>             if( !col[x][j] ) col[x][j] = true, ccnt[x] ++;
+>         }
+>     }
+> 
+>     vector< int > res;
+>     for( int i = 1; i <= n * n; ++ i ) {
+>         if( rcnt[i] == n && ccnt[i] == n ) res.push_back( i );
+>     }
+> 
+>     cout << res.size( ) << '\n';
+>     for( int i = 0; i < res.size( ); ++ i ) {
+>         cout << res[i] << " ";
+>     }
+> }
+> ```
 
 ---
 ## Easy
