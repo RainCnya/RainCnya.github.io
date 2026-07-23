@@ -58,12 +58,13 @@ Hexo_Blog/
 
 | 源目录 | 公开分类 |
 | --- | --- |
-| `210_Atlas` | 算法图谱 |
-| `220_Library` | 题型书库 |
-| `230_Notes` | 专题笔记 |
-| `240_Math` | 数学体系 |
-| `270_Solutions` | 比赛题解 |
-| `280_Study` | 学习档案 |
+| `210_Atlas` | 旧算法 |
+| `220_Library` | 旧题解 |
+| `230_Notes` | 笔记 |
+| `240_Math` | 数学 |
+| `260_Records` | 新记录 |
+| `270_Solutions` | 新题解 |
+| `280_Study` | 学习论 |
 | `290_Writings` | 文字作品 |
 
 子目录名称可以带数字排序前缀，例如 `03_数论`；公开页面会去掉前缀，显示为“数论”。映射逻辑位于 `scripts/public_categories.js`。新增或重命名一级目录时，应同步更新其中的 `ROOT_CATEGORY_MAP`。
@@ -87,6 +88,19 @@ Hexo_Blog/
 首页并不是默认文章列表。`source/_posts/HomePage.md` 通过 `permalink: /` 提供数字花园导览；Hexo 的文章列表被配置到 `/recent/`。
 
 `scripts/auxiliary_navigation.js` 会在分类页增加“全部标签”入口，并在最近更新页增加“时间归档”入口。页脚也保留分类、标签、归档和最近更新链接。
+
+内容导航页使用 WikiLink 互相连接：
+
+| 导航页 | 职责 |
+| --- | --- |
+| `HomePage.md` | 全站入口与近期推荐 |
+| `AlgorithmGuide.md` | 算法、记录与比赛内容总入口 |
+| `DPGuide.md` | 动态规划新笔记入口 |
+| `MathGuide.md` | 数学体系入口 |
+| `WritingsGuide.md` | 文字作品精选入口 |
+| `WritingsCatalogue.md` | 文字作品完整目录 |
+
+新增或重构专题时，应同时维护“首页/上级导航 → 专题”和“专题/文章 → 上级导航”的双向链接；近期形成的成熟笔记应加入首页“近期推荐”，而不是只依赖时间归档被发现。
 
 ## 主题与配色
 

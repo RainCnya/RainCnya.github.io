@@ -9,7 +9,7 @@ categories:
   - 290_Writings
 abbrlink: cc99f7e0
 date: 2026-07-12 00:00:00
-updated: 2026-07-12 00:00:00
+updated: 2026-07-23 00:00:00
 ---
 
 ## 文字作品
@@ -42,3 +42,5 @@ updated: 2026-07-12 00:00:00
 ## 进入完整作品集
 
 想按时间查找所有文字，可以查看 [[WritingsCatalogue|文字作品目录]]；想按作品形态继续阅读，可以进入[《风迹》作品集](/works/wind-trace/)；想使用站点自动生成的索引，可以进入[文字作品分类页](/categories/文字作品/)。
+
+返回 [[HomePage|花园首页]]。

@@ -755,3 +755,5 @@ int main( ) {
     return 0;
 }
 ```
+
+相关导航：[[AlgorithmGuide|算法与竞赛]] · [[NKSummer2|牛客暑期多校 2]] · [[HomePage|花园首页]]

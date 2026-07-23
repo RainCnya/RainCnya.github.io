@@ -199,3 +199,5 @@ int solve_log( vector<int> &arr ) {
 }
 ```
 {% endfold %}
+
+相关导航：[[DPGuide|动态规划导览]] · [[LIS题型整理|LIS 题型整理]] · [[AlgorithmGuide|算法与竞赛]]
