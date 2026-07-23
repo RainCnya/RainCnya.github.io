@@ -7,7 +7,7 @@ tags:
 categories:
   - 210_Atlas
   - 30_动态规划
-  - 31_经典模型
+  - 旧笔记
 abbrlink: 822eff10
 date: 2026-02-25 19:59:43
 ---

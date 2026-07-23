@@ -1,5 +1,5 @@
 ---
-title: "[Solution] NowCoder_Summer1"
+title: "[Solution] NKSummer1"
 status: reviewed
 categories:
   - 270_Solutions
@@ -8,7 +8,7 @@ date: 2026-07-17 00:00:00
 updated: 2026-07-17 00:00:00
 ---
 
-# [Solution] NowCoder_Summer1
+# [Solution] NKSummer1
 
 ## 一、比赛概况
 
@@ -19,15 +19,15 @@ updated: 2026-07-17 00:00:00
 
 ## 二、简要记录
 
-### A 2090 Virus
+### [A-2090 Virus](https://ac.nowcoder.com/acm/contest/133876/A)
 
 这是道签到题，交给学长秒了。
 
-### E Permutation Evaluation
+### [E-Permutation Evaluation](https://ac.nowcoder.com/acm/contest/133876/E)
 
 也是道签到题，推了一下公式就秒了，我写的。
 
-### F Permutation Generation
+### [F-Permutation Generation](https://ac.nowcoder.com/acm/contest/133876/F)
 
 E 的扩展题。
 
@@ -90,7 +90,7 @@ $\sum 2ia_i\equiv\sum 2ia'_i\pmod n$ 我得到这个式子后卡住，原因如�
 
 前者改变位置，不改变元素的值；后者改变值，但不改变元素的位置，而它们都保持 $f(A) \bmod n$。
 
-### G Precision Error?!
+### [G-Precision Error?!](https://ac.nowcoder.com/acm/contest/133876/G)
 
 题意梗概：给定一个 $n$，构造一个三维点集，最多 $2n + 2$ 个点，要求满足每个点都有 $n$ 个点和它的距离为 $dis(i,j) = 1$，$dis$ 表示欧几里得距离。
 
@@ -131,7 +131,7 @@ void solve( ) {
 
 ## 三、补题记录
 
-### C Fish Eating
+### [C-Fish Eating](https://ac.nowcoder.com/acm/contest/133876/C)
 
 这是道挺有意思的题目。
 
@@ -263,7 +263,7 @@ void solve( ) {
 ```
 
 
-### J Show Hand
+### [J-Show Hand](https://ac.nowcoder.com/acm/contest/133876/J)
 
 惊天大模拟，写死了……其实不难。
 
@@ -508,7 +508,7 @@ int main( ) {
 }
 ```
 
-### L Substrings of Substrings
+### [L-Substrings of Substrings](https://ac.nowcoder.com/acm/contest/133876/L)
 
 题意梗概：给定一个字符串 $S$，以及对应的权值序列 $a_{1}, a_{2}, \dots, a_{n}$。
 

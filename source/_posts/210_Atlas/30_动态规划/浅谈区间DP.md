@@ -4,7 +4,8 @@ tags:
   - algorithm/浅谈
   - DP/区间
 categories:
-  - 新笔记
+  - 210_Atlas
+  - 30_动态规划
 abbrlink: adaf30f7
 date: 2026-07-12 00:00:00
 updated: 2026-07-12 00:00:00

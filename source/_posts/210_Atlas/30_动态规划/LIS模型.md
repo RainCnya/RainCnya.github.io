@@ -5,7 +5,8 @@ tags:
   - DP/线性
   - DP/LIS
 categories:
-  - 新笔记
+  - 210_Atlas
+  - 30_动态规划
 abbrlink: b55c738e
 date: 2026-07-11 00:00:00
 updated: 2026-07-11 00:00:00

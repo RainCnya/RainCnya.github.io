@@ -6,7 +6,7 @@ tags:
 categories:
   - 210_Atlas
   - 30_动态规划
-  - 31_经典模型
+  - 旧笔记
 abbrlink: 3349ba31
 date: 2026-01-31 00:00:00
 ---
