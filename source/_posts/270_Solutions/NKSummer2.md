@@ -363,4 +363,4 @@ void solve( ) {
 - 实现上：注意 `long long`、前后缀最大值初始化，以及区间计数公式的边界。
 - 后续：回炉线性基、容斥原理；将 G 题保留为“错误猜想 + 反例修正”的代表题。
 
-相关导航：[[AlgorithmGuide|算法与竞赛]] · [[NKSummer1|牛客暑期多校 1]] · [[HomePage|花园首页]]
+相关导航：[[AlgorithmGuide|算法与竞赛]] · [[NKSummer1|牛客暑期多校 1]] · [[HomePage|首页]]

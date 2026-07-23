@@ -1,6 +1,6 @@
 # MiQiu Hexo Blog
 
-这是 MiQiu 的个人数字花园源码仓库，内容以算法竞赛、数学体系、题解、学习笔记和文字作品为主。
+这是 MiQiu 的个人知识站源码仓库，内容以算法竞赛、数学体系、题解、学习笔记和文字作品为主。
 
 - 站点域名：<https://raincnya.space>
 - 生成器：Hexo 8
@@ -74,18 +74,19 @@ Hexo_Blog/
 当前页眉保持五个主要入口：
 
 1. 首页 `/`
-2. 分类 `/categories/`
-3. 作品 `/works/`
-4. 关于 `/about/`
-5. 友链 `/links/`
+2. 算法 `/posts/58ed0df4/`
+3. 文字 `/posts/cc99f7e0/`
+4. 归档 `/archives/`
+5. 关于 `/about/`
 
 辅助页面不占用页眉：
 
 - 最近更新：`/recent/`
 - 全部标签：`/tags/`
-- 时间归档：`/archives/`
+- 完整分类：`/categories/`
+- 友链：`/links/`
 
-首页并不是默认文章列表。`source/_posts/HomePage.md` 通过 `permalink: /` 提供数字花园导览；Hexo 的文章列表被配置到 `/recent/`。
+首页并不是默认文章列表。`source/_posts/HomePage.md` 通过 `permalink: /` 提供个人站入口、“此间正在发生”和近期内容；Hexo 的文章列表被配置到 `/recent/`。
 
 `scripts/auxiliary_navigation.js` 会在分类页增加“全部标签”入口，并在最近更新页增加“时间归档”入口。页脚也保留分类、标签、归档和最近更新链接。
 
@@ -93,25 +94,25 @@ Hexo_Blog/
 
 | 导航页 | 职责 |
 | --- | --- |
-| `HomePage.md` | 全站入口与近期推荐 |
+| `HomePage.md` | 全站入口、当前状态与最近留下 |
 | `AlgorithmGuide.md` | 算法、记录与比赛内容总入口 |
 | `DPGuide.md` | 动态规划新笔记入口 |
 | `MathGuide.md` | 数学体系入口 |
 | `WritingsGuide.md` | 文字作品精选入口 |
 | `WritingsCatalogue.md` | 文字作品完整目录 |
 
-新增或重构专题时，应同时维护“首页/上级导航 → 专题”和“专题/文章 → 上级导航”的双向链接；近期形成的成熟笔记应加入首页“近期推荐”，而不是只依赖时间归档被发现。
+新增或重构专题时，应同时维护“首页/上级导航 → 专题”和“专题/文章 → 上级导航”的双向链接；近期形成的成熟笔记应加入首页“最近留下”，而不是只依赖时间归档被发现。
 
 ## 主题与配色
 
 主题配置集中在 `_config.fluid.yml`，自定义样式集中在 `source/css/`。
 
-亮色模式采用暖米白与灰紫配色：
+亮色模式采用暖白、石墨灰与低饱和雨蓝：
 
-- 页面背景：`#F3EFE7`
-- 内容板：`#FFFCF6`
-- 正文：`#35313F`
-- 主链接：`#7863A3`
+- 页面背景：`#F6F5F2`
+- 内容板：`#FBFAF8`
+- 正文：`#2C3035`
+- 主链接：`#657B8F`
 
 主要样式文件：
 
@@ -121,8 +122,10 @@ Hexo_Blog/
 | `banner_v1.css` | Banner 标题和文章元信息 |
 | `article_v1.css` | 正文溢出、图片、公式和表格 |
 | `callout_v1.css` | Obsidian Callout 样式 |
-| `home_v1.css` | 首页数字花园组件 |
+| `home_v1.css` | 首页个人站入口、双路径与当前状态组件 |
 | `taxonomy.css` | 分类、标签和归档页面样式 |
+
+首页通过 `HomePage.md` 中的独立 HTML 结构和 `home_v1.css` 呈现个人介绍、近期内容与主要入口；Fluid 继续提供导航、夜间模式、搜索和页脚，首页不依赖运行时脚本搬运结构。
 
 调整颜色时应同时检查页面背景、`#board`、首页卡片、链接、边框和暗色模式，避免只修改主题配置而遗漏自定义 CSS。
 

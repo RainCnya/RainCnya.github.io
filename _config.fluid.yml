@@ -1,6 +1,6 @@
 #---------------------------
 # Hexo Theme Fluid
-# Configured by: Qu Xi & Anya (v7.0 Purple Rain Edition)
+# Configured for MiQiu personal knowledge site
 #---------------------------
 
 #---------------------------
@@ -59,7 +59,7 @@ dark_mode:
   default: auto
 
 # -----------------------------------------------------------------
-# 注入外部资源 (字体 CSS)
+# 注入外部资源
 # -----------------------------------------------------------------
 head:
   html: |
@@ -136,11 +136,11 @@ navbar:
   ground_glass:
     enable: false # 我们在 custom.css 里手动实现了更高级的毛玻璃，这里关掉防止冲突
   menu:
-    - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
-    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
-    - { key: "works", name: "作品", link: "/works/", icon: "iconfont icon-books" }
-    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "home", name: "首页", link: "/", icon: "iconfont icon-home-fill" }
+    - { key: "algorithm", name: "算法", link: "/posts/58ed0df4/", icon: "iconfont icon-category-fill" }
+    - { key: "writing", name: "文字", link: "/posts/cc99f7e0/", icon: "iconfont icon-books" }
+    - { key: "archive", name: "归档", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "about", name: "关于", link: "/about/", icon: "iconfont icon-user-fill" }
 
 search:
   enable: true
@@ -175,28 +175,13 @@ open_graph:
 #---------------------------
 footer:
   content: '
-    <span>MiQiu · 远星书页</span>
-    <br>
-    <span style="font-size: 0.85rem; opacity: 0.65;">
-      Powered by
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener">Hexo</a>
-      &
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">Fluid</a>
-    </span>
+    <span>© 2026 MiQiu</span>
     <br>
     <a href="https://www.luogu.com.cn" target="_blank" rel="noopener">Luogu</a>
     ·
     <a href="https://codeforces.com" target="_blank" rel="noopener">Codeforces</a>
     ·
     <a href="https://atcoder.jp" target="_blank" rel="noopener">AtCoder</a>
-    <br>
-    <a href="/categories/">文章分类</a>
-    ·
-    <a href="/tags/">全部标签</a>
-    ·
-    <a href="/archives/">时间归档</a>
-    ·
-    <a href="/recent/">最近更新</a>
     '
 
   statistics:
