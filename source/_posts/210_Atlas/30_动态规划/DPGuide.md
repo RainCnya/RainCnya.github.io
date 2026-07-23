@@ -41,4 +41,4 @@ updated: 2026-07-23 00:00:00
 
 ## 上级导航
 
-返回 [[AlgorithmGuide|算法与竞赛]]，或回到 [[HomePage|花园首页]]。
+返回 [[AlgorithmGuide|算法与竞赛]]，或回到 [[HomePage|首页]]。

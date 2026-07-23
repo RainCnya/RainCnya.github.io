@@ -56,4 +56,4 @@ updated: 2026-07-23 00:00:00
 
 当你已经知道要找什么，可以进入 [数学分类](/categories/数学/) 查看全部文章。
 
-返回 [[HomePage|花园首页]]；与算法模型连接的内容可进入 [[AlgorithmGuide|算法与竞赛]]。
+返回 [[HomePage|首页]]；与算法模型连接的内容可进入 [[AlgorithmGuide|算法与竞赛]]。

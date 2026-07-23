@@ -4,8 +4,8 @@
 
 # Site
 title: MiQiu
-subtitle: '愿你的旅途永远璀璨' # 这里填一句兜底的 Slogan，防止 Fluid 打字机挂了显示空白
-description: 'MiQiu 的数字花园 | 算法竞赛 | C++ | 计算机科学' # 优化描述，利于 SEO
+subtitle: '算法、文字，以及尚未成为结论的生活。'
+description: 'MiQiu 的个人知识站：记录算法竞赛、数学、写作，以及理解发生的过程。'
 keywords: 'ACM, ICPC, OI, C++, Hexo, Fluid, 图论, 算法' # 增加关键词
 author: Miqiu
 language: zh-CN
