@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 setlocal EnableExtensions
 
 set "REPO_DIR=H:\Hexo_Blog"
@@ -99,7 +100,7 @@ if not defined BEHIND (
 )
 
 if %BEHIND% GTR 0 (
-    echo Remote branch is ahead by %BEHIND% commit(s).
+    echo Remote branch is ahead by %BEHIND% commits.
     echo Rebasing local commits onto %REMOTE%/%BRANCH%...
     git pull --rebase %REMOTE% %BRANCH%
     if errorlevel 1 (
@@ -119,7 +120,7 @@ if not defined AHEAD (
 
 if %AHEAD% GTR 0 (
     echo.
-    echo Pushing %AHEAD% commit(s) to %REMOTE%/%BRANCH%...
+    echo Pushing %AHEAD% commits to %REMOTE%/%BRANCH%...
     git push %REMOTE% %BRANCH%
     if errorlevel 1 (
         set "RESULT=FAILED: git push failed."
