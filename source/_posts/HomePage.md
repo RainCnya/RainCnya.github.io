@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-07-23 22:00:00
+updated: 2026-07-25 22:00:00
 meta: false
 copyright: false
 comments: false
@@ -25,6 +25,7 @@ comments: false
       <a href="/posts/58ed0df4/">算法与训练</a>
       <a href="/posts/cc99f7e0/">阅读文字</a>
       <a href="/about/">关于米秋</a>
+      <a href="/links/">友链</a>
     </nav>
   </div>
   <figure class="miqiu-profile-visual">
