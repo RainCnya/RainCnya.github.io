@@ -1,11 +1,11 @@
 ---
 title: '[Solution] ABC446 A~E'
-tags:
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: 75a751d6
 date: 2026-02-21 00:00:00
+tags:
 ---
 
 ## [E - Multiple-Free Sequences](https://atcoder.jp/contests/abc446/tasks/abc446_e)

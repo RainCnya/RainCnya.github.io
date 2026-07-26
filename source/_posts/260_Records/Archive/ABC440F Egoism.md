@@ -5,8 +5,8 @@ tags:
   - 算法/离散化
   - 策略/动态维护
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: 5021de5b
 date: 2026-07-09 00:00:00
 updated: 2026-07-09 00:00:00

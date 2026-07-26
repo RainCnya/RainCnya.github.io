@@ -1,11 +1,11 @@
 ---
 title: '[Solution] ABC448 A~E'
-tags:
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: ca97efb7
 date: 2026-03-08 00:00:00
+tags:
 ---
 
 ## [C - Except and Min](https://atcoder.jp/contests/abc448/tasks/abc448_c)

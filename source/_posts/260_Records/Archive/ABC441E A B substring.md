@@ -4,8 +4,8 @@ tags:
   - 字符串
   - 数据结构/树状数组
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: 97a015b8
 date: 2026-07-10 00:00:00
 updated: 2026-07-10 00:00:00

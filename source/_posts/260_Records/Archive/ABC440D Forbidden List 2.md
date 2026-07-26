@@ -3,8 +3,8 @@ title: '[Leaf] ABC440D Forbidden List 2'
 tags:
   - 策略/二分
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: 7f795164
 date: 2026-07-06 00:00:00
 updated: 2026-07-06 00:00:00

@@ -1,11 +1,11 @@
 ---
 title: '[Solution] ABC445 A~D'
-tags:
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: 45001b90
 date: 2026-02-14 00:00:00
+tags:
 ---
 
 ## [C - Sugoroku Destination](https://atcoder.jp/contests/abc445/tasks/abc445_c)

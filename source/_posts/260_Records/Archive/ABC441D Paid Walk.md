@@ -4,8 +4,8 @@ tags:
   - 搜索/DFS
 abbrlink: 7b70f3b7
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 date: 2026-07-10 00:00:00
 updated: 2026-07-10 00:00:00
 ---

@@ -4,8 +4,8 @@ tags:
   - DP/背包
   - 难度/P4
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: 79c2a83b
 date: 2026-01-19 00:00:00
 ---

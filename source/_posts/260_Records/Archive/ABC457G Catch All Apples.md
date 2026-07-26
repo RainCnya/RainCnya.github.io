@@ -1,11 +1,11 @@
 ---
-title: "[Solution] ABC457G"
-tags:
+title: '[Solution] ABC457G'
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: eaf5f5bc
 date: 2026-05-09 00:00:00
+tags:
 ---
 
 ### [G - Catch All Apples](https://atcoder.jp/contests/abc457/tasks/abc457_g)

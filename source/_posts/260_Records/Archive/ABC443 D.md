@@ -1,11 +1,11 @@
 ---
 title: '[Solution] ABC443 A~D'
-tags:
 categories:
-  - 270_Solutions
-  - ABC
+  - 260_Records
+  - Archive
 abbrlink: ca40ee30
 date: 2026-01-31 00:00:00
+tags:
 ---
 
 ## [D - Pawn Line](https://atcoder.jp/contests/abc443/tasks/abc443_d)
