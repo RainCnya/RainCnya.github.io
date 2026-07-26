@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC456 A~F'
-tags:
+tags: ABC
 categories:
   - 270_Solutions
   - ABC
@@ -8,7 +8,138 @@ abbrlink: 90bd9ef3
 date: 2026-05-04 00:00:00
 ---
 
+### 前记
+
 本次赛时顺利切到 F 题，G 题由于缺乏生成函数的前置知识惨败。有趣的是，这次的题目在背景上都充满了连贯性：A、B 题都和骰子有关，C、D 题都是字符串相邻去重计数，而 E、F、G 题全在讨论如何放假（高桥是有多想放假啊 雾）。
+
+### [A - Dice](https://atcoder.jp/contests/abc456/tasks/abc456_a)
+
+#### 题意
+投掷三个骰子，给定一个 x，问三个骰子的点数总和能否为 x。
+> $1 \leq x \leq 20$
+
+#### 思路
+简单猜想一下，由于每个骰子的点数是 $1 \sim 6$，3 个骰子的总和范围必然落在 $[3, 18]$ 的闭区间内，范围以外的点数总和都是无法得到的。
+
+#### 代码部分
+```cpp
+void solve( ) {
+    int x;
+    cin >> x;
+    if( x < 3 || x > 18 ) {
+        cout << "No" << '\n';
+    } else {
+        cout << "Yes" << '\n';
+    }
+}
+```
+
+### [B - 456](https://atcoder.jp/contests/abc456/tasks/abc456_b)
+
+#### 题意
+同样给定三个骰子，同时给定三个骰子的六面，问三个骰子恰好是 4 5 6 的概率。
+
+#### 思路
+考虑用古典概型计算。由于三个骰子的点数是独立事件，所以可以直接将各自出现的概率相乘。满足点数恰好为 $\{4, 5, 6\}$ 的排列共有 6 种情况：
+
+> $(4,5,6) \mid (4,6,5) \mid (5,4,6) \mid (5,6,4) \mid (6,4,5) \mid (6,5,4)$
+
+分别统计每个骰子掷出 4、5、6 的面数，按照这 6 种组合情况累加概率即可。
+
+#### 代码部分
+```cpp
+void solve( ) {
+    for( int i = 1; i <= 3; ++ i ) {
+        for( int j = 1; j <= 6; ++ j ) {
+            cin >> a[i][j];
+            if( a[i][j] == 4 ) cnt[i][4] ++;
+            if( a[i][j] == 5 ) cnt[i][5] ++;
+            if( a[i][j] == 6 ) cnt[i][6] ++;
+        }
+    }
+
+    double ans = 0;
+
+	// 216 = 6 * 6 * 6
+    ans += cnt[1][4] * cnt[2][5] * cnt[3][6] / 216.0;
+    ans += cnt[1][4] * cnt[2][6] * cnt[3][5] / 216.0;
+
+    ans += cnt[1][5] * cnt[2][6] * cnt[3][4] / 216.0;
+    ans += cnt[1][5] * cnt[2][4] * cnt[3][6] / 216.0;
+    
+    ans += cnt[1][6] * cnt[2][4] * cnt[3][5] / 216.0;
+    ans += cnt[1][6] * cnt[2][5] * cnt[3][4] / 216.0;
+
+    cout << fixed << setprecision( 10 ) << ans << '\n';
+}
+```
+
+### [C - Not Adjacent](https://atcoder.jp/contests/abc456/tasks/abc456_c)
+
+#### 题意
+给定一个包含 a b c 的字符串，问，存在多少**子串**满足相邻两个字符不同。
+
+#### 思路
+注意到是子串，因此必定是连续的，假设在某一个区间 $[l,r]$ 中 $S_{i} \neq S_{i+1}$，那么所有子串都满足条件，个数也就是 $len = r - l + 1, cnt = \frac{(len)*(len+1)}{2}$。
+
+如果 $S_{i} == S_{i+1}$ 会怎么样呢？根据子串连续性的定义，$i$ 和 $i+1$ 必定是不能连在一起的，所以分开计算两段的子串个数即可。
+
+#### 代码部分
+```cpp
+void solve( ) {
+    string s;
+    cin >> s;
+    int n = s.length( );
+    ll len = 1, ans = 0;
+    for( int i = 1; i < n; i ++ ) {
+        if( s[i] != s[i-1] ) {
+            len ++;
+        } else {
+            ans = ( ans + len * (len + 1)  / 2 ) % mod;
+            len = 1;
+        }
+    }
+    ans = ( ans + len * (len + 1)  / 2 ) % mod;
+    cout << ans << '\n';
+}
+```
+
+### [D - Not Adjacent 2](https://atcoder.jp/contests/abc456/tasks/abc456_d)
+
+#### 题意
+给定一个包含 a b c 的字符串，问，存在多少**子序列**满足相邻两个字符不同。
+
+#### 思路
+这题把条件放宽到了“子序列”。子序列允许中间有字符跳过（不连续），但必须保持原有的先后顺序。这是一道典型的计数类 DP。为什么会想到用 DP 呢？
+
+- **子序列性质**：当我们按顺序扫描字符串，对于当前位置的字符 $S[i]$，它是否能合法地接在某个已有的子序列后面，仅仅取决于该子序列的**最后一个字符**是什么。
+- **无后效性**：一旦确定了以某种字符结尾的子序列数量，我们不需要关心这些子序列内部的具体构成。
+
+我们定义状态 $fa$：当前以 'a' 结尾的合法子序列总数， $fb, fc$ 同理。由于子序列不要求连续，因此转移也不要求连续，所以当前 $S[i]$ 可以接到任何一个结尾不为 $S[i]$ 的子序列后面。状态转移为 $fa = (fb + fc + 1)$，这个 `+1` 是因为它本身也可以是一个子序列。
+
+#### 代码部分
+```cpp
+void solve( ) {
+    string s;
+    cin >> s;
+    int n = s.length( );
+
+    ll fa = 0, fb = 0, fc = 0;
+    for( int i = 0; i < n; i ++ ) {
+        if( s[i] == 'a' ) {
+            ll cnt = (fb + fc + 1) % mod;
+            fa = (fa + cnt) % mod;
+        } else if( s[i] == 'b' ) {
+            ll cnt = (fa + fc + 1) % mod;
+            fb = (fb + cnt) % mod;
+        } else {
+            ll cnt = (fa + fb + 1) % mod;
+            fc = (fc + cnt) % mod;
+        }
+    }
+    cout << (fa + fb + fc) % mod << '\n';
+}
+```
 
 ### [E - Endless Holidays](https://atcoder.jp/contests/abc456/tasks/abc456_e)
 

@@ -1,6 +1,6 @@
 ---
 title: '[Solution] ABC458 A~F'
-tags:
+tags: ABC
 categories:
   - 270_Solutions
   - ABC
@@ -11,6 +11,77 @@ date: 2026-05-16 00:00:00
 ### 前记
 
 本次赛时到 F，G 大概推导了一下，发现是很奇怪的斜率问题，基于知识树深度广度不足，战略性放弃。
+
+### [A - Chompers](https://atcoder.jp/contests/abc458/tasks/abc458_a)
+
+#### 题意
+给定一个字符串 $S$，一个数 $N$，问删去前 $N$ 个和后 $N$ 个元素的子串是什么。
+
+#### 思路
+substr 糊一下就好了。
+
+### [B - Count Adjacent Cells](https://atcoder.jp/contests/abc458/tasks/abc458_b)
+
+#### 题意
+给定一个二维数组，问每个格子周围有几个格子，超出范围的不算。
+
+#### 思路
+发现数据规模很小，直接暴力枚举即可。
+
+#### 代码部分
+{% fold info @AcCode %}
+```cpp
+int f( int x, int y ) {
+    return 1 <= x && x <= n && 1 <= y && y <= m;
+}
+
+void solve( ) {
+    cin >> n >> m;
+    vector<vector<int>> a( n + 1, vector<int>( m + 1 ) );
+
+    for( int i = 1; i <= n; ++ i ) {
+        for( int j = 1; j <= m; ++ j ) {
+            a[i][j] += f(i-1,j) + f(i,j-1) + f(i+1,j) + f(i,j+1);
+        }
+    }
+
+    for( int i = 1; i <= n; ++ i ) {
+        for( int j = 1; j <= m; ++ j ) {
+            cout << a[i][j] << ' ';
+        }
+        cout << '\n';
+    }
+}
+```
+{% endfold %}
+### [C - C Stands for Center](https://atcoder.jp/contests/abc458/tasks/abc458_c)
+
+#### 题意
+给定一个字符串 $S$，问有多少个子串的中心元素是 $'C'$。
+
+> $|S| \leq 1e5$
+
+#### 思路
+发现子串必须是奇数长度，不然没有中间元素，其次子串是连续的子序列，所以对于每个 `C` 字符都左右扩展找到最长的子串个数就好了。 
+
+#### 代码部分
+{% fold info @AcCode %}
+```cpp
+void solve( ) {
+    string s;
+    cin >> s;
+    ll ans = 0;
+    int n = s.size( );
+    for( int i = 0; i < n; ++ i ) {
+        if( s[i] == 'C' ) {
+            ll cnt = min( i, n - i - 1 ); // 左边 i | 右边 n - 1 - i
+            ans += cnt + 1; // 0->cnt
+        }
+    }
+    cout << ans << '\n';
+}
+```
+{% endfold %}
 
 ### [D - Chalkboard Median](https://atcoder.jp/contests/abc458/tasks/abc458_d)
 
@@ -49,7 +120,7 @@ void solve( ) {
 ```
 {% endfold %}
 
-### [E - Crossing Table Cloth](https://atcoder.jp/contests/abc457/tasks/abc457_e)
+### [E - Count 123](https://atcoder.jp/contests/abc458/tasks/abc458_e)
 
 #### 题意
 给定 $X_{1}, X_{2}, X_{3}$，求有多少个序列满足要求，序列中有 $X_{1}$ 个 1，$X_{2}$ 个 2，$X_{3}$ 个 3，每两个元素之间差值 $\leq 1$。

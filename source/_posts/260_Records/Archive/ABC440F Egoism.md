@@ -1,6 +1,7 @@
 ---
-title: '[Leaf] ABC440F Egoism'
+title: 'ABC440F Egoism'
 tags:
+  - algorithm/记录
   - 数据结构/树状数组
   - 算法/离散化
   - 策略/动态维护

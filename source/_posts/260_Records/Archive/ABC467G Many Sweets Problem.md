@@ -1,5 +1,5 @@
 ---
-title: ABC467G
+title: ABC467G Many Sweets Problem
 tags:
   - algorithm/记录
   - 数据结构

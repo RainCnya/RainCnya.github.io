@@ -1,6 +1,7 @@
 ---
-title: '[Leaf] ABC439F Beautiful Kadomatsu'
+title: 'ABC439F Beautiful Kadomatsu'
 tags:
+  - algorithm/记录
   - 组合
   - 数据结构/树状数组
 categories:

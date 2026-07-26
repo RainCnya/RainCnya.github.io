@@ -1,0 +1,227 @@
+---
+title: 'ABC456F Plan Holidays'
+tags:
+  - algorithm/记录
+  - DP/DDP
+  - 数据结构/线段树
+  - 矩阵/广义矩阵乘法
+  - 双栈队列
+categories:
+  - 260_Records
+  - Archive
+abbrlink: 57cfcdd9
+date: 2026-05-04 00:00:00
+---
+# [F - Plan Holidays](https://atcoder.jp/contests/abc456/tasks/abc456_f)
+
+## 题意
+高桥想安排 $N$ 天的假期。最开始都不是假期。操作1：花 $A_i$ 的代价让第 $i$ 天变成假期。 操作2：如果第 $i-1$ 天和第 $i+1$ 天都是假期，那么可以**免费**让第 $i$ 天变成假期。问：要制造一个长度至少为 $K$ 的连续假期，最少需要多少代价？
+
+> $N, K \leq 2e5$
+
+## 思路
+根据数据范围 $N \leq 2 \times 10^5$ 盲猜，这题只能用 $O(N \log N)$、$O(N \log K)$ 带 Log 的写法，或者干脆是 $O(N)$。
+
+进一步分析，如果要构造一段完美的连续假期，这段区间有什么特殊的性质吗？手搓几个小样例会发现以下三个关键性质：
+
+1. **端点必须买**：区间的两端没有办法通过相邻元素的条件来免费白嫖。
+2. **不能有连续的不买**：如果有连续两天都不买，它们会互相卡住，导致谁也无法免费变成假期。
+3. 只需要考虑区间长度为 $K$ 和 $K + 1$ 即可。
+
+第三个性质的观察源于第一个样例： ```5 2 // 3 1 4 1 5 // res = 2 ``` 在这个样例中，可以买下 $[2,4]$ 两天，然后 $[3]$ 就免费了，直接凑出了长度为 3 的区间。再往后推导，考察更长的区间（比如 $K+2$）有意义吗？其实并没有。任何 $\geq K+2$ 的合法区间，我们都可以通过去掉最边缘的元素，无损降级转换成 $K$ 和 $K + 1$ 长度的情况，且代价不会变得更劣。
+
+接下来开始正式推导了
+
+### 解法零 DP $O(NK)$ - TLE
+
+由于每个点只有 买 和 不买 两种状态，且 当前状态只与上一个点的状态 有关，性质 2，这显然是个动态规划。
+
+记 $dp[0]$ 为当前点不买（前一个点必须买），$dp[1]$ 为当前点必须买。那么很显然就能推导出这个状态转移方程（递推式）：
+
+$$
+\begin{align}
+dp[i][0] &= dp[i-1][1] \\
+dp[i][1] &= \min( dp[i-1][0], dp[i-1][1] ) + a[i]
+\end{align}
+$$
+
+基于上述逻辑，我们很容易写出一个枚举起点的 $O(NK)$ 暴力 DP，但由于状态数过多，自然就 TLE 了。那么，如何优化呢？
+
+{% fold info @(O(NK) 暴力解法) %}
+```cpp
+void solve( ) {
+    cin >> n >> k;
+    for( int i = 1; i <= n; ++ i ) cin >> a[i];
+    ll ans = inf;
+
+    for( int l = 1; l <= n - k + 1; ++ l ) {
+        // k days
+        ll dp0 = inf, dp1 = a[l];
+        for( int i = l + 1; i <= l + k - 1; ++ i ) {
+            ll nxtdp0 = dp1;
+            ll nxtdp1 = min( dp0, dp1 ) + a[i];
+            dp0 = nxtdp0;
+            dp1 = nxtdp1;
+        }
+        ans = min( ans, dp1 );
+
+        // k + 1 days
+        if( l + k <= n ) {
+            int i = l + k;
+            ll nxtdp0 = dp1;
+            ll nxtdp1 = min( dp0, dp1 ) + a[i];
+            dp0 = nxtdp0;
+            dp1 = nxtdp1;
+        }
+        ans = min( ans, dp1 );
+    }
+
+    cout << ans << '\n';
+}
+```
+{% endfold %}
+
+### 解法一：DDP（矩阵线段树） $O(N \log N)$
+
+为什么会想到 DDP？ -- 核心在于矩阵加速 -- 观察上面的 DP 转移，我们发现，随着窗口不断向右滑动，针对同一个数组 $A$，我们在**反复执行完全相同的一组递推转移方程**。就像斐波那契数列那样，这种反复的带有递推关系的方程，我们的直觉大概会告诉我们，能不能用矩阵来加速递推呢？
+
+接着引入广义矩阵乘法，常规的矩阵乘法是 $C_{i,j} = \sum(A_{i,k} \times B_{k,j})$，但是在我们的转移方程中，核心操作是取 `min` 和 加法 `+`，我们可以把常规乘法里的 `+` 用 `min` 替代，常规乘法里的 `*` 用 `+` 替代，即 $C_{i,j} = \min_{k} (A_{i,k} + B_{k,j})$。
+
+数学上可以证明这样定义的矩阵乘法是满足 **结合律** 的，而说到结合律，你会想到什么数据结构来维护呢？答案是 线段树。
+
+然后构建状态矩阵，我们将状态写成列向量 $\begin{bmatrix} dp[i][0] \\ dp[i][1] \end{bmatrix}$。 尝试构造一个 $2 \times 2$ 的转移矩阵 $M_i$，使得：
+
+$$\begin{bmatrix} dp[i][0] \\ dp[i][1] \end{bmatrix} = M_i \otimes \begin{bmatrix} dp[i-1][0] \\ dp[i-1][1] \end{bmatrix}$$
+
+根据原方程： 
+$$
+\begin{align}
+dp[i][0] = \min(\infty + dp[i-1][0], 0 + dp[i-1][1]) \\
+dp[i][1] = \min(a[i] + dp[i-1][0], a[i] + dp[i-1][1])
+\end{align}$$
+
+可以通过待定系数法求解这个转移矩阵 $M_{i}$。
+
+$$M_i = \begin{bmatrix} \infty & 0 \\ a[i] & a[i] \end{bmatrix}$$
+
+既然有了状态转移矩阵，要求某一段区间 $[L+1, R-1]$ 的 DP 结果，其实就是求这段区间对应的矩阵连乘积！由于矩阵乘法满足结合律，我们可以建一棵**线段树**，每个节点维护对应区间的 $M_i$ 连乘积。
+
+枚举左端点 $L$（强制买 $A_L$），右端点 $R$（强制买 $A_R$），中间部分的转移代价只需要 $O(\log N)$ 的时间在线段树上查询矩阵乘积，就可以将复杂度从 $O(NK)$ 降维到 $O(N \log N)$ 了。
+
+{% fold info @AcCode %}
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+const int maxn = 2e5 + 5;
+const ll inf = 1e18;
+
+ll a[maxn], n, k;
+
+struct Mat {
+    ll m[2][2];
+    Mat( ) { m[0][0] = m[0][1] = m[1][0] = m[1][1] = inf; }
+} tr[maxn << 2];
+
+Mat merge( const Mat &a, const Mat &b ) {
+    Mat res;
+    for( int i = 0; i < 2; ++ i ) {
+        for( int j = 0; j < 2; ++ j )
+            for( int k = 0; k < 2; ++ k ) {
+                if( a.m[i][k] == inf || b.m[k][j] == inf ) continue;
+                res.m[i][j] = min( res.m[i][j], a.m[i][k] + b.m[k][j] );
+            }
+    }
+    return res;
+}
+
+#define ls u << 1
+#define rs u << 1 | 1
+
+void build( int u, int l, int r ) {
+    if( l == r ) {
+        tr[u].m[0][0] = inf;
+        tr[u].m[0][1] = 0;
+        tr[u].m[1][0] = a[l];
+        tr[u].m[1][1] = a[l];
+        return;
+    }
+    int mid = ( l + r ) >> 1;
+    build( ls, l, mid );
+    build( rs, mid + 1, r );
+    tr[u] = merge( tr[ls], tr[rs] );
+}
+
+Mat query( int u, int l, int r, int ql, int qr ) {
+    if( ql <= l && r <= qr ) return tr[u];
+    int mid = ( l + r ) >> 1;
+    if( qr <= mid ) return query( ls, l, mid, ql, qr );
+    if( ql > mid ) return query( rs, mid + 1, r, ql, qr );
+    return merge( query( ls, l, mid, ql, qr ), query( rs, mid + 1, r, ql, qr ) );
+}
+
+void solve( ) {
+    cin >> n >> k;
+    for( int i = 1; i <= n; ++ i ) cin >> a[i];
+    
+    build( 1, 1, n );
+    ll ans = inf;
+    
+    int len = k;
+    for( int l = 1; l <= n - len + 1; ++ l ) {
+        int r = l + len - 1;
+        if( r == l ) {
+            ans = min( ans, a[l] );
+            continue;
+        }
+        if( r - l <= 1 ) {
+            ans = min( ans, a[l] + a[r] );
+            continue;
+        }
+        Mat T = query( 1, 1, n, l + 1, r - 1 );
+        ll res = min( T.m[1][1], T.m[0][1] ) + a[l] + a[r];
+        ans = min( ans, res );
+    }
+
+    len = k + 1;
+    for( int l = 1; l <= n - len + 1; ++ l ) {
+        int r = l + len - 1;
+        if( r == l ) {
+            ans = min( ans, a[l] );
+            continue;
+        }
+        if( r - l <= 1 ) {
+            ans = min( ans, a[l] + a[r] );
+            continue;
+        }
+        Mat T = query( 1, 1, n, l + 1, r - 1 );
+        ll res = min( T.m[1][1], T.m[0][1] ) + a[l] + a[r];
+        ans = min( ans, res );
+    }
+
+    cout << ans << '\n';
+}
+
+int main( ) {
+    cin.tie( 0 )->sync_with_stdio( 0 );
+    int _t = 1; cin >> _t;
+    while( _t -- ) solve( );
+    return 0;
+}
+```
+{% endfold %}
+
+
+### 解法二：双栈模拟队列 —— 复杂度 $O(N)$
+
+> 该做法理论可行，题解中也有提到，但受限于本人理解水平有限，不能详细展开讲解，见谅。理论就是用滑动窗口的思想，然后用前缀积来处理区间。
+
+既然我们是在做一个 “定长滑动窗口” 的矩阵连乘，我们可以把线段树的 $O(\log N)$ 优化掉。 这里有一个很经典的 Trick：**使用两个栈来模拟一个滑动窗口**。
+
+1. 我们维护两个栈 $S_1$ 和 $S_2$。$S_1$ 用于在队尾压入元素，$S_2$ 用于从队头弹出元素。
+2. 栈内不仅存元素本身，还**顺便存下该栈底到当前元素的矩阵前缀积**。
+3. 当窗口滑动需要弹出队头时，如果 $S_2$ 有元素，直接弹出；如果 $S_2$ 为空，就把 $S_1$ 的元素全部倒腾到 $S_2$ 中，并在倒入的过程中重新计算 $S_2$ 的矩阵前缀积。
+4. 窗口的整体矩阵乘积 = $S_2$ 的栈顶前缀积 $\otimes$ $S_1$ 的栈顶前缀积。
+
+由于每个矩阵最多入栈 2 次、出栈 2 次，均摊后矩阵乘法的次数是 $O(1)$ 的，这样就能把复杂度优化成 $O(N)$。

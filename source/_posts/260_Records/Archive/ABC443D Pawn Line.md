@@ -1,11 +1,14 @@
 ---
-title: '[Solution] ABC443 A~D'
+title: 'ABC443D Pawn Line'
 categories:
   - 260_Records
   - Archive
 abbrlink: ca40ee30
 date: 2026-01-31 00:00:00
 tags:
+  - algorithm/记录
+  - 策略/贪心
+  - 算法/双向扫描
 ---
 
 ## [D - Pawn Line](https://atcoder.jp/contests/abc443/tasks/abc443_d)

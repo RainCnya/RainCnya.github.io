@@ -1,9 +1,11 @@
 ---
-title: ABC466G
+title: 'ABC466G Segment Sum Constraints'
 tags:
   - algorithm/记录
   - 动态规划
   - 前缀和
+  - 带权并查集
+  - DP/数位DP
 status: shelved
 categories:
   - 260_Records
