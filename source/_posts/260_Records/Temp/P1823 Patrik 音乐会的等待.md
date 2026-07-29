@@ -6,12 +6,13 @@ tags:
 status: solved
 categories:
   - 260_Records
-abbrlink: f55c4534
+  - Temp
+abbrlink: b1823001
 date: 2026-07-28 00:00:00
 updated: 2026-07-28 00:00:00
 ---
 
-# P1823 Patrik 音乐会的等待
+# Patrik 音乐会的等待：同高分组的单调栈
 
 > [!question] [P1823 Patrik 音乐会的等待](https://www.luogu.com.cn/problem/P1823)
 > 给定一个人的身高序列。如果两人相邻，或两人之间没有人比他们都高，则两人能够互相看见。求可见的人对数。
@@ -43,6 +44,23 @@ $$
 每个人至多入栈、出栈一次，时间复杂度为 $O(n)$，空间复杂度为 $O(n)$。答案最大为 $\frac{n(n-1)}2$，需要使用 `long long`。
 
 ```cpp title:"P1823" fold
+using namespace std;
+using ll = long long;
+using ull = unsigned long long;
+using i128 = __int128_t;
+
+const int maxn = 3e5 + 5;
+const int mod = 998244353;
+const ll inf = 4e18;
+
+ll read( ) {
+    ll x = 0, f = 1;
+    char ch = getchar( );
+    for( ; !isdigit( ch ); ch = getchar( ) ) if( ch == '-' ) f = -1;
+    for( ; isdigit( ch ); ch = getchar( ) ) x = x * 10 + ch - '0';
+    return x * f;
+}
+
 struct Stack {
     int val, cnt;
 } stk[maxn];
@@ -59,13 +77,11 @@ void solve( ) {
         while( top && stk[top].val <= x ) {
             ans += stk[top].cnt;
             if( stk[top].val == x ) cur.cnt += stk[top].cnt;
-            -- top;
+            top --;
         }
-
-        if( top ) ++ ans;
+        if( top ) ans ++;
         stk[++ top] = cur;
     }
-
     cout << ans << '\n';
 }
 ```
@@ -74,3 +90,7 @@ void solve( ) {
 
 - 新增：可见关系不能按连续区间计数；单调栈应维护仍可能参与未来答案的候选，并把同高者压缩成一组统计组合贡献。
 - 分类：C
+
+> [!todo] 人工修改
+> 当前正文由已有记录还原，代码保持对应 AC 文件原样，仅移除了头文件和 `main()`。请重点复核正文是否符合当时的真实推导顺序。
+
