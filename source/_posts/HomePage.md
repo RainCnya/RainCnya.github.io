@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-07-25 22:00:00
+updated: 2026-07-29 23:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,21 +39,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
-    <a href="/posts/dppath26/">
-      <time datetime="2026-07-23">07.23</time>
-      <span><strong>动态规划导览</strong><small>连接线性状态、序列对齐、LIS 与区间 DP。</small></span>
+    <a href="/posts/cf59853/">
+      <time datetime="2026-07-29">07.29</time>
+      <span><strong>牛客暑期多校 4</strong><small>记录循环移位计数、代价预处理与构造中的反复修正。</small></span>
     </a>
-    <a href="/posts/91accdb5/">
-      <time datetime="2026-07-23">07.23</time>
-      <span><strong>浅谈序列对齐 DP</strong><small>从双前缀状态和最后一步决策理解经典模型。</small></span>
+    <a href="/posts/ed15ad19/">
+      <time datetime="2026-07-29">07.29</time>
+      <span><strong>P2471 · 降雨量</strong><small>在记录不完整时区分必真、必假与仍有可能。</small></span>
     </a>
-    <a href="/posts/e5963d66/">
-      <time datetime="2026-07-22">07.22</time>
-      <span><strong>牛客暑期多校 2</strong><small>记录线性基、容斥、反例修正与实现边界。</small></span>
+    <a href="/posts/1a60e0d0/">
+      <time datetime="2026-07-29">07.29</time>
+      <span><strong>P2014 · 选课</strong><small>把先修依赖与精确选择统一进树上的分组背包。</small></span>
     </a>
-    <a href="/posts/eaf5f5bc/">
-      <time datetime="2026-05-09">05.09</time>
-      <span><strong>ABC457G · Catch All Apples</strong><small>把时空可达关系转化为二维偏序，再连接到 LIS 模型。</small></span>
+    <a href="/posts/8a654c64/">
+      <time datetime="2026-07-28">07.28</time>
+      <span><strong>P1972 · HH 的项链</strong><small>把不可直接相减的不同数查询改写成最后出现位置的贡献。</small></span>
     </a>
   </div>
 </section>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>动态规划与字符串</dd></div>
-      <div><dt>整理</dt><dd>算法知识图谱</dd></div>
+      <div><dt>学习</dt><dd>动态规划与数据结构</dd></div>
+      <div><dt>整理</dt><dd>题型记录与知识图谱</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>牛客暑期多校复盘</dd></div>
+      <div><dt>留下</dt><dd>牛客暑期多校 4 复盘</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
