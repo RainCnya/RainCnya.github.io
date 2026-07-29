@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@traptitech/markdown-it-katex": "^3.6.0",
-    "cheerio": "1.0.0",
+    "cheerio": "1.2.0",
     "hexo": "^8.1.1",
     "hexo-abbrlink": "^2.2.1",
     "hexo-admonition": "^1.1.2",
