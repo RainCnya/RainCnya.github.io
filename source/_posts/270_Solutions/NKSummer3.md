@@ -1,5 +1,5 @@
 ---
-title: '[Solution] NKSummer3'
+title: "[Solution] NKSummer3"
 status: reviewed
 categories:
   - 270_Solutions
@@ -393,14 +393,204 @@ void solve( ) {
 
 ## 三、补题记录
 
-有空再补吧。
 
-### {题号 题名}
+### [G-矩阵标记](https://ac.nowcoder.com/acm/contest/133878/G)
 
-{只展开真正值得补的题。可以直接采用单题笔记的写法：题意、真实思路、赛后修正、代码。}
+> [!question] [G. 矩阵标记](https://ac.nowcoder.com/acm/contest/133878/G)  
+> 给定一个 $n\times m$ 的数字网格。若两个值相同的格子 $(r_1,c_1)$ 与 $(r_2,c_2)$ 满足 $r_1<r_2$ 且 $c_1<c_2$，则将它们作为左上角和右下角所确定的整个矩形标记。求所有矩形的并集，即最终每个格子是否被标记。
+>
+> 数据规模：$n\times m\le 10^6$，$1\le a_{i,j}\le n\times m$。
+
+这个题难点在哪？我直接对所有数排个序，然后暴力枚举所有可能的点对，做二维差分不就好了吗？我一开始还在想要不要用二维树状数组维护差分，但最后发现所有修改完成后只需要统一查询一次，所以直接使用静态二维差分即可。
+
+但是考虑最坏情况，如果所有元素都相同，那么可能的点对数量可以达到 $O((nm)^2)$，显然无法暴力枚举。于是问题转化为：如何用更少的矩形表示同一个数产生的所有标记。
+
+对于固定的数 $x$，将所有出现 $x$ 的位置按照行压缩。设不同的出现行为 $r_0<r_1<\dots<r_{k-1}$。
+
+并记录 $mn_i$、$mx_i$ 分别表示第 $r_i$ 行中 $x$ 出现的最小列和最大列。进一步维护前缀最小值和后缀最大值即可，$\displaystyle pre_{i} = \min_{0 \le j \le i}(mn_{j})$，$\displaystyle suf_{i} = \max_{i \le j < k}(mx_{j})$。
+
+考虑相邻出现行 $r_i,r_{i+1}$ 形成的分界。上方所有点中最靠左的列是 $pre_i$，下方所有点中最靠右的列是 $suf_{i+1}$。如果 $pre_i<suf_{i+1}$，那么这两个实际存在的点可以形成合法矩形，因此对 $[r_{i}, r_{i+1}] \times [pre_{i}, suf_{i+1}]$ 这个矩形进行一次二维差分。
+
+因为 $r$ 数组里存的是所有出现 $x$ 的行，所以枚举每对相邻出现行形成的分界，就可以覆盖所有合法点对产生的矩形。
+
+总复杂度为 $O(nm\log(nm))$。
+
+```cpp title:"G" fold
+struct Node {
+    ll val;
+    int r, c;
+};
+
+bool cmp( const Node& a, const Node& b ) {
+    if( a.val != b.val ) return a.val < b.val;
+    if( a.r != b.r ) return a.r < b.r;
+    return a.c < b.c;
+}
+
+struct State {
+    int row, mn, mx;
+};
+
+void solve( ) {
+    int n = read( ), m = read( );
+    int N = n * m;
+
+    vector<Node> a;
+    a.reserve( N );
+    for( int i = 1; i <= n; ++ i ) {
+        for( int j = 1; j <= m; ++ j ) {
+            ll val = read( );
+            a.push_back({ val, i, j });
+        }
+    }
+    sort( a.begin( ), a.end( ), cmp );
+
+    vector< vector<int> > dif( n + 2, vector< int >( m + 2 ) );
+    auto modify = [&]( int x1, int y1, int x2, int y2 ) {
+        if( x1 > x2 || y1 > y2 ) return;
+        dif[x1][y1] ++, dif[x1][y2+1] --, dif[x2+1][y1] --, dif[x2+1][y2+1] ++;
+    };
+
+    vector<State> states;
+    vector<int> pre, suf;
+
+    for( int L = 0; L < N; ) {
+        int R = L;
+        while( R < N && a[R].val == a[L].val ) ++ R;
+
+        states.clear( );
+        for( int i = L; i < R; ) {
+            int row = a[i].r;
+            int mn = inf, mx = -inf;
+            while( i < R && a[i].r == row ) {
+                int col = a[i].c;
+                mn = min( mn, col );
+                mx = max( mx, col );
+                ++ i;
+            }
+            states.push_back({ row, mn, mx });
+        }
+
+        int sz = states.size( );
+        if( sz >= 2 ) {
+            pre.resize( sz ), suf.resize( sz );
+
+            pre[0] = states[0].mn;
+            for( int i = 1; i < sz; ++ i ) {
+                pre[i] = min( pre[i-1], states[i].mn );
+            }
+
+            suf[sz-1] = states[sz-1].mx;
+            for( int i = sz - 2; i >= 0; -- i ) {
+                suf[i] = max( suf[i+1], states[i].mx );
+            }
+
+            for( int i = 0; i + 1 < sz; ++ i ) {
+                int x1 = states[i].row;
+                int x2 = states[i+1].row;
+                int y1 = pre[i];
+                int y2 = suf[i+1];
+                if( y1 < y2 ) modify( x1, y1, x2, y2 );
+            }
+        }
+        L = R;
+    }
+
+    string ans( m, '0' );
+    for( int i = 1; i <= n; ++ i ) {
+        for( int j = 1; j <= m; ++ j ) {
+            dif[i][j] += dif[i-1][j] + dif[i][j-1] - dif[i-1][j-1];
+            if( dif[i][j] > 0 ) ans[j-1] = '1';
+            else ans[j-1] = '0';
+        }
+        cout << ans << '\n';
+    }
+}
+```
+
+### [J-树.zip](https://ac.nowcoder.com/acm/contest/133878/J)
+
+> [!question] [J. 树.zip](https://ac.nowcoder.com/acm/contest/133878/J)  
+> 给定一棵以 $1$ 为根的树，需要在相同点集上构造一棵新树。每个非根节点在新树中的父亲必须是它在原树中的祖先；同时给出若干约束 $(u,v)$，要求新树中 $v$ 是 $u$ 的祖先。求新树所有节点深度之和的最小值。
+>
+> 数据规模：$2\le n\le 5\times 10^5$，$0\le q\le 5\times 10^5$；原树满足 $p_i<i$，且每个约束中的 $v$ 都是 $u$ 在原树中的祖先。
+
+最开始的思路是对于每个点，只记录它最深的限制位置；如果没有限制，就令它的限制为根节点，然后考虑转移不就好了吗？
+
+但这样无法传递中间的祖先关系。例如原树为 $1 \leftarrow 2 \leftarrow 3 \leftarrow 4$，有两个限制条件 $(4,2), (4,3)$，如果只记录 $lim_{4} = 3$，点 $3$ 没有限制条件，于是令 $lim_{3} = 1$，然后 $2$ 这一点就偏移了，这么做无法保证 $2$ 一定在 $2 \leftarrow 3 \leftarrow 4$ 上。
+
+所以对于这些限制，我们需要进行二次压缩。对于每个点 $u$，最好将它涉及的所有祖先约束真正串成一条链： $u \to lim_{u} \to lim_{lim_{u}} \to \dots \to 1$。
+
+接着考虑转移。假设某个点 $u$ 的限制按照原树深度排列为 $u \to v_{1} \to v_{2} \to \dots \to v_{k}$，其中 $v_{1}$ 最深，$v_{k}$ 最浅；显然最优的新树中，应当令 $fa[u] = v_{1}, fa[v_{1}] = v_{2}, \dots$。
+
+也就是说，需要从较深的约束开始，逐渐向较浅的祖先连接。题目满足 $p_i<i$，所以祖先编号一定更小，按照约束中的 $v$ 从大到小处理，就等价于按照深度从深到浅处理。
+
+这里用并查集维护已经形成的强制祖先链。`find(u)` 表示当前包含 $u$ 的链中，尚未继续向上连接的最上端。
+
+处理约束条件 $(u, v)$ 时，令 `x = find( u )`。处理约束 $(u,v)$ 时，令 `x = find(u)`。若 $x=v$，说明 $v$ 已经在这条链上；否则当前结构为 $u \to \dots \to x$，而约束要求 $v$ 也是 $u$ 的祖先，因此 $v$ 必须位于 $x$ 上方。
+
+直接令 $fa[x]=v$ 只增加一层祖先关系，因此是最优的；连接后令 `dsu[x]=v`，表示这条强制祖先链继续向上延伸到了 $v$。
+
+所有约束处理完后，对于仍未确定父亲的节点，直接将其接到根节点 $1$ 上即可。
+
+```cpp title:"J" fold
+int dsu[maxn];
+int fa[maxn];
+int dep[maxn];
+int p[maxn];
+
+vector<int> need[maxn];
+
+int find( int x ) {
+    int rt = x;
+    while( dsu[rt] != rt ) rt = dsu[rt];
+
+    while( dsu[x] != x ) {
+        int nxt = dsu[x];
+        dsu[x] = rt;
+        x = nxt;
+    }
+    return rt;
+}
+
+void solve( ) {
+    int n = read( ), q = read( );
+
+    for( int i = 2; i <= n; ++ i ) p[i] = read( );
+
+    for( int i = 1; i <= n; ++ i ) dsu[i] = i;
+
+    for( int i = 1; i <= q; ++ i ) {
+        int u = read( ), v = read( );
+        need[v].push_back( u );
+    }
+
+    for( int v = n; v >= 1; -- v ) {
+        for( int u : need[v] ) {
+            int x = find( u );
+            if( x == v ) continue;
+            fa[x] = v;
+            dsu[x] = v;
+        }
+    }
+
+    for( int i = 2; i <= n; ++ i ) {
+        if( fa[i] == 0 ) fa[i] = 1;
+    }
+
+    ll ans = 0;
+    for( int i = 2; i <= n; ++ i ) {
+        dep[i] = dep[fa[i]] + 1;
+        ans += dep[i];
+    }
+    cout << ans << '\n';
+}
+```
 
 ## 四、本场留下什么
 
-- 解题上：过程合法性不能只看终态；博弈胜负也不能简单化为最短路奇偶性。题目只依赖相对关系时，可以尝试按对称性压缩状态。
-- 实现上：继续注意 `long long`、递归深度和多测清空；出现异常 TLE 时，不要只盯着理论复杂度。
-- 后续：回炉基础博弈、循环移位计数，以及等价类状态压缩。
+- 解题上：不能只根据终态或最短路径判断整个过程是否合法；当暴力枚举点对或状态数过大时，应继续寻找答案真正依赖的信息，例如行极值、颜色对称性和强制祖先链。
+
+- 实现上：继续注意 `long long`、递归深度与多测清空；遇到异常的 TLE / WA 时，先区分是复杂度、模型遗漏还是代码实现问题，不要只盯着表面。
+
+- 后续：回炉基础博弈与循环移位计数；整理等价类状态压缩、二维差分覆盖矩形，以及并查集维护强制关系链这几种方法。
