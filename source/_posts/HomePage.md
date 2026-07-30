@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-07-29 23:00:00
+updated: 2026-07-30 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,19 +39,19 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
-    <a href="/posts/cf59853/">
-      <time datetime="2026-07-29">07.29</time>
-      <span><strong>牛客暑期多校 4</strong><small>记录循环移位计数、代价预处理与构造中的反复修正。</small></span>
+    <a href="/posts/a4302001/">
+      <time datetime="2026-07-30">07.30</time>
+      <span><strong>P4302 · 字符串折叠</strong><small>把区间的最终结构拆成拼接与周期压缩两类转移。</small></span>
     </a>
-    <a href="/posts/ed15ad19/">
-      <time datetime="2026-07-29">07.29</time>
-      <span><strong>P2471 · 降雨量</strong><small>在记录不完整时区分必真、必假与仍有可能。</small></span>
+    <a href="/posts/a3052001/">
+      <time datetime="2026-07-30">07.30</time>
+      <span><strong>P3052 · Cows in a Skyscraper</strong><small>从枚举整趟子集，压缩到只保留趟数与末趟载重。</small></span>
     </a>
-    <a href="/posts/1a60e0d0/">
-      <time datetime="2026-07-29">07.29</time>
-      <span><strong>P2014 · 选课</strong><small>把先修依赖与精确选择统一进树上的分组背包。</small></span>
+    <a href="/posts/a4363001/">
+      <time datetime="2026-07-30">07.30</time>
+      <span><strong>P4363 · 一双木棋</strong><small>把棋盘压成合法轮廓，在极大极小搜索中保留最小充分状态。</small></span>
     </a>
-    <a href="/posts/8a654c64/">
+    <a href="/posts/b1972001/">
       <time datetime="2026-07-28">07.28</time>
       <span><strong>P1972 · HH 的项链</strong><small>把不可直接相减的不同数查询改写成最后出现位置的贡献。</small></span>
     </a>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>动态规划与数据结构</dd></div>
-      <div><dt>整理</dt><dd>题型记录与知识图谱</dd></div>
+      <div><dt>学习</dt><dd>状态压缩与区间 DP</dd></div>
+      <div><dt>整理</dt><dd>基础策略、树论与题型记录</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>牛客暑期多校 4 复盘</dd></div>
+      <div><dt>留下</dt><dd>状态压缩与区间 DP 记录</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
