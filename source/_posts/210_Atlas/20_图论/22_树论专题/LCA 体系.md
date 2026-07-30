@@ -3,7 +3,7 @@ title: '[Note] LCA 体系'
 tags:
   - 树论/LCA
   - 树论/树链剖分
-  - 策略/倍增
+  - 思想/倍增
   - 难度/P3
 categories:
   - 210_Atlas

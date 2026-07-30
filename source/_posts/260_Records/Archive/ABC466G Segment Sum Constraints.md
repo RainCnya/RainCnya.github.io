@@ -5,7 +5,7 @@ tags:
   - 动态规划
   - 前缀和
   - 带权并查集
-  - DP/数位DP
+  - DP/数位
 status: shelved
 categories:
   - 260_Records

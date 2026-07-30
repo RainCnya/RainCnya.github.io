@@ -2,7 +2,7 @@
 title: P4513 小白逛公园
 tags:
   - 数据结构/线段树
-  - 策略/分治
+  - 思想/分治
 difficulty: 提高+/省选-
 categories:
   - 220_Library
