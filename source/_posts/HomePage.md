@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-07-30 00:00:00
+updated: 2026-08-02 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,21 +39,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
-    <a href="/posts/a4302001/">
-      <time datetime="2026-07-30">07.30</time>
-      <span><strong>P4302 · 字符串折叠</strong><small>把区间的最终结构拆成拼接与周期压缩两类转移。</small></span>
+    <a href="/posts/3d4246b/">
+      <time datetime="2026-08-01">08.01</time>
+      <span><strong>P10814 · 离线二维数点</strong><small>固定一个维度扫描，用树状数组维护另一个维度的前缀贡献。</small></span>
     </a>
-    <a href="/posts/a3052001/">
-      <time datetime="2026-07-30">07.30</time>
-      <span><strong>P3052 · Cows in a Skyscraper</strong><small>从枚举整趟子集，压缩到只保留趟数与末趟载重。</small></span>
+    <a href="/posts/p2709001/">
+      <time datetime="2026-08-02">08.02</time>
+      <span><strong>P2709 · 小 B 的询问</strong><small>从答案表达式出发，判断端点移动能否以常数代价维护。</small></span>
     </a>
-    <a href="/posts/a4363001/">
-      <time datetime="2026-07-30">07.30</time>
-      <span><strong>P4363 · 一双木棋</strong><small>把棋盘压成合法轮廓，在极大极小搜索中保留最小充分状态。</small></span>
+    <a href="/posts/p5490001/">
+      <time datetime="2026-08-02">08.02</time>
+      <span><strong>P5490 · 矩形面积并</strong><small>扫描事件之间状态不变，用线段树维护纵向覆盖长度。</small></span>
     </a>
-    <a href="/posts/b1972001/">
-      <time datetime="2026-07-28">07.28</time>
-      <span><strong>P1972 · HH 的项链</strong><small>把不可直接相减的不同数查询改写成最后出现位置的贡献。</small></span>
+    <a href="/posts/p1502001/">
+      <time datetime="2026-08-02">08.02</time>
+      <span><strong>P1502 · 窗口的星星</strong><small>把移动窗口反转为窗口位置上的带权矩形覆盖最大值。</small></span>
     </a>
   </div>
 </section>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>状态压缩与区间 DP</dd></div>
-      <div><dt>整理</dt><dd>基础策略、树论与题型记录</dd></div>
+      <div><dt>学习</dt><dd>离线区间查询与扫描线</dd></div>
+      <div><dt>整理</dt><dd>树状数组、莫队与线段树记录</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>状态压缩与区间 DP 记录</dd></div>
+      <div><dt>留下</dt><dd>二维数点、莫队与矩形覆盖记录</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
