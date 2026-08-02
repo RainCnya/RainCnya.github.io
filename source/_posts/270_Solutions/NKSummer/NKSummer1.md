@@ -1,8 +1,9 @@
 ---
-title: "[Solution] NKSummer1"
+title: '[Solution] NKSummer1'
 status: reviewed
 categories:
   - 270_Solutions
+  - NKSummer
 abbrlink: 3c8bbb2b
 date: 2026-07-17 00:00:00
 updated: 2026-07-17 00:00:00

@@ -3,6 +3,7 @@ title: '[Solution] NKSummer5'
 status: reviewed
 categories:
   - 270_Solutions
+  - NKSummer
 abbrlink: 7bf2a8c5
 date: 2026-07-31 00:00:00
 updated: 2026-08-01 00:00:00

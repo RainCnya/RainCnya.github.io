@@ -3,6 +3,7 @@ title: '[Solution] NKSummer4'
 status: reviewed
 categories:
   - 270_Solutions
+  - NKSummer
 abbrlink: cf59853
 date: 2026-07-29 00:00:00
 updated: 2026-07-29 00:00:00
