@@ -171,8 +171,7 @@ upper_bound( g.begin( ), g.end( ), X ) - g.begin( )
 
 ## 六、代码实现
 
-{% fold info @LIS %}
-```cpp
+```cpp title:"LIS" fold
 int a[maxn], f[maxn];
 
 // O(N^2)，f[i] 表示以 a[i] 结尾的 LIS 长度
@@ -198,6 +197,5 @@ int solve_log( vector<int> &arr ) {
     return (int)g.size( );
 }
 ```
-{% endfold %}
 
 相关导航：[[DPGuide|动态规划导览]] · [[LIS题型整理|LIS 题型整理]] · [[AlgorithmGuide|算法与竞赛]]
