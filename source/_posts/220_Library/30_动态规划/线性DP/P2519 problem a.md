@@ -2,7 +2,6 @@
 title: '[Leaf] [P2519] problem a'
 tags:
   - DP/线性
-  - 策略/二分答案
   - 难度/P4
 categories:
   - 220_Library
