@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-02 00:00:00
+updated: 2026-08-05 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,21 +39,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
+    <a href="/posts/9f633e52/">
+      <time datetime="2026-08-05">08.05</time>
+      <span><strong>浅谈二分答案</strong><small>把最优化改写为单调判定，先证明 check 的可行性边界。</small></span>
+    </a>
+    <a href="/posts/242733d4/">
+      <time datetime="2026-08-04">08.04</time>
+      <span><strong>前缀函数理论</strong><small>从 Border 链推导失配回退、周期结构与线性构造。</small></span>
+    </a>
+    <a href="/posts/94572d3b/">
+      <time datetime="2026-08-04">08.04</time>
+      <span><strong>前缀函数题型整理</strong><small>沿 Border 链把周期、覆盖和前缀自动机问题连成模型。</small></span>
+    </a>
     <a href="/posts/3d4246b/">
       <time datetime="2026-08-01">08.01</time>
       <span><strong>P10814 · 离线二维数点</strong><small>固定一个维度扫描，用树状数组维护另一个维度的前缀贡献。</small></span>
-    </a>
-    <a href="/posts/p2709001/">
-      <time datetime="2026-08-02">08.02</time>
-      <span><strong>P2709 · 小 B 的询问</strong><small>从答案表达式出发，判断端点移动能否以常数代价维护。</small></span>
-    </a>
-    <a href="/posts/p5490001/">
-      <time datetime="2026-08-02">08.02</time>
-      <span><strong>P5490 · 矩形面积并</strong><small>扫描事件之间状态不变，用线段树维护纵向覆盖长度。</small></span>
-    </a>
-    <a href="/posts/p1502001/">
-      <time datetime="2026-08-02">08.02</time>
-      <span><strong>P1502 · 窗口的星星</strong><small>把移动窗口反转为窗口位置上的带权矩形覆盖最大值。</small></span>
     </a>
   </div>
 </section>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>离线区间查询与扫描线</dd></div>
-      <div><dt>整理</dt><dd>树状数组、莫队与线段树记录</dd></div>
+      <div><dt>学习</dt><dd>二分答案与前缀函数</dd></div>
+      <div><dt>整理</dt><dd>基础策略与字符串模型</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>二维数点、莫队与矩形覆盖记录</dd></div>
+      <div><dt>留下</dt><dd>单调判定、Border 链与题型迁移</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">

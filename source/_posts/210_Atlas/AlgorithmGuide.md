@@ -9,7 +9,7 @@ comments: false
 copyright: false
 abbrlink: 58ed0df4
 date: 2026-07-12 00:00:00
-updated: 2026-08-02 00:00:00
+updated: 2026-08-05 00:00:00
 ---
 
 ## 算法与竞赛
@@ -30,7 +30,7 @@ updated: 2026-08-02 00:00:00
 
 如果暂时没有明确目标，可以先阅读 [[00_基础算法]]，再沿着下面的知识图谱选择方向。
 
-> 近期推荐：[[P10814 离线二维数点]] | [[P2709 小 B 的询问]] | [[P5490 矩形面积并]]
+> 近期推荐：[[浅谈二分答案]] | [[前缀函数理论]] | [[前缀函数题型整理]]
 
 ## 知识图谱
 
@@ -62,3 +62,28 @@ updated: 2026-08-02 00:00:00
 - [新题解](/categories/新题解/)
 
 返回 [[HomePage|首页]]；数学相关内容进入 [[MathGuide|数学体系]]。
+
+
+### 洛谷友情题单
+
+[【数学1】初等数论](https://www.luogu.com.cn/training/1069312)
+
+[【数学2】模运算 | 同余 | 离散对数](https://www.luogu.com.cn/training/1069313)
+
+[【数学3】算术函数 | 莫比乌斯反演](https://www.luogu.com.cn/training/1069314)
+
+[【数学4】组合数学 | 离散计数](https://www.luogu.com.cn/training/1069315)
+
+[【数学5】线性代数 | 矩阵与图计数](https://www.luogu.com.cn/training/1069317)
+
+[【数学6】概率 | 期望 - 洛谷](https://www.luogu.com.cn/training/1069318)
+
+[【模板1】基础算法 | 数据结构 | 离线算法](https://www.luogu.com.cn/training/1069288)
+
+[【模版2】图论 | 网络流 | 树论](https://www.luogu.com.cn/training/1069290)
+
+[【模版3】字符串 | 数论](https://www.luogu.com.cn/training/1069292)
+
+[【模板4】数学 | 计算几何 | 专项算法](https://www.luogu.com.cn/training/1069293)
+
+[【模版5】多项式 | 集合幂级数](https://www.luogu.com.cn/training/1069297)
