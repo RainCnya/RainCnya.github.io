@@ -6,8 +6,7 @@ tags:
   - 难度/P2
 categories:
   - 220_Library
-  - 70_杂项专题
-  - 71_公平博弈
+  - 40_数学
 abbrlink: 6ed7e9f3
 date: 2026-01-22 00:00:00
 ---
