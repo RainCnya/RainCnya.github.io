@@ -7,8 +7,8 @@ tags:
   - 难度/P5
 categories:
   - 220_Library
-  - 70_杂项专题
-  - 73_交互专题
+  - 00_基础算法
+  - 02_解题思维
 abbrlink: eb83cf7a
 date: 2026-02-12 00:00:00
 ---
