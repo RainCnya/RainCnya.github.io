@@ -3,6 +3,7 @@ title: 浅谈区间DP
 tags:
   - algorithm/浅谈
   - DP/区间
+status: reviewed
 categories:
   - 210_Atlas
   - 30_动态规划

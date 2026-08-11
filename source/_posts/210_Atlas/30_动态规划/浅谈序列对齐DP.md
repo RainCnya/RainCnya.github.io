@@ -4,7 +4,7 @@ tags:
   - algorithm/浅谈
   - DP/线性
   - DP/序列对齐
-status: developing
+status: reviewed
 categories:
   - 210_Atlas
   - 30_动态规划
