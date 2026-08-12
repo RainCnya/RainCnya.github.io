@@ -3,7 +3,6 @@ title: '[Leaf] [CF76A] Gift'
 tags:
   - 图论/生成树
   - 图论/建模
-  - 难度/P3
 categories:
   - 220_Library
   - 20_图论

@@ -2,8 +2,7 @@
 title: '[Leaf] [CF2183E] LCM is Legendary Counting Master'
 tags:
   - DP/计数
-  - 数论
-  - 难度/P5
+  - 数学/数论
 categories:
   - 220_Library
   - 30_动态规划

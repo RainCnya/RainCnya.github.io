@@ -6,10 +6,9 @@ categories:
 abbrlink: eaf5f5bc
 date: 2026-05-09 00:00:00
 tags:
-  - algorithm/记录
-  - 偏序
+  - 数学/偏序
   - DP/LIS
-  - Dilworth定理
+  - 数学/Dilworth定理
 ---
 
 ### [G - Catch All Apples](https://atcoder.jp/contests/abc457/tasks/abc457_g)

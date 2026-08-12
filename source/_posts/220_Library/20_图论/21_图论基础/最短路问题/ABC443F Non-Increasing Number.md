@@ -2,8 +2,7 @@
 title: '[Leaf] [ABC443F] Non-Increasing Number'
 tags:
   - 图论/最短路
-  - 数论/同余
-  - 难度/P3
+  - 数学/数论/同余
 categories:
   - 220_Library
   - 20_图论

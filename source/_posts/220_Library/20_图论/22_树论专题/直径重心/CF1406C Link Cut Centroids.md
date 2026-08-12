@@ -3,14 +3,13 @@ title: '[Leaf] [CF1406C] Link Cut Centroids'
 tags:
   - 树论/重心
   - 策略/构造
-  - 难度/P3
 categories:
   - 220_Library
   - 20_图论
   - 22_树论专题
 abbrlink: cc4bf061
 date: 2025-12-18 00:00:00
-upddated: 2026-02-09 10:31:19
+updated: 2026-02-09 10:31:19
 ---
 
 # [CF1406C Link Cut Centroids - 洛谷](https://www.luogu.com.cn/problem/CF1406C)

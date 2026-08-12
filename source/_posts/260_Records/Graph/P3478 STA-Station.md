@@ -1,9 +1,8 @@
-﻿---
+---
 title: P3478 STA-Station
 tags:
-  - algorithm/记录
   - 图论/树
-  - 动态规划/换根DP
+  - DP/树形
 status: solved
 categories:
   - 260_Records

@@ -1,9 +1,8 @@
 ---
 title: 'ABC458D Chalkboard Median'
 tags:
-  - algorithm/记录
   - 数据结构/平衡树
-  - 动态中位数
+  - 数据结构/动态中位数
 categories:
   - 260_Records
   - Archive

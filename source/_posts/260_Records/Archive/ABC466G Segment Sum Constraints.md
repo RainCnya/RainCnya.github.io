@@ -1,10 +1,9 @@
 ---
 title: 'ABC466G Segment Sum Constraints'
 tags:
-  - algorithm/记录
-  - 动态规划
-  - 前缀和
-  - 带权并查集
+  - DP
+  - 方法/前缀和
+  - 数据结构/带权并查集
   - DP/数位
 status: shelved
 categories:

@@ -4,7 +4,6 @@ tags:
   - DP/树形
   - 树论/欧拉序
   - 搜索/DFS
-  - 难度/P3
 categories:
   - 220_Library
   - 20_图论

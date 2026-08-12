@@ -3,7 +3,6 @@ title: '[Leaf] [P3489] WIE-Hexer'
 tags:
   - 图论/最短路
   - DP/状压
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

@@ -1,10 +1,9 @@
 ---
 title: 'ABC448D Integer-duplicated Path'
 tags:
-  - algorithm/记录
   - 图论/树
   - 搜索/DFS
-  - 算法/离散化
+  - 方法/离散化
 categories:
   - 260_Records
   - Archive

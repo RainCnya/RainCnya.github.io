@@ -3,7 +3,6 @@ title: '[Leaf] [ABC446F] Reachable Set 2'
 tags:
   - 图论/最短路
   - 优化/前缀差分
-  - 难度/P3
 categories:
   - 220_Library
   - List

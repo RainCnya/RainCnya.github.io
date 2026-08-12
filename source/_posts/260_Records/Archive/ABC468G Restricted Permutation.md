@@ -1,8 +1,7 @@
 ---
 title: ABC468G Restricted Permutation
 tags:
-  - algorithm/记录
-  - 动态规划/计数
+  - DP/计数
   - 数学/组合计数
 status: solved
 categories:

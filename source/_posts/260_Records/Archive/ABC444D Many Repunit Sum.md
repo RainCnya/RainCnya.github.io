@@ -1,9 +1,8 @@
 ---
 title: 'ABC444D Many Repunit Sum'
 tags:
-  - algorithm/记录
   - 模拟/高精度
-  - 前缀和
+  - 方法/前缀和
 categories:
   - 260_Records
   - Archive

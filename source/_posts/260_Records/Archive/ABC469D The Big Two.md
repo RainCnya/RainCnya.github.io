@@ -1,7 +1,6 @@
 ---
 title: ABC469D The Big Two
 tags:
-  - algorithm/记录
   - 图论/建模
   - 方法/候选压缩
 status: solved

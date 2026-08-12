@@ -2,8 +2,7 @@
 title: '[Leaf] [CF2192D] Cost of Tree'
 tags:
   - DP/树形
-  - 算法/贡献法
-  - 难度/P4
+  - 方法/贡献统计
 categories:
   - 220_Library
   - 30_动态规划

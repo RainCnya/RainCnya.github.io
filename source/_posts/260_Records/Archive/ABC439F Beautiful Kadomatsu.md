@@ -1,8 +1,7 @@
 ---
 title: 'ABC439F Beautiful Kadomatsu'
 tags:
-  - algorithm/记录
-  - 组合
+  - 数学/组合
   - 数据结构/树状数组
 categories:
   - 260_Records

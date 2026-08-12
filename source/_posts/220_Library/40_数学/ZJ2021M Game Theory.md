@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2021M] Game Theory'
 tags:
   - 数学/博弈
   - 数学/概率
-  - 难度/P2
 categories:
   - 220_Library
   - 40_数学

@@ -1,7 +1,6 @@
 ---
 title: P1823 Patrik 音乐会的等待
 tags:
-  - algorithm/记录
   - 数据结构/单调栈
 status: solved
 categories:

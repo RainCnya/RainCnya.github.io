@@ -1,7 +1,6 @@
 ---
 title: ABC468E Sum of Average
 tags:
-  - algorithm/记录
   - 数学/贡献
   - 数学/模逆元
 status: solved

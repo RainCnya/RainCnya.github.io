@@ -3,7 +3,6 @@ title: '[Leaf] [P2986] Great Cow Gathering G'
 tags:
   - DP/树形
   - 树论/重心
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

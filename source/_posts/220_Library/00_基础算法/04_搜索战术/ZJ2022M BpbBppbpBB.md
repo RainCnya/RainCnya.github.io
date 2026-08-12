@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2022M] BpbBppbpBB'
 tags:
   - 搜索/BFS
   - 图论/连通性
-  - 难度/P2
 categories:
   - 220_Library
   - 00_基础算法

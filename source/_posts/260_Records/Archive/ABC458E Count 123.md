@@ -1,9 +1,8 @@
 ---
 title: 'ABC458E Count 123'
 tags:
-  - algorithm/记录
-  - 组合数学
-  - 范德蒙恒等式
+  - 数学/组合
+  - 数学/组合/范德蒙恒等式
 categories:
   - 260_Records
   - Archive

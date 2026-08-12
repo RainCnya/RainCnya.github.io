@@ -1,7 +1,6 @@
 ---
 title: P3052 Cows in a Skyscraper
 tags:
-  - algorithm/记录
   - DP/状压
 status: solved
 categories:

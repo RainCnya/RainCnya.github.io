@@ -2,7 +2,6 @@
 title: '[Note] 背包DP'
 tags:
   - DP/背包
-  - 难度/P3
 categories:
   - 210_Atlas
   - 30_动态规划

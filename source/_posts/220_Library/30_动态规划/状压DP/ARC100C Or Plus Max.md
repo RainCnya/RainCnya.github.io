@@ -3,7 +3,6 @@ title: '[Leaf] [ARC100C] Or Plus Max'
 tags:
   - DP/状压
   - 数学/位运算
-  - 难度/P4
 categories:
   - 220_Library
   - 30_动态规划

@@ -3,7 +3,6 @@ title: '[Leaf] [ABC442F] Diagonal Separation 2'
 tags:
   - DP/线性
   - 优化/前缀差分
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

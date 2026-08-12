@@ -1,8 +1,7 @@
 ---
 title: '[Note] SCC 缩点'
 tags:
-  - 图论/连通性/强连通
-  - 难度/P3
+  - 图论/强连通
 categories:
   - 210_Atlas
   - 20_图论
@@ -10,7 +9,6 @@ categories:
 abbrlink: dbe3a645
 date: 2025-12-15 11:30:00
 updated: 2026-08-10 00:00:00
-updated2: 2026-02-07 00:34:08
 ---
 # [L4] SCC 缩点
 

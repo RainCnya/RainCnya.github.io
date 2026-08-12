@@ -1,7 +1,5 @@
 ---
 title: '[Solution] 2025_CCPC_Chongqing'
-tags:
-  - 难度/P5
 categories:
   - 270_Solutions
 abbrlink: e02d7750

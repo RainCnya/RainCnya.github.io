@@ -2,7 +2,6 @@
 title: '[Leaf] [ZJ2021L] String Freshman'
 tags:
   - 字符串/KMP
-  - 难度/P2
 categories:
   - 220_Library
   - 60_字符串

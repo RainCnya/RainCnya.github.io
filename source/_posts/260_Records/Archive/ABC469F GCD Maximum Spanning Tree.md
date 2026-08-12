@@ -1,7 +1,6 @@
 ---
 title: ABC469F GCD Maximum Spanning Tree
 tags:
-  - algorithm/记录
   - 图论/生成树
   - 数据结构/并查集
   - 数学/整除

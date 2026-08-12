@@ -3,7 +3,6 @@ title: '[Leaf] [ARC098B] Xor Sum 2'
 tags:
   - 算法/双指针
   - 数学/位运算
-  - 难度/P3
 categories:
   - 220_Library
   - 00_基础算法

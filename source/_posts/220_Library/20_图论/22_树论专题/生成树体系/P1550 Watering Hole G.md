@@ -3,7 +3,6 @@ title: '[Leaf] [P1550] Watering Hole G'
 tags:
   - 图论/生成树
   - 图论/建模
-  - 难度/P2
 categories:
   - 220_Library
   - 20_图论

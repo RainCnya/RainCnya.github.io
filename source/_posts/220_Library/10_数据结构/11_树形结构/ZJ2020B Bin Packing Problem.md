@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2020B] Bin Packing Problem'
 tags:
   - 数据结构/线段树
   - 数据结构/平衡树
-  - 难度/P3
 categories:
   - 220_Library
   - 10_数据结构

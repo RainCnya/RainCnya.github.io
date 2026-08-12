@@ -3,7 +3,6 @@ title: '[Note] 树图DP'
 tags:
   - DP/树形
   - DP/图形
-  - 难度/P4
 categories:
   - 210_Atlas
   - 30_动态规划

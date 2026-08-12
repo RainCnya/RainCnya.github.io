@@ -1,9 +1,7 @@
 ---
 title: 'ABC441F Must Buy'
 tags:
-  - algorithm/记录
   - DP/背包
-  - 难度/P4
 categories:
   - 260_Records
   - Archive

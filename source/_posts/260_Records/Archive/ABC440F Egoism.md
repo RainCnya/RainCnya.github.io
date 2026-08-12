@@ -1,9 +1,8 @@
 ---
 title: 'ABC440F Egoism'
 tags:
-  - algorithm/记录
   - 数据结构/树状数组
-  - 算法/离散化
+  - 方法/离散化
   - 策略/动态维护
 categories:
   - 260_Records

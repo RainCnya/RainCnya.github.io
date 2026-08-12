@@ -1,8 +1,7 @@
 ---
 title: ABC467G Many Sweets Problem
 tags:
-  - algorithm/记录
-  - 数据结构
+  - 数据结构/基础
 status: solved
 categories:
   - 260_Records

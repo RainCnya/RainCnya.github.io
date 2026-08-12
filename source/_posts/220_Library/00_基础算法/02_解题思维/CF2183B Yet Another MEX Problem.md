@@ -3,7 +3,6 @@ title: '[Leaf] [CF2183B] Yet Another MEX Problem'
 tags:
   - 策略/贪心
   - 策略/构造
-  - 难度/P2
 categories:
   - 220_Library
   - 00_基础算法

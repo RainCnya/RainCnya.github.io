@@ -3,7 +3,6 @@ title: '[Leaf] [P2149] Elaxia 的路线'
 tags:
   - 图论/最短路/最短路图
   - 图论/建模
-  - 难度/P3
 categories:
   - 220_Library
   - 20_图论

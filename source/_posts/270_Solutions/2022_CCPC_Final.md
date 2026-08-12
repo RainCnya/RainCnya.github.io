@@ -1,7 +1,5 @@
 ---
 title: '[Solution] 2022_CCPC_Final'
-tags:
-  - 难度/P5
 categories:
   - 270_Solutions
 abbrlink: 4767817a

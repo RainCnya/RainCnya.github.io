@@ -1,11 +1,10 @@
-﻿---
+---
 title: P3469 BLO-Blockade
 tags:
-  - algorithm/记录
   - 图论/割点
   - 图论/点双连通分量
   - 图论/圆方树
-  - 算法/贡献统计
+  - 方法/贡献统计
 status: solved
 categories:
   - 260_Records

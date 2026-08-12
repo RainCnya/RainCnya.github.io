@@ -3,7 +3,6 @@ title: '[Leaf] [CF911F] Tree Destruction'
 tags:
   - 树论/直径
   - 策略/构造
-  - 难度/P4
 categories:
   - 220_Library
   - 20_图论

@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2022I] Barbecue'
 tags:
   - 字符串/Manacher
   - 数学/博弈
-  - 难度/P3
 categories:
   - 220_Library
   - 60_字符串

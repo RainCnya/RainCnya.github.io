@@ -1,7 +1,6 @@
 ---
 title: 'ABC444C AtCoder Riko'
 tags:
-  - algorithm/记录
   - 策略/构造
   - 策略/双指针
 categories:

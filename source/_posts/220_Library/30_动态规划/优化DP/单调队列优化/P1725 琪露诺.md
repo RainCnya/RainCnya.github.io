@@ -4,7 +4,6 @@ tags:
   - DP/线性
   - DP/优化
   - 算法/单调队列
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

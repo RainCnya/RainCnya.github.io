@@ -6,7 +6,6 @@ categories:
 abbrlink: 75a751d6
 date: 2026-02-21 00:00:00
 tags:
-  - algorithm/记录
   - 搜索/记忆化
   - 图论/判环
 ---

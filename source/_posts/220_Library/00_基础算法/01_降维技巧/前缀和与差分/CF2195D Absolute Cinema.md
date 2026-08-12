@@ -2,7 +2,6 @@
 title: '[Leaf] [CF2195D] Absolute Cinema'
 tags:
   - 优化/前缀差分
-  - 难度/P3
 categories:
   - 220_Library
   - 00_基础算法

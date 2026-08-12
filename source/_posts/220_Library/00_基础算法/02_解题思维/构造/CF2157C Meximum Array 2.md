@@ -3,7 +3,6 @@ title: '[Leaf] [CF2157C] Meximum Array 2'
 tags:
   - 策略/构造
   - 数学/MEX
-  - 难度/P2
 categories:
   - 220_Library
   - 00_基础算法

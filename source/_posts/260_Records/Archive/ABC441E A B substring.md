@@ -1,8 +1,7 @@
 ---
 title: 'ABC441E A > B substring'
 tags:
-  - algorithm/记录
-  - 字符串
+  - 字符串/基础
   - 数据结构/树状数组
 categories:
   - 260_Records

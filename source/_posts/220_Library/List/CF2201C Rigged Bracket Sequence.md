@@ -4,7 +4,6 @@ tags:
   - DP/线性
   - DP/计数
   - 优化/前缀差分
-  - 难度/P5
 categories:
   - 220_Library
   - List

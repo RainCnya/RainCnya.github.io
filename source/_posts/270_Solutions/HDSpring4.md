@@ -1,6 +1,5 @@
 ---
 title: HDSpring4
-tags:
 categories:
   - 270_Solutions
 abbrlink: bbf66394

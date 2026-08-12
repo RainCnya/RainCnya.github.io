@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-10 00:00:00
+updated: 2026-08-11 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,21 +39,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
+    <a href="/posts/d2739a1c/">
+      <time datetime="2026-08-10">08.10</time>
+      <span><strong>数论求和题型整理</strong><small>从整除重分类出发，串起反演、卷积、分块与前缀和。</small></span>
+    </a>
+    <a href="/posts/21980767/">
+      <time datetime="2026-08-10">08.10</time>
+      <span><strong>同余方程题型整理</strong><small>把周期相遇、余数约束和指数未知量还原为标准方程。</small></span>
+    </a>
+    <a href="/posts/p3469001/">
+      <time datetime="2026-08-10">08.10</time>
+      <span><strong>P3469 · BLO-Blockade</strong><small>把删点后的连通块规模转化为 Tarjan 子树贡献统计。</small></span>
+    </a>
     <a href="/posts/c4e72a91/">
       <time datetime="2026-08-09">08.09</time>
       <span><strong>公平组合博弈理论</strong><small>从状态图的 P/N 递推，走到 SG 值与独立子游戏异或。</small></span>
-    </a>
-    <a href="/posts/7b19d6e4/">
-      <time datetime="2026-08-09">08.09</time>
-      <span><strong>公平组合博弈建模</strong><small>按所需信息量连接 P/N、Nim、单局 SG 与组合结构。</small></span>
-    </a>
-    <a href="/posts/9f633e52/">
-      <time datetime="2026-08-05">08.05</time>
-      <span><strong>浅谈二分答案</strong><small>把最优化改写为单调判定，先证明 check 的可行性边界。</small></span>
-    </a>
-    <a href="/posts/242733d4/">
-      <time datetime="2026-08-04">08.04</time>
-      <span><strong>前缀函数理论</strong><small>从 Border 链推导失配回退、周期结构与线性构造。</small></span>
     </a>
   </div>
 </section>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>公平组合博弈与 SG 函数</dd></div>
-      <div><dt>整理</dt><dd>P/N、Nim 与组合游戏题型</dd></div>
+      <div><dt>学习</dt><dd>数论求和与图连通性</dd></div>
+      <div><dt>整理</dt><dd>同余模型、Tarjan 与题型迁移</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>状态图、独立子游戏与信息边界</dd></div>
+      <div><dt>留下</dt><dd>整除重分类、缩点与割点贡献</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">

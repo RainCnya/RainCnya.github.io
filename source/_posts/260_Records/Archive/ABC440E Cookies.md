@@ -1,7 +1,6 @@
 ---
 title: 'ABC440E Cookies'
 tags:
-  - algorithm/记录
   - 策略/贪心
   - 搜索/堆优化
 categories:

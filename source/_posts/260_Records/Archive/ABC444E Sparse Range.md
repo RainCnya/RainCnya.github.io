@@ -1,10 +1,9 @@
 ---
 title: 'ABC444E Sparse Range'
 tags:
-  - algorithm/记录
   - 策略/双指针
   - 数据结构/平衡树
-  - 滑动窗口
+  - 算法/滑动窗口
 categories:
   - 260_Records
   - Archive

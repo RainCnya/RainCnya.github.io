@@ -1,7 +1,5 @@
 ---
 title: '[Solution] ABC456 A~F'
-tags: 
-  - algorithm/比赛
 categories:
   - 270_Solutions
   - ABC

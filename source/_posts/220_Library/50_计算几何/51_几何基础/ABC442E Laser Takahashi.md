@@ -3,7 +3,6 @@ title: '[Leaf] [ABC442E] Laser Takahashi'
 tags:
   - 计算几何/极角排序
   - 优化/前缀差分
-  - 难度/P3
 categories:
   - 220_Library
   - 50_计算几何

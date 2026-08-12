@@ -2,7 +2,6 @@
 title: '[Leaf] [TZ9516] 合数封印'
 tags:
   - 策略/构造
-  - 难度/P2
 categories:
   - 220_Library
   - 00_基础算法

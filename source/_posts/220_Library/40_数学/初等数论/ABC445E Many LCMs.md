@@ -1,8 +1,7 @@
 ---
 title: '[Leaf] [ABC445E] Many LCMs'
 tags:
-  - 数论/LCM
-  - 难度/P4
+  - 数学/数论/LCM
 categories:
   - 220_Library
   - 40_数学

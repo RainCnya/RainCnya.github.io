@@ -1,11 +1,10 @@
 ---
 title: 'ABC456F Plan Holidays'
 tags:
-  - algorithm/记录
   - DP/DDP
   - 数据结构/线段树
-  - 矩阵/广义矩阵乘法
-  - 双栈队列
+  - 数学/线代/广义矩阵乘法
+  - 数据结构/双栈队列
 categories:
   - 260_Records
   - Archive

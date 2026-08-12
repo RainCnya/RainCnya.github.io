@@ -3,7 +3,6 @@ title: '[Leaf] [2020I] Invoking the Magic'
 tags:
   - 数据结构/并查集
   - 图论/连通性
-  - 难度/P2
 categories:
   - 220_Library
   - 10_数据结构

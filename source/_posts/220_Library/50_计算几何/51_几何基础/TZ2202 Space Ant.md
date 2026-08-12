@@ -1,9 +1,8 @@
 ---
 title: '[Leaf] [TZ2202] Space Ant'
 tags:
-  - 计算几何
+  - 计算几何/基础
   - 策略/贪心
-  - 难度/P3
 categories:
   - 220_Library
   - 50_计算几何

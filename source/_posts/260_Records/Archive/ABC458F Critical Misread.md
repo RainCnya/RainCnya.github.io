@@ -1,10 +1,9 @@
 ---
 title: 'ABC458F Critical Misread'
 tags:
-  - algorithm/记录
   - 字符串/AC自动机
   - DP
-  - 矩阵快速幂
+  - 数学/线代/矩阵快速幂
 categories:
   - 260_Records
   - Archive

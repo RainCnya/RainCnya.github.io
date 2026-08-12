@@ -1,9 +1,8 @@
 ---
 title: '[Leaf] [ARC215D] cresc.'
 tags:
-  - 数学/组合数学
-  - 算法/贡献法
-  - 难度/P5
+  - 数学/组合
+  - 方法/贡献统计
 categories:
   - 220_Library
   - 40_数学

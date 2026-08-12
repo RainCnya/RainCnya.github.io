@@ -1,8 +1,7 @@
 ---
 title: ABC469G K-nacci Operations
 tags:
-  - algorithm/记录
-  - 数学/矩阵快速幂
+  - 数学/线代/矩阵快速幂
   - 数学/仿射变换
   - 方法/状态压缩
 status: solved

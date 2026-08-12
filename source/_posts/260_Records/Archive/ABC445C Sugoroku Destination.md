@@ -1,7 +1,6 @@
 ---
 title: 'ABC445C Sugoroku Destination'
 tags:
-  - algorithm/记录
   - DP
   - 图论/函数图
 categories:

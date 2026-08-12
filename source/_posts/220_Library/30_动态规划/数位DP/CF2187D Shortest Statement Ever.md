@@ -4,7 +4,6 @@ tags:
   - DP/数位
   - 策略/构造
   - 策略/贪心
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

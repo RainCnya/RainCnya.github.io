@@ -2,7 +2,6 @@
 title: '[Leaf] [CF1076D] Edge Deletion'
 tags:
   - 图论/最短路/最短路图
-  - 难度/P3
 categories:
   - 220_Library
   - 20_图论

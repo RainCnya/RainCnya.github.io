@@ -1,7 +1,5 @@
 ---
 title: '[Solution] ABC467 A~F'
-tags:
-  - algorithm/比赛
 status: reviewed
 categories:
   - 270_Solutions

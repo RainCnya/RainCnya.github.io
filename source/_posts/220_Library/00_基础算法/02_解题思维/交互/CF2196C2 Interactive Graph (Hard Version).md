@@ -4,7 +4,6 @@ tags:
   - 策略/交互
   - 图论/基础
   - DP/记忆化搜索
-  - 难度/P5
 categories:
   - 220_Library
   - 00_基础算法

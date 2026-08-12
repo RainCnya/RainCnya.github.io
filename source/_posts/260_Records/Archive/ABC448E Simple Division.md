@@ -1,10 +1,9 @@
 ---
 title: 'ABC448E Simple Division'
 tags:
-  - algorithm/记录
-  - 数论
-  - 矩阵快速幂
-  - 游程编码
+  - 数学/数论
+  - 数学/线代/矩阵快速幂
+  - 字符串/游程编码
 categories:
   - 260_Records
   - Archive

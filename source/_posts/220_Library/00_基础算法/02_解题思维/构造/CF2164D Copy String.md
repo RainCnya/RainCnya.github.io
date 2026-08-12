@@ -3,7 +3,6 @@ title: '[Leaf] [CF2164D] Copy String'
 tags:
   - 策略/构造
   - 策略/贪心
-  - 难度/P2
 categories:
   - 220_Library
   - 00_基础算法

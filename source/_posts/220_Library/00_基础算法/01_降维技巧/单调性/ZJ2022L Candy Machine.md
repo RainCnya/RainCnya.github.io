@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2022L] Candy Machine'
 tags:
   - 策略/贪心
   - 算法/双指针
-  - 难度/P2
 categories:
   - 220_Library
   - 00_基础算法

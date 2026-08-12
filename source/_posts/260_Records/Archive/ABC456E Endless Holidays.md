@@ -1,7 +1,6 @@
 ---
 title: 'ABC456E Endless Holidays'
 tags:
-  - algorithm/记录
   - 图论/分层图
   - 图论/判环
   - 搜索/DFS

@@ -1,7 +1,5 @@
 ---
 title: '[Solution] ABC468 A~G'
-tags:
-  - algorithm/比赛
 status: reviewed
 categories:
   - 270_Solutions

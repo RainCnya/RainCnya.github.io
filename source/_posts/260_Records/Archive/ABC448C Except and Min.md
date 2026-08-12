@@ -1,7 +1,6 @@
 ---
 title: 'ABC448C Except and Min'
 tags:
-  - algorithm/记录
   - 策略/预处理
   - 算法/枚举
 categories:

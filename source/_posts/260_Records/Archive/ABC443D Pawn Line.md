@@ -6,7 +6,6 @@ categories:
 abbrlink: ca40ee30
 date: 2026-01-31 00:00:00
 tags:
-  - algorithm/记录
   - 策略/贪心
   - 算法/双向扫描
 ---

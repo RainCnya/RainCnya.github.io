@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2021J] Grammy and Jewelry'
 tags:
   - DP/背包
   - 图论/最短路
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

@@ -2,7 +2,6 @@
 title: '[Leaf] [ZJ2021C] Cube'
 tags:
   - 计算几何/三维几何
-  - 难度/P1
 categories:
   - 220_Library
   - 50_计算几何

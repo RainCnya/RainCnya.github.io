@@ -3,7 +3,6 @@ title: '[Leaf] [ZJ2020E] Easy DP Problem'
 tags:
   - 数据结构/可持久化
   - DP/线性
-  - 难度/P4
 categories:
   - 220_Library
   - 10_数据结构

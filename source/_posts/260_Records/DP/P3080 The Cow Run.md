@@ -1,7 +1,6 @@
 ---
 title: P3080 The Cow Run
 tags:
-  - algorithm/记录
   - DP/区间
 status: solved
 categories:

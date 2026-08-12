@@ -1,8 +1,7 @@
 ---
 title: Addition Chains
 tags:
-  - algorithm/记录
-  - 搜索
+  - 搜索/基础
 status: solved
 categories:
   - 260_Records

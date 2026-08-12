@@ -1,8 +1,7 @@
 ---
 title: ABC468F Chmax
 tags:
-  - algorithm/记录
-  - 动态规划
+  - DP
   - 数据结构/树状数组
 status: solved
 categories:

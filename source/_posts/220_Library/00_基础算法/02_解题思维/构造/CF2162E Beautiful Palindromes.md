@@ -2,7 +2,6 @@
 title: '[Leaf] [CF2162E] Beautiful Palindromes'
 tags:
   - 策略/构造
-  - 难度/P3
 categories:
   - 220_Library
   - 00_基础算法

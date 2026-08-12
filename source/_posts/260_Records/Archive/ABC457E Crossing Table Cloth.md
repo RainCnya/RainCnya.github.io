@@ -1,8 +1,7 @@
 ---
 title: 'ABC457E Crossing Table Cloth'
 tags:
-  - algorithm/记录
-  - 区间问题
+  - 杂项/区间问题
   - 策略/预处理
   - 数据结构/map
 categories:

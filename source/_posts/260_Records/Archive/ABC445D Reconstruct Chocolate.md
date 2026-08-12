@@ -1,10 +1,9 @@
 ---
 title: 'ABC445D Reconstruct Chocolate'
 tags:
-  - algorithm/记录
   - 策略/贪心
   - 数据结构/map
-  - 构造
+  - 策略/构造
 categories:
   - 260_Records
   - Archive

@@ -3,7 +3,6 @@ title: "[Leaf] [CF2182E] New Year's Gifts"
 tags:
   - 策略/贪心
   - 数据结构/平衡树
-  - 难度/P3
 categories:
   - 220_Library
   - 00_基础算法

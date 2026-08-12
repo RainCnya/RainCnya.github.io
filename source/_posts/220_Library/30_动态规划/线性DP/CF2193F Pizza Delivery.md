@@ -3,7 +3,6 @@ title: '[Leaf] [CF2193F] Pizza Delivery'
 tags:
   - DP/线性
   - 策略/贪心
-  - 难度/P3
 categories:
   - 220_Library
   - 30_动态规划

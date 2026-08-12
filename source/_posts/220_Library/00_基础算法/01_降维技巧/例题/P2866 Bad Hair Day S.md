@@ -2,16 +2,14 @@
 title: '[Leaf] [P2866] Bad Hair Day S'
 tags:
   - 算法/单调栈
-  - 算法/贡献法
-  - 难度/P2
+  - 方法/贡献统计
 categories:
   - 220_Library
   - 00_基础算法
   - 01_降维技巧
 abbrlink: c971b93
 date: 2025-11-6
-updated: 2026-01-28 17:23:23
-updated2: 2026-2-21 18:37:42
+updated: 2026-2-21 18:37:42
 ---
 # [P2866 [USACO06NOV] Bad Hair Day S - 洛谷](https://www.luogu.com.cn/problem/P2866)
 

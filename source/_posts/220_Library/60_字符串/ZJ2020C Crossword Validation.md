@@ -2,7 +2,6 @@
 title: '[Leaf] [ZJ2020C] Crossword Validation'
 tags:
   - 字符串/哈希
-  - 难度/P2
 categories:
   - 220_Library
   - 60_字符串

@@ -1,6 +1,5 @@
 ---
 title: HDSpring7
-tags:
 categories:
   - 270_Solutions
 abbrlink: 22ff322e

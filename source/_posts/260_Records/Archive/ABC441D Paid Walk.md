@@ -1,7 +1,6 @@
 ---
 title: 'ABC441D Paid Walk'
 tags:
-  - algorithm/记录
   - 搜索/DFS
 abbrlink: 7b70f3b7
 categories:

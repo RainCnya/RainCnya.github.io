@@ -1,7 +1,6 @@
 ---
 title: 'ABC457F Second Gap'
 tags:
-  - algorithm/记录
   - DP
   - 数据结构/线段树
   - 算法/全局懒标记

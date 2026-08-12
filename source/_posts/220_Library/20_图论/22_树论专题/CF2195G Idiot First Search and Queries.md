@@ -3,8 +3,7 @@ title: '[Leaf] [CF2195G] Idiot First Search and Queries'
 tags:
   - DP/树形
   - 树论/欧拉序
-  - 思想/倍增
-  - 难度/P5
+  - 方法/倍增
 categories:
   - 220_Library
   - 20_图论

@@ -3,7 +3,6 @@ title: '[Leaf] [CF2192E] Swap to Rearrange'
 tags:
   - 图论/欧拉回路
   - 策略/转化
-  - 难度/P4
 categories:
   - 220_Library
   - 20_图论

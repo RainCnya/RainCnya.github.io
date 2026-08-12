@@ -4,8 +4,6 @@ tags:
   - DP/计数
   - 搜索/DFS
   - 策略/逆向思维
-difficulty:
-  - Div.2 D
 categories:
   - 220_Library
   - 30_动态规划
