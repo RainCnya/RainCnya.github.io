@@ -315,6 +315,8 @@ void solve( ) {
 
 ### [F - Email Scheduling Optimization](https://atcoder.jp/contests/abc467/tasks/abc467_f)
 
+独立整理记录见 [[ABC467F Email Scheduling Optimization]]，本节继续保留赛后原始推导与实现。
+
 > [!Question] F - Email Scheduling Optimization  
 > 有 $N$ 封邮件，第 $i$ 封邮件需要 $A_i$ 分钟编写，发送后再经过 $B_i$ 分钟收到回复。同一时间只能编写一封邮件，但可以任意安排编写顺序。求最早收到全部回复的时间。随后有 $Q$ 次单点修改，每次修改某个 $A_i$ 或 $B_i$，并重新求答案。  
 > 数据规模：$1 \le N,Q \le 10^5$，$1 \le A_i,B_i,x \le 10^9$
