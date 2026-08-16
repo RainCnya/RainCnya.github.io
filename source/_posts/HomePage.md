@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-11 00:00:00
+updated: 2026-08-17 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,21 +39,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
-    <a href="/posts/d2739a1c/">
-      <time datetime="2026-08-10">08.10</time>
-      <span><strong>数论求和题型整理</strong><small>从整除重分类出发，串起反演、卷积、分块与前缀和。</small></span>
+    <a href="/posts/dba9a34f/">
+      <time datetime="2026-08-15">08.15</time>
+      <span><strong>线段树基础理论</strong><small>用递归划分与可合并摘要，统一在线查询和单点修改。</small></span>
     </a>
-    <a href="/posts/21980767/">
-      <time datetime="2026-08-10">08.10</time>
-      <span><strong>同余方程题型整理</strong><small>把周期相遇、余数约束和指数未知量还原为标准方程。</small></span>
+    <a href="/posts/ec824ae8/">
+      <time datetime="2026-08-15">08.15</time>
+      <span><strong>浅谈线段树信息合并</strong><small>从父区间需求反推摘要，补齐前后缀等边界接口。</small></span>
     </a>
-    <a href="/posts/p3469001/">
-      <time datetime="2026-08-10">08.10</time>
-      <span><strong>P3469 · BLO-Blockade</strong><small>把删点后的连通块规模转化为 Tarjan 子树贡献统计。</small></span>
+    <a href="/posts/c0ad84cf/">
+      <time datetime="2026-08-15">08.15</time>
+      <span><strong>浅谈线段树懒标记</strong><small>把暂不下传的操作压成可复合标记，先定复合顺序再写 apply。</small></span>
     </a>
-    <a href="/posts/c4e72a91/">
-      <time datetime="2026-08-09">08.09</time>
-      <span><strong>公平组合博弈理论</strong><small>从状态图的 P/N 递推，走到 SG 值与独立子游戏异或。</small></span>
+    <a href="/posts/p2824001/">
+      <time datetime="2026-08-13">08.13</time>
+      <span><strong>P2824 · 排序</strong><small>二分答案加二值化，把区间排序转化为 01 覆盖计数。</small></span>
     </a>
   </div>
 </section>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>数论求和与图连通性</dd></div>
-      <div><dt>整理</dt><dd>同余模型、Tarjan 与题型迁移</dd></div>
+      <div><dt>学习</dt><dd>线段树摘要与懒标记</dd></div>
+      <div><dt>整理</dt><dd>线段树理论重构与题型迁移</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>整除重分类、缩点与割点贡献</dd></div>
+      <div><dt>留下</dt><dd>信息合并、标记复合与二值化</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
