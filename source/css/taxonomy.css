@@ -328,28 +328,18 @@
    ========================================================== */
 
 #board .list-group > .h4:first-child {
-    margin: 0.4rem 0 0.9rem;
+    margin: 1.5rem 0 1.1rem;
 
-    color: var(--mq-text-secondary);
+    color: var(--mq-heading);
 
     font-family: var(--mq-font-heading);
-    font-size: 0.92rem;
-    font-weight: 500;
+    font-size: 1.12rem;
+    font-weight: 600;
     letter-spacing: 0.02em;
 }
 
 #board .list-group > hr {
-    height: 1px;
-    margin: 0 0 1.4rem;
-
-    border: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--mq-border),
-            transparent 78%
-        );
+    display: none;
 }
 
 
@@ -358,33 +348,20 @@
    ========================================================== */
 
 #board .list-group > .h5 {
-    display: flex;
-    margin: 1.8rem 0 0.72rem;
+    display: block;
+    margin: 2.4rem 0 0.6rem;
 
     color: var(--mq-heading);
 
-    align-items: center;
-    gap: 0.72rem;
-
     font-family: var(--mq-font-heading);
-    font-size: 1.08rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 650;
     letter-spacing: 0.035em;
 }
 
 #board .list-group > .h5::after {
-    height: 1px;
-
-    content: "";
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--mq-border),
-            transparent
-        );
-
-    flex: 1;
+    display: none;
+    content: none;
 }
 
 

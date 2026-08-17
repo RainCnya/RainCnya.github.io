@@ -1,67 +1,219 @@
 /* ==========================================================
-   Article Lite
-   只处理内容溢出，不改变 Fluid 原生排版和代码框
+   Article Reading v1
+   Modern, high-density reading for algorithm notes and
+   ordinary posts while preserving Fluid Fold / code blocks.
    ========================================================== */
 
-
-/* 长链接不撑破正文 */
+/* Long links and images should never break the layout */
 .markdown-body a {
-    overflow-wrap: anywhere;
+  overflow-wrap: anywhere;
 }
 
-
-/* 图片不超过正文宽度 */
 .markdown-body img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
-
-/* 长公式允许横向滚动 */
-.markdown-body .katex-display {
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
+/* Inline code */
+.markdown-body code {
+  font-family: var(--site-font-mono);
+  font-size: 0.88em;
+  padding: 0.16em 0.38em;
+  background: var(--site-accent-soft);
+  border-radius: 6px;
 }
 
-
-/*
- * 只处理 Markdown 正文的直接子表格。
- * 不会选中 Hexo 代码框内部的 table。
- */
-.markdown-body > table {
-    display: block;
-    width: max-content;
-    max-width: 100%;
-    overflow-x: auto;
-
-    -webkit-overflow-scrolling: touch;
+/* Code blocks */
+.markdown-body pre,
+.markdown-body figure.highlight {
+  border: 1px solid rgba(120, 120, 140, 0.18);
+  border-radius: var(--site-radius-sm);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 8px 20px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
 
+.markdown-body figure.highlight table {
+  border: 0;
+  background: transparent;
+}
 
-/* Callout 中的普通表格 */
+.markdown-body figure.highlight td {
+  border: 0;
+}
+
+.markdown-body figure.highlight td.gutter {
+  background: var(--highlight-bg-color);
+}
+
+.markdown-body figure.highlight td.gutter pre {
+  padding: 1.15rem 0.65rem 1.15rem 1rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.38);
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.markdown-body figure.highlight td.gutter pre span.line {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.markdown-body figure.highlight td.code > pre {
+  padding: 1.15rem 1.1rem;
+  border-radius: 0;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Code widget / language label / copy button */
+.markdown-body .code-widget {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.55rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.18rem 0.5rem;
+  font-family: var(--site-font-ui);
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  opacity: 0.9;
+  transition: color 0.18s ease, background-color 0.18s ease, opacity 0.18s ease;
+}
+
+.markdown-body .code-widget:hover {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 1;
+}
+
+.markdown-body .code-widget i {
+  font-size: 0.72rem;
+  margin-right: 0;
+}
+
+/* Tables */
+.markdown-body > table,
 .markdown-body .callout-content > table {
-    display: block;
-    width: max-content;
-    max-width: 100%;
-    overflow-x: auto;
-
-    -webkit-overflow-scrolling: touch;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
+.markdown-body table {
+  border-collapse: collapse;
+}
 
-/* 轻量横向滚动条 */
+.markdown-body th,
+.markdown-body td {
+  border-color: var(--site-border);
+}
+
+/* Math */
+.markdown-body .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.25rem 0;
+}
+
+/* Blockquote */
+.markdown-body blockquote {
+  margin: 1.4em 0;
+  padding: 0.7rem 1.1rem;
+  color: var(--site-text-secondary);
+  background: var(--site-surface-soft);
+  border-left: 3px solid var(--site-accent);
+  border-radius: 0 var(--site-radius-sm) var(--site-radius-sm) 0;
+}
+
+/* Fluid Fold: keep compatible, slightly modernized */
+.fold {
+  margin: 1.2rem 0;
+  border: 1px solid var(--site-border);
+  border-radius: var(--site-radius-sm);
+  background: var(--site-surface);
+  overflow: hidden;
+}
+
+.fold-title {
+  padding: 0.65rem 0.9rem;
+  font-family: var(--site-font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--site-text);
+  background: var(--site-surface-soft);
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+}
+
+.fold-title:hover {
+  color: var(--site-accent);
+}
+
+.fold-title.collapsed {
+  border-bottom-color: transparent;
+}
+
+.fold-collapse.collapse.show .fold-content {
+  padding: 0.8rem 0.9rem;
+}
+
+/* TOC */
+.sidebar #toc {
+  padding: 1rem 0.75rem;
+  background: transparent;
+  border: 0;
+}
+
+.sidebar .toc-header {
+  font-family: var(--site-font-ui);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  color: var(--site-text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar .toc-body {
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.sidebar .toc-body a {
+  color: var(--site-text-secondary);
+}
+
+.sidebar .toc-body a:hover,
+.sidebar .toc-body .is-active-link {
+  color: var(--site-accent);
+}
+
+/* Light scrollbars for wide tables / formulas */
 .markdown-body > table::-webkit-scrollbar,
 .markdown-body .callout-content > table::-webkit-scrollbar,
 .markdown-body .katex-display::-webkit-scrollbar {
-    height: 6px;
+  height: 6px;
 }
 
 .markdown-body > table::-webkit-scrollbar-thumb,
 .markdown-body .callout-content > table::-webkit-scrollbar-thumb,
 .markdown-body .katex-display::-webkit-scrollbar-thumb {
-    background: rgba(111, 112, 130, 0.4);
-    border-radius: 999px;
+  background: rgba(111, 112, 130, 0.4);
+  border-radius: 999px;
 }

@@ -1,396 +1,412 @@
 /* ==========================================================
-   MiQiu 首页：个人介绍 + 内容入口
+   MiQiu Homepage v1
+   Personal portal: concise introduction, recent traces,
+   and clear entrances. Shares the site-level variables.
    ========================================================== */
 
 body:has(.miqiu-profile) {
-    --home-bg: #f3efe7;
-    --home-elevated: #fffcf6;
-    --home-text: #35313f;
-    --home-text-soft: #746d78;
-    --home-text-faint: #938b98;
-    --home-line: #ddd4c8;
-    --home-accent: #7863a3;
-    --home-panel: rgba(255, 253, 248, 0.68);
-    --home-panel-border: rgba(116, 105, 126, 0.14);
-    --home-panel-shadow: 0 10px 28px rgba(66, 56, 76, 0.055);
-    --home-date: #817887;
-    --home-font-wenkai: "LXGW WenKai Screen", "LXGW WenKai", "霞鹜文楷", KaiTi, serif;
-    --home-font-ui: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
-    --home-font-mono: "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  --home-bg: var(--site-bg);
+  --home-surface: var(--site-surface);
+  --home-text: var(--site-text);
+  --home-text-soft: var(--site-text-secondary);
+  --home-text-faint: var(--site-text-faint);
+  --home-line: var(--site-border);
+  --home-accent: var(--site-accent);
+  --home-accent-soft: var(--site-accent-soft);
+  --home-panel: transparent;
+  --home-panel-border: transparent;
+  --home-panel-shadow: none;
+  --home-date: var(--site-text-secondary);
+  --home-font-wenkai: var(--site-font-body);
+  --home-font-ui: var(--site-font-ui);
+  --home-font-mono: var(--site-font-mono);
 
-    background: var(--home-bg) !important;
-}
-
-[data-user-color-scheme="dark"] body:has(.miqiu-profile) {
-    --home-bg: #1a1b26;
-    --home-elevated: #1f2335;
-    --home-text: #c0caf5;
-    --home-text-soft: #9aa5ce;
-    --home-text-faint: #737ca8;
-    --home-line: rgba(192, 202, 245, 0.14);
-    --home-accent: #bb9af7;
-    --home-panel: rgba(38, 38, 57, 0.72);
-    --home-panel-border: rgba(152, 137, 197, 0.13);
-    --home-panel-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
-    --home-date: #8993bd;
+  background: var(--home-bg) !important;
 }
 
 body:has(.miqiu-profile) .header-inner {
-    height: 64px !important;
+  height: 0 !important;
 }
 
 body:has(.miqiu-profile) #banner,
 body:has(.miqiu-profile) .side-col,
 body:has(.miqiu-profile) .post-content > hr,
 body:has(.miqiu-profile) .post-content > .markdown-body ~ div {
-    display: none !important;
+  display: none !important;
 }
 
 body:has(.miqiu-profile) main .col-lg-8 {
-    flex: 0 0 100%;
-    max-width: 100%;
+  flex: 0 0 100%;
+  max-width: 100%;
 }
 
 body:has(.miqiu-profile) main {
-    background: var(--home-bg);
+  background: var(--home-bg);
 }
 
 body:has(.miqiu-profile) .navbar {
-    font-family: var(--home-font-ui) !important;
-    font-size: 13.5px;
+  font-family: var(--home-font-ui) !important;
+  font-size: 13.5px;
 }
 
 body:has(.miqiu-profile) #board-ctn {
-    max-width: 1120px;
-    padding: 0 3.5rem !important;
-    background: transparent;
+  max-width: var(--site-max-width);
+  padding: 0 3rem !important;
+  background: transparent;
 }
 
 body:has(.miqiu-profile) #board {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    background: transparent !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
 }
 
 body:has(.miqiu-profile) .post-content {
-    max-width: 1020px;
-    padding: 5rem 0 2.75rem;
+  max-width: 1080px;
+  padding: 4.5rem 0 2.75rem;
 }
 
+/* ----------------------------------------------------------
+   Profile
+   ---------------------------------------------------------- */
 .miqiu-profile {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.96fr);
-    align-items: center;
-    gap: 4rem;
-    margin: -1.5rem -1.5rem 5.8rem;
-    padding: 3.2rem 1.5rem 3.7rem;
-    background: linear-gradient(135deg, rgba(120, 99, 163, 0.047), transparent 68%);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.92fr);
+  align-items: center;
+  gap: 4.5rem;
+  margin: 0 0 5rem;
+  padding: 2.4rem 0 3.6rem;
 }
 
 .miqiu-profile-label {
-    margin: 0 0 0.8rem;
-    color: var(--home-accent);
-    font-family: var(--home-font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+  margin: 0 0 0.9rem;
+  color: var(--home-accent);
+  font-family: var(--home-font-mono);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.2em;
 }
 
 .markdown-body .miqiu-profile h2 {
-    margin: 0 0 1rem;
-    padding: 0;
-    color: var(--home-text);
-    border: 0;
-    font-family: var(--home-font-wenkai) !important;
-    font-size: clamp(2.9rem, 5vw, 3.35rem);
-    font-weight: 500;
-    letter-spacing: 0.08em;
+  margin: 0 0 1.1rem;
+  padding: 0;
+  color: var(--home-text);
+  border: 0;
+  font-family: var(--home-font-wenkai) !important;
+  font-size: clamp(2.8rem, 5vw, 3.4rem);
+  font-weight: 520;
+  letter-spacing: 0.06em;
 }
 
 .miqiu-profile-copy > p:not(.miqiu-profile-label) {
-    max-width: 500px;
-    margin: 0 0 0.75rem;
-    color: var(--home-text-soft);
-    font-family: var(--home-font-wenkai);
-    font-size: 1.03rem;
-    line-height: 1.95;
+  max-width: 520px;
+  margin: 0 0 0.75rem;
+  color: var(--home-text-soft);
+  font-family: var(--home-font-wenkai);
+  font-size: 1.03rem;
+  line-height: 1.95;
 }
 
 .miqiu-profile-copy .miqiu-profile-lead {
-    color: var(--home-text) !important;
-    font-size: 1.28rem !important;
-    font-weight: 500;
+  color: var(--home-text) !important;
+  font-size: 1.3rem !important;
+  font-weight: 520;
 }
 
 .miqiu-profile-copy nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem 1.25rem;
-    margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.4rem;
+  margin-top: 1.7rem;
 }
 
 .miqiu-profile-copy nav a {
-    color: var(--home-accent) !important;
-    font-family: var(--home-font-wenkai);
-    text-decoration: none !important;
-    border-bottom: 1px solid transparent;
+  color: var(--home-accent) !important;
+  font-family: var(--home-font-wenkai);
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s ease, color 0.18s ease;
 }
 
 .miqiu-profile-copy nav a:hover {
-    border-bottom-color: var(--home-accent);
+  color: var(--site-accent-strong) !important;
+  border-bottom-color: var(--home-accent);
 }
 
 .miqiu-profile-visual {
-    margin: 0;
+  margin: 0;
 }
 
 .miqiu-profile-visual img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    object-position: center 67%;
-    border: 1px solid rgba(120, 99, 163, 0.16);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(31, 38, 78, 0.04), 0 12px 30px rgba(31, 38, 135, 0.08);
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 67%;
+  border: 1px solid var(--home-line);
+  border-radius: 14px;
+  box-shadow: var(--site-shadow-sm);
 }
 
+/* ----------------------------------------------------------
+   Recent
+   ---------------------------------------------------------- */
 .miqiu-latest {
-    margin-bottom: 5.3rem;
+  margin-bottom: 4.8rem;
 }
 
 .miqiu-latest > header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 0.8rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
 }
 
 .markdown-body .miqiu-latest h2,
 .markdown-body .miqiu-home-bottom h2 {
-    margin: 0;
-    padding: 0;
-    color: var(--home-text);
-    border: 0;
-    font-family: var(--home-font-wenkai) !important;
-    font-size: 1.45rem;
-    font-weight: 600;
+  margin: 0;
+  padding: 0;
+  color: var(--home-text);
+  border: 0;
+  font-family: var(--home-font-wenkai) !important;
+  font-size: 1.45rem;
+  font-weight: 620;
 }
 
 .markdown-body .miqiu-home-bottom h2 {
-    display: block;
-    width: 100%;
-    margin-bottom: 1.35rem;
-    padding-bottom: 0.65rem;
-    text-align: left;
-    border-bottom: 1px solid var(--home-line) !important;
+  display: block;
+  width: 100%;
+  margin-bottom: 1.4rem;
+  padding-bottom: 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--home-line) !important;
 }
 
 .markdown-body .miqiu-home-bottom h2::before {
-    display: none !important;
-    content: none !important;
+  display: none !important;
+  content: none !important;
 }
 
 .miqiu-latest > header > a {
-    color: var(--home-text-faint) !important;
-    font-family: var(--home-font-ui);
-    font-size: 0.82rem;
-    text-decoration: none !important;
+  color: var(--home-text-faint) !important;
+  font-family: var(--home-font-ui);
+  font-size: 0.82rem;
+  text-decoration: none !important;
+  transition: color 0.18s ease;
+}
+
+.miqiu-latest > header > a:hover {
+  color: var(--home-accent) !important;
 }
 
 .miqiu-latest-list > a {
-    display: grid;
-    grid-template-columns: 5rem minmax(0, 1fr);
-    gap: 1.15rem;
-    padding: 1.4rem 0 1.5rem;
-    color: var(--home-text) !important;
-    text-decoration: none !important;
-    border-top: 1px solid var(--home-line);
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 1.15rem;
+  padding: 1.35rem 0 1.45rem;
+  color: var(--home-text) !important;
+  text-decoration: none !important;
+  border-top: 1px solid var(--home-line);
+  transition: padding-left 0.18s ease;
+}
+
+.miqiu-latest-list > a:hover {
+  padding-left: 0.45rem;
 }
 
 .miqiu-latest-list time {
-    padding-top: 0.12rem;
-    color: var(--home-date);
-    font-family: var(--home-font-mono);
-    font-size: 0.78rem;
+  padding-top: 0.12rem;
+  color: var(--home-date);
+  font-family: var(--home-font-mono);
+  font-size: 0.78rem;
 }
 
 .miqiu-latest-list span {
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
 }
 
 .miqiu-latest-list strong {
-    margin-bottom: 0.35rem;
-    color: var(--home-text);
-    font-family: var(--home-font-wenkai);
-    font-size: 1.1rem;
-    font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--home-text);
+  font-family: var(--home-font-wenkai);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: color 0.18s ease;
 }
 
 .miqiu-latest-list small {
-    color: var(--home-text-soft);
-    font-family: var(--home-font-wenkai);
-    font-size: 0.94rem;
-    line-height: 1.75;
+  color: var(--home-text-soft);
+  font-family: var(--home-font-wenkai);
+  font-size: 0.94rem;
+  line-height: 1.75;
 }
 
 .miqiu-latest-list > a:hover strong {
-    color: var(--home-accent);
+  color: var(--home-accent);
 }
 
+/* ----------------------------------------------------------
+   Bottom: now / entrances
+   ---------------------------------------------------------- */
 .miqiu-home-bottom {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3.5rem;
-    padding: 2.3rem 2.45rem 2.2rem;
-    background: var(--home-panel);
-    border: 1px solid var(--home-panel-border);
-    border-radius: 10px;
-    box-shadow: var(--home-panel-shadow);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4rem;
+  padding: 2.6rem 0 1.6rem;
+  border-top: 1px solid var(--home-line);
 }
 
 .miqiu-now dl {
-    margin: 0;
+  margin: 0;
 }
 
 .miqiu-now dl > div {
-    display: grid;
-    grid-template-columns: 3.5rem minmax(0, 1fr);
-    align-items: stretch;
-    min-height: 2.875rem;
-    gap: 1.2rem;
-    padding: 0;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  align-items: stretch;
+  min-height: 2.875rem;
+  gap: 1.2rem;
+  padding: 0;
 }
 
 .markdown-body .miqiu-now dt {
-    display: flex;
-    align-items: center;
-    color: var(--home-accent);
-    font-family: var(--home-font-wenkai);
-    font-size: 0.86rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1.7;
-    opacity: 0.82;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  color: var(--home-accent);
+  font-family: var(--home-font-wenkai);
+  font-size: 0.86rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.7;
+  opacity: 0.85;
+  text-align: left;
 }
 
 .miqiu-now dd {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    margin: 0;
-    padding: 0.55rem 0;
-    color: var(--home-text);
-    border-bottom: 1px solid var(--home-line);
-    font-family: var(--home-font-wenkai);
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: left;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0.55rem 0;
+  color: var(--home-text);
+  border-bottom: 1px solid var(--home-line);
+  font-family: var(--home-font-wenkai);
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: left;
 }
 
 .miqiu-now dl > div:last-child dd {
-    border-bottom-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .miqiu-entrances {
-    padding-left: 2.25rem;
-    border-left: 1px solid var(--home-line);
+  padding-left: 3rem;
+  border-left: 1px solid var(--home-line);
 }
 
 .miqiu-entrances nav {
-    margin: 0;
+  margin: 0;
 }
 
 .miqiu-entrances nav a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 2.875rem;
-    padding: 0.55rem 0.25rem 0.55rem 0;
-    color: var(--home-text) !important;
-    font-family: var(--home-font-wenkai);
-    text-decoration: none !important;
-    border-bottom: 1px solid var(--home-line);
-    font-size: 1rem;
-    line-height: 1.7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.875rem;
+  padding: 0.55rem 0.25rem 0.55rem 0;
+  color: var(--home-text) !important;
+  font-family: var(--home-font-wenkai);
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--home-line);
+  font-size: 1rem;
+  line-height: 1.7;
+  transition: color 0.18s ease, padding-left 0.18s ease;
 }
 
 .miqiu-entrances nav a:first-child {
-    padding-top: 0.55rem;
+  padding-top: 0.55rem;
 }
 
 .miqiu-entrances nav a:last-child {
-    border-bottom-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .miqiu-entrances nav span {
-    min-width: 0;
-    padding-right: 1rem;
-    text-align: left;
+  min-width: 0;
+  padding-right: 1rem;
+  text-align: left;
 }
 
 .miqiu-entrances nav b {
-    color: var(--home-accent);
-    font-weight: 400;
-    transition: transform 0.18s ease;
+  color: var(--home-accent);
+  font-weight: 400;
+  transition: transform 0.18s ease;
+}
+
+.miqiu-entrances nav a:hover {
+  color: var(--home-accent) !important;
+  padding-left: 0.35rem;
 }
 
 .miqiu-entrances nav a:hover b {
-    transform: translateX(3px);
+  transform: translateX(3px);
 }
 
+/* ----------------------------------------------------------
+   Responsive
+   ---------------------------------------------------------- */
 @media (max-width: 767px) {
-    body:has(.miqiu-profile) .header-inner {
-        height: 58px !important;
-    }
+  body:has(.miqiu-profile) .header-inner {
+    height: 0 !important;
+  }
 
-    body:has(.miqiu-profile) #board-ctn {
-        padding: 0 1.25rem !important;
-    }
+  body:has(.miqiu-profile) #board-ctn {
+    padding: 0 1.25rem !important;
+  }
 
-    body:has(.miqiu-profile) .post-content {
-        padding: 3rem 0 3.5rem;
-    }
+  body:has(.miqiu-profile) .post-content {
+    padding: 2.8rem 0 3.2rem;
+  }
 
-    .miqiu-profile {
-        grid-template-columns: 1fr;
-        gap: 2.1rem;
-        margin: 0 0 4.2rem;
-        padding: 0 0 2.4rem;
-    }
+  .miqiu-profile {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+    margin: 0 0 4rem;
+    padding: 0 0 2.6rem;
+  }
 
-    .miqiu-profile-visual {
-        grid-row: 1;
-    }
+  .miqiu-profile-visual {
+    grid-row: 1;
+  }
 
-    .miqiu-profile-visual img {
-        aspect-ratio: 16 / 10;
-    }
+  .miqiu-profile-visual img {
+    aspect-ratio: 16 / 10;
+  }
 
-    .miqiu-profile-copy nav {
-        gap: 0.6rem 1rem;
-    }
+  .miqiu-profile-copy nav {
+    gap: 0.6rem 1rem;
+  }
 
-    .miqiu-latest-list > a {
-        grid-template-columns: 3.6rem minmax(0, 1fr);
-        gap: 0.7rem;
-    }
+  .miqiu-latest-list > a {
+    grid-template-columns: 3.6rem minmax(0, 1fr);
+    gap: 0.7rem;
+  }
 
-    .miqiu-home-bottom {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 1.5rem;
-    }
+  .miqiu-home-bottom {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+    padding: 2rem 0 1.2rem;
+  }
 
-    .miqiu-entrances {
-        padding-left: 0;
-        border-left: 0;
-    }
+  .miqiu-entrances {
+    padding-left: 0;
+    border-left: 0;
+  }
 }

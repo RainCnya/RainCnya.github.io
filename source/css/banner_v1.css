@@ -1,74 +1,68 @@
 /* ==========================================================
-   Banner 标题与文章元信息
+   Page Header v1
+   Fluid's large banner is reduced to a clean, content-driven
+   header. Home still hides it entirely via home_v1.css.
    ========================================================== */
 
-
-/* ----------------------------------------------------------
-   1. Banner 标题
-   ---------------------------------------------------------- */
-
-#banner .banner-text {
-    width: min(92vw, 860px);
+.header-inner {
+  height: auto !important;
+  min-height: 0 !important;
 }
 
-#banner .banner-text .h2,
-#banner .banner-text #subtitle {
-    color: rgba(255, 255, 255, 0.98) !important;
-
-    font-family: var(--mq-font-heading);
-    font-weight: 600;
-    letter-spacing: 0.035em;
-
-    text-shadow:
-        0 1px 2px rgba(30, 34, 46, 0.68),
-        0 5px 18px rgba(30, 34, 46, 0.30);
+#banner,
+.full-bg-img {
+  background: transparent !important;
+  background-image: none !important;
 }
 
+#banner .mask {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 6rem 1rem 1.8rem;
+  background: transparent !important;
+  align-items: flex-start;
+  justify-content: center;
+}
 
-/* ----------------------------------------------------------
-   2. 元信息行
-   日期一行，字数、时间、浏览量一行
-   ---------------------------------------------------------- */
+.banner-text {
+  width: min(92vw, 860px);
+  margin: 0;
+  color: var(--site-text);
+  text-align: left;
+}
 
+.banner-text .h2,
+.banner-text #subtitle {
+  color: var(--site-text) !important;
+  font-family: var(--site-font-ui) !important;
+  font-size: clamp(1.85rem, 4vw, 2.7rem);
+  font-weight: 680;
+  letter-spacing: 0.012em;
+  line-height: 1.3;
+  text-shadow: none !important;
+}
+
+/* Meta row: quiet text instead of white pill */
 #banner .banner-text > .mt-3,
 #banner .banner-text > .mt-1 {
-    display: flex;
-    width: fit-content;
-    max-width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-
-    color: rgba(255, 255, 255, 0.92);
-
-    background: rgba(47, 51, 65, 0.28);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 999px;
-
-    box-shadow:
-        0 3px 14px rgba(24, 27, 38, 0.14);
-
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  width: auto;
+  max-width: 100%;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem 1rem;
+  color: var(--site-text-secondary);
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
 }
-
-#banner .banner-text > .mt-3 {
-    margin-top: 0.85rem !important;
-    padding: 0.24rem 0.74rem;
-}
-
-#banner .banner-text > .mt-1 {
-    margin-top: 0.38rem !important;
-    padding: 0.24rem 0.74rem;
-}
-
-
-/* ----------------------------------------------------------
-   3. 元信息文字
-   ---------------------------------------------------------- */
 
 #banner .post-meta,
 #banner .post-meta time,
@@ -76,90 +70,214 @@
 #banner #openkounter-page-views-container,
 #banner #busuanzi_container_page_pv,
 #banner #umami-page-views-container {
-    color: rgba(255, 255, 255, 0.92) !important;
-
-    font-family: var(--mq-font-heading);
-    font-size: 0.88rem;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.015em;
-
-    text-shadow:
-        0 1px 2px rgba(26, 29, 41, 0.52);
+  color: var(--site-text-secondary) !important;
+  font-family: var(--site-font-ui);
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-shadow: none !important;
 }
-
-
-/* ----------------------------------------------------------
-   4. 元信息图标
-   ---------------------------------------------------------- */
 
 #banner .post-meta i,
 #banner #openkounter-page-views-container i,
 #banner #busuanzi_container_page_pv i {
-    margin-right: 0.22em;
-
-    color: rgba(255, 255, 255, 0.78) !important;
-
-    font-size: 0.94em;
-    text-shadow:
-        0 1px 2px rgba(26, 29, 41, 0.45);
+  margin-right: 0.28em;
+  color: var(--site-accent) !important;
+  font-size: 0.92em;
+  text-shadow: none !important;
 }
-
-
-/* ----------------------------------------------------------
-   5. 调整项目间距
-   ---------------------------------------------------------- */
 
 #banner .post-meta.mr-2 {
-    margin-right: 0.7rem !important;
+  margin-right: 0 !important;
 }
 
-
-/* ----------------------------------------------------------
-   6. 暗色模式
-   不再把标题改成浅蓝紫
-   ---------------------------------------------------------- */
-
-[data-user-color-scheme="dark"] #banner .banner-text .h2,
-[data-user-color-scheme="dark"] #banner .banner-text #subtitle {
-    color: rgba(255, 255, 255, 0.98) !important;
+/* Typed cursor is an animation artifact; hide it on all stable page headers */
+#banner .typed-cursor {
+  display: none !important;
 }
-
-[data-user-color-scheme="dark"]
-#banner .banner-text > .mt-3,
-[data-user-color-scheme="dark"]
-#banner .banner-text > .mt-1 {
-    background: rgba(29, 32, 45, 0.34);
-    border-color: rgba(255, 255, 255, 0.14);
-}
-
-
-/* ----------------------------------------------------------
-   7. 移动端
-   ---------------------------------------------------------- */
 
 @media (max-width: 767px) {
-    #banner .banner-text {
-        width: 94vw;
-    }
+  #banner .mask {
+    padding: 4rem 1rem 1rem;
+  }
 
-    #banner .banner-text .h2 {
-        font-size: 1.7rem;
-        line-height: 1.35;
-    }
+  .banner-text {
+    width: 94vw;
+  }
 
-    #banner .banner-text > .mt-3,
-    #banner .banner-text > .mt-1 {
-        padding: 0.2rem 0.6rem;
-    }
+  .banner-text .h2 {
+    font-size: 1.6rem;
+    line-height: 1.35;
+  }
 
-    #banner .post-meta,
-    #banner .post-meta time,
-    #banner #leancloud-page-views-container {
-        font-size: 0.8rem;
-    }
+  #banner .post-meta,
+  #banner .post-meta time,
+  #banner #leancloud-page-views-container {
+    font-size: 0.8rem;
+  }
+}
 
-    #banner .post-meta.mr-2 {
-        margin-right: 0.5rem !important;
-    }
+/* ==========================================================
+   Special page headers v2
+   Selective image headers for About / Archive / Categories / Tags.
+   These are intentionally compact, not the old Fluid full-height banner.
+   ========================================================== */
+
+/* Shared index-page header */
+body:has(.category-list) .header-inner,
+body:has(.tagcloud) .header-inner,
+body:has(.list-group > .h4) .header-inner {
+  height: 240px !important;
+  min-height: 0 !important;
+}
+
+body:has(.about-avatar) .header-inner {
+  height: 440px !important;
+  min-height: 0 !important;
+}
+
+/* Restore existing, meaningful images for special pages */
+body:has(.about-avatar) #banner {
+  background-image: url('/img/banner_about_v2.webp') !important;
+  background-size: cover !important;
+  background-position: 72% 22% !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Light transition from About hero into the page background */
+body:has(.about-avatar) #banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  background: linear-gradient(to bottom, rgba(247, 244, 239, 0), rgba(247, 244, 239, 0.72));
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-user-color-scheme="dark"] body:has(.about-avatar) #banner::after {
+  background: linear-gradient(to bottom, rgba(24, 26, 36, 0), rgba(24, 26, 36, 0.72));
+}
+
+/* Much lighter transition for Archive / Categories / Tags */
+body:has(.category-list) #banner::after,
+body:has(.tagcloud) #banner::after,
+body:has(.list-group > .h4) #banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 18px;
+  background: linear-gradient(to bottom, rgba(247, 244, 239, 0), rgba(247, 244, 239, 0.68));
+  pointer-events: none;
+  z-index: 1;
+}
+
+[data-user-color-scheme="dark"] body:has(.category-list) #banner::after,
+[data-user-color-scheme="dark"] body:has(.tagcloud) #banner::after,
+[data-user-color-scheme="dark"] body:has(.list-group > .h4) #banner::after {
+  background: linear-gradient(to bottom, rgba(24, 26, 36, 0), rgba(24, 26, 36, 0.68));
+}
+
+body:has(.category-list) #banner,
+body:has(.tagcloud) #banner,
+body:has(.list-group > .h4) #banner {
+  background-image: url('/img/banner_page_v2.webp') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Overlay and text for image headers */
+body:has(.about-avatar) .full-bg-img,
+body:has(.category-list) .full-bg-img,
+body:has(.tagcloud) .full-bg-img,
+body:has(.list-group > .h4) .full-bg-img {
+  height: 100% !important;
+}
+
+body:has(.about-avatar) #banner .mask,
+body:has(.category-list) #banner .mask,
+body:has(.tagcloud) #banner .mask,
+body:has(.list-group > .h4) #banner .mask {
+  display: flex;
+  height: 100% !important;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(180deg, rgba(20, 22, 32, 0.12), rgba(20, 22, 32, 0.55)) !important;
+}
+
+body:has(.about-avatar) .banner-text,
+body:has(.category-list) .banner-text,
+body:has(.tagcloud) .banner-text,
+body:has(.list-group > .h4) .banner-text {
+  text-align: center;
+  color: #ffffff;
+}
+
+body:has(.about-avatar) .banner-text .h2,
+body:has(.about-avatar) .banner-text #subtitle,
+body:has(.category-list) .banner-text .h2,
+body:has(.category-list) .banner-text #subtitle,
+body:has(.tagcloud) .banner-text .h2,
+body:has(.tagcloud) .banner-text #subtitle,
+body:has(.list-group > .h4) .banner-text .h2,
+body:has(.list-group > .h4) .banner-text #subtitle {
+  color: #ffffff !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Hide Fluid scroll-down decoration on compact headers */
+body:has(.about-avatar) .scroll-down-bar,
+body:has(.category-list) .scroll-down-bar,
+body:has(.tagcloud) .scroll-down-bar,
+body:has(.list-group > .h4) .scroll-down-bar {
+  display: none !important;
+}
+
+/* Hide the typing cursor on static special-page headers */
+body:has(.about-avatar) .typed-cursor,
+body:has(.category-list) .typed-cursor,
+body:has(.tagcloud) .typed-cursor,
+body:has(.list-group > .h4) .typed-cursor {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  body:has(.about-avatar) .header-inner {
+    height: 300px !important;
+  }
+
+  body:has(.about-avatar) #banner::after {
+    height: 16px;
+  }
+
+  body:has(.category-list) #banner::after,
+  body:has(.tagcloud) #banner::after,
+  body:has(.list-group > .h4) #banner::after {
+    height: 12px;
+  }
+
+  body:has(.about-avatar) #banner {
+    background-size: auto 125% !important;
+    background-position: 72% 70px !important;
+  }
+
+  body:has(.category-list) .header-inner,
+  body:has(.tagcloud) .header-inner,
+  body:has(.list-group > .h4) .header-inner {
+    height: 190px !important;
+  }
+
+  body:has(.about-avatar) #banner .mask,
+  body:has(.category-list) #banner .mask,
+  body:has(.tagcloud) #banner .mask,
+  body:has(.list-group > .h4) #banner .mask {
+    padding: 1.5rem 1rem;
+  }
 }

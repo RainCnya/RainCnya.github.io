@@ -1,348 +1,513 @@
 /* ==========================================================
-   Miqiu's Custom Theme: Purple Rain & Amber Echo
-   旧版微调版
-   Path: source/css/custom.css
-
-   原则：保留 Fluid 原有排版，只调整字体、主板、导航、
-   Banner、进度条、滚动条与选区，不重做正文组件。
+   Miqiu's Site Shell v1
+   Lightweight site-level layer over Fluid 1.9.9.
+   This file is the shared visual base for navbar, board,
+   container, footer, typography and interaction states.
    ========================================================== */
 
-/* 1. 字体：保持旧版统一的书页感 */
-/* ==========================================================
-   字体系统
-   页面使用清晰的无衬线字体，正文保留轻微书页感
-   ========================================================== */
-
+/* ----------------------------------------------------------
+   1. Site variables
+   ---------------------------------------------------------- */
 :root {
-    --mq-board-solid: #fffcf6;
-    --mq-soft-bg: #f5efe6;
-    --mq-border: #ddd4c8;
-    --mq-border-light: #e9e1d7;
-    --mq-text: #3b3643;
-    --mq-text-secondary: #746d78;
-    --mq-heading: #302b39;
-    --mq-iris: #7863a3;
-    --mq-amber: #a87943;
-    --mq-radius: 12px;
-    --mq-radius-small: 8px;
-    --mq-font-heading: "Microsoft YaHei", "PingFang SC", sans-serif;
-    --mq-font-body: "LXGW WenKai Screen", "Microsoft YaHei", sans-serif;
-    --mq-font-code: "Cascadia Code", "Consolas", monospace;
+  --site-bg: #f7f4ef;
+  --site-surface: #fffdf9;
+  --site-surface-soft: #f1ece4;
+  --site-text: #2f2b36;
+  --site-text-secondary: #6f6875;
+  --site-text-faint: #9a93a1;
+  --site-border: #e5ddd2;
+  --site-border-strong: #d8cec0;
+  --site-accent: #6d5c9e;
+  --site-accent-soft: rgba(109, 92, 158, 0.09);
+  --site-accent-strong: #584a80;
+  --site-nav-bg: rgba(255, 253, 249, 0.78);
+  --site-nav-text: #3a3442;
+  --site-radius: 16px;
+  --site-radius-sm: 10px;
+  --site-max-width: 1160px;
+  --site-shadow-sm: 0 1px 2px rgba(40, 35, 50, 0.025), 0 10px 28px rgba(40, 35, 50, 0.045);
+  --site-shadow-hover: 0 4px 10px rgba(40, 35, 50, 0.04), 0 18px 40px rgba(40, 35, 50, 0.07);
+  --site-font-ui: "Inter", "HarmonyOS Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --site-font-body: "LXGW WenKai Screen", "LXGW WenKai", "霞鹜文楷", "Kaiti SC", "KaiTi", serif;
+  --site-font-mono: "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Fluid variable mapping */
+  --body-bg-color: var(--site-bg);
+  --board-bg-color: var(--site-surface);
+  --text-color: var(--site-text);
+  --sec-text-color: var(--site-text-secondary);
+  --post-text-color: var(--site-text);
+  --post-heading-color: var(--site-text);
+  --post-link-color: var(--site-accent);
+  --link-hover-color: var(--site-accent-strong);
+  --link-hover-bg-color: var(--site-accent-soft);
+  --line-color: var(--site-border);
+  --navbar-bg-color: var(--site-nav-bg);
+  --navbar-text-color: var(--site-nav-text);
+  --subtitle-color: var(--site-text);
+  --scrollbar-color: rgba(116, 109, 130, 0.45);
+  --scrollbar-hover-color: rgba(109, 92, 158, 0.62);
+  --fold-title-color: var(--site-text);
+  --fold-border-color: var(--site-border);
+
+  /* Compatibility with older custom CSS files */
+  --mq-board-solid: var(--site-surface);
+  --mq-soft-bg: var(--site-surface-soft);
+  --mq-border: var(--site-border);
+  --mq-border-light: var(--site-border);
+  --mq-text: var(--site-text);
+  --mq-text-secondary: var(--site-text-secondary);
+  --mq-heading: var(--site-text);
+  --mq-iris: var(--site-accent);
+  --mq-amber: #a87943;
+  --mq-radius: var(--site-radius);
+  --mq-radius-small: var(--site-radius-sm);
+  --mq-font-heading: var(--site-font-ui);
+  --mq-font-body: var(--site-font-body);
+  --mq-font-code: var(--site-font-mono);
 }
 
 [data-user-color-scheme="dark"] {
-    --mq-board-solid: #1f2335;
-    --mq-soft-bg: #292e42;
-    --mq-border: rgba(192, 202, 245, 0.14);
-    --mq-border-light: rgba(192, 202, 245, 0.09);
-    --mq-text: #c0caf5;
-    --mq-text-secondary: #9aa5ce;
-    --mq-heading: #d8def8;
-    --mq-iris: #bb9af7;
-    --mq-amber: #e0af68;
+  --site-bg: #181a24;
+  --site-surface: #1f2230;
+  --site-surface-soft: #262a3a;
+  --site-text: #c7cbe0;
+  --site-text-secondary: #9aa0bd;
+  --site-text-faint: #6f7696;
+  --site-border: rgba(200, 205, 235, 0.12);
+  --site-border-strong: rgba(200, 205, 235, 0.2);
+  --site-accent: #a99bdd;
+  --site-accent-soft: rgba(170, 155, 221, 0.12);
+  --site-accent-strong: #cdbffb;
+  --site-nav-bg: rgba(24, 26, 36, 0.76);
+  --site-nav-text: #c7cbe0;
+  --site-radius: 18px;
+  --site-radius-sm: 12px;
+  --site-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.16), 0 12px 32px rgba(0, 0, 0, 0.18);
+  --site-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.18), 0 20px 44px rgba(0, 0, 0, 0.24);
+
+  --body-bg-color: var(--site-bg);
+  --board-bg-color: var(--site-surface);
+  --text-color: var(--site-text);
+  --sec-text-color: var(--site-text-secondary);
+  --post-text-color: var(--site-text);
+  --post-heading-color: var(--site-text);
+  --post-link-color: var(--site-accent);
+  --link-hover-color: var(--site-accent-strong);
+  --link-hover-bg-color: var(--site-accent-soft);
+  --line-color: var(--site-border);
+  --navbar-bg-color: var(--site-nav-bg);
+  --navbar-text-color: var(--site-nav-text);
+  --subtitle-color: var(--site-text);
+  --scrollbar-color: rgba(150, 154, 180, 0.4);
+  --scrollbar-hover-color: rgba(170, 155, 221, 0.55);
+  --fold-title-color: var(--site-text);
+  --fold-border-color: var(--site-border);
+
+  /* Compatibility with older custom CSS files */
+  --mq-board-solid: var(--site-surface);
+  --mq-soft-bg: var(--site-surface-soft);
+  --mq-border: var(--site-border);
+  --mq-border-light: var(--site-border);
+  --mq-text: var(--site-text);
+  --mq-text-secondary: var(--site-text-secondary);
+  --mq-heading: var(--site-text);
+  --mq-iris: var(--site-accent);
+  --mq-amber: #e0af68;
+  --mq-radius: var(--site-radius);
+  --mq-radius-small: var(--site-radius-sm);
+  --mq-font-heading: var(--site-font-ui);
+  --mq-font-body: var(--site-font-body);
+  --mq-font-code: var(--site-font-mono);
 }
 
-/* 导航、分类、普通页面组件 */
+/* ----------------------------------------------------------
+   2. Base
+   ---------------------------------------------------------- */
 body {
-    font-family:
-        "Microsoft YaHei",
-        "PingFang SC",
-        "Noto Sans CJK SC",
-        sans-serif !important;
-
-    color: #35313f;
-    background-color: #f3efe7 !important;
+  font-family: var(--site-font-ui) !important;
+  background-color: var(--site-bg) !important;
+  color: var(--site-text);
+  letter-spacing: 0.012em;
 }
 
-[data-user-color-scheme="dark"] body {
-    color: #a9b1d6;
-    background-color: #1a1b26 !important;
-}
-
-
-/* 文章正文 */
 .markdown-body {
-    font-family:
-        "LXGW WenKai Screen",
-        "LXGW WenKai",
-        "Microsoft YaHei",
-        "PingFang SC",
-        sans-serif !important;
-
-    font-size: 1.04rem;
-    font-weight: 400;
-    line-height: 1.9;
-    letter-spacing: 0.008em;
-
-    text-rendering: optimizeLegibility;
+  font-family: var(--site-font-body) !important;
+  font-size: 1.045rem;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.008em;
+  color: var(--site-text);
+  text-rendering: optimizeLegibility;
 }
 
-
-/* 标题使用无衬线字体，避免整页都显得手写 */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-    font-family:
-        "Microsoft YaHei",
-        "PingFang SC",
-        "Noto Sans CJK SC",
-        sans-serif !important;
-
-    font-weight: 600;
-    letter-spacing: 0.015em;
+  font-family: var(--site-font-ui) !important;
+  color: var(--site-text);
+  font-weight: 650;
+  letter-spacing: 0.012em;
 }
 
-
-/* 移动端略微收小正文 */
-@media (max-width: 767px) {
-    .markdown-body {
-        font-size: 1rem;
-        line-height: 1.84;
-    }
+.markdown-body a {
+  color: var(--site-accent);
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
 }
 
-/* 2. 主板：沿用旧版毛玻璃，仅略微收敛圆角与阴影 */
-.board,
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  color: var(--site-accent-strong);
+  text-decoration: none !important;
+  border-bottom-color: var(--site-accent-strong);
+}
+
+/* ----------------------------------------------------------
+   3. Navbar
+   ---------------------------------------------------------- */
+.navbar {
+  background-color: var(--site-nav-bg) !important;
+  border-bottom: 1px solid var(--site-border);
+  box-shadow: none !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.35);
+  backdrop-filter: blur(16px) saturate(1.35);
+}
+
+.navbar .navbar-brand {
+  color: var(--site-nav-text) !important;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+}
+
+.navbar .navbar-nav .nav-link {
+  color: var(--site-nav-text) !important;
+  border-radius: 999px;
+  padding: 0.48rem 0.85rem !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link:focus {
+  color: var(--site-accent) !important;
+  background: var(--site-accent-soft);
+}
+
+/* Keep icons only for search / color toggle; hide old menu icons */
+.navbar .navbar-nav .nav-link i:not(:only-child) {
+  display: none;
+}
+
+.navbar .navbar-toggler .animated-icon span {
+  background-color: var(--site-nav-text) !important;
+}
+
+/* Mobile expanded menu */
+.navbar .navbar-collapse,
+.navbar.top-nav-collapse,
+.navbar-col-show {
+  background-color: var(--site-nav-bg) !important;
+  border-radius: 0 0 var(--site-radius-sm) var(--site-radius-sm);
+}
+
+/* ----------------------------------------------------------
+   4. Board / container
+   ---------------------------------------------------------- */
+#board-ctn {
+  max-width: var(--site-max-width);
+}
+
 #board {
-    background-color: rgba(255, 252, 246, 0.92) !important;
-    border: 1px solid rgba(218, 207, 193, 0.72);
-    border-radius: 14px;
-
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-
-    box-shadow:
-        0 2px 8px rgba(31, 38, 78, 0.025),
-        0 8px 28px rgba(31, 38, 135, 0.055);
+  position: relative;
+  margin-top: 0 !important;
+  padding: 2.6rem 0;
+  background-color: var(--site-surface) !important;
+  border: 1px solid var(--site-border);
+  border-radius: var(--site-radius);
+  box-shadow: var(--site-shadow-sm) !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 暗色模式保持原来的夜色，不额外重绘正文颜色 */
-[data-user-color-scheme="dark"] .board,
-[data-user-color-scheme="dark"] #board {
-    background-color: rgba(30, 30, 40, 0.82) !important;
-    border-color: rgba(255, 255, 255, 0.055);
-    box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.10),
-        0 10px 30px rgba(0, 0, 0, 0.18);
-}
-
-/* 只让首页卡片轻微响应，详情页主板保持安静 */
 .index-card .board {
-    transition:
-        transform 0.24s ease,
-        box-shadow 0.24s ease,
-        border-color 0.24s ease;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .index-card:hover .board {
-    transform: translateY(-3px);
-    border-color: rgba(126, 87, 194, 0.10);
-    box-shadow:
-        0 4px 12px rgba(31, 38, 78, 0.035),
-        0 12px 34px rgba(91, 73, 139, 0.09);
+  transform: translateY(-3px);
+  border-color: var(--site-border-strong);
+  box-shadow: var(--site-shadow-hover) !important;
 }
 
-/* 3. 顶部导航栏：保留黛紫透明感 */
-.navbar {
-    background-color: rgba(85, 81, 102, 0.86) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
-
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-
-    box-shadow: 0 2px 12px rgba(28, 29, 43, 0.08);
+/* Article / page content column */
+.post-content,
+.page-content {
+  max-width: 900px;
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
 }
 
-[data-user-color-scheme="dark"] .navbar {
-    background-color: rgba(38, 40, 56, 0.88) !important;
-}
-/* 4. Banner：保持明亮通透，同时保证标题可读 */
-.banner .mask {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(37, 42, 62, 0.13) 0%,
-            rgba(37, 42, 62, 0.24) 55%,
-            rgba(28, 32, 49, 0.30) 100%
-        ) !important;
+/* ----------------------------------------------------------
+   5. Footer
+   ---------------------------------------------------------- */
+.footer-inner {
+  padding: 3.5rem 1rem 2.5rem;
+  color: var(--site-text-secondary);
 }
 
-/* 首页 Slogan */
-#subtitle {
-    color: #ffffff !important;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-
-    text-shadow:
-        0 1px 2px rgba(35, 39, 57, 0.95),
-        0 3px 10px rgba(35, 39, 57, 0.68),
-        0 0 22px rgba(35, 39, 57, 0.28);
+.footer-inner a {
+  color: var(--site-text-secondary);
+  transition: color 0.18s ease;
 }
 
-/* 其他页面 Banner 标题 */
-.banner-text h1,
-.banner-text h2 {
-    color: #ffffff !important;
-
-    text-shadow:
-        0 1px 2px rgba(35, 39, 57, 0.88),
-        0 3px 12px rgba(35, 39, 57, 0.55);
+.footer-inner a:hover {
+  color: var(--site-accent);
 }
 
-/* 暗色模式下进一步压住高亮 Banner */
-[data-user-color-scheme="dark"] .banner .mask {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(16, 19, 31, 0.34) 0%,
-            rgba(16, 19, 31, 0.48) 55%,
-            rgba(12, 15, 26, 0.58) 100%
-        ) !important;
-}
-
-/* 6. 滚动条：仍然轻量，只将颜色统一为灰紫 */
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(126, 119, 143, 0.62);
-    border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(116, 111, 167, 0.78);
-}
-
-[data-user-color-scheme="dark"] ::-webkit-scrollbar-thumb {
-    background-color: rgba(159, 157, 181, 0.48);
-}
-
-/* 7. 文字选区 */
-::selection {
-    color: #ffffff;
-    background: #7e70aa;
-}
-
-::-moz-selection {
-    color: #ffffff;
-    background: #7e70aa;
-}
-
-/* 8. 移动端不启用悬浮位移 */
-@media (max-width: 767px) {
-    .board {
-        border-radius: 10px;
-    }
-
-    .index-card:hover .board {
-        transform: none;
-    }
-}
-
-/* 9. 尊重系统的减少动态效果设置 */
-@media (prefers-reduced-motion: reduce) {
-    .index-card .board {
-        transition: none;
-    }
-}
-
-/* 10. 正文分割线：亮色模式清晰，暗色模式柔和 */
-.markdown-body hr,
-.post-content hr {
-    height: 1px;
-    margin: 2.4rem 0;
-
-    border: 0;
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(74, 78, 105, 0.18) 12%,
-            rgba(74, 78, 105, 0.42) 50%,
-            rgba(74, 78, 105, 0.18) 88%,
-            transparent 100%
-        );
-}
-
-/* 暗色模式 */
-[data-user-color-scheme="dark"] .markdown-body hr,
-[data-user-color-scheme="dark"] .post-content hr {
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(192, 202, 245, 0.10) 12%,
-            rgba(192, 202, 245, 0.28) 50%,
-            rgba(192, 202, 245, 0.10) 88%,
-            transparent 100%
-        );
-}
-
-/* 10. 正文独立分割线 */
-.markdown-body hr,
-.post-content hr {
-    height: 1px;
-    margin: 2.5rem 0;
-
-    border: 0;
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(74, 78, 105, 0.20) 12%,
-            rgba(74, 78, 105, 0.46) 50%,
-            rgba(74, 78, 105, 0.20) 88%,
-            transparent 100%
-        );
-}
-
-[data-user-color-scheme="dark"] .markdown-body hr,
-[data-user-color-scheme="dark"] .post-content hr {
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(192, 202, 245, 0.10) 12%,
-            rgba(192, 202, 245, 0.28) 50%,
-            rgba(192, 202, 245, 0.10) 88%,
-            transparent 100%
-        );
-}
-
-/* 11. H1 / H2 标题横线 */
+/* ----------------------------------------------------------
+   6. Typography details
+   ---------------------------------------------------------- */
 .markdown-body h1,
 .post-content h1 {
-    padding-bottom: 0.42em;
-    border-bottom:
-        1px solid rgba(74, 78, 105, 0.30) !important;
+  padding-bottom: 0.42em;
+  border-bottom: 1px solid var(--site-border-strong) !important;
 }
 
 .markdown-body h2,
 .post-content h2 {
-    padding-bottom: 0.34em;
-    border-bottom:
-        1px solid rgba(74, 78, 105, 0.22) !important;
+  padding-bottom: 0.34em;
+  border-bottom: 1px solid var(--site-border) !important;
 }
 
-[data-user-color-scheme="dark"] .markdown-body h1,
-[data-user-color-scheme="dark"] .post-content h1 {
-    border-bottom-color:
-        rgba(192, 202, 245, 0.25) !important;
+.markdown-body hr,
+.post-content hr {
+  height: 1px;
+  margin: 2.4rem 0;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--site-border-strong) 18%,
+    var(--site-border-strong) 50%,
+    var(--site-border-strong) 82%,
+    transparent 100%
+  );
 }
 
-[data-user-color-scheme="dark"] .markdown-body h2,
-[data-user-color-scheme="dark"] .post-content h2 {
-    border-bottom-color:
-        rgba(192, 202, 245, 0.18) !important;
+/* ----------------------------------------------------------
+   7. Scrollbar & selection
+   ---------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-/* Build: legacy-tuned-v2 | 2026-07-02 */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-hover-color);
+}
+
+::selection {
+  color: #ffffff;
+  background: var(--site-accent);
+}
+
+::-moz-selection {
+  color: #ffffff;
+  background: var(--site-accent);
+}
+
+/* ----------------------------------------------------------
+   8. Responsive tuning
+   ---------------------------------------------------------- */
+@media (max-width: 767px) {
+  .navbar .navbar-nav .nav-link {
+    padding: 0.55rem 0.9rem !important;
+  }
+
+  #board {
+    border-radius: var(--site-radius-sm);
+    padding: 1.6rem 0;
+  }
+
+  .post-content,
+  .page-content {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  .markdown-body {
+    font-size: 1rem;
+    line-height: 1.84;
+  }
+
+  .index-card:hover .board {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index-card .board,
+  .navbar,
+  .markdown-body a {
+    transition: none;
+  }
+}
+
+/* ==========================================================
+   Special pages v2
+   Reduce the large Fluid board on About / Archive / Categories /
+   Tags, and give each page a more open, role-appropriate layout.
+   ========================================================== */
+
+/* Open layout instead of a giant white board */
+body:has(.about-avatar) #board,
+body:has(.category-list) #board,
+body:has(.tagcloud) #board,
+body:has(.list-group > .h4) #board {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0 3rem;
+}
+
+/* Slightly narrower content for index pages */
+body:has(.category-list) main .container.nopadding-x-md,
+body:has(.tagcloud) main .container.nopadding-x-md,
+body:has(.list-group > .h4) main .container.nopadding-x-md {
+  max-width: 1040px;
+}
+
+/* ----------------------------------------------------------
+   About
+   ---------------------------------------------------------- */
+body:has(.about-avatar) .about-avatar {
+  position: relative;
+  z-index: 2;
+  margin: -56px auto 1.1rem;
+  text-align: center;
+}
+
+body:has(.about-avatar) .about-avatar img {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--site-bg);
+  box-shadow: var(--site-shadow-sm);
+}
+
+body:has(.about-avatar) .about-info {
+  margin-top: 0.6rem;
+}
+
+body:has(.about-avatar) .about-name {
+  font-family: var(--site-font-body);
+  font-size: 2rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+body:has(.about-avatar) .about-intro {
+  color: var(--site-text-secondary);
+  font-family: var(--site-font-body);
+  font-size: 1rem;
+}
+
+body:has(.about-avatar) .about-content {
+  max-width: 760px;
+  margin: 3.2rem auto 0;
+  padding: 0 1.5rem;
+}
+
+body:has(.about-avatar) .about-content .markdown-body {
+  font-size: 1.04rem;
+}
+
+/* ----------------------------------------------------------
+   Archive / category detail / tag detail list
+   ---------------------------------------------------------- */
+body:has(.list-group > .h4) .list-group {
+  background: transparent;
+  border: 0;
+}
+
+body:has(.list-group > .h4) .list-group-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--site-border);
+  border-radius: 0 !important;
+  color: var(--site-text);
+}
+
+body:has(.list-group > .h4) .list-group-item:hover {
+  color: var(--site-accent);
+  background: transparent !important;
+}
+
+body:has(.list-group > .h4) .list-group-item time {
+  min-width: 3.6rem;
+  color: var(--site-text-secondary);
+  font-family: var(--site-font-mono);
+  font-size: 0.82rem;
+}
+
+body:has(.list-group > .h4) .list-group-item .list-group-item-title {
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Keep category/tag overview headings calm */
+body:has(.category-list) .h4,
+body:has(.tagcloud) .h4,
+body:has(.list-group > .h4) .h4 {
+  font-family: var(--site-font-ui);
+  font-weight: 650;
+  color: var(--site-text);
+}
+
+@media (max-width: 767px) {
+  body:has(.about-avatar) .about-avatar {
+    margin-top: -40px;
+  }
+
+  body:has(.about-avatar) .about-avatar img {
+    width: 108px;
+    height: 108px;
+  }
+
+  body:has(.about-avatar) .about-content {
+    margin-top: 2.4rem;
+    padding: 0 1.1rem;
+  }
+
+  body:has(.list-group > .h4) .list-group-item {
+    gap: 0.6rem;
+    padding: 0.8rem 0;
+  }
+
+  body:has(.list-group > .h4) .list-group-item time {
+    min-width: 3.2rem;
+  }
+}

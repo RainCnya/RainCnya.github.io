@@ -36,7 +36,7 @@ code:
 # 有趣的功能 (打字机)
 fun_features:
   typing:
-    enable: true
+    enable: false
     typeSpeed: 70
     cursorChar: "_"
     loop: false
@@ -106,6 +106,7 @@ custom_css:
   - /css/article_v1.css
   - /css/callout_v1.css
   - /css/home_v1.css
+  - /css/taxonomy.css
 
 web_analytics:
   enable: true
@@ -195,13 +196,13 @@ footer:
 # Home Page
 #---------------------------
 index:
-  banner_img: /img/banner_index_v2.webp
+  banner_img: /img/Rain.png
   banner_img_height: 100
   banner_mask_alpha: 0.5
 
   slogan:
     enable: true
-    text: "愿你的旅途永远璀璨，愿你的夏日永不凋零。"
+    text: "最近留下"
   auto_excerpt:
     enable: true
   post_url_target: _self
@@ -383,16 +384,28 @@ links:
   
   items:
     - {
+      title: "时沐风炎",
+      intro: "一个很好的朋友",
+      link: "https://smfy.space/",
+      avatar: "/img/friends/smfy.jpg"
+    }
+    - {
+      title: "梵诗",
+      intro: "一个有趣的朋友",
+      link: "https://lhhyyy666.github.io/",
+      avatar: "/img/lhhyyy.jpg"
+    }
+    - {
+      title: "iluil",
+      intro: "一个可爱的朋友",
+      link: "https://aliluil.github.io/",
+      avatar: "/img/iluil.jpg"
+    }
+    - {
       title: "Rookie__",
       intro: "朋友的博客，分享技术、生活、思考等",
       link: "https://blog.rookiesama.space/",
       avatar: "https://blog.rookiesama.space/_astro/yingying.Ba81ZFjz_Z1CHxkf.webp"
-    }
-    - {
-      title: "时沐风炎",
-      intro: "时沐风炎的个人博客",
-      link: "https://smfy.space/",
-      avatar: "/img/friends/smfy.jpg"
     }
     # --- 核心刷题平台 ---
     - {
@@ -431,10 +444,10 @@ links:
 
   onerror_avatar: /img/avatar.jpg
   custom:
-    enable: true
+    enable: false
     content: '<hr><p>欢迎交换友链！(Ver 3.2)<br>留言格式：<br>名称：MiQiu<br>简介：愿你的旅途永远璀璨<br>链接：https://你的域名</p>'
   comments:
-    enable: true
+    enable: false
     type: valine
 
 static_prefix:
