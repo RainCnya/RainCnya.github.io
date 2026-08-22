@@ -9,6 +9,7 @@ status: solved
 categories:
   - 260_Records
   - Graph
+  - 连通性
 abbrlink: p3469001
 date: 2026-08-10 00:00:00
 updated: 2026-08-16 00:00:00

@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-17 00:00:00
+updated: 2026-08-19 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,21 +39,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
-    <a href="/posts/dba9a34f/">
-      <time datetime="2026-08-15">08.15</time>
-      <span><strong>线段树基础理论</strong><small>用递归划分与可合并摘要，统一在线查询和单点修改。</small></span>
+    <a href="/posts/p4630001/">
+      <time datetime="2026-08-18">08.18</time>
+      <span><strong>P4630 · 铁人两项</strong><small>用圆方树保存点双结构，再把合法三元组转成树上路径贡献。</small></span>
     </a>
-    <a href="/posts/ec824ae8/">
-      <time datetime="2026-08-15">08.15</time>
-      <span><strong>浅谈线段树信息合并</strong><small>从父区间需求反推摘要，补齐前后缀等边界接口。</small></span>
+    <a href="/posts/p6134001/">
+      <time datetime="2026-08-18">08.18</time>
+      <span><strong>P6134 · 最小表示</strong><small>分清逆拓扑统计与正拓扑判边，完成 DAG 的传递约简。</small></span>
     </a>
-    <a href="/posts/c0ad84cf/">
-      <time datetime="2026-08-15">08.15</time>
-      <span><strong>浅谈线段树懒标记</strong><small>把暂不下传的操作压成可复合标记，先定复合顺序再写 apply。</small></span>
+    <a href="/posts/p1875001/">
+      <time datetime="2026-08-18">08.18</time>
+      <span><strong>P1875 · 佳佳的魔法药水</strong><small>把一次松弛扩展到两个已确定前置状态，并同步统计最优方案。</small></span>
     </a>
-    <a href="/posts/p2824001/">
-      <time datetime="2026-08-13">08.13</time>
-      <span><strong>P2824 · 排序</strong><small>二分答案加二值化，把区间排序转化为 01 覆盖计数。</small></span>
+    <a href="/posts/p2619001/">
+      <time datetime="2026-08-18">08.18</time>
+      <span><strong>P2619 · Tree I</strong><small>用统一惩罚把白边数量带入 Kruskal，再从临界解还原原权值。</small></span>
     </a>
   </div>
 </section>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>线段树摘要与懒标记</dd></div>
-      <div><dt>整理</dt><dd>线段树理论重构与题型迁移</dd></div>
+      <div><dt>学习</dt><dd>图结构压缩与约束参数化</dd></div>
+      <div><dt>整理</dt><dd>圆方树、传递约简与二元松弛</dd></div>
       <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>信息合并、标记复合与二值化</dd></div>
+      <div><dt>留下</dt><dd>路径贡献、拓扑顺序与 WQS 惩罚</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
