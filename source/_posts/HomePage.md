@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-19 00:00:00
+updated: 2026-08-23 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -51,9 +51,9 @@ comments: false
       <time datetime="2026-08-18">08.18</time>
       <span><strong>P1875 · 佳佳的魔法药水</strong><small>把一次松弛扩展到两个已确定前置状态，并同步统计最优方案。</small></span>
     </a>
-    <a href="/posts/p2619001/">
-      <time datetime="2026-08-18">08.18</time>
-      <span><strong>P2619 · Tree I</strong><small>用统一惩罚把白边数量带入 Kruskal，再从临界解还原原权值。</small></span>
+    <a href="/posts/6ffdfad6/">
+      <time datetime="2026-08-22">08.22</time>
+      <span><strong>致去年的我的一封信</strong><small>在大一与集训结束的夜里，回望重新出发、远行、写作与相遇。</small></span>
     </a>
   </div>
 </section>
@@ -64,8 +64,8 @@ comments: false
     <dl>
       <div><dt>学习</dt><dd>图结构压缩与约束参数化</dd></div>
       <div><dt>整理</dt><dd>圆方树、传递约简与二元松弛</dd></div>
-      <div><dt>写作</dt><dd>尚未成为结论的生活</dd></div>
-      <div><dt>留下</dt><dd>路径贡献、拓扑顺序与 WQS 惩罚</dd></div>
+      <div><dt>写作</dt><dd>给过去与未来的一封信</dd></div>
+      <div><dt>留下</dt><dd>路径贡献、拓扑顺序与大一回望</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">

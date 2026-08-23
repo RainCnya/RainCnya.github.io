@@ -9,7 +9,7 @@ categories:
   - 290_Writings
 abbrlink: 7525e7eb
 date: 2026-02-22 09:59:41
-updated: 2026-07-12 00:00:00
+updated: 2026-08-23 00:00:00
 ---
 
 ## 文字作品目录
@@ -27,6 +27,7 @@ updated: 2026-07-12 00:00:00
 7. [[2026-06-26_Essay_old-capital-thirteen-stars|旧都的十三星]]｜随笔
 8. [[2026-07-06_Fiction_sunny-standby-rainy-rescue|晴天待命，雨天救人]]｜小说
 9. [[2026-07-12_Fiction_are-you-still-there|还在……吗？]]｜小说
+10. [[2026-08-22_Letter_to-myself-last-year|致去年的我的一封信]]｜信笺
 
 ## 2025
 
