@@ -7,6 +7,8 @@
     "clean": "hexo clean",
     "server": "hexo server",
     "preview": "hexo clean && hexo generate && hexo server",
+    "test": "node --test test/luogu_difficulty.test.js",
+    "sync:luogu": "node tools/sync_luogu_difficulties.js",
     "check:site": "node tools/site_check.js",
     "check": "npm run clean && npm run build && npm run check:site"
   },

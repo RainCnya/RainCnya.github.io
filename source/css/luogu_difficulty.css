@@ -1,0 +1,56 @@
+/* Static Luogu difficulty semantics for rendered problem links. */
+:root {
+  --luogu-difficulty-0: #767676;
+  --luogu-difficulty-1: #d63d52;
+  --luogu-difficulty-2: #c77500;
+  --luogu-difficulty-3: #a97900;
+  --luogu-difficulty-4: #348618;
+  --luogu-difficulty-5: #087f83;
+  --luogu-difficulty-6: #1c70bd;
+  --luogu-difficulty-7: #8234b4;
+  --luogu-difficulty-8: #17265d;
+  --luogu-difficulty-missing: #a32f61;
+}
+
+.markdown-body a.luogu-difficulty {
+  color: var(--luogu-link-color) !important;
+  border-bottom-color: currentColor !important;
+  font-weight: 600;
+}
+
+.markdown-body a.luogu-difficulty-0 { --luogu-link-color: var(--luogu-difficulty-0); }
+.markdown-body a.luogu-difficulty-1 { --luogu-link-color: var(--luogu-difficulty-1); }
+.markdown-body a.luogu-difficulty-2 { --luogu-link-color: var(--luogu-difficulty-2); }
+.markdown-body a.luogu-difficulty-3 { --luogu-link-color: var(--luogu-difficulty-3); }
+.markdown-body a.luogu-difficulty-4 { --luogu-link-color: var(--luogu-difficulty-4); }
+.markdown-body a.luogu-difficulty-5 { --luogu-link-color: var(--luogu-difficulty-5); }
+.markdown-body a.luogu-difficulty-6 { --luogu-link-color: var(--luogu-difficulty-6); }
+.markdown-body a.luogu-difficulty-7 { --luogu-link-color: var(--luogu-difficulty-7); }
+.markdown-body a.luogu-difficulty-8 { --luogu-link-color: var(--luogu-difficulty-8); }
+.markdown-body a.luogu-difficulty-missing { --luogu-link-color: var(--luogu-difficulty-missing); }
+
+.markdown-body a.luogu-difficulty:hover,
+.markdown-body a.luogu-difficulty:focus,
+.markdown-body a.luogu-difficulty:active {
+  background-color: transparent !important;
+  filter: brightness(0.86);
+}
+
+[data-user-color-scheme="dark"] {
+  --luogu-difficulty-0: #c0c0c0;
+  --luogu-difficulty-1: #ff8292;
+  --luogu-difficulty-2: #ffb35f;
+  --luogu-difficulty-3: #ffe07a;
+  --luogu-difficulty-4: #8bdb67;
+  --luogu-difficulty-5: #62dddd;
+  --luogu-difficulty-6: #78bcff;
+  --luogu-difficulty-7: #d49bff;
+  --luogu-difficulty-8: #b6c4ff;
+  --luogu-difficulty-missing: #ff9dbe;
+}
+
+[data-user-color-scheme="dark"] .markdown-body a.luogu-difficulty:hover,
+[data-user-color-scheme="dark"] .markdown-body a.luogu-difficulty:focus,
+[data-user-color-scheme="dark"] .markdown-body a.luogu-difficulty:active {
+  filter: brightness(1.14);
+}

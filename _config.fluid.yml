@@ -107,6 +107,7 @@ custom_css:
   - /css/callout_v1.css
   - /css/home_v1.css
   - /css/taxonomy.css
+  - /css/luogu_difficulty.css
 
 web_analytics:
   enable: true

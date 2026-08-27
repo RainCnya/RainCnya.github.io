@@ -93,6 +93,7 @@ pagination_dir: page
 include:
 exclude:
 ignore:
+  - '**/260_Records/Temp/**'
 
 # Extensions
 theme: fluid

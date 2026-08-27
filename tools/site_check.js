@@ -23,6 +23,7 @@
 const cheerio = require("cheerio");
 const fs = require("fs");
 const path = require("path");
+const { isTemporaryPostPath } = require("../lib/luogu_difficulty");
 
 const ROOT = process.cwd();
 const SOURCE_DIR = path.join(ROOT, "source");
@@ -72,7 +73,9 @@ function walkFiles(dir, predicate = () => true) {
       const fullPath = path.join(current, entry.name);
 
       if (entry.isDirectory()) {
-        stack.push(fullPath);
+        if (!isTemporaryPostPath(relative(fullPath))) {
+          stack.push(fullPath);
+        }
       } else if (entry.isFile() && predicate(fullPath)) {
         result.push(fullPath);
       }
