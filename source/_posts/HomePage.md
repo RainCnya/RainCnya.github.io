@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-23 00:00:00
+updated: 2026-08-28 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -39,17 +39,17 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list">
-    <a href="/posts/p4630001/">
-      <time datetime="2026-08-18">08.18</time>
-      <span><strong>P4630 · 铁人两项</strong><small>用圆方树保存点双结构，再把合法三元组转成树上路径贡献。</small></span>
+    <a href="/posts/p1251001/">
+      <time datetime="2026-08-28">08.28</time>
+      <span><strong>P1251 · 餐巾计划问题</strong><small>拆开同一天使用前后的状态，把购买、存放与洗涤放进时间扩展网络。</small></span>
     </a>
-    <a href="/posts/p6134001/">
-      <time datetime="2026-08-18">08.18</time>
-      <span><strong>P6134 · 最小表示</strong><small>分清逆拓扑统计与正拓扑判边，完成 DAG 的传递约简。</small></span>
+    <a href="/posts/p2057001/">
+      <time datetime="2026-08-28">08.28</time>
+      <span><strong>P2057 · 善意的投票</strong><small>给割的两侧赋予二元决策含义，让局部冲突恰好成为跨割代价。</small></span>
     </a>
-    <a href="/posts/p1875001/">
-      <time datetime="2026-08-18">08.18</time>
-      <span><strong>P1875 · 佳佳的魔法药水</strong><small>把一次松弛扩展到两个已确定前置状态，并同步统计最优方案。</small></span>
+    <a href="/posts/p2762001/">
+      <time datetime="2026-08-28">08.28</time>
+      <span><strong>P2762 · 太空飞行计划</strong><small>用无限容量边表达选择依赖，把最大权闭合集合还原为最小割。</small></span>
     </a>
     <a href="/posts/6ffdfad6/">
       <time datetime="2026-08-22">08.22</time>
@@ -62,10 +62,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>图结构压缩与约束参数化</dd></div>
-      <div><dt>整理</dt><dd>圆方树、传递约简与二元松弛</dd></div>
+      <div><dt>学习</dt><dd>网络流建模与最小割语义</dd></div>
+      <div><dt>整理</dt><dd>拆点、闭合依赖与时间扩展网络</dd></div>
       <div><dt>写作</dt><dd>给过去与未来的一封信</dd></div>
-      <div><dt>留下</dt><dd>路径贡献、拓扑顺序与大一回望</dd></div>
+      <div><dt>留下</dt><dd>局部代价、状态分层与大一回望</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
