@@ -35,6 +35,20 @@ comments: false
 
 <section class="miqiu-latest">
   <header>
+    <h2>置顶推荐</h2>
+  </header>
+  <div class="miqiu-latest-list">
+    <a href="/posts/6ffdfad6/">
+      <span><strong>致去年的我的一封信</strong><small>写给重新出发前的自己，也写给仍在继续往前的以后。</small></span>
+    </a>
+    <a href="/posts/60749789/">
+      <span><strong>XCPC 综合题单</strong><small>按专题、题型与训练定位组织的长期 XCPC 学习地图。</small></span>
+    </a>
+  </div>
+</section>
+
+<section class="miqiu-latest">
+  <header>
     <h2>最近留下</h2>
     <a href="/recent/">查看全部 →</a>
   </header>

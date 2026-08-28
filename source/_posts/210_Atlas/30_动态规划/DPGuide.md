@@ -11,10 +11,13 @@ comments: false
 copyright: false
 abbrlink: dppath26
 date: 2026-07-23 00:00:00
-updated: 2026-07-30 00:00:00
+updated: 2026-08-28 00:00:00
 ---
 
 ## 动态规划导览
+
+> [!important] 置顶推荐
+> [[XCPC_综合题单|XCPC 综合题单]]：长期训练地图；[[2026-08-22_Letter_to-myself-last-year|致去年的我的一封信]]：写给过去与未来的大一回望。
 
 动态规划不是套用数组维度，而是在状态 DAG 上保存足以影响未来的信息。本页连接已经整理完成的新笔记；旧版提纲与尚未重写的专题仍保留在归档中。
 
