@@ -32,7 +32,8 @@
     "hexo-renderer-markdown-it": "6.0.1",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-fluid": "^1.9.8"
+    "hexo-theme-fluid": "^1.9.8",
+    "markdown-it-task-lists": "2.1.1"
   },
   "overrides": {
     "strip-ansi": "6.0.1",

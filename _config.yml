@@ -118,6 +118,9 @@ markdown:
   preset: 'default'
   plugins:
     - '@traptitech/markdown-it-katex'
+    - name: 'markdown-it-task-lists'
+      options:
+        enabled: false
     # - 'markdown-it-image-lazy-loading' # 推荐：如果有图片懒加载插件
   render:
     html: true

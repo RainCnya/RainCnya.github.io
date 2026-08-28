@@ -217,3 +217,45 @@
   background: rgba(111, 112, 130, 0.4);
   border-radius: 999px;
 }
+
+/* Task lists: Markdown remains the only source of completion state. */
+.markdown-body ul.contains-task-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.markdown-body li > ul.contains-task-list {
+  margin-left: 1.45rem;
+}
+
+.markdown-body li.task-list-item {
+  list-style: none;
+}
+
+.markdown-body .task-list-item-checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0.95rem;
+  height: 0.95rem;
+  margin: 0 0.55rem 0 0 !important;
+  vertical-align: -0.13em;
+  border: 1.5px solid var(--site-border-strong);
+  border-radius: 0.22rem;
+  background: var(--site-surface);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0.62rem;
+  cursor: default;
+  opacity: 1;
+}
+
+.markdown-body .task-list-item-checkbox:checked {
+  border-color: var(--site-accent);
+  background-color: var(--site-accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m2.1 6.1 2.2 2.2 5.5-5.1' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8'/%3E%3C/svg%3E");
+}
+
+.markdown-body .task-list-item-checkbox:disabled {
+  cursor: default;
+  opacity: 1;
+}
