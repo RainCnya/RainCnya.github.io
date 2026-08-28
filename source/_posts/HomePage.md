@@ -57,13 +57,13 @@ comments: false
       <span class="miqiu-slot">文字</span>
       <span class="miqiu-latest-copy"><strong>致去年的我的一封信</strong><small>在大一与集训结束的夜里，回望重新出发、远行、写作与相遇。</small></span>
     </a>
-    <a href="/posts/p1251001/">
+    <a href="/posts/p3177001/">
       <span class="miqiu-slot">题目</span>
-      <span class="miqiu-latest-copy"><strong>P1251 · 餐巾计划问题</strong><small>拆开同一天使用前后的状态，把购买、存放与洗涤放进时间扩展网络。</small></span>
+      <span class="miqiu-latest-copy"><strong>P3177 · 树上染色</strong><small>把同色点对的距离拆成边贡献，再用树上背包分配黑点数量。</small></span>
     </a>
-    <a href="/posts/c0ad84cf/">
+    <a href="/posts/60749789/">
       <span class="miqiu-slot">笔记</span>
-      <span class="miqiu-latest-copy"><strong>浅谈线段树懒标记</strong><small>从区间加到仿射变换，理解标记如何组合，并在需要时下传。</small></span>
+      <span class="miqiu-latest-copy"><strong>XCPC 综合题单</strong><small>按专题、题型与训练定位重建长期学习地图，并保留题目间的交叉归属。</small></span>
     </a>
     <a href="/posts/2010a92e/">
       <span class="miqiu-slot">比赛</span>
@@ -76,10 +76,10 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>网络流建模与最小割语义</dd></div>
-      <div><dt>整理</dt><dd>拆点、闭合依赖与时间扩展网络</dd></div>
+      <div><dt>学习</dt><dd>树形 DP、计数状态与差分模型</dd></div>
+      <div><dt>整理</dt><dd>面向 XCPC 长期训练的专题题单</dd></div>
       <div><dt>写作</dt><dd>给过去与未来的一封信</dd></div>
-      <div><dt>留下</dt><dd>局部代价、状态分层与大一回望</dd></div>
+      <div><dt>留下</dt><dd>边贡献、换根转移与状态封闭</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">
