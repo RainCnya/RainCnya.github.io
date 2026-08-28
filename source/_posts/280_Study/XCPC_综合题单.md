@@ -45,14 +45,13 @@ updated: 2026-08-28
 
 > **允许一题多归属。** 同一道题如果同时训练多个稳定模型，可以在多个专题下重复出现；这表示知识关系，而不是题库冗余。只避免同一小节内机械重复。
 >
-> 当前题库共有 **1298 个题目条目、1027 个不同题目**；条目数大于题目数是因为允许一题多归属。
+> 当前题库共有 **1192 个题目条目、1029 个不同题目**；条目数大于题目数是因为允许一题多归属。
 
 ## Part 1 入门阶段｜近似忽略
 
 ## Part 2 基础算法
 
 ### Part 2.1 模拟｜主线
-
 模拟在 XCPC 中仍然重要，尤其训练代码组织、状态一致性和边界处理，因此完整保留。
 
 - [ ] [P1003 铺地毯](https://www.luogu.com.cn/problem/P1003)
@@ -67,7 +66,6 @@ updated: 2026-08-28
 - [ ] [P5380 [THUPC2019] 鸭棋](https://www.luogu.com.cn/problem/P5380)
 
 ### Part 2.2 排序与顺序结构｜地图保留
-
 {% fold info @排序算法 题单 %}
 - [ ] [P1177 【模板】快速排序](https://www.luogu.com.cn/problem/P1177)
 - [ ] [P1059 明明的随机数](https://www.luogu.com.cn/problem/P1059)
@@ -80,7 +78,6 @@ updated: 2026-08-28
 - [ ] [P4375 [USACO18OPEN] Out of Sorts G](https://www.luogu.com.cn/problem/P4375) `挑战`：排序后位移与前缀统计。
 
 ### Part 2.3 二分答案｜主线
-
 - [ ] [P1024 一元三次方程求解](https://www.luogu.com.cn/problem/P1024)
 - [x] [P2678 跳石头](https://www.luogu.com.cn/problem/P2678)
 - [x] [P1824 进击的奶牛](https://www.luogu.com.cn/problem/P1824)
@@ -90,14 +87,12 @@ updated: 2026-08-28
 - [ ] [P4343 [SHOI2015] 自动刷题机](https://www.luogu.com.cn/problem/P4343)
 
 ### Part 2.4 分治｜主线
-
 - [ ] [P1226 【模板】快速幂 / 取余运算](https://www.luogu.com.cn/problem/P1226)
 - [ ] [P1010 幂次方](https://www.luogu.com.cn/problem/P1010)
 - [ ] [P1429 平面最近点对（加强版）](https://www.luogu.com.cn/problem/P1429)
 - [x] [P3612 [USACO17JAN] Secret Cow Code](https://www.luogu.com.cn/problem/P3612)
 
 ### Part 2.5 贪心｜主线
-
 - [ ] [P1208 [USACO1.3] Mixing Milk](https://www.luogu.com.cn/problem/P1208)
 - [ ] [P4995 跳跳！](https://www.luogu.com.cn/problem/P4995)
 - [ ] [P1094 纪念品分组](https://www.luogu.com.cn/problem/P1094)
@@ -108,13 +103,11 @@ updated: 2026-08-28
 - [ ] [P5521 [yLOI2019] 梅深不见冬](https://www.luogu.com.cn/problem/P5521)
 
 ### Part 2.6 构造｜主线
-
 - [ ] [P3599 Koishi Loves Construction](https://www.luogu.com.cn/problem/P3599)
 - [ ] [P5441 【XR-2】伤痕](https://www.luogu.com.cn/problem/P5441)
 - [ ] [P5595 【XR-4】歌唱比赛](https://www.luogu.com.cn/problem/P5595)
 
 ### Part 2.7 高精度｜地图保留
-
 XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不主动板刷。
 
 {% fold info @高精度 题单 %}
@@ -126,7 +119,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 2.8 前缀和 / 差分 / 离散化｜主线
-
 - [x] [P3131 [USACO16JAN] Subsequences Summing to Sevens](https://www.luogu.com.cn/problem/P3131)
 - [ ] [P1387 最大正方形](https://www.luogu.com.cn/problem/P1387)
 - [ ] [P3397 地毯](https://www.luogu.com.cn/problem/P3397)
@@ -138,13 +130,16 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P1904 天际线](https://www.luogu.com.cn/problem/P1904) `主练`：扫描 / 事件思想与轮廓维护。
 
 ### Part 2.9 双指针 / 滑动窗口｜主线
-
 - [ ] [UVA11572 唯一的雪花 Unique Snowflakes](https://www.luogu.com.cn/problem/UVA11572) `衔接`：双指针 / 滑动窗口去重。
+
+- [ ] [P1147 连续正整数和](https://www.luogu.com.cn/problem/P1147) `衔接`：双指针维护连续区间和。
+- [ ] [P1638 逛画展](https://www.luogu.com.cn/problem/P1638) `主练`：最短覆盖区间的经典滑动窗口。
+- [ ] [P1381 单词背诵](https://www.luogu.com.cn/problem/P1381) `主练`：字符串集合上的最短覆盖窗口。
+- [ ] [P3143 [USACO16OPEN] Diamond Collector S](https://www.luogu.com.cn/problem/P3143) `挑战`：排序、双指针与两段最优组合。
 
 ## Part 3 搜索
 
 ### Part 3.1 深度优先搜索｜主线
-
 基础 DFS 本身无需反复板刷，但完整保留用于搜索状态与剪枝训练。
 
 {% fold info @深度优先搜索 题单 %}
@@ -156,7 +151,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 3.2 广度优先搜索｜主线
-
 {% fold info @广度优先搜索 题单 %}
 - [ ] [P1162 填涂颜色](https://www.luogu.com.cn/problem/P1162)
 - [ ] [P1443 马的遍历](https://www.luogu.com.cn/problem/P1443)
@@ -166,14 +160,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 3.3 记忆化搜索｜主线
-
 - [ ] [P1514 引水入城](https://www.luogu.com.cn/problem/P1514)
 - [ ] [P1535 游荡的奶牛](https://www.luogu.com.cn/problem/P1535)
 - [ ] [P1434 [SHOI2002] 滑雪](https://www.luogu.com.cn/problem/P1434)
 - [ ] [P3953 逛公园](https://www.luogu.com.cn/problem/P3953)
 
 ### Part 3.4 搜索剪枝与状态搜索｜主线
-
 - [ ] [P1120 小木棍](https://www.luogu.com.cn/problem/P1120)
 - [ ] [P1312 Mayan 游戏](https://www.luogu.com.cn/problem/P1312)
 - [ ] [P1074 靶形数独](https://www.luogu.com.cn/problem/P1074)
@@ -181,7 +173,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5507 机关](https://www.luogu.com.cn/problem/P5507) `挑战`：状态搜索与剪枝。
 
 ### Part 3.5 双向搜索 / Meet-in-the-Middle｜主线
-
 - [ ] [P3067 [USACO12OPEN] Balanced Cow Subsets](https://www.luogu.com.cn/problem/P3067)
 - [ ] [P4799 [CEOI2015 Day2] 世界冰球锦标赛](https://www.luogu.com.cn/problem/P4799)
 - [ ] [P5195 [USACO05DEC] Knights of Ni](https://www.luogu.com.cn/problem/P5195)
@@ -190,20 +181,17 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF912E Prime Gift](https://www.luogu.com.cn/problem/CF912E) `挑战`：折半搜索 + 第 k 小计数。
 
 ### Part 3.6 A*｜地图保留
-
 {% fold info @A* 题单 %}
 - [ ] [P1379 八数码难题](https://www.luogu.com.cn/problem/P1379)
 {% endfold %}
 
 ### Part 3.7 IDA*｜近似忽略
-
 {% fold info @IDA* 题单 %}
 - [ ] [P2324 [SCOI2005] 骑士精神](https://www.luogu.com.cn/problem/P2324)
 - [ ] [P2534 [AHOI2012] 铁盘整理](https://www.luogu.com.cn/problem/P2534)
 {% endfold %}
 
 ### Part 3.8 DLX｜近似忽略
-
 {% fold info @DLX 题单 %}
 - [ ] [P4929 【模板】舞蹈链（DLX）](https://www.luogu.com.cn/problem/P4929)
 - [ ] [P4205 [NOI2005] 智慧珠游戏](https://www.luogu.com.cn/problem/P4205)
@@ -212,10 +200,9 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 ## Part 4 动态规划
 
 ### Part 4.1 线性 DP 与序列模型｜主线
-
 - [ ] [P1216 数字三角形](https://www.luogu.com.cn/problem/P1216)
-- [x] [P1020 导弹拦截](https://www.luogu.com.cn/problem/P1020)
-- [ ] [P1091 合唱队形](https://www.luogu.com.cn/problem/P1091)
+- [x] [P1020 导弹拦截](https://www.luogu.com.cn/problem/P1020) `主练`：LIS 系列经典题。
+- [ ] [P1091 合唱队形](https://www.luogu.com.cn/problem/P1091) `主练`：双向序列 DP。
 - [ ] [P1095 守望者的逃离](https://www.luogu.com.cn/problem/P1095)
 - [x] [P1541 乌龟棋](https://www.luogu.com.cn/problem/P1541)
 - [x] [P1868 饥饿的奶牛](https://www.luogu.com.cn/problem/P1868)
@@ -228,8 +215,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 
 - [ ] [P1192 台阶问题](https://www.luogu.com.cn/problem/P1192) `衔接`：基础递推题。
 - [ ] [P1280 尼克的任务](https://www.luogu.com.cn/problem/P1280) `衔接`：带时间轴的线性 DP。
-- [x] [P1020 导弹拦截](https://www.luogu.com.cn/problem/P1020) `主练`：LIS 系列经典题。
-- [ ] [P1091 合唱队形](https://www.luogu.com.cn/problem/P1091) `主练`：双向序列 DP。
 - [ ] [P1439 两个排列的最长公共子序列](https://www.luogu.com.cn/problem/P1439) `主练`：排列条件下的 LCS 变形。
 - [ ] [P1233 木棍加工](https://www.luogu.com.cn/problem/P1233) `主练`：排序与 LIS 模型结合。
 - [ ] [P4310 绝世好题](https://www.luogu.com.cn/problem/P4310) `主练`：带位运算条件的子序列 DP。
@@ -241,12 +226,11 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4933 大师](https://www.luogu.com.cn/problem/P4933) `主练`：按差值分类的序列 DP。
 
 ### Part 4.2 字符串与子序列 DP｜主线
-
 - [ ] [P1140 相似基因](https://www.luogu.com.cn/problem/P1140) `衔接`：序列匹配 DP 的标准练习。
 - [ ] [P2516 最长公共子序列](https://www.luogu.com.cn/problem/P2516) `主练`：在经典 LCS 上增加计数。
 - [ ] [CF245H Queries for Number of Palindromes](https://www.luogu.com.cn/problem/CF245H) `主练`：回文区间预处理与二维计数结合。
 - [ ] [P2890 Cheapest Palindrome G](https://www.luogu.com.cn/problem/P2890) `主练`：回文目标下的字符串 DP。
-- [ ] [P4170 涂色](https://www.luogu.com.cn/problem/P4170) `主练`：字符串区间 DP 代表题。
+- [x] [P4170 涂色](https://www.luogu.com.cn/problem/P4170) `主练`：字符串区间 DP 代表题。
 - [x] [P2679 子串](https://www.luogu.com.cn/problem/P2679) `主练`：多维字符串计数 DP。
 - [ ] [CF149D Coloring Brackets](https://www.luogu.com.cn/problem/CF149D) `挑战`：括号结构与区间计数综合题。
 - [ ] [P1385 密令](https://www.luogu.com.cn/problem/P1385) `挑战`：字符串计数问题。
@@ -255,7 +239,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P1854 [IOI1999] 花店橱窗布置](https://www.luogu.com.cn/problem/P1854) `主练`：序列匹配与方案恢复。
 
 ### Part 4.3 网格 / 路径 / 多维 DP｜主线
-
 - [ ] [P1216 数字三角形](https://www.luogu.com.cn/problem/P1216) `衔接`：路径 DP 入门。
 - [ ] [P1002 过河卒](https://www.luogu.com.cn/problem/P1002) `衔接`：带禁用位置的网格计数。
 - [ ] [P1004 方格取数](https://www.luogu.com.cn/problem/P1004) `主练`：双路径同步 DP 的经典入口。
@@ -269,47 +252,38 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P6764 粉刷墙壁](https://www.luogu.com.cn/problem/P6764) `挑战`：合法区间预处理与最少段覆盖结合。
 
 ### Part 4.4 背包 DP｜主线
-
-- [ ] [P1048 采药](https://www.luogu.com.cn/problem/P1048)
+- [ ] [P1048 采药](https://www.luogu.com.cn/problem/P1048) `衔接`：0/1 背包基础题。
 - [ ] [P1060 开心的金明](https://www.luogu.com.cn/problem/P1060)
 - [ ] [P1855 榨取kkksc03](https://www.luogu.com.cn/problem/P1855)
-- [x] [P5020 货币系统](https://www.luogu.com.cn/problem/P5020)
+- [x] [P5020 货币系统](https://www.luogu.com.cn/problem/P5020) `主练`：完全背包的可表示性应用。
 - [x] [P1757 通天之分组背包](https://www.luogu.com.cn/problem/P1757)
-- [x] [P1064 金明的预算方案](https://www.luogu.com.cn/problem/P1064)
+- [x] [P1064 金明的预算方案](https://www.luogu.com.cn/problem/P1064) `主练`：带依赖关系的背包入门。
 - [x] [P2946 [USACO09MAR] Cow Frisbee Team](https://www.luogu.com.cn/problem/P2946)
 - [x] [P1156 垃圾陷阱](https://www.luogu.com.cn/problem/P1156)
-- [x] [P5322 [BJOI2019] 排兵布阵](https://www.luogu.com.cn/problem/P5322)
-- [ ] [P5289 [十二省联考2019] 皮配](https://www.luogu.com.cn/problem/P5289)
+- [x] [P5322 排兵布阵](https://www.luogu.com.cn/problem/P5322) `主练`：分组选择与收益函数结合。
+- [ ] [P5289 皮配](https://www.luogu.com.cn/problem/P5289) `挑战`：多重容量限制与分组规则综合。
 
-- [ ] [P1048 采药](https://www.luogu.com.cn/problem/P1048) `衔接`：0/1 背包基础题。
 - [ ] [P1616 疯狂的采药](https://www.luogu.com.cn/problem/P1616) `衔接`：完全背包基础题。
-- [x] [P1064 金明的预算方案](https://www.luogu.com.cn/problem/P1064) `主练`：带依赖关系的背包入门。
 - [ ] [P1776 宝物筛选](https://www.luogu.com.cn/problem/P1776) `主练`：多重背包代表题。
 - [ ] [CF106C Buns](https://www.luogu.com.cn/problem/CF106C) `主练`：混合背包题。
-- [x] [P5020 货币系统](https://www.luogu.com.cn/problem/P5020) `主练`：完全背包的可表示性应用。
-- [ ] [P5322 排兵布阵](https://www.luogu.com.cn/problem/P5322) `主练`：分组选择与收益函数结合。
 - [ ] [P1537 弹珠](https://www.luogu.com.cn/problem/P1537) `主练`：多重背包可行性问题。
-- [ ] [P1450 硬币购物](https://www.luogu.com.cn/problem/P1450) `主练`：完全背包、查询限制与容斥结合。
+- [x] [P1450 硬币购物](https://www.luogu.com.cn/problem/P1450) `主练`：完全背包、查询限制与容斥结合。
 - [ ] [P1174 打砖块](https://www.luogu.com.cn/problem/P1174) `挑战`：多列前缀选择与资源限制结合。
 - [ ] [P3188 梦幻岛宝珠](https://www.luogu.com.cn/problem/P3188) `挑战`：容量极大但重量结构特殊。
 - [ ] [P4138 挂饰](https://www.luogu.com.cn/problem/P4138) `挑战`：约束会随选择变化的背包。
 - [ ] [CF1111D Destroy the Colony](https://www.luogu.com.cn/problem/CF1111D) `挑战`：计数背包与组合数学结合。
-- [ ] [P5289 皮配](https://www.luogu.com.cn/problem/P5289) `挑战`：多重容量限制与分组规则综合。
 - [ ] [P2340 [USACO03FALL] Cow Exhibition G](https://www.luogu.com.cn/problem/P2340) `主练`：正负权双维 DP。
 
 ### Part 4.5 区间 DP｜主线
-
-- [x] [P1880 [NOI1995] 石子合并](https://www.luogu.com.cn/problem/P1880)
+- [x] [P1880 石子合并](https://www.luogu.com.cn/problem/P1880) `主练`：环形区间 DP 代表题。
 - [x] [P3146 [USACO16OPEN] 248](https://www.luogu.com.cn/problem/P3146)
-- [x] [P1063 能量项链](https://www.luogu.com.cn/problem/P1063)
+- [x] [P1063 能量项链](https://www.luogu.com.cn/problem/P1063) `主练`：环形区间 DP。
 - [ ] [P1005 矩阵取数游戏](https://www.luogu.com.cn/problem/P1005)
 - [x] [P4170 [CQOI2007] 涂色](https://www.luogu.com.cn/problem/P4170)
 - [x] [P4302 [SCOI2003] 字符串折叠](https://www.luogu.com.cn/problem/P4302)
 - [ ] [P2466 [SDOI2008] Sue 的小球](https://www.luogu.com.cn/problem/P2466)
 
 - [ ] [P1775 石子合并（弱化版）](https://www.luogu.com.cn/problem/P1775) `衔接`：作为 P1880 前置。
-- [ ] [P1880 石子合并](https://www.luogu.com.cn/problem/P1880) `主练`：环形区间 DP 代表题。
-- [x] [P1063 能量项链](https://www.luogu.com.cn/problem/P1063) `主练`：环形区间 DP。
 - [ ] [P1040 加分二叉树](https://www.luogu.com.cn/problem/P1040) `主练`：区间 DP 与方案恢复结合。
 - [ ] [P1018 乘积最大](https://www.luogu.com.cn/problem/P1018) `主练`：划分型区间 DP。
 - [ ] [P1220 关路灯](https://www.luogu.com.cn/problem/P1220) `主练`：区间扩展 DP。
@@ -325,46 +299,32 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4342 [IOI1998] Polygon](https://www.luogu.com.cn/problem/P4342) `挑战`：环形区间 DP + min/max。
 
 ### Part 4.6 树形 DP / 树上背包｜主线
-
-- [x] [P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352)
+- [x] [P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352) `衔接`：树形 DP 入门。
 - [ ] [P1040 加分二叉树](https://www.luogu.com.cn/problem/P1040)
-- [ ] [P1122 最大子树和](https://www.luogu.com.cn/problem/P1122)
-- [x] [P1273 有线电视网](https://www.luogu.com.cn/problem/P1273)
-- [x] [P2014 选课](https://www.luogu.com.cn/problem/P2014)
-- [ ] [P2585 [ZJOI2006] 三色二叉树](https://www.luogu.com.cn/problem/P2585)
+- [ ] [P1122 最大子树和](https://www.luogu.com.cn/problem/P1122) `衔接`：树上连通块最优值。
+- [x] [P1273 有线电视网](https://www.luogu.com.cn/problem/P1273) `衔接`：树上背包的收益版本。
+- [x] [P2014 选课](https://www.luogu.com.cn/problem/P2014) `主练`：依赖型树上背包。
+- [ ] [P2585 三色二叉树](https://www.luogu.com.cn/problem/P2585) `主练`：树形状态分类题。
 - [ ] [P3047 [USACO12FEB] Nearby Cows](https://www.luogu.com.cn/problem/P3047)
 - [ ] [P3698 [CQOI2017] 小Q的棋盘](https://www.luogu.com.cn/problem/P3698)
-- [ ] [P5658 括号树](https://www.luogu.com.cn/problem/P5658)
-- [x] [P2607 [ZJOI2008] 骑士](https://www.luogu.com.cn/problem/P2607)
+- [ ] [P5658 括号树](https://www.luogu.com.cn/problem/P5658) `主练`：根路径括号信息与树形统计结合。
+- [x] [P2607 骑士](https://www.luogu.com.cn/problem/P2607) `主练`：基环树 DP。
 - [x] [P3177 [HAOI2015] 树上染色](https://www.luogu.com.cn/problem/P3177)
 - [ ] [P4395 [BOI2003] Gem](https://www.luogu.com.cn/problem/P4395)
 - [ ] [P4516 [JSOI2018] 潜入行动](https://www.luogu.com.cn/problem/P4516)
 
-- [x] [P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352) `衔接`：树形 DP 入门。
-- [ ] [P1122 最大子树和](https://www.luogu.com.cn/problem/P1122) `衔接`：树上连通块最优值。
 - [ ] [P2015 二叉苹果树](https://www.luogu.com.cn/problem/P2015) `主练`：树上背包经典题。
-- [x] [P2014 选课](https://www.luogu.com.cn/problem/P2014) `主练`：依赖型树上背包。
-- [x] [P1273 有线电视网](https://www.luogu.com.cn/problem/P1273) `衔接`：树上背包的收益版本。
-- [ ] [P2585 三色二叉树](https://www.luogu.com.cn/problem/P2585) `主练`：树形状态分类题。
 - [ ] [P1131 时态同步](https://www.luogu.com.cn/problem/P1131) `主练`：树上代价平衡问题。
-- [ ] [P5658 括号树](https://www.luogu.com.cn/problem/P5658) `主练`：根路径括号信息与树形统计结合。
 - [ ] [P3574 FAR-FarmCraft](https://www.luogu.com.cn/problem/P3574) `主练`：树形 DP 与子树访问顺序结合。
 - [ ] [P4438 道路](https://www.luogu.com.cn/problem/P4438) `挑战`：多层树形决策题。
 - [ ] [P2515 软件安装](https://www.luogu.com.cn/problem/P2515) `挑战`：强连通缩点后进行依赖背包。
 - [ ] [P2305 购票](https://www.luogu.com.cn/problem/P2305) `挑战`：树上祖先转移与优化结构结合。
-- [ ] [P5666 树的重心](https://www.luogu.com.cn/problem/P5666) `衔接`：重心性质与删除点后的连通块大小。
-- [ ] [P5536 核心城市](https://www.luogu.com.cn/problem/P5536) `主练`：围绕树的核心部分进行选择。
-- [ ] [P2726 树的双中心](https://www.luogu.com.cn/problem/P2726) `主练`：从单中心扩展到双中心。
-- [ ] [P1351 联合权值](https://www.luogu.com.cn/problem/P1351) `主练`：距离为二的点对统计。
-- [ ] [P7073 表达式](https://www.luogu.com.cn/problem/P7073) `衔接`：表达式树求值与修改影响。
-- [ ] [P3478 STA-Station](https://www.luogu.com.cn/problem/P3478) `主练`：换根 DP 经典题。
-- [ ] [P2607 骑士](https://www.luogu.com.cn/problem/P2607) `主练`：基环树 DP。
+- [x] [P3478 STA-Station](https://www.luogu.com.cn/problem/P3478) `主练`：换根 DP 经典题。
 - [ ] [P5024 保卫王国](https://www.luogu.com.cn/problem/P5024) `挑战`：树形 DP 与多次强制选择询问。
 - [ ] [P2016 [SEERC2000] 战略游戏](https://www.luogu.com.cn/problem/P2016) `主练`：树上最小点覆盖 DP。
 - [ ] [P4099 [HEOI2013] SAO](https://www.luogu.com.cn/problem/P4099) `挑战`：树 / 图上的计数 DP。
 
 ### Part 4.7 换根 DP｜主线
-
 原题单没有独立成章。重点训练“先算一个根，再沿边转移整树答案”。
 
 - [x] [P3478 [POI2008] STA-Station](https://www.luogu.com.cn/problem/P3478)
@@ -372,7 +332,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2986 [USACO10MAR] Great Cow Gathering](https://www.luogu.com.cn/problem/P2986)
 
 ### Part 4.8 DAG / 图上 DP / 拓扑递推｜主线
-
 - [x] [P3387 缩点](https://www.luogu.com.cn/problem/P3387) `衔接`：作为 SCC + DAG DP 的标准入口。
 - [ ] [P4316 绿豆蛙的归宿](https://www.luogu.com.cn/problem/P4316) `衔接`：DAG 上期望 DP 入门。
 - [ ] [P2656 采蘑菇](https://www.luogu.com.cn/problem/P2656) `主练`：强连通分量与 DAG 最优路径结合。
@@ -384,30 +343,24 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF960F Pathwalks](https://www.luogu.com.cn/problem/CF960F) `挑战`：动态权值 DP + 数据结构。
 
 ### Part 4.9 状态压缩 DP｜主线
-
-- [ ] [P2704 [NOI2001] 炮兵阵地](https://www.luogu.com.cn/problem/P2704)
-- [ ] [P1879 [USACO06NOV] Corn Fields](https://www.luogu.com.cn/problem/P1879)
-- [x] [P1896 [SCOI2005] 互不侵犯](https://www.luogu.com.cn/problem/P1896)
+- [ ] [P2704 炮兵阵地](https://www.luogu.com.cn/problem/P2704) `主练`：多行相关的轮廓 DP。
+- [ ] [P1879 Corn Fields G](https://www.luogu.com.cn/problem/P1879) `主练`：与 P1896 同类。
+- [x] [P1896 互不侵犯](https://www.luogu.com.cn/problem/P1896) `主练`：棋盘轮廓 DP 入门。
 - [ ] [P3092 [USACO13NOV] No Change](https://www.luogu.com.cn/problem/P3092)
-- [ ] [P3694 邦邦的大合唱站队](https://www.luogu.com.cn/problem/P3694)
+- [ ] [P3694 邦邦的大合唱站队](https://www.luogu.com.cn/problem/P3694) `主练`：类别顺序的子集 DP。
 - [ ] [P4925 [1007] Scarlet的字符串不可能这么可爱](https://www.luogu.com.cn/problem/P4925)
 - [ ] [P2157 [SDOI2009] 学校食堂](https://www.luogu.com.cn/problem/P2157)
 - [ ] [P2167 [SDOI2009] Bill 的挑战](https://www.luogu.com.cn/problem/P2167)
 - [ ] [P2396 yyy loves Maths VII](https://www.luogu.com.cn/problem/P2396)
-- [x] [P4363 [九省联考2018] 一双木棋](https://www.luogu.com.cn/problem/P4363)
+- [x] [P4363 一双木棋 chess](https://www.luogu.com.cn/problem/P4363) `主练`：轮流决策与局面压缩结合。
 - [ ] [P5005 中国象棋 - 摆上马](https://www.luogu.com.cn/problem/P5005)
 - [ ] [P2150 [NOI2015] 寿司晚宴](https://www.luogu.com.cn/problem/P2150)
 
 - [ ] [P1441 砝码称重](https://www.luogu.com.cn/problem/P1441) `衔接`：子集枚举与可达重量 DP 结合。
 - [ ] [P2622 关灯问题 II](https://www.luogu.com.cn/problem/P2622) `衔接`：最短操作次数的状态 DP。
-- [ ] [P1896 互不侵犯](https://www.luogu.com.cn/problem/P1896) `主练`：棋盘轮廓 DP 入门。
-- [ ] [P1879 Corn Fields G](https://www.luogu.com.cn/problem/P1879) `主练`：与 P1896 同类。
-- [ ] [P2704 炮兵阵地](https://www.luogu.com.cn/problem/P2704) `主练`：多行相关的轮廓 DP。
 - [ ] [CF11D A Simple Task](https://www.luogu.com.cn/problem/CF11D) `主练`：子集 DP 计数简单环。
 - [ ] [P2831 愤怒的小鸟](https://www.luogu.com.cn/problem/P2831) `主练`：集合覆盖型状压 DP。
 - [ ] [P3959 宝藏](https://www.luogu.com.cn/problem/P3959) `主练`：分层扩展的子集 DP。
-- [ ] [P3694 邦邦的大合唱站队](https://www.luogu.com.cn/problem/P3694) `主练`：类别顺序的子集 DP。
-- [ ] [P4363 一双木棋 chess](https://www.luogu.com.cn/problem/P4363) `主练`：轮流决策与局面压缩结合。
 - [ ] [P1357 花园](https://www.luogu.com.cn/problem/P1357) `主练`：循环轮廓 DP 与矩阵加速结合。
 - [ ] [P4484 最长上升子序列](https://www.luogu.com.cn/problem/P4484) `挑战`：围绕 LIS 结构进行高阶计数。
 - [ ] [P5369 最大前缀和](https://www.luogu.com.cn/problem/P5369) `挑战`：随机排列目标与子集状态结合。
@@ -418,13 +371,11 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P10865 [HBCPC2024] Genshin Impact Startup Forbidden III](https://www.luogu.com.cn/problem/P10865) `挑战`：较新的状态压缩训练。
 
 ### Part 4.10 SOS DP / 子集和 DP｜主线
-
 - [ ] [CF165E Compatible Numbers](https://www.luogu.com.cn/problem/CF165E)
 - [ ] [CF449D Jzzhu and Numbers](https://www.luogu.com.cn/problem/CF449D)
 - [ ] [AT_arc100_c [ARC100E] Or Plus Max](https://www.luogu.com.cn/problem/AT_arc100_c)
 
 ### Part 4.11 计数 DP / 概率与期望 DP｜进阶主线
-
 - [ ] [P1297 单选错位](https://www.luogu.com.cn/problem/P1297) `衔接`：线性期望入门。
 - [ ] [P1365 WJMZBMR 打 osu! / Easy](https://www.luogu.com.cn/problem/P1365) `衔接`：作为连续成功类期望 DP 的前置。
 - [ ] [P1654 OSU!](https://www.luogu.com.cn/problem/P1654) `主练`：连续段贡献的期望 DP。
@@ -442,7 +393,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P7097 牵丝戏](https://www.luogu.com.cn/problem/P7097) `挑战`：博弈、资源选择与回合状态结合。
 
 ### Part 4.12 倍增优化 DP｜进阶主线
-
 - [ ] [P1613 跑路](https://www.luogu.com.cn/problem/P1613)
 - [ ] [P1081 开车旅行](https://www.luogu.com.cn/problem/P1081)
 - [ ] [P5024 保卫王国](https://www.luogu.com.cn/problem/P5024)
@@ -453,14 +403,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P7562 [JOISC 2021] Event Hopping 2](https://www.luogu.com.cn/problem/P7562) `挑战`：高阶倍增 / 离线跳转。
 
 ### Part 4.13 数据结构优化 DP｜进阶主线
-
 - [ ] [P4719 【模板】动态 DP](https://www.luogu.com.cn/problem/P4719)
 - [ ] [P4751 动态 DP（加强版）](https://www.luogu.com.cn/problem/P4751)
 - [ ] [P3287 [SCOI2014] 方伯伯的玉米田](https://www.luogu.com.cn/problem/P3287)
 - [ ] [P2605 [ZJOI2010] 基站选址](https://www.luogu.com.cn/problem/P2605)
 
 ### Part 4.14 单调队列优化 DP｜主线
-
 - [ ] [P1776 宝物筛选](https://www.luogu.com.cn/problem/P1776)
 - [ ] [P3089 [USACO13NOV] Pogo-Cow](https://www.luogu.com.cn/problem/P3089)
 - [ ] [P3572 [POI2014] Little Bird](https://www.luogu.com.cn/problem/P3572)
@@ -468,7 +416,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4544 [USACO10NOV] Buying Feed](https://www.luogu.com.cn/problem/P4544)
 - [ ] [P5665 划分](https://www.luogu.com.cn/problem/P5665)
 - [ ] [P1973 [NOI2011] Noi嘉年华](https://www.luogu.com.cn/problem/P1973)
-- [ ] [P2569 [SCOI2010] 股票交易](https://www.luogu.com.cn/problem/P2569)
+- [ ] [P2569 股票交易](https://www.luogu.com.cn/problem/P2569) `挑战`：状态和限制较多。
 - [ ] [P4852 yyf hates choukapai](https://www.luogu.com.cn/problem/P4852)
 
 - [ ] [P1714 切蛋糕](https://www.luogu.com.cn/problem/P1714) `衔接`：前缀信息与单调队列的经典结合。
@@ -477,28 +425,24 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3800 Power 收集](https://www.luogu.com.cn/problem/P3800) `主练`：分层 DP 与单调队列结合。
 - [ ] [P3957 跳房子](https://www.luogu.com.cn/problem/P3957) `主练`：参数判定、DP 与单调队列的综合应用。
 - [ ] [P2254 瑰丽华尔兹](https://www.luogu.com.cn/problem/P2254) `挑战`：多阶段、多方向转移。
-- [ ] [P2569 股票交易](https://www.luogu.com.cn/problem/P2569) `挑战`：状态和限制较多。
 
 ### Part 4.15 斜率优化 DP / 直线维护｜主线
-
 - [ ] [P2900 [USACO08MAR] Land Acquisition](https://www.luogu.com.cn/problem/P2900)
 - [ ] [P3195 [HNOI2008] 玩具装箱](https://www.luogu.com.cn/problem/P3195)
 - [ ] [P3628 [APIO2010] 特别行动队](https://www.luogu.com.cn/problem/P3628)
 - [ ] [P3648 [APIO2014] 序列分割](https://www.luogu.com.cn/problem/P3648)
-- [ ] [P4027 [NOI2007] 货币兑换](https://www.luogu.com.cn/problem/P4027)
+- [ ] [P4027 货币兑换](https://www.luogu.com.cn/problem/P4027) `复盘`：从斜率优化或凸包维护角度复盘。
 - [ ] [P4360 [CEOI2004] 锯木厂选址](https://www.luogu.com.cn/problem/P4360)
 - [ ] [P5468 [NOI2019] 回家路线](https://www.luogu.com.cn/problem/P5468)
 - [ ] [P2305 [NOI2014] 购票](https://www.luogu.com.cn/problem/P2305)
 
 - [ ] [P4097 Segment](https://www.luogu.com.cn/problem/P4097) `主练`：李超线段树代表题。
 - [ ] [CF678F Lena and Queries](https://www.luogu.com.cn/problem/CF678F) `挑战`：动态加入、删除直线与在线询问综合。
-- [ ] [P4027 货币兑换](https://www.luogu.com.cn/problem/P4027) `复盘`：从斜率优化或凸包维护角度复盘。
 - [ ] [P5416 时空旅行](https://www.luogu.com.cn/problem/P5416) `暂存`：时间维与直线维护综合。
 - [ ] [P5785 [SDOI2012] 任务安排](https://www.luogu.com.cn/problem/P5785) `主练`：斜率优化经典题。
 - [ ] [P5504 [JSOI2011] 柠檬](https://www.luogu.com.cn/problem/P5504) `挑战`：分段 DP + 凸优化。
 
 ### Part 4.16 决策单调性优化 DP｜进阶主线
-
 - [ ] [P3515 [POI2011] Lightning Conductor](https://www.luogu.com.cn/problem/P3515)
 - [ ] [P4767 [IOI2000] 邮局](https://www.luogu.com.cn/problem/P4767)
 - [ ] [P1912 [NOI2009] 诗人小G](https://www.luogu.com.cn/problem/P1912)
@@ -507,7 +451,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5574 [CmdOI2019] 任务分配问题](https://www.luogu.com.cn/problem/P5574)
 
 ### Part 4.17 DP 优化综合｜进阶主线
-
 - [ ] [P1725 琪露诺](https://www.luogu.com.cn/problem/P1725) `衔接`：单调队列优化 DP 的标准入口。
 - [ ] [P3800 Power 收集](https://www.luogu.com.cn/problem/P3800) `主练`：分层 DP 与滑动窗口最值结合。
 - [ ] [P3572 PTA-Little Bird](https://www.luogu.com.cn/problem/P3572) `主练`：多组窗口范围下的 DP 优化。
@@ -519,7 +462,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [AT_arc066_d [ARC066F] Contest with Drinks Hard](https://www.luogu.com.cn/problem/AT_arc066_d) `挑战`：高阶 DP 优化。
 
 ### Part 4.18 动态 DP｜地图保留
-
 {% fold info @动态 DP %}
 - [ ] [P4751 动态 DP（加强版）](https://www.luogu.com.cn/problem/P4751) `衔接`：动态 DP 模板入口。
 - [ ] [P5024 保卫王国](https://www.luogu.com.cn/problem/P5024) `主练`：树形 DP 与多次强制选择询问。
@@ -527,7 +469,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 4.19 数位 DP｜主线
-
 - [ ] [P2602 [ZJOI2010] 数字计数](https://www.luogu.com.cn/problem/P2602)
 - [ ] [P3281 [SCOI2013] 数数](https://www.luogu.com.cn/problem/P3281)
 - [ ] [P2518 [HAOI2010] 计数](https://www.luogu.com.cn/problem/P2518)
@@ -539,7 +480,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4798 [CEOI2015 Day1] 卡尔文球锦标赛](https://www.luogu.com.cn/problem/P4798)
 
 ### Part 4.20 轮廓线 / 插头 DP｜地图保留
-
 {% fold info @轮廓线动态规划 题单 %}
 - [ ] [P5056 【模板】插头 DP](https://www.luogu.com.cn/problem/P5056)
 - [ ] [P2289 [HNOI2004] 邮递员](https://www.luogu.com.cn/problem/P2289)
@@ -550,13 +490,11 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 ## Part 5 字符串
 
 ### Part 5.1 字符串哈希｜主线
-
 - [ ] [P3370 【模板】字符串哈希](https://www.luogu.com.cn/problem/P3370)
 - [ ] [P5270 无论怎样神树大人都会删库跑路](https://www.luogu.com.cn/problem/P5270)
 - [ ] [P5537 【XR-3】系统设计](https://www.luogu.com.cn/problem/P5537)
 
 ### Part 5.2 KMP / 前缀函数｜主线
-
 - [x] [P3375 【模板】KMP 字符串匹配](https://www.luogu.com.cn/problem/P3375)
 - [x] [P4391 [BOI2009] Radio Transmission](https://www.luogu.com.cn/problem/P4391)
 - [x] [P3435 [POI2006] Periods of Words](https://www.luogu.com.cn/problem/P3435)
@@ -568,30 +506,26 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF25E Test](https://www.luogu.com.cn/problem/CF25E) `挑战`：KMP / 字符串重叠关系。
 
 ### Part 5.3 Z 函数 / 扩展 KMP｜主线
-
 - [ ] [P5410 【模板】扩展 KMP / exKMP（Z 函数）](https://www.luogu.com.cn/problem/P5410)
 - [ ] [CF126B Password](https://www.luogu.com.cn/problem/CF126B)
 - [ ] [CF432D Prefixes and Suffixes](https://www.luogu.com.cn/problem/CF432D)
 
 ### Part 5.4 Manacher｜主线
-
 - [ ] [P3805 【模板】Manacher](https://www.luogu.com.cn/problem/P3805)
 - [ ] [P4555 [国家集训队] 最长双回文串](https://www.luogu.com.cn/problem/P4555)
 - [ ] [P1659 [国家集训队] 拉拉队排练](https://www.luogu.com.cn/problem/P1659)
 
 ### Part 5.5 Trie / 01-Trie｜主线
-
 - [ ] [P3879 [TJOI2010] 阅读理解](https://www.luogu.com.cn/problem/P3879)
 - [ ] [P2292 [HNOI2004] L语言](https://www.luogu.com.cn/problem/P2292)
 - [ ] [P2922 [USACO08DEC] Secret Message](https://www.luogu.com.cn/problem/P2922)
 - [ ] [P3065 [USACO12DEC] First!](https://www.luogu.com.cn/problem/P3065)
 - [ ] [P3294 [SCOI2016] 背单词](https://www.luogu.com.cn/problem/P3294)
 - [ ] [P4407 [JSOI2009] 电子字典](https://www.luogu.com.cn/problem/P4407)
-- [ ] [P4551 最长异或路径](https://www.luogu.com.cn/problem/P4551)
+- [ ] [P4551 最长异或路径](https://www.luogu.com.cn/problem/P4551) `主练`：树上异或与 01 Trie 的经典衔接题。
 - [ ] [P4683 [IOI2008] Type Printer](https://www.luogu.com.cn/problem/P4683)
 - [ ] [P3783 [SDOI2017] 天才黑客](https://www.luogu.com.cn/problem/P3783)
 
-- [ ] [P4551 最长异或路径](https://www.luogu.com.cn/problem/P4551) `主练`：树上异或与 01 Trie 的经典衔接题。
 - [ ] [P4735 最大异或和](https://www.luogu.com.cn/problem/P4735) `主练`：可持久化 01 Trie 的标准应用。
 - [ ] [P5283 异或粽子](https://www.luogu.com.cn/problem/P5283) `挑战`：区间异或候选与多路最优维护结合。
 - [ ] [CF241B Friends](https://www.luogu.com.cn/problem/CF241B) `挑战`：异或点对的前若干大统计。
@@ -602,7 +536,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P6824 「EZEC-4」可乐](https://www.luogu.com.cn/problem/P6824) `挑战`：字符串 / 数据结构综合。
 
 ### Part 5.6 AC 自动机｜主线
-
 - [x] [P3808 【模板】AC 自动机（简单版）](https://www.luogu.com.cn/problem/P3808)
 - [x] [P3796 【模板】AC 自动机（加强版）](https://www.luogu.com.cn/problem/P3796)
 - [x] [P5357 【模板】AC 自动机（二次加强版）](https://www.luogu.com.cn/problem/P5357)
@@ -615,7 +548,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5599 【XR-4】文本编辑器](https://www.luogu.com.cn/problem/P5599)
 
 ### Part 5.7 回文自动机 PAM｜地图保留
-
 {% fold info @回文自动机 PAM 题单 %}
 - [ ] [P5496 【模板】回文自动机（PAM）](https://www.luogu.com.cn/problem/P5496)
 - [ ] [P3649 [APIO2014] 回文串](https://www.luogu.com.cn/problem/P3649)
@@ -624,7 +556,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 5.8 后缀数组 SA｜进阶主线
-
 - [ ] [P3809 【模板】后缀排序](https://www.luogu.com.cn/problem/P3809)
 - [ ] [P5353 【模板】树上后缀排序](https://www.luogu.com.cn/problem/P5353)
 - [ ] [P2336 [SCOI2012] 喵星球上的点名](https://www.luogu.com.cn/problem/P2336)
@@ -637,7 +568,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5576 [CmdOI2019] 口头禅](https://www.luogu.com.cn/problem/P5576)
 
 ### Part 5.9 后缀自动机 SAM｜进阶主线
-
 - [ ] [P3804 【模板】后缀自动机](https://www.luogu.com.cn/problem/P3804)
 - [ ] [P3649 [APIO2014] 回文串](https://www.luogu.com.cn/problem/P3649)
 - [ ] [P3975 [TJOI2015] 弦论](https://www.luogu.com.cn/problem/P3975)
@@ -650,7 +580,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 ## Part 6 数学
 
 ### Part 6.1 位运算｜主线
-
 - [ ] [P5657 格雷码](https://www.luogu.com.cn/problem/P5657)
 - [ ] [P5514 [MtOI2019] 永夜的报应](https://www.luogu.com.cn/problem/P5514)
 - [ ] [P5538 【XR-3】Namid[A]me](https://www.luogu.com.cn/problem/P5538)
@@ -658,19 +587,18 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5523 [yLOI2019] 珍珠](https://www.luogu.com.cn/problem/P5523)
 
 ### Part 6.2 SOS DP / 子集枚举工具｜主线
-
 - [ ] [CF165E Compatible Numbers](https://www.luogu.com.cn/problem/CF165E)
 - [ ] [CF449D Jzzhu and Numbers](https://www.luogu.com.cn/problem/CF449D)
 
-### Part 6.3 素数与因数分解｜进阶主线
+- [ ] [AT_arc100_c [ARC100E] Or Plus Max](https://www.luogu.com.cn/problem/AT_arc100_c) `主练`：子集 DP / SOS 思想的经典应用。
 
+### Part 6.3 素数与因数分解｜进阶主线
 - [x] [P4718 【模板】Pollard-Rho 算法](https://www.luogu.com.cn/problem/P4718)
 - [x] [P1075 质因数分解](https://www.luogu.com.cn/problem/P1075)
 - [ ] [P2441 角色属性树](https://www.luogu.com.cn/problem/P2441)
 - [ ] [P5535 【XR-3】小道消息](https://www.luogu.com.cn/problem/P5535)
 
 ### Part 6.4 最大公约数｜主线
-
 - [ ] [P5435 【模板】快速 GCD](https://www.luogu.com.cn/problem/P5435)
 - [ ] [P5436 【XR-2】缘分](https://www.luogu.com.cn/problem/P5436)
 - [x] [P1029 最大公约数和最小公倍数问题](https://www.luogu.com.cn/problem/P1029)
@@ -679,19 +607,16 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [x] [P1072 Hankson 的趣味题](https://www.luogu.com.cn/problem/P1072)
 
 ### Part 6.5 欧拉函数与整除分块｜主线
-
 - [x] [P2158 [SDOI2008] 仪仗队](https://www.luogu.com.cn/problem/P2158)
 - [x] [P2568 GCD](https://www.luogu.com.cn/problem/P2568)
 - [x] [P2398 GCD SUM](https://www.luogu.com.cn/problem/P2398)
-- [ ] [P4139 上帝与集合的正确用法](https://www.luogu.com.cn/problem/P4139)
+- [ ] [P4139 上帝与集合的正确用法](https://www.luogu.com.cn/problem/P4139) `挑战`：欧拉降幂递归。
 
 - [ ] [P5091 【模板】扩展欧拉定理](https://www.luogu.com.cn/problem/P5091) `主练`：大指数模幂。
 - [ ] [P2303 [SDOI2012] Longge 的问题](https://www.luogu.com.cn/problem/P2303) `主练`：欧拉函数与 gcd 分类。
 - [ ] [P2261 [CQOI2007] 余数求和](https://www.luogu.com.cn/problem/P2261) `主练`：整除分块。
-- [ ] [P4139 上帝与集合的正确用法](https://www.luogu.com.cn/problem/P4139) `挑战`：欧拉降幂递归。
 
 ### Part 6.6 线性同余方程 / 乘法逆元｜主线
-
 - [x] [P4549 【模板】裴蜀定理](https://www.luogu.com.cn/problem/P4549)
 - [ ] [P2613 【模板】有理数取余](https://www.luogu.com.cn/problem/P2613)
 - [x] [P3811 【模板】乘法逆元](https://www.luogu.com.cn/problem/P3811)
@@ -701,7 +626,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [x] [P1516 青蛙的约会](https://www.luogu.com.cn/problem/P1516)
 
 ### Part 6.7 中国剩余定理 CRT｜主线
-
 - [x] [P4777 【模板】扩展中国剩余定理（EXCRT）](https://www.luogu.com.cn/problem/P4777)
 - [x] [P3868 [TJOI2009] 猜数字](https://www.luogu.com.cn/problem/P3868)
 - [ ] [P2480 [SDOI2010] 古代猪文](https://www.luogu.com.cn/problem/P2480)
@@ -709,14 +633,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5345 【XR-1】快乐肥宅](https://www.luogu.com.cn/problem/P5345)
 
 ### Part 6.8 高次同余 / BSGS / 二次剩余｜进阶主线
-
 - [x] [P4195 【模板】exBSGS](https://www.luogu.com.cn/problem/P4195)
 - [x] [P5491 【模板】二次剩余](https://www.luogu.com.cn/problem/P5491)
 - [ ] [P3306 [SDOI2013] 随机数生成器](https://www.luogu.com.cn/problem/P3306)
 - [ ] [P2485 [SDOI2011] 计算器](https://www.luogu.com.cn/problem/P2485)
 
 ### Part 6.9 博弈论｜主线
-
 - [x] [P2197 【模板】Nim 游戏](https://www.luogu.com.cn/problem/P2197)
 - [x] [P1288 取数游戏 II](https://www.luogu.com.cn/problem/P1288)
 - [x] [P1290 欧几里德的游戏](https://www.luogu.com.cn/problem/P1290)
@@ -724,13 +646,16 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2252 取石子游戏](https://www.luogu.com.cn/problem/P2252)
 
 ### Part 6.10 Sprague–Grundy｜主线
-
 原题单没有把 SG 理论独立成节。学习时补 mex、子游戏分解和 SG 异或，不需要额外把 Nim 题重复刷一遍。
 
 - [x] [P2197 【模板】Nim 游戏](https://www.luogu.com.cn/problem/P2197)
 
-### Part 6.11 概率与期望｜主线
+- [ ] [P2575 高手过招](https://www.luogu.com.cn/problem/P2575) `主练`：把独立局面分解后用 SG 异或合并。
+- [ ] [P10501 Cutting Game](https://www.luogu.com.cn/problem/P10501) `主练`：切割游戏中的 SG 递推与 mex。
+- [ ] [P8369 [POI 2000 R1] 条纹](https://www.luogu.com.cn/problem/P8369) `主练`：区间放置博弈与 SG 建模。
+- [ ] [P3179 [HAOI2015] 数组游戏](https://www.luogu.com.cn/problem/P3179) `挑战`：较复杂状态下的博弈结构分析。
 
+### Part 6.11 概率与期望｜主线
 - [ ] [P5104 红包发红包](https://www.luogu.com.cn/problem/P5104)
 - [ ] [P1850 换教室](https://www.luogu.com.cn/problem/P1850)
 - [ ] [P3830 [SHOI2012] 随机树](https://www.luogu.com.cn/problem/P3830)
@@ -751,7 +676,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2111 考场奇遇](https://www.luogu.com.cn/problem/P2111) `主练`：概率 DP / 组合。
 
 ### Part 6.12 排列组合｜主线
-
 - [x] [P3807 【模板】卢卡斯定理](https://www.luogu.com.cn/problem/P3807)
 - [x] [P2822 组合数问题](https://www.luogu.com.cn/problem/P2822)
 - [ ] [P5520 [yLOI2019] 青原樱](https://www.luogu.com.cn/problem/P5520)
@@ -764,7 +688,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5598 【XR-4】混乱度](https://www.luogu.com.cn/problem/P5598)
 
 ### Part 6.13 卡特兰数 / 斯特林数｜进阶主线
-
 - [ ] [P5395 第二类斯特林数·行](https://www.luogu.com.cn/problem/P5395)
 - [ ] [P5396 第二类斯特林数·列](https://www.luogu.com.cn/problem/P5396)
 - [ ] [P5408 第一类斯特林数·行](https://www.luogu.com.cn/problem/P5408)
@@ -777,7 +700,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4827 [国家集训队] Crash 的文明世界](https://www.luogu.com.cn/problem/P4827)
 
 ### Part 6.14 容斥原理｜主线
-
 - [ ] [P5664 Emiya 家今天的饭](https://www.luogu.com.cn/problem/P5664)
 - [x] [P1450 [HAOI2008] 硬币购物](https://www.luogu.com.cn/problem/P1450)
 - [ ] [P3214 [HNOI2011] 卡农](https://www.luogu.com.cn/problem/P3214)
@@ -789,7 +711,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5400 [CTS2019] 随机立方体](https://www.luogu.com.cn/problem/P5400)
 
 ### Part 6.15 组合计数综合｜进阶主线
-
 - [ ] [P5664 [CSP-S2019] Emiya 家今天的饭](https://www.luogu.com.cn/problem/P5664) `主练`：组合计数 DP。
 - [ ] [P4071 [SDOI2016] 排列计数](https://www.luogu.com.cn/problem/P4071) `主练`：错排 / 组合计数。
 - [ ] [P5505 [JSOI2011] 分特产](https://www.luogu.com.cn/problem/P5505) `主练`：容斥 + 组合数。
@@ -798,7 +719,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF961G Partitions](https://www.luogu.com.cn/problem/CF961G) `挑战`：Stirling / 组合贡献。
 
 ### Part 6.16 矩阵｜主线
-
 - [x] [P3390 【模板】矩阵快速幂](https://www.luogu.com.cn/problem/P3390)
 - [x] [P1939 【模板】矩阵加速（数列）](https://www.luogu.com.cn/problem/P1939)
 - [ ] [P4783 【模板】矩阵求逆](https://www.luogu.com.cn/problem/P4783)
@@ -812,14 +732,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5303 [GXOI/GZOI2019] 逼死强迫症](https://www.luogu.com.cn/problem/P5303)
 
 ### Part 6.17 线性代数综合｜进阶主线
-
 - [ ] [P2455 [SDOI2006] 线性方程组](https://www.luogu.com.cn/problem/P2455) `主练`：高斯消元完整分类。
 - [ ] [P7112 【模板】行列式求值](https://www.luogu.com.cn/problem/P7112) `进阶`：行列式消元。
 - [ ] [P3216 [HNOI2011] 数学作业](https://www.luogu.com.cn/problem/P3216) `主练`：矩阵快速幂建模。
 - [ ] [P2973 [USACO10HOL] Driving Out the Piggies G](https://www.luogu.com.cn/problem/P2973) `挑战`：概率 + 高斯消元。
 
 ### Part 6.18 高斯消元｜主线
-
 - [x] [P3389 【模板】高斯消元法](https://www.luogu.com.cn/problem/P3389)
 - [x] [P2447 [SDOI2010] 外星千足虫](https://www.luogu.com.cn/problem/P2447)
 - [x] [P4035 [JSOI2008] 球形空间产生器](https://www.luogu.com.cn/problem/P4035)
@@ -828,21 +746,14 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4457 [BJOI2018] 治疗之雨](https://www.luogu.com.cn/problem/P4457)
 
 ### Part 6.19 线性基 / 异或空间｜主线
-
-- [x] [P3812 【模板】线性基](https://www.luogu.com.cn/problem/P3812)
-- [ ] [P3857 [TJOI2008] 彩灯](https://www.luogu.com.cn/problem/P3857)
-- [ ] [P4570 [BJWC2011] 元素](https://www.luogu.com.cn/problem/P4570)
-- [ ] [P4301 [CQOI2013] 新 Nim 游戏](https://www.luogu.com.cn/problem/P4301)
-- [ ] [P3292 [SCOI2016] 幸运数字](https://www.luogu.com.cn/problem/P3292)
-- [ ] [P4151 [WC2011] 最大 XOR 和路径](https://www.luogu.com.cn/problem/P4151)
-
 - [x] [P3812 线性基](https://www.luogu.com.cn/problem/P3812) `衔接`：整理插入、判相关与最大异或模板。
-- [ ] [P4151 最大 XOR 和路径](https://www.luogu.com.cn/problem/P4151) `主练`：图上环空间与线性基结合。
+- [ ] [P3857 [TJOI2008] 彩灯](https://www.luogu.com.cn/problem/P3857)
 - [ ] [P4570 元素](https://www.luogu.com.cn/problem/P4570) `主练`：带权选择与线性独立性结合。
+- [ ] [P4301 [CQOI2013] 新 Nim 游戏](https://www.luogu.com.cn/problem/P4301)
 - [ ] [P3292 幸运数字](https://www.luogu.com.cn/problem/P3292) `挑战`：树上路径线性基。
+- [ ] [P4151 最大 XOR 和路径](https://www.luogu.com.cn/problem/P4151) `主练`：图上环空间与线性基结合。
 
 ### Part 6.20 多项式 / FFT / NTT / FPS｜进阶主线
-
 完整恢复原多项式题单。实际训练可先做到 FFT / NTT 与基础卷积，FPS 全家桶按需求继续下钻。
 
 - [ ] [P3803 【模板】多项式乘法（FFT）](https://www.luogu.com.cn/problem/P3803)
@@ -871,7 +782,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5577 [CmdOI2019] 算力训练](https://www.luogu.com.cn/problem/P5577)
 
 ### Part 6.21 莫比乌斯反演｜进阶主线
-
 - [ ] [P3172 [CQOI2015] 选数](https://www.luogu.com.cn/problem/P3172)
 - [x] [P2522 [HAOI2011] Problem b](https://www.luogu.com.cn/problem/P2522)
 - [x] [P3455 [POI2007] ZAP-Queries](https://www.luogu.com.cn/problem/P3455)
@@ -882,7 +792,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5518 [MtOI2019] 幽灵乐团](https://www.luogu.com.cn/problem/P5518)
 
 ### Part 6.22 筛法｜进阶主线
-
 - [x] [P3383 【模板】线性筛素数](https://www.luogu.com.cn/problem/P3383)
 - [x] [P4213 【模板】杜教筛](https://www.luogu.com.cn/problem/P4213)
 - [ ] [P5325 【模板】Min_25 筛](https://www.luogu.com.cn/problem/P5325)
@@ -892,7 +801,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5438 【XR-2】记忆](https://www.luogu.com.cn/problem/P5438)
 
 ### Part 6.23 线性规划｜近似忽略
-
 注意 P3980 也可从费用流/差分约束等角度理解；这里保留原题单归类。
 
 {% fold info @线性规划 题单 %}
@@ -901,12 +809,10 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 6.24 三分法｜主线
-
 - [x] [P3382 【模板】三分法](https://www.luogu.com.cn/problem/P3382)
 - [ ] [P1883 函数](https://www.luogu.com.cn/problem/P1883)
 
 ### Part 6.25 自适应辛普森法｜近似忽略
-
 {% fold info @自适应辛普森法 题单 %}
 - [ ] [P4525 【模板】自适应辛普森法1](https://www.luogu.com.cn/problem/P4525)
 - [ ] [P4526 【模板】自适应辛普森法2](https://www.luogu.com.cn/problem/P4526)
@@ -914,7 +820,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 6.26 Burnside / Pólya / 置换群｜地图保留
-
 {% fold info @置换群 题单 %}
 - [ ] [P4980 【模板】Pólya 定理](https://www.luogu.com.cn/problem/P4980)
 - [ ] [P1446 [HNOI2008] Cards](https://www.luogu.com.cn/problem/P1446)
@@ -926,14 +831,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 ## Part 7 数据结构
 
 ### Part 7.1 链表｜地图保留
-
 {% fold info @链表 题单 %}
 - [ ] [P1996 约瑟夫问题](https://www.luogu.com.cn/problem/P1996)
 - [ ] [P1160 队列安排](https://www.luogu.com.cn/problem/P1160)
 {% endfold %}
 
 ### Part 7.2 栈｜地图保留
-
 {% fold info @栈 题单 %}
 - [ ] [P1449 后缀表达式](https://www.luogu.com.cn/problem/P1449)
 - [ ] [P1739 表达式括号匹配](https://www.luogu.com.cn/problem/P1739)
@@ -942,13 +845,11 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 7.3 队列｜地图保留
-
 {% fold info @队列 题单 %}
 - [ ] [P1540 机器翻译](https://www.luogu.com.cn/problem/P1540)
 {% endfold %}
 
 ### Part 7.4 单调栈 / 单调队列｜主线
-
 - [x] [P5788 【模板】单调栈](https://www.luogu.com.cn/problem/P5788)
 - [x] [P1886 滑动窗口 / 【模板】单调队列](https://www.luogu.com.cn/problem/P1886)
 
@@ -967,35 +868,27 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2216 [HAOI2007] 理想的正方形](https://www.luogu.com.cn/problem/P2216) `主练`：二维滑动窗口最值。
 
 ### Part 7.5 并查集｜主线
-
 - [ ] [P1111 修复公路](https://www.luogu.com.cn/problem/P1111)
 - [x] [P3958 奶酪](https://www.luogu.com.cn/problem/P3958)
-- [x] [P1525 关押罪犯](https://www.luogu.com.cn/problem/P1525)
+- [x] [P1525 关押罪犯](https://www.luogu.com.cn/problem/P1525) `主练`：种类并查集代表题。
 - [x] [P4185 [USACO18JAN] MooTube G](https://www.luogu.com.cn/problem/P4185)
-- [x] [P2024 [NOI2001] 食物链](https://www.luogu.com.cn/problem/P2024)
+- [x] [P2024 食物链](https://www.luogu.com.cn/problem/P2024) `主练`：多类循环关系问题。
 - [x] [P1197 [JSOI2008] 星球大战](https://www.luogu.com.cn/problem/P1197)
-- [x] [P1196 [NOI2002] 银河英雄传说](https://www.luogu.com.cn/problem/P1196)
+- [x] [P1196 银河英雄传说](https://www.luogu.com.cn/problem/P1196) `主练`：带权并查集代表题。
 - [x] [P1955 [NOI2015] 程序自动分析](https://www.luogu.com.cn/problem/P1955)
 
-- [x] [P1525 关押罪犯](https://www.luogu.com.cn/problem/P1525) `主练`：种类并查集代表题。
-- [ ] [P1196 银河英雄传说](https://www.luogu.com.cn/problem/P1196) `主练`：带权并查集代表题。
-- [ ] [P2024 食物链](https://www.luogu.com.cn/problem/P2024) `主练`：多类循环关系问题。
 - [ ] [P2294 狡猾的商人](https://www.luogu.com.cn/problem/P2294) `衔接`：差值关系与带权并查集的衔接题。
 - [ ] [P1783 海滩防御](https://www.luogu.com.cn/problem/P1783) `挑战`：几何关系与集合连通性的综合建模题。
 
 ### Part 7.6 堆 / 优先队列｜主线
-
 - [x] [P3378 【模板】堆](https://www.luogu.com.cn/problem/P3378)
 - [ ] [P1090 合并果子](https://www.luogu.com.cn/problem/P1090)
 - [x] [P1168 中位数](https://www.luogu.com.cn/problem/P1168)
-- [ ] [P2085 最小函数值](https://www.luogu.com.cn/problem/P2085)
-- [ ] [P2827 蚯蚓](https://www.luogu.com.cn/problem/P2827)
-- [ ] [P3045 [USACO12FEB] Cow Coupons](https://www.luogu.com.cn/problem/P3045)
-
 - [ ] [P2085 最小函数值](https://www.luogu.com.cn/problem/P2085) `衔接`：多路候选最值维护。
-- [ ] [P6033 合并果子 加强版](https://www.luogu.com.cn/problem/P6033) `主练`：从普通小根堆继续思考大数据范围下的优化。
 - [ ] [P2827 蚯蚓](https://www.luogu.com.cn/problem/P2827) `主练`：模拟与多队列维护综合题。
 - [ ] [P3045 Cow Coupons G](https://www.luogu.com.cn/problem/P3045) `挑战`：贪心与优先队列综合题。
+
+- [ ] [P6033 合并果子 加强版](https://www.luogu.com.cn/problem/P6033) `主练`：从普通小根堆继续思考大数据范围下的优化。
 - [ ] [P2048 超级钢琴](https://www.luogu.com.cn/problem/P2048) `挑战`：RMQ、堆与区间拆分综合题。
 - [ ] [P1801 黑匣子](https://www.luogu.com.cn/problem/P1801) `衔接`：双堆 / 顺序统计经典题。
 - [ ] [P2168 [NOI2015] 荷马史诗](https://www.luogu.com.cn/problem/P2168) `主练`：k 叉 Huffman 与堆。
@@ -1004,68 +897,53 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P1878 舞蹈课](https://www.luogu.com.cn/problem/P1878) `主练`：邻接关系 + 堆动态维护。
 
 ### Part 7.7 ST 表 / RMQ｜主线
-
 - [x] [P3865 【模板】ST 表](https://www.luogu.com.cn/problem/P3865)
-- [ ] [P2251 质量检测](https://www.luogu.com.cn/problem/P2251)
+- [ ] [P2251 质量检测](https://www.luogu.com.cn/problem/P2251) `衔接`：静态 / 滑窗区间最值。
 - [ ] [P1816 忠诚](https://www.luogu.com.cn/problem/P1816)
 - [ ] [P1198 [JSOI2008] 最大数](https://www.luogu.com.cn/problem/P1198)
 - [x] [P2880 [USACO07JAN] Balanced Lineup](https://www.luogu.com.cn/problem/P2880)
-- [ ] [P5012 水の数列](https://www.luogu.com.cn/problem/P5012)
+- [ ] [P5012 水の数列](https://www.luogu.com.cn/problem/P5012) `挑战`：多种预处理与区间信息综合。
 - [ ] [P5344 【XR-1】逛森林](https://www.luogu.com.cn/problem/P5344)
 - [ ] [P2048 [NOI2010] 超级钢琴](https://www.luogu.com.cn/problem/P2048)
 
 - [ ] [P2471 降雨量](https://www.luogu.com.cn/problem/P2471) `主练`：RMQ、查找与分类判断综合题。
-- [ ] [P5012 水の数列](https://www.luogu.com.cn/problem/P5012) `挑战`：多种预处理与区间信息综合。
-- [ ] [P2251 质量检测](https://www.luogu.com.cn/problem/P2251) `衔接`：静态 / 滑窗区间最值。
 
 ### Part 7.8 树状数组｜主线
-
 - [x] [P3374 【模板】树状数组 1](https://www.luogu.com.cn/problem/P3374)
-- [ ] [P3368 【模板】树状数组 2](https://www.luogu.com.cn/problem/P3368)
+- [ ] [P3368 【模板】树状数组 2](https://www.luogu.com.cn/problem/P3368) `衔接`：区间修改 + 单点查询。
 - [x] [P1908 逆序对](https://www.luogu.com.cn/problem/P1908)
-- [ ] [P1966 火柴排队](https://www.luogu.com.cn/problem/P1966)
-- [ ] [P3605 [USACO17JAN] Promotion Counting](https://www.luogu.com.cn/problem/P3605)
-- [x] [P1972 [SDOI2009] HH 的项链](https://www.luogu.com.cn/problem/P1972)
-- [ ] [P3586 [POI2015] LOG](https://www.luogu.com.cn/problem/P3586)
-- [ ] [P4054 [JSOI2009] 计数问题](https://www.luogu.com.cn/problem/P4054)
-- [x] [P4113 [HEOI2012] 采花](https://www.luogu.com.cn/problem/P4113)
+- [ ] [P1966 火柴排队](https://www.luogu.com.cn/problem/P1966) `衔接`：排名映射与逆序对。
+- [ ] [P3605 Promotion Counting P](https://www.luogu.com.cn/problem/P3605) `主练`：DFS 序与树状数组结合。
+- [x] [P1972 HH 的项链](https://www.luogu.com.cn/problem/P1972) `主练`：离线询问代表题。
+- [ ] [P3586 物流 Logistics](https://www.luogu.com.cn/problem/P3586) `挑战`：权值数量与权值和的联合维护。
+- [ ] [P4054 计数问题](https://www.luogu.com.cn/problem/P4054) `主练`：二维与多类别维护。
+- [x] [P4113 采花](https://www.luogu.com.cn/problem/P4113) `主练`：与 P1972 同属离线统计。
 - [ ] [P3960 列队](https://www.luogu.com.cn/problem/P3960)
 
-- [ ] [P1966 火柴排队](https://www.luogu.com.cn/problem/P1966) `衔接`：排名映射与逆序对。
-- [ ] [P1972 HH 的项链](https://www.luogu.com.cn/problem/P1972) `主练`：离线询问代表题。
-- [ ] [P4113 采花](https://www.luogu.com.cn/problem/P4113) `主练`：与 P1972 同属离线统计。
-- [ ] [P3605 Promotion Counting P](https://www.luogu.com.cn/problem/P3605) `主练`：DFS 序与树状数组结合。
-- [ ] [P4054 计数问题](https://www.luogu.com.cn/problem/P4054) `主练`：二维与多类别维护。
 - [ ] [P3253 删除物品](https://www.luogu.com.cn/problem/P3253) `挑战`：动态删除后的相对位置统计。
-- [ ] [P3586 物流 Logistics](https://www.luogu.com.cn/problem/P3586) `挑战`：权值数量与权值和的联合维护。
 - [ ] [P5677 配对统计](https://www.luogu.com.cn/problem/P5677) `挑战`：预处理贡献关系后转为离线区间统计。
 - [ ] [P2345 [USACO04OPEN] MooFest G](https://www.luogu.com.cn/problem/P2345) `主练`：排序 + 树状数组 / 贡献统计。
-- [ ] [P3368 【模板】树状数组 2](https://www.luogu.com.cn/problem/P3368) `衔接`：区间修改 + 单点查询。
 - [ ] [P1637 三元上升子序列](https://www.luogu.com.cn/problem/P1637) `主练`：多层树状数组 / 贡献统计。
 
 ### Part 7.9 线段树｜主线
-
 - [x] [P3372 【模板】线段树 1](https://www.luogu.com.cn/problem/P3372)
 - [x] [P3373 【模板】线段树 2](https://www.luogu.com.cn/problem/P3373)
 - [x] [P5490 【模板】扫描线](https://www.luogu.com.cn/problem/P5490)
-- [ ] [P4588 [TJOI2018] 数学计算](https://www.luogu.com.cn/problem/P4588)
+- [ ] [P4588 数学计算](https://www.luogu.com.cn/problem/P4588) `衔接`：线段树维护非加和型信息。
 - [x] [P1502 窗口的星星](https://www.luogu.com.cn/problem/P1502)
 - [ ] [P2471 [SCOI2007] 降雨量](https://www.luogu.com.cn/problem/P2471)
-- [x] [P2824 [HEOI2016/TJOI2016] 排序](https://www.luogu.com.cn/problem/P2824)
+- [x] [P2824 排序](https://www.luogu.com.cn/problem/P2824) `挑战`：参数判定与 01 区间维护综合题。
 - [ ] [P3722 [AH2017/HNOI2017] 影魔](https://www.luogu.com.cn/problem/P3722)
 - [ ] [P4097 [HEOI2013] Segment](https://www.luogu.com.cn/problem/P4097)
 - [ ] [P4198 楼房重建](https://www.luogu.com.cn/problem/P4198)
-- [ ] [P4513 小白逛公园](https://www.luogu.com.cn/problem/P4513)
+- [ ] [P4513 小白逛公园](https://www.luogu.com.cn/problem/P4513) `主练`：复杂区间信息合并代表题。
 - [ ] [P4556 [Vani有约会] 雨天的尾巴](https://www.luogu.com.cn/problem/P4556)
 - [ ] [P5324 [BJOI2019] 删数](https://www.luogu.com.cn/problem/P5324)
 - [ ] [P5327 [ZJOI2019] 语言](https://www.luogu.com.cn/problem/P5327)
 
 - [ ] [P1198 最大数](https://www.luogu.com.cn/problem/P1198) `衔接`：在线追加与区间最值。
-- [ ] [P4588 数学计算](https://www.luogu.com.cn/problem/P4588) `衔接`：线段树维护非加和型信息。
 - [ ] [P2574 XOR 的艺术](https://www.luogu.com.cn/problem/P2574) `主练`：区间翻转与区间统计。
 - [ ] [P1471 方差](https://www.luogu.com.cn/problem/P1471) `主练`：同时维护多种区间信息。
-- [ ] [P4513 小白逛公园](https://www.luogu.com.cn/problem/P4513) `主练`：复杂区间信息合并代表题。
-- [ ] [P2824 排序](https://www.luogu.com.cn/problem/P2824) `挑战`：参数判定与 01 区间维护综合题。
 - [ ] [P2161 [SHOI2009] 会场预约](https://www.luogu.com.cn/problem/P2161) `主练`：动态区间集合维护。
 - [ ] [P1438 无聊的数列](https://www.luogu.com.cn/problem/P1438) `主练`：差分 + 线段树。
 - [ ] [P1253 扶苏的问题](https://www.luogu.com.cn/problem/P1253) `主练`：多种懒标记组合。
@@ -1073,12 +951,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P1558 色板游戏](https://www.luogu.com.cn/problem/P1558) `主练`：区间赋值 + 颜色集合。
 
 ### Part 7.10 扫描线与线段树｜主线
-
 - [x] [P5490 扫描线 & 矩形面积并](https://www.luogu.com.cn/problem/P5490) `主练`：扫描线与线段树的标准入口题。
 - [x] [P1502 窗口的星星](https://www.luogu.com.cn/problem/P1502) `挑战`：扫描线与区间最值综合。
 
-### Part 7.11 高级线段树 / 特殊区间信息｜进阶主线
+- [ ] [P1856 [IOI 1998 / USACO5.5] 矩形周长 Picture](https://www.luogu.com.cn/problem/P1856) `主练`：矩形并周长，补齐扫描线在线段覆盖信息上的另一种维护。
 
+### Part 7.11 高级线段树 / 特殊区间信息｜进阶主线
 - [ ] [CF438D The Child and Sequence](https://www.luogu.com.cn/problem/CF438D) `主练`：区间特殊修改代表题。
 - [ ] [P6327 区间加区间 sin 和](https://www.luogu.com.cn/problem/P6327) `主练`：多个相关区间信息与懒标记共同维护。
 - [ ] [P5278 算术天才⑨与等差数列](https://www.luogu.com.cn/problem/P5278) `主练`：非标准区间性质的设计与合并。
@@ -1091,36 +969,31 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF19D Points](https://www.luogu.com.cn/problem/CF19D) `挑战`：二维有序结构 / 线段树。
 
 ### Part 7.12 李超线段树 / 直线维护｜进阶主线
-
 - [ ] [P4097 Segment](https://www.luogu.com.cn/problem/P4097) `主练`：李超线段树代表题。
 - [ ] [CF678F Lena and Queries](https://www.luogu.com.cn/problem/CF678F) `挑战`：动态加入、删除直线与在线询问综合。
 - [ ] [P4027 货币兑换](https://www.luogu.com.cn/problem/P4027) `复盘`：从斜率优化或凸包维护角度复盘。
 - [ ] [P5416 时空旅行](https://www.luogu.com.cn/problem/P5416) `暂存`：时间维与直线维护综合。
 
 ### Part 7.13 线段树分裂 / 合并｜进阶主线
-
 - [ ] [P5494 线段树分裂](https://www.luogu.com.cn/problem/P5494) `主练`：线段树分裂与合并的标准入口。
 - [ ] [P4556 雨天的尾巴](https://www.luogu.com.cn/problem/P4556) `主练`：线段树合并与树上统计的代表题。
 - [ ] [P3722 影魔](https://www.luogu.com.cn/problem/P3722) `挑战`：贡献拆分与区间维护综合题。
 
 ### Part 7.14 分块 / 根号算法｜进阶主线
-
 - [ ] [P3870 [TJOI2009] 开关](https://www.luogu.com.cn/problem/P3870)
 - [ ] [P3396 哈希冲突](https://www.luogu.com.cn/problem/P3396)
 - [ ] [P3863 序列](https://www.luogu.com.cn/problem/P3863)
 - [ ] [P1975 [国家集训队] 排队](https://www.luogu.com.cn/problem/P1975)
 - [ ] [P3710 方方方的数据结构](https://www.luogu.com.cn/problem/P3710)
 - [ ] [P3992 [BJOI2017] 开车](https://www.luogu.com.cn/problem/P3992)
-- [ ] [P4168 [Violet] 蒲公英](https://www.luogu.com.cn/problem/P4168)
+- [ ] [P4168 蒲公英](https://www.luogu.com.cn/problem/P4168) `主练`：静态区间众数问题。
 - [ ] [P4119 [Ynoi2018] 未来日记](https://www.luogu.com.cn/problem/P4119)
 
 - [ ] [P2801 教主的魔法](https://www.luogu.com.cn/problem/P2801) `衔接`：序列分块入口。
 - [ ] [P3203 弹飞绵羊](https://www.luogu.com.cn/problem/P3203) `主练`：根号分治维护跳跃信息。
-- [ ] [P4168 蒲公英](https://www.luogu.com.cn/problem/P4168) `主练`：静态区间众数问题。
 - [ ] [P4135 作诗](https://www.luogu.com.cn/problem/P4135) `挑战`：分块与区间频率统计综合。
 
 ### Part 7.15 莫队｜进阶主线
-
 - [ ] [SP3267 DQUERY](https://www.luogu.com.cn/problem/SP3267) `衔接`：普通莫队的静态区间不同数入口。
 - [ ] [P1494 小 Z 的袜子](https://www.luogu.com.cn/problem/P1494) `主练`：普通莫队代表题。
 - [ ] [CF617E XOR and Favorite Number](https://www.luogu.com.cn/problem/CF617E) `主练`：前缀异或与莫队结合。
@@ -1132,76 +1005,63 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4887 莫队二次离线](https://www.luogu.com.cn/problem/P4887) `挑战`：二次离线代表题。
 
 ### Part 7.16 可并堆 / 左偏树｜地图保留
-
 {% fold info @可并堆 题单 %}
-- [ ] [P3377 【模板】左偏树（可并堆）](https://www.luogu.com.cn/problem/P3377)
-- [ ] [P2713 罗马游戏](https://www.luogu.com.cn/problem/P2713)
+- [ ] [P3377 左偏树](https://www.luogu.com.cn/problem/P3377) `衔接`：可并堆模板入口。
+- [ ] [P2713 罗马游戏](https://www.luogu.com.cn/problem/P2713) `主练`：可并堆基础应用。
 - [ ] [P1456 Monkey King](https://www.luogu.com.cn/problem/P1456)
-- [ ] [P1552 [APIO2012] 派遣](https://www.luogu.com.cn/problem/P1552)
-- [ ] [P3261 [JLOI2015] 城池攻占](https://www.luogu.com.cn/problem/P3261)
+- [ ] [P1552 派遣](https://www.luogu.com.cn/problem/P1552) `挑战`：树上 DFS、贪心与可并堆综合题。
+- [ ] [P3261 城池攻占](https://www.luogu.com.cn/problem/P3261) `挑战`：树上过程与可并堆结合。
 - [ ] [P3273 [SCOI2011] 棘手的操作](https://www.luogu.com.cn/problem/P3273)
 - [ ] [P4331 [BOI2004] Sequence](https://www.luogu.com.cn/problem/P4331)
 {% endfold %}
 
 {% fold info @可并堆与左偏树扩展 %}
-- [ ] [P3377 左偏树](https://www.luogu.com.cn/problem/P3377) `衔接`：可并堆模板入口。
-- [ ] [P2713 罗马游戏](https://www.luogu.com.cn/problem/P2713) `主练`：可并堆基础应用。
-- [ ] [P1552 派遣](https://www.luogu.com.cn/problem/P1552) `挑战`：树上 DFS、贪心与可并堆综合题。
-- [ ] [P3261 城池攻占](https://www.luogu.com.cn/problem/P3261) `挑战`：树上过程与可并堆结合。
 {% endfold %}
 
 ### Part 7.17 主席树 / 区间顺序统计｜进阶主线
-
 - [ ] [P2468 [SDOI2010] 粟粟的书架](https://www.luogu.com.cn/problem/P2468)
 - [ ] [P3302 [SDOI2013] 森林](https://www.luogu.com.cn/problem/P3302)
 - [ ] [P3168 [CQOI2015] 任务查询系统](https://www.luogu.com.cn/problem/P3168)
 - [ ] [P4559 [JSOI2018] 列队](https://www.luogu.com.cn/problem/P4559)
-- [ ] [P2633 Count on a tree](https://www.luogu.com.cn/problem/P2633)
-- [ ] [P3293 [SCOI2016] 美味](https://www.luogu.com.cn/problem/P3293)
+- [ ] [P2633 Count on a tree](https://www.luogu.com.cn/problem/P2633) `主练`：树上路径版本的可持久化权值结构。
+- [ ] [P3293 美味](https://www.luogu.com.cn/problem/P3293) `挑战`：权值维护与异或选择综合。
 - [ ] [P4618 [SDOI2018] 原题识别](https://www.luogu.com.cn/problem/P4618)
 
 - [ ] [P3834 可持久化线段树 2](https://www.luogu.com.cn/problem/P3834) `衔接`：静态区间第 $k$ 小的标准入口。
 - [ ] [P2617 Dynamic Rankings](https://www.luogu.com.cn/problem/P2617) `主练`：从静态主席树进入带修改区间顺序统计。
-- [ ] [P2633 Count on a tree](https://www.luogu.com.cn/problem/P2633) `主练`：树上路径版本的可持久化权值结构。
 - [ ] [P2839 middle](https://www.luogu.com.cn/problem/P2839) `挑战`：可持久化权值结构与判定问题综合。
 - [ ] [P4197 Peaks](https://www.luogu.com.cn/problem/P4197) `挑战`：重构树与可持久化结构结合。
-- [ ] [P3293 美味](https://www.luogu.com.cn/problem/P3293) `挑战`：权值维护与异或选择综合。
 - [ ] [P3960 列队](https://www.luogu.com.cn/problem/P3960) `挑战`：动态序列维护综合题。
 - [ ] [P4587 [FJOI2016] 神秘数](https://www.luogu.com.cn/problem/P4587) `主练`：主席树 / 可持久化权值统计。
 - [ ] [P4602 [CTSC2018] 混合果汁](https://www.luogu.com.cn/problem/P4602) `挑战`：主席树 + 二分答案。
 
 ### Part 7.18 平衡树 / 动态序列｜进阶主线
-
-- [ ] [P3369 【模板】普通平衡树](https://www.luogu.com.cn/problem/P3369)
-- [ ] [P3391 【模板】文艺平衡树（Splay）](https://www.luogu.com.cn/problem/P3391)
+- [ ] [P3369 普通平衡树](https://www.luogu.com.cn/problem/P3369) `衔接`：六类基本操作入口。
+- [ ] [P3391 文艺平衡树](https://www.luogu.com.cn/problem/P3391) `主练`：按位置维护动态序列。
 - [ ] [P3850 [TJOI2007] 书架](https://www.luogu.com.cn/problem/P3850)
 - [ ] [P4008 [NOI2003] 文本编辑器](https://www.luogu.com.cn/problem/P4008)
 - [ ] [P5338 [TJOI2019] 甲苯先生的滚榜](https://www.luogu.com.cn/problem/P5338)
 - [ ] [P2042 [NOI2005] 维护数列](https://www.luogu.com.cn/problem/P2042)
 - [ ] [P1110 [ZJOI2007] 报表统计](https://www.luogu.com.cn/problem/P1110)
 - [ ] [P3644 [APIO2015] 八邻旁之桥](https://www.luogu.com.cn/problem/P3644)
-- [ ] [P1486 [NOI2004] 郁闷的出纳员](https://www.luogu.com.cn/problem/P1486)
+- [ ] [P1486 郁闷的出纳员](https://www.luogu.com.cn/problem/P1486) `主练`：全局偏移与顺序统计结合。
 - [ ] [P2710 数列](https://www.luogu.com.cn/problem/P2710)
 - [ ] [P3224 [HNOI2012] 永无乡](https://www.luogu.com.cn/problem/P3224)
 - [ ] [P3285 [SCOI2014] 方伯伯的 OJ](https://www.luogu.com.cn/problem/P3285)
 - [ ] [P5321 [BJOI2019] 送别](https://www.luogu.com.cn/problem/P5321)
 
-- [ ] [P3369 普通平衡树](https://www.luogu.com.cn/problem/P3369) `衔接`：六类基本操作入口。
 - [ ] [P6136 普通平衡树（数据加强版）](https://www.luogu.com.cn/problem/P6136) `主练`：强制在线版本。
 - [ ] [P2286 宠物收养场](https://www.luogu.com.cn/problem/P2286) `主练`：前驱、后继与最近匹配的典型应用。
-- [ ] [P1486 郁闷的出纳员](https://www.luogu.com.cn/problem/P1486) `主练`：全局偏移与顺序统计结合。
-- [ ] [P3391 文艺平衡树](https://www.luogu.com.cn/problem/P3391) `主练`：按位置维护动态序列。
 
 ### Part 7.19 树链剖分 / 树上路径数据结构｜主线
-
 - [x] [P3384 【模板】树链剖分](https://www.luogu.com.cn/problem/P3384)
 - [ ] [P3313 [SDOI2014] 旅行](https://www.luogu.com.cn/problem/P3313)
 - [ ] [P2590 [ZJOI2008] 树的统计](https://www.luogu.com.cn/problem/P2590)
 - [ ] [P1505 [国家集训队] 旅游](https://www.luogu.com.cn/problem/P1505)
 - [ ] [P2486 [SDOI2011] 染色](https://www.luogu.com.cn/problem/P2486)
-- [ ] [P3258 [JLOI2014] 松鼠的新家](https://www.luogu.com.cn/problem/P3258)
+- [ ] [P3258 松鼠的新家](https://www.luogu.com.cn/problem/P3258) `衔接`：路径访问次数统计。
 - [ ] [P4069 [SDOI2016] 游戏](https://www.luogu.com.cn/problem/P4069)
-- [ ] [P4211 [LNOI2014] LCA](https://www.luogu.com.cn/problem/P4211)
+- [ ] [P4211 LCA](https://www.luogu.com.cn/problem/P4211) `主练`：离线询问与树上前缀信息结合。
 - [ ] [P4592 [TJOI2018] 异或](https://www.luogu.com.cn/problem/P4592)
 - [ ] [P5305 [GXOI/GZOI2019] 旧词](https://www.luogu.com.cn/problem/P5305)
 - [ ] [P5354 [Ynoi2017] 由乃的 OJ](https://www.luogu.com.cn/problem/P5354)
@@ -1209,17 +1069,10 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 
 - [ ] [P3178 树上操作](https://www.luogu.com.cn/problem/P3178) `主练`：树上修改与查询的入门综合题。
 - [ ] [P3128 Max Flow P](https://www.luogu.com.cn/problem/P3128) `衔接`：点路径差分的标准练习。
-- [ ] [P3258 松鼠的新家](https://www.luogu.com.cn/problem/P3258) `衔接`：路径访问次数统计。
 - [ ] [P2680 运输计划](https://www.luogu.com.cn/problem/P2680) `主练`：路径差分与二分答案综合。
 - [ ] [P1600 天天爱跑步](https://www.luogu.com.cn/problem/P1600) `主练`：路径、深度与时间条件共同参与统计。
-- [ ] [P4211 LCA](https://www.luogu.com.cn/problem/P4211) `主练`：离线询问与树上前缀信息结合。
 - [ ] [P5836 Milk Visits S](https://www.luogu.com.cn/problem/P5836) `衔接`：路径上类别存在性查询。
-- [ ] [P1084 疫情控制](https://www.luogu.com.cn/problem/P1084) `挑战`：倍增、二分与树上资源分配。
-- [ ] [P1081 开车旅行](https://www.luogu.com.cn/problem/P1081) `挑战`：倍增维护非标准跳转信息。
 - [ ] [P4427 求和](https://www.luogu.com.cn/problem/P4427) `主练`：路径统计与深度幂和预处理。
-- [ ] [P5021 赛道修建](https://www.luogu.com.cn/problem/P5021) `挑战`：树上二分答案与路径配对。
-- [ ] [P5022 旅行](https://www.luogu.com.cn/problem/P5022) `主练`：基环树上求字典序遍历。
-- [ ] [P5049 旅行 加强版](https://www.luogu.com.cn/problem/P5049) `挑战`：继续处理更复杂的环结构。
 - [ ] [P4219 大融合](https://www.luogu.com.cn/problem/P4219) `主练`：动态加边与路径信息。
 - [ ] [P4216 情报传递](https://www.luogu.com.cn/problem/P4216) `主练`：树链剖分与时间维询问结合。
 - [ ] [P5773 轻重路径](https://www.luogu.com.cn/problem/P5773) `主练`：路径修改与全局结构统计。
@@ -1233,26 +1086,17 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF487E Tourists](https://www.luogu.com.cn/problem/CF487E) `挑战`：圆方树 + 数据结构。
 
 ### Part 7.20 树上启发式合并 / DSU on Tree｜进阶主线
-
-- [ ] [CF600E Lomsat gelral](https://www.luogu.com.cn/problem/CF600E)
+- [ ] [CF600E Lomsat gelral](https://www.luogu.com.cn/problem/CF600E) `衔接`：DSU on Tree 标准入口。
 - [ ] [CF570D Tree Requests](https://www.luogu.com.cn/problem/CF570D)
 - [ ] [CF1009F Dominant Indices](https://www.luogu.com.cn/problem/CF1009F)
 - [ ] [P9886 [ICPC 2018 Qingdao R] Kawa Exam](https://www.luogu.com.cn/problem/P9886)
 
-- [ ] [CF600E Lomsat gelral](https://www.luogu.com.cn/problem/CF600E) `衔接`：DSU on Tree 标准入口。
 - [ ] [CF741D Arpa’s letter-marked tree](https://www.luogu.com.cn/problem/CF741D) `主练`：子树路径与异或状态结合的启发式合并。
 - [ ] [P7124 stcm](https://www.luogu.com.cn/problem/P7124) `挑战`：Ynoi 树上综合题。
 - [ ] [P6072 Path](https://www.luogu.com.cn/problem/P6072) `挑战`：树上路径贡献统计。
 - [ ] [P6071 Treequery](https://www.luogu.com.cn/problem/P6071) `挑战`：复杂树上询问。
-- [ ] [CF150E Freezing with Style](https://www.luogu.com.cn/problem/CF150E) `主练`：点分治与路径长度限制。
-- [ ] [P5439 永恒](https://www.luogu.com.cn/problem/P5439) `挑战`：树上距离与路径结构综合。
-- [ ] [CF486D Valid Sets](https://www.luogu.com.cn/problem/CF486D) `主练`：以某个点为约束中心统计合法连通集合。
-- [ ] [CF176E Archaeology](https://www.luogu.com.cn/problem/CF176E) `主练`：动态维护标记点集合及其距离量。
-- [ ] [CF696E ...Wait for it...](https://www.luogu.com.cn/problem/CF696E) `挑战`：动态点集与树上距离结构综合。
-- [ ] [P3320 寻宝游戏](https://www.luogu.com.cn/problem/P3320) `主练`：动态点集的虚树周长思想。
 
 ### Part 7.21 树套树｜地图保留
-
 {% fold info @树套树 题单 %}
 - [ ] [P3380 【模板】二逼平衡树（树套树）](https://www.luogu.com.cn/problem/P3380)
 - [ ] [P1975 [国家集训队] 排队](https://www.luogu.com.cn/problem/P1975)
@@ -1266,7 +1110,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 7.22 01-Trie / 异或维护｜进阶主线
-
 - [ ] [P4551 最长异或路径](https://www.luogu.com.cn/problem/P4551) `主练`：树上异或与 01 Trie 的经典衔接题。
 - [ ] [P4735 最大异或和](https://www.luogu.com.cn/problem/P4735) `主练`：可持久化 01 Trie 的标准应用。
 - [ ] [P5283 异或粽子](https://www.luogu.com.cn/problem/P5283) `挑战`：区间异或候选与多路最优维护结合。
@@ -1274,14 +1117,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5795 异或运算](https://www.luogu.com.cn/problem/P5795) `挑战`：多询问下的异或选择问题。
 
 ### Part 7.23 异或数据结构综合｜进阶主线
-
 - [x] [P3812 线性基](https://www.luogu.com.cn/problem/P3812) `衔接`：整理插入、判相关与最大异或模板。
 - [ ] [P4151 最大 XOR 和路径](https://www.luogu.com.cn/problem/P4151) `主练`：图上环空间与线性基结合。
 - [ ] [P4570 元素](https://www.luogu.com.cn/problem/P4570) `主练`：带权选择与线性独立性结合。
 - [ ] [P3292 幸运数字](https://www.luogu.com.cn/problem/P3292) `挑战`：树上路径线性基。
 
 ### Part 7.24 CDQ 分治 / 整体二分｜进阶主线
-
 - [ ] [P3810 三维偏序 / 陌上花开](https://www.luogu.com.cn/problem/P3810) `衔接`：CDQ 分治与树状数组的经典入口。
 - [ ] [P4390 Mokia 摩基亚](https://www.luogu.com.cn/problem/P4390) `主练`：带时间维的二维统计。
 - [ ] [P1527 矩阵乘法](https://www.luogu.com.cn/problem/P1527) `主练`：整体二分代表题。
@@ -1289,10 +1130,8 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3769 TATT](https://www.luogu.com.cn/problem/P3769) `挑战`：更高维偏序与 DP 统计综合。
 - [ ] [P4849 寻找宝藏](https://www.luogu.com.cn/problem/P4849) `挑战`：高维离线统计综合。
 - [ ] [P4093 [HEOI2016/TJOI2016] 序列](https://www.luogu.com.cn/problem/P4093) `挑战`：CDQ + DP / 数据结构综合。
-- [ ] [CF960F Pathwalks](https://www.luogu.com.cn/problem/CF960F) `挑战`：动态权值 DP + 数据结构。
 
 ### Part 7.25 时间线段树 / 可撤销并查集 / 动态连通性｜进阶主线
-
 - [ ] [P5787 线段树分治 / 二分图](https://www.luogu.com.cn/problem/P5787) `衔接`：时间线段树与可撤销并查集入口。
 - [ ] [SP9576 Dynamic Graph Connectivity](https://www.luogu.com.cn/problem/SP9576) `主练`：离线动态连通性的标准模型。
 - [ ] [CF576E Painting Edges](https://www.luogu.com.cn/problem/CF576E) `挑战`：动态二分图判定。
@@ -1300,39 +1139,24 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3206 城市建设](https://www.luogu.com.cn/problem/P3206) `暂存`：动态生成树问题。
 
 ### Part 7.26 动态树 / Link-Cut Tree｜地图保留
-
 {% fold info @动态树 / Link-Cut Tree 题单 %}
-- [ ] [P3690 【模板】Link Cut Tree](https://www.luogu.com.cn/problem/P3690)
+- [ ] [P3690 动态树](https://www.luogu.com.cn/problem/P3690) `衔接`：LCT 模板入口。
 - [ ] [P3203 [HNOI2010] 弹飞绵羊](https://www.luogu.com.cn/problem/P3203)
 - [ ] [P4338 [ZJOI2018] 历史](https://www.luogu.com.cn/problem/P4338)
 - [ ] [P4312 [COCI2009] OTCI](https://www.luogu.com.cn/problem/P4312)
-- [ ] [P1501 [国家集训队] Tree II](https://www.luogu.com.cn/problem/P1501)
-- [ ] [P2387 [NOI2014] 魔法森林](https://www.luogu.com.cn/problem/P2387)
+- [ ] [P1501 Tree II](https://www.luogu.com.cn/problem/P1501) `主练`：路径修改与路径查询的标准应用。
+- [ ] [P2387 魔法森林](https://www.luogu.com.cn/problem/P2387) `主练`：动态图与路径信息维护综合。
 - [ ] [P3348 [ZJOI2016] 大森林](https://www.luogu.com.cn/problem/P3348)
 - [ ] [P3703 [SDOI2017] 树点涂色](https://www.luogu.com.cn/problem/P3703)
 - [ ] [P4172 [WC2006] 水管局长](https://www.luogu.com.cn/problem/P4172)
-- [ ] [P4219 [BJOI2014] 大融合](https://www.luogu.com.cn/problem/P4219)
+- [ ] [P4219 大融合](https://www.luogu.com.cn/problem/P4219) `复盘`：已在树论题单出现。
 - [ ] [P5489 EntropyIncreaser 与 动态图](https://www.luogu.com.cn/problem/P5489)
 {% endfold %}
 
 {% fold info @LCT 扩展训练 %}
-- [ ] [P3690 动态树](https://www.luogu.com.cn/problem/P3690) `衔接`：LCT 模板入口。
-- [ ] [P1501 Tree II](https://www.luogu.com.cn/problem/P1501) `主练`：路径修改与路径查询的标准应用。
-- [ ] [P2387 魔法森林](https://www.luogu.com.cn/problem/P2387) `主练`：动态图与路径信息维护综合。
-- [ ] [P4219 大融合](https://www.luogu.com.cn/problem/P4219) `复盘`：已在树论题单出现。
-- [ ] [P4216 情报传递](https://www.luogu.com.cn/problem/P4216) `主练`：树链剖分与时间维询问结合。
-- [ ] [P5773 轻重路径](https://www.luogu.com.cn/problem/P5773) `主练`：路径修改与全局结构统计。
-- [ ] [P5659 树上的数](https://www.luogu.com.cn/problem/P5659) `挑战`：树上排列调整与局部操作综合。
-- [ ] [P6074 最小路径](https://www.luogu.com.cn/problem/P6074) `挑战`：树上路径选择与整体最优结构。
-- [ ] [CF536E Tavas on the Path](https://www.luogu.com.cn/problem/CF536E) `挑战`：复杂路径询问与树上数据结构。
-- [ ] [CF1344E Train Tracks](https://www.luogu.com.cn/problem/CF1344E) `挑战`：多层树结构上的路径约束。
-- [ ] [CF983E NN country](https://www.luogu.com.cn/problem/CF983E) `挑战`：路径跳跃与离线、倍增结构综合。
-- [ ] [CF1140G Double Tree](https://www.luogu.com.cn/problem/CF1140G) `挑战`：双树结构之间的距离关系。
-- [ ] [CF1017G The Tree](https://www.luogu.com.cn/problem/CF1017G) `挑战`：在线树上修改与查询。
 {% endfold %}
 
 ### Part 7.27 可持久化数据结构｜进阶主线
-
 - [ ] [P3919 【模板】可持久化数组](https://www.luogu.com.cn/problem/P3919)
 - [ ] [P3834 【模板】可持久化线段树 1（主席树）](https://www.luogu.com.cn/problem/P3834)
 - [ ] [P3402 【模板】可持久化并查集](https://www.luogu.com.cn/problem/P3402)
@@ -1341,7 +1165,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5283 [十二省联考2019] 异或粽子](https://www.luogu.com.cn/problem/P5283)
 
 ### Part 7.28 动态 DP 的数据结构视角｜地图保留
-
 {% fold info @动态 DP 的数据结构视角 %}
 - [ ] [P4751 动态 DP（加强版）](https://www.luogu.com.cn/problem/P4751) `衔接`：动态 DP 模板入口。
 - [ ] [P5024 保卫王国](https://www.luogu.com.cn/problem/P5024) `主练`：树形 DP 与多次强制选择询问。
@@ -1349,14 +1172,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 7.29 特殊整数数据结构｜近似忽略
-
 {% fold info @特殊整数数据结构 %}
 - [ ] [P6105 y-fast trie](https://www.luogu.com.cn/problem/P6105) `暂存`：整数前驱后继的亚对数结构。
 - [ ] [P6018 Fusion tree](https://www.luogu.com.cn/problem/P6018) `暂存`：融合树属于特殊整数数据结构。
 {% endfold %}
 
 ### Part 7.30 K-D Tree｜地图保留
-
 {% fold info @K-D Tree 题单 %}
 - [ ] [P4357 [CQOI2016] K 远点对](https://www.luogu.com.cn/problem/P4357)
 - [ ] [P4148 简单题](https://www.luogu.com.cn/problem/P4148)
@@ -1370,14 +1191,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 7.31 珂朵莉树 ODT｜近似忽略
-
 {% fold info @珂朵莉树 ODT 题单 %}
 - [ ] [P5251 [LnOI2019] 第二代图灵机](https://www.luogu.com.cn/problem/P5251)
 - [ ] [P5350 序列](https://www.luogu.com.cn/problem/P5350)
 {% endfold %}
 
 ### Part 7.32 数据结构综合｜地图保留
-
 {% fold info @数据结构综合题 %}
 - [ ] [P5324 删数](https://www.luogu.com.cn/problem/P5324) `暂存`：值域维护与整体变化结合。
 - [ ] [P5327 语言](https://www.luogu.com.cn/problem/P5327) `暂存`：树上路径关系与数据结构综合。
@@ -1390,36 +1209,33 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 ## Part 8 图论与树论
 
 ### Part 8.1 图的存储与遍历｜主线
-
 {% fold info @图的存储与遍历 题单 %}
 - [ ] [P2661 信息传递](https://www.luogu.com.cn/problem/P2661)
 - [ ] [P2921 [USACO08DEC] Trick or Treat on the Farm](https://www.luogu.com.cn/problem/P2921)
 {% endfold %}
 
-### Part 8.2 最短路｜主线
+- [ ] [P5318 【深基18.例3】查找文献](https://www.luogu.com.cn/problem/P5318) `衔接`：直接练 DFS / BFS 遍历顺序与邻接表组织。
+- [ ] [P3916 图的遍历](https://www.luogu.com.cn/problem/P3916) `主练`：反图遍历与可达信息传播。
 
-- [ ] [P3371 【模板】单源最短路径（弱化版）](https://www.luogu.com.cn/problem/P3371)
-- [x] [P4779 【模板】单源最短路径（标准版）](https://www.luogu.com.cn/problem/P4779)
+### Part 8.2 最短路｜主线
+- [ ] [P3371 单源最短路径（弱化版）](https://www.luogu.com.cn/problem/P3371) `衔接`：统一最短路状态与松弛过程。
+- [x] [P4779 单源最短路径（标准版）](https://www.luogu.com.cn/problem/P4779) `衔接`：整理堆优化 Dijkstra。
 - [ ] [P5905 【模板】Johnson 全源最短路](https://www.luogu.com.cn/problem/P5905)
-- [x] [P1144 最短路计数](https://www.luogu.com.cn/problem/P1144)
+- [x] [P1144 最短路计数](https://www.luogu.com.cn/problem/P1144) `主练`：在最短距离之外继续维护方案数量。
 - [x] [P1462 通往奥格瑞玛的道路](https://www.luogu.com.cn/problem/P1462)
 - [ ] [P1522 Cow Tours](https://www.luogu.com.cn/problem/P1522)
 - [ ] [P1266 速度限制](https://www.luogu.com.cn/problem/P1266)
 - [ ] [P4001 [ICPC-Beijing 2006] 狼抓兔子](https://www.luogu.com.cn/problem/P4001)
 - [x] [P4568 [JLOI2011] 飞行路线](https://www.luogu.com.cn/problem/P4568)
 - [ ] [P3238 [HNOI2014] 道路堵塞](https://www.luogu.com.cn/problem/P3238)
-- [ ] [P5304 [GXOI/GZOI2019] 旅行者](https://www.luogu.com.cn/problem/P5304)
+- [ ] [P5304 旅行者](https://www.luogu.com.cn/problem/P5304) `主练`：多源最短路与点集间距离。
 
 - [x] [P3385 【模板】负环](https://www.luogu.com.cn/problem/P3385)
 
-- [ ] [P3371 单源最短路径（弱化版）](https://www.luogu.com.cn/problem/P3371) `衔接`：统一最短路状态与松弛过程。
-- [x] [P4779 单源最短路径（标准版）](https://www.luogu.com.cn/problem/P4779) `衔接`：整理堆优化 Dijkstra。
 - [ ] [P1346 电车](https://www.luogu.com.cn/problem/P1346) `主练`：训练把操作代价准确映射为边权。
-- [x] [P1144 最短路计数](https://www.luogu.com.cn/problem/P1144) `主练`：在最短距离之外继续维护方案数量。
 - [ ] [P1119 灾后重建](https://www.luogu.com.cn/problem/P1119) `主练`：理解 Floyd 的阶段含义。
 - [ ] [P4822 冻结](https://www.luogu.com.cn/problem/P4822) `主练`：额外资源次数进入最短路状态。
 - [ ] [CF1076D Edge Deletion](https://www.luogu.com.cn/problem/CF1076D) `主练`：从最短路结构中保留有限数量的关键边。
-- [ ] [P5304 旅行者](https://www.luogu.com.cn/problem/P5304) `主练`：多源最短路与点集间距离。
 - [ ] [P2829 大逃离](https://www.luogu.com.cn/problem/P2829) `挑战`：带限制的路径建模。
 - [ ] [P4745 Gambling Guide](https://www.luogu.com.cn/problem/P4745) `挑战`：随机过程与最短路思想结合。
 - [ ] [CF827F Dirty Arkady's Kitchen](https://www.luogu.com.cn/problem/CF827F) `挑战`：时间窗口限制下的最短路。
@@ -1430,13 +1246,16 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2047 [NOI2007] 社交网络](https://www.luogu.com.cn/problem/P2047) `挑战`：Floyd + 最短路计数贡献。
 
 ### Part 8.3 0-1 BFS｜主线
-
 原题单没有独立列出。核心是边权只含 0/1 时用双端队列维护最短路。
 
 - [ ] [P4667 [BalticOI 2011 Day1] Switch the Lamp On](https://www.luogu.com.cn/problem/P4667)
 
-### Part 8.4 路径结构 / 环 / 固定步数｜进阶主线
+- [ ] [P4554 小明的游戏](https://www.luogu.com.cn/problem/P4554) `衔接`：边权只有 0/1 的最短路标准练习。
+- [ ] [CF1063B Labyrinth](https://www.luogu.com.cn/problem/CF1063B) `主练`：把左右移动次数转成 0/1 代价维护。
+- [ ] [CF173B Chamber of Secrets](https://www.luogu.com.cn/problem/CF173B) `主练`：状态建图后使用 0-1 BFS。
+- [ ] [P1948 [USACO08JAN] Telephone Lines S](https://www.luogu.com.cn/problem/P1948) `挑战`：二分答案与 0-1 BFS 交叉。
 
+### Part 8.4 路径结构 / 环 / 固定步数｜进阶主线
 - [ ] [P2149 Elaxia 的路线](https://www.luogu.com.cn/problem/P2149) `主练`：分析两组最短路结构能够共同经过的部分。
 - [ ] [P2151 HH 去散步](https://www.luogu.com.cn/problem/P2151) `主练`：固定步数路径计数。
 - [ ] [P6175 无向图的最小环问题](https://www.luogu.com.cn/problem/P6175) `主练`：比较不同最小环求法及适用条件。
@@ -1446,7 +1265,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2761 软件补丁问题](https://www.luogu.com.cn/problem/P2761) `主练`：状态图最短路 / 状压。
 
 ### Part 8.5 二叉树基础｜地图保留
-
 {% fold info @二叉树 题单 %}
 - [ ] [P1087 FBI 树](https://www.luogu.com.cn/problem/P1087)
 - [ ] [P1030 求先序排列](https://www.luogu.com.cn/problem/P1030)
@@ -1457,7 +1275,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 8.6 树的直径｜主线
-
 - [ ] [P2195 HXY 造公园](https://www.luogu.com.cn/problem/P2195)
 - [x] [P3629 [APIO2010] 巡逻](https://www.luogu.com.cn/problem/P3629)
 - [ ] [P5536 【XR-3】核心城市](https://www.luogu.com.cn/problem/P5536)
@@ -1465,7 +1282,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4408 [NOI2003] 逃学的小孩](https://www.luogu.com.cn/problem/P4408)
 
 ### Part 8.7 LCA / 倍增 / 树上差分｜主线
-
 - [x] [P3379 【模板】最近公共祖先（LCA）](https://www.luogu.com.cn/problem/P3379)
 - [ ] [P3938 斐波那契](https://www.luogu.com.cn/problem/P3938)
 - [ ] [P4281 [AHOI2008] 紧急集合 / 聚会](https://www.luogu.com.cn/problem/P4281)
@@ -1488,7 +1304,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4116 Qtree3](https://www.luogu.com.cn/problem/P4116) `主练`：树链剖分上的最近标记点。
 
 ### Part 8.8 树的基础结构与树形递推｜主线
-
 - [x] [P1352 没有上司的舞会](https://www.luogu.com.cn/problem/P1352) `衔接`：树形 DP 入门。
 - [ ] [P1122 最大子树和](https://www.luogu.com.cn/problem/P1122) `衔接`：树上连通块最优值。
 - [ ] [P2015 二叉苹果树](https://www.luogu.com.cn/problem/P2015) `主练`：树上背包经典题。
@@ -1506,31 +1321,27 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P2726 树的双中心](https://www.luogu.com.cn/problem/P2726) `主练`：从单中心扩展到双中心。
 - [ ] [P1351 联合权值](https://www.luogu.com.cn/problem/P1351) `主练`：距离为二的点对统计。
 - [ ] [P7073 表达式](https://www.luogu.com.cn/problem/P7073) `衔接`：表达式树求值与修改影响。
-- [ ] [P3478 STA-Station](https://www.luogu.com.cn/problem/P3478) `主练`：换根 DP 经典题。
-- [ ] [P2607 骑士](https://www.luogu.com.cn/problem/P2607) `主练`：基环树 DP。
+- [x] [P3478 STA-Station](https://www.luogu.com.cn/problem/P3478) `主练`：换根 DP 经典题。
+- [x] [P2607 骑士](https://www.luogu.com.cn/problem/P2607) `主练`：基环树 DP。
 - [ ] [P5024 保卫王国](https://www.luogu.com.cn/problem/P5024) `挑战`：树形 DP 与多次强制选择询问。
 - [ ] [P1395 会议](https://www.luogu.com.cn/problem/P1395) `衔接`：树重心经典题。
 - [ ] [P2052 [NOI2011] 道路修建](https://www.luogu.com.cn/problem/P2052) `主练`：树边贡献统计。
 
 ### Part 8.9 最小生成树及其扩展｜主线
-
-- [x] [P3366 【模板】最小生成树](https://www.luogu.com.cn/problem/P3366)
-- [x] [P4180 【模板】严格次小生成树](https://www.luogu.com.cn/problem/P4180)
+- [x] [P3366 最小生成树](https://www.luogu.com.cn/problem/P3366) `衔接`：整理 Kruskal 与 Prim 的适用场景。
+- [x] [P4180 严格次小生成树](https://www.luogu.com.cn/problem/P4180) `主练`：生成树替换边与路径最大边查询。
 - [ ] [P2872 [USACO07DEC] Building Roads](https://www.luogu.com.cn/problem/P2872)
 - [ ] [P1991 无线通讯网](https://www.luogu.com.cn/problem/P1991)
-- [x] [P1967 货车运输](https://www.luogu.com.cn/problem/P1967)
+- [x] [P1967 货车运输](https://www.luogu.com.cn/problem/P1967) `主练`：最大瓶颈路。
 - [ ] [P4047 [JSOI2010] 部落划分](https://www.luogu.com.cn/problem/P4047)
 
-- [x] [P3366 最小生成树](https://www.luogu.com.cn/problem/P3366) `衔接`：整理 Kruskal 与 Prim 的适用场景。
 - [ ] [P1195 口袋的天空](https://www.luogu.com.cn/problem/P1195) `衔接`：从完整生成树过渡到指定连通块数量。
 - [ ] [P1550 Watering Hole G](https://www.luogu.com.cn/problem/P1550) `主练`：虚拟源点与生成树建模。
 - [ ] [P2498 拯救小云公主](https://www.luogu.com.cn/problem/P2498) `主练`：几何距离与连通阈值结合。
 - [ ] [P2700 逐个击破](https://www.luogu.com.cn/problem/P2700) `主练`：带关键点限制的生成结构。
-- [x] [P4180 严格次小生成树](https://www.luogu.com.cn/problem/P4180) `主练`：生成树替换边与路径最大边查询。
 - [ ] [P3623 免费道路](https://www.luogu.com.cn/problem/P3623) `主练`：带指定类型边数量的生成树。
 - [ ] [CF76A Gift](https://www.luogu.com.cn/problem/CF76A) `挑战`：两类边权共同决定代价。
 - [ ] [CF609E Minimum spanning tree for each edge](https://www.luogu.com.cn/problem/CF609E) `挑战`：计算每条边强制选入后的最优生成树。
-- [x] [P1967 货车运输](https://www.luogu.com.cn/problem/P1967) `主练`：最大瓶颈路。
 - [ ] [P5633 最小度限制生成树](https://www.luogu.com.cn/problem/P5633) `挑战`：带点度数限制的生成树构造。
 - [x] [P3958 奶酪](https://www.luogu.com.cn/problem/P3958) `复盘`：已在并查集题单中训练。
 - [ ] [P1194 买礼物](https://www.luogu.com.cn/problem/P1194) `衔接`：MST 建模。
@@ -1539,12 +1350,10 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF1120D Power Tree](https://www.luogu.com.cn/problem/CF1120D) `挑战`：生成树 / 贪心结构综合。
 
 ### Part 8.10 拓扑排序 / DAG 递推｜主线
-
-- [x] [P1113 杂务](https://www.luogu.com.cn/problem/P1113)
+- [x] [P1113 杂务](https://www.luogu.com.cn/problem/P1113) `衔接`：拓扑序上的最长完成时间。
 - [x] [P1983 车站分级](https://www.luogu.com.cn/problem/P1983)
 - [x] [P1038 神经网络](https://www.luogu.com.cn/problem/P1038)
 
-- [x] [P3387 缩点](https://www.luogu.com.cn/problem/P3387) `衔接`：作为 SCC + DAG DP 的标准入口。
 - [ ] [P4316 绿豆蛙的归宿](https://www.luogu.com.cn/problem/P4316) `衔接`：DAG 上期望 DP 入门。
 - [ ] [P2656 采蘑菇](https://www.luogu.com.cn/problem/P2656) `主练`：强连通分量与 DAG 最优路径结合。
 - [ ] [P1613 跑路](https://www.luogu.com.cn/problem/P1613) `主练`：路径长度状态与图最短路结合。
@@ -1552,59 +1361,42 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P7077 函数调用](https://www.luogu.com.cn/problem/P7077) `主练`：调用图上的贡献传播。
 - [ ] [P6772 美食家](https://www.luogu.com.cn/problem/P6772) `挑战`：时间限制下的图上最优路径。
 - [ ] [P7516 图函数](https://www.luogu.com.cn/problem/P7516) `挑战`：有向图可达关系与删边过程综合。
-- [ ] [P2341 受欢迎的牛 G](https://www.luogu.com.cn/problem/P2341) `主练`：从缩点后的出度结构判断唯一候选。
-- [ ] [P2002 消息扩散](https://www.luogu.com.cn/problem/P2002) `主练`：缩点后统计需要独立启动的部分。
 - [ ] [P3627 抢掠计划](https://www.luogu.com.cn/problem/P3627) `主练`：缩点后在 DAG 上做最优路径。
-- [ ] [P2812 校园网络](https://www.luogu.com.cn/problem/P2812) `主练`：综合处理缩点 DAG 的入度与出度。
-- [ ] [P5008 锦鲤抄](https://www.luogu.com.cn/problem/P5008) `主练`：从强连通结构中识别必须保留的代价。
 - [ ] [P2419 Cow Contest S](https://www.luogu.com.cn/problem/P2419) `主练`：传递闭包与可比较关系统计。
-- [x] [P1113 杂务](https://www.luogu.com.cn/problem/P1113) `衔接`：拓扑序上的最长完成时间。
 - [ ] [P3243 菜肴制作](https://www.luogu.com.cn/problem/P3243) `主练`：字典序要求下的拓扑排序。
 - [ ] [B3611 【模板】传递闭包](https://www.luogu.com.cn/problem/B3611) `衔接`：Floyd / bitset 可达性。
 
 ### Part 8.11 差分约束 / 特殊最短路｜主线
-
 - [ ] [P5960 【模板】差分约束算法](https://www.luogu.com.cn/problem/P5960)
-- [ ] [P3275 [SCOI2011] 糖果](https://www.luogu.com.cn/problem/P3275)
+- [ ] [P3275 糖果](https://www.luogu.com.cn/problem/P3275) `主练`：差分约束与强连通结构结合。
 - [ ] [P2294 [HNOI2005] 狡猾的商人](https://www.luogu.com.cn/problem/P2294)
 - [ ] [P4926 [1007] 倍杀测量者](https://www.luogu.com.cn/problem/P4926)
 - [ ] [P5590 赛车游戏](https://www.luogu.com.cn/problem/P5590)
 
 - [ ] [P1993 小 K 的农场](https://www.luogu.com.cn/problem/P1993) `衔接`：差分约束标准入口。
-- [ ] [P3275 糖果](https://www.luogu.com.cn/problem/P3275) `主练`：差分约束与强连通结构结合。
 - [ ] [P7515 矩阵游戏](https://www.luogu.com.cn/problem/P7515) `主练`：矩阵条件转约束图。
-- [ ] [P3199 最小圈](https://www.luogu.com.cn/problem/P3199) `主练`：最小平均环代表题。
+- [x] [P3199 最小圈](https://www.luogu.com.cn/problem/P3199) `主练`：最小平均环代表题。
 - [ ] [P2371 墨墨的等式](https://www.luogu.com.cn/problem/P2371) `主练`：同余类上的最短路。
 
 ### Part 8.12 强连通分量 / 缩点 DAG｜主线
-
-- [x] [P3387 【模板】缩点](https://www.luogu.com.cn/problem/P3387)
-- [x] [P3388 【模板】割点](https://www.luogu.com.cn/problem/P3388)
-- [x] [P2341 [HAOI2006] 受欢迎的牛](https://www.luogu.com.cn/problem/P2341)
+- [x] [P3387 缩点 / 强连通分量](https://www.luogu.com.cn/problem/P3387) `衔接`：SCC 与缩点 DAG 的标准入口。
+- [x] [P2341 受欢迎的牛 G](https://www.luogu.com.cn/problem/P2341) `主练`：从缩点后的出度结构判断唯一候选。
 - [ ] [P2863 [USACO06JAN] The Cow Prom](https://www.luogu.com.cn/problem/P2863)
 - [x] [P2746 [USACO5.3] Network of Schools](https://www.luogu.com.cn/problem/P2746)
 - [ ] [P1407 [国家集训队] 稳定婚姻](https://www.luogu.com.cn/problem/P1407)
 - [ ] [P2272 [ZJOI2007] 最大半连通子图](https://www.luogu.com.cn/problem/P2272)
-- [x] [P3225 [HNOI2012] 矿场搭建](https://www.luogu.com.cn/problem/P3225)
-- [ ] [P5058 [ZJOI2004] 嗅探器](https://www.luogu.com.cn/problem/P5058)
 - [ ] [P2515 [HAOI2010] 软件安装](https://www.luogu.com.cn/problem/P2515)
 
-- [x] [P3387 缩点 / 强连通分量](https://www.luogu.com.cn/problem/P3387) `衔接`：SCC 与缩点 DAG 的标准入口。
-- [ ] [P2341 受欢迎的牛 G](https://www.luogu.com.cn/problem/P2341) `主练`：从缩点后的出度结构判断唯一候选。
 - [ ] [P2002 消息扩散](https://www.luogu.com.cn/problem/P2002) `主练`：缩点后统计需要独立启动的部分。
 - [ ] [P3627 抢掠计划](https://www.luogu.com.cn/problem/P3627) `主练`：缩点后在 DAG 上做最优路径。
 - [ ] [P2812 校园网络](https://www.luogu.com.cn/problem/P2812) `主练`：综合处理缩点 DAG 的入度与出度。
 - [ ] [P5008 锦鲤抄](https://www.luogu.com.cn/problem/P5008) `主练`：从强连通结构中识别必须保留的代价。
-- [ ] [P2419 Cow Contest S](https://www.luogu.com.cn/problem/P2419) `主练`：传递闭包与可比较关系统计。
-- [x] [P1113 杂务](https://www.luogu.com.cn/problem/P1113) `衔接`：拓扑序上的最长完成时间。
-- [ ] [P3243 菜肴制作](https://www.luogu.com.cn/problem/P3243) `主练`：字典序要求下的拓扑排序。
 - [ ] [P1262 [POI1996 R3] 间谍网络](https://www.luogu.com.cn/problem/P1262) `主练`：SCC 与可达性判定。
 - [ ] [P5025 [SNOI2017] 炸弹](https://www.luogu.com.cn/problem/P5025) `挑战`：区间连边 + SCC。
 - [ ] [P4819 [中山市选] 杀人游戏](https://www.luogu.com.cn/problem/P4819) `挑战`：SCC + 概率 / 计数。
 - [ ] [P7737 [NOI2021] 庆典](https://www.luogu.com.cn/problem/P7737) `挑战`：高阶 DAG / 支配结构相关。
 
 ### Part 8.13 割点 / 桥 / 双连通 / 圆方树｜主线
-
 - [x] [P8436 【模板】边双连通分量](https://www.luogu.com.cn/problem/P8436)
 - [x] [P8435 【模板】点双连通分量](https://www.luogu.com.cn/problem/P8435)
 - [ ] [CF1000E We Need More Bosses](https://www.luogu.com.cn/problem/CF1000E)
@@ -1612,20 +1404,23 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [x] [P3388 割点（割顶）](https://www.luogu.com.cn/problem/P3388) `衔接`：整理时间戳与 low 值的含义。
 - [ ] [P3469 BLO-Blockade](https://www.luogu.com.cn/problem/P3469) `主练`：割点造成的点对贡献统计。
 - [ ] [P3225 矿场搭建](https://www.luogu.com.cn/problem/P3225) `主练`：点双连通分量与方案计数。
-- [ ] [P7771 欧拉路径](https://www.luogu.com.cn/problem/P7771) `衔接`：整理有向图欧拉路径的存在条件与构造。
 - [ ] [P1656 炸铁路](https://www.luogu.com.cn/problem/P1656) `衔接`：桥的直接应用。
 - [ ] [P2860 [USACO06JAN] Redundant Paths G](https://www.luogu.com.cn/problem/P2860) `主练`：边双缩点后补边。
 - [ ] [P4630 [APIO2018] 铁人两项](https://www.luogu.com.cn/problem/P4630) `挑战`：圆方树 / 点双贡献统计。
 - [ ] [P4606 [SDOI2018] 战略游戏](https://www.luogu.com.cn/problem/P4606) `挑战`：虚树 + 圆方树。
 - [ ] [CF487E Tourists](https://www.luogu.com.cn/problem/CF487E) `挑战`：圆方树 + 数据结构。
 
-### Part 8.14 欧拉路径 / 欧拉回路｜主线
+- [ ] [P5058 [ZJOI2004] 嗅探器](https://www.luogu.com.cn/problem/P5058) `主练`：割点与指定点对断连的典型应用。
 
+### Part 8.14 欧拉路径 / 欧拉回路｜主线
 - [ ] [P7771 【模板】欧拉路径](https://www.luogu.com.cn/problem/P7771)
 
-### Part 8.15 二分图 / 染色 / 匹配｜主线
+- [ ] [P1341 无序字母对](https://www.luogu.com.cn/problem/P1341) `衔接`：把字母视为点，构造字典序最小欧拉路径。
+- [ ] [P2731 [USACO3.3] 骑马修栅栏 Riding the Fences](https://www.luogu.com.cn/problem/P2731) `主练`：无向图欧拉回路 / 路径构造。
+- [ ] [P3520 [POI2011] SMI-Garbage](https://www.luogu.com.cn/problem/P3520) `挑战`：欧拉回路分解与图结构综合。
 
-- [x] [P3386 【模板】二分图匹配](https://www.luogu.com.cn/problem/P3386)
+### Part 8.15 二分图 / 染色 / 匹配｜主线
+- [x] [P3386 二分图最大匹配](https://www.luogu.com.cn/problem/P3386) `衔接`：整理增广路模型与复杂度。
 - [x] [P2756 飞行员配对方案问题](https://www.luogu.com.cn/problem/P2756)
 - [ ] [P1129 [ZJOI2007] 矩阵游戏](https://www.luogu.com.cn/problem/P1129)
 - [ ] [P1559 运动员最佳匹配问题](https://www.luogu.com.cn/problem/P1559)
@@ -1641,11 +1436,9 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF741C Arpa’s overnight party](https://www.luogu.com.cn/problem/CF741C) `衔接`：限制条件转二分图染色。
 - [ ] [P1155 双栈排序](https://www.luogu.com.cn/problem/P1155) `主练`：冲突图与可行性判定结合。
 - [ ] [CF1444C Team-Building](https://www.luogu.com.cn/problem/CF1444C) `主练`：多颜色点集的二分图判定。
-- [x] [P3386 二分图最大匹配](https://www.luogu.com.cn/problem/P3386) `衔接`：整理增广路模型与复杂度。
 - [ ] [P1477 假面舞会](https://www.luogu.com.cn/problem/P1477) `挑战`：图上关系一致性与环约束综合。
 
 ### Part 8.16 最大流｜主线
-
 - [x] [P3376 【模板】网络最大流](https://www.luogu.com.cn/problem/P3376)
 - [ ] [P4722 【模板】最大流加强版 / 预流推进](https://www.luogu.com.cn/problem/P4722)
 - [ ] [P2065 [TJOI2011] 卡片](https://www.luogu.com.cn/problem/P2065)
@@ -1658,7 +1451,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3749 [六省联考2017] 寿司餐厅](https://www.luogu.com.cn/problem/P3749)
 
 ### Part 8.17 最小割｜主线
-
 - [ ] [P1344 [USACO4.4] Pollutant Control](https://www.luogu.com.cn/problem/P1344)
 - [x] [P1345 [USACO5.4] Telecowmunication](https://www.luogu.com.cn/problem/P1345)
 - [ ] [P2057 [SHOI2007] 善意的投票](https://www.luogu.com.cn/problem/P2057)
@@ -1668,7 +1460,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5039 [SHOI2010] 最小生成树](https://www.luogu.com.cn/problem/P5039)
 
 ### Part 8.18 费用流｜主线
-
 - [x] [P3381 【模板】最小费用最大流](https://www.luogu.com.cn/problem/P3381)
 - [ ] [P4016 负载平衡问题](https://www.luogu.com.cn/problem/P4016)
 - [ ] [P4452 [国家集训队] 航班安排](https://www.luogu.com.cn/problem/P4452)
@@ -1687,21 +1478,18 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [x] [P1251 餐巾计划问题](https://www.luogu.com.cn/problem/P1251)
 
 ### Part 8.19 上下界网络流｜进阶主线
-
 - [ ] [P3980 [NOI2008] 志愿者招募](https://www.luogu.com.cn/problem/P3980)
 - [ ] [P4043 [AHOI2014/JSOI2014] 支线剧情](https://www.luogu.com.cn/problem/P4043)
 - [ ] [P4553 80人环游世界](https://www.luogu.com.cn/problem/P4553)
 - [ ] [P4843 清理雪道](https://www.luogu.com.cn/problem/P4843)
 
 ### Part 8.20 2-SAT｜主线
-
 - [x] [P4782 【模板】2-SAT 问题](https://www.luogu.com.cn/problem/P4782)
 - [ ] [P4171 [JSOI2010] 满汉全席](https://www.luogu.com.cn/problem/P4171)
 - [ ] [P3825 [NOI2017] 游戏](https://www.luogu.com.cn/problem/P3825)
 - [ ] [P5332 [JSOI2019] 精准预测](https://www.luogu.com.cn/problem/P5332)
 
 ### Part 8.21 树链剖分 / 动态树 / 复杂路径查询｜进阶主线
-
 - [ ] [P4219 大融合](https://www.luogu.com.cn/problem/P4219) `主练`：动态加边与路径信息。
 - [ ] [P4216 情报传递](https://www.luogu.com.cn/problem/P4216) `主练`：树链剖分与时间维询问结合。
 - [ ] [P5773 轻重路径](https://www.luogu.com.cn/problem/P5773) `主练`：路径修改与全局结构统计。
@@ -1717,11 +1505,9 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3690 动态树](https://www.luogu.com.cn/problem/P3690) `衔接`：LCT 模板入口。
 - [ ] [P1501 Tree II](https://www.luogu.com.cn/problem/P1501) `主练`：路径修改与路径查询的标准应用。
 - [ ] [P2387 魔法森林](https://www.luogu.com.cn/problem/P2387) `主练`：动态图与路径信息维护综合。
-- [ ] [P4219 大融合](https://www.luogu.com.cn/problem/P4219) `复盘`：已在树论题单出现。
 {% endfold %}
 
 ### Part 8.22 离线动态连通性｜进阶主线
-
 - [ ] [P5787 线段树分治 / 二分图](https://www.luogu.com.cn/problem/P5787) `衔接`：时间线段树与可撤销并查集入口。
 - [ ] [SP9576 Dynamic Graph Connectivity](https://www.luogu.com.cn/problem/SP9576) `主练`：离线动态连通性的标准模型。
 - [ ] [CF576E Painting Edges](https://www.luogu.com.cn/problem/CF576E) `挑战`：动态二分图判定。
@@ -1729,7 +1515,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3206 城市建设](https://www.luogu.com.cn/problem/P3206) `暂存`：动态生成树问题。
 
 ### Part 8.23 点分治｜进阶主线
-
 - [ ] [P3806 【模板】点分治1](https://www.luogu.com.cn/problem/P3806)
 - [ ] [P2634 [国家集训队] 聪聪可可](https://www.luogu.com.cn/problem/P2634)
 - [ ] [P2664 树上游戏](https://www.luogu.com.cn/problem/P2664)
@@ -1742,7 +1527,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5306 [COCI2019] Transport](https://www.luogu.com.cn/problem/P5306)
 
 ### Part 8.24 树上启发式合并 / 动态点集｜进阶主线
-
 - [ ] [CF600E Lomsat gelral](https://www.luogu.com.cn/problem/CF600E) `衔接`：DSU on Tree 标准入口。
 - [ ] [CF741D Arpa’s letter-marked tree](https://www.luogu.com.cn/problem/CF741D) `主练`：子树路径与异或状态结合的启发式合并。
 - [ ] [P7124 stcm](https://www.luogu.com.cn/problem/P7124) `挑战`：Ynoi 树上综合题。
@@ -1756,7 +1540,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3320 寻宝游戏](https://www.luogu.com.cn/problem/P3320) `主练`：动态点集的虚树周长思想。
 
 ### Part 8.25 虚树｜进阶主线
-
 - [ ] [P2495 [SDOI2011] 消耗战](https://www.luogu.com.cn/problem/P2495)
 - [ ] [P3233 [HNOI2014] 世界树](https://www.luogu.com.cn/problem/P3233)
 - [ ] [P5360 [SDOI2019] 世界地图](https://www.luogu.com.cn/problem/P5360)
@@ -1765,7 +1548,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4606 [SDOI2018] 战略游戏](https://www.luogu.com.cn/problem/P4606) `挑战`：虚树 + 圆方树。
 
 ### Part 8.26 矩阵树定理｜地图保留
-
 {% fold info @矩阵树定理 题单 %}
 - [ ] [P4111 [HEOI2015] 小Z的房间](https://www.luogu.com.cn/problem/P4111)
 - [ ] [P2144 [FJOI2007] 轮状病毒](https://www.luogu.com.cn/problem/P2144)
@@ -1776,25 +1558,27 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 ## Part 9 计算几何
 
 ### Part 9.1 计算几何基础｜主线
+需要稳定掌握点 / 向量、点积、叉积、方向判断、线段相交、距离、多边形面积、点在多边形内，以及 EPS 与整数几何的边界。下面用少量题把这些基本操作真正落到实现上。
 
-需要稳定掌握点 / 向量、点积、叉积、方向判断、线段相交、距离、多边形面积、点在多边形内，以及 EPS 与整数几何的边界。此处不强行补大量洛谷题，后续更适合结合 ICPC / CF 几何题训练。
+- [ ] [P1355 神秘大三角](https://www.luogu.com.cn/problem/P1355) `衔接`：叉积、方向判断与点在三角形内。
+- [ ] [P1652 圆](https://www.luogu.com.cn/problem/P1652) `衔接`：点与圆的位置关系及距离平方比较。
+- [ ] [P1142 轰炸](https://www.luogu.com.cn/problem/P1142) `主练`：共线关系与几何判定。
+- [ ] [P1325 [ICPC 2002 Beijing R] 雷达安装](https://www.luogu.com.cn/problem/P1325) `主练`：距离公式转区间，再与贪心结合。
 
 ### Part 9.2 凸包｜主线
-
 - [ ] [P2742 【模板】二维凸包](https://www.luogu.com.cn/problem/P2742)
 - [ ] [P2287 [HNOI2004] 最佳包裹](https://www.luogu.com.cn/problem/P2287)
 - [ ] [P3829 [SHOI2012] 信用卡凸包](https://www.luogu.com.cn/problem/P3829)
-- [ ] [P4680 [Ynoi2018] 末日时在做什么?有没有空?可以来拯救吗?](https://www.luogu.com.cn/problem/P4680)
 - [ ] [P4557 [JSOI2018] 战争](https://www.luogu.com.cn/problem/P4557)
 - [ ] [P5403 [CTS2019] 田野](https://www.luogu.com.cn/problem/P5403)
 
 ### Part 9.3 旋转卡壳｜进阶主线
-
 - [ ] [P1452 Beauty Contest](https://www.luogu.com.cn/problem/P1452)
 - [ ] [P3187 [HNOI2007] 最小矩形覆盖](https://www.luogu.com.cn/problem/P3187)
 
-### Part 9.4 半平面交｜地图保留
+- [ ] [P6247 [SDOI2012] 最近最远点对](https://www.luogu.com.cn/problem/P6247) `挑战`：最近点对分治与凸包 / 旋转卡壳的综合。
 
+### Part 9.4 半平面交｜地图保留
 {% fold info @半平面交 题单 %}
 - [ ] [P3256 [JLOI2013] 赛车](https://www.luogu.com.cn/problem/P3256)
 - [ ] [P2600 [ZJOI2008] 瞭望塔](https://www.luogu.com.cn/problem/P2600)
@@ -1805,13 +1589,14 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 9.5 计算几何综合｜进阶主线
-
 - [ ] [P1578 [WC2002] 奶牛浴场](https://www.luogu.com.cn/problem/P1578) `挑战`：二维空矩形与边界枚举。
+
+- [ ] [P6247 [SDOI2012] 最近最远点对](https://www.luogu.com.cn/problem/P6247) `挑战`：分治最近点对 + 凸包 / 旋转卡壳。
+- [ ] [P4557 [JSOI2018] 战争](https://www.luogu.com.cn/problem/P4557) `挑战`：凸多边形关系与高级几何综合。
 
 ## Part 10 杂项
 
 ### Part 10.1 模拟退火｜地图保留
-
 {% fold info @模拟退火 题单 %}
 - [ ] [P1337 [JSOI2004] 平衡点](https://www.luogu.com.cn/problem/P1337)
 - [ ] [P2503 [HAOI2006] 均分数据](https://www.luogu.com.cn/problem/P2503)
@@ -1819,7 +1604,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 10.2 0/1 分数规划｜地图保留
-
 {% fold info @0/1 分数规划 题单 %}
 - [ ] [P4377 [USACO18OPEN] Talent Show](https://www.luogu.com.cn/problem/P4377)
 - [x] [P3199 [HNOI2009] 最小圈](https://www.luogu.com.cn/problem/P3199)
@@ -1829,7 +1613,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 10.3 CDQ 分治｜进阶主线
-
 - [ ] [P3810 【模板】三维偏序（陌上花开）](https://www.luogu.com.cn/problem/P3810)
 - [ ] [P3157 [CQOI2011] 动态逆序对](https://www.luogu.com.cn/problem/P3157)
 - [ ] [P2487 [SDOI2011] 拦截导弹](https://www.luogu.com.cn/problem/P2487)
@@ -1837,14 +1620,12 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3206 [HNOI2010] 城市建设](https://www.luogu.com.cn/problem/P3206)
 
 ### Part 10.4 整体二分｜进阶主线
-
 - [ ] [P1527 [国家集训队] 矩阵乘法](https://www.luogu.com.cn/problem/P1527)
 - [ ] [P2617 Dynamic Rankings](https://www.luogu.com.cn/problem/P2617)
 - [ ] [P3527 [POI2011] Meteors](https://www.luogu.com.cn/problem/P3527)
 - [ ] [P4602 [CTSC2018] 混合果汁](https://www.luogu.com.cn/problem/P4602)
 
 ### Part 10.5 莫队｜进阶主线
-
 - [ ] [P1494 [国家集训队] 小Z的袜子 / 【模板】莫队](https://www.luogu.com.cn/problem/P1494)
 - [ ] [P1903 【模板】带修莫队](https://www.luogu.com.cn/problem/P1903)
 - [ ] [P5906 【模板】回滚莫队](https://www.luogu.com.cn/problem/P5906)
@@ -1856,15 +1637,25 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5501 [LnOI2019] 来者不拒，去者不追](https://www.luogu.com.cn/problem/P5501)
 
 ### Part 10.6 Bitset 优化｜主线
-
 作为跨专题优化工具保留：图可达性、传递闭包、集合交并、布尔 DP、背包位移等。
 
-### Part 10.7 Small-to-Large｜主线
+- [ ] [B3611 【模板】传递闭包](https://www.luogu.com.cn/problem/B3611) `衔接`：用 bitset 加速布尔可达性传播。
+- [x] [P2447 [SDOI2010] 外星千足虫](https://www.luogu.com.cn/problem/P2447) `主练`：高斯消元中的 bitset 加速，和线性代数章节交叉。
+- [ ] [CF914F Substrings in a String](https://www.luogu.com.cn/problem/CF914F) `主练`：动态字符串匹配与位集平移 / 交。
+- [ ] [P3674 小清新人渣的本愿](https://www.luogu.com.cn/problem/P3674) `主练`：莫队与 bitset 的典型组合。
+- [ ] [P5355 [Ynoi2017] 由乃的玉米田](https://www.luogu.com.cn/problem/P5355) `挑战`：莫队、值域关系与 bitset 综合。
+- [ ] [P4465 [国家集训队] JZPSTR](https://www.luogu.com.cn/problem/P4465) `挑战`：字符串位集运算的高阶应用。
 
+### Part 10.7 Small-to-Large｜主线
 理解“总把小集合并入大集合”的复杂度分析，并与 DSU on Tree、map/set 合并建立联系。
 
-### Part 10.8 离线算法综合｜进阶主线
+- [ ] [P3201 [HNOI2009] 梦幻布丁](https://www.luogu.com.cn/problem/P3201) `衔接`：通用启发式合并：始终把小集合并入大集合。
+- [ ] [CF600E Lomsat gelral](https://www.luogu.com.cn/problem/CF600E) `主练`：DSU on Tree / 小并大在子树统计中的标准入口。
+- [ ] [CF570D Tree Requests](https://www.luogu.com.cn/problem/CF570D) `主练`：子树查询与深度分层信息维护。
+- [ ] [CF375D Tree and Queries](https://www.luogu.com.cn/problem/CF375D) `主练`：DSU on Tree 维护颜色频率分布。
+- [ ] [CF246E Blood Cousins Return](https://www.luogu.com.cn/problem/CF246E) `挑战`：按深度维护集合并回答子树去重询问。
 
+### Part 10.8 离线算法综合｜进阶主线
 - [ ] [P3810 三维偏序 / 陌上花开](https://www.luogu.com.cn/problem/P3810) `衔接`：CDQ 分治与树状数组的经典入口。
 - [ ] [P4390 Mokia 摩基亚](https://www.luogu.com.cn/problem/P4390) `主练`：带时间维的二维统计。
 - [ ] [P1527 矩阵乘法](https://www.luogu.com.cn/problem/P1527) `主练`：整体二分代表题。
@@ -1873,7 +1664,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4849 寻找宝藏](https://www.luogu.com.cn/problem/P4849) `挑战`：高维离线统计综合。
 
 ### Part 10.9 奇怪的题目｜近似忽略
-
 {% fold info @奇怪的题目 题单 %}
 - [ ] [P4920 [WC2015] 未来程序](https://www.luogu.com.cn/problem/P4920)
 - [ ] [P5042 [国家集训队] 丢失的题面](https://www.luogu.com.cn/problem/P5042)
@@ -1882,7 +1672,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 {% endfold %}
 
 ### Part 10.10 非传统题｜近似忽略
-
 {% fold info @非传统题完整题单 %}
 
 #### Part 10.10.1 提交答案题
@@ -1905,7 +1694,6 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P5208 [WC2019] I 君的商店](https://www.luogu.com.cn/problem/P5208)
 - [ ] [P5473 [NOI2019] I 君的探险](https://www.luogu.com.cn/problem/P5473)
 - [ ] [P6541 [WC2018] 即时战略](https://www.luogu.com.cn/problem/P6541)
-- [ ] [P6558 [APIO2017] 考拉的游戏](https://www.luogu.com.cn/problem/P6558)
 {% endfold %}
 
 ## 专题结构索引
