@@ -1,6 +1,7 @@
 ---
 title: XCPC 综合题单
 description: 面向 XCPC 长期训练，按专题与题型统一组织；允许一题多归属。
+long_page: true
 tags:
   - algorithm/题单
 categories:

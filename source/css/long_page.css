@@ -1,0 +1,21 @@
+/* Long Page 模式：粗粒度 Part 级渲染隔离 */
+/* 由文章 Front Matter long_page: true 开启，构建期生成 .long-page-part 容器 */
+
+.long-page-part {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+  /* 显式 containment：在不支持 content-visibility 的浏览器中仍隔离 layout/paint */
+  contain: layout paint style;
+}
+
+/* 打印时关闭屏外跳过，保证全文输出 */
+@media print {
+  .long-page-part {
+    content-visibility: visible;
+  }
+}
+
+/* Part 之间的节奏与正文保持一致 */
+.long-page-part + .long-page-part {
+  margin-top: 1.5em;
+}
