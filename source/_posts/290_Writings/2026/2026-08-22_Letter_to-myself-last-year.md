@@ -4,7 +4,6 @@ tags: 写作/信笺
 categories:
   - 290_Writings
   - '2026'
-sticky: 100
 archive: false
 abbrlink: 6ffdfad6
 date: 2026-08-22 23:44:03

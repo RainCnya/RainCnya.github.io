@@ -60,6 +60,7 @@ hexo.extend.filter.register("after_render:html", (html, data) => {
   if (page && page.long_page === true && typeof html === "string") {
     html = html.replace(/(<div id="banner"[^>]*?)\s+parallax=(?:true|"true")/i, "$1");
     html = html.replace(/"expand_all":\s*true/, "\"expand_all\":false");
+    html = html.replace(/"collapseDepth":\s*\d+/, "\"collapseDepth\":6");
   }
   return html;
 }, 100);

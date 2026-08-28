@@ -6,7 +6,6 @@ tags:
   - algorithm/题单
 categories:
   - 280_Study
-sticky: 99
 comments: false
 copyright: false
 abbrlink: '60749789'

@@ -214,18 +214,28 @@ body:has(.miqiu-profile) .post-content {
   transition: padding-left 0.18s ease;
 }
 
+.miqiu-latest-list.miqiu-featured-list > a {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.miqiu-latest-list.miqiu-recent-slots > a {
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+}
+
 .miqiu-latest-list > a:hover {
   padding-left: 0.45rem;
 }
 
-.miqiu-latest-list time {
+.miqiu-slot {
   padding-top: 0.12rem;
   color: var(--home-date);
-  font-family: var(--home-font-mono);
+  font-family: var(--home-font-wenkai);
   font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.75;
 }
 
-.miqiu-latest-list span {
+.miqiu-latest-list > a > .miqiu-latest-copy {
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -397,6 +407,14 @@ body:has(.miqiu-profile) .post-content {
   .miqiu-latest-list > a {
     grid-template-columns: 3.6rem minmax(0, 1fr);
     gap: 0.7rem;
+  }
+
+  .miqiu-latest-list.miqiu-featured-list > a {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .miqiu-latest-list.miqiu-recent-slots > a {
+    grid-template-columns: 3.6rem minmax(0, 1fr);
   }
 
   .miqiu-home-bottom {

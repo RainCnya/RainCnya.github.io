@@ -37,12 +37,12 @@ comments: false
   <header>
     <h2>置顶推荐</h2>
   </header>
-  <div class="miqiu-latest-list">
+  <div class="miqiu-latest-list miqiu-featured-list">
     <a href="/posts/6ffdfad6/">
-      <span><strong>致去年的我的一封信</strong><small>写给重新出发前的自己，也写给仍在继续往前的以后。</small></span>
+      <span class="miqiu-latest-copy"><strong>致去年的我的一封信</strong><small>写给重新出发前的自己，也写给仍在继续往前的以后。</small></span>
     </a>
     <a href="/posts/60749789/">
-      <span><strong>XCPC 综合题单</strong><small>按专题、题型与训练定位组织的长期 XCPC 学习地图。</small></span>
+      <span class="miqiu-latest-copy"><strong>XCPC 综合题单</strong><small>按专题、题型与训练定位组织的长期 XCPC 学习地图。</small></span>
     </a>
   </div>
 </section>
@@ -52,22 +52,22 @@ comments: false
     <h2>最近留下</h2>
     <a href="/recent/">查看全部 →</a>
   </header>
-  <div class="miqiu-latest-list">
-    <a href="/posts/p1251001/">
-      <time datetime="2026-08-28">08.28</time>
-      <span><strong>P1251 · 餐巾计划问题</strong><small>拆开同一天使用前后的状态，把购买、存放与洗涤放进时间扩展网络。</small></span>
-    </a>
-    <a href="/posts/p2057001/">
-      <time datetime="2026-08-28">08.28</time>
-      <span><strong>P2057 · 善意的投票</strong><small>给割的两侧赋予二元决策含义，让局部冲突恰好成为跨割代价。</small></span>
-    </a>
-    <a href="/posts/p2762001/">
-      <time datetime="2026-08-28">08.28</time>
-      <span><strong>P2762 · 太空飞行计划</strong><small>用无限容量边表达选择依赖，把最大权闭合集合还原为最小割。</small></span>
-    </a>
+  <div class="miqiu-latest-list miqiu-recent-slots">
     <a href="/posts/6ffdfad6/">
-      <time datetime="2026-08-22">08.22</time>
-      <span><strong>致去年的我的一封信</strong><small>在大一与集训结束的夜里，回望重新出发、远行、写作与相遇。</small></span>
+      <span class="miqiu-slot">文字</span>
+      <span class="miqiu-latest-copy"><strong>致去年的我的一封信</strong><small>在大一与集训结束的夜里，回望重新出发、远行、写作与相遇。</small></span>
+    </a>
+    <a href="/posts/p1251001/">
+      <span class="miqiu-slot">题目</span>
+      <span class="miqiu-latest-copy"><strong>P1251 · 餐巾计划问题</strong><small>拆开同一天使用前后的状态，把购买、存放与洗涤放进时间扩展网络。</small></span>
+    </a>
+    <a href="/posts/c0ad84cf/">
+      <span class="miqiu-slot">笔记</span>
+      <span class="miqiu-latest-copy"><strong>浅谈线段树懒标记</strong><small>从区间加到仿射变换，理解标记如何组合，并在需要时下传。</small></span>
+    </a>
+    <a href="/posts/2010a92e/">
+      <span class="miqiu-slot">比赛</span>
+      <span class="miqiu-latest-copy"><strong>ABC469 A~G</strong><small>记录一场 AtCoder 比赛中的解题过程、题目思路与主要时间损耗。</small></span>
     </a>
   </div>
 </section>
