@@ -58,39 +58,69 @@ function collectProblemIds(postFiles) {
   return [...ids].sort((left, right) => left.localeCompare(right));
 }
 
-function fetchLuoguDifficulty(problemId) {
-  const url = `https://www.luogu.com.cn/problem/${encodeURIComponent(problemId)}`;
+let luoguCookie = null;
+let luoguCookieExpiry = 0;
+
+function requestLuoguText(url, headers) {
   return new Promise((resolve, reject) => {
-    const request = https.get(url, {
-      headers: {
-        "x-lentille-request": "content-only",
-        "user-agent": "MiQiu-Blog-Difficulty-Cache/1.0",
-      },
-    }, (response) => {
+    const request = https.get(url, { headers }, (response) => {
       const chunks = [];
       response.on("data", (chunk) => chunks.push(chunk));
       response.on("error", reject);
       response.on("end", () => {
-        if (response.statusCode !== 200) {
-          reject(new Error(`洛谷返回 HTTP ${response.statusCode}`));
-          return;
-        }
-        try {
-          const payload = JSON.parse(Buffer.concat(chunks).toString("utf8"));
-          const difficulty = payload && payload.data && payload.data.problem && payload.data.problem.difficulty;
-          if (!Number.isInteger(difficulty) || difficulty < 0 || difficulty > 8) {
-            throw new Error("洛谷响应中没有有效的 difficulty");
-          }
-          resolve(difficulty);
-        } catch (error) {
-          reject(error);
-        }
+        resolve({
+          statusCode: response.statusCode,
+          headers: response.headers,
+          body: Buffer.concat(chunks).toString("utf8"),
+        });
       });
     });
     request.setTimeout(15000, () => request.destroy(new Error("洛谷请求超时")));
     request.on("error", reject);
   });
-}
+};
+
+async function ensureLuoguCookie() {
+  if (luoguCookie && Date.now() < luoguCookieExpiry) {
+    return luoguCookie;
+  }
+  const response = await requestLuoguText("https://www.luogu.com.cn/", {
+    "user-agent": "MiQiu-Blog-Difficulty-Cache/1.0",
+  });
+  const match = response.body.match(/cookie="([^"]+)"/);
+  luoguCookie = match ? match[1].split(";")[0] : null;
+  luoguCookieExpiry = Date.now() + 4 * 60 * 1000;
+  return luoguCookie;
+};
+
+async function fetchLuoguDifficulty(problemId) {
+  const url = `https://www.luogu.com.cn/problem/${encodeURIComponent(problemId)}?_contentOnly=1`;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const cookie = await ensureLuoguCookie();
+    const headers = {
+      "x-lentille-request": "content-only",
+      "user-agent": "MiQiu-Blog-Difficulty-Cache/1.0",
+      "referer": "https://www.luogu.com.cn/",
+    };
+    if (cookie) { headers["cookie"] = cookie; }
+    const response = await requestLuoguText(url, headers);
+    if (response.statusCode === 302 || (response.statusCode === 200 && !response.body.trim().startsWith("{"))) {
+      luoguCookie = null;
+      continue;
+    }
+    if (response.statusCode !== 200) {
+      throw new Error(`洛谷返回 HTTP ${response.statusCode}`);
+    }
+    const payload = JSON.parse(response.body);
+    const difficulty = payload && payload.data && payload.data.problem && payload.data.problem.difficulty;
+    if (!Number.isInteger(difficulty) || difficulty < 0 || difficulty > 8) {
+      throw new Error("洛谷响应中没有有效的 difficulty");
+    }
+    return difficulty;
+  }
+  throw new Error("洛谷请求多次失败（可能是访问受限）");
+};
+
 
 function delay(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
