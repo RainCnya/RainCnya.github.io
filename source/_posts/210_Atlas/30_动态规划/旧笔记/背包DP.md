@@ -8,6 +8,7 @@ categories:
   - 旧笔记
 abbrlink: 3349ba31
 date: 2026-01-31 00:00:00
+updated: 2026-08-29
 ---
 # [L4] 背包DP
 
@@ -121,50 +122,6 @@ void add_item( int w, int v, int count )
     if( count > 0 ) items.push_back( { count * w, count * v } );
 }
 
-// 3.1 多重背包 - 单调队列优化
-// 场景: 物品数量 N 巨大，容量 V 巨大，追求 O(NV) 极限复杂度
-// 逻辑: 按 j % w 分组，每组内部是一个滑动窗口最大值问题
-struct DQItem { int idx, val; }; // 队列存储: 原始下标, 修正后的价值
-void solve_multi_deque( int n, int V, int w[], int v[], int c[] )
-{
-    // g[j] 保存上一轮(i-1)的状态，f[j] 更新当前轮(i)
-    static int g[MAXV]; 
-    static DQItem q[MAXV]; // 手写单调队列
-
-    for( int i = 1; i <= n; ++ i )
-    {
-        memcpy( g, f, sizeof( f ) ); // 复制上一轮状态
-        int weight = w[i], value = v[i], limit = c[i];
-
-        // 枚举余数 r (0 ... weight-1)
-        for( int r = 0; r < weight; ++ r )
-        {
-            int head = 1, tail = 0;
-            // 在余数链上遍历: k = 0, 1, 2... 表示真实容量 r, r+w, r+2w...
-            // 极限位置: (V - r) / weight
-            for( int k = 0; r + k * weight <= V; ++ k )
-            {
-                // 1. 窗口过期: 只能从 [k - limit, k - 1] 转移
-                if( head <= tail && q[head].idx < k - limit ) head ++;
-                
-                // 2. 准备入队的新决策: 来自 g 数组 (上一层)
-                // 变形核心: max( g[t] - t/w * v ) + j/w * v
-                // 这里 k 就是 j/w (在当前链中的相对下标)
-                // 存入队列的值是: g[... + k*w] - k * v
-                int calc_val = g[r + k * weight] - k * value;
-                
-                // 维护单调递减队列
-                while( head <= tail && q[tail].val <= calc_val ) tail --;
-                q[++tail] = { k, calc_val };
-                
-                // 3. 更新 f (当前层)
-                // f[j] = 队首最优值 + k * v
-                f[r + k * weight] = q[head].val + k * value;
-            }
-        }
-    }
-}
-
 // 4. 分组背包
 // 场景: 物品被分组，每组最多选 1 个
 // 顺序: 组 -> 容量(倒序) -> 组内决策
@@ -187,6 +144,10 @@ void solve_group( int group_cnt, int V, vector<int> group_items[] )
 
 ```
 {% endfold %}
+
+### 多重背包的单调队列优化
+
+当数量上限很大而容量维仍需逐格处理时，可以把同余容量重新编号为状态链。P1776 的完整推导、上一层状态隔离和实现见 [[单调队列优化DP模型#六、P1776 宝物筛选：重新分组以后出现窗口|单调队列优化 DP 模型]]，本页只保留二进制拆分与分组背包的通用模板。
 
 ## 4. 知识关联
 

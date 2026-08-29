@@ -9,7 +9,7 @@ permalink: /
 toc: false
 hide: true
 date: 2025-11-09 11:00:09
-updated: 2026-08-28 00:00:00
+updated: 2026-08-29 00:00:00
 meta: false
 copyright: false
 comments: false
@@ -57,9 +57,9 @@ comments: false
       <span class="miqiu-slot">文字</span>
       <span class="miqiu-latest-copy"><strong>致去年的我的一封信</strong><small>在大一与集训结束的夜里，回望重新出发、远行、写作与相遇。</small></span>
     </a>
-    <a href="/posts/p3177001/">
-      <span class="miqiu-slot">题目</span>
-      <span class="miqiu-latest-copy"><strong>P3177 · 树上染色</strong><small>把同色点对的距离拆成边贡献，再用树上背包分配黑点数量。</small></span>
+    <a href="/posts/treeknap26/">
+      <span class="miqiu-slot">笔记</span>
+      <span class="miqiu-latest-copy"><strong>树上背包模型</strong><small>从资源拆分出发，辨认接口状态与结构变换后的树上背包。</small></span>
     </a>
     <a href="/posts/60749789/">
       <span class="miqiu-slot">笔记</span>

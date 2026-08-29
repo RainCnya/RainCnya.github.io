@@ -10,7 +10,7 @@ comments: false
 copyright: false
 abbrlink: '60749789'
 date: 2026-08-28
-updated: 2026-08-28
+updated: 2026-08-29
 ---
 
 # XCPC 综合题单
@@ -262,22 +262,24 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P4395 [BOI2003] Gem](https://www.luogu.com.cn/problem/P4395) `主练`：树上染色状态设计。
 - [ ] [P5658 括号树](https://www.luogu.com.cn/problem/P5658) `主练`：根路径信息与树形统计。
 - [ ] [P4516 [JSOI2018] 潜入行动](https://www.luogu.com.cn/problem/P4516) `主练`：多状态树形 DP。
-- [x] [P1273 有线电视网](https://www.luogu.com.cn/problem/P1273) `主练`：树上背包收益模型。
-- [x] [P2014 选课](https://www.luogu.com.cn/problem/P2014) `主练`：依赖型树上背包。
-- [x] [P2015 二叉苹果树](https://www.luogu.com.cn/problem/P2015) `主练`：树上背包经典题。
-- [x] [P3177 [HAOI2015] 树上染色](https://www.luogu.com.cn/problem/P3177) `主练`：树上背包与边贡献。
-- [ ] [P3698 [CQOI2017] 小Q的棋盘](https://www.luogu.com.cn/problem/P3698) `主练`：树上路径/访问状态设计。
+- [x] [P2014 选课](https://www.luogu.com.cn/problem/P2014) `主练`：树上背包 - 依赖关系
+- [x] [P2015 二叉苹果树](https://www.luogu.com.cn/problem/P2015) `主练`：树上背包 - 对象选择
+- [x] [P1273 有线电视网](https://www.luogu.com.cn/problem/P1273) `主练`：树上背包 - 收益模型
+- [x] [P3698 小Q的棋盘](https://www.luogu.com.cn/problem/P3698) `主练`：树上背包 - 访问状态设计
+- [x] [P3177 树上染色](https://www.luogu.com.cn/problem/P3177) `主练`：树上背包 - 边贡献
+- [x] [P2515 软件安装](https://www.luogu.com.cn/problem/P2515) `挑战`：树上背包 - SCC 缩点
 - [ ] [P3574 FAR-FarmCraft](https://www.luogu.com.cn/problem/P3574) `主练`：树形 DP 与子树访问顺序。
 - [x] [P2607 骑士](https://www.luogu.com.cn/problem/P2607) `主练`：基环树 DP。
-- [x] [P2515 软件安装](https://www.luogu.com.cn/problem/P2515) `挑战`：SCC 缩点后依赖背包。
 - [ ] [P4438 道路](https://www.luogu.com.cn/problem/P4438) `挑战`：多层树形决策。
 - [ ] [P4099 [HEOI2013] SAO](https://www.luogu.com.cn/problem/P4099) `挑战`：树 / 图上的计数 DP。
+
 #### Part 3.2.2 换根 DP｜主线
 重点训练“先算一个根，再沿边转移整树答案”。
 - [x] [P3478 STA-Station](https://www.luogu.com.cn/problem/P3478) `衔接`：换根 DP 经典入口。
 - [ ] [CF1092F Tree with Maximum Cost](https://www.luogu.com.cn/problem/CF1092F) `复盘`：与经典距离贡献换根模型接近。
 - [ ] [P2986 [USACO10MAR] Great Cow Gathering](https://www.luogu.com.cn/problem/P2986) `主练`：带点权的整树距离贡献。
 - [ ] [P3047 [USACO12FEB] Nearby Cows](https://www.luogu.com.cn/problem/P3047) `挑战`：换根维护多层距离状态。
+
 #### Part 3.2.3 DAG / 图上 DP / 拓扑递推｜主线
 - [x] [P3387 缩点 / 强连通分量](https://www.luogu.com.cn/problem/P3387) `衔接`：SCC + 缩点 DAG 的标准入口。
 - [x] [P4316 绿豆蛙的归宿](https://www.luogu.com.cn/problem/P4316) `衔接`：DAG 上期望递推。
@@ -287,6 +289,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [CF960F Pathwalks](https://www.luogu.com.cn/problem/CF960F) `挑战`：动态权值图上 DP + 数据结构。
 - [x] [P6772 美食家](https://www.luogu.com.cn/problem/P6772) `挑战`：时间限制下的图上最优路径。
 - [ ] [P7516 图函数](https://www.luogu.com.cn/problem/P7516) `挑战`：有向图结构上的高阶递推。
+
 ### Part 3.3 状态压缩与计数 DP｜主线
 #### Part 3.3.1 状态压缩 DP｜主线
 > **子集状态 / 状态图**
@@ -351,7 +354,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3286 [SCOI2014] 方伯伯的商场之旅](https://www.luogu.com.cn/problem/P3286) `挑战`：高阶数位统计。
 - [ ] [P4798 [CEOI2015 Day1] 卡尔文球锦标赛](https://www.luogu.com.cn/problem/P4798) `挑战`：顺序计数与数位状态。
 ### Part 3.4 DP 优化｜进阶主线
-#### Part 3.4.1 单调队列优化 DP｜主线
+#### Part 3.4.1 单调队列优化 DP｜主线 · [[单调队列优化DP模型|模型页]]
 - [x] [P1725 琪露诺](https://www.luogu.com.cn/problem/P1725) `衔接`：窗口最值优化 DP 的标准入口。
 - [x] [P1714 切蛋糕](https://www.luogu.com.cn/problem/P1714) `衔接`：前缀信息与滑动窗口最值。
 - [x] [P2034 选择数字](https://www.luogu.com.cn/problem/P2034) `主练`：从朴素 DP 过渡到窗口优化。

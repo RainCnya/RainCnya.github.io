@@ -4,6 +4,7 @@ tags:
   - 字符串/AC自动机
   - DP
   - 数学/线代/矩阵快速幂
+status: developing
 categories:
   - 260_Records
   - Archive
@@ -192,3 +193,9 @@ void solve( ) {
 }
 ```
 {% endfold %}
+## 当前状态
+
+- 生命周期：shelved。
+- 缺失前置：AC 自动机构造、fail 非法状态传播，以及自动机计数 DP 的独立掌握。
+- 回补条件：能够独立完成 AC 基础匹配与计数，并自己推出“自动机状态作为 DP 状态”。
+- 未来方向：AC 自动机计数 / 固定转移加速。
