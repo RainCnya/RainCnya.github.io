@@ -10,7 +10,7 @@ comments: false
 copyright: false
 abbrlink: '60749789'
 date: 2026-08-28
-updated: 2026-08-29
+updated: 2026-08-30
 ---
 
 # XCPC 综合题单
@@ -1138,6 +1138,8 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P7562 [JOISC 2021] Event Hopping 2](https://www.luogu.com.cn/problem/P7562) `挑战`：高阶倍增 / 离线跳转。
 ### Part 7.4 生成树｜主线
 #### Part 7.4.1 最小生成树及其扩展｜主线
+
+专题入口：[[生成树理论]]、[[生成树题型整理]]；生成树计数仍单列为 [[Note] 矩阵树定理]]。
 > **基础建模与瓶颈性质**
 - [x] [P3366 最小生成树](https://www.luogu.com.cn/problem/P3366) `衔接`：整理 Kruskal 与 Prim 的适用场景。
 - [x] [P1195 口袋的天空](https://www.luogu.com.cn/problem/P1195) `衔接`：从完整生成树过渡到指定连通块数量。
@@ -1159,6 +1161,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [x] [CF76A Gift](https://www.luogu.com.cn/problem/CF76A) `挑战`：两类边权共同决定代价。
 - [x] [P5633 最小度限制生成树](https://www.luogu.com.cn/problem/P5633) `挑战`：带点度数限制的生成树构造。
 - [ ] [CF1120D Power Tree](https://www.luogu.com.cn/problem/CF1120D) `挑战`：生成树 / 贪心结构综合。
+
 #### Part 7.4.2 矩阵树定理｜地图保留
 {% fold info @矩阵树定理 题单 %}
 - [ ] [P4111 [HEOI2015] 小Z的房间](https://www.luogu.com.cn/problem/P4111)
@@ -1166,6 +1169,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`；原手写题保留但不
 - [ ] [P3317 [SDOI2014] 重建](https://www.luogu.com.cn/problem/P3317)
 - [ ] [P4208 [JSOI2008] 最小生成树计数](https://www.luogu.com.cn/problem/P4208)
 {% endfold %}
+
 ### Part 7.5 有向图结构｜主线
 #### Part 7.5.1 拓扑排序 / DAG 结构 / 传递闭包｜主线
 DAG 上复杂 DP 已由 Part 3 负责；这里保留拓扑序、可达关系与 DAG 结构本身。
