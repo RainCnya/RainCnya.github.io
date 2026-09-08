@@ -1198,7 +1198,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 - [x] [P2294 [HNOI2005] 狡猾的商人](https://www.luogu.com.cn/problem/P2294) `衔接`：差值关系与带权并查集形成对照；交叉：[[XCPC_综合题单#Part 6.1.2 并查集｜主线|6.1.2 带权并查集]]
 - [x] [P3275 [SCOI2011] 糖果](https://www.luogu.com.cn/problem/P3275) `主练`：严格 / 非严格约束与强连通结构
 - [ ] [P7515 [省选联考 2021 A/B 卷] 矩阵游戏](https://www.luogu.com.cn/problem/P7515) `主练`：二维条件转势能约束
-- [ ] [P4926 [1007] 倍杀测量者](https://www.luogu.com.cn/problem/P4926) `挑战`：复杂约束关系与判定
+- [x] [P4926 [1007] 倍杀测量者](https://www.luogu.com.cn/problem/P4926) `挑战`：复杂约束关系与判定
 
 ### Part 7.2 树论基础｜主线
 
