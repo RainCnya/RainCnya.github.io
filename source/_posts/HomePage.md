@@ -53,21 +53,21 @@ comments: false
     <a href="/recent/">查看全部 →</a>
   </header>
   <div class="miqiu-latest-list miqiu-recent-slots">
-    <a href="/posts/6ffdfad6/">
+    <a href="/posts/chengdu2026/">
       <span class="miqiu-slot">文字</span>
-      <span class="miqiu-latest-copy"><strong>致去年的我的一封信</strong><small>在大一与集训结束的夜里，回望重新出发、远行、写作与相遇。</small></span>
+      <span class="miqiu-latest-copy"><strong>成都，带不走的只有你</strong><small>第一次区域赛的远行，街头的歌声，以及走出赛场后仍一起往前的三个人。</small></span>
+    </a>
+    <a href="/posts/484826b5/">
+      <span class="miqiu-slot">题目</span>
+      <span class="miqiu-latest-copy"><strong>P9630 Interested in Skiing</strong><small>从可通行路线改看障碍封锁链，再以最大瓶颈路刻画临界速度。</small></span>
     </a>
     <a href="/posts/treeknap26/">
       <span class="miqiu-slot">笔记</span>
       <span class="miqiu-latest-copy"><strong>树上背包模型</strong><small>从资源拆分出发，辨认接口状态与结构变换后的树上背包。</small></span>
     </a>
-    <a href="/posts/60749789/">
-      <span class="miqiu-slot">笔记</span>
-      <span class="miqiu-latest-copy"><strong>XCPC 综合题单</strong><small>按专题、题型与训练定位重建长期学习地图，并保留题目间的交叉归属。</small></span>
-    </a>
-    <a href="/posts/2010a92e/">
+    <a href="/posts/chengdu2026/">
       <span class="miqiu-slot">比赛</span>
-      <span class="miqiu-latest-copy"><strong>ABC469 A~G</strong><small>记录一场 AtCoder 比赛中的解题过程、题目思路与主要时间损耗。</small></span>
+      <span class="miqiu-latest-copy"><strong>2026 ICPC 成都站游记</strong><small>从热身到正式赛，记下贪心性质、区间交点边界与卡题时的队内推进。</small></span>
     </a>
   </div>
 </section>
@@ -76,10 +76,11 @@ comments: false
   <div class="miqiu-now">
     <h2>此间正在发生</h2>
     <dl>
-      <div><dt>学习</dt><dd>树形 DP、计数状态与差分模型</dd></div>
+      <div><dt>下一站</dt><dd>CCPC 厦门 · 11 月 22 日</dd></div>
+      <div><dt>学习</dt><dd>障碍封锁链、树的中心结构与前缀和顺序</dd></div>
       <div><dt>整理</dt><dd>面向 XCPC 长期训练的专题题单</dd></div>
-      <div><dt>写作</dt><dd>给过去与未来的一封信</dd></div>
-      <div><dt>留下</dt><dd>边贡献、换根转移与状态封闭</dd></div>
+      <div><dt>写作</dt><dd>把第一次区域赛的远行、同行与赛后心情写成游记</dd></div>
+      <div><dt>留下</dt><dd>在卡题时先把想法写出来，也记住区间交集只剩一个点的边界</dd></div>
     </dl>
   </div>
   <div class="miqiu-entrances">

@@ -9,7 +9,7 @@ categories:
   - 290_Writings
 abbrlink: cc99f7e0
 date: 2026-07-12 00:00:00
-updated: 2026-08-28 00:00:00
+updated: 2026-10-27 00:00:00
 ---
 
 ## 文字作品
@@ -31,6 +31,7 @@ updated: 2026-08-28 00:00:00
 
 ## 远行与比赛
 
+- [[2026-10-27_Travelogue_icpc-chengdu|成都，带不走的只有你]]：第一次区域赛，从街头听歌到赛后复盘，记下三个人的同行；
 - [[2026-05-18_Travelogue_icpc-nanchang|南昌游记 夏天的星位]]；
 - [[2026-04-26_Travelogue_ccpc-final-nanyang|南阳游记 春天替我记下了这次远行]]。
 
