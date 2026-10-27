@@ -9,7 +9,7 @@ categories:
   - 290_Writings
 abbrlink: 7525e7eb
 date: 2026-02-22 09:59:41
-updated: 2026-09-08 00:00:00
+updated: 2026-10-27 00:00:00
 ---
 
 ## 文字作品目录
@@ -29,6 +29,7 @@ updated: 2026-09-08 00:00:00
 9. [[2026-07-12_Fiction_are-you-still-there|还在……吗？]]｜小说
 10. [[2026-08-22_Letter_to-myself-last-year|致去年的我的一封信]]｜信笺
 11. [[2026-09-08_Fiction_a-little-earlier|早一点]]｜小说
+12. [[2026-10-27_Travelogue_icpc-chengdu|成都，带不走的只有你]]｜游记
 
 ## 2025
 
