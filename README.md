@@ -2,7 +2,7 @@
 
 这是 MiQiu 的个人知识站源码仓库，内容以算法竞赛、数学体系、题解、学习笔记和文字作品为主。
 
-- 站点域名：<https://raincnya.space>
+- 站点域名：<http://miqiu.space>
 - 生成器：Hexo 8
 - 主题：Fluid 1.9
 - 部署：GitHub Pages

@@ -14,7 +14,7 @@ timezone: 'Asia/Shanghai' # 明确时区，防止文章发布时间错乱
 # URL
 ## 【关键】请填入你部署后的真实域名！
 ## 如果你只有 GitHub Pages，通常是 https://raincnya.github.io
-url: https://raincnya.space
+url: http://miqiu.space
 root: /
 permalink: posts/:abbrlink/
 permalink_defaults:
