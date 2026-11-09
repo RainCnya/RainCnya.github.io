@@ -11,6 +11,8 @@ public/
 # Local application data
 /data/*
 !/data/luogu_difficulties.json
+!/data/framework_legacy_fragments.json
+!/data/framework_page_dates.json
 *.db
 
 # Generated indexes and audit files

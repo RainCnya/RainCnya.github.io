@@ -1,0 +1,182 @@
+/* Stage 10 B1: scoped entrance pages. Existing article and works styles stay independent. */
+body:has(:is(.space-home, .space-page)) {
+  background: var(--site-bg);
+  color: var(--site-text);
+}
+body:has(:is(.space-home, .space-page)) #banner,
+body:has(.space-home) .side-col,
+body:has(.space-home) .post-content > .markdown-body ~ *,
+body:has(.space-home) #updated-time {
+  display: none !important;
+}
+body:has(:is(.space-home, .space-page)) .header-inner {
+  height: 68px !important;
+}
+body:has(:is(.space-home, .space-page)) .navbar {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  background: var(--site-bg) !important;
+}
+body:has(.space-home) main .col-lg-8 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+body:has(:is(.space-home, .space-page)) #board,
+body:has(.space-home) #board-ctn {
+  margin-top: 0 !important;
+  background: transparent !important;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+  backdrop-filter: none;
+}
+body:has(.space-home) .post-content {
+  max-width: 1120px;
+  padding: 0 28px 48px;
+}
+.space-home, .space-page {
+  font-family: var(--site-font-body);
+  color: var(--site-text);
+}
+.space-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: clamp(36px, 6vw, 90px);
+  padding: clamp(56px, 9vw, 116px) 0 clamp(64px, 9vw, 112px);
+}
+.space-eyebrow {
+  color: var(--site-accent);
+  font: 500 11px/1.8 var(--site-font-ui);
+  letter-spacing: .17em;
+  margin: 0 0 20px;
+}
+.markdown-body .space-home h1,
+.space-page h1 {
+  font-family: var(--site-font-body);
+  font-size: clamp(46px, 6vw, 76px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: .07em;
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  color: var(--site-text);
+}
+.space-intro {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.9;
+  color: var(--site-text-secondary);
+  max-width: 27em;
+  margin-bottom: 0;
+}
+.space-scroll {
+  display: inline-flex;
+  gap: 30px;
+  margin-top: 36px;
+  font-size: 14px;
+  text-decoration: none !important;
+  color: var(--site-accent);
+}
+.space-landscape {
+  margin: 0;
+}
+.markdown-body .space-landscape img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 67%;
+  border-radius: 2px;
+  box-shadow: var(--site-shadow-sm);
+}
+.space-entrances {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 64px;
+  scroll-margin-top: 92px;
+}
+.space-entrances > a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 8px 16px;
+  padding: 28px 0 32px;
+  border-top: 1px solid var(--site-border-strong);
+  color: var(--site-text) !important;
+  text-decoration: none !important;
+}
+.space-entry-name {
+  font-size: 25px;
+  line-height: 1.5;
+}
+.space-entry-description {
+  grid-row: 2;
+  font-size: 14px;
+  color: var(--site-text-secondary);
+}
+.space-entry-arrow {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  color: var(--site-accent);
+}
+.space-entrances > a:hover .space-entry-name,
+.space-reading-links > a:hover > span {
+  color: var(--site-accent);
+}
+.space-home a:focus-visible, .space-page a:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 5px;
+}
+.space-page {
+  max-width: 820px;
+  min-height: 60vh;
+  margin: 0 auto;
+  padding: 76px 0 56px;
+}
+.space-page h1 {
+  font-size: clamp(36px, 5vw, 54px);
+}
+.space-note {
+  color: var(--site-text-secondary);
+  font: 14px/1.8 var(--site-font-ui);
+  margin-top: 22px;
+}
+.space-reading-links {
+  margin-top: 52px;
+}
+.space-reading-links > a {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 20px;
+  padding: 24px 0;
+  border-top: 1px solid var(--site-border);
+  text-decoration: none;
+  color: var(--site-text);
+}
+.space-reading-links > a > span { font-size: 22px; }
+.space-reading-links small {
+  grid-column: 1;
+  color: var(--site-text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.space-reading-links b {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  color: var(--site-accent);
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  body:has(.space-home) .post-content { padding: 0 20px 32px; }
+  .space-hero { grid-template-columns: 1fr; gap: 36px; padding: 48px 0 56px; }
+  .space-landscape { grid-row: 2; }
+  .space-entrances { grid-template-columns: 1fr; }
+  .space-entrances > a { padding: 24px 0; }
+  .space-entry-name { font-size: 23px; }
+  .space-page { padding: 48px 0 36px; min-height: 65vh; }
+}

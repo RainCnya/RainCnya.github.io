@@ -1,0 +1,6 @@
+/* Keep fragment targets below Fluid's fixed navigation. */
+.markdown-body :is(h1, h2, h3, h4, h5, h6)[id],
+.markdown-body :is(a, span)[id],
+.atlas-directory section[id^="atlas-topic-"] {
+  scroll-margin-top: 80px;
+}

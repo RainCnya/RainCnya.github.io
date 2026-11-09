@@ -102,6 +102,7 @@ custom_js:
 
 custom_css:
   - /css/custom_v1.css
+  - /css/anchor-offset.css
   - /css/banner_v1.css
   - /css/article_v1.css
   - /css/callout_v1.css
@@ -109,6 +110,7 @@ custom_css:
   - /css/taxonomy.css
   - /css/luogu_difficulty.css
   - /css/long_page.css
+  - /css/space-pages.css
 
 web_analytics:
   enable: true
@@ -139,9 +141,10 @@ navbar:
   ground_glass:
     enable: false # 我们在 custom.css 里手动实现了更高级的毛玻璃，这里关掉防止冲突
   menu:
-    - { key: "home", name: "首页", link: "/", icon: "iconfont icon-home-fill" }
-    - { key: "algorithm", name: "算法", link: "/posts/58ed0df4/", icon: "iconfont icon-category-fill" }
-    - { key: "writing", name: "文字", link: "/posts/cc99f7e0/", icon: "iconfont icon-books" }
+    - { key: "here", name: "此间", link: "/here/" }
+    - { key: "writing", name: "文字与创作", link: "/writing/" }
+    - { key: "algorithm", name: "算法与训练", link: "/algorithm/" }
+    - { key: "math", name: "数学", link: "/math/" }
     - { key: "archive", name: "归档", link: "/archives/", icon: "iconfont icon-archive-fill" }
     - { key: "links", name: "友链", link: "/links/", icon: "iconfont icon-link-fill" }
     - { key: "about", name: "关于", link: "/about/", icon: "iconfont icon-user-fill" }
@@ -251,7 +254,7 @@ post:
     enable: true
     specific: true
     placement: left
-    post_order_by: "title"
+    post_order_by: "title source"
     post_limit: 0
   toc:
     enable: true
@@ -335,9 +338,9 @@ category:
   banner_img: /img/banner_page_v2.webp
   banner_img_height: 60
   banner_mask_alpha: 0.42
-  order_by: "-length"
+  order_by: "-length path"
   collapse_depth: 0
-  post_order_by: "-date"
+  post_order_by: "-date source"
   post_limit: 10
 
 tag:

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Asia/Shanghai",
+  "semantics": "所有者在 PR #9 指定的真实日期；不是文件时间或旧 public 兼容时间",
+  "pages": {
+    "algorithm/index.md": { "date": "2026-11-05T10:53:55+08:00", "updated": "2026-11-05T10:53:55+08:00" },
+    "here/index.md": { "date": "2026-11-05T10:53:55+08:00", "updated": "2026-11-05T10:53:55+08:00" },
+    "math/index.md": { "date": "2026-11-05T10:53:55+08:00", "updated": "2026-11-05T10:53:55+08:00" },
+    "writing/index.md": { "date": "2026-11-05T10:53:55+08:00", "updated": "2026-11-05T10:53:55+08:00" }
+  }
+}

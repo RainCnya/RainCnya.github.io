@@ -30,10 +30,12 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts --no-audit --no-fund
 
       - name: Build and validate Hexo site
-        run: npm run check
+        run: |
+          node node_modules/hexo/bin/hexo generate --bail --concurrency 1
+          npm run check:site
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

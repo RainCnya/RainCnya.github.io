@@ -511,3 +511,25 @@ body:has(.list-group > .h4) .h4 {
     min-width: 3.2rem;
   }
 }
+
+/* Shared theme controls only: keep keyboard focus visible without changing layout. */
+#color-toggle-btn > a:focus-visible,
+#mobile-color-toggle-btn > a:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 3px;
+}
+
+.atlas-directory {
+  background-image: linear-gradient(to right, var(--site-border, #8883) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--site-border, #8883) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.atlas-directory summary {
+  cursor: pointer;
+}
+
+.atlas-directory summary:focus-visible {
+  outline: 2px solid var(--site-accent, currentColor);
+  outline-offset: 3px;
+}

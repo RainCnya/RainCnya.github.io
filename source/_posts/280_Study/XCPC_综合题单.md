@@ -94,7 +94,7 @@ updated: 2026-08-31
 - [ ] [P2123 皇后游戏](https://www.luogu.com.cn/problem/P2123) `挑战`：复杂排序依据
 - [ ] [P5521 [yLOI2019] 梅深不见冬](https://www.luogu.com.cn/problem/P5521) `挑战`：非模板化贪心迁移
 - [x] [P6902 Surveillance](https://www.luogu.com.cn/problem/P6902) `挑战`：环形覆盖与贪心结构
-- [ ] [P1325 雷达安装](https://www.luogu.com.cn/problem/P1325) `主练`：几何约束转区间后的覆盖贪心；交叉：[[XCPC_综合题单#Part 8.1 计算几何基础｜主线|8.1 几何建模]]
+- [ ] [P1325 雷达安装](https://www.luogu.com.cn/problem/P1325) `主练`：几何约束转区间后的覆盖贪心；交叉：[8.1 几何建模](/posts/60749789/#Part-8-1-计算几何基础｜主线)
 
 ### Part 1.5 构造｜主线
 
@@ -325,7 +325,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 
 **子集状态 / 状态图**
 
-- [ ] [P2761 软件补丁问题](https://www.luogu.com.cn/problem/P2761) `衔接`：状态图与带权转移；交叉：[[XCPC_综合题单#Part 7.1.2 最短路｜主线|7.1.2 状态图最短路]]
+- [ ] [P2761 软件补丁问题](https://www.luogu.com.cn/problem/P2761) `衔接`：状态图与带权转移；交叉：[7.1.2 状态图最短路](/posts/60749789/#Part-7-1-2-最短路｜主线)
 - [ ] [P3092 [USACO13NOV] No Change](https://www.luogu.com.cn/problem/P3092) `主练`：子集状态与资源进度
 - [x] [CF11D A Simple Task](https://www.luogu.com.cn/problem/CF11D) `主练`：子集路径与环计数
 - [ ] [P2831 [NOIP2016 提高组] 愤怒的小鸟](https://www.luogu.com.cn/problem/P2831) `主练`：集合覆盖型状态
@@ -711,7 +711,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 - [ ] [P3270 [JLOI2016] 成绩比较](https://www.luogu.com.cn/problem/P3270) `主练`：多限制组合计数
 - [ ] [P4491 [HAOI2018] 染色](https://www.luogu.com.cn/problem/P4491) `主练`：恰好条件与容斥转换
 - [ ] [P5339 [TJOI2019] 唱、跳、rap和篮球](https://www.luogu.com.cn/problem/P5339) `主练`：多类位置限制容斥
-- [ ] [P4336 [SHOI2016] 黑暗前的幻想乡](https://www.luogu.com.cn/problem/P4336) `挑战`：容斥与 Matrix-Tree 综合；交叉：[[XCPC_综合题单#Part 7.4.3 矩阵树定理｜地图保留|7.4.3 Matrix-Tree]]
+- [ ] [P4336 [SHOI2016] 黑暗前的幻想乡](https://www.luogu.com.cn/problem/P4336) `挑战`：容斥与 Matrix-Tree 综合；交叉：[7.4.3 Matrix-Tree](/posts/60749789/#Part-7-4-3-矩阵树定理｜地图保留)
 
 #### Part 5.5.4 组合恒等式 / 综合计数｜进阶主线
 
@@ -740,11 +740,11 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 - [x] [P3390 【模板】矩阵快速幂](https://www.luogu.com.cn/problem/P3390) `模板`：矩阵乘法与快速幂标准实现
 - [x] [P1939 【模板】矩阵加速（数列）](https://www.luogu.com.cn/problem/P1939) `模板`：线性递推矩阵化
 - [ ] [P3758 [TJOI2017] 可乐](https://www.luogu.com.cn/problem/P3758) `衔接`：邻接矩阵幂与固定步数状态转移
-- [ ] [P2151 [SDOI2009] HH去散步](https://www.luogu.com.cn/problem/P2151) `主练`：固定步数路径计数与邻接矩阵幂；交叉：[[XCPC_综合题单#Part 7.1.5 最短路结构与特殊路径模型｜进阶主线|7.1.5 图上固定步数]]
+- [ ] [P2151 [SDOI2009] HH去散步](https://www.luogu.com.cn/problem/P2151) `主练`：固定步数路径计数与邻接矩阵幂；交叉：[7.1.5 图上固定步数](/posts/60749789/#Part-7-1-5-最短路结构与特殊路径模型｜进阶主线)
 - [ ] [P3216 [HNOI2011] 数学作业](https://www.luogu.com.cn/problem/P3216) `主练`：分段状态与数位拼接过程矩阵化
 - [ ] [P5303 [GXOI/GZOI2019] 逼死强迫症](https://www.luogu.com.cn/problem/P5303) `主练`：补充辅助状态构造闭合递推
 - [ ] [P5343 【XR-1】分块](https://www.luogu.com.cn/problem/P5343) `主练`：组合递推与高阶转移矩阵
-- [ ] [P1357 花园](https://www.luogu.com.cn/problem/P1357) `挑战`：状压有限状态与矩阵快速幂；交叉：[[XCPC_综合题单#Part 3.3.1 状态压缩 DP｜主线|3.3.1 状压 DP]]
+- [ ] [P1357 花园](https://www.luogu.com.cn/problem/P1357) `挑战`：状压有限状态与矩阵快速幂；交叉：[3.3.1 状压 DP](/posts/60749789/#Part-3-3-1-状态压缩-DP｜主线)
 - [x] [P3193 [HNOI2008] GT考试](https://www.luogu.com.cn/problem/P3193) `挑战`：KMP 自动机状态与矩阵转移；交叉：[[XCPC_综合题单#Part 4.1.2 KMP / 前缀函数｜主线|4.1.2 KMP]]
 
 #### Part 5.6.2 高斯消元 / 行列式｜主线
@@ -992,8 +992,8 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 
 重点训练将边或操作挂到有效时间区间，并用 rollback 数据结构维护递归过程中的动态状态。
 
-- [ ] [P5787 二分图 /【模板】线段树分治](https://www.luogu.com.cn/problem/P5787) `衔接`：时间线段树与可撤销并查集入口；交叉：[[XCPC_综合题单#Part 7.6.4 离线动态连通性｜进阶主线|7.6.4 动态连通]]
-- [ ] [CF576E Painting Edges](https://www.luogu.com.cn/problem/CF576E) `挑战`：动态二分图判定与 rollback DSU；交叉：[[XCPC_综合题单#Part 7.6.4 离线动态连通性｜进阶主线|7.6.4 动态连通]]
+- [ ] [P5787 二分图 /【模板】线段树分治](https://www.luogu.com.cn/problem/P5787) `衔接`：时间线段树与可撤销并查集入口；交叉：[7.6.4 动态连通](/posts/60749789/#Part-7-6-4-离线动态连通性｜进阶主线)
+- [ ] [CF576E Painting Edges](https://www.luogu.com.cn/problem/CF576E) `挑战`：动态二分图判定与 rollback DSU；交叉：[7.6.4 动态连通](/posts/60749789/#Part-7-6-4-离线动态连通性｜进阶主线)
 
 ### Part 6.4 可合并与可持久化结构｜进阶主线
 
@@ -1195,7 +1195,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 重点训练不等式与差值关系向约束图的转化，并扩展到严格关系、二维条件与复杂判定。
 
 - [x] [P5960 【模板】差分约束算法](https://www.luogu.com.cn/problem/P5960) `模板`：差分约束标准实现
-- [x] [P2294 [HNOI2005] 狡猾的商人](https://www.luogu.com.cn/problem/P2294) `衔接`：差值关系与带权并查集形成对照；交叉：[[XCPC_综合题单#Part 6.1.2 并查集｜主线|6.1.2 带权并查集]]
+- [x] [P2294 [HNOI2005] 狡猾的商人](https://www.luogu.com.cn/problem/P2294) `衔接`：差值关系与带权并查集形成对照；交叉：[6.1.2 带权并查集](/posts/60749789/#Part-6-1-2-并查集｜主线)
 - [x] [P3275 [SCOI2011] 糖果](https://www.luogu.com.cn/problem/P3275) `主练`：严格 / 非严格约束与强连通结构
 - [ ] [P7515 [省选联考 2021 A/B 卷] 矩阵游戏](https://www.luogu.com.cn/problem/P7515) `主练`：二维条件转势能约束
 - [x] [P4926 [1007] 倍杀测量者](https://www.luogu.com.cn/problem/P4926) `挑战`：复杂约束关系与判定
@@ -1401,10 +1401,10 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 
 #### Part 7.7.3 带权匹配 / KM / 指派问题｜地图保留
 
-单独保留最大权完美匹配模板与 assignment 标准模型；另参考 [[XCPC_综合题单#Part 7.8.3 费用流｜主线|7.8.3 费用流]]。
+单独保留最大权完美匹配模板与 assignment 标准模型；另参考 [7.8.3 费用流](/posts/60749789/#Part-7-8-3-费用流｜主线)。
 
 - [ ] [P6577 【模板】二分图最大权完美匹配](https://www.luogu.com.cn/problem/P6577) `模板`：KM / 最大权完美匹配
-- [x] [P4014 分配问题](https://www.luogu.com.cn/problem/P4014) `主练`：经典指派模型与费用流交叉；交叉：[[XCPC_综合题单#Part 7.8.3 费用流｜主线|7.8.3 费用流]]
+- [x] [P4014 分配问题](https://www.luogu.com.cn/problem/P4014) `主练`：经典指派模型与费用流交叉；交叉：[7.8.3 费用流](/posts/60749789/#Part-7-8-3-费用流｜主线)
 
 ### Part 7.8 网络流｜主线
 
@@ -1431,7 +1431,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 - [ ] [P4126 [AHOI2009] 最小割](https://www.luogu.com.cn/problem/P4126) `主练`：残量网络与最小割边结构
 - [ ] [P2805 [NOI2009] 植物大战僵尸](https://www.luogu.com.cn/problem/P2805) `主练`：最大权闭合子图
 - [ ] [P3749 [六省联考2017] 寿司餐厅](https://www.luogu.com.cn/problem/P3749) `挑战`：复杂依赖关系的最大权闭合
-- [ ] [P4001 [ICPC-Beijing 2006] 狼抓兔子](https://www.luogu.com.cn/problem/P4001) `挑战`：平面图最小割与对偶最短路；交叉：[[XCPC_综合题单#Part 7.1.5 最短路结构与特殊路径模型｜进阶主线|7.1.5 平面图对偶最短路]]
+- [ ] [P4001 [ICPC-Beijing 2006] 狼抓兔子](https://www.luogu.com.cn/problem/P4001) `挑战`：平面图最小割与对偶最短路；交叉：[7.1.5 平面图对偶最短路](/posts/60749789/#Part-7-1-5-最短路结构与特殊路径模型｜进阶主线)
 
 #### Part 7.8.3 费用流｜主线
 
@@ -1543,7 +1543,7 @@ XCPC 中优先使用 `boost::multiprecision::cpp_int`，仅保留工具入口。
 - [ ] [B3611 【模板】传递闭包](https://www.luogu.com.cn/problem/B3611) `衔接`：bitset 加速布尔可达性传播；交叉：[[XCPC_综合题单#Part 7.5.1 拓扑排序 / DAG 结构 / 传递闭包｜主线|7.5.1 传递闭包]]
 - [ ] [P5539 Unknown Mother-Goose](https://www.luogu.com.cn/problem/P5539) `主练`：手写字级位集与批量布尔运算
 - [ ] [CF914F Substrings in a String](https://www.luogu.com.cn/problem/CF914F) `主练`：位移与交集完成动态字符串匹配
-- [ ] [P3674 小清新人渣的本愿](https://www.luogu.com.cn/problem/P3674) `主练`：莫队状态与 bitset 值域关系；交叉：[[XCPC_综合题单#Part 6.3.2 莫队｜进阶主线|6.3.2 莫队]]
+- [ ] [P3674 小清新人渣的本愿](https://www.luogu.com.cn/problem/P3674) `主练`：莫队状态与 bitset 值域关系；交叉：[6.3.2 莫队](/posts/60749789/#Part-6-3-2-莫队｜进阶主线)
 - [ ] [P5355 [Ynoi2017] 由乃的玉米田](https://www.luogu.com.cn/problem/P5355) `挑战`：莫队、值域关系与 bitset 综合
 
 ### Part 9.3 交互题｜地图保留

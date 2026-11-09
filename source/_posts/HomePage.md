@@ -15,83 +15,22 @@ copyright: false
 comments: false
 ---
 
-<section class="miqiu-profile">
-  <div class="miqiu-profile-copy">
-    <p class="miqiu-profile-label">MIQIU</p>
-    <h2>米秋</h2>
-    <p class="miqiu-profile-lead">写算法，也写一些别的。</p>
-    <p>我在这里整理能够被重新进入的理解，也留下一些不想让它们就此消失的东西。</p>
-    <nav aria-label="主要入口">
-      <a href="/posts/58ed0df4/">算法与训练</a>
-      <a href="/posts/cc99f7e0/">阅读文字</a>
-      <a href="/about/">关于米秋</a>
-      <a href="/links/">友链</a>
-    </nav>
-  </div>
-  <figure class="miqiu-profile-visual">
-    <img src="/img/banner_index_v2.webp" alt="通往山野远方的铁轨与道路">
-  </figure>
-</section>
-
-<section class="miqiu-latest">
-  <header>
-    <h2>置顶推荐</h2>
-  </header>
-  <div class="miqiu-latest-list miqiu-featured-list">
-    <a href="/posts/6ffdfad6/">
-      <span class="miqiu-latest-copy"><strong>致去年的我的一封信</strong><small>写给重新出发前的自己，也写给仍在继续往前的以后。</small></span>
-    </a>
-    <a href="/posts/60749789/">
-      <span class="miqiu-latest-copy"><strong>XCPC 综合题单</strong><small>按专题、题型与训练定位组织的长期 XCPC 学习地图。</small></span>
-    </a>
-  </div>
-</section>
-
-<section class="miqiu-latest">
-  <header>
-    <h2>最近留下</h2>
-    <a href="/recent/">查看全部 →</a>
-  </header>
-  <div class="miqiu-latest-list miqiu-recent-slots">
-    <a href="/posts/chengdu2026/">
-      <span class="miqiu-slot">文字</span>
-      <span class="miqiu-latest-copy"><strong>成都，带不走的只有你</strong><small>第一次区域赛的远行，街头的歌声，以及走出赛场后仍一起往前的三个人。</small></span>
-    </a>
-    <a href="/posts/484826b5/">
-      <span class="miqiu-slot">题目</span>
-      <span class="miqiu-latest-copy"><strong>P9630 Interested in Skiing</strong><small>从可通行路线改看障碍封锁链，再以最大瓶颈路刻画临界速度。</small></span>
-    </a>
-    <a href="/posts/treeknap26/">
-      <span class="miqiu-slot">笔记</span>
-      <span class="miqiu-latest-copy"><strong>树上背包模型</strong><small>从资源拆分出发，辨认接口状态与结构变换后的树上背包。</small></span>
-    </a>
-    <a href="/posts/chengdu2026/">
-      <span class="miqiu-slot">比赛</span>
-      <span class="miqiu-latest-copy"><strong>2026 ICPC 成都站游记</strong><small>从热身到正式赛，记下贪心性质、区间交点边界与卡题时的队内推进。</small></span>
-    </a>
-  </div>
-</section>
-
-<section class="miqiu-home-bottom">
-  <div class="miqiu-now">
-    <h2>此间正在发生</h2>
-    <dl>
-      <div><dt>下一站</dt><dd>CCPC 厦门 · 11 月 22 日</dd></div>
-      <div><dt>学习</dt><dd>障碍封锁链、树的中心结构与前缀和顺序</dd></div>
-      <div><dt>整理</dt><dd>面向 XCPC 长期训练的专题题单</dd></div>
-      <div><dt>写作</dt><dd>把第一次区域赛的远行、同行与赛后心情写成游记</dd></div>
-      <div><dt>留下</dt><dd>在卡题时先把想法写出来，也记住区间交集只剩一个点的边界</dd></div>
-    </dl>
-  </div>
-  <div class="miqiu-entrances">
-    <h2>从这里进入</h2>
-    <nav>
-      <a href="/posts/58ed0df4/"><span>算法图谱与比赛</span><b>→</b></a>
-      <a href="/posts/dppath26/"><span>动态规划专题</span><b>→</b></a>
-      <a href="/posts/cc99f7e0/"><span>文字与作品</span><b>→</b></a>
-      <a href="/works/"><span>《风迹》作品集</span><b>→</b></a>
-    </nav>
-  </div>
-</section>
-
-<!-- more -->
+<div class="space-home">
+  <section class="space-hero" aria-labelledby="yuanfang-title">
+    <div class="space-hero-copy">
+      <p class="space-eyebrow">MIQIU · SOMEWHERE DISTANT</p>
+      <h1 id="yuanfang-title">远方</h1>
+      <p class="space-intro">算法、文字，以及尚未成为结论的生活。</p>
+      <a class="space-scroll" href="#spaces">从这里出发 <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure class="space-landscape">
+      <img src="/img/banner_index_v2.webp" alt="通往山野远方的铁轨与道路" width="900" height="600" loading="eager">
+    </figure>
+  </section>
+  <nav class="space-entrances" id="spaces" aria-label="四个内容空间">
+    <a data-space-entry href="/here/"><span class="space-entry-name">此间</span><span class="space-entry-description">生活与近期记录</span><span class="space-entry-arrow" aria-hidden="true">↗</span></a>
+    <a data-space-entry href="/writing/"><span class="space-entry-name">文字与创作</span><span class="space-entry-description">作品集与独立文字</span><span class="space-entry-arrow" aria-hidden="true">↗</span></a>
+    <a data-space-entry href="/algorithm/"><span class="space-entry-name">算法与训练</span><span class="space-entry-description">知识积累、学习与比赛</span><span class="space-entry-arrow" aria-hidden="true">↗</span></a>
+    <a data-space-entry href="/math/"><span class="space-entry-name">数学</span><span class="space-entry-description">理论、问题与理解</span><span class="space-entry-arrow" aria-hidden="true">↗</span></a>
+  </nav>
+</div>
