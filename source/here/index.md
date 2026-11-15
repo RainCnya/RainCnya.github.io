@@ -16,7 +16,12 @@ comments: false
     <a class="here-enter" href="#here-recent">进去看看？<span aria-hidden="true">↓</span></a>
   </header>
   <section class="here-recent" aria-labelledby="here-recent">
+    <div class="here-recent-index">
     <h2 id="here-recent" tabindex="-1">最近留下</h2>
+      <p class="here-recent-year">2026</p>
+      <p class="here-recent-range">04 — 10</p>
+      <p class="here-recent-count">1 篇置顶 · 2 篇近期</p>
+    </div>
     <div class="here-stream">
       <article class="here-pin">
         <p class="here-meta"><span>置顶 · 游记</span><time datetime="2026-10-27">2026-10-27</time></p>

@@ -402,3 +402,23 @@ body:has(.space-page[data-space="here"]) .page-content {
     transition: none !important;
   }
 }
+
+/* HERE-VISUAL-TWEAK-01: factual index and inset mobile band. */
+.here-recent-index h2 { position: static; }
+.here-recent-year {
+  font: 400 52px/1.2 var(--site-font-ui);
+  color: var(--site-text-secondary);
+  margin: 0 0 8px;
+}
+.here-recent-range { margin: 0 0 12px; color: var(--site-text-secondary); }
+.here-recent-count { margin: 0; color: var(--site-text-secondary); font-size: 13px; }
+@media (max-width: 899px) {
+  .here-recent-index { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-bottom: 28px; }
+  .here-recent-index h2 { flex-basis: 100%; margin-bottom: 12px; }
+  .here-recent-index .here-recent-year { font-size: 18px; margin: 0; }
+  .here-recent-index .here-recent-range, .here-recent-index .here-recent-count { margin: 0; font-size: 13px; }
+}
+@media (max-width: 639px) {
+  .here-past { padding: 44px 22px 48px; background: var(--site-surface-soft); }
+  .here-past::before { content: none; }
+}
