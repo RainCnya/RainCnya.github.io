@@ -29,14 +29,14 @@ hexo.extend.helper.register('site_reading_content', function(page) {
 // Adapt the installed Fluid views in memory, leaving its dependency and inject points intact.
 hexo.extend.filter.register('before_generate', function() {
   const theme = this.theme;
-  function override(path, replacements) {
+  function override(path, replacements, target = path) {
     let content = readFileSync(theme.getView(path).source, 'utf8').replace(/\r\n/g, '\n');
     for (const [original, replacement] of replacements) {
       const found = typeof original === 'string' ? content.includes(original) : original.test(content);
       if (!found) throw new Error(`[Shared layout] Unexpected Fluid view: ${path}`);
       content = content.replace(original, replacement);
     }
-    theme.setView(path, content);
+    theme.setView(target, content);
   }
 
   const title = '<h1 id="seo-header"><%= page.subtitle || page.title %></h1>';
@@ -52,12 +52,14 @@ hexo.extend.filter.register('before_generate', function() {
     ['<%- page.content %>\n                <%- inject_point(\'postMarkdownEnd\') %>',
       "<%- site_reading_content(page) %>\n                <%- inject_point('postMarkdownEnd') %>"]
   ]);
+  // Fluid copies this partial into its default header injection on generateBefore.
   override('_partials/header.ejs', [
     ['class="header-inner"', 'class="header-inner<%= site_reading_layout(page) ? \' reading-header-spacer\' : \'\' %>"'],
+    ['<%= banner_img_height %>vh', "<%= site_reading_layout(page) ? '68px' : banner_img_height + 'vh' %>"],
     ["<%- partial('_partials/header/banner') %>", `<% if (!site_reading_layout(page)) { %>
     <%- partial('_partials/header/banner') %>
   <% } %>`]
-  ]);
+  ], 'inject/header/default.ejs');
 
   const search = / {4}<% if \(theme\.search\.enable\) \{ %>\s*<%- partial\('_partials\/search\.ejs'\) %>\s*<% } %>\r?\n/;
   override('layout.ejs', [

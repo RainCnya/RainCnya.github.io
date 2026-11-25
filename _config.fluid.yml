@@ -260,6 +260,7 @@ post:
     enable: true
     placement: right
     headingSelector: "h1,h2,h3,h4,h5,h6"
+    expand_all: false
     collapseDepth: 2
   copyright:
     enable: true
