@@ -336,6 +336,157 @@ html[data-user-color-scheme="dark"] .markdown-body .space-landscape img {
   }
 }
 
+/* Algorithm V1 */
+.space-page[data-space="algorithm"] {
+  padding-top: clamp(36px, 5vw, 58px);
+}
+.space-page[data-space="algorithm"] .algorithm-masthead h1 {
+  font-size: clamp(36px, 5.7vw, 65px);
+  margin-bottom: 16px;
+}
+.space-page[data-space="algorithm"] .algorithm-masthead .space-intro {
+  max-width: none;
+}
+.space-page[data-space="algorithm"] :is(.algorithm-jump, .algorithm-domains) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+.space-page[data-space="algorithm"] .algorithm-jump {
+  margin-top: 22px;
+}
+.space-page[data-space="algorithm"] :is(.algorithm-jump, .algorithm-domains, .algorithm-section-heading) a,
+.space-page[data-space="algorithm"] .algorithm-atlas-enter {
+  color: var(--site-accent);
+  font: 500 14px/1.55 var(--site-font-ui);
+  text-decoration: none;
+  border-bottom: 1px solid var(--site-border-strong);
+}
+.space-page[data-space="algorithm"] :is(.algorithm-jump, .algorithm-domains, .algorithm-section-heading) a:hover,
+.space-page[data-space="algorithm"] .algorithm-atlas-enter:hover {
+  color: var(--site-accent-strong);
+  border-color: var(--site-accent);
+}
+.space-page[data-space="algorithm"] :is(.algorithm-atlas, .algorithm-section) {
+  margin-top: clamp(28px, 4.4vw, 48px);
+  scroll-margin-top: 84px;
+}
+.atlas-directory > details[id^="atlas-domain-"] {
+  scroll-margin-top: 84px;
+}
+.space-page[data-space="algorithm"] .algorithm-atlas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px 24px;
+  padding: clamp(19px, 4vw, 32px);
+  border-left: 3px solid var(--site-accent);
+  background-color: var(--site-surface);
+  background-image: linear-gradient(to right, var(--site-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--site-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.space-page[data-space="algorithm"] :is(.algorithm-atlas-meta, .algorithm-count, .algorithm-number,
+  .algorithm-recent-list time, .algorithm-recent-source) {
+  color: var(--site-text-secondary);
+  font: 500 12px/1.6 var(--site-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.space-page[data-space="algorithm"] .algorithm-atlas-meta {
+  margin: 0 0 9px;
+  color: var(--site-accent);
+}
+.space-page[data-space="algorithm"] h2 {
+  margin: 0 0 14px;
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 550;
+}
+.space-page[data-space="algorithm"] .algorithm-atlas h2 {
+  font-size: clamp(26px, 4vw, 38px);
+}
+.space-page[data-space="algorithm"] :is(.algorithm-matrix, .algorithm-recent-list) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.space-page[data-space="algorithm"] .algorithm-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+}
+.space-page[data-space="algorithm"] .algorithm-matrix a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 6px 12px;
+  padding: 15px 0 18px;
+  border-top: 1px solid var(--site-border-strong);
+}
+.space-page[data-space="algorithm"] :is(.algorithm-matrix, .algorithm-recent-list) a {
+  color: var(--site-text);
+  text-decoration: none;
+}
+.space-page[data-space="algorithm"] .algorithm-matrix h3 {
+  margin: 0;
+  font-size: clamp(19px, 2.3vw, 24px);
+  font-weight: 550;
+}
+.space-page[data-space="algorithm"] .algorithm-matrix p {
+  margin: 0;
+  color: var(--site-text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.space-page[data-space="algorithm"] :is(.algorithm-count, .algorithm-arrow) {
+  justify-self: end;
+}
+.space-page[data-space="algorithm"] .algorithm-arrow,
+.space-page[data-space="algorithm"] .algorithm-matrix a:hover h3 {
+  color: var(--site-accent);
+}
+.space-page[data-space="algorithm"] .algorithm-section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 13px;
+}
+.space-page[data-space="algorithm"] .algorithm-section-heading h2 {
+  margin: 0;
+}
+.space-page[data-space="algorithm"] .algorithm-recent-list {
+  border-bottom: 1px solid var(--site-border);
+}
+.space-page[data-space="algorithm"] .algorithm-recent-list a {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 10px clamp(10px, 3vw, 25px);
+  padding: 12px 0;
+  border-top: 1px solid var(--site-border);
+}
+.space-page[data-space="algorithm"] .algorithm-recent-title {
+  justify-self: start;
+  font-size: 17px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid transparent;
+}
+.space-page[data-space="algorithm"] .algorithm-recent-list a:hover .algorithm-recent-title,
+.space-page[data-space="algorithm"] .algorithm-recent-list a:focus-visible .algorithm-recent-title {
+  color: var(--site-accent);
+  border-color: var(--site-accent);
+}
+@media (max-width: 768px) {
+  .space-page[data-space="algorithm"] :is(.algorithm-atlas, .algorithm-matrix) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .space-page[data-space="algorithm"] .algorithm-atlas-enter {
+    justify-self: start;
+  }
+}
+
 /* Here V1.1: only this entrance gets the wider, five-part window-side page. */
 body:has(.space-page[data-space="here"]) main > .container,
 body:has(.space-page[data-space="here"]) #board > .container {

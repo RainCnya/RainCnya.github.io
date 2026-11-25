@@ -4,15 +4,15 @@ const { renderAtlasDirectory } = require('../lib/atlas-directory.cjs');
 
 // S10-ATLAS-V1. Topic membership and reading order are explicitly curated.
 const domains = [
-  { title: '区间维护', topics: [
+  { id: 'atlas-domain-range-maintenance', title: '区间维护', topics: [
     { id: 'fenwick', title: '树状数组', members: ['43666fa1'] },
     { id: 'segment-tree', title: '线段树', manualOrder: true, members: ['dba9a34f', 'c0ad84cf', 'ec824ae8'] },
   ] },
-  { title: '图结构', topics: [
+  { id: 'atlas-domain-graph', title: '图结构', topics: [
     { id: 'spanning-tree', title: '生成树', manualOrder: true, members: ['msttheory26', 'mstcases26'] },
     { id: 'scc', title: '有向图缩点', members: ['dbe3a645'] },
   ] },
-  { title: '动态规划建模', topics: [
+  { id: 'atlas-domain-dp', title: '动态规划建模', topics: [
     { id: 'lis', title: '最长上升子序列', manualOrder: true, members: ['b55c738e', 'ff454fea'] },
     { id: 'monotone-queue', title: '单调队列优化', members: ['monoqueue26'] },
   ] },
@@ -41,3 +41,10 @@ const articles = [
 
 hexo.extend.tag.register('atlas_directory', () =>
   renderAtlasDirectory({ domains, articles, pinned: ['dba9a34f'], recommendationCount: 3 }));
+
+// Give the hub only the public summary; the curated membership stays here.
+hexo.extend.helper.register('atlas_hub_data', () => ({
+  domains: domains.map(({ id, title }) => ({ id, title })),
+  topicCount: domains.reduce((count, domain) => count + domain.topics.length, 0),
+  articleCount: articles.length
+}));
