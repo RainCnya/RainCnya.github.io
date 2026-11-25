@@ -184,6 +184,158 @@ html[data-user-color-scheme="dark"] .markdown-body .space-landscape img {
   padding-bottom: 28px;
 }
 
+/* Writing V1 */
+.space-page[data-space="writing"] {
+  padding-top: clamp(36px, 5vw, 58px);
+}
+.space-page[data-space="writing"] .writing-masthead,
+.space-page[data-space="writing"] .writing-section-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+.space-page[data-space="writing"] .writing-masthead {
+  align-items: end;
+  padding-bottom: clamp(32px, 4vw, 44px);
+}
+.space-page[data-space="writing"] .writing-masthead h1 {
+  font-size: clamp(36px, 5.7vw, 65px);
+  margin-bottom: 16px;
+}
+.space-page[data-space="writing"] .writing-section {
+  margin-top: clamp(24px, 4vw, 44px);
+}
+.space-page[data-space="writing"] .writing-section-heading {
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--site-border-strong);
+}
+.space-page[data-space="writing"] .writing-section-heading h2 {
+  margin: 0;
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 550;
+}
+.space-page[data-space="writing"] :is(.writing-nav, .writing-year-links, .writing-legacy) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+.space-page[data-space="writing"] :is(.writing-nav, .writing-section-heading, .writing-legacy) a {
+  font: 500 13px/1.65 var(--site-font-ui);
+  color: var(--site-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.space-page[data-space="writing"] :is(.writing-nav, .writing-legacy, .writing-section-heading) a:hover {
+  color: var(--site-accent-strong);
+}
+.space-page[data-space="writing"] :is(h2[id], h3[id], #writing-archive) {
+  scroll-margin-top: 84px;
+}
+.space-page[data-space="writing"] :is(.writing-collections, .writing-entries) {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.space-page[data-space="writing"] .writing-collections a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--site-border);
+  color: var(--site-text);
+  text-decoration: none;
+}
+.space-page[data-space="writing"] .writing-collections h3 {
+  margin: 4px 0 5px;
+  font-size: clamp(27px, 4.2vw, 39px);
+  font-weight: 500;
+}
+.space-page[data-space="writing"] .writing-collection-meta {
+  color: var(--site-accent);
+  font: 500 12px/1.7 var(--site-font-ui);
+  letter-spacing: .08em;
+  margin: 0;
+}
+.space-page[data-space="writing"] .writing-collection-arrow {
+  color: var(--site-accent);
+  font-size: 21px;
+}
+.space-page[data-space="writing"] .writing-year {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+  padding: 24px 0 20px;
+}
+.space-page[data-space="writing"] .writing-year + .writing-year {
+  border-top: 1px solid var(--site-border-strong);
+}
+.space-page[data-space="writing"] .writing-year h3 {
+  margin: 12px 0 0;
+  color: var(--site-accent);
+  font: 500 22px/1.35 var(--site-font-ui);
+  font-variant-numeric: tabular-nums;
+}
+.space-page[data-space="writing"] .writing-entry {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: 12px;
+  padding: 13px 0 17px;
+}
+.space-page[data-space="writing"] .writing-entry + .writing-entry {
+  border-top: 1px solid var(--site-border);
+}
+.space-page[data-space="writing"] .writing-entry time {
+  margin-top: 5px;
+  color: var(--site-text-secondary);
+  font: 13px/1.6 var(--site-font-ui);
+  font-variant-numeric: tabular-nums;
+}
+.space-page[data-space="writing"] .writing-entry h4 {
+  margin: 0 0 4px;
+  font-size: clamp(19px, 2.4vw, 23px);
+  font-weight: 550;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.space-page[data-space="writing"] .writing-entry a {
+  color: var(--site-text);
+  text-decoration: underline;
+  text-decoration-color: var(--site-border-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.space-page[data-space="writing"] .writing-entry a:hover,
+.space-page[data-space="writing"] .writing-collections a:hover h3 {
+  color: var(--site-accent);
+}
+.space-page[data-space="writing"] :is(.writing-collection-description, .writing-entry p) {
+  margin: 0;
+  color: var(--site-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.space-page[data-space="writing"] .writing-legacy {
+  padding-top: 18px;
+  border-top: 1px solid var(--site-border-strong);
+}
+@media (max-width: 600px) {
+  .space-page[data-space="writing"] .writing-year {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 5px;
+  }
+  .space-page[data-space="writing"] .writing-year h3 { margin-top: 0; }
+  .space-page[data-space="writing"] .writing-entry {
+    grid-template-columns: 2.7rem minmax(0, 1fr);
+    gap: 8px;
+  }
+}
+
 /* Here V1.1: only this entrance gets the wider, five-part window-side page. */
 body:has(.space-page[data-space="here"]) main > .container,
 body:has(.space-page[data-space="here"]) #board > .container {
