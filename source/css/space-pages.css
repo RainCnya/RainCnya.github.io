@@ -12,12 +12,6 @@ body:has(.space-home) #updated-time {
 body:has(:is(.space-home, .space-page)) .header-inner {
   height: 68px !important;
 }
-body:has(:is(.space-home, .space-page)) .navbar {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: none;
-  background: var(--site-bg) !important;
-}
 body:has(.space-home) main .col-lg-8 {
   flex: 0 0 100%;
   max-width: 100%;
@@ -91,6 +85,10 @@ body:has(.space-home) .post-content {
   object-position: center 67%;
   border-radius: 2px;
   box-shadow: var(--site-shadow-sm);
+}
+html[data-user-color-scheme="dark"] .markdown-body .space-landscape img {
+  filter: brightness(0.88);
+  box-shadow: none;
 }
 .space-entrances {
   display: grid;
@@ -179,6 +177,11 @@ body:has(.space-home) .post-content {
   .space-entrances > a { padding: 24px 0; }
   .space-entry-name { font-size: 23px; }
   .space-page { padding: 48px 0 36px; min-height: 65vh; }
+}
+
+.space-page[data-space="math"] {
+  min-height: 0;
+  padding-bottom: 28px;
 }
 
 /* Here V1.1: only this entrance gets the wider, five-part window-side page. */

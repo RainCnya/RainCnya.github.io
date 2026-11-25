@@ -48,7 +48,7 @@ fun_features:
     visible: hover
     icon: ""
   progressbar:
-    enable: true
+    enable: false
     height_px: 3
     color: "#806AA8" # 柔和灰紫进度条
     options: { showSpinner: false, trickleSpeed: 100 }
@@ -192,7 +192,7 @@ footer:
     '
 
   statistics:
-    enable: true
+    enable: false
     source: "leancloud"
     pv_format: "总访问量 {} 次"
     uv_format: "总访客数 {} 人"
@@ -260,7 +260,7 @@ post:
     enable: true
     placement: right
     headingSelector: "h1,h2,h3,h4,h5,h6"
-    collapseDepth: 0
+    collapseDepth: 2
   copyright:
     enable: true
     license: 'BY'

@@ -20,7 +20,7 @@
   --site-accent: #6d5c9e;
   --site-accent-soft: rgba(109, 92, 158, 0.09);
   --site-accent-strong: #584a80;
-  --site-nav-bg: rgba(255, 253, 249, 0.78);
+  --site-nav-bg: var(--site-bg);
   --site-nav-text: #3a3442;
   --site-radius: 16px;
   --site-radius-sm: 10px;
@@ -79,7 +79,6 @@
   --site-accent: #a99bdd;
   --site-accent-soft: rgba(170, 155, 221, 0.12);
   --site-accent-strong: #cdbffb;
-  --site-nav-bg: rgba(24, 26, 36, 0.76);
   --site-nav-text: #c7cbe0;
   --site-radius: 18px;
   --site-radius-sm: 12px;
@@ -171,34 +170,33 @@ body {
 /* ----------------------------------------------------------
    3. Navbar
    ---------------------------------------------------------- */
-.navbar {
-  background-color: var(--site-nav-bg) !important;
+#navbar {
+  background-color: var(--site-nav-bg);
+  color: var(--site-nav-text);
   border-bottom: 1px solid var(--site-border);
-  box-shadow: none !important;
-  -webkit-backdrop-filter: blur(16px) saturate(1.35);
-  backdrop-filter: blur(16px) saturate(1.35);
+  box-shadow: none;
+  transition-property: padding;
 }
 
-.navbar .navbar-brand {
-  color: var(--site-nav-text) !important;
+#navbar .navbar-brand {
+  color: var(--site-nav-text);
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.045em;
 }
 
-.navbar .navbar-nav .nav-link {
-  color: var(--site-nav-text) !important;
-  border-radius: 999px;
-  padding: 0.48rem 0.85rem !important;
+#navbar .navbar-nav .nav-link {
+  color: var(--site-nav-text);
+  border-radius: var(--site-radius-sm);
+  padding: 0.45rem 0.65rem;
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.015em;
-  transition: color 0.18s ease, background-color 0.18s ease;
 }
 
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link:focus {
-  color: var(--site-accent) !important;
+#navbar .navbar-nav .nav-link:hover,
+#navbar .navbar-nav .nav-link:focus-visible {
+  color: var(--site-accent);
   background: var(--site-accent-soft);
 }
 
@@ -207,16 +205,8 @@ body {
   display: none;
 }
 
-.navbar .navbar-toggler .animated-icon span {
-  background-color: var(--site-nav-text) !important;
-}
-
-/* Mobile expanded menu */
-.navbar .navbar-collapse,
-.navbar.top-nav-collapse,
-.navbar-col-show {
-  background-color: var(--site-nav-bg) !important;
-  border-radius: 0 0 var(--site-radius-sm) var(--site-radius-sm);
+#navbar .navbar-toggler .animated-icon span {
+  background-color: var(--site-nav-text);
 }
 
 /* ----------------------------------------------------------
@@ -230,10 +220,10 @@ body {
   position: relative;
   margin-top: 0 !important;
   padding: 2.6rem 0;
-  background-color: var(--site-surface) !important;
-  border: 1px solid var(--site-border);
+  background-color: var(--site-board-background, var(--site-surface)) !important;
+  border: var(--site-board-border, 1px solid var(--site-border));
   border-radius: var(--site-radius);
-  box-shadow: var(--site-shadow-sm) !important;
+  box-shadow: var(--site-board-shadow, var(--site-shadow-sm)) !important;
   transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -255,6 +245,56 @@ body {
   padding-right: 2.5rem !important;
 }
 
+.header-inner.reading-header-spacer {
+  padding-top: 68px;
+}
+
+#board:has(.reading-header, .atlas-page) {
+  --site-board-background: transparent;
+  --site-board-border: 0;
+  --site-board-shadow: none;
+}
+
+.reading-header {
+  margin-bottom: 1.85rem;
+}
+
+.reading-header #seo-header,
+.atlas-page > h1 {
+  display: block;
+  margin: 0 0 .5rem;
+  padding: 0;
+  border: 0;
+  color: var(--site-text);
+  font: 650 clamp(1.85rem, 4vw, 2.7rem)/1.3 var(--site-font-ui);
+}
+
+.reading-header .post-metas {
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: 0;
+  color: var(--site-text-secondary);
+}
+
+.reading-title-anchor {
+  display: block;
+  scroll-margin-top: 80px;
+}
+
+#modalSearch .modal-content {
+  background-color: var(--site-surface);
+  color: var(--site-text);
+  border-radius: var(--site-radius);
+}
+
+#modalSearch #local-search-input + label {
+  color: var(--site-text-secondary);
+}
+
+body.modal-open[style] {
+  overflow: hidden;
+}
+
 /* ----------------------------------------------------------
    5. Footer
    ---------------------------------------------------------- */
@@ -272,11 +312,29 @@ body {
   color: var(--site-accent);
 }
 
+#scroll-top-button {
+  justify-content: center;
+  background: var(--site-bg);
+  border: 1px solid var(--site-border-strong);
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+#scroll-top-button i {
+  font-size: 1.15rem;
+  color: var(--site-accent);
+}
+
+#scroll-top-button:hover,
+#scroll-top-button:focus-visible {
+  border-color: var(--site-accent);
+}
+
 /* ----------------------------------------------------------
    6. Typography details
    ---------------------------------------------------------- */
 .markdown-body h1,
-.post-content h1 {
+.post-content > h1 {
   padding-bottom: 0.42em;
   border-bottom: 1px solid var(--site-border-strong) !important;
 }
@@ -337,10 +395,6 @@ body {
    8. Responsive tuning
    ---------------------------------------------------------- */
 @media (max-width: 767px) {
-  .navbar .navbar-nav .nav-link {
-    padding: 0.55rem 0.9rem !important;
-  }
-
   #board {
     border-radius: var(--site-radius-sm);
     padding: 1.6rem 0;
@@ -364,7 +418,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .index-card .board,
-  .navbar,
+  #navbar,
   .markdown-body a {
     transition: none;
   }
@@ -519,17 +573,34 @@ body:has(.list-group > .h4) .h4 {
   outline-offset: 3px;
 }
 
-.atlas-directory {
-  background-image: linear-gradient(to right, var(--site-border, #8883) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--site-border, #8883) 1px, transparent 1px);
+.atlas-page {
+  padding: clamp(1rem, 4vw, 2rem);
+  background-image: linear-gradient(to right, var(--site-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--site-border) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+.atlas-directory [id^="atlas-topic-"] {
+  scroll-margin-top: 80px;
+}
+
+.atlas-directory a {
+  color: var(--site-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+
+.atlas-directory a:hover,
+.atlas-directory a:focus-visible {
+  color: var(--site-accent-strong);
 }
 
 .atlas-directory summary {
   cursor: pointer;
 }
 
-.atlas-directory summary:focus-visible {
-  outline: 2px solid var(--site-accent, currentColor);
+.atlas-directory :is(summary, a):focus-visible {
+  outline: 2px solid var(--site-accent);
   outline-offset: 3px;
 }
